@@ -1,0 +1,123 @@
+---
+title: "Syllabus"
+format: pdf
+editor: visual
+---
+
+# Stats 141: Introduction to Statistics
+
+**Spring 2026**
+
+## Logistics
+
+Lectures: MWF, 9:30-10:50, CODA B90.
+
+Discussion section: Th (times below)
+
+Course staff, office hours, and section times:
+
+| Name | Role | Office hours | Discussion section |
+|------------------|------------------|------------------|--------------------|
+| Julia Palacios | Instructor | W 11:00-12:00 in CoDa E250 |  |
+| Aditya Ghosh | TA | TBC | 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
+| Jing Shang | TA | TBC | 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
+
+## Contact
+
+If you need to reach us outside of lectures, tutorials or office hours, please contact us on the [Ed Discussion forum](https://edstem.org/us/courses/96989/discussion).
+
+# Overview
+
+This is an introductory course in statistics for students specializing in the life sciences. The emphasis is on statistical ideas rather than computations or mathematical formulations. There are no prerequisites except elementary algebra.
+
+In this course, students will:
+
+\(1\) Learn to identify key statistical issues to be addressed during the design phase of an experiment (e.g., threats to conclusion, identifying confounders, appropriate measurements, randomization).
+
+\(2\) Become proficient with intermediate statistical methods: comparing groups (analysis of variance); analyzing associations (linear regression); and methods for categorical data (contingency tables and odds ratio). You should know which methods are useful in different situations, and which conditions have to be checked for the method to be applicable.
+
+\(3\) Be able to perform detailed data analyses on a variety of biological data using the statistical computation environment R, including basic programming. You should be able to implement all the methods discussed in this course.
+
+## Units
+
+The course is partitioned into units as detailed below. See a more fine-grained schedule [here](calendar.md) (subject to change).
+
+1.  **Thinking about scale**. Numbers are only meaningful *in context*. We will develop tools for understanding whether a number is big or small in context, with important applications to decision making.
+
+2.  **Probability**. When we observe a pattern, is it a trend, or a coincidence? Probability gives us a mathematical foundation for reasoning about coincidences. We'll cover the basics of probability and conditional probability, which form the foundation for all of statistics.
+
+3.  **Exploratory data analysis**. In this unit, we learn how to summarize, organize, and visualize data. We'll complement the study classic summary statistics (such as the mean, median, and standard deviation) with a more nuanced discussion of data variability, concentration, and modality. We will apply our theory to analyze data from surveys and polls.
+
+4.  **Correlation and experiments**. Correlation reveals patterns in data. We will study the concept of correlation, the difference between correlation and causation, and the principles of experimental design and interpretation, including hypothesis testing and confidence intervals.
+
+5.  **Regression and machine learning**. What are machine learning models and how do they work? In this unit we will first study linear regression, the most basic machine learning model. We will then use this as a foundation to understand how machine learning models work, from training to prediction.
+
+# Materials, Tools, & Resources
+
+1.  **Course website**. This is the course website. Here you will find the course schedule, lecture slides, assignments, and practice quizzes.
+
+2.  **Lecture slides**. Lecture slides are the primary source of information for the course; they will be made available online after lecture.
+
+3.  **Textbooks**. There is no required textbook, however material is based on the following:
+
+    -   Statistics for the Life Sciences, 5th Edition by Samules, Witmer, and Schaffner.
+    -   The Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.
+
+4.  **Gradescope**. Feedback on your quizzes and the final exam will be available on [gradescope](https://www.gradescope.com/courses/1012615).
+
+5.  **Ed**. We will use Ed as an online class forum, where you may ask questions and discuss with your fellow students. You can access the Ed forum for the class [here](https://edstem.org/us/courses/96989/discussion) or through Canvas.
+
+6.  **R resources**. In this course, computation will be done in R. We recommend the free versions of the following software:
+
+[R](https://cloud.r-project.org/)
+
+[RStudio](https://posit.co/download/rstudio-desktop/)
+
+[Great tutorial](https://r4ds.hadley.nz/)
+
+If you have any installation difficulties or questions please ask your TAs
+
+7.  **AI**. The course policy of STATS 141 is to embrace AI.
+
+    -   Some section assignments will be based on programming. Programming is not a prerequisite for the course. Whether or not you know how to program, you can use AI to complete programming assignments. We will provide you with guidance and suggestions.
+
+    -   If you would like, you may also use AI to help you study for the course. Beware that AI agents are still susceptible to mistakes, and that you are ultimately fully responsible for your own understanding.
+
+# Coursework & Evaluation
+
+1.  **Quizzes** (50%)
+    -   We will have a quiz in class every Friday.
+    -   Your two lowest quiz scores will be dropped.
+2.  **Final Exam** (50%)
+    -   The final will be in-person during finals week on Following the Stanford [calendar](https://studentservices.stanford.edu/my-academics/evaluations-exams-grades/final-exam-schedule): Monday, June 9, 2025 \@ 15:30-18:30.
+    -   Students must be present for the final.
+    -   If your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.
+3.  **Section participation and assignments** (up to 10% bonus)
+    -   Each week, you will be given a hands-on assignment to complete ahead of section.
+    -   In section you will turn in your assignment, and discuss and share your results with classmates.
+4.  **Lecture worksheets** (up to 5% bonus)
+    -   There will be a worksheet for students to fill out accompanying each lecture.
+    -   Students may receive up to 5% extra credit for turning in their worksheet at the end of class.
+
+# Policies
+
+1.  **The Honor Code**. It is expected that you and I will follow Stanford's Honor Code in all matters relating to this course.
+
+    -   You are encouraged to meet and exchange ideas with your classmates while studying and working on homework assignments, but you are individually responsible for your own work and for understanding the material.
+    -   You are not permitted to copy or otherwise reference another student's assignments or computer code.
+
+2.  **Quizzes**. Our quizzes occur every week at the end of Friday's lecture.
+
+    -   In order to foster an inclusive course structure, quizzes will be designed to take 10 minutes, but all students will be given 20 minutes to complete the quiz.
+    -   Attendance at quizzes is mandatory.
+    -   Your two lowest scores are dropped, so you can miss up to two quizzes without penalty.
+
+3.  **Late Work Policy**. The only assignments with a deadline are the section assignments, which are bonus-points only. Since they are bonus, late work will not be accepted.
+
+4.  **Proctoring Pilot**. This course is participating in the proctoring pilot overseen by the Academic Integrity Working Group (AIWG). The purpose of this pilot is to determine the efficacy of proctoring and develop effective practices for proctoring in-person exams at Stanford. To find more details on the pilot or the working group, please visit the AIWG’s [webpage](https://studentaffairs.stanford.edu/AIWG).
+
+5.  **Accommodations**. I am happy to provide accommodations to students, understanding that they may be necessary for student success. Students who may need an academic accommodation based on the impact of a disability must initiate the request with the [Office of Accessible Education](http://oae.stanford.edu) (OAE).
+
+    **Important OAE deadlines**: If you plan to use your OAE-approved exam accommodations for a specific assessment, you must provide your letter and inform the instructor by **May 27, 2025 at 5:00pm** for accommodations on the final exams. You need only submit your letter once per quarter. For urgent OAE-related accommodations needs that arise after the deadline, please consult your OAE advisor. If you are not yet registered with OAE, contact the office directly at oae-contactus\@stanford.edu. Students should contact the OAE as soon as possible since timely notice is needed to coordinate accommodations.
+
+6.  **Course Privacy Statement**. As noted in the University's [policy on recording and broadcasting courses](https://library.stanford.edu/using/copyright-reminder/common-situations/recording-broadcasting-courses), students may not audio or video record class meetings without permission from the instructor (and guest speakers, when applicable).

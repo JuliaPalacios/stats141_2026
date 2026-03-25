@@ -1,0 +1,208 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "",
+    "text": "Syllabus\nSpring 2026\nLectures: MWF, 9:30-10:50, CODA B90.\nDiscussion section: Th (times below)\nCourse staff, office hours, and section times:",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#syllabus",
+    "href": "index.html#syllabus",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "",
+    "text": "Name\nRole\nOffice hours\nDiscussion section\n\n\n\n\nJulia Palacios\nInstructor\nW 11:00-12:00 in CoDa E250\n\n\n\nAditya Ghosh\nTA\nTBC\nTh 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211\n\n\nJing Shang\nTA\nTBC\nTh 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Contact",
+    "text": "Contact\nIf you need to reach us outside of lectures, tutorials or office hours, please contact us on the Ed Discussion forum.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Overview",
+    "text": "Overview\nThis is an introductory course in statistics for students specializing in the life sciences. The emphasis is on statistical ideas rather than computations or mathematical formulations. There are no prerequisites except elementary algebra.\nIn this course, students will:\n\nLearn to identify key statistical issues to be addressed during the design phase of an experiment (e.g., threats to conclusion, identifying confounders, appropriate measurements, randomization).\nBecome proficient with intermediate statistical methods: comparing groups (analysis of variance); analyzing associations (linear regression); and methods for categorical data (contingency tables and odds ratio). You should know which methods are useful in different situations, and which conditions have to be checked for the method to be applicable.\nBe able to perform detailed data analyses on a variety of biological data using the statistical computation environment R, including basic programming. You should be able to implement all the methods discussed in this course.\n\n\nMaterials, Tools, & Resources\n\nCourse website. This is the course website. Here you will find the course schedule, lecture slides, assignments, and practice quizzes.\nLecture slides. Lecture slides are the primary source of information for the course; they will be made available online after lecture.\nTextbooks. There is no required textbook, however material is based on the following:\n\n\nStatistics for the Life Sciences, 5th Edition by Samules, Witmer, and Schaffner.\nThe Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.\n\n\nGradescope. Feedback on your quizzes and the final exam will be available on gradescope.\nEd. We will use Ed as an online class forum, where you may ask questions and discuss with your fellow students. Students are encouraged to answer each others’ questions, and participation points will be awarded accordingly. The TAs will periodically review Ed to provide clarification, as needed, and to endorse student answers. You can access the Ed forum for the class here or through Canvas.\nR resources. In this course, computation will be done in R. We recommend the free versions of the following software:\n*R\n*RStudio\n*Great tutorial\n\nIf you have any installation difficulties or questions please ask your TAs\n\nAI. The course policy of STATS 141 is to embrace AI.\n\n\nSome section assignments will be need some programming. Whether or not you know how to program, you can use AI to complete programming assignments. We will provide you with guidance and suggestions.\nIf you would like, you may also use AI to help you study for the course. Beware that AI agents are still susceptible to mistakes, and that you are ultimately fully responsible for your own understanding.\n\n\nAccommodations. Students who may need an academic accommodation based on the impact of a disability must initiate the request with the Office of Accessible Education (OAE). If you plan to use your OAE-approved exam accommodations for a specific assessment, you must provide your letter and inform the instructor 10 days before the exam.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#coursework-evaluation",
+    "href": "index.html#coursework-evaluation",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Coursework & Evaluation",
+    "text": "Coursework & Evaluation\n\nQuizzes (45%)\n\n\nWe will have a quiz in class every Friday.\nYour two lowest quiz scores will be dropped.\n\n\nFinal Exam (45%)\n\n\nThe final will be in-person during finals week on Tuesday, June 9, 2026 at 8:30am\nStudents must be present for the final.\nIf your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.\n\n\nSection participation and Lecture worksheets (10%)\n\n\nEach week, you will be given a hands-on assignment to complete ahead of section.\nIn section you will turn in your assignment, and discuss and share your results with classmates.\nThere will be a worksheet for students to fill out accompanying each lecture.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#units",
+    "href": "index.html#units",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Units",
+    "text": "Units\n\nIntroduction to Statistics and EDA\nGenerative Models for Discrete and Continuous Data\nSampling Distributions\nInference for Means\nStatistical Models\nDesign of experiments",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#regrade-policy",
+    "href": "index.html#regrade-policy",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Regrade Policy",
+    "text": "Regrade Policy\nIf you believe that we have made a mistake in grading, please e-mail Prof. Palacios within 1 week of getting the assignment/exam back. Note that Professor Palacios will regrade your entire assignment/exam, so your grade could go up or down.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#the-honor-code",
+    "href": "index.html#the-honor-code",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "The Honor Code",
+    "text": "The Honor Code\nIt is expected that instructors and students will follow Stanford’s Honor Code in all matters relating to this course. You are encouraged to meet and exchange ideas with your classmates while studying and working on homework assignments, but you are individually responsible for your own work and for understanding the material. You are not permitted to copy or otherwise reference another student’s homework or computer code. If you have any questions regarding this policy, feel free to contact me.\nCompromising your academic integrity may lead to serious consequences, including (but not limited to) one or more of the following: failure of the assignment, failure of the course, disciplinary probation, suspension from the university, or dismissal from the university.\nStudents are responsible for understanding the University’s Honor Code policy and must make proper use of citations of sources for writing papers, creating, presenting, and performing their work, taking examinations, and doing research.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#course-privacy-statement",
+    "href": "index.html#course-privacy-statement",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Course Privacy Statement",
+    "text": "Course Privacy Statement\nAs noted in the University’s , students may not audio or video record class meetings without permission from the instructor (and guest speakers, when applicable).",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "2  Introduction to Statistics",
+    "section": "",
+    "text": "Statistics\nResearchers in the life sciences analyze data that exhibit some variability. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) prepared identically may have different results due to contamination, thermal damage, etc. The challenge to the life scientist is to discern the signal from the noise.\nStatistics is the science of understanding data (collection, analysis and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of data science.\n\n\n\nData Science, credit: Lee et al. 2018\n\n\nExperimental Design\nResearchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with data analysis, but statistical considerations often play a key role in the planning and design of scientific investigation.\n\n\n\n\n\n\nNoteExample: Health and Marriage\n\n\n\nA study conducted in Finland found that people who were married at midlife were less likely to develop cognitive impairment (particularly Alzheimer’s disease) later in life. However, from an observational study such as this we don’t know whether marriage prevents later problems or whether persons who are likely to develop cognitive problems are less likely to get married.\n\n\n\n\n\n\n\n\nNoteExample: Sexual orientation\n\n\n\nSome research has suggested that there is a genetic basis for sexual orientation. One such study involved measuring the midsagittal area of he anterior commissure (AC) of the brain for 30 homosexual men, 30 heterosexual men, and 30 heterosexual women. The research found that the AC tends to be larger in heterosexual women than in heterosexual men and that it is even larger in homosexual men.\n\n\n\n\n\ncredit: SWS Book\n\n\nThe previous two examples are based on observational studies. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is manipulating the conditions. However, observational studies can be misleading due to confounding variables. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the anterior commissure.\nConfounders are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.\nHow can we mitigate confounding? Create treatment and control groups that are as similar as possible except for the treatment level and we can anticipate and prevent both other known and unknown explanations for the observed difference in outcomes between the treated and control groups.\n\n\n\n\n\n\nNoteExample: Toxicity in Dogs\n\n\n\nIn part of one study, a new investigational drug was given to eight male and eight female dogs at doses of \\(8 mg/kg\\) and \\(25 mg/kg\\). Within each sex, the two doses were assigned at random to the eight dogs. Many “endpoints” were measured, such as cholesterol, sodium, glucose, and so on, from blood samples, in order to screen for toxicity problems in the dogs before starting studies on humans. One endpoint was alkaline phosphatase level (or APL, measured in \\(U/l\\)).\n\n\n\n\n\ncredit: SWS Book\n\n\nThe design of this experiment allows for the investigation of the interaction between two factors: sex of the dog and dose. That is, for females, the effect of increasing the dose from 8 to 25 mg/kg was positive, although small (from 133.5 to 143 \\(U/l\\)), but for males the effect of increasing the dose from 8 to 25 \\(mg/kg\\) was negative (from 143 to 124.5 \\(U/l\\)).\nBy randomly assigning treatments (drug doses) to subjects (dogs), we can get around the problem of confounding that complicates observational studies and limits the conclusions. Randomized experiments are considered the gold standard in scientific investigation, but they can also be difficult.\nOften, human subjects in experiments are given a placebo. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is blinded. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.\n\n\n\ncredit: Javier Zarracina - Vox\n\n\nHow about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called double-blinded.\n%%Activity on the need for control groups\nRandomized allocation in medical settings may not be ethical. One possibility is to use historical controls (i.e. previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).\nExploratory Data Analysis (EDA)\nConfirmatory Data Analysis (CDA)\nSee Knuth (1984) for additional discussion of literate programming.\n\n1 + 1\n\n[1] 2\n\n\n\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Introduction to Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "2  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "references.html",
+    "href": "references.html",
+    "title": "References",
+    "section": "",
+    "text": "Knuth, Donald E. 1984. “Literate Programming.” Comput.\nJ. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "References"
+    ]
+  },
+  {
+    "objectID": "Week1.html",
+    "href": "Week1.html",
+    "title": "3  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Discussion.qmd",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "Week2.html",
+    "href": "Week2.html",
+    "title": "4  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "Discussion.qmd",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html",
+    "href": "Week1A.html",
+    "title": "1  Week1",
+    "section": "",
+    "text": "1.1 Need for control groups\nAn experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least \\(80%\\) of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least \\(80%\\) of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than \\(80%\\) of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Week1</span>"
+    ]
+  },
+  {
+    "objectID": "activities.html",
+    "href": "activities.html",
+    "title": "Activities",
+    "section": "",
+    "text": "Activity 1\nNeed for control groups. An experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least \\(80%\\) of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least \\(80%\\) of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than \\(80%\\) of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.",
+    "crumbs": [
+      "Activities"
+    ]
+  },
+  {
+    "objectID": "activities.html#activity-1",
+    "href": "activities.html#activity-1",
+    "title": "Activities",
+    "section": "",
+    "text": "What can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#activity-1",
+    "href": "Week1A.html#activity-1",
+    "title": "1  Week1",
+    "section": "",
+    "text": "What can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Week1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#need-for-control-groups.",
+    "href": "Week1A.html#need-for-control-groups.",
+    "title": "1  Week1",
+    "section": "",
+    "text": "What can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Week1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#need-for-control-groups",
+    "href": "Week1A.html#need-for-control-groups",
+    "title": "1  Week1",
+    "section": "",
+    "text": "credit: SWS Book\n\n\n\nWhat can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Week1</span>"
+    ]
+  }
+]

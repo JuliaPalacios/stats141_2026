@@ -1,0 +1,441 @@
+---
+title: "Factor Analysis"
+author: "Lorenzo Cappello \ Universitat Pompeu Fabra"
+date: "19/11/2024"
+header-includes:
+  -\newcommand{\bx}{{\bf x}}
+  -\newcommand{\by}{{\bf y}}
+  -\newcommand{\bv}{{\bf v}}
+  -\newcommand{\be}{{\bf e}}
+  -\newcommand{\bu}{{\bf u}}
+  -\newcommand{\bz}{{\bf z}}
+  -\newcommand{\bmu}{{\boldsymbol{\mu}}}
+  -\newcommand{\beps}{{\boldsymbol{\epsilon}}}
+output: 
+  slidy_presentation:
+    incremental: true
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+```
+
+
+## References
+
+- Notes on AulaGlobal
+
+    - Section 2 `notes3.pdf`
+
+## Introduction 
+
+- So far, we have focused on dimension reduction & ability to plot objects/data that were otherwise not prone to be visualized
+
+- There was not a direct intentition in the method to explain a "feature of the data"
+
+- Factor analysis is an *unsupervised method* designed to explain where the correlations between two or more variables come from. 
+
+- There are two major reasons leading to correlated *observed* variables
+
+    1. One variable causes the other
+    
+    2. Two variables are an expression of an *unobservable* latent quantity
+
+- FA is mostly designed with this second situation. It happens often in practice:
+
+  - result of athletes in different running competitions are correlated: they may reflect a latent variable that could describe an athlete running ability
+  
+  - a students' grade in phylosophy, literature, and greek: this could suggest a propension (or lack of talent) for classical studies. 
+  
+  - etc. 
+  
+- In FA, we try to infer these **latent factors** (aka *unobserved variables*)
+    
+
+## Data 
+
+- Stock data (d $n=103$ weekly returns on $p=5$ companies: J.P. Morgan, Citibank, Wells Fargo, Royal Dutch Shell and ExxonMobil)
+
+- Athletes data
+
+    ```{r,echo=TRUE}
+    load("data/athletes.RData")
+    library(dplyr)
+    athletes = data.frame(scale(athletes))
+    athletes[1:3,]
+    cor(athletes) %>% round(1)
+    covmat <- cov(athletes)
+    ```
+
+
+## Plan for the lecture(s)
+
+1. Inner workings of Factor Analysis (FA)
+
+2. FA in practice
+
+3. Example
+
+
+
+
+##
+\
+\
+\
+\
+\
+\
+<h2><center> Inner workings of FA </center></h2>
+
+
+
+## FA model
+
+
+- Factor Analysis relies on a statistical model that make the latent (unknown/unobservables) variables (aka factors) explicit
+
+- Let $\bx=(x_1,\ldots,x_p)'$ be a random vector with mean $\bmu=(\mu_1,\ldots,\mu_p)'$ and $\mbox{cov}(\bx)=\Sigma$. We consider the following model
+
+<hr>
+- \begin{align} \begin{pmatrix} x_1 \\ \ldots \\ x_p \end{pmatrix}=
+ \begin{pmatrix} \mu_1 \\ \ldots \\ \mu_p \end{pmatrix} + \begin{pmatrix} l_{11} f_1 + \ldots + l_{1k} f_k \\ \ldots \\
+l_{p1} f_1 + \ldots + l_{pk} f_k \end{pmatrix} + \begin{pmatrix} \epsilon_1 \\ \ldots \\ \epsilon_p \end{pmatrix}, \end{align} where the $l_{jm}$'s for $j=1,\ldots,p$ and $m=1,\ldots,k$ are called **factor loadings**, $f_{k}$s are the *random* **factors**, and $\epsilon_j$ is an error term affecting only variable $x_j$.
+
+<hr>
+
+- Each $x_j$ has its own error $\epsilon_j$ but can have a combination of factors
+
+- In matrix form \begin{align}
+\bx= \bmu + L {\bf f} + \beps,
+\end{align} where $L$ is the $p \times k$ matrix containing the factor loadings and $\beps=(\epsilon_1,\ldots,\epsilon_p)'$.
+
+## Assumptions 
+
+- Linearity in the model is an assumption.(*All the models are false, some are useful* George Box)
+
+- Errors and factors are zero mean: $$E[\beps]=\mathbf{0} \,\, \text{and} \,\,E[\mathbf{f}]=\mathbf{0}$$
+
+- Errors are uncorrelated  \begin{align} &\mbox{cov}(\beps)= \Psi= \begin{pmatrix} \psi_1 & 0 & \ldots & 0 \\ 0 & \psi_2 & \ldots & 0 \\ \ldots & & & \\ 0 & \ldots & & \psi_p \end{pmatrix} \nonumber \\\end{align}
+
+- Factors are uncorrelated  and standardized \begin{align} &\mbox{cov}(\mathbf{f})= I_k= \begin{pmatrix} 1 & 0 & \ldots & 0 \\ 0 & 1 & \ldots & 0 \\ \ldots & & & \\ 0 & \ldots & & 1 \end{pmatrix} \nonumber \\\end{align}
+
+- Errors and factors are uncorrelated  $$ cov(\beps,\mathbf{f})=\mathbf{0}$$
+
+- **Note**: We repeat, the model itself is an assumption
+
+## Under the model and assumptions:
+
+- Covariance (and correlation) between $x_j$s can be due only to the factors. 
+
+
+- The covariance of \bx is special \begin{align} &E((\bx-\bmu)(\bx-\bmu)')=
+E((L {\bf f} + \beps)(L {\bf f} + \beps)')= E(L {\bf f} {\bf f} L') + E(\beps\beps') + E(L {\bf f} \beps') + E(\beps {\bf f}' L') \nonumber \\ &=L E({\bf f} {\bf f}') L' + \mbox{cov}(\beps)= L L' + \Psi, \nonumber \end{align}
+
+- Specifically \begin{align} \mbox{var}(x_j)= l_{j1}^2 + \ldots + l_{jk}^2 + \psi_j= {\bf l}_j' {\bf l}_j + \psi_j \nonumber \\ \mbox{cov}(x_j,x_m)= l_{j1} l_{m1} + \ldots + l_{jk} l_{mk}= {\bf l}_j' {\bf l}_m \nonumber \end{align} where ${\bf l}_j$ is the $j^{th}$ row in $L$.
+
+- The covariance between $x_j$ and another variable $x_m$ is given by the inner product between their loading vectors.
+
+- The variance of $x_j$ is decomposed in the sum of the squared loadings
+${\bf l}_j' {\bf l}_j$, sometimes called the **communality**,
+and the so-called **specificity** $\psi_j$.
+
+
+## Non uniqueness of the solutions
+
+- Clearly, we need to estimate $\bmu$, $L$ and $\Psi$ (how to do it soon). However, *the solutions  are not going to be unique*
+
+- for any orthonormal matrix $A$ (a rotation matrix), we may define $\tilde{L}= L A$, and obtain $\tilde{L} \tilde{L}'= L A A' L'= L L'$.
+
+- Equivalently, one could define $\tilde{{\bf f}}= A' {\bf f}$ to obtain
+$\tilde{L} \tilde{{\bf f}}= L A A' {\bf f}= L {\bf f}$.
+
+
+- This is very important in Statistics, it means that we can generate the same \bx in many ways. **We can only estimate $L$ and ${\bf f}$ up to rotations**
+
+- It will give us the possibility to choose the solutions "we like"
+
+- Note that we did not stress too much this idea that any vector/matrix multiplied to which we applied a linear transformation defined by A, it is a *rotated* version of the initial place. 
+
+
+
+
+##
+\
+\
+\
+\
+\
+\
+<h2><center> FA in practice </center></h2>
+
+- Estimation
+
+  1. Eigendecomposition
+  2. MLE
+  
+- Rotations
+
+- Choice number of factors 
+
+
+## Estimation 1: principal component method
+
+<hr>
+- **Case k=p**:  *Idea* is $\hat{\Sigma}=E \Lambda E'$, then $$\hat{\Sigma}= E \Lambda^{\frac{1}{2}} \Lambda^{\frac{1}{2}} E'= L L',$$
+where $L= E \Lambda^{\frac{1}{2}}$. That is, when $k=p$ the factor model recovers $\hat{\Sigma}$ exactly by setting
+$L= E \Lambda^{\frac{1}{2}}$, and  $\psi_1=\ldots=\psi_p=0$.
+
+<hr>
+
+<hr>
+- **Case k<p** (the useful one in application)
+
+
+- Let $\hat{\Sigma}=E \Lambda E'$ be the eigendecomposition of $\Sigma$
+
+  1. Take $\hat{L}$ to be the first $k$ columns in $E \Lambda^{\frac{1}{2}}$
+  
+  2. Set $\hat{\psi}_j= \hat{\sigma}_{jj} - \hat{{\bf l}}_j' \hat{{\bf l}}_j$ for $j=1,\ldots,p$
+
+<hr>
+
+
+- Difference between regular PCA and what you do in FA (in this case) is that PCA approximates $\hat{\Sigma} \approx \hat{L}\hat{L}'$ whereas the FA uses $\hat{\Sigma} \approx \hat{L}\hat{L}' + \hat{\Psi}$
+
+- **Note**: the *conceptual* difference between the two remains big 
+
+## Example stocks (principal component solution)
+
+- *Example 9.4 in Johnson \& Wichern's book*: d $n=103$ weekly returns on $p=5$ companies: J.P. Morgan, Citibank, Wells Fargo, Royal Dutch Shell and ExxonMobil. Sample covariance (after standardizing) $$ \hat{\Sigma}= \begin{pmatrix}
+1 & .632 & .511 & .115 & .155 \\
+.632 & 1 & .574 & .322 & .213 \\
+.511 & .574 & 1 & .183 & .146 \\
+.115 & .322 & .183 & 1 & .683 \\
+.155 & .213 & .146 & .683 & 1 \\
+\end{pmatrix}.$$
+- k=2 solution is
+$$\begin{pmatrix}
+&\hat{L_1} & \hat{L_2} & \hat{\psi_j}\\
+J.P. Morgan & .732 & -.437 & .27 \\
+Citibank    & .831 & -.280 & .23 \\
+Wells Fargo & .726 & -.374 & .33 \\
+Royal Dutch Shell & .605 & .694 & .15 \\
+ExxonMobil  & .563 & .719 & .17 \\ 
+\end{pmatrix}$$
+
+- Interpretation? 
+
+  - We need to find an interpretation of the factors
+  - We can understand which companies are best explained by the factors
+
+- Approximation error $$\hat{\Sigma} - \hat{L}\hat{L'} - \hat{\Psi}=
+\begin{pmatrix}
+0 & -.099 & -.185 & -.025 & .056 \\
+-.099 & 0 & -.134 & .014 & -.054 \\
+-.185 & -.134 & 0 & .003 & .006 \\
+-.025 & .014 & .003 & 0 & -.156 \\
+.056 & -.054 & .006 & -.156 & 0 \\
+\end{pmatrix}.$$
+
+- Note, in the approximation most off-diagonal entries are zero
+
+## Estimation 2: Maximum Likelihood Estimation (MLE)
+
+- Principal component is simple but the approximation error is often high
+
+- The way we construct FA, it is pretty much a statistical model "trying" to mick the mechanism that generates the data.
+- If we choose a distribution for the random variables (Factors + Noise), we can define a likelihood, and then, choose the value of the parameters that maximize this likelihood.
+
+<hr>
+- **Extra assumption**: a common one is that  $$f_j \sim N(0,1),\,\,\,\,\text{and}\,\,\,\, \epsilon_j \sim N(0,\psi_j)$$
+where the $f_j$'s and $\epsilon_j$'s are mutually independent and also across $j=1,\ldots,p$.
+<hr>
+
+- The assumptions imply 
+$$\bx_i \sim N_p(\bmu,LL' + \Psi),$$ 
+where $N_p$ denotes a multivariate normal
+
+
+## Estimation 2: Maximum Likelihood Estimation (MLE) (continues)
+
+
+- MLE chooses the value of $(\mu,L,\Psi)$ that maximizes the probability (density) of observing $X$
+
+- No closed form solution, we need to solve the optimization numerically. 
+
+- Some preliminary calculations lead to 
+
+<hr><hr>
+- The **MLE for the Normal Factor Model** is given by $\hat{\mu}={\bf \bar{x}}$ and
+$(\hat{L},\hat{\Psi})$ minimizing the following quantity $$\frac{n-1}{2} \log | LL' + \Psi| + \frac{n}{2} \mbox{tr} \left( (LL'+\Psi)^{-1} S \right),$$ where $S$ is the sample covariance matrix (with $n$ rather than $n-1$ in the denominator).
+
+<hr><hr>
+
+
+- Now, the solution is pretty different from that of PCA
+
+- Again, recall that solutions are not unique
+
+## Example (MLE solution)
+
+MLE solution for the $k=2$ model
+
+```{r,echo=T}
+covmat= matrix(c(1,.632,.511,.115,.155,.632,1,.574,.322,.213,.511,.574,1,.183,.146,.115,.322,.183,1,.683,.155,.213,.146,.683,1),nrow=5)
+fit <- factanal(covmat=covmat, factors=2, rotation="none")
+fit
+
+
+```
+
+- Interpretation? Similar of different from before? 
+
+- Approximation 
+    ```{r,echo=T}
+    L <- fit$loadings[,1:2]
+    covapprox <- L %*% t(L) + diag(fit$uniqueness)
+    round(covmat - covapprox,3)
+    ```
+    
+- **Note**: a different rotation would lead to different results. 
+
+
+## Rotating solutions of factor analysis
+
+We mentioned already that we can *rotate* the solutions through a matrix $A$ and leave \bx the same 
+
+$$\bx= L {\bf f} + \beps= L A A^{-1} {\bf f} + \beps= \tilde{L} \tilde{{\bf f}} + \beps,$$
+- **General principle**: since we can choose, we might as well choose the $A$ that facilitates the interpretation 
+
+- Different types of rotations:
+
+  - When $A$ is orthonormal, we have a orthoghonal rotations. 
+
+  - When $A$ is not orthornormal, we have a **oblique rotations** (factor may be correlated)
+
+
+- A popular orthogonal (i.e. A is orthoghonal) rotation method is the so-called **varimax rotation**, which attempts to maximize the variance
+of the squared loadings. Specifically, let $\tilde{{\bf s}}_j=(\tilde{l}_{j1}^2,\ldots,\tilde{l}_{jp}^2)'$
+be the squared loadings for the $j^{th}$ factor,
+the varimax criterion is to choose the orthonormal matrix $A$ such that $\tilde{L}=LA$ maximizes
+$$\sum_{j=1}^{p} \mbox{var}(\tilde{{\bf s}}_j).$$
+- The idea is that this should enforce more "sparse" factors
+
+
+## Example stocks (varimax)
+
+
+```{r,echo=T}
+fit.varimax <- factanal(covmat=covmat, factors=2, rotation='varimax')
+fit.varimax
+```
+
+
+## Choosing the number of factors
+
+Nothing really knew with respect to what you have seen
+
+- Take largest eigenvalues 
+
+- Scree plot 
+
+- Total percent of variance explained
+
+- **Interpretation**: how many factors you need to explain the data 
+
+
+
+
+##
+\
+\
+\
+\
+\
+\
+<h2><center> Athletes data </center></h2>
+\
+We examined them in the PCA class, let's look at this data set again 
+
+## Data
+
+```{r,echo=TRUE}
+load("data/athletes.RData")
+library(dplyr)
+athletes = data.frame(scale(athletes))
+athletes[1:3,]
+cor(athletes) %>% round(1)
+covmat <- cov(athletes)
+```
+
+
+## Choosing the number of factors 
+
+
+
+- Scree plot 
+
+  ```{r,echo=TRUE}
+  library(ade4)
+  library(factoextra)
+  pca.ath = dudi.pca(athletes, scannf = FALSE)
+  fviz_eig(pca.ath, geom = "bar", bar_width = 0.3) + ggtitle("")
+  ```
+  
+- We will look at it again after seeing some solutions
+
+## Factor analysis 
+
+Two factors
+
+  ```{r,echo=T}
+  fit <- factanal(athletes,factors=2)
+  fit
+  ```
+Four factors 
+
+  ```{r,echo=T}
+  fit <- factanal(athletes,factors=4)
+  fit
+  ```
+
+
+
+## Rotations 
+
+Let's see the rotated solutions 
+```{r,echo=T}
+fit <- factanal(athletes,factors=2,rotation = "varimax")
+fit
+```
+
+```{r,echo=T}
+fit <- factanal(athletes,factors=4,rotation = "varimax")
+fit
+```
+
+## Other packages may give different results
+
+This one you need to input the covariance matrix 
+```{r,echo=T}
+library(psych)
+fa(r=covmat, nfactors=2, rotate="varimax", SMC=FALSE, fm="minres")
+
+```
+
+
+## Summary
+
+- FA employs a statistical model to describe the *correlation* between variables
+
+- Correlation is assumed to be due to **latent factors**, which are unobserved variables
+
+- The aim of FA is to find *interpretable factors*
+
+- There are many (infinite) possible solutions, and there are many assumptions that can be made on the underlying statistical model 
+
+- While we do dimensionality reduction, the goal is completely different from we have seen so far
+
+

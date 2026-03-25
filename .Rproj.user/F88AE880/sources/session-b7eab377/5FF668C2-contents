@@ -1,0 +1,239 @@
+---
+title: |
+  ![](LogoPompeuFabra.jpg){width=4in}  
+  Basics of R 
+author: "Lorenzo Cappello (Pompeu Fabra)"
+date: "9/6/2022"
+header-includes:
+  -\newcommand{\bx}{{\bf x}}
+  -\newcommand{\by}{{\bf y}}
+  -\newcommand{\bv}{{\bf v}}
+  -\newcommand{\be}{{\bf e}}
+  -\newcommand{\bu}{{\bf u}}
+  -\newcommand{\bz}{{\bf z}}
+  -\newcommand{\bmu}{{\boldsymbol{\mu}}}
+  -\usepackage{amsmath}
+  -\usepackage{bm}
+output: 
+  slidy_presentation
+---
+
+
+
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE)
+library(dplyr)
+```
+
+## Expressions, basic operations, elements (single)
+
+
+I.e. R as a calculator
+
+```{r,echo=T}
+ 6+3
+ 6**3 
+ 6^3
+(2*(13.4+5))/48
+```
+
+
+
+## type of elements: numeric, character, logical, integer
+```{r,echo=T}
+is.numeric(4); is.character(4); is.logical(4)
+as.numeric("0345") ;as.character(0345)
+is.character(TRUE); is.logical(TRUE)
+is.integer(as.integer(38)); is.character(pi)
+is.numeric(pi); pi; format(pi, digits = 12)
+is.numeric(format(pi, digits = 12))
+as.numeric(format(pi, digits = 12))
+```
+
+
+## Operations: aritmethical, logical, paste
+
+
+```{r,echo=T}
+
+2+4; 2*4; 2**4; 2/4;  2==4 ; 2 != 4; !( 2 != 4);
+2<= 4; 2<4; (1>2) & (1< 7) ; (1>2) | (1< 7);
+```
+
+## Objects, assignment
+
+```{r,echo=T}
+ answer <- 4 + 6
+ answer
+4+8-> answer
+3*(6-7**2)/3 -> answer2
+ answer + answer2
+
+```
+
+## list objects, remove objects
+
+
+```{r,echo=T}
+answer3 <- (answer**2)/answer2
+answer3
+rm(answer3)
+ls()
+rm(list = ls()) 
+
+```
+
+
+## R defined elemental functions
+
+
+```{r,echo=T}
+log(100)
+log10(100)
+log2(100)
+abs(-9)
+sign(-9)
+x<-rnorm(100,2,sd=1)
+mean(x)
+var(x)
+```
+
+## Character, strings
+
+```{r, echo=T}
+
+ca = "Barcelona"
+substring(ca,2,5)
+paste("Bar", "celona",sep="-") 
+paste("Bar", as.character(1:5),sep="-") 
+paste("Bar",1:5,sep="-")
+```
+
+
+## Format for numeric objects
+
+
+```{r,echo=T}
+
+format(exp(1), digits = 14)
+## The golden ratio:
+ phi= (1+sqrt(5))/2
+ phi**2;   1/phi
+ format(phi, digits = 20)
+  format(1/phi, digits = 20)
+  ## compare the two above
+  ##  notice  machine discrepancy on decimal digits
+ x = 4;   D <- 1/sqrt(x) ; D
+ signif(pi, 4) ; trunc(pi) ; ceiling(pi) 
+
+```
+since R uses finite precision arithmetic, your answers aren’t accurate beyond 15 or 16 decimal places, so in general, more digits precision aren’t required.
+
+
+## Vectors
+
+
+```{r,echo=TRUE}
+rep(4,10)
+   a <- 2:14
+  a = rep(TRUE,5)
+  is.character(a)
+   is.logical(a)
+   a = rep("TR",5)
+   is.character(a)
+  seq(from=3,to=13,by=2)
+ seq(3,13,2.3)
+  seq(13,3, -2)
+  seq(13,3)
+seq(13,3, length =15)
+ seq(6)
+```
+
+
+## Matrices
+
+```{r,echo=T}
+
+ a = 1:15
+ mat1 = matrix(a, nrow=3, ncol=5);  mat1
+ colnames(mat1) = c("col1","col2","col3","col4", "col5")
+ rownames(mat1) = c("row1","row2","row3" )
+ mat1
+  paste("col",as.character(1:5),sep=" ")
+  paste("col",as.character(1:5),sep="-")
+  paste("col",as.character(1:5),sep="")
+  mat1/3
+```
+
+
+
+## matrices operations 
+
+```{r,echo=T}
+mat2= round(mat1/3,2)
+  mat1 + mat2;  mat1-mat2; mat1*mat2; mat1**mat2
+  t(mat2)     # transpose of a matrix
+  mat1 %*%t(mat2)     # matrix multiplication
+```
+There are other operations for matrices, monadic and diadic (to be discussed later in the course, as the inverse of a matrix, eigen values and eigen vectors, etc. )
+
+
+## List
+
+It is a *list* of objects
+
+
+```{r,echo=T}
+x <- list(values=sin(1:6), ids=letters[1:4], log=rep(TRUE,8)) 
+x
+```
+```{r,echo=T}
+x$extra <- "EXTRA"
+length(x)
+x[1]
+x[["values"]]
+str(x)
+```
+
+
+## Data frame 
+
+
+Data frame is like a matrix but with possibility for different type of data in the different columns (set of vectors, the columns of the data frame, of the same length). Most of the time, importing data in R will be as a data frame.
+
+
+```{r,echo=T}
+
+ x <- list(values=sin(1:3), ids=letters[1:3],
+log=rep(TRUE,3))
+datax = data.frame(x)
+datax
+
+```
+
+## List (advanced)
+
+```{r,echo=T}
+
+ d <- data.frame(a=11:13, b=21:23)
+is.list(d)
+str(d)
+m <- lm(a ~  b, data=d) 
+list(m)
+str(m)
+```
+
+
+## Data
+
+R has lots of data sets already loaded. You can check with the function `data()`
+
+```{r,echo=T}
+data(diabetes); names(diabetes);
+dim(diabetes);
+head(diabetes)
+summary(diabetes)
+```
+
+
