@@ -13,14 +13,47 @@ Researchers in the life sciences analyze **data** that exhibit some **variabilit
 An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).
 :::
 
+
+::: {.columns}
+::: {.column width="50%"}
+```{r,echo=FALSE}
+#install.packages("tidyverse")
+#| warning: false
+#| message: false
+suppressPackageStartupMessages({
+library(tidyverse)
+library(tibble)
+})
+
+stories=c(rep(2,7),rep(3,13),rep(4,30),rep(5,35),rep(6,2),c(3,3,3,2,2),rep(7,15))
+injuries=c(rep(1,5),2,2,rep(1,3),rep(2,10),rep(3,10),rep(2,18),rep(1,2),rep(3,30),rep(2,5),c(3,3), rep(2,2),rep(3,3),rep(2,8),rep(1,7))
+  
+raining_cats <- tibble(
+  stories = stories,
+  injuries = injuries
+)
+
+mean_vec <-raining_cats %>%
+  group_by(stories) %>%
+  summarise(mean_injuries = mean(injuries), n = n())
+
+ggplot(
+  data=mean_vec,
+  mapping = aes(x = stories, y = mean_injuries)
+)+ geom_point()+geom_smooth()
+  
+ 
+
+```
+:::
+::: {.column width="50%"}
 ![Raining cats](/Figures/cats){fig-align="center" width="90%"}
+:::
 
 What can we conclude?
 
 High-quality samples are essential for sound science, even in the age of AI!
 
-
-Crucially, statistics gives us tools to **quantify the uncertainty** of certain quantities of interest.
 
 Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we **sample** populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.
 
@@ -39,9 +72,8 @@ If instead, we want to make statements about the whole population, then apart fr
 
 ![Statistical Inference](/Figures/inference){fig-align="center" width="95%"}
 
-## Descriptive statistics
 
-Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A **variable** is a characteristic or quantity that you can you measure. A **value** is the state of the variable when you measure it. An **observation** is a set of measurements. 
+Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A **variable** is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A **value** is the state of the variable when you measure it. We will use letter case for values. An **observation** is a set of measurements. 
 
 Variables can be **categorical** or **numerical**. Categorical variables tell us membership or attribute. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).   
 
@@ -57,25 +89,41 @@ generate_svg(qr, filename = "Figures/poll.svg")
   
 
 ![poll](/Figures/poll.svg){fig-align="center" width="40%"}
+
 We can now read our dataset (poll results)
 ```{r}
-library(readr)
+#library(readr)
 
-url <- "https://github.com/JuliaPalacios/stats141_2026/data/file1.csv"
-survey <- read_csv(url) 
-survey
+#url <- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"
+#survey <- read_csv(url) 
+#survey
+library(palmerpenguins)
+penguins
 
 ```
 
+A first step is to explore the data and describe the data in summary form. Common checks:
 
+* Min, max, average
+
+* Check for "NAs"
+
+* Plot data
+
+* Talk with the person who collected it! (review the data dictionary)
+
+
+```{r}
+summary(penguins)
+```
+   
+   
 ## Types of studies
 
 Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with **data analysis**, but statistical considerations often play a key role in the planning and design of scientific investigation. 
 
 Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
-
-
-         
+      
 ::: {.callout-note icon=false}
 
 ## Example: Marriage and Life expectancy

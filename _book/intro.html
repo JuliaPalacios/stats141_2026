@@ -247,8 +247,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#statistics" id="toc-statistics" class="nav-link active" data-scroll-target="#statistics"><span class="header-section-number">1.1</span> Statistics</a></li>
-  <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link" data-scroll-target="#descriptive-statistics"><span class="header-section-number">1.2</span> Descriptive statistics</a></li>
-  <li><a href="#types-of-studies" id="toc-types-of-studies" class="nav-link" data-scroll-target="#types-of-studies"><span class="header-section-number">1.3</span> Types of studies</a></li>
   </ul>
 </nav>
     </div>
@@ -297,54 +295,109 @@ window.Quarto = {
 <p>An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).</p>
 </div>
 </div>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'readr' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'lubridate' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
+-Inf</code></pre>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/cats.png" class="img-fluid figure-img" style="width:90.0%"></p>
 <figcaption>Raining cats</figcaption>
 </figure>
 </div>
-<p>What can we conclude?</p>
-<p>High-quality samples are essential for sound science, even in the age of AI!</p>
-<p>Crucially, statistics gives us tools to <strong>quantify the uncertainty</strong> of certain quantities of interest.</p>
-<p>Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we <strong>sample</strong> populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.</p>
-<div class="quarto-figure quarto-figure-center">
+</div><p>What can we conclude?</p><p>High-quality samples are essential for sound science, even in the age of AI!</p><p>Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we <strong>sample</strong> populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/pop_cats.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Statistics</figcaption>
 </figure>
-</div>
-<p>In most situations, we do not observe the whole population. Instead we obtain a sample. What we need to ask ourselves is what do we want to do with the data? If our goal is to describe the sample data, we generate <strong>descriptive statistics</strong> and perform an <strong>Exploratory Data Analysis (EDA)</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
+</div><p>In most situations, we do not observe the whole population. Instead we obtain a sample. What we need to ask ourselves is what do we want to do with the data? If our goal is to describe the sample data, we generate <strong>descriptive statistics</strong> and perform an <strong>Exploratory Data Analysis (EDA)</strong>.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/EDA.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>EDA https://r-graph-gallery.com/</figcaption>
 </figure>
-</div>
-<p>If instead, we want to make statements about the whole population, then apart from EDA, we do <strong>statistical inference</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
+</div><p>If instead, we want to make statements about the whole population, then apart from EDA, we do <strong>statistical inference</strong>.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/inference.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Statistical Inference</figcaption>
 </figure>
+</div><p>Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A <strong>value</strong> is the state of the variable when you measure it. We will use letter case for values. An <strong>observation</strong> is a set of measurements.</p><p>Variables can be <strong>categorical</strong> or <strong>numerical</strong>. Categorical variables tell us membership or attribute. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).</p><p>The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p><div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/poll.svg" class="img-fluid figure-img" style="width:40.0%"></p>
+<figcaption>poll</figcaption>
+</figure>
+</div><p>We can now read our dataset (poll results)</p><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readr)</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#survey &lt;- read_csv(url) </span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#survey</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-</section>
-<section id="descriptive-statistics" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="descriptive-statistics"><span class="header-section-number">1.2</span> Descriptive statistics</h2>
-<p>Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can you measure. A <strong>value</strong> is the state of the variable when you measure it. An <strong>observation</strong> is a set of measurements.</p>
-<p>Variables can be <strong>categorical</strong> or <strong>numerical</strong>. Categorical variables tell us membership or attribute. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).</p>
-<p>The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p>
-<p><img src="./Figures/poll.svg" class="img-fluid quarto-figure quarto-figure-center" style="width:40.0%" alt="poll"> We can now read our dataset (poll results)</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(readr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.4.3</code></pre>
+</div><p>A first step is to explore the data and describe the data in summary form. Common checks:</p><ul>
+<li><p>Min, max, average</p></li>
+<li><p>Check for “NAs”</p></li>
+<li><p>Plot data</p></li>
+<li><p>Talk with the person who collected it! (review the data dictionary)</p></li>
+</ul><div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>      species          island    bill_length_mm  bill_depth_mm  
+ Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
+ Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
+ Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
+                                 Mean   :43.92   Mean   :17.15  
+                                 3rd Qu.:48.50   3rd Qu.:18.70  
+                                 Max.   :59.60   Max.   :21.50  
+                                 NA's   :2       NA's   :2      
+ flipper_length_mm  body_mass_g       sex           year     
+ Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
+ 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
+ Median :197.0     Median :4050   NA's  : 11   Median :2008  
+ Mean   :200.9     Mean   :4202                Mean   :2008  
+ 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
+ Max.   :231.0     Max.   :6300                Max.   :2009  
+ NA's   :2         NA's   :2                                 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="co">#tb &lt;- read_csv(url) </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-</section>
-<section id="types-of-studies" class="level2" data-number="1.3">
-<h2 data-number="1.3" class="anchored" data-anchor-id="types-of-studies"><span class="header-section-number">1.3</span> Types of studies</h2>
+</div><section id="types-of-studies" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="types-of-studies"><span class="header-section-number">1.2</span> Types of studies</h2>
 <p>Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with <strong>data analysis</strong>, but statistical considerations often play a key role in the planning and design of scientific investigation.</p>
 <p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -402,7 +455,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -456,7 +509,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -467,11 +520,13 @@ window.Quarto = {
 <figcaption>Placebo</figcaption>
 </figure>
 </div><p>How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called <strong>double-blinded</strong>.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><p><strong>Random Sampling</strong></p><p><strong>Exploratory Data Analysis (EDA)</strong></p><p><strong>Confirmatory Data Analysis (CDA)</strong></p><p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
 </div>
+</div>
+</section>
 </div>
 <div id="refs" class="references csl-bib-body hanging-indent" role="list" style="display: none">
 <div id="ref-knuth84" class="csl-entry" role="listitem">
