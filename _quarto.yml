@@ -24,11 +24,12 @@ execute:
   message: false
 format:
   html:
+    embed-resources: false
     theme:
       - cosmo
       - brand
-#  pdf:
-#    documentclass: scrreprt
+  pdf:
+    documentclass: scrreprt
   epub: 
     cover-image: stats4bio.png
 
