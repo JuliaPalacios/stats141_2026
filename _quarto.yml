@@ -12,8 +12,9 @@ book:
     - part: "Activities"
       chapters:
         - Week1A.qmd
+        - Week1B.qmd
     - summary.qmd
-    - references.qmd
+#    - references.qmd
    
 
 bibliography: references.bib
@@ -21,7 +22,7 @@ execute:
   message: false
 format:
   html:
-    embed-resources: true
+    embed-resources: false
     theme:
       - cosmo
       - brand

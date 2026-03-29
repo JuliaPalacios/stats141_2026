@@ -14,7 +14,7 @@ Researchers in the life sciences analyze **data** that exhibit some **variabilit
 An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).
 :::
 
-::::::::::::: columns
+:::::: columns
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
@@ -25,7 +25,6 @@ An article presented results on the number of injuries of cats that had plummete
 suppressPackageStartupMessages({
 library(tidyverse)
 library(tibble)
-library(gt)
 })
 
 stories=c(rep(2,7),rep(3,13),rep(4,30),rep(5,35),rep(6,2),c(3,3,3,2,2),rep(7,15))
@@ -55,12 +54,16 @@ ggplot(mean_vec, aes(x = as.numeric(stories), y = mean_injuries)) +
 :::
 
 ```{r,echo=FALSE}
-
-mean_vec %>%
-  arrange(stories) %>%
-  gt() %>%
-  tab_header(title = "Mean injuries by stories") %>%
-  cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
+# knitr::kable(
+#   mean_vec %>% arrange(stories),
+#   format = "pipe",
+#   digits = 2
+# )
+# mean_vec %>%
+#   arrange(stories) %>%
+#   gt() %>%
+#   tab_header(title = "Mean injuries by stories") %>%
+#   cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
 ```
 
 What can we conclude?
@@ -175,3 +178,4 @@ boxplot(density ~ Run, data = DNase)
 The **shapes** of the distribution are often informative of the variable of interest. They can be for example (a) symmetric, bell shaped, (b) summetric, not bell-shaped, (c) skewed to the right, (d) skewed to the left, (e) exponential, (f) bimodal.
 
 The base R plotting functions are good for quick exploration but have many aesthetic limitations. We will use a framework called grammar of graphics implemented in the package **ggplot2**.
+::::::

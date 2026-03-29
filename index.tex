@@ -180,6 +180,20 @@
  
 
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
@@ -283,10 +297,10 @@ Discussion section: Th (times below)
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2703}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Name
@@ -377,6 +391,13 @@ Resources}\label{materials-tools-resources}
   Schaffner.
 \item
   The Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.
+\item
+  An Introduction to Statistical Learning with Applications in R by
+  James et al., 2021
+\item
+  Modern Statistics for Modern Biology by Susan Holmes and Wolfgang
+  Huber (\href{https://web.stanford.edu/class/bios221/book/}{online
+  version})
 \end{itemize}
 
 \begin{enumerate}
@@ -569,59 +590,11 @@ As noted in the University's
 students may not audio or video record class meetings without permission
 from the instructor (and guest speakers, when applicable).
 
-\part{Activities}
-
-\part{Activities}
-
-\textbf{Need for control groups}. An experiment was conducted in which
-subjects were given the drug clofibrate, which was intended to lower
-cholesterol and reduce the chance of death from coronary disease. The
-researchers noted that many of the subjects did not take all the
-medication that the experimental protocol called for them to take. They
-calculated the percentage of the prescribed capsules that each subject
-took and divided the subjects into two groups according to whether or
-not the subjects took at least \(80%
-\) of the capsules they were given. The next table shows that the
-five-year mortality rate for those who took at least \(80%
-\) of their capsules was much lower than the corresponding rate for
-subjects who did not adhere to the protocol. On the surface, this
-suggests that taking the medication lowers the chance of death. However,
-there was a placebo control group in the experiment and many of the
-placebo subjects took fewer than \(80%
-\) of their capsules. The mortality rates for the two placebo
-groups---those who adhered to the protocol and those who did not---are
-quite similar to the rates for the clofibrate groups.
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\tightlist
-\item
-  What can you conclude?
-\item
-  What could explain the differences between the two rows?
-\item
-  What would have happened in the absence of the placebo control group?
-\end{enumerate}
-
-\chapter{Summary}\label{summary}
-
-In summary, this book has no content whatsoever.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] 2
-\end{verbatim}
-
-\bookmarksetup{startatroot}
+\part{Lectures}
 
 \chapter{Introduction to Statistics}\label{introduction-to-statistics}
 
-\textbf{Statistics}
+\section{Statistics}\label{statistics}
 
 Researchers in the life sciences analyze \textbf{data} that exhibit some
 \textbf{variability}. For example, patients given the same treatment may
@@ -645,53 +618,372 @@ variability and uncertainty. Statistics is a core component of
 
 \end{figure}%
 
-\textbf{Experimental Design}
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Cats in New York}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+An article presented results on the number of injuries of cats that had
+plummeted from buildings in New York City, according to the number of
+floors they had fallen. The damage caused by such falls was dubbed
+feline high-rise syndrome (FHRS).
+
+\end{tcolorbox}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Figures/cats.pdf}
+
+}
+
+\caption{Raining cats}
+
+\end{figure}%
+
+What can we conclude?
+
+High-quality samples are essential for sound science, even in the age of
+AI!
+
+Our ability to obtain reliable measures of population quantities of
+interest, and to assess uncertainty, depends on how we \textbf{sample}
+populations. It is often at this early step in an investigation that the
+fate of a study is sealed for better or worse.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/pop_cats.pdf}
+
+}
+
+\caption{Statistics}
+
+\end{figure}%
+
+In most situations, we do not observe the whole population. Instead we
+obtain a sample. What we need to ask ourselves is what do we want to do
+with the data? If our goal is to describe the sample data, we generate
+\textbf{descriptive statistics} and perform an \textbf{Exploratory Data
+Analysis (EDA)}.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/EDA.pdf}
+
+}
+
+\caption{EDA https://r-graph-gallery.com/}
+
+\end{figure}%
+
+If instead, we want to make statements about the whole population, then
+apart from EDA, we do \textbf{statistical inference}.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/inference.pdf}
+
+}
+
+\caption{Statistical Inference}
+
+\end{figure}%
+
+\section{Data}\label{data}
+
+Your (tabular) data is a collection of variables and observations.
+Typically one observation per row, one variable per column and filled in
+with values. A \textbf{variable} is a characteristic or quantity that
+you can you measure, we will denote variables with capital letters X, Y,
+etc. A \textbf{value} is the state of the variable when you measure it.
+We will use letter case for values. An \textbf{observation} is a set of
+measurements.
+
+In the cats example, X=Number of injuries is a variable while x=2 is one
+particular value. Similarly, Y=Number of stories while y=5 is a
+particular value. An observation is the data collection of a particular
+cat Luna, who fell from the fifth floor, resulting with 2 injuries
+
+Variables can be \textbf{categorical} or \textbf{numerical}. Categorical
+variables tell us membership or attribute. When the categories can be
+ranked in a meaningful order are said to be \textbf{ordinal}. Examples:
+blood type (A,B,AB, O), survival (alive or dead), language, etc.
+Numerical variables record the amount of something, for example body
+temperature, age, number of friends. Numerical values can be discrete
+(number of friends) or continuous (body temperature).
+
+The most common languages used for analyzing data are SAS, R (and
+Bioconductor) and Python. In this course, we will be using R with
+datasets in the form of \textbf{data frames} or \textbf{tibbles}.
+
+Let's generate some data by answering this poll.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.4\linewidth,height=\textheight,keepaspectratio]{index_files/mediabag/Figures/poll.pdf}
+
+}
+
+\caption{poll}
+
+\end{figure}%
+
+We can now read our dataset (poll results)
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#library(readr)}
+
+\CommentTok{\#url \textless{}{-} "https://raw.github.com/JuliaPalacios/stats141\_2026/data/file1.csv"}
+\CommentTok{\#survey \textless{}{-} read\_csv(url) }
+\CommentTok{\#survey}
+\FunctionTok{library}\NormalTok{(palmerpenguins)}
+\NormalTok{penguins}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 344 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# i 334 more rows
+# i 2 more variables: sex <fct>, year <int>
+\end{verbatim}
+
+A first step is to explore the data and describe the data in summary
+form. Common checks:
+
+\begin{itemize}
+\item
+  Measures of center, and measures of dispersion
+\item
+  Check for ``NAs''
+\item
+  Plot data, frequency distributions and charts
+\item
+  Talk with the person who collected it! (review the data dictionary)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Adelie Chinstrap    Gentoo 
+      152        68       124 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{flipper\_length\_mm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean(penguins$flipper\_length\_mm, na.rm = TRUE)  \#ignore NA}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Measures of center (or typical value):}
+
+\begin{itemize}
+\tightlist
+\item
+  Sample mean or average: \(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)
+\item
+  Median: the value that most nearly lies in the middle of the sample
+\item
+  Mode: the value (or values) that occurs most frequently in a dataset
+\end{itemize}
+
+\textbf{Measures of dispersion:}
+
+\begin{itemize}
+\tightlist
+\item
+  Range: Max-Min
+\item
+  Interquartile range: the spread of (roughly) the middle 50\% of the
+  observations.
+\item
+  Deviation: \(y_{i}-\bar{y}\)
+\item
+  Sample standard deviation
+  \(s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}\)
+\item
+  Sample variance \(s^2\)
+\item
+  Coefficient of variation \(cv=\frac{s \times 100\%}{\bar{y}}\)
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Why \(n-1\) in deviation?}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+Note that the sum of deviations \(y_{i}-\bar{y}\) is always zero. This
+means that in a sample of \(n\) observations there are only \(n-1\)
+units of information about the derivations from the average. The
+quantity \(n-1\) is called the \textbf{degrees of freedom} of the
+standard deviation (or the variance).
+
+\end{tcolorbox}
+
+\textbf{Plotting the data}
+
+We will start with a \textbf{scatter plot}: ``Someone wants something
+and faces obstacles trying to get it.''
+
+The scatter plot is a tool to examine the relationship between two
+numerical variables X and Y. Plots each observed (x,y) pair as a dot on
+the x-y plane.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?DNase  }\CommentTok{\#what is the dataset about?}
+\FunctionTok{head}\NormalTok{(DNase) }\CommentTok{\#shows the first rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Run       conc density
+1   1 0.04882812   0.017
+2   1 0.04882812   0.018
+3   1 0.19531250   0.121
+4   1 0.19531250   0.124
+5   1 0.39062500   0.206
+6   1 0.39062500   0.215
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(DNase) }\CommentTok{\# gives you the name of the variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Run"     "conc"    "density"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{conc, DNase}\SpecialCharTok{$}\NormalTok{density,}
+  \AttributeTok{ylab =} \FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{y,}
+  \AttributeTok{xlab =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x, }\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"units"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x),}
+  \AttributeTok{pch =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+We can visualize \emph{frequency distributions} with \textbf{barplots}
+(as well as jittered dotplots), \textbf{histograms} and
+\textbf{boxplots}. Barplots and histograms display the frequency of
+values (or grouped values). The boxplot displays minimum, 1st quartile,
+median, 3rd quartile and maximum at once. We can visualize multiple
+distributions at once.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{density, }\AttributeTok{breaks=}\DecValTok{25}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"Density"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(density }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Run, }\AttributeTok{data =}\NormalTok{ DNase)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-2.pdf}}
+
+The \textbf{shapes} of the distribution are often informative of the
+variable of interest. They can be for example (a) symmetric, bell
+shaped, (b) summetric, not bell-shaped, (c) skewed to the right, (d)
+skewed to the left, (e) exponential, (f) bimodal.
+
+The base R plotting functions are good for quick exploration but have
+many aesthetic limitations. We will use a framework called grammar of
+graphics implemented in the package \textbf{ggplot2}.
+
+\chapter{Types of studies}\label{types-of-studies}
 
 Researchers gather information to make inferences about nature in a
 variety of settings. Much of statistics deals with \textbf{data
 analysis}, but statistical considerations often play a key role in the
 planning and design of scientific investigation.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Health and Marriage}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+Data in biology are obtained from either an \textbf{experimental study}
+or an \textbf{observational study}. In an experimental study, the
+researcher assigns different treatment groups or values of an
+explanatory variable randomly to the individual units of study. In an
+observational study, on the other hand, the researcher has no control
+over which units fall into which groups.
 
-A study conducted in Finland found that people who were married at
-midlife were less likely to develop cognitive impairment (particularly
-Alzheimer's disease) later in life. However, from an
-\textbf{observational} study such as this we don't know whether marriage
-prevents later problems or whether persons who are likely to develop
-cognitive problems are less likely to get married.
+\newpage{}
 
-\end{tcolorbox}
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Marriage and Life expectancy}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Sexual orientation}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
-
-Some research has suggested that there is a genetic basis for sexual
-orientation. One such study involved measuring the midsagittal area of
-he anterior commissure (AC) of the brain for 30 homosexual men, 30
-heterosexual men, and 30 heterosexual women. The research found that the
-AC tends to be larger in heterosexual women than in heterosexual men and
-that it is even larger in homosexual men.
+A study found that people who were married are more likely to live
+longer than single. However, from an \textbf{observational} study such
+as this we don't know whether marriage increases life expectancy or
+whether persons who are healthier are more likely to get married.
 
 \end{tcolorbox}
 
-\begin{figure}[H]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Aids as confounder}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/Samuels1.png}
+Some research has suggested that there is a biological basis for sexual
+orientation. One such study involved measuring a section of the brain
+for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women.
+The research found that the brain section tends to be larger in
+homosexual men and heterosexual women than in heterosexual men.
 
-}
+\end{tcolorbox}
 
-\caption{credit: SWS Book}
+\begin{longtable}[]{@{}lr@{}}
+\caption{Average brain area (mm\^{}2) by group}\tabularnewline
+\toprule\noalign{}
+group & Brain Area \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+group & Brain Area \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Heterosexual men & 11.19 \\
+Heterosexual women & 12.01 \\
+Homosexual men & 15.15 \\
+\end{longtable}
 
-\end{figure}%
+\pandocbounded{\includegraphics[keepaspectratio]{samples_files/figure-pdf/unnamed-chunk-1-1.pdf}}
 
 The previous two examples are based on \textbf{observational studies}.
 In an observational study the researcher systematically collects data
 from subjects, but only as an observer and not as someone who is
-manipulating the conditions. However, observational studies can be
+controling the conditions. However, observational studies can be
 misleading due to \textbf{confounding variables}. The context in which
 the data arose is important and tell us to be on the alert for the
 effects that other factors, such as the impact of AIDS, may have on the
-size of the anterior commissure.
+size of the section of the brain.
 
 \textbf{Confounders} are variables, other than the treatment, which are
 responsible for causing (at least part of) the observed difference in
@@ -703,34 +995,37 @@ and we can anticipate and prevent both other known and unknown
 explanations for the observed difference in outcomes between the treated
 and control groups.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Toxicity in Dogs}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Effect of drug on cats}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-In part of one study, a new investigational drug was given to eight male
-and eight female dogs at doses of \(8 mg/kg\) and \(25 mg/kg\). Within
-each sex, the two doses were assigned at random to the eight dogs. Many
-``endpoints'' were measured, such as cholesterol, sodium, glucose, and
-so on, from blood samples, in order to screen for toxicity problems in
-the dogs before starting studies on humans. One endpoint was alkaline
-phosphatase level (or APL, measured in \(U/l\)).
+In part of one study, a new drug for lowering cholesterol was given to
+seven male and seven female cats at doses of \(2 mg/kg\) and
+\(6 mg/kg\). The two doses were assigned at random to the seven cats
+within each sex and cholesterol levels were measured after some time.
 
 \end{tcolorbox}
 
-\begin{figure}[H]
+\begin{table}
+\centering
+\caption{\label{tab:unnamed-chunk-2}Summary by Sex and Dose}
+\centering
+\begin{tabular}[t]{>{}l|c|c}
+\hline
+Sex & Mean (2mg) & Mean (6mg)\\
+\hline
+\textbf{Female} & 129.0132 & 157.5753\\
+\hline
+\textbf{Male} & 142.0265 & 120.2499\\
+\hline
+\end{tabular}
+\end{table}
 
-{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/Samuels2.png}
-
-}
-
-\caption{credit: SWS Book}
-
-\end{figure}%
+\pandocbounded{\includegraphics[keepaspectratio]{samples_files/figure-pdf/unnamed-chunk-3-1.pdf}}
 
 The \textbf{design of this experiment} allows for the investigation of
-the \textbf{interaction} between two factors: sex of the dog and dose.
-That is, for females, the effect of increasing the dose from 8 to 25
-mg/kg was positive, although small (from 133.5 to 143 \(U/l\)), but for
-males the effect of increasing the dose from 8 to 25 \(mg/kg\) was
-negative (from 143 to 124.5 \(U/l\)).
+the \textbf{interaction} between two factors: sex of the cat and dose.
+That is, for females, the effect of increasing the dose was positive in
+lowering cholesterol, but for males the effect of increasing the dose
+was negative.
 
 By \textbf{randomly assigning} treatments (drug doses) to subjects
 (dogs), we can get around the problem of confounding that complicates
@@ -750,11 +1045,11 @@ active treatment.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/placebo.jpeg}
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/placebo.pdf}
 
 }
 
-\caption{credit: Javier Zarracina - Vox}
+\caption{Placebo}
 
 \end{figure}%
 
@@ -764,7 +1059,14 @@ experiment in which both the subjects and the persons making the
 evaluations of the response are blinded is called
 \textbf{double-blinded}.
 
-\%\%Activity on the need for control groups
+Randomized allocation in medical settings may not be ethical. One
+possibility is to use \textbf{historical controls} (i.e.~previous
+patients with the same illnes who were treated with another therapy).
+The challenge is that overall characteristics of the patients may change
+with time. A possible solution is to do some statistical adjustment to
+control for differences in characteristics (for example age).
+
+\textbf{Random Sampling}
 
 \textbf{Exploratory Data Analysis (EDA)}
 
@@ -772,19 +1074,116 @@ evaluations of the response are blinded is called
 
 See Knuth (1984) for additional discussion of literate programming.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
+\part{Activities}
 
-\begin{verbatim}
-[1] 2
-\end{verbatim}
+\chapter{Activity Lecture 1}\label{sec-week1}
+
+Name:
+
+\section{Descriptive Statistics}\label{descriptive-statistics}
+
+\begin{itemize}
+\item
+  Read sections 1.1 1.2 of
+  \href{https://r4ds.hadley.nz/data-visualize.html}{r4ds} and solve
+  1.2.5 excercises 2,3, and 7.
+\item
+  Analyze the variable flipper\_length\_mm in palmerpenguins/penguins by
+  displaying the measures of center and disperson. Why the measures of
+  center differ?
+\item
+  Multiply the variable by 10 and recompute the variance and the
+  coefficient of variation. What do you conclude?
+\item
+  Change the third observation of the variable from 195 to 1000 and
+  recompute the measures of center. What do you conclude?
+\item
+  Read section 1.4 and display the histogram of flipper\_length\_mm.
+  What is the shape of the distribution? What can you conclude? How does
+  this support your conclusion of previous points?
+\item
+  What are the quartiles?
+\end{itemize}
+
+\section{Need for control groups}\label{need-for-control-groups}
+
+An experiment was conducted in which subjects were given the drug
+clofibrate, which was intended to lower cholesterol and reduce the
+chance of death from coronary disease. The researchers noted that many
+of the subjects did not take all the medication that the experimental
+protocol called for them to take. They calculated the percentage of the
+prescribed capsules that each subject took and divided the subjects into
+two groups according to whether or not the subjects took at least \(80%
+\) of the capsules they were given. The next table shows that the
+five-year mortality rate for those who took at least \(80%
+\) of their capsules was much lower than the corresponding rate for
+subjects who did not adhere to the protocol. On the surface, this
+suggests that taking the medication lowers the chance of death. However,
+there was a placebo control group in the experiment and many of the
+placebo subjects took fewer than \(80%
+\) of their capsules. The mortality rates for the two placebo
+groups---those who adhered to the protocol and those who did not---are
+quite similar to the rates for the clofibrate groups.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/Samuels3.png}
+
+}
+
+\caption{credit: SWS Book}
+
+\end{figure}%
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  What can you conclude?
+\item
+  What could explain the differences between the two rows?
+\item
+  What would have happened in the absence of the placebo control group?
+\end{enumerate}
+
+\chapter{Activity Lecture 2}\label{sec-week2}
+
+Name:
+
+\section{Need for control groups}\label{need-for-control-groups-1}
+
+An experiment was conducted in which subjects were given the drug
+clofibrate, which was intended to lower cholesterol and reduce the
+chance of death from coronary disease. The researchers noted that many
+of the subjects did not take all the medication that the experimental
+protocol called for them to take. They calculated the percentage of the
+prescribed capsules that each subject took and divided the subjects into
+two groups according to whether or not the subjects took at least \(80%
+\) of the capsules they were given. The next table shows that the
+five-year mortality rate for those who took at least \(80%
+\) of their capsules was much lower than the corresponding rate for
+subjects who did not adhere to the protocol. On the surface, this
+suggests that taking the medication lowers the chance of death. However,
+there was a placebo control group in the experiment and many of the
+placebo subjects took fewer than \(80%
+\) of their capsules. The mortality rates for the two placebo
+groups---those who adhered to the protocol and those who did not---are
+quite similar to the rates for the clofibrate groups.
+
+\begin{enumerate}
+\def\labelenumi{(\arabic{enumi})}
+\tightlist
+\item
+  What can you conclude?
+\item
+  What could explain the differences between the two rows?
+\item
+  What would have happened in the absence of the placebo control group?
+\end{enumerate}
 
 \bookmarksetup{startatroot}
 
-\chapter{Summary}\label{summary-1}
+\chapter{Summary}\label{summary}
 
 In summary, this book has no content whatsoever.
 
@@ -797,13 +1196,6 @@ In summary, this book has no content whatsoever.
 \begin{verbatim}
 [1] 2
 \end{verbatim}
-
-\bookmarksetup{startatroot}
-
-\chapter*{References}\label{references}
-\addcontentsline{toc}{chapter}{References}
-
-\markboth{References}{References}
 
 \protect\phantomsection\label{refs}
 \begin{CSLReferences}{1}{1}
@@ -812,36 +1204,6 @@ Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.}
 (USA) 27 (2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
 
 \end{CSLReferences}
-
-\part{Discussion.qmd}
-
-\chapter{Summary}\label{summary-2}
-
-In summary, this book has no content whatsoever.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] 2
-\end{verbatim}
-
-\chapter{Summary}\label{summary-3}
-
-In summary, this book has no content whatsoever.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] 2
-\end{verbatim}
 
 
 

@@ -1,16 +1,11 @@
 # Types of studies
 
 
-::: {.callout-note icon="false"}
-## Example: Marriage and Life expectancy
-
-A study found that people who were married are more likely to live longer than single. However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.
-:::
-
-
 Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with **data analysis**, but statistical considerations often play a key role in the planning and design of scientific investigation.
 
 Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
+
+{{< pagebreak >}}
 
 ::: {.callout-note icon="false"}
 ## Example: Marriage and Life expectancy
@@ -23,6 +18,7 @@ A study found that people who were married are more likely to live longer than s
 
 Some research has suggested that there is a biological basis for sexual orientation. One such study involved measuring a section of the brain for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women. The research found that the brain section tends to be larger in homosexual men and heterosexual women than in heterosexual men.
 :::
+<!---Aids could be a confounder-->
 
 ```{r, echo=FALSE}
 library(knitr)
@@ -47,9 +43,9 @@ x <- jitter(as.numeric(brain$group), amount = 0.12)
 cols <- rep("steelblue", nrow(brain))
 
 # indices within each group to color red
-i_hom <- which(brain$group == "Homosexual men")[sample(1:40,5)]
-i_hetm <- which(brain$group == "Heterosexual men")[sample(1:40,32)]
-i_hetw <- which(brain$group == "Heterosexual women")[sample(1:40,39)]
+i_hom <- which(brain$group == "Homosexual men")[sample(1:40,35)]
+i_hetm <- which(brain$group == "Heterosexual men")[sample(1:40,10)]
+i_hetw <- which(brain$group == "Heterosexual women")[sample(1:40,5)]
 
 cols[c(i_hom, i_hetm, i_hetw)] <- "red"
 
