@@ -1318,6 +1318,6 @@ Here is how much of LuaTeX's memory you used:
    20 hlist, 5 vlist, 5 rule, 62 disc, 5 local_par, 3 dir, 125 glue, 40 kern, 22 penalty, 579 glyph, 60 attribute, 86 glue_spec, 60 attribute_list, 3 temp, 3 if_stack, 7 write, 3 pdf_dest, 2 pdf_action, 5 pdf_colorstack nodes
    avail lists: 1:1,2:409,3:186,4:89,5:224,6:55,7:4572,8:1,9:389,10:7,11:375
  62824 multiletter control sequences out of 65536+600000
- 65 fonts using 19348179 bytes
+ 65 fonts using 19348255 bytes
  108i,8n,114p,11226b,1126s stack positions out of 10000i,1000n,20000p,200000b,200000s
 !  ==> Fatal error occurred, no output PDF file produced!
