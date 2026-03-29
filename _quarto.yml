@@ -8,6 +8,7 @@ book:
     - part: "Lectures"
       chapters: 
         - intro.qmd
+        - samples.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
@@ -20,6 +21,7 @@ execute:
   message: false
 format:
   html:
+    embed-resources: true
     theme:
       - cosmo
       - brand

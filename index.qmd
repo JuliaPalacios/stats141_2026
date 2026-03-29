@@ -41,6 +41,7 @@ In this course, students will:
 -   Statistics for the Life Sciences, 5th Edition by Samules, Witmer, and Schaffner.
 -   The Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.
 -   An Introduction to Statistical Learning with Applications in R by James et al., 2021
+-   Modern Statistics for Modern Biology by Susan Holmes and Wolfgang Huber ([online version](https://web.stanford.edu/class/bios221/book/))
 
 (4) **Gradescope**. Feedback on your quizzes and the final exam will be available on [gradescope](https://canvas.stanford.edu/courses/224513/external_tools/74302).
 
