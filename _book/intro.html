@@ -170,7 +170,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -201,21 +201,32 @@ window.Quarto = {
  <span class="menu-text">Syllabus</span></a>
   </div>
 </li>
-        <li class="sidebar-item">
-  <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></span></a>
-  </div>
-</li>
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
- <span class="menu-text">Activities</span></a>
+ <span class="menu-text">Lectures</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
       </div>
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week1A.html" class="sidebar-item-text sidebar-link">
@@ -253,7 +264,7 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></a></li></ol></nav>
 <div class="quarto-title">
 <h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></h1>
 </div>
@@ -298,19 +309,6 @@ window.Quarto = {
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'readr' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning: package 'lubridate' was built under R version 4.4.3</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>`geom_smooth()` using method = 'loess' and formula = 'y ~ x'</code></pre>
-</div>
-<div class="cell-output cell-output-stderr">
-<pre><code>Warning in max(ids, na.rm = TRUE): no non-missing arguments to max; returning
--Inf</code></pre>
-</div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
@@ -341,19 +339,28 @@ window.Quarto = {
 <p><img src="./Figures/inference.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Statistical Inference</figcaption>
 </figure>
-</div><p>Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A <strong>value</strong> is the state of the variable when you measure it. We will use letter case for values. An <strong>observation</strong> is a set of measurements.</p><p>Variables can be <strong>categorical</strong> or <strong>numerical</strong>. Categorical variables tell us membership or attribute. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).</p><p>The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p><div class="quarto-figure quarto-figure-center">
+</div><section id="data" class="level2" data-number="1.2">
+<h2 data-number="1.2" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2</span> Data</h2>
+<p>Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A <strong>value</strong> is the state of the variable when you measure it. We will use letter case for values. An <strong>observation</strong> is a set of measurements.</p>
+<p>In the cats example, X=Number of injuries is a variable while x=2 is one particular value. Similarly, Y=Number of stories while y=5 is a particular value. An observation is the data collection of a particular cat Luna, who fell from the fifth floor, resulting with 2 injuries</p>
+<p>Variables can be <strong>categorical</strong> or <strong>numerical</strong>. Categorical variables tell us membership or attribute. When the categories can be ranked in a meaningful order are said to be <strong>ordinal</strong>. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).</p>
+<p>The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p>
+<p>Let’s generate some data by answering this poll.</p>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/poll.svg" class="img-fluid figure-img" style="width:40.0%"></p>
 <figcaption>poll</figcaption>
 </figure>
-</div><p>We can now read our dataset (poll results)</p><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readr)</span></span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="co">#survey &lt;- read_csv(url) </span></span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="co">#survey</span></span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>We can now read our dataset (poll results)</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readr)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#survey &lt;- read_csv(url) </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#survey</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code># A tibble: 344 × 8
    species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
@@ -371,33 +378,67 @@ window.Quarto = {
 # ℹ 334 more rows
 # ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
 </div>
-</div><p>A first step is to explore the data and describe the data in summary form. Common checks:</p><ul>
-<li><p>Min, max, average</p></li>
-<li><p>Check for “NAs”</p></li>
-<li><p>Plot data</p></li>
-<li><p>Talk with the person who collected it! (review the data dictionary)</p></li>
-</ul><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>      species          island    bill_length_mm  bill_depth_mm  
- Adelie   :152   Biscoe   :168   Min.   :32.10   Min.   :13.10  
- Chinstrap: 68   Dream    :124   1st Qu.:39.23   1st Qu.:15.60  
- Gentoo   :124   Torgersen: 52   Median :44.45   Median :17.30  
-                                 Mean   :43.92   Mean   :17.15  
-                                 3rd Qu.:48.50   3rd Qu.:18.70  
-                                 Max.   :59.60   Max.   :21.50  
-                                 NA's   :2       NA's   :2      
- flipper_length_mm  body_mass_g       sex           year     
- Min.   :172.0     Min.   :2700   female:165   Min.   :2007  
- 1st Qu.:190.0     1st Qu.:3550   male  :168   1st Qu.:2007  
- Median :197.0     Median :4050   NA's  : 11   Median :2008  
- Mean   :200.9     Mean   :4202                Mean   :2008  
- 3rd Qu.:213.0     3rd Qu.:4750                3rd Qu.:2009  
- Max.   :231.0     Max.   :6300                Max.   :2009  
- NA's   :2         NA's   :2                                 </code></pre>
 </div>
-</div><section id="types-of-studies" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="types-of-studies"><span class="header-section-number">1.2</span> Types of studies</h2>
+<p>A first step is to explore the data and describe the data in summary form. Common checks:</p>
+<ul>
+<li><p>Measures of center, and measures of dispersion</p></li>
+<li><p>Check for “NAs”</p></li>
+<li><p>Plot data, frequency distributions and charts</p></li>
+<li><p>Talk with the person who collected it! (review the data dictionary)</p></li>
+</ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Adelie Chinstrap    Gentoo 
+      152        68       124 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>flipper_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 </code></pre>
+</div>
+</div>
+<p>Measures of center (or typical value):</p>
+<ul>
+<li>Sample mean or average: <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span></li>
+<li>Median: the value that most nearly lies in the middle of the sample</li>
+<li>Mode: the value (or values) that occurs most frequently in a dataset</li>
+</ul>
+<p>When do these measures differ?</p>
+<p>Measures of dispersion:</p>
+<ul>
+<li>Range: Max-Min</li>
+<li>Deviation: <span class="math inline">\(y_{i}-\bar{y}\)</span></li>
+<li>Sample standard deviation <span class="math inline">\(s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}\)</span></li>
+</ul>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Important</span>Why <span class="math inline">\(n-1\)</span>?
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Note that the sum of deviations <span class="math inline">\(y_{i}-\bar{y}\)</span> is always zero. This means that in a sample of <span class="math inline">\(n\)</span> observations there are only <span class="math inline">\(n-1\)</span> units of information about the derivations from the average. The quantity <span class="math inline">\(n-1\)</span> is called the <strong>degrees of freedom</strong> of the standard deviation (or the variance).</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: Marriage and Life expectancy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A study found that people who were married are more likely to live longer than single. However, from an <strong>observational</strong> study such as this we don’t know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.</p>
+</div>
+</div>
+</section><section id="types-of-studies" class="level2" data-number="1.3">
+<h2 data-number="1.3" class="anchored" data-anchor-id="types-of-studies"><span class="header-section-number">1.3</span> Types of studies</h2>
 <p>Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with <strong>data analysis</strong>, but statistical considerations often play a key role in the planning and design of scientific investigation.</p>
 <p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -520,7 +561,7 @@ window.Quarto = {
 <figcaption>Placebo</figcaption>
 </figure>
 </div><p>How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called <strong>double-blinded</strong>.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><p><strong>Random Sampling</strong></p><p><strong>Exploratory Data Analysis (EDA)</strong></p><p><strong>Confirmatory Data Analysis (CDA)</strong></p><p>See <span class="citation" data-cites="knuth84">Knuth (<a href="references.html#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p><div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="dv">1</span> <span class="sc">+</span> <span class="dv">1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 2</code></pre>
 </div>
