@@ -6,7 +6,7 @@ Researchers in the life sciences analyze **data** that exhibit some **variabilit
 
 **Statistics** is the science of understanding data (collection, analysis and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of **data science**.
 
-![Data Science, credit: Lee et al. 2018](/Figures/DataScience.pdf){fig-align="center" width="50%"}
+![Data Science, credit: Lee et al. 2018](/Figures/DataScience.ppm){fig-align="center" width="50%"}
 
 ::: {.callout-note icon="false"}
 ## Example: Cats in New York

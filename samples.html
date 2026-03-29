@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>1&nbsp; Introduction to Statistics – Stats 141. Introduction to Statistics for Biology</title>
+<title>2&nbsp; Types of studies – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,42 +23,26 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
 }
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
 }
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
 }
-</style>
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -68,8 +52,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./samples.html" rel="next">
-<link href="./index.html" rel="prev">
+<link href="./Week1A.html" rel="next">
+<link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -107,6 +91,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     "search-label": "Search"
   }
 }</script>
+<script src="site_libs/kePrint-0.0.1/kePrint.js"></script>
+<link href="site_libs/lightable-0.0.1/lightable.css" rel="stylesheet">
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -149,7 +135,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -191,13 +177,13 @@ window.Quarto = {
       <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./intro.html" class="sidebar-item-text sidebar-link active">
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./samples.html" class="sidebar-item-text sidebar-link">
+  <a href="./samples.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></span></a>
   </div>
 </li>
@@ -237,21 +223,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#statistics" id="toc-statistics" class="nav-link active" data-scroll-target="#statistics"><span class="header-section-number">1.1</span> Statistics</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./intro.html"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></h1>
 </div>
 
 
@@ -268,15 +248,20 @@ window.Quarto = {
 </header>
 
 
-<section id="statistics" class="level2" data-number="1.1">
-<h2 data-number="1.1" class="anchored" data-anchor-id="statistics"><span class="header-section-number">1.1</span> Statistics</h2>
-<p>Researchers in the life sciences analyze <strong>data</strong> that exhibit some <strong>variability</strong>. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) prepared identically may have different results due to contamination, thermal damage, etc. The challenge to the life scientist is to discern the <strong>signal</strong> from the <strong>noise</strong>.</p>
-<p><strong>Statistics</strong> is the science of understanding data (collection, analysis and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of <strong>data science</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/DataScience.ppm" class="img-fluid figure-img" style="width:50.0%"></p>
-<figcaption>Data Science, credit: Lee et al.&nbsp;2018</figcaption>
-</figure>
+<p>Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with <strong>data analysis</strong>, but statistical considerations often play a key role in the planning and design of scientific investigation.</p>
+<p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: Marriage and Life expectancy
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A study found that people who were married are more likely to live longer than single. However, from an <strong>observational</strong> study such as this we don’t know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.</p>
+</div>
 </div>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
@@ -284,191 +269,114 @@ window.Quarto = {
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Example: Cats in New York
+<span class="screen-reader-only">Note</span>Example: Aids as confounder
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).</p>
+<p>Some research has suggested that there is a biological basis for sexual orientation. One such study involved measuring a section of the brain for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women. The research found that the brain section tends to be larger in homosexual men and heterosexual women than in heterosexual men.</p>
+</div>
+</div>
+<!---Aids could be a confounder-->
+<div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Average brain area (mm^2) by group</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">group</th>
+<th style="text-align: right;">Brain Area</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">Heterosexual men</td>
+<td style="text-align: right;">11.19</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Heterosexual women</td>
+<td style="text-align: right;">12.01</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Homosexual men</td>
+<td style="text-align: right;">15.15</td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="samples_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The previous two examples are based on <strong>observational studies</strong>. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is controling the conditions. However, observational studies can be misleading due to <strong>confounding variables</strong>. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the section of the brain.</p>
+<p><strong>Confounders</strong> are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.</p>
+<p><strong>How can we mitigate confounding?</strong> Create treatment and control groups that are as similar as possible except for the treatment level and we can anticipate and prevent both other known and unknown explanations for the observed difference in outcomes between the treated and control groups.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: Effect of drug on cats
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>In part of one study, a new drug for lowering cholesterol was given to seven male and seven female cats at doses of <span class="math inline">\(2 mg/kg\)</span> and <span class="math inline">\(6 mg/kg\)</span>. The two doses were assigned at random to the seven cats within each sex and cholesterol levels were measured after some time.</p>
 </div>
 </div>
 <div class="columns">
 <div class="column" style="width:50%;">
 <div class="cell">
 <div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
+<table class="table table-striped table-hover table-condensed caption-top table-sm small">
+<caption>Summary by Sex and Dose</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;" data-quarto-table-cell-role="th">Sex</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean (2mg)</th>
+<th style="text-align: center;" data-quarto-table-cell-role="th">Mean (6mg)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left; font-weight: bold;">Female</td>
+<td style="text-align: center;">129.0132</td>
+<td style="text-align: center;">157.5753</td>
+</tr>
+<tr class="even">
+<td style="text-align: left; font-weight: bold;">Male</td>
+<td style="text-align: center;">142.0265</td>
+<td style="text-align: center;">120.2499</td>
+</tr>
+</tbody>
+</table>
 </div>
 </div>
 </div><div class="column" style="width:50%;">
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/cats.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>Raining cats</figcaption>
-</figure>
-</div>
-</div><p>What can we conclude?</p><p>High-quality samples are essential for sound science, even in the age of AI!</p><p>Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we <strong>sample</strong> populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.</p><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/pop_cats.png" class="img-fluid figure-img" style="width:95.0%"></p>
-<figcaption>Statistics</figcaption>
-</figure>
-</div><p>In most situations, we do not observe the whole population. Instead we obtain a sample. What we need to ask ourselves is what do we want to do with the data? If our goal is to describe the sample data, we generate <strong>descriptive statistics</strong> and perform an <strong>Exploratory Data Analysis (EDA)</strong>.</p><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/EDA.png" class="img-fluid figure-img" style="width:95.0%"></p>
-<figcaption>EDA https://r-graph-gallery.com/</figcaption>
-</figure>
-</div><p>If instead, we want to make statements about the whole population, then apart from EDA, we do <strong>statistical inference</strong>.</p><div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/inference.png" class="img-fluid figure-img" style="width:95.0%"></p>
-<figcaption>Statistical Inference</figcaption>
-</figure>
-</div><section id="data" class="level2" data-number="1.2">
-<h2 data-number="1.2" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2</span> Data</h2>
-<p>Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A <strong>value</strong> is the state of the variable when you measure it. We will use letter case for values. An <strong>observation</strong> is a set of measurements.</p>
-<p>In the cats example, X=Number of injuries is a variable while x=2 is one particular value. Similarly, Y=Number of stories while y=5 is a particular value. An observation is the data collection of a particular cat Luna, who fell from the fifth floor, resulting with 2 injuries</p>
-<p>Variables can be <strong>categorical</strong> or <strong>numerical</strong>. Categorical variables tell us membership or attribute. When the categories can be ranked in a meaningful order are said to be <strong>ordinal</strong>. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).</p>
-<p>The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p>
-<p>Let’s generate some data by answering this poll.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/poll.svg" class="img-fluid figure-img" style="width:40.0%"></p>
-<figcaption>poll</figcaption>
-</figure>
-</div>
-<p>We can now read our dataset (poll results)</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readr)</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#survey &lt;- read_csv(url) </span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#survey</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 344 × 8
-   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
-   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
- 1 Adelie  Torgersen           39.1          18.7               181        3750
- 2 Adelie  Torgersen           39.5          17.4               186        3800
- 3 Adelie  Torgersen           40.3          18                 195        3250
- 4 Adelie  Torgersen           NA            NA                  NA          NA
- 5 Adelie  Torgersen           36.7          19.3               193        3450
- 6 Adelie  Torgersen           39.3          20.6               190        3650
- 7 Adelie  Torgersen           38.9          17.8               181        3625
- 8 Adelie  Torgersen           39.2          19.6               195        4675
- 9 Adelie  Torgersen           34.1          18.1               193        3475
-10 Adelie  Torgersen           42            20.2               190        4250
-# ℹ 334 more rows
-# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
-</div>
-</div>
-<p>A first step is to explore the data and describe the data in summary form. Common checks:</p>
-<ul>
-<li><p>Measures of center, and measures of dispersion</p></li>
-<li><p>Check for “NAs”</p></li>
-<li><p>Plot data, frequency distributions and charts</p></li>
-<li><p>Talk with the person who collected it! (review the data dictionary)</p></li>
-</ul>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Adelie Chinstrap    Gentoo 
-      152        68       124 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>flipper_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  172.0   190.0   197.0   200.9   213.0   231.0       2 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>Measures of center (or typical value):</strong></p>
-<ul>
-<li>Sample mean or average: <span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)</span></li>
-<li>Median: the value that most nearly lies in the middle of the sample</li>
-<li>Mode: the value (or values) that occurs most frequently in a dataset</li>
-</ul>
-<p><strong>Measures of dispersion:</strong></p>
-<ul>
-<li>Range: Max-Min</li>
-<li>Interquartile range: the spread of (roughly) the middle 50% of the observations.</li>
-<li>Deviation: <span class="math inline">\(y_{i}-\bar{y}\)</span></li>
-<li>Sample standard deviation <span class="math inline">\(s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}\)</span></li>
-<li>Sample variance <span class="math inline">\(s^2\)</span></li>
-<li>Coefficient of variation <span class="math inline">\(cv=\frac{s \times 100\%}{\bar{y}}\)</span></li>
-</ul>
-<div class="callout callout-style-default callout-important callout-titled">
-<div class="callout-header d-flex align-content-center">
-<div class="callout-icon-container">
-<i class="callout-icon"></i>
-</div>
-<div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Important</span>Why <span class="math inline">\(n-1\)</span> in deviation?
-</div>
-</div>
-<div class="callout-body-container callout-body">
-<p>Note that the sum of deviations <span class="math inline">\(y_{i}-\bar{y}\)</span> is always zero. This means that in a sample of <span class="math inline">\(n\)</span> observations there are only <span class="math inline">\(n-1\)</span> units of information about the derivations from the average. The quantity <span class="math inline">\(n-1\)</span> is called the <strong>degrees of freedom</strong> of the standard deviation (or the variance).</p>
-</div>
-</div>
-<p><strong>Plotting the data</strong></p>
-<p>We will start with a <strong>scatter plot</strong>: ``Someone wants something and faces obstacles trying to get it.”</p>
-<p>The scatter plot is a tool to examine the relationship between two numerical variables X and Y. Plots each observed (x,y) pair as a dot on the x-y plane.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>?DNase  <span class="co">#what is the dataset about?</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DNase) <span class="co">#shows the first rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Run       conc density
-1   1 0.04882812   0.017
-2   1 0.04882812   0.018
-3   1 0.19531250   0.121
-4   1 0.19531250   0.124
-5   1 0.39062500   0.206
-6   1 0.39062500   0.215</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DNase) <span class="co"># gives you the name of the variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Run"     "conc"    "density"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DNase<span class="sc">$</span>conc, DNase<span class="sc">$</span>density,</span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>y,</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>x, <span class="fu">attr</span>(DNase, <span class="st">"units"</span>)<span class="sc">$</span>x),</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="samples_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>We can visualize <em>frequency distributions</em> with <strong>barplots</strong> (as well as jittered dotplots), <strong>histograms</strong> and <strong>boxplots</strong>. Barplots and histograms display the frequency of values (or grouped values). The boxplot displays minimum, 1st quartile, median, 3rd quartile and maximum at once. We can visualize multiple distributions at once.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(DNase<span class="sc">$</span>density, <span class="at">breaks=</span><span class="dv">25</span>, <span class="at">main =</span> <span class="st">""</span>,<span class="at">xlab=</span><span class="st">"Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
+</div><p>The <strong>design of this experiment</strong> allows for the investigation of the <strong>interaction</strong> between two factors: sex of the cat and dose. That is, for females, the effect of increasing the dose was positive in lowering cholesterol, but for males the effect of increasing the dose was negative.</p><p>By <strong>randomly assigning</strong> treatments (drug doses) to subjects (dogs), we can get around the problem of confounding that complicates observational studies and limits the conclusions. <strong>Randomized experiments</strong> are considered the gold standard in scientific investigation, but they can also be difficult.</p><p>Often, human subjects in experiments are given a <strong>placebo</strong>. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is <strong>blinded</strong>. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./Figures/placebo.png" class="img-fluid figure-img" style="width:50.0%"></p>
+<figcaption>Placebo</figcaption>
 </figure>
+</div><p>How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called <strong>double-blinded</strong>.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><p><strong>Random Sampling</strong></p><p><strong>Exploratory Data Analysis (EDA)</strong></p><p><strong>Confirmatory Data Analysis (CDA)</strong></p><p>See <span class="citation" data-cites="knuth84">Knuth (<a href="#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+</div>
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-knuth84" class="csl-entry" role="listitem">
+Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> (USA) 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(density <span class="sc">~</span> Run, <span class="at">data =</span> DNase)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The <strong>shapes</strong> of the distribution are often informative of the variable of interest. They can be for example (a) symmetric, bell shaped, (b) summetric, not bell-shaped, (c) skewed to the right, (d) skewed to the left, (e) exponential, (f) bimodal.</p>
-<p>The base R plotting functions are good for quick exploration but have many aesthetic limitations. We will use a framework called grammar of graphics implemented in the package <strong>ggplot2</strong>.</p>
-</section>
-</div>
-
-
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -873,13 +781,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./index.html" class="pagination-link" aria-label="Syllabus">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text">Syllabus</span>
+      <a href="./intro.html" class="pagination-link" aria-label="Introduction to Statistics">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Introduction to Statistics</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./samples.html" class="pagination-link" aria-label="Types of studies">
-        <span class="nav-page-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity Lecture 1">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Activity Lecture 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
