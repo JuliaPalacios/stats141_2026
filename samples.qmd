@@ -5,7 +5,6 @@ Researchers gather information to make inferences about nature in a variety of s
 
 Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
 
-{{< pagebreak >}}
 
 ::: {.callout-note icon="false"}
 ## Example: Marriage and Life expectancy

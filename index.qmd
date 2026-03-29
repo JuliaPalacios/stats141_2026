@@ -9,7 +9,7 @@ Discussion section: Th (times below)
 **Course staff, office hours, and section times:**
 
 | Name | Role | Office hours | Discussion section |
-|----|----|----|----|
+|------------------|------------------|------------------|------------------|
 | Julia Palacios | Instructor | W 11:00-12:00 in CoDa E250 |  |
 | Aditya Ghosh | TA | TBC | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
 | Jing Shang | TA | TBC | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
