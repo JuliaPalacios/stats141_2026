@@ -73,35 +73,6 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
-  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
-  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
-
-<script type="text/javascript">
-const typesetMath = (el) => {
-  if (window.MathJax) {
-    // MathJax Typeset
-    window.MathJax.typeset([el]);
-  } else if (window.katex) {
-    // KaTeX Render
-    var mathElements = el.getElementsByClassName("math");
-    var macros = [];
-    for (var i = 0; i < mathElements.length; i++) {
-      var texText = mathElements[i].firstChild;
-      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
-        window.katex.render(texText.data, mathElements[i], {
-          displayMode: mathElements[i].classList.contains('display'),
-          throwOnError: false,
-          macros: macros,
-          fleqn: false
-        });
-      }
-    }
-  }
-}
-window.Quarto = {
-  typesetMath
-};
-</script>
 
 </head>
 
@@ -208,7 +179,6 @@ window.Quarto = {
    
   <ul>
   <li><a href="#descriptive-statistics" id="toc-descriptive-statistics" class="nav-link active" data-scroll-target="#descriptive-statistics"><span class="header-section-number">3.1</span> Descriptive Statistics</a></li>
-  <li><a href="#need-for-control-groups" id="toc-need-for-control-groups" class="nav-link" data-scroll-target="#need-for-control-groups"><span class="header-section-number">3.2</span> Need for control groups</a></li>
   </ul>
 </nav>
     </div>
@@ -246,21 +216,6 @@ window.Quarto = {
 <li><p>What are the quartiles?</p></li>
 </ul>
 <!-- are the valuees that divide the area into four equal parts -->
-</section>
-<section id="need-for-control-groups" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="need-for-control-groups"><span class="header-section-number">3.2</span> Need for control groups</h2>
-<p>An experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least <span class="math inline">\(80%\)</span> of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least <span class="math inline">\(80%\)</span> of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than <span class="math inline">\(80%\)</span> of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.</p>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/Samuels3.png" class="img-fluid figure-img" style="width:95.0%"></p>
-<figcaption>credit: SWS Book</figcaption>
-</figure>
-</div>
-<ol type="1">
-<li>What can you conclude?</li>
-<li>What could explain the differences between the two rows?</li>
-<li>What would have happened in the absence of the placebo control group?</li>
-</ol>
 
 
 </section>

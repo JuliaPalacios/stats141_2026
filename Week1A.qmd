@@ -18,13 +18,3 @@ Name:
 -   What are the quartiles?
 
 <!-- are the valuees that divide the area into four equal parts -->
-
-## Need for control groups
-
-An experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least $80%$ of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least $80%$ of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than $80%$ of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.
-
-![credit: SWS Book](/Figures/Samuels3.png){fig-align="center" width="95%"}
-
-(1) What can you conclude?
-(2) What could explain the differences between the two rows?
-(3) What would have happened in the absence of the placebo control group?
