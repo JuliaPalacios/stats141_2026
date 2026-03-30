@@ -121,5 +121,81 @@
       "Lectures",
       "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
     ]
+  },
+  {
+    "objectID": "samples.html",
+    "href": "samples.html",
+    "title": "2  Types of studies",
+    "section": "",
+    "text": "Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with data analysis, but statistical considerations often play a key role in the planning and design of scientific investigation.\nData in biology are obtained from either an experimental study or an observational study. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.\n\n\n\n\n\n\nNoteExample: Marriage and Life expectancy\n\n\n\nA study found that people who were married are more likely to live longer than single. However, from an observational study such as this we don’t know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.\n\n\n\n\n\n\n\n\nNoteExample: Aids as confounder\n\n\n\nSome research has suggested that there is a biological basis for sexual orientation. One such study involved measuring a section of the brain for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women. The research found that the brain section tends to be larger in homosexual men and heterosexual women than in heterosexual men.\n\n\n\n\n\n\nAverage brain area (mm^2) by group\n\n\ngroup\nBrain Area\n\n\n\n\nHeterosexual men\n11.19\n\n\nHeterosexual women\n12.01\n\n\nHomosexual men\n15.15\n\n\n\n\n\n\n\n\n\n\n\n\nThe previous two examples are based on observational studies. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is controling the conditions. However, observational studies can be misleading due to confounding variables. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the section of the brain.\nConfounders are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.\nHow can we mitigate confounding? Create treatment and control groups that are as similar as possible except for the treatment level and we can anticipate and prevent both other known and unknown explanations for the observed difference in outcomes between the treated and control groups.\n\n\n\n\n\n\nNoteExample: Effect of drug on cats\n\n\n\nIn part of one study, a new drug for lowering cholesterol was given to seven male and seven female cats at doses of \\(2 mg/kg\\) and \\(6 mg/kg\\). The two doses were assigned at random to the seven cats within each sex and cholesterol levels were measured after some time.\n\n\n\n\n\n\n\nSummary by Sex and Dose\n\n\nSex\nMean (2mg)\nMean (6mg)\n\n\n\n\nFemale\n129.0132\n157.5753\n\n\nMale\n142.0265\n120.2499\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe design of this experiment allows for the investigation of the interaction between two factors: sex of the cat and dose. That is, for females, the effect of increasing the dose was positive in lowering cholesterol, but for males the effect of increasing the dose was negative.By randomly assigning treatments (drug doses) to subjects (dogs), we can get around the problem of confounding that complicates observational studies and limits the conclusions. Randomized experiments are considered the gold standard in scientific investigation, but they can also be difficult.Often, human subjects in experiments are given a placebo. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is blinded. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.\n\n\nPlacebo\n\nHow about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called double-blinded.Randomized allocation in medical settings may not be ethical. One possibility is to use historical controls (i.e. previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).Random SamplingExploratory Data Analysis (EDA)Confirmatory Data Analysis (CDA)See Knuth (1984) for additional discussion of literate programming.\n\n\n\nKnuth, Donald E. 1984. “Literate Programming.” Comput. J. (USA) 27 (2): 97–111. https://doi.org/10.1093/comjnl/27.2.97.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html",
+    "href": "Week1A.html",
+    "title": "3  Activity Lecture 1",
+    "section": "",
+    "text": "3.1 Descriptive Statistics\nName:",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#descriptive-statistics",
+    "href": "Week1A.html#descriptive-statistics",
+    "title": "3  Activity Lecture 1",
+    "section": "",
+    "text": "Read sections 1.1 1.2 of r4ds and solve 1.2.5 excercises 2,3, and 7.\nAnalyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?\nMultiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?\nChange the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?\nRead section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?\nWhat are the quartiles?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#need-for-control-groups",
+    "href": "Week1A.html#need-for-control-groups",
+    "title": "3  Activity Lecture 1",
+    "section": "3.2 Need for control groups",
+    "text": "3.2 Need for control groups\nAn experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least \\(80%\\) of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least \\(80%\\) of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than \\(80%\\) of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.\n\n\n\ncredit: SWS Book\n\n\n\nWhat can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1B.html",
+    "href": "Week1B.html",
+    "title": "4  Activity Lecture 2",
+    "section": "",
+    "text": "4.1 Need for control groups\nName:\nAn experiment was conducted in which subjects were given the drug clofibrate, which was intended to lower cholesterol and reduce the chance of death from coronary disease. The researchers noted that many of the subjects did not take all the medication that the experimental protocol called for them to take. They calculated the percentage of the prescribed capsules that each subject took and divided the subjects into two groups according to whether or not the subjects took at least \\(80%\\) of the capsules they were given. The next table shows that the five-year mortality rate for those who took at least \\(80%\\) of their capsules was much lower than the corresponding rate for subjects who did not adhere to the protocol. On the surface, this suggests that taking the medication lowers the chance of death. However, there was a placebo control group in the experiment and many of the placebo subjects took fewer than \\(80%\\) of their capsules. The mortality rates for the two placebo groups—those who adhered to the protocol and those who did not—are quite similar to the rates for the clofibrate groups.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 2</span>"
+    ]
+  },
+  {
+    "objectID": "Week1B.html#need-for-control-groups",
+    "href": "Week1B.html#need-for-control-groups",
+    "title": "4  Activity Lecture 2",
+    "section": "",
+    "text": "What can you conclude?\nWhat could explain the differences between the two rows?\nWhat would have happened in the absence of the placebo control group?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 2</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "5  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Summary</span>"
+    ]
   }
 ]

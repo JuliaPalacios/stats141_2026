@@ -11,8 +11,8 @@ Discussion section: Th (times below)
 | Name | Role | Office hours | Discussion section |
 |------------------|------------------|------------------|------------------|
 | Julia Palacios | Instructor | W 11:00-12:00 in CoDa E250 |  |
-| Aditya Ghosh | TA | TBC | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
-| Jing Shang | TA | TBC | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
+| Aditya Ghosh | TA | Thu 10:30 - 11:30 am, and 3:30 - 4:30 pm | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
+| Jing Shang | TA | Tuesday 10:00am - 12:00pm | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
 
 ## Contact
 
