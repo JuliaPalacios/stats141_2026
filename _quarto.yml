@@ -11,11 +11,15 @@ book:
       chapters: 
         - intro.qmd
         - samples.qmd
+        - generative1.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
         - Week1B.qmd
     - summary.qmd
+    - part: "Quizzes"
+      chapters:
+        - quiz1.qmd
 #    - references.qmd
    
 

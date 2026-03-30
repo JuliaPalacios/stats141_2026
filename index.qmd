@@ -11,8 +11,8 @@ Discussion section: Th (times below)
 | Name | Role | Office hours | Discussion section |
 |------------------|------------------|------------------|------------------|
 | Julia Palacios | Instructor | W 11:00-12:00 in CoDa E250 |  |
-| Aditya Ghosh | TA | Thu 10:30 - 11:30 am, and 3:30 - 4:30 pm | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
-| Jing Shang | TA | Tuesday 10:00am - 12:00pm | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
+| Aditya Ghosh | TA | Thu 10:30 - 11:30 am, and 3:30 - 4:30 pm Sequoia Hall Library (105) | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
+| Jing Shang | TA | Tuesday 10:00am - 12:00pm in Sequoia Hall 207 | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
 
 ## Contact
 
@@ -78,11 +78,11 @@ If you have any installation difficulties or questions please ask your TAs
 -   Students must be present for the final.
 -   If your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.
 
-(3) **Section participation and Lecture worksheets (10%)**
+(3) **Lecture participation/worksheets (10%)**
 
--   Each week, you will be given a hands-on assignment to complete ahead of section.
--   In section you will turn in your assignment, and discuss and share your results with classmates.
--   There will be a worksheet for students to fill out accompanying each lecture.
+-   There will be a worksheet for students to fill out accompanying each lecture and you should submit it on gradescope. Make sure to submit all worksheets before May 29. We strongly encourage you to submit it within 24 hrs.
+
+(4) **Extra points** for up to 10% of the quizz grade of the corresponding week.
 
 ## Units
 
@@ -90,7 +90,7 @@ If you have any installation difficulties or questions please ask your TAs
 (2) Generative Models for Discrete and Continuous Data
 (3) Sampling Distributions
 (4) Inference for Means
-(5) Statistical Models
+(5) Statistical Models and Machine Learning
 (6) Design of experiments
 
 ## Regrade Policy

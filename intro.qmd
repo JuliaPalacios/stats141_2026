@@ -178,4 +178,3 @@ boxplot(density ~ Run, data = DNase)
 The **shapes** of the distribution are often informative of the variable of interest. They can be for example (a) symmetric, bell shaped, (b) summetric, not bell-shaped, (c) skewed to the right, (d) skewed to the left, (e) exponential, (f) bimodal.
 
 The base R plotting functions are good for quick exploration but have many aesthetic limitations. We will use a framework called grammar of graphics implemented in the package **ggplot2**.
-::::::

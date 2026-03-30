@@ -1,9 +1,9 @@
-# Types of studies
+## Types of studies
 
 
 Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with **data analysis**, but statistical considerations often play a key role in the planning and design of scientific investigation.
 
-Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
+Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
 
 
 ::: {.callout-note icon="false"}
@@ -161,15 +161,82 @@ Often, human subjects in experiments are given a **placebo**. Of course, if a pl
 
 ![Placebo](/Figures/placebo){fig-align="center" width="50%"}
 
+::: {.callout-note icon="false"}
+## Example: Effect of drug on cats
+A group of people who reported mild peanut sensitivity took part in a study. They were given a flavored drink and were told it contained a small amount of peanut extract and might trigger itching, hives, or throat tightness. After drinking it, several participants reported tingling in the mouth, skin itching, and mild breathing discomfort.
+
+Later, the same participants were given an “anti-allergy” drink that they were told would block reactions. This time, most reported little or no symptoms.
+
+In reality, both drinks were identical and contained no peanut. The difference in symptoms appeared to be driven by expectation/power of suggestion, with negative expectations producing symptoms (nocebo) and reassuring expectations reducing them (placebo).
+:::
+
 How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called **double-blinded**.
+
+::: {.callout-note icon="false"} 
+## Example: “Adherence effect” in a blood-pressure trial (why you need a control group)
+
+Researchers test a new blood-pressure pill intended to reduce heart attacks. As the study goes on, some participants reliably take their pills, while others often miss doses. After 4 years, the researchers split the treatment group into high adherers (took ≥80% of pills) and low adherers (<80%).
+
+At first glance, results look impressive: high adherers in the treatment group have far fewer heart attacks than low adherers—so it might seem the drug works.
+
+But the study also included a placebo control group. When researchers do the same adherence split in the placebo group, they see the same pattern: placebo participants who took ≥80% of their pills also had fewer heart attacks than placebo participants who didn’t.
+:::
+
+```{r}
+#| label: adherer-effect-table
+#| echo: false
+
+library(tibble)
+library(knitr)
+
+tab <- tribble(
+  ~Group,               ~Adherence,          ~`N`, ~`4-year event rate (%)`,
+  "New BP drug",        "≥ 80% pills taken", 500,  4.0,
+  "New BP drug",        "< 80% pills taken", 500,  9.0,
+  "Placebo (control)",  "≥ 80% pills taken", 500,  4.5,
+  "Placebo (control)",  "< 80% pills taken", 500,  9.5
+)
+
+kable(tab, caption = "Illustrative example: apparent benefit among adherers appears in both drug and placebo groups (adherer effect).")
+```
+Interpretation: the lower event rate is largely an “adherer effect”—people who consistently follow the protocol may also exercise more, eat better, keep doctor appointments, and manage other risks. Without the placebo control group, the researchers could mistakenly credit the drug for benefits that are actually due to differences between adherers and nonadherers.
 
 Randomized allocation in medical settings may not be ethical. One possibility is to use **historical controls** (i.e. previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).
 
+## Sampling
+
 **Random Sampling**
 
-**Exploratory Data Analysis (EDA)**
+In order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a **representative** subset of the population and avoid obtaining a **biased** sample. 
 
-**Confirmatory Data Analysis (CDA)**
 
-See @knuth84 for additional discussion of literate programming.
+In a **simple random sample** (SRS) of  size n, (a) every member of
+the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.
 
+```{r}
+set.seed(123)
+names<-seq(1,100) #data frame
+sample(names,5,replace=FALSE)
+```
+
+What woud be some practical concerns about SRS?
+
+Two other common sampling techniques are **the random cluster sample** where the sampling unit is the cluster and the **stratified random sample** where the sampling unit is the individual within a strata.
+
+Most of the examples in this class will assume SRS.
+
+## Sampling error
+
+How can we use a sample summary (statistic) to **infer** a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, **sampling error** since we only have a sample. If the sample is not a simple random sample (SRS), it may be *biased*: some individuals are more likely to be selected than others.
+
+## Nonsampling Errors
+
+For example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. **Nonresponse bias** resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.
+
+- MCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).
+
+- MAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.
+
+-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.
+
+It is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting  results.
