@@ -23,26 +23,42 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for citations */
-div.csl-bib-body { }
-div.csl-entry {
-  clear: both;
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
 }
-.hanging-indent div.csl-entry {
-  margin-left:2em;
-  text-indent:-2em;
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
 }
-div.csl-left-margin {
-  min-width:2em;
-  float:left;
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-div.csl-right-inline {
-  margin-left:2em;
-  padding-left:1em;
-}
-div.csl-indent {
-  margin-left: 2em;
-}</style>
+</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -52,7 +68,7 @@ div.csl-indent {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Week1A.html" rel="next">
+<link href="./generative1.html" rel="next">
 <link href="./intro.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
@@ -187,6 +203,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./generative1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -201,13 +223,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week1A.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Activity Lecture 1</span></span></a>
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Activity Lecture 1</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week1B.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></span></a>
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></span></a>
   </div>
 </li>
       </ul>
@@ -215,9 +237,26 @@ window.Quarto = {
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Quizzes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
     </ul>
     </div>
 </nav>
@@ -249,7 +288,7 @@ window.Quarto = {
 
 
 <p>Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with <strong>data analysis</strong>, but statistical considerations often play a key role in the planning and design of scientific investigation.</p>
-<p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
+<p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -370,12 +409,105 @@ window.Quarto = {
 <p><img src="./Figures/placebo.png" class="img-fluid figure-img" style="width:50.0%"></p>
 <figcaption>Placebo</figcaption>
 </figure>
-</div><p>How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called <strong>double-blinded</strong>.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><p><strong>Random Sampling</strong></p><p><strong>Exploratory Data Analysis (EDA)</strong></p><p><strong>Confirmatory Data Analysis (CDA)</strong></p><p>See <span class="citation" data-cites="knuth84">Knuth (<a href="#ref-knuth84" role="doc-biblioref">1984</a>)</span> for additional discussion of literate programming.</p>
+</div><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
 </div>
-<div id="refs" class="references csl-bib-body hanging-indent" role="list">
-<div id="ref-knuth84" class="csl-entry" role="listitem">
-Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</em> (USA) 27 (2): 97–111. <a href="https://doi.org/10.1093/comjnl/27.2.97">https://doi.org/10.1093/comjnl/27.2.97</a>.
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: Effect of drug on cats
 </div>
+</div>
+<div class="callout-body-container callout-body">
+<p>A group of people who reported mild peanut sensitivity took part in a study. They were given a flavored drink and were told it contained a small amount of peanut extract and might trigger itching, hives, or throat tightness. After drinking it, several participants reported tingling in the mouth, skin itching, and mild breathing discomfort.</p>
+<p>Later, the same participants were given an “anti-allergy” drink that they were told would block reactions. This time, most reported little or no symptoms.</p>
+<p>In reality, both drinks were identical and contained no peanut. The difference in symptoms appeared to be driven by expectation/power of suggestion, with negative expectations producing symptoms (nocebo) and reassuring expectations reducing them (placebo).</p>
+</div>
+</div><p>How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called <strong>double-blinded</strong>.</p><div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: “Adherence effect” in a blood-pressure trial (why you need a control group)
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Researchers test a new blood-pressure pill intended to reduce heart attacks. As the study goes on, some participants reliably take their pills, while others often miss doses. After 4 years, the researchers split the treatment group into high adherers (took ≥80% of pills) and low adherers (&lt;80%).</p>
+<p>At first glance, results look impressive: high adherers in the treatment group have far fewer heart attacks than low adherers—so it might seem the drug works.</p>
+<p>But the study also included a placebo control group. When researchers do the same adherence split in the placebo group, they see the same pattern: placebo participants who took ≥80% of their pills also had fewer heart attacks than placebo participants who didn’t.</p>
+</div>
+</div><div class="cell">
+<div class="cell-output-display">
+<table class="caption-top table table-sm table-striped small">
+<caption>Illustrative example: apparent benefit among adherers appears in both drug and placebo groups (adherer effect).</caption>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Group</th>
+<th style="text-align: left;">Adherence</th>
+<th style="text-align: right;">N</th>
+<th style="text-align: right;">4-year event rate (%)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;">New BP drug</td>
+<td style="text-align: left;">≥ 80% pills taken</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">4.0</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">New BP drug</td>
+<td style="text-align: left;">&lt; 80% pills taken</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">9.0</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Placebo (control)</td>
+<td style="text-align: left;">≥ 80% pills taken</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">4.5</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;">Placebo (control)</td>
+<td style="text-align: left;">&lt; 80% pills taken</td>
+<td style="text-align: right;">500</td>
+<td style="text-align: right;">9.5</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div><p>Interpretation: the lower event rate is largely an “adherer effect”—people who consistently follow the protocol may also exercise more, eat better, keep doctor appointments, and manage other risks. Without the placebo control group, the researchers could mistakenly credit the drug for benefits that are actually due to differences between adherers and nonadherers.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><section id="sampling" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="sampling"><span class="header-section-number">2.1</span> Sampling</h2>
+<p><strong>Random Sampling</strong></p>
+<p>In order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a <strong>representative</strong> subset of the population and avoid obtaining a <strong>biased</strong> sample.</p>
+<p>In a <strong>simple random sample</strong> (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>names<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>) <span class="co">#data frame</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(names,<span class="dv">5</span>,<span class="at">replace=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 31 79 51 14 67</code></pre>
+</div>
+</div>
+<p>What woud be some practical concerns about SRS?</p>
+<p>Two other common sampling techniques are <strong>the random cluster sample</strong> where the sampling unit is the cluster and the <strong>stratified random sample</strong> where the sampling unit is the individual within a strata.</p>
+<p>Most of the examples in this class will assume SRS.</p>
+</section><section id="sampling-error" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="sampling-error"><span class="header-section-number">2.2</span> Sampling error</h2>
+<p>How can we use a sample summary (statistic) to <strong>infer</strong> a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, <strong>sampling error</strong> since we only have a sample. If the sample is not a simple random sample (SRS), it may be <em>biased</em>: some individuals are more likely to be selected than others.</p>
+</section><section id="nonsampling-errors" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="nonsampling-errors"><span class="header-section-number">2.3</span> Nonsampling Errors</h2>
+<p>For example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. <strong>Nonresponse bias</strong> resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.</p>
+<ul>
+<li><p>MCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).</p></li>
+<li><p>MAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.</p></li>
+</ul>
+<p>-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.</p>
+<p>It is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting results.</p>
+
+
+</section>
 </div>
 
 </main> <!-- /main -->
@@ -786,8 +918,8 @@ Knuth, Donald E. 1984. <span>“Literate Programming.”</span> <em>Comput. J.</
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Week1A.html" class="pagination-link" aria-label="Activity Lecture 1">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Activity Lecture 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./generative1.html" class="pagination-link" aria-label="Generative Models for Discrete Data">
+        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
