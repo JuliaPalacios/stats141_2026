@@ -100,7 +100,7 @@ rbinom(1, prob = 0.7, size = 15)
 ## [1] 11
 ```
 
-*Question.* Repeat this function call 10 times. What seems to be the most commong outcome?
+*Question.* Repeat this function call 10 times. What seems to be the most common outcome?
 
 *Solution.* The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
 
@@ -154,7 +154,7 @@ dpois(x=3, lambda=5)
 ## [1] 0.1403739
 ```
 
-This means that the change of seeing exactly three events is about 0.14.
+This means that the chance of seeing exactly three events is about 0.14.
 
 Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:
 
@@ -183,7 +183,7 @@ P(x_{1}, x_{2}, \ldots, x_{m}) &= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^
 &= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
 \end{align}$$
 
-To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probabilitity of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:
+To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:
 
 ```{r}
 pvec = rep(1/4, 4)
@@ -194,4 +194,4 @@ t(rmultinom(1, prob = pvec, size = 8))
 
 *Question* Try the code without using the t() function; what does t stand for?
 
-Refernce: @holmes2018modern
+Reference: @holmes2018modern
