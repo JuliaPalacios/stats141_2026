@@ -9,7 +9,7 @@ Discussion sections: Th (times below)
 **Course staff, office hours, and section times:**
 
 | Name | Role | Office hours | Discussion section |
-|---|---|---|---|
+|----|----|----|----|
 | Julia Palacios | Instructor | W 11:00–12:00, CoDa E250 |  |
 | Aditya Ghosh | TA | Thu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105) | Th 9:30–10:20 in Lathrop 015; 2:30–3:20 in Thornton 211 |
 | Jing Shang | TA | Tue 10:00–12:00, Sequoia Hall 207 | Th 9:30–10:20 in 160-127; 2:30–3:20 in Thornton 210 |
@@ -24,66 +24,67 @@ This is an introductory course in statistics for students specializing in the li
 
 In this course, students will:
 
-1. Learn to identify key statistical issues to be addressed during the design phase of an experiment (e.g., threats to valid conclusions, identifying confounders, appropriate measurements, and randomization).
+1.  Learn to identify key statistical issues to be addressed during the design phase of an experiment (e.g., threats to valid conclusions, identifying confounders, appropriate measurements, and randomization).
 
-2. Become proficient with intermediate statistical methods: comparing groups (analysis of variance), analyzing associations (linear regression), and methods for categorical data (contingency tables and odds ratios). You should know which methods are useful in different situations and which conditions must be checked for a method to be applicable.
+2.  Become proficient with intermediate statistical methods: comparing groups (analysis of variance), analyzing associations (linear regression), and methods for categorical data (contingency tables and odds ratios). You should know which methods are useful in different situations and which conditions must be checked for a method to be applicable.
 
-3. Be able to perform detailed data analyses on a variety of biological datasets using the statistical computing environment R, including basic programming. You should be able to implement all the methods discussed in this course.
+3.  Be able to perform detailed data analyses on a variety of biological datasets using the statistical computing environment R, including basic programming. You should be able to implement all the methods discussed in this course.
 
 ### Materials, Tools, & Resources
 
-1. **Course website.** This is the course website. Here you will find the course schedule, lecture slides, assignments, and practice quizzes.
+1.  **Course website.** This is the course website. Here you will find the course schedule, lecture slides, assignments, and practice quizzes.
 
-2. **Lecture slides.** Lecture slides are the primary source of information for the course. They will be made available online after lecture.
+2.  **Lecture slides.** Lecture slides are the primary source of information for the course. They will be made available online after lecture.
 
-3. **Textbooks.** There is no required textbook; however, the material is based on the following:
-   - *Statistics for the Life Sciences* (5th ed.) by Samuels, Witmer, and Schaffner  
-   - *The Analysis of Biological Data* (3rd ed.) by Whitlock and Schluter  
-   - *An Introduction to Statistical Learning with Applications in R* by James et al. (2021)  
-   - *Modern Statistics for Modern Biology* by Susan Holmes and Wolfgang Huber ([online version](https://web.stanford.edu/class/bios221/book/))
+3.  **Textbooks.** There is no required textbook; however, the material is based on the following:
 
-4. **Gradescope.** Feedback on your quizzes and the final exam will be available on [Gradescope](https://canvas.stanford.edu/courses/224513/external_tools/74302).
+    -   *Statistics for the Life Sciences* (5th ed.) by Samuels, Witmer, and Schaffner\
+    -   *The Analysis of Biological Data* (3rd ed.) by Whitlock and Schluter\
+    -   *An Introduction to Statistical Learning with Applications in R* by James et al. (2021)\
+    -   *Modern Statistics for Modern Biology* by Susan Holmes and Wolfgang Huber ([online version](https://web.stanford.edu/class/bios221/book/))
 
-5. **Ed.** We will use Ed as an online class forum, where you may ask questions and discuss with your fellow students. Students are encouraged to answer each other’s questions, and participation points will be awarded accordingly. The TAs will periodically review Ed to provide clarification as needed and to endorse student answers. You can access the Ed forum [here](https://edstem.org/us/courses/96989/discussion) or through Canvas.
+4.  **Gradescope.** Feedback on your quizzes and the final exam will be available on [Gradescope](https://canvas.stanford.edu/courses/224513/external_tools/74302).
 
-6. **R resources.** In this course, computation will be done in R. We recommend the free versions of the following software:
-   - [R](https://cloud.r-project.org/)
-   - [RStudio](https://posit.co/download/rstudio-desktop/)
-   - [Great tutorial](https://r4ds.hadley.nz/)
+5.  **Ed.** We will use Ed as an online class forum, where you may ask questions and discuss with your fellow students. Students are encouraged to answer each other’s questions, and participation points will be awarded accordingly. The TAs will periodically review Ed to provide clarification as needed and to endorse student answers. You can access the Ed forum [here](https://edstem.org/us/courses/96989/discussion) or through Canvas.
 
-   If you have any installation difficulties or questions, please ask your TAs.
+6.  **R resources.** In this course, computation will be done in R. We recommend the free versions of the following software:
 
-7. **AI.** The course policy for STATS 141 is to embrace AI.
-   - Some discussion-section assignments will require programming. Whether or not you know how to program, you may use AI to help complete programming assignments. We will provide guidance and suggestions.
-   - You may also use AI to help you study for the course. Be aware that AI tools can make mistakes, and you are ultimately responsible for your own understanding.
+    -   [R](https://cloud.r-project.org/)
+    -   [RStudio](https://posit.co/download/rstudio-desktop/)
+    -   [Great tutorial](https://r4ds.hadley.nz/)
 
-8. **Accommodations.** Students who may need an academic accommodation based on the impact of a disability must initiate the request with the Office of Accessible Education (OAE). If you plan to use your OAE-approved exam accommodations for a specific assessment, you must provide your letter and inform the instructor at least 10 days before the exam.
+    If you have any installation difficulties or questions, please ask your TAs.
+
+7.  **AI.** The course policy for STATS 141 is to embrace AI.
+
+    -   Some discussion-section assignments will require programming. Whether or not you know how to program, you may use AI to help complete programming assignments. We will provide guidance and suggestions.
+    -   You may also use AI to help you study for the course. Be aware that AI tools can make mistakes, and you are ultimately responsible for your own understanding.
+
+8.  **Accommodations.** Students who may need an academic accommodation based on the impact of a disability must initiate the request with the Office of Accessible Education (OAE). If you plan to use your OAE-approved exam accommodations for a specific assessment, you must provide your letter and inform the instructor at least 10 days before the exam.
 
 ## Coursework & Evaluation
 
-1. **Quizzes (45%)**
-   - We will have a quiz in class every Friday.
-   - Your two lowest quiz scores will be dropped.
-
-2. **Final Exam (45%)**
-   - The final will be in person during finals week on Tuesday, June 9, 2026, at 8:30am.
-   - Students must be present for the final.
-   - If your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.
-
-3. **Lecture participation / worksheets (10%)**
-   - There will be a worksheet for students to fill out to accompany each lecture, and you should submit it on Gradescope.
-   - Make sure to submit all worksheets by May 29. We strongly encourage you to submit each worksheet within 24 hours.
-
-4. **Extra credit:** up to 10% of the quiz grade for the corresponding week.
+1.  **Quizzes (45%)**
+    -   We will have a quiz in class every Friday.
+    -   Your two lowest quiz scores will be dropped.
+2.  **Final Exam (45%)**
+    -   The final will be in person during finals week on Tuesday, June 9, 2026, at 8:30am.
+    -   Students must be present for the final.
+    -   If your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.
+3.  **Lecture participation / activities (10%)**
+    -   There will be an activity for students to fill out to accompany each lecture, and you should submit it on Gradescope.
+    -   Make sure to submit all activities by May 29. We strongly encourage you to submit each activity within 24 hours.
+    -   Activities will be graded: 0 (missing), 0.5 (incomplete), 1 (mostly complete).
+4.  **Extra credit:** up to 10% of the quiz grade for the corresponding week.
 
 ## Units
 
-1. Introduction to Statistics and EDA  
-2. Generative Models for Discrete and Continuous Data  
-3. Sampling Distributions  
-4. Inference for Means  
-5. Statistical Models and Machine Learning  
-6. Design of Experiments  
+1.  Introduction to Statistics and EDA\
+2.  Generative Models for Discrete and Continuous Data\
+3.  Sampling Distributions\
+4.  Inference for Means\
+5.  Statistical Models and Machine Learning\
+6.  Design of Experiments
 
 ## Regrade Policy
 

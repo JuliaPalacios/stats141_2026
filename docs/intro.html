@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -177,7 +212,7 @@ ul.task-list li input[type="checkbox"] {
         <li class="sidebar-item sidebar-item-section">
       <div class="sidebar-item-container"> 
             <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
- <span class="menu-text">Quizzes</span></a>
+ <span class="menu-text">Sections</span></a>
           <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
             <i class="bi bi-chevron-right ms-2"></i>
           </a> 
@@ -185,8 +220,25 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
+  <a href="./Week1_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 1 Section</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Quizzes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
   <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
   </div>
 </li>
       </ul>
@@ -202,8 +254,6 @@ ul.task-list li input[type="checkbox"] {
    
   <ul>
   <li><a href="#statistics" id="toc-statistics" class="nav-link active" data-scroll-target="#statistics"><span class="header-section-number">1.1</span> Statistics</a></li>
-  <li><a href="#data" id="toc-data" class="nav-link" data-scroll-target="#data"><span class="header-section-number">1.2</span> Data</a></li>
-  <li><a href="#plotting-the-data" id="toc-plotting-the-data" class="nav-link" data-scroll-target="#plotting-the-data"><span class="header-section-number">1.3</span> Plotting the data</a></li>
   </ul>
 </nav>
     </div>
@@ -252,31 +302,40 @@ ul.task-list li input[type="checkbox"] {
 <p>An article presented results on the number of injuries in cats that had plummeted from buildings in New York City, by the number of floors they had fallen. The damage caused by such falls was dubbed <em>feline high-rise syndrome (FHRS)</em>.</p>
 </div>
 </div>
-<p>What can we conclude?</p>
-<p>High-quality samples are essential for sound science, even in the age of AI!</p>
-<p>Our ability to obtain reliable estimates of population quantities of interest, and to assess uncertainty, depends on how we <strong>sample</strong> populations. It is often at this early step in an investigation that the fate of a study is sealed, for better or worse.</p>
+<div class="columns">
+<div class="column" style="width:50%;">
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</div><div class="column" style="width:50%;">
 <div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="./Figures/cats.png" class="img-fluid figure-img" style="width:90.0%"></p>
+<figcaption>Raining cats</figcaption>
+</figure>
+</div>
+</div><p>What can we conclude?</p><p>High-quality samples are essential for sound science, even in the age of AI!</p><p>Our ability to obtain reliable estimates of population quantities of interest, and to assess uncertainty, depends on how we <strong>sample</strong> populations. It is often at this early step in an investigation that the fate of a study is sealed, for better or worse.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/pop_cats.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Statistics</figcaption>
 </figure>
-</div>
-<p>In most situations, we do not observe the whole population. Instead, we obtain a sample. We need to ask ourselves: what do we want to do with the data? If our goal is to describe the sample data, we compute <strong>descriptive statistics</strong> and perform an <strong>Exploratory Data Analysis (EDA)</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
+</div><p>In most situations, we do not observe the whole population. Instead, we obtain a sample. We need to ask ourselves: what do we want to do with the data? If our goal is to describe the sample data, we compute <strong>descriptive statistics</strong> and perform an <strong>Exploratory Data Analysis (EDA)</strong>.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/EDA.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>EDA https://r-graph-gallery.com/</figcaption>
 </figure>
-</div>
-<p>If instead we want to make statements about the whole population, then beyond EDA we do <strong>statistical inference</strong>.</p>
-<div class="quarto-figure quarto-figure-center">
+</div><p>If instead we want to make statements about the whole population, then beyond EDA we do <strong>statistical inference</strong>.</p><div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/inference.png" class="img-fluid figure-img" style="width:95.0%"></p>
 <figcaption>Statistical Inference</figcaption>
 </figure>
-</div>
-</section>
-<section id="data" class="level2" data-number="1.2">
+</div><section id="data" class="level2" data-number="1.2">
 <h2 data-number="1.2" class="anchored" data-anchor-id="data"><span class="header-section-number">1.2</span> Data</h2>
 <p>Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A <strong>variable</strong> is a characteristic or quantity that you can measure; we will denote variables with capital letters (X), (Y), etc. A <strong>value</strong> is the state of the variable when you measure it; we will use lowercase letters (e.g., (x), (y)) for values. An <strong>observation</strong> is a set of measurements from one unit (e.g., one person or one animal).</p>
 <p>In the cats example, (X) = number of injuries is a variable, while (x = 2) is one particular value. Similarly, (Y) = number of floors (stories) fallen is a variable, while (y = 5) is a particular value. An observation is the data collected for a particular cat (e.g., Luna), who fell from the fifth floor, resulting in 2 injuries.</p>
@@ -284,6 +343,32 @@ ul.task-list li input[type="checkbox"] {
 <p>The most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of <strong>data frames</strong> or <strong>tibbles</strong>.</p>
 <p>Let’s generate some data by answering this poll.</p>
 <p>We can now read our dataset (poll results).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co">#library(readr)</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co">#url &lt;- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="co">#survey &lt;- read_csv(url) </span></span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="co">#survey</span></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(palmerpenguins)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>penguins</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 344 × 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# ℹ 334 more rows
+# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;</code></pre>
+</div>
+</div>
 <p>A first step is to explore the data and describe them in summary form. Common checks include:</p>
 <ul>
 <li>Measures of center and measures of dispersion<br>
@@ -294,6 +379,19 @@ ul.task-list li input[type="checkbox"] {
 </li>
 <li>Talking with the person who collected the data (review the data dictionary)</li>
 </ul>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>species)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Adelie Chinstrap    Gentoo 
+      152        68       124 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(penguins<span class="sc">$</span>flipper_length_mm)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="co">#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
 <p><strong>Measures of center (or typical value):</strong></p>
 <ul>
 <li>Sample mean (average): ({x} = _{i=1}^{n} x_i)</li>
@@ -327,16 +425,63 @@ ul.task-list li input[type="checkbox"] {
 <p>Note that the sum of deviations (y_i-{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the <strong>degrees of freedom</strong> of the standard deviation (and the variance).</p>
 </div>
 </div>
-</section>
-<section id="plotting-the-data" class="level2" data-number="1.3">
+</section><section id="plotting-the-data" class="level2" data-number="1.3">
 <h2 data-number="1.3" class="anchored" data-anchor-id="plotting-the-data"><span class="header-section-number">1.3</span> Plotting the data</h2>
 <p>We will start with a <strong>scatter plot</strong>.</p>
 <p>A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>?DNase  <span class="co">#what is the dataset about?</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DNase) <span class="co">#shows the first rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Run       conc density
+1   1 0.04882812   0.017
+2   1 0.04882812   0.018
+3   1 0.19531250   0.121
+4   1 0.19531250   0.124
+5   1 0.39062500   0.206
+6   1 0.39062500   0.215</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DNase) <span class="co"># gives you the name of the variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Run"     "conc"    "density"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DNase<span class="sc">$</span>conc, DNase<span class="sc">$</span>density,</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>y,</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>x, <span class="fu">attr</span>(DNase, <span class="st">"units"</span>)<span class="sc">$</span>x),</span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>We can visualize <em>frequency distributions</em> with <strong>bar plots</strong> (as well as jittered dotplots), <strong>histograms</strong>, and <strong>boxplots</strong>. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(DNase<span class="sc">$</span>density, <span class="at">breaks=</span><span class="dv">25</span>, <span class="at">main =</span> <span class="st">""</span>,<span class="at">xlab=</span><span class="st">"Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(density <span class="sc">~</span> Run, <span class="at">data =</span> DNase)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="intro_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>The <strong>shape</strong> of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.</p>
 <p>Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the <strong>grammar of graphics</strong>, implemented in the package <strong>ggplot2</strong>.</p>
 
 
+</section>
+</div>
 </section>
 
 </main> <!-- /main -->

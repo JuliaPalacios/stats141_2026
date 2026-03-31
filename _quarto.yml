@@ -17,6 +17,9 @@ book:
         - Week1A.qmd
         - Week1B.qmd
     - summary.qmd
+    - part: "Sections"
+      chapters: 
+        - Week1_section.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd

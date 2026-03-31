@@ -14,6 +14,58 @@ Researchers in the life sciences analyze **data** that exhibit **variability**. 
 An article presented results on the number of injuries in cats that had plummeted from buildings in New York City, by the number of floors they had fallen. The damage caused by such falls was dubbed *feline high-rise syndrome (FHRS)*.
 :::
 
+:::::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false   # optional (hides errors; use carefully)
+
+suppressPackageStartupMessages({
+library(tidyverse)
+library(tibble)
+})
+
+stories=c(rep(2,7),rep(3,13),rep(4,30),rep(5,35),rep(6,2),c(3,3,3,2,2),rep(7,15))
+injuries=c(rep(1,5),2,2,rep(1,3),rep(2,10),rep(3,10),rep(2,18),rep(1,2),rep(3,30),rep(2,5),c(3,3), rep(2,2),rep(3,3),rep(2,8),rep(1,7))
+  
+raining_cats <- tibble(
+  stories = stories,
+  injuries = injuries
+)
+
+mean_vec <-raining_cats %>%
+  group_by(stories) %>%
+  summarise(mean_injuries = mean(injuries), n = n())
+  
+
+ggplot(mean_vec, aes(x = as.numeric(stories), y = mean_injuries)) +
+  geom_point() +geom_line()+ theme(
+    axis.title = element_text(size = 16),
+    axis.text  = element_text(size = 14)
+  )+labs(x="Stories",y="Mean # injuries")
+  
+```
+:::
+
+::: {.column width="50%"}
+![Raining cats](/Figures/cats){fig-align="center" width="90%"}
+:::
+
+```{r,echo=FALSE}
+# knitr::kable(
+#   mean_vec %>% arrange(stories),
+#   format = "pipe",
+#   digits = 2
+# )
+# mean_vec %>%
+#   arrange(stories) %>%
+#   gt() %>%
+#   tab_header(title = "Mean injuries by stories") %>%
+#   cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
+```
+
 What can we conclude?
 
 High-quality samples are essential for sound science, even in the age of AI!
@@ -32,9 +84,9 @@ If instead we want to make statements about the whole population, then beyond ED
 
 ## Data
 
-Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A **variable** is a characteristic or quantity that you can measure; we will denote variables with capital letters \(X\), \(Y\), etc. A **value** is the state of the variable when you measure it; we will use lowercase letters (e.g., \(x\), \(y\)) for values. An **observation** is a set of measurements from one unit (e.g., one person or one animal).
+Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A **variable** is a characteristic or quantity that you can measure; we will denote variables with capital letters (X), (Y), etc. A **value** is the state of the variable when you measure it; we will use lowercase letters (e.g., (x), (y)) for values. An **observation** is a set of measurements from one unit (e.g., one person or one animal).
 
-In the cats example, \(X\) = number of injuries is a variable, while \(x = 2\) is one particular value. Similarly, \(Y\) = number of floors (stories) fallen is a variable, while \(y = 5\) is a particular value. An observation is the data collected for a particular cat (e.g., Luna), who fell from the fifth floor, resulting in 2 injuries.
+In the cats example, (X) = number of injuries is a variable, while (x = 2) is one particular value. Similarly, (Y) = number of floors (stories) fallen is a variable, while (y = 5) is a particular value. An observation is the data collected for a particular cat (e.g., Luna), who fell from the fifth floor, resulting in 2 injuries.
 
 Variables can be **categorical** or **numerical**. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called **ordinal**. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be **discrete** (number of friends) or **continuous** (body temperature).
 
@@ -42,43 +94,84 @@ The most common languages used for analyzing data are SAS, R (and Bioconductor),
 
 Let’s generate some data by answering this poll.
 
+```{r,echo=FALSE}
+library(qrcode)
+qr <- qrcode::qr_code("https://docs.google.com/forms/d/e/1FAIpQLSecc961cTxMxEiZTbzGC3luAM6xE8atUWFM4-_mjCDXZBmhWA/viewform?usp=publish-editor")
+generate_svg(qr, filename = "Figures/poll.svg")
+```
+
 We can now read our dataset (poll results).
+
+```{r}
+#library(readr)
+
+#url <- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"
+#survey <- read_csv(url) 
+#survey
+library(palmerpenguins)
+penguins
+
+```
 
 A first step is to explore the data and describe them in summary form. Common checks include:
 
-- Measures of center and measures of dispersion  
-- Checking for missing values (e.g., "NAs")  
-- Plotting data, frequency distributions, and charts  
-- Talking with the person who collected the data (review the data dictionary)
+-   Measures of center and measures of dispersion\
+-   Checking for missing values (e.g., "NAs")\
+-   Plotting data, frequency distributions, and charts\
+-   Talking with the person who collected the data (review the data dictionary)
+
+
+```{r}
+summary(penguins$species)
+summary(penguins$flipper_length_mm)
+#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA
+```
 
 **Measures of center (or typical value):**
 
-- Sample mean (average): \(\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i\)
-- Median: the value that lies in the middle of the ordered sample
-- Mode: the value (or values) that occurs most frequently in a dataset
+-   Sample mean (average): (\bar{x} = \frac{1}{n}\sum\_{i=1}\^{n} x_i)
+-   Median: the value that lies in the middle of the ordered sample
+-   Mode: the value (or values) that occurs most frequently in a dataset
+
 
 **Measures of dispersion:**
 
-- Range: max − min  
-- Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations  
-- Deviation: \(y_i - \bar{y}\)  
-- Sample standard deviation: \(s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}\)  
-- Sample variance: \(s^2\)  
-- Coefficient of variation: \(cv=\frac{s \times 100\%}{\bar{y}}\)
+-   Range: max − min\
+-   Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations\
+-   Deviation: (y_i - \bar{y})\
+-   Sample standard deviation: (s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})\
+-   Sample variance: (s\^2)\
+-   Coefficient of variation: (cv=\frac{s \times 100\%}{\bar{y}})
 
 ::: callout-important
-## Why \(n-1\) in the standard deviation?
+## Why (n-1) in the standard deviation?
 
-Note that the sum of deviations \(y_i-\bar{y}\) is always zero. This means that, in a sample of \(n\) observations, there are only \(n-1\) independent pieces of information about the deviations from the average. The quantity \(n-1\) is called the **degrees of freedom** of the standard deviation (and the variance).
+Note that the sum of deviations (y_i-\bar{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the **degrees of freedom** of the standard deviation (and the variance).
 :::
 
 ## Plotting the data
 
 We will start with a **scatter plot**.
 
-A scatter plot is a tool for examining the relationship between two numerical variables \(X\) and \(Y\). It plots each observed \((x,y)\) pair as a dot on the \(x\)-\(y\) plane.
+A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.
+
+```{r}
+?DNase  #what is the dataset about?
+head(DNase) #shows the first rows
+names(DNase) # gives you the name of the variables
+plot(DNase$conc, DNase$density,
+  ylab = attr(DNase, "labels")$y,
+  xlab = paste(attr(DNase, "labels")$x, attr(DNase, "units")$x),
+  pch = 3)
+```
 
 We can visualize *frequency distributions* with **bar plots** (as well as jittered dotplots), **histograms**, and **boxplots**. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.
+
+```{r}
+hist(DNase$density, breaks=25, main = "",xlab="Density")
+boxplot(density ~ Run, data = DNase)
+```
+
 
 The **shape** of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.
 

@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>5&nbsp; Activity Lecture 2 – Stats 141. Introduction to Statistics for Biology</title>
+<title>7&nbsp; Week 1 Section – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./summary.html" rel="next">
-<link href="./Week1A.html" rel="prev">
+<link href="./quiz1.html" rel="next">
+<link href="./summary.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -85,7 +120,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week1B.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week1_section.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 1 Section</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -162,7 +197,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week1B.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Week1B.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></span></a>
   </div>
 </li>
@@ -185,7 +220,7 @@ ul.task-list li input[type="checkbox"] {
       <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week1_section.html" class="sidebar-item-text sidebar-link">
+  <a href="./Week1_section.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 1 Section</span></span></a>
   </div>
 </li>
@@ -213,15 +248,34 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#quarto" id="toc-quarto" class="nav-link active" data-scroll-target="#quarto"><span class="header-section-number">7.1</span> Quarto</a></li>
+  <li><a href="#loading-and-summarizing-the-data" id="toc-loading-and-summarizing-the-data" class="nav-link" data-scroll-target="#loading-and-summarizing-the-data"><span class="header-section-number">7.2</span> Loading and summarizing the data</a></li>
+  <li><a href="#how-many-rows-and-columns-are-in-the-dataset" id="toc-how-many-rows-and-columns-are-in-the-dataset" class="nav-link" data-scroll-target="#how-many-rows-and-columns-are-in-the-dataset"><span class="header-section-number">7.3</span> 1. How many rows and columns are in the dataset?</a></li>
+  <li><a href="#what-types-of-variables-are-present-e.g.-numeric-categorical" id="toc-what-types-of-variables-are-present-e.g.-numeric-categorical" class="nav-link" data-scroll-target="#what-types-of-variables-are-present-e.g.-numeric-categorical"><span class="header-section-number">7.4</span> 2. What types of variables are present (e.g., numeric, categorical)?</a></li>
+  <li><a href="#what-does-the-variable-spam-represent" id="toc-what-does-the-variable-spam-represent" class="nav-link" data-scroll-target="#what-does-the-variable-spam-represent"><span class="header-section-number">7.5</span> 3. What does the variable <code>spam</code> represent?</a></li>
+  <li><a href="#what-is-the-median-number-of-characters-in-an-email" id="toc-what-is-the-median-number-of-characters-in-an-email" class="nav-link" data-scroll-target="#what-is-the-median-number-of-characters-in-an-email"><span class="header-section-number">7.6</span> 4. What is the median number of characters in an email?</a></li>
+  <li><a href="#what-proportion-of-emails-are-spam" id="toc-what-proportion-of-emails-are-spam" class="nav-link" data-scroll-target="#what-proportion-of-emails-are-spam"><span class="header-section-number">7.7</span> 5. What proportion of emails are spam?</a></li>
+  <li><a href="#subsetting" id="toc-subsetting" class="nav-link" data-scroll-target="#subsetting"><span class="header-section-number">7.8</span> Subsetting</a></li>
+  <li><a href="#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails" id="toc-on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails" class="nav-link" data-scroll-target="#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails"><span class="header-section-number">7.9</span> 6. On average, do spam emails have more exclamation marks than non-spam emails?</a></li>
+  <li><a href="#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks" id="toc-what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks" class="nav-link" data-scroll-target="#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks"><span class="header-section-number">7.10</span> 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?</a></li>
+  <li><a href="#create-a-histogram-of-the-number-of-characters-in-emails." id="toc-create-a-histogram-of-the-number-of-characters-in-emails." class="nav-link" data-scroll-target="#create-a-histogram-of-the-number-of-characters-in-emails."><span class="header-section-number">7.11</span> 8. Create a histogram of the number of characters in emails.</a></li>
+  <li><a href="#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account." id="toc-describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account." class="nav-link" data-scroll-target="#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account."><span class="header-section-number">7.12</span> 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.</a></li>
+  <li><a href="#create-a-boxplot-of-number-of-characters-by-spam-status." id="toc-create-a-boxplot-of-number-of-characters-by-spam-status." class="nav-link" data-scroll-target="#create-a-boxplot-of-number-of-characters-by-spam-status."><span class="header-section-number">7.13</span> 10. Create a boxplot of number of characters by spam status.</a></li>
+  <li><a href="#other-tutorials" id="toc-other-tutorials" class="nav-link" data-scroll-target="#other-tutorials"><span class="header-section-number">7.14</span> Other tutorials:</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week1B.html"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week1_section.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 1 Section</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Activity Lecture 2</span></span></h1>
+<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Week 1 Section</span></h1>
 </div>
 
 
@@ -238,23 +292,164 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Name:</p>
-<ol type="1">
-<li><p>What is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?</p></li>
-<li><p>A town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo effect is related to this example.</p></li>
-<li><p>In a study of physical therapy for knee pain, patients are randomly divided into two groups. One group receives a new “hands-on” therapy technique and the other group receives standard stretching exercises. The physical therapist who developed the new technique evaluates each patient’s improvement and compares results between the two groups. Explain how lack of blinding could bias the experiment in favor of the new therapy.</p></li>
-<li><p>Researchers studied 2,050 adults over age 60 living in Arizona. They found that those who regularly participated in community volunteer activities were more likely to have lower levels of C-reactive protein (CRP), a blood marker linked to inflammation, than those who did not volunteer. Does this mean that volunteering improves one’s health? Why or why not?</p></li>
-<li><p>In each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.</p></li>
-</ol>
-<ol type="a">
-<li><p>All 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.</p></li>
-<li><p>A total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.</p></li>
-<li><p>In a temperature study, five readings were taken at each of three preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen readings.</p></li>
-<li><p>A total of 30 apartments were chosen at random from a citywide list to estimate average monthly electricity use.</p></li>
-<li><p>Thirty-six employees (twelve randomly selected from each of three departments: Sales, Engineering, and Customer Support) were surveyed about job satisfaction.</p></li>
-</ol>
+<section id="quarto" class="level2" data-number="7.1">
+<h2 data-number="7.1" class="anchored" data-anchor-id="quarto"><span class="header-section-number">7.1</span> Quarto</h2>
+<p>Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <a href="https://quarto.org" class="uri">https://quarto.org</a>.</p>
+</section>
+<section id="loading-and-summarizing-the-data" class="level2" data-number="7.2">
+<h2 data-number="7.2" class="anchored" data-anchor-id="loading-and-summarizing-the-data"><span class="header-section-number">7.2</span> Loading and summarizing the data</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Uncomment the next lines if you haven't installed the packages yet:</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages(c("openintro", "dplyr", "ggplot2"))</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(openintro)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(email)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(email)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 6 × 21
+  spam  to_multiple from     cc sent_email time                image attach
+  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;
+1 0     0           1         0 0          2011-12-31 22:16:41     0      0
+2 0     0           1         0 0          2011-12-31 23:03:59     0      0
+3 0     0           1         0 0          2012-01-01 08:00:32     0      0
+4 0     0           1         0 0          2012-01-01 01:09:49     0      0
+5 0     0           1         0 0          2012-01-01 02:00:01     0      0
+6 0     0           1         0 0          2012-01-01 02:04:46     0      0
+# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,
+#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,
+#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,
+#   number &lt;fct&gt;</code></pre>
+</div>
+</div>
+</section>
+<section id="how-many-rows-and-columns-are-in-the-dataset" class="level2" data-number="7.3">
+<h2 data-number="7.3" class="anchored" data-anchor-id="how-many-rows-and-columns-are-in-the-dataset"><span class="header-section-number">7.3</span> 1. How many rows and columns are in the dataset?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alternative (optional, using dplyr-style workflow):</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="what-types-of-variables-are-present-e.g.-numeric-categorical" class="level2" data-number="7.4">
+<h2 data-number="7.4" class="anchored" data-anchor-id="what-types-of-variables-are-present-e.g.-numeric-categorical"><span class="header-section-number">7.4</span> 2. What types of variables are present (e.g., numeric, categorical)?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="what-does-the-variable-spam-represent" class="level2" data-number="7.5">
+<h2 data-number="7.5" class="anchored" data-anchor-id="what-does-the-variable-spam-represent"><span class="header-section-number">7.5</span> 3. What does the variable <code>spam</code> represent?</h2>
+<p>Write your answer here.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Summary statistics</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(email<span class="sc">$</span>spam)      <span class="co"># Is the email spam?</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   0    1 
+3554  367 </code></pre>
+</div>
+</div>
+</section>
+<section id="what-is-the-median-number-of-characters-in-an-email" class="level2" data-number="7.6">
+<h2 data-number="7.6" class="anchored" data-anchor-id="what-is-the-median-number-of-characters-in-an-email"><span class="header-section-number">7.6</span> 4. What is the median number of characters in an email?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alternative with <code>dplyr</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="what-proportion-of-emails-are-spam" class="level2" data-number="7.7">
+<h2 data-number="7.7" class="anchored" data-anchor-id="what-proportion-of-emails-are-spam"><span class="header-section-number">7.7</span> 5. What proportion of emails are spam?</h2>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alternative with <code>dplyr</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="subsetting" class="level2" data-number="7.8">
+<h2 data-number="7.8" class="anchored" data-anchor-id="subsetting"><span class="header-section-number">7.8</span> Subsetting</h2>
+<ul>
+<li><p><code>email$exclaim_mess</code> is the numeric variable of interest.</p></li>
+<li><p><code>email$spam</code> is the grouping variable.</p></li>
+<li><p><code>mean</code> or <code>sd</code> is the function to apply.</p></li>
+<li><p><code>na.rm = TRUE</code> removes missing values when calculating the mean.</p></li>
+</ul>
+<p>Option 1: By hand</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset rows to only include spam emails</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>spam <span class="ot">&lt;-</span> <span class="fu">subset</span>(email, spam <span class="sc">==</span> <span class="st">"1"</span>)</span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean and standard deviation of exclamation marks in spam emails</span></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="co"># Subset rows to only include non-spam emails</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a>not_spam <span class="ot">&lt;-</span> <span class="fu">subset</span>(email, spam <span class="sc">==</span> <span class="st">"0"</span>)</span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean and standard deviation of exclamation marks in non-spam emails</span></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Option 2: Using <code>tapply()</code></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean exclamation marks by spam status</span></span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Standard deviation of exclamation marks by spam status</span></span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Option 3: Alternative with <code>dplyr</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails" class="level2" data-number="7.9">
+<h2 data-number="7.9" class="anchored" data-anchor-id="on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails"><span class="header-section-number">7.9</span> 6. On average, do spam emails have more exclamation marks than non-spam emails?</h2>
+<p>Write your answer here.</p>
+</section>
+<section id="what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks" class="level2" data-number="7.10">
+<h2 data-number="7.10" class="anchored" data-anchor-id="what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks"><span class="header-section-number">7.10</span> 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?</h2>
+<p>Write your answer here.</p>
+</section>
+<section id="create-a-histogram-of-the-number-of-characters-in-emails." class="level2" data-number="7.11">
+<h2 data-number="7.11" class="anchored" data-anchor-id="create-a-histogram-of-the-number-of-characters-in-emails."><span class="header-section-number">7.11</span> 8. Create a histogram of the number of characters in emails.</h2>
+<p>Base R version:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alternative with <code>ggplot2</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account." class="level2" data-number="7.12">
+<h2 data-number="7.12" class="anchored" data-anchor-id="describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account."><span class="header-section-number">7.12</span> 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.</h2>
+<p>Write your answer here.</p>
+</section>
+<section id="create-a-boxplot-of-number-of-characters-by-spam-status." class="level2" data-number="7.13">
+<h2 data-number="7.13" class="anchored" data-anchor-id="create-a-boxplot-of-number-of-characters-by-spam-status."><span class="header-section-number">7.13</span> 10. Create a boxplot of number of characters by spam status.</h2>
+<p>Base R version:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Alternative with <code>ggplot2</code>:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Your code here</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+</section>
+<section id="other-tutorials" class="level2" data-number="7.14">
+<h2 data-number="7.14" class="anchored" data-anchor-id="other-tutorials"><span class="header-section-number">7.14</span> Other tutorials:</h2>
+<p><a href="https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html" class="uri">https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html</a></p>
+<p><a href="https://ggplot2.tidyverse.org/articles/ggplot2.html" class="uri">https://ggplot2.tidyverse.org/articles/ggplot2.html</a></p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -659,13 +854,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Week1A.html" class="pagination-link" aria-label="Activity Lecture 1">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Activity Lecture 1</span></span>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./summary.html" class="pagination-link" aria-label="Summary">
-        <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./quiz1.html" class="pagination-link" aria-label="Quiz 1 - April 10">
+        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
