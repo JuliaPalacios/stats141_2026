@@ -314,7 +314,7 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1] 1078</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sample</span>(x,<span class="dv">10</span>),<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 68.4 63.6 66.8 70.2 64.7 69.3 66.1 62.0 66.4 64.3</code></pre>
+<pre><code> [1] 67.9 65.6 62.1 71.8 68.3 69.5 72.2 64.9 72.3 69.6</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -380,7 +380,7 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 0 0 0 0 1 1 0 1 0 0 0 1 0</code></pre>
+<pre><code> [1] 0 0 1 1 1 1 1 1 0 0 1 0 0 0 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -388,7 +388,7 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 0 1 1 1 0 0 0 0 1 0 1 1</code></pre>
+<pre><code> [1] 1 0 0 1 1 1 0 0 1 1 1 1 1 1 1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -402,7 +402,7 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12</code></pre>
+<pre><code>[1] 11</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -415,7 +415,7 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p><em>Question.</em> Repeat this function call 10 times. What seems to be the most commong outcome?</p>
+<p><em>Question.</em> Repeat this function call 10 times. What seems to be the most common outcome?</p>
 <p><em>Solution.</em> The most frequent value is 10.5<span class="math inline">\(\approx 11\)</span>. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that <span class="math inline">\(X=4\)</span> if <span class="math inline">\(X\)</span> follows B(15,0.7).</p>
 <p>The complete <strong>probability mass distribution</strong> is available by typing:</p>
 <div class="cell">
@@ -478,7 +478,7 @@ Consider a probability model for HIV mutations, where the data generation proces
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1403739</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<p>This means that the change of seeing exactly three events is about 0.14.</p>
+<p>This means that the chance of seeing exactly three events is about 0.14.</p>
 <p>Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span>
@@ -512,7 +512,7 @@ Consider a probability model for HIV mutations, where the data generation proces
 P(x_{1}, x_{2}, \ldots, x_{m}) &amp;= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^{m} p_{i}^{x_{i}} \\
 &amp;= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
 \end{align}\]</span></p>
-<p>To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probabilitity of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:</p>
+<p>To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">4</span>)</span>
 <span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">rmultinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> pvec, <span class="at">size =</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -524,7 +524,7 @@ P(x_{1}, x_{2}, \ldots, x_{m}) &amp;= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i
 <span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    4    2    1    1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Question</em> Try the code without using the t() function; what does t stand for?</p>
-<p>Refernce: <span class="citation" data-cites="holmes2018modern">(<a href="#ref-holmes2018modern" role="doc-biblioref"><strong>holmes2018modern?</strong></a>)</span></p>
+<p>Reference: <span class="citation" data-cites="holmes2018modern">(<a href="#ref-holmes2018modern" role="doc-biblioref"><strong>holmes2018modern?</strong></a>)</span></p>
 
 
 </section>
