@@ -7,6 +7,10 @@ execute:
   message: false
 ---
 
+## Getting Ready
+
+Make sure to install [R](https://rstudio-education.github.io/hopr/starting.html) and [R-Studio](https://posit.co/download/rstudio-desktop/) before section.
+
 ## Quarto
 
 Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.

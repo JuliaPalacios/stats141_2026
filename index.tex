@@ -578,6 +578,18 @@ high-rise syndrome (FHRS)}.
 
 \end{tcolorbox}
 
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Figures/cats.pdf}
+
+}
+
+\caption{Raining cats}
+
+\end{figure}%
+
 What can we conclude?
 
 High-quality samples are essential for sound science, even in the age of
@@ -661,6 +673,36 @@ Let's generate some data by answering this poll.
 
 We can now read our dataset (poll results).
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#library(readr)}
+
+\CommentTok{\#url \textless{}{-} "https://raw.github.com/JuliaPalacios/stats141\_2026/data/file1.csv"}
+\CommentTok{\#survey \textless{}{-} read\_csv(url) }
+\CommentTok{\#survey}
+\FunctionTok{library}\NormalTok{(palmerpenguins)}
+\NormalTok{penguins}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 344 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# i 334 more rows
+# i 2 more variables: sex <fct>, year <int>
+\end{verbatim}
+
 A first step is to explore the data and describe them in summary form.
 Common checks include:
 
@@ -676,6 +718,34 @@ Common checks include:
   Talking with the person who collected the data (review the data
   dictionary)
 \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Adelie Chinstrap    Gentoo 
+      152        68       124 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{flipper\_length\_mm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean(penguins$flipper\_length\_mm, na.rm = TRUE)  \#ignore NA}
+\end{Highlighting}
+\end{Shaded}
 
 \textbf{Measures of center (or typical value):}
 
@@ -728,12 +798,66 @@ A scatter plot is a tool for examining the relationship between two
 numerical variables (X) and (Y). It plots each observed ((x,y)) pair as
 a dot on the (x)-(y) plane.
 
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?DNase  }\CommentTok{\#what is the dataset about?}
+\FunctionTok{head}\NormalTok{(DNase) }\CommentTok{\#shows the first rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Run       conc density
+1   1 0.04882812   0.017
+2   1 0.04882812   0.018
+3   1 0.19531250   0.121
+4   1 0.19531250   0.124
+5   1 0.39062500   0.206
+6   1 0.39062500   0.215
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(DNase) }\CommentTok{\# gives you the name of the variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Run"     "conc"    "density"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{conc, DNase}\SpecialCharTok{$}\NormalTok{density,}
+  \AttributeTok{ylab =} \FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{y,}
+  \AttributeTok{xlab =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x, }\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"units"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x),}
+  \AttributeTok{pch =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
 We can visualize \emph{frequency distributions} with \textbf{bar plots}
 (as well as jittered dotplots), \textbf{histograms}, and
 \textbf{boxplots}. Bar plots and histograms display the frequency of
 values (or grouped values). A boxplot displays the minimum, 1st
 quartile, median, 3rd quartile, and maximum at once. We can also compare
 multiple distributions at once.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{density, }\AttributeTok{breaks=}\DecValTok{25}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"Density"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(density }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Run, }\AttributeTok{data =}\NormalTok{ DNase)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-2.pdf}}
 
 The \textbf{shape} of a distribution is often informative. It may be,
 for example: (a) symmetric and bell-shaped, (b) symmetric but not
@@ -1586,6 +1710,13 @@ In summary, this book has no content whatsoever.
 \part{Sections}
 
 \chapter{Week 1 Section}\label{week-1-section}
+
+\section{Getting Ready}\label{getting-ready}
+
+Make sure to install
+\href{https://rstudio-education.github.io/hopr/starting.html}{R} and
+\href{https://posit.co/download/rstudio-desktop/}{R-Studio} before
+section.
 
 \section{Quarto}\label{quarto}
 
