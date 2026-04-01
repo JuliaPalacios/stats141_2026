@@ -6,7 +6,7 @@ execute:
   warning: false
   message: false
 resources:
-  - docs/Lec1_annotated.pdf
+  - /doc/Lec1_annotated.pdf
 ---
 
 ```{=html}
