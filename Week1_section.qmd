@@ -55,7 +55,8 @@ Week 1 Section
 <a href="Week1_section_download.qmd" class="download-btn" download> ⬇ Download Starter File </a>
 :::
 
-## Getting Ready
+
+
 
 Make sure to install [R](https://rstudio-education.github.io/hopr/starting.html) and [R-Studio](https://posit.co/download/rstudio-desktop/) before section.
 
