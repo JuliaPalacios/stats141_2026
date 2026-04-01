@@ -6,7 +6,7 @@ execute:
   warning: false
   message: false
 resources:
-  - /doc/Lec1_annotated.pdf
+  - docs/Lec1_annotated.pdf
 ---
 
 ```{=html}
@@ -222,4 +222,3 @@ boxplot(density ~ Run, data = DNase)
 The **shape** of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.
 
 Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the **grammar of graphics**, implemented in the package **ggplot2**.
-::::::

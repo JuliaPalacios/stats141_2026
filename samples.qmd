@@ -1,4 +1,34 @@
-## Types of studies
+## Types of studies and Plots
+
+## Plotting the data
+
+We will start with a **scatter plot**.
+
+A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.
+
+
+```{r}
+?DNase  #what is the dataset about?
+head(DNase) #shows the first rows
+names(DNase) # gives you the name of the variables
+plot(DNase$conc, DNase$density,
+  ylab = attr(DNase, "labels")$y,
+  xlab = paste(attr(DNase, "labels")$x, attr(DNase, "units")$x),
+  pch = 3)
+```
+
+We can visualize *frequency distributions* with **bar plots** (as well as jittered dotplots), **histograms**, and **boxplots**. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.
+
+```{r}
+hist(DNase$density, breaks=25, main = "",xlab="Density")
+boxplot(density ~ Run, data = DNase)
+```
+
+The **shape** of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.
+
+Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the **grammar of graphics**, implemented in the package **ggplot2**.
+
+## Types of Studies
 
 
 Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with **data analysis**, but statistical considerations often play a key role in the planning and design of scientific investigation.

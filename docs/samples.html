@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Types of studies – Stats 141. Introduction to Statistics for Biology</title>
+<title>2&nbsp; Types of studies and Plots – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -151,7 +151,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies and Plots</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -200,7 +200,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./samples.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></span></a>
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies and Plots</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -279,15 +279,22 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#plotting-the-data" id="toc-plotting-the-data" class="nav-link active" data-scroll-target="#plotting-the-data"><span class="header-section-number">2.1</span> Plotting the data</a></li>
+  <li><a href="#types-of-studies" id="toc-types-of-studies" class="nav-link" data-scroll-target="#types-of-studies"><span class="header-section-number">2.2</span> Types of Studies</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies and Plots</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies</span></h1>
+<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Types of studies and Plots</span></h1>
 </div>
 
 
@@ -304,6 +311,62 @@ window.Quarto = {
 </header>
 
 
+<section id="plotting-the-data" class="level2" data-number="2.1">
+<h2 data-number="2.1" class="anchored" data-anchor-id="plotting-the-data"><span class="header-section-number">2.1</span> Plotting the data</h2>
+<p>We will start with a <strong>scatter plot</strong>.</p>
+<p>A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?DNase  <span class="co">#what is the dataset about?</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DNase) <span class="co">#shows the first rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Run       conc density
+1   1 0.04882812   0.017
+2   1 0.04882812   0.018
+3   1 0.19531250   0.121
+4   1 0.19531250   0.124
+5   1 0.39062500   0.206
+6   1 0.39062500   0.215</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DNase) <span class="co"># gives you the name of the variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "Run"     "conc"    "density"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DNase<span class="sc">$</span>conc, DNase<span class="sc">$</span>density,</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>y,</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>x, <span class="fu">attr</span>(DNase, <span class="st">"units"</span>)<span class="sc">$</span>x),</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="samples_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We can visualize <em>frequency distributions</em> with <strong>bar plots</strong> (as well as jittered dotplots), <strong>histograms</strong>, and <strong>boxplots</strong>. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(DNase<span class="sc">$</span>density, <span class="at">breaks=</span><span class="dv">25</span>, <span class="at">main =</span> <span class="st">""</span>,<span class="at">xlab=</span><span class="st">"Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="samples_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(density <span class="sc">~</span> Run, <span class="at">data =</span> DNase)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="samples_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>The <strong>shape</strong> of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.</p>
+<p>Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the <strong>grammar of graphics</strong>, implemented in the package <strong>ggplot2</strong>.</p>
+</section>
+<section id="types-of-studies" class="level2" data-number="2.2">
+<h2 data-number="2.2" class="anchored" data-anchor-id="types-of-studies"><span class="header-section-number">2.2</span> Types of Studies</h2>
 <p>Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with <strong>data analysis</strong>, but statistical considerations often play a key role in the planning and design of scientific investigation.</p>
 <p>Data in biology are obtained from either an <strong>experimental study</strong> or an <strong>observational study</strong>. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -362,7 +425,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="samples_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -416,7 +479,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="samples_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -494,15 +557,15 @@ window.Quarto = {
 </tbody>
 </table>
 </div>
-</div><p>Interpretation: the lower event rate is largely an “adherer effect”—people who consistently follow the protocol may also exercise more, eat better, keep doctor appointments, and manage other risks. Without the placebo control group, the researchers could mistakenly credit the drug for benefits that are actually due to differences between adherers and nonadherers.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><section id="sampling" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="sampling"><span class="header-section-number">2.1</span> Sampling</h2>
+</div><p>Interpretation: the lower event rate is largely an “adherer effect”—people who consistently follow the protocol may also exercise more, eat better, keep doctor appointments, and manage other risks. Without the placebo control group, the researchers could mistakenly credit the drug for benefits that are actually due to differences between adherers and nonadherers.</p><p>Randomized allocation in medical settings may not be ethical. One possibility is to use <strong>historical controls</strong> (i.e.&nbsp;previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).</p><section id="sampling" class="level2" data-number="2.3">
+<h2 data-number="2.3" class="anchored" data-anchor-id="sampling"><span class="header-section-number">2.3</span> Sampling</h2>
 <p><strong>Random Sampling</strong></p>
 <p>In order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a <strong>representative</strong> subset of the population and avoid obtaining a <strong>biased</strong> sample.</p>
 <p>In a <strong>simple random sample</strong> (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>names<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>) <span class="co">#data frame</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(names,<span class="dv">5</span>,<span class="at">replace=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>names<span class="ot">&lt;-</span><span class="fu">seq</span>(<span class="dv">1</span>,<span class="dv">100</span>) <span class="co">#data frame</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(names,<span class="dv">5</span>,<span class="at">replace=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 31 79 51 14 67</code></pre>
 </div>
@@ -510,11 +573,11 @@ window.Quarto = {
 <p>What woud be some practical concerns about SRS?</p>
 <p>Two other common sampling techniques are <strong>the random cluster sample</strong> where the sampling unit is the cluster and the <strong>stratified random sample</strong> where the sampling unit is the individual within a strata.</p>
 <p>Most of the examples in this class will assume SRS.</p>
-</section><section id="sampling-error" class="level2" data-number="2.2">
-<h2 data-number="2.2" class="anchored" data-anchor-id="sampling-error"><span class="header-section-number">2.2</span> Sampling error</h2>
+</section><section id="sampling-error" class="level2" data-number="2.4">
+<h2 data-number="2.4" class="anchored" data-anchor-id="sampling-error"><span class="header-section-number">2.4</span> Sampling error</h2>
 <p>How can we use a sample summary (statistic) to <strong>infer</strong> a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, <strong>sampling error</strong> since we only have a sample. If the sample is not a simple random sample (SRS), it may be <em>biased</em>: some individuals are more likely to be selected than others.</p>
-</section><section id="nonsampling-errors" class="level2" data-number="2.3">
-<h2 data-number="2.3" class="anchored" data-anchor-id="nonsampling-errors"><span class="header-section-number">2.3</span> Nonsampling Errors</h2>
+</section><section id="nonsampling-errors" class="level2" data-number="2.5">
+<h2 data-number="2.5" class="anchored" data-anchor-id="nonsampling-errors"><span class="header-section-number">2.5</span> Nonsampling Errors</h2>
 <p>For example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. <strong>Nonresponse bias</strong> resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.</p>
 <ul>
 <li><p>MCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).</p></li>
@@ -526,6 +589,7 @@ window.Quarto = {
 
 </section>
 </div>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">

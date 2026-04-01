@@ -1,0 +1,19 @@
+# Activity Lecture 3 {#sec-week2}
+
+Name:
+
+1.  In a study of physical therapy for knee pain, patients are randomly divided into two groups. One group receives a new “hands-on” therapy technique and the other group receives standard stretching exercises. The physical therapist who developed the new technique evaluates each patient’s improvement and compares results between the two groups. Explain how lack of blinding could bias the experiment in favor of the new therapy.
+
+2.  Researchers studied 2,050 adults over age 60 living in Arizona. They found that those who regularly participated in community volunteer activities were more likely to have lower levels of C-reactive protein (CRP), a blood marker linked to inflammation, than those who did not volunteer. Does this mean that volunteering improves one’s health? Why or why not?
+
+3.  In each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.
+
+(a) All 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.
+
+(b) A total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.
+
+(c) In a temperature study, five readings were taken at each of three preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen readings.
+
+(d) A total of 30 apartments were chosen at random from a citywide list to estimate average monthly electricity use.
+
+(e) Thirty-six employees (twelve randomly selected from each of three departments: Sales, Engineering, and Customer Support) were surveyed about job satisfaction.
