@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>3&nbsp; Generative Models for Discrete Data – Stats 141. Introduction to Statistics for Biology</title>
+<title>3&nbsp; My Document – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -58,7 +58,26 @@ div.sourceCode
 @media screen {
 pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
 }
-</style>
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
 
 
 <script src="site_libs/quarto-nav/quarto-nav.js"></script>
@@ -149,7 +168,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">My Document</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -204,7 +223,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./generative1.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></span></a>
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">My Document</span></span></a>
   </div>
 </li>
       </ul>
@@ -282,13 +301,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link active" data-scroll-target="#probability-distribution"><span class="header-section-number">3.1</span> Probability distribution</a></li>
-  <li><a href="#discrete-probability-models" id="toc-discrete-probability-models" class="nav-link" data-scroll-target="#discrete-probability-models"><span class="header-section-number">3.2</span> Discrete probability models</a>
+  <li><a href="#generative-models-for-discrete-data" id="toc-generative-models-for-discrete-data" class="nav-link active" data-scroll-target="#generative-models-for-discrete-data"><span class="header-section-number">4</span> Generative Models for Discrete Data</a>
   <ul class="collapse">
-  <li><a href="#bernoulli-trials" id="toc-bernoulli-trials" class="nav-link" data-scroll-target="#bernoulli-trials"><span class="header-section-number">3.2.1</span> Bernoulli trials</a></li>
-  <li><a href="#binomial-success-counts" id="toc-binomial-success-counts" class="nav-link" data-scroll-target="#binomial-success-counts"><span class="header-section-number">3.2.2</span> Binomial success counts</a></li>
-  <li><a href="#poisson-distributions" id="toc-poisson-distributions" class="nav-link" data-scroll-target="#poisson-distributions"><span class="header-section-number">3.2.3</span> Poisson distributions</a></li>
-  <li><a href="#multinomial-distributions" id="toc-multinomial-distributions" class="nav-link" data-scroll-target="#multinomial-distributions"><span class="header-section-number">3.2.4</span> Multinomial distributions</a></li>
+  <li><a href="#random-variables" id="toc-random-variables" class="nav-link" data-scroll-target="#random-variables"><span class="header-section-number">4.1</span> Random variables</a></li>
+  <li><a href="#null-hyphotesis" id="toc-null-hyphotesis" class="nav-link" data-scroll-target="#null-hyphotesis"><span class="header-section-number">4.2</span> Null Hyphotesis</a></li>
+  <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link" data-scroll-target="#probability-distribution"><span class="header-section-number">4.3</span> Probability distribution</a></li>
+  <li><a href="#discrete-probability-models" id="toc-discrete-probability-models" class="nav-link" data-scroll-target="#discrete-probability-models"><span class="header-section-number">4.4</span> Discrete probability models</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-trials" id="toc-bernoulli-trials" class="nav-link" data-scroll-target="#bernoulli-trials"><span class="header-section-number">4.4.1</span> Bernoulli trials</a></li>
+  <li><a href="#binomial-success-counts" id="toc-binomial-success-counts" class="nav-link" data-scroll-target="#binomial-success-counts"><span class="header-section-number">4.4.2</span> Binomial success counts</a></li>
+  <li><a href="#poisson-distributions" id="toc-poisson-distributions" class="nav-link" data-scroll-target="#poisson-distributions"><span class="header-section-number">4.4.3</span> Poisson distributions</a></li>
+  <li><a href="#multinomial-distributions" id="toc-multinomial-distributions" class="nav-link" data-scroll-target="#multinomial-distributions"><span class="header-section-number">4.4.4</span> Multinomial distributions</a></li>
+  </ul></li>
   </ul></li>
   </ul>
 </nav>
@@ -296,9 +320,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative1.html"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">My Document</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Generative Models for Discrete Data</span></h1>
+<h1 class="title"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">My Document</span></h1>
 </div>
 
 
@@ -315,33 +339,150 @@ window.Quarto = {
 </header>
 
 
-<section id="probability-distribution" class="level2" data-number="3.1">
-<h2 data-number="3.1" class="anchored" data-anchor-id="probability-distribution"><span class="header-section-number">3.1</span> Probability distribution</h2>
+<section id="generative-models-for-discrete-data" class="level1" data-number="4">
+<h1 data-number="4"><span class="header-section-number">4</span> Generative Models for Discrete Data</h1>
+<section id="random-variables" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="random-variables"><span class="header-section-number">4.1</span> Random variables</h2>
+<p>To explain the concept of <strong>random variable</strong>, we will use data from a mouse database, used in this article <span class="citation" data-cites="Winzell2004HighFatMouse">(<a href="#ref-Winzell2004HighFatMouse" role="doc-biblioref">Sörhede Winzell and Ahrén 2004</a>)</span>, that can be retrieved from R as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dir <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/"</span> </span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="st">"femaleMiceWeights.csv"</span> </span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(dir, filename) </span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this dataset, researchers were interested in determining whether following a given diet makes mice heavier after several weeks. The data were generated by obtaining 24 mice and randomly assigning them to either a chow or a high-fat (hf) diet. After several weeks, the scientists weighed each mouse and recorded the results.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(dat)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Diet Bodyweight
+1 chow      21.51
+2 chow      28.14
+3 chow      24.04
+4 chow      23.45
+5 chow      23.68
+6 chow      19.79</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">##   Diet Bodyweight</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 1 chow      21.51</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2 chow      28.14</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="do">## 3 chow      24.04</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="do">## 4 chow      23.45</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="do">## 5 chow      23.68</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 chow      19.79</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="do">## Note that head only shows the first 6/24 observations in the dataset.</span></span>
+<span id="cb4-9"><a href="#cb4-9" aria-hidden="true" tabindex="-1"></a><span class="do">## Lightest mouse:</span></span>
+<span id="cb4-10"><a href="#cb4-10" aria-hidden="true" tabindex="-1"></a>dat[<span class="fu">which.min</span>(dat<span class="sc">$</span>Bodyweight), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>  Diet Bodyweight
+6 chow      19.79</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">##   Diet Bodyweight</span></span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 6 chow      19.79</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Heaviest mouse</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>dat[<span class="fu">which.max</span>(dat<span class="sc">$</span>Bodyweight), ]</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   Diet Bodyweight
+21   hf      34.02</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="do">##   Diet Bodyweight</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="do">## 21   hf      34.02</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Use 'View(dat)' in R to see the entire dataset. </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Notice that there is variability in body weight across the mice. For instance, mouse 6 was the lightest (19.79 grams) and was on the chow diet, while mouse 21 was the heaviest (34.02 grams) and was on the high-fat (HF) diet. However, these are only individual observations. To better understand patterns in the data, we can calculate the <em>average</em> weight within each group.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'dplyr'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:stats':
+
+    filter, lag</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following objects are masked from 'package:base':
+
+    intersect, setdiff, setequal, union</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">filter</span>(dat, Diet<span class="sc">==</span><span class="st">"chow"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Bodyweight) <span class="sc">%&gt;%</span> unlist</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">filter</span>(dat, Diet<span class="sc">==</span><span class="st">"hf"</span>) <span class="sc">%&gt;%</span> <span class="fu">select</span>(Bodyweight) <span class="sc">%&gt;%</span> unlist</span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(control))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.81333</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 23.81333</span></span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(treatment))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 26.83417</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 26.83417</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. This type of quantity is known as a random variable.</p>
+<p>To illustrate this, suppose we had access to the weights of the entire population of control female mice. In practice, this is rarely the case, as we typically observe only samples and rely on statistical methods to make inferences about population characteristics. For illustrative purposes, assume the following dataset represents the full population of female mice. We can then draw multiple random samples of 12 mice from this population and calculate the average for each sample.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Download the dataset directly from: https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleControlsPopulation.csv</span></span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(<span class="st">"data/femaleControlsPopulation.csv"</span>)</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a><span class="do">## Use unlist to turn it into a numeric vector</span></span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>population <span class="ot">&lt;-</span> <span class="fu">unlist</span>(population)</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a><span class="co"># Mean of the 'total' population</span></span>
+<span id="cb18-6"><a href="#cb18-6" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(population)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.89338</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 23.89338</span></span>
+<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="co"># Sample 12 mice three times to see if the average changes.</span></span>
+<span id="cb20-3"><a href="#cb20-3" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
+<span id="cb20-4"><a href="#cb20-4" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 23.6325</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 25.33083</span></span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
+<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 24.29333</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 22.87167</span></span>
+<span id="cb24-2"><a href="#cb24-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
+<span id="cb24-3"><a href="#cb24-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 22.71917</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 25.2175</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>Notice how the average changes across samples, and that each differs from the average of the ‘total’ population. Therefore, repeating this experiment is useful, as it provides additional information about the distribution of this random variable.</p>
+</section>
+<section id="null-hyphotesis" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="null-hyphotesis"><span class="header-section-number">4.2</span> Null Hyphotesis</h2>
+</section>
+<section id="probability-distribution" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="probability-distribution"><span class="header-section-number">4.3</span> Probability distribution</h2>
 <p>A simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(father.son, <span class="at">package=</span><span class="st">"UsingR"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> father.son<span class="sc">$</span>fheight</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(father.son, <span class="at">package=</span><span class="st">"UsingR"</span>)</span>
+<span id="cb27-2"><a href="#cb27-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> father.son<span class="sc">$</span>fheight</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>One way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 1078</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1] 1078</span></span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sample</span>(x,<span class="dv">10</span>),<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a><span class="do">## 1] 1078</span></span>
+<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(<span class="fu">sample</span>(x,<span class="dv">10</span>),<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 62.5 67.9 67.8 69.1 66.0 68.2 62.8 65.4 69.3 67.3</code></pre>
+<pre><code> [1] 68.8 64.8 62.4 68.9 69.1 69.0 67.3 67.9 67.8 68.0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">xlab=</span><span class="st">"Height (in inches)"</span>, <span class="at">main=</span><span class="st">"Adult men heights"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">xlab=</span><span class="st">"Height (in inches)"</span>, <span class="at">main=</span><span class="st">"Adult men heights"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="generative1_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="generative1_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -355,26 +496,26 @@ window.Quarto = {
 <p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random variable. We do not know all possible outcomes of random variables, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
 <p>In summary, to define a distribution, we compute, for all possible values of <span class="math inline">\(a\)</span>, the proportion of numbers in our list that are below <span class="math inline">\(a\)</span>, which is called the <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
 </section>
-<section id="discrete-probability-models" class="level2" data-number="3.2">
-<h2 data-number="3.2" class="anchored" data-anchor-id="discrete-probability-models"><span class="header-section-number">3.2</span> Discrete probability models</h2>
+<section id="discrete-probability-models" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="discrete-probability-models"><span class="header-section-number">4.4</span> Discrete probability models</h2>
 <p>In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG digrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).</p>
 <p>To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>genotype <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"AA"</span>,<span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"OO"</span>,<span class="st">"AO"</span>,<span class="st">"AA"</span>,<span class="st">"BO"</span>,<span class="st">"BO"</span>,</span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"BO"</span>,<span class="st">"AB"</span>,<span class="st">"OO"</span>,<span class="st">"AB"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"AO"</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(genotype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb34"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb34-1"><a href="#cb34-1" aria-hidden="true" tabindex="-1"></a>genotype <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"AA"</span>,<span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"OO"</span>,<span class="st">"AO"</span>,<span class="st">"AA"</span>,<span class="st">"BO"</span>,<span class="st">"BO"</span>,</span>
+<span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"BO"</span>,<span class="st">"AB"</span>,<span class="st">"OO"</span>,<span class="st">"AB"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"AO"</span>)</span>
+<span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(genotype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>genotype
 AA AB AO BB BO OO 
  2  2  7  3  3  2 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="do">## genotype</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a><span class="do">## AA AB AO BB BO OO </span></span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2  7  3  3  2 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## genotype</span></span>
+<span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a><span class="do">## AA AB AO BB BO OO </span></span>
+<span id="cb36-3"><a href="#cb36-3" aria-hidden="true" tabindex="-1"></a><span class="do">## 2  2  7  3  3  2 </span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.</p>
-<section id="bernoulli-trials" class="level3" data-number="3.2.1">
-<h3 data-number="3.2.1" class="anchored" data-anchor-id="bernoulli-trials"><span class="header-section-number">3.2.1</span> Bernoulli trials</h3>
+<section id="bernoulli-trials" class="level3" data-number="4.4.1">
+<h3 data-number="4.4.1" class="anchored" data-anchor-id="bernoulli-trials"><span class="header-section-number">4.4.1</span> Bernoulli trials</h3>
 <p>The <strong>Bernoulli distribution</strong> is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter <span class="math inline">\(p\)</span>, which represents the probability of success, and the complementary event is called probability of failure <span class="math inline">\(1-p\)</span>:</p>
 <p><strong><em>Probability distribution:</em></strong></p>
 <p><span class="math inline">\(P(X=1) = p\)</span><br>
@@ -395,63 +536,63 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 0 1 1 1 1 1 0 0 1 1 0 0 1</code></pre>
+<pre><code> [1] 1 1 1 0 0 1 1 0 0 1 1 0 1 1 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Now observe the outcome when using a biased coin that lands heads 70% of the time:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 0 1 0 1 0 0 1 1 1 1 1 0 1</code></pre>
+<pre><code> [1] 1 0 0 0 0 1 0 1 1 1 1 1 1 0 0</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Question.</em> Notice that when you call the function above several times, you get different outcomes. Why is that?</p>
 <p><strong><em>Properties</em></strong></p>
 <p>The <strong>mean</strong>, or <strong>expected value</strong>, of a Bernoulli distribution is given by <span class="math inline">\(p\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(p(1-p)\)</span>, so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.</p>
 </section>
-<section id="binomial-success-counts" class="level3" data-number="3.2.2">
-<h3 data-number="3.2.2" class="anchored" data-anchor-id="binomial-success-counts"><span class="header-section-number">3.2.2</span> Binomial success counts</h3>
+<section id="binomial-success-counts" class="level3" data-number="4.4.2">
+<h3 data-number="4.4.2" class="anchored" data-anchor-id="binomial-success-counts"><span class="header-section-number">4.4.2</span> Binomial success counts</h3>
 <p>In the previous example, if we are only interested in the number of heads (<span class="math inline">\(X=1\)</span>), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 10</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>The sum of multiple independent (or exchangeable) Bernoulli trials is called the <strong>Binomial distribution</strong> (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a <strong>binomial</strong> random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">384569724</span>)</span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb43"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb43-1"><a href="#cb43-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 11</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb45"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb45-1"><a href="#cb45-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>The sum of multiple independent (or exchangeable) Bernoulli trials is called the <strong>Binomial distribution</strong> (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a <strong>binomial</strong> random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">384569724</span>)</span>
+<span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 11</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Question.</em> Repeat this function call 10 times. What seems to be the most common outcome?</p>
 <p><em>Solution.</em> The most frequent value is 10.5<span class="math inline">\(\approx 11\)</span>. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that <span class="math inline">\(X=4\)</span> if <span class="math inline">\(X\)</span> follows B(15,0.7).</p>
 <p>The complete <strong>probability mass distribution</strong> is available by typing:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(probabilities, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb49"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb49-1"><a href="#cb49-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span>
+<span id="cb49-2"><a href="#cb49-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(probabilities, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code> [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03
 [16] 0.00</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 </span></span>
-<span id="cb25-2"><a href="#cb25-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 0.09 0.03 0.00</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb51"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb51-1"><a href="#cb51-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 </span></span>
+<span id="cb51-2"><a href="#cb51-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [13] 0.09 0.03 0.00</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>A barplot for this distribution in R, is as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(probabilities, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb52"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb52-1"><a href="#cb52-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(probabilities, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">col =</span> <span class="st">"black"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="generative1_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="generative1_files/figure-html/unnamed-chunk-14-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -468,8 +609,8 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <p><strong><em>Properties</em></strong></p>
 <p>The <strong>mean</strong> of a Binomial distribution is given by <span class="math inline">\(n \cdot p\)</span> (in the figure, the highest bar around <span class="math inline">\(x \approx 11\)</span>, or <span class="math inline">\(n(=15)\cdot p(=0.7)\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(np(1-p) = (15)(0.7)(0.3) = 3.15\)</span>.</p>
 </section>
-<section id="poisson-distributions" class="level3" data-number="3.2.3">
-<h3 data-number="3.2.3" class="anchored" data-anchor-id="poisson-distributions"><span class="header-section-number">3.2.3</span> Poisson distributions</h3>
+<section id="poisson-distributions" class="level3" data-number="4.4.3">
+<h3 data-number="4.4.3" class="anchored" data-anchor-id="poisson-distributions"><span class="header-section-number">4.4.3</span> Poisson distributions</h3>
 <p>When the probability of success <span class="math inline">\(p\)</span> is small and the number of trials <span class="math inline">\(n\)</span> is large, the Binomial distribution can be approximated by a <strong>Poisson distribution</strong> with parameter <span class="math inline">\(\lambda = np\)</span>, which provides a simple model for describing the data.</p>
 <p><strong><em>Probability distribution:</em></strong></p>
 <p><span class="math display">\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,\]</span> where <span class="math inline">\(k\)</span> is the number of events, <span class="math inline">\(\lambda\)</span> is the average number of events per interval, and <span class="math inline">\(e\approx 2.718\)</span> is the Euler’s number.</p>
@@ -489,23 +630,23 @@ Note
 Consider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of <span class="math inline">\(p=5 x 10^{-4}\)</span> per nucleotide per replication cycle, independently across positions. Given a genome size of approximately $n$ nucleotides, the total number of mutations per cycle follows a <span class="math inline">\(\text{Poisson}(\lambda)\)</span> distribution.</p>
 <p>As the genome size of HIV is about <span class="math inline">\(n=10^4\)</span>, this model predicts an expected number of mutations close to 5 <span class="math inline">\((np=10^4 x 5 x 10^{-4})\)</span> per replication cycle, with standard error <span class="math inline">\(\sqrt{\lambda}\)</span>. For example, to find the probability of exactly 3 mutations under a <span class="math inline">\(\text{Poisson}(5)\)</span> model, we can use R:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb27"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb27-1"><a href="#cb27-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">3</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb53"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb53-1"><a href="#cb53-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">3</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.1403739</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb29"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb29-1"><a href="#cb29-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1403739</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb55"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb55-1"><a href="#cb55-1" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.1403739</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>This means that the chance of seeing exactly three events is about 0.14.</p>
 <p>Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span>
-<span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863</span></span>
-<span id="cb30-3"><a href="#cb30-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240</span></span>
-<span id="cb30-4"><a href="#cb30-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(y, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb56"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb56-1"><a href="#cb56-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span>
+<span id="cb56-2"><a href="#cb56-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863</span></span>
+<span id="cb56-3"><a href="#cb56-3" aria-hidden="true" tabindex="-1"></a><span class="do">## [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240</span></span>
+<span id="cb56-4"><a href="#cb56-4" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(y, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="generative1_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="generative1_files/figure-html/unnamed-chunk-16-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -520,8 +661,8 @@ Consider a probability model for HIV mutations, where the data generation proces
 </div>
 </div>
 </section>
-<section id="multinomial-distributions" class="level3" data-number="3.2.4">
-<h3 data-number="3.2.4" class="anchored" data-anchor-id="multinomial-distributions"><span class="header-section-number">3.2.4</span> Multinomial distributions</h3>
+<section id="multinomial-distributions" class="level3" data-number="4.4.4">
+<h3 data-number="4.4.4" class="anchored" data-anchor-id="multinomial-distributions"><span class="header-section-number">4.4.4</span> Multinomial distributions</h3>
 <p>In the Binomial model, we had only two possible outcomes, success and failure, with probabilities <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>, respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: <span class="math inline">\(\{A, C, G, T\}\)</span>. We use a <strong>Multinomial model</strong>, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as <span class="math inline">\(p_{A}\)</span>, <span class="math inline">\(p_{C}\)</span>, <span class="math inline">\(p_{G}\)</span>, and <span class="math inline">\(p_{T}\)</span>, where the probabilities sum to 1: <span class="math inline">\(p_{A}+p_{C}+p_{G}+p_{T}=1\)</span>, as in the Binomial model.</p>
 <p>The mathematical formulation for the Multinomial model for <span class="math inline">\(m\)</span> counts <span class="math inline">\((x_{1}, x_{2}, \ldots, x_{m})\)</span> for outcomes of <span class="math inline">\(n\)</span> draws with probabilities <span class="math inline">\(p_{1}, p_{2}, \ldots, p_{m}\)</span> is as follows:</p>
 <p><strong><em>Probability distribution:</em></strong></p>
@@ -531,19 +672,25 @@ P(x_{1}, x_{2}, \ldots, x_{m}) &amp;= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i
 \end{align}\]</span></p>
 <p>To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>pvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">4</span>)</span>
-<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">rmultinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> pvec, <span class="at">size =</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb57"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb57-1"><a href="#cb57-1" aria-hidden="true" tabindex="-1"></a>pvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb57-2"><a href="#cb57-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">rmultinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> pvec, <span class="at">size =</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>     [,1] [,2] [,3] [,4]
 [1,]    4    2    1    1</code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
-<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    4    2    1    1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb59"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb59-1"><a href="#cb59-1" aria-hidden="true" tabindex="-1"></a><span class="do">##      [,1] [,2] [,3] [,4]</span></span>
+<span id="cb59-2"><a href="#cb59-2" aria-hidden="true" tabindex="-1"></a><span class="do">## [1,]    4    2    1    1</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p><em>Question</em> Try the code without using the t() function; what does t stand for?</p>
 <p>Reference: <span class="citation" data-cites="holmes2018modern">(<a href="#ref-holmes2018modern" role="doc-biblioref"><strong>holmes2018modern?</strong></a>)</span></p>
 
 
+<div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-Winzell2004HighFatMouse" class="csl-entry" role="listitem">
+Sörhede Winzell, Maria, and Bo Ahrén. 2004. <span>“The High-Fat Diet-Fed Mouse: A Model for Studying Mechanisms and Treatment of Impaired Glucose Tolerance and Type 2 Diabetes.”</span> <em>Diabetes</em> 53 (Suppl 3): S215–19. <a href="https://doi.org/10.2337/diabetes.53.suppl_3.S215">https://doi.org/10.2337/diabetes.53.suppl_3.S215</a>.
+</div>
+</div>
+</section>
 </section>
 </section>
 
