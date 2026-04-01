@@ -1,0 +1,11 @@
+---
+title: "My Document"
+format: html
+bibliography: references.bib
+---
+
+# Generative Models for Discrete Data
+
+## Random variables
+
+We will use data from a mouse database, used in this article [@Winzell2004HighFatMouse].
