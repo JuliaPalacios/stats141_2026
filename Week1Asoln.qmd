@@ -1,0 +1,20 @@
+# Activity Lecture 1 {#sec-week1}
+
+Name:
+
+
+## Descriptive Statistics
+
+-   Read sections 1.1 1.2 of [r4ds](https://r4ds.hadley.nz/data-visualize.html) and solve 1.2.5 excercises 2,3, and 7.
+
+-   Analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
+
+-   Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
+
+-   Change the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?
+
+-   Read section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?
+
+-   What are the quartiles?
+
+<!-- are the valuees that divide the area into four equal parts -->

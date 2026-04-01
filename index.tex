@@ -134,39 +134,6 @@
 \makeatother
 
 
-% definitions for citeproc citations
-\NewDocumentCommand\citeproctext{}{}
-\NewDocumentCommand\citeproc{mm}{%
-  \begingroup\def\citeproctext{#2}\cite{#1}\endgroup}
-\makeatletter
- % allow citations to break across lines
- \let\@cite@ofmt\@firstofone
- % avoid brackets around text for \cite:
- \def\@biblabel#1{}
- \def\@cite#1#2{{#1\if@tempswa , #2\fi}}
-\makeatother
-\newlength{\cslhangindent}
-\setlength{\cslhangindent}{1.5em}
-\newlength{\csllabelwidth}
-\setlength{\csllabelwidth}{3em}
-\newenvironment{CSLReferences}[2] % #1 hanging-indent, #2 entry-spacing
- {\begin{list}{}{%
-  \setlength{\itemindent}{0pt}
-  \setlength{\leftmargin}{0pt}
-  \setlength{\parsep}{0pt}
-  % turn on hanging indent if param 1 is 1
-  \ifodd #1
-   \setlength{\leftmargin}{\cslhangindent}
-   \setlength{\itemindent}{-1\cslhangindent}
-  \fi
-  % set entry spacing
-  \setlength{\itemsep}{#2\baselineskip}}}
- {\end{list}}
-\usepackage{calc}
-\newcommand{\CSLBlock}[1]{\hfill\break\parbox[t]{\linewidth}{\strut\ignorespaces#1\strut}}
-\newcommand{\CSLLeftMargin}[1]{\parbox[t]{\csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLRightInline}[1]{\parbox[t]{\linewidth - \csllabelwidth}{\strut#1\strut}}
-\newcommand{\CSLIndent}[1]{\hspace{\cslhangindent}#1}
 
 
 
@@ -180,6 +147,20 @@
  
 
 
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
 \KOMAoption{captions}{tableheading}
 \makeatletter
 \@ifpackageloaded{tcolorbox}{}{\usepackage[skins,breakable]{tcolorbox}}
@@ -275,18 +256,18 @@
 
 \textbf{Spring 2026}
 
-Lectures: MWF, 9:30-10:50, CODA B90.
+Lectures: MWF, 9:30--10:50, CODA B90.
 
-Discussion section: Th (times below)
+Discussion sections: Th (times below)
 
 \textbf{Course staff, office hours, and section times:}
 
 {\def\LTcaptype{none} % do not increment counter
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2432}}
-  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2703}}@{}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}
+  >{\raggedright\arraybackslash}p{(\linewidth - 6\tabcolsep) * \real{0.2500}}@{}}
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Name
@@ -301,11 +282,12 @@ Discussion section
 \endhead
 \bottomrule\noalign{}
 \endlastfoot
-Julia Palacios & Instructor & W 11:00-12:00 in CoDa E250 & \\
-Aditya Ghosh & TA & TBC & Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in
-Thronton 211 \\
-Jing Shang & TA & TBC & Th 9:30-10:20am in 160-127, 2:30-3:20pm in
-Thronton 210 \\
+Julia Palacios & Instructor & W 11:00--12:00, CoDa E250 & \\
+Aditya Ghosh & TA & Thu 10:30--11:30 and 3:30--4:30, Sequoia Hall
+Library (105) & Th 9:30--10:20 in Lathrop 015; 2:30--3:20 in Thornton
+211 \\
+Jing Shang & TA & Tue 10:00--12:00, Sequoia Hall 207 & Th 9:30--10:20 in
+160-127; 2:30--3:20 in Thornton 210 \\
 \end{longtable}
 }
 
@@ -314,8 +296,8 @@ Thronton 210 \\
 
 \markright{Contact}
 
-If you need to reach us outside of lectures, tutorials or office hours,
-please contact us on the
+If you need to reach us outside of lectures, discussion sections, or
+office hours, please contact us on the
 \href{https://edstem.org/us/courses/96989/discussion}{Ed Discussion
 forum}.
 
@@ -327,28 +309,28 @@ forum}.
 This is an introductory course in statistics for students specializing
 in the life sciences. The emphasis is on statistical ideas rather than
 computations or mathematical formulations. There are no prerequisites
-except elementary algebra.
+beyond elementary algebra.
 
 In this course, students will:
 
 \begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
 \item
   Learn to identify key statistical issues to be addressed during the
-  design phase of an experiment (e.g., threats to conclusion,
-  identifying confounders, appropriate measurements, randomization).
+  design phase of an experiment (e.g., threats to valid conclusions,
+  identifying confounders, appropriate measurements, and randomization).
 \item
   Become proficient with intermediate statistical methods: comparing
-  groups (analysis of variance); analyzing associations (linear
-  regression); and methods for categorical data (contingency tables and
-  odds ratio). You should know which methods are useful in different
-  situations, and which conditions have to be checked for the method to
-  be applicable.
+  groups (analysis of variance), analyzing associations (linear
+  regression), and methods for categorical data (contingency tables and
+  odds ratios). You should know which methods are useful in different
+  situations and which conditions must be checked for a method to be
+  applicable.
 \item
   Be able to perform detailed data analyses on a variety of biological
-  data using the statistical computation environment R, including basic
-  programming. You should be able to implement all the methods discussed
-  in this course.
+  datasets using the statistical computing environment R, including
+  basic programming. You should be able to implement all the methods
+  discussed in this course.
 \end{enumerate}
 
 \subsection*{Materials, Tools, \&
@@ -356,89 +338,87 @@ Resources}\label{materials-tools-resources}
 \addcontentsline{toc}{subsection}{Materials, Tools, \& Resources}
 
 \begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
 \item
-  \textbf{Course website}. This is the course website. Here you will
+  \textbf{Course website.} This is the course website. Here you will
   find the course schedule, lecture slides, assignments, and practice
   quizzes.
 \item
-  \textbf{Lecture slides}. Lecture slides are the primary source of
-  information for the course; they will be made available online after
+  \textbf{Lecture slides.} Lecture slides are the primary source of
+  information for the course. They will be made available online after
   lecture.
 \item
-  \textbf{Textbooks}. There is no required textbook, however material is
-  based on the following:
-\end{enumerate}
+  \textbf{Textbooks.} There is no required textbook; however, the
+  material is based on the following:
 
-\begin{itemize}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Statistics for the Life Sciences} (5th ed.) by Samuels,
+    Witmer, and Schaffner\\
+  \item
+    \emph{The Analysis of Biological Data} (3rd ed.) by Whitlock and
+    Schluter\\
+  \item
+    \emph{An Introduction to Statistical Learning with Applications in
+    R} by James et al.~(2021)\\
+  \item
+    \emph{Modern Statistics for Modern Biology} by Susan Holmes and
+    Wolfgang Huber
+    (\href{https://web.stanford.edu/class/bios221/book/}{online
+    version})
+  \end{itemize}
 \item
-  Statistics for the Life Sciences, 5th Edition by Samules, Witmer, and
-  Schaffner.
-\item
-  The Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{3}
-\item
-  \textbf{Gradescope}. Feedback on your quizzes and the final exam will
+  \textbf{Gradescope.} Feedback on your quizzes and the final exam will
   be available on
-  \href{https://canvas.stanford.edu/courses/224513/external_tools/74302}{gradescope}.
+  \href{https://canvas.stanford.edu/courses/224513/external_tools/74302}{Gradescope}.
 \item
-  \textbf{Ed}. We will use Ed as an online class forum, where you may
+  \textbf{Ed.} We will use Ed as an online class forum, where you may
   ask questions and discuss with your fellow students. Students are
-  encouraged to answer each others' questions, and participation points
+  encouraged to answer each other's questions, and participation points
   will be awarded accordingly. The TAs will periodically review Ed to
-  provide clarification, as needed, and to endorse student answers. You
-  can access the Ed forum for the class
+  provide clarification as needed and to endorse student answers. You
+  can access the Ed forum
   \href{https://edstem.org/us/courses/96989/discussion}{here} or through
   Canvas.
 \item
-  \textbf{R resources}. In this course, computation will be done in R.
+  \textbf{R resources.} In this course, computation will be done in R.
   We recommend the free versions of the following software:
 
-  *\href{https://cloud.r-project.org/}{R}
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://cloud.r-project.org/}{R}
+  \item
+    \href{https://posit.co/download/rstudio-desktop/}{RStudio}
+  \item
+    \href{https://r4ds.hadley.nz/}{Great tutorial}
+  \end{itemize}
 
-  *\href{https://posit.co/download/rstudio-desktop/}{RStudio}
-
-  *\href{https://r4ds.hadley.nz/}{Great tutorial}
-\end{enumerate}
-
-If you have any installation difficulties or questions please ask your
-TAs
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{6}
-\tightlist
+  If you have any installation difficulties or questions, please ask
+  your TAs.
 \item
-  \textbf{AI}. The course policy of STATS 141 is to embrace AI.
-\end{enumerate}
+  \textbf{AI.} The course policy for STATS 141 is to embrace AI.
 
-\begin{itemize}
-\item
-  Some section assignments will be need some programming. Whether or not
-  you know how to program, you can use AI to complete programming
-  assignments. We will provide you with guidance and suggestions.
-\item
-  If you would like, you may also use AI to help you study for the
-  course. Beware that AI agents are still susceptible to mistakes, and
-  that you are ultimately fully responsible for your own understanding.
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{7}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    Some discussion-section assignments will require programming.
+    Whether or not you know how to program, you may use AI to help
+    complete programming assignments. We will provide guidance and
+    suggestions.
+  \item
+    You may also use AI to help you study for the course. Be aware that
+    AI tools can make mistakes, and you are ultimately responsible for
+    your own understanding.
+  \end{itemize}
 \item
   \textbf{Accommodations.} Students who may need an academic
   accommodation based on the impact of a disability must initiate the
   request with the Office of Accessible Education (OAE). If you plan to
   use your OAE-approved exam accommodations for a specific assessment,
-  you must provide your letter and inform the instructor 10 days before
-  the exam.
+  you must provide your letter and inform the instructor at least 10
+  days before the exam.
 \end{enumerate}
 
 \section*{Coursework \& Evaluation}\label{coursework-evaluation}
@@ -447,61 +427,52 @@ TAs
 \markright{Coursework \& Evaluation}
 
 \begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
   \textbf{Quizzes (45\%)}
-\end{enumerate}
 
-\begin{itemize}
-\tightlist
-\item
-  We will have a quiz in class every Friday.
-\item
-  Your two lowest quiz scores will be dropped.
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{1}
-\tightlist
+  \begin{itemize}
+  \tightlist
+  \item
+    We will have a quiz in class every Friday.
+  \item
+    Your two lowest quiz scores will be dropped.
+  \end{itemize}
 \item
   \textbf{Final Exam (45\%)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The final will be in person during finals week on Tuesday, June 9,
+    2026, at 8:30am.
+  \item
+    Students must be present for the final.
+  \item
+    If your final grade is higher than your average quiz grade (after
+    dropping the lowest two), we will replace your quiz grade with your
+    final grade.
+  \end{itemize}
+\item
+  \textbf{Lecture participation / activities (10\%)}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    There will be an activity for students to fill out to accompany each
+    lecture, and you should submit it on Gradescope.
+  \item
+    Make sure to submit all activities by May 29. We strongly encourage
+    you to submit each activity within 24 hours.
+  \item
+    Activities will be graded: 0 (missing), 0.5 (incomplete), 1 (mostly
+    complete).
+  \end{itemize}
+\item
+  \textbf{Extra credit:} up to 10\% of the quiz grade for the
+  corresponding week.
 \end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  The final will be in-person during finals week on Tuesday, June 9,
-  2026 at 8:30am
-\item
-  Students must be present for the final.
-\item
-  If your final grade is higher than your average quiz grade (after
-  dropping the lowest two), we will replace your quiz grade with your
-  final grade.
-\end{itemize}
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\setcounter{enumi}{2}
-\tightlist
-\item
-  \textbf{Section participation and Lecture worksheets (10\%)}
-\end{enumerate}
-
-\begin{itemize}
-\tightlist
-\item
-  Each week, you will be given a hands-on assignment to complete ahead
-  of section.
-\item
-  In section you will turn in your assignment, and discuss and share
-  your results with classmates.
-\item
-  There will be a worksheet for students to fill out accompanying each
-  lecture.
-\end{itemize}
 
 \section*{Units}\label{units}
 \addcontentsline{toc}{section}{Units}
@@ -509,20 +480,20 @@ TAs
 \markright{Units}
 
 \begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
+\def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Introduction to Statistics and EDA
+  Introduction to Statistics and EDA\\
 \item
-  Generative Models for Discrete and Continuous Data
+  Generative Models for Discrete and Continuous Data\\
 \item
-  Sampling Distributions
+  Sampling Distributions\\
 \item
-  Inference for Means
+  Inference for Means\\
 \item
-  Statistical Models
+  Statistical Models and Machine Learning\\
 \item
-  Design of experiments
+  Design of Experiments
 \end{enumerate}
 
 \section*{Regrade Policy}\label{regrade-policy}
@@ -530,9 +501,9 @@ TAs
 
 \markright{Regrade Policy}
 
-If you believe that we have made a mistake in grading, please e-mail
-Prof.~Palacios within 1 week of getting the assignment/exam back. Note
-that Professor Palacios will regrade your entire assignment/exam, so
+If you believe we have made a mistake in grading, please email
+Prof.~Palacios within one week of receiving the assignment/exam back.
+Note that Prof.~Palacios will regrade your entire assignment/exam, so
 your grade could go up or down.
 
 \section*{The Honor Code}\label{the-honor-code}
@@ -540,14 +511,14 @@ your grade could go up or down.
 
 \markright{The Honor Code}
 
-It is expected that instructors and students will follow Stanford's
-Honor Code in all matters relating to this course. You are encouraged to
-meet and exchange ideas with your classmates while studying and working
-on homework assignments, but you are individually responsible for your
-own work and for understanding the material. You are not permitted to
-copy or otherwise reference another student's homework or computer code.
-If you have any questions regarding this policy, feel free to contact
-me.
+Instructors and students are expected to follow Stanford's Honor Code in
+all matters relating to this course. You are encouraged to meet and
+exchange ideas with your classmates while studying and working on
+homework assignments, but you are individually responsible for your own
+work and for understanding the material. You are not permitted to copy
+or otherwise reference another student's homework or computer code. If
+you have any questions regarding this policy, feel free to contact the
+instructor.
 
 Compromising your academic integrity may lead to serious consequences,
 including (but not limited to) one or more of the following: failure of
@@ -555,9 +526,9 @@ the assignment, failure of the course, disciplinary probation,
 suspension from the university, or dismissal from the university.
 
 Students are responsible for understanding the University's Honor Code
-policy and must make proper use of citations of sources for writing
-papers, creating, presenting, and performing their work, taking
-examinations, and doing research.
+policy and must make proper use of citations of sources when writing
+papers, creating and presenting work, taking examinations, and doing
+research.
 
 \section*{Course Privacy Statement}\label{course-privacy-statement}
 \addcontentsline{toc}{section}{Course Privacy Statement}
@@ -565,73 +536,26 @@ examinations, and doing research.
 \markright{Course Privacy Statement}
 
 As noted in the University's
-\href{https://library.stanford.edu/using/copyright-reminder/common-situations/recording-broadcasting-courses}{policy on recording and broadcasting courses},
-students may not audio or video record class meetings without permission
-from the instructor (and guest speakers, when applicable).
+\href{https://library.stanford.edu/using/copyright-reminder/common-situations/recording-broadcasting-courses}{policy
+on recording and broadcasting courses}, students may not audio- or
+video-record class meetings without permission from the instructor (and
+from guest speakers, when applicable).
 
-\part{Activities}
-
-\part{Activities}
-
-\textbf{Need for control groups}. An experiment was conducted in which
-subjects were given the drug clofibrate, which was intended to lower
-cholesterol and reduce the chance of death from coronary disease. The
-researchers noted that many of the subjects did not take all the
-medication that the experimental protocol called for them to take. They
-calculated the percentage of the prescribed capsules that each subject
-took and divided the subjects into two groups according to whether or
-not the subjects took at least \(80%
-\) of the capsules they were given. The next table shows that the
-five-year mortality rate for those who took at least \(80%
-\) of their capsules was much lower than the corresponding rate for
-subjects who did not adhere to the protocol. On the surface, this
-suggests that taking the medication lowers the chance of death. However,
-there was a placebo control group in the experiment and many of the
-placebo subjects took fewer than \(80%
-\) of their capsules. The mortality rates for the two placebo
-groups---those who adhered to the protocol and those who did not---are
-quite similar to the rates for the clofibrate groups.
-
-\begin{enumerate}
-\def\labelenumi{(\arabic{enumi})}
-\tightlist
-\item
-  What can you conclude?
-\item
-  What could explain the differences between the two rows?
-\item
-  What would have happened in the absence of the placebo control group?
-\end{enumerate}
-
-\chapter{Summary}\label{summary}
-
-In summary, this book has no content whatsoever.
-
-\begin{Shaded}
-\begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
-\end{Highlighting}
-\end{Shaded}
-
-\begin{verbatim}
-[1] 2
-\end{verbatim}
-
-\bookmarksetup{startatroot}
+\part{Lectures}
 
 \chapter{Introduction to Statistics}\label{introduction-to-statistics}
 
-\textbf{Statistics}
+\section{Statistics}\label{statistics}
 
-Researchers in the life sciences analyze \textbf{data} that exhibit some
+Researchers in the life sciences analyze \textbf{data} that exhibit
 \textbf{variability}. For example, patients given the same treatment may
-respond differently; PCR (Polymerase Chain Reaction) prepared
-identically may have different results due to contamination, thermal
-damage, etc. The challenge to the life scientist is to discern the
+respond differently; PCR (Polymerase Chain Reaction) assays prepared
+identically may yield different results due to contamination, thermal
+damage, etc. The challenge for the life scientist is to discern the
 \textbf{signal} from the \textbf{noise}.
 
 \textbf{Statistics} is the science of understanding data (collection,
-analysis and presentation) and of making decisions in the face of
+analysis, and presentation) and of making decisions in the face of
 variability and uncertainty. Statistics is a core component of
 \textbf{data science}.
 
@@ -645,53 +569,365 @@ variability and uncertainty. Statistics is a core component of
 
 \end{figure}%
 
-\textbf{Experimental Design}
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Cats in New York}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+An article presented results on the number of injuries in cats that had
+plummeted from buildings in New York City, by the number of floors they
+had fallen. The damage caused by such falls was dubbed \emph{feline
+high-rise syndrome (FHRS)}.
+
+\end{tcolorbox}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-1-1.pdf}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.9\linewidth,height=\textheight,keepaspectratio]{Figures/cats.pdf}
+
+}
+
+\caption{Raining cats}
+
+\end{figure}%
+
+What can we conclude?
+
+High-quality samples are essential for sound science, even in the age of
+AI!
+
+Our ability to obtain reliable estimates of population quantities of
+interest, and to assess uncertainty, depends on how we \textbf{sample}
+populations. It is often at this early step in an investigation that the
+fate of a study is sealed, for better or worse.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/pop_cats.pdf}
+
+}
+
+\caption{Statistics}
+
+\end{figure}%
+
+In most situations, we do not observe the whole population. Instead, we
+obtain a sample. We need to ask ourselves: what do we want to do with
+the data? If our goal is to describe the sample data, we compute
+\textbf{descriptive statistics} and perform an \textbf{Exploratory Data
+Analysis (EDA)}.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/EDA.pdf}
+
+}
+
+\caption{EDA https://r-graph-gallery.com/}
+
+\end{figure}%
+
+If instead we want to make statements about the whole population, then
+beyond EDA we do \textbf{statistical inference}.
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/inference.pdf}
+
+}
+
+\caption{Statistical Inference}
+
+\end{figure}%
+
+\section{Data}\label{data}
+
+Your dataset (tabular data) is a collection of variables and
+observations---typically, one observation per row and one variable per
+column---filled in with values. A \textbf{variable} is a characteristic
+or quantity that you can measure; we will denote variables with capital
+letters (X), (Y), etc. A \textbf{value} is the state of the variable
+when you measure it; we will use lowercase letters (e.g., (x), (y)) for
+values. An \textbf{observation} is a set of measurements from one unit
+(e.g., one person or one animal).
+
+In the cats example, (X) = number of injuries is a variable, while (x =
+2) is one particular value. Similarly, (Y) = number of floors (stories)
+fallen is a variable, while (y = 5) is a particular value. An
+observation is the data collected for a particular cat (e.g., Luna), who
+fell from the fifth floor, resulting in 2 injuries.
+
+Variables can be \textbf{categorical} or \textbf{numerical}. Categorical
+variables indicate membership or attributes. Categorical variables whose
+categories can be ranked in a meaningful order are called
+\textbf{ordinal}. Examples include blood type (A, B, AB, O), survival
+status (alive or dead), and language. Numerical variables record the
+amount of something, for example body temperature, age, or number of
+friends. Numerical values can be \textbf{discrete} (number of friends)
+or \textbf{continuous} (body temperature).
+
+The most common languages used for analyzing data are SAS, R (and
+Bioconductor), and Python. In this course, we will use R with datasets
+in the form of \textbf{data frames} or \textbf{tibbles}.
+
+Let's generate some data by answering this poll.
+
+We can now read our dataset (poll results).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#library(readr)}
+
+\CommentTok{\#url \textless{}{-} "https://raw.github.com/JuliaPalacios/stats141\_2026/data/file1.csv"}
+\CommentTok{\#survey \textless{}{-} read\_csv(url) }
+\CommentTok{\#survey}
+\FunctionTok{library}\NormalTok{(palmerpenguins)}
+\NormalTok{penguins}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+# A tibble: 344 x 8
+   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g
+   <fct>   <fct>              <dbl>         <dbl>             <int>       <int>
+ 1 Adelie  Torgersen           39.1          18.7               181        3750
+ 2 Adelie  Torgersen           39.5          17.4               186        3800
+ 3 Adelie  Torgersen           40.3          18                 195        3250
+ 4 Adelie  Torgersen           NA            NA                  NA          NA
+ 5 Adelie  Torgersen           36.7          19.3               193        3450
+ 6 Adelie  Torgersen           39.3          20.6               190        3650
+ 7 Adelie  Torgersen           38.9          17.8               181        3625
+ 8 Adelie  Torgersen           39.2          19.6               195        4675
+ 9 Adelie  Torgersen           34.1          18.1               193        3475
+10 Adelie  Torgersen           42            20.2               190        4250
+# i 334 more rows
+# i 2 more variables: sex <fct>, year <int>
+\end{verbatim}
+
+A first step is to explore the data and describe them in summary form.
+Common checks include:
+
+\begin{itemize}
+\tightlist
+\item
+  Measures of center and measures of dispersion\\
+\item
+  Checking for missing values (e.g., ``NAs'')\\
+\item
+  Plotting data, frequency distributions, and charts\\
+\item
+  Talking with the person who collected the data (review the data
+  dictionary)
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{species)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Adelie Chinstrap    Gentoo 
+      152        68       124 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{summary}\NormalTok{(penguins}\SpecialCharTok{$}\NormalTok{flipper\_length\_mm)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+  172.0   190.0   197.0   200.9   213.0   231.0       2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#mean(penguins$flipper\_length\_mm, na.rm = TRUE)  \#ignore NA}
+\end{Highlighting}
+\end{Shaded}
+
+\textbf{Measures of center (or typical value):}
+
+\begin{itemize}
+\tightlist
+\item
+  Sample mean (average): (\bar\{x\} = \frac{1}{n}\sum\_\{i=1\}\^{}\{n\}
+  x\_i)
+\item
+  Median: the value that lies in the middle of the ordered sample
+\item
+  Mode: the value (or values) that occurs most frequently in a dataset
+\end{itemize}
+
+\textbf{Measures of dispersion:}
+
+\begin{itemize}
+\tightlist
+\item
+  Range: max − min\\
+\item
+  Interquartile range (IQR): the spread of (roughly) the middle 50\% of
+  the observations\\
+\item
+  Deviation: (y\_i - \bar\{y\})\\
+\item
+  Sample standard deviation:
+  (s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})\\
+\item
+  Sample variance: (s\^{}2)\\
+\item
+  Coefficient of variation: (cv=\frac{s \times 100\%}{\bar{y}})
+\end{itemize}
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-important-color!10!white, colframe=quarto-callout-important-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title=\textcolor{quarto-callout-important-color}{\faExclamation}\hspace{0.5em}{Why (n-1) in the standard deviation?}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+Note that the sum of deviations (y\_i-\bar\{y\}) is always zero. This
+means that, in a sample of (n) observations, there are only (n-1)
+independent pieces of information about the deviations from the average.
+The quantity (n-1) is called the \textbf{degrees of freedom} of the
+standard deviation (and the variance).
+
+\end{tcolorbox}
+
+\section{Plotting the data}\label{plotting-the-data}
+
+We will start with a \textbf{scatter plot}.
+
+A scatter plot is a tool for examining the relationship between two
+numerical variables (X) and (Y). It plots each observed ((x,y)) pair as
+a dot on the (x)-(y) plane.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{?DNase  }\CommentTok{\#what is the dataset about?}
+\FunctionTok{head}\NormalTok{(DNase) }\CommentTok{\#shows the first rows}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+  Run       conc density
+1   1 0.04882812   0.017
+2   1 0.04882812   0.018
+3   1 0.19531250   0.121
+4   1 0.19531250   0.124
+5   1 0.39062500   0.206
+6   1 0.39062500   0.215
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{names}\NormalTok{(DNase) }\CommentTok{\# gives you the name of the variables}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] "Run"     "conc"    "density"
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{plot}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{conc, DNase}\SpecialCharTok{$}\NormalTok{density,}
+  \AttributeTok{ylab =} \FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{y,}
+  \AttributeTok{xlab =} \FunctionTok{paste}\NormalTok{(}\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"labels"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x, }\FunctionTok{attr}\NormalTok{(DNase, }\StringTok{"units"}\NormalTok{)}\SpecialCharTok{$}\NormalTok{x),}
+  \AttributeTok{pch =} \DecValTok{3}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-6-1.pdf}}
+
+We can visualize \emph{frequency distributions} with \textbf{bar plots}
+(as well as jittered dotplots), \textbf{histograms}, and
+\textbf{boxplots}. Bar plots and histograms display the frequency of
+values (or grouped values). A boxplot displays the minimum, 1st
+quartile, median, 3rd quartile, and maximum at once. We can also compare
+multiple distributions at once.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(DNase}\SpecialCharTok{$}\NormalTok{density, }\AttributeTok{breaks=}\DecValTok{25}\NormalTok{, }\AttributeTok{main =} \StringTok{""}\NormalTok{,}\AttributeTok{xlab=}\StringTok{"Density"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-1.pdf}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{boxplot}\NormalTok{(density }\SpecialCharTok{\textasciitilde{}}\NormalTok{ Run, }\AttributeTok{data =}\NormalTok{ DNase)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{intro_files/figure-pdf/unnamed-chunk-7-2.pdf}}
+
+The \textbf{shape} of a distribution is often informative. It may be,
+for example: (a) symmetric and bell-shaped, (b) symmetric but not
+bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f)
+bimodal.
+
+Base R plotting functions are good for quick exploration, but they have
+aesthetic limitations. We will use a framework called the
+\textbf{grammar of graphics}, implemented in the package
+\textbf{ggplot2}.
+
+\chapter{Types of studies}\label{types-of-studies}
 
 Researchers gather information to make inferences about nature in a
 variety of settings. Much of statistics deals with \textbf{data
 analysis}, but statistical considerations often play a key role in the
 planning and design of scientific investigation.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Health and Marriage}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+Data in biology are obtained from either an \textbf{experimental study}
+or an \textbf{observational study}. In an experimental study, the
+researcher designs how to randomly assign different treatments to the
+individual units of study. In an observational study, on the other hand,
+the researcher has no control over which units fall into which groups.
 
-A study conducted in Finland found that people who were married at
-midlife were less likely to develop cognitive impairment (particularly
-Alzheimer's disease) later in life. However, from an
-\textbf{observational} study such as this we don't know whether marriage
-prevents later problems or whether persons who are likely to develop
-cognitive problems are less likely to get married.
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Marriage and Life expectancy}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-\end{tcolorbox}
-
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Sexual orientation}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
-
-Some research has suggested that there is a genetic basis for sexual
-orientation. One such study involved measuring the midsagittal area of
-he anterior commissure (AC) of the brain for 30 homosexual men, 30
-heterosexual men, and 30 heterosexual women. The research found that the
-AC tends to be larger in heterosexual women than in heterosexual men and
-that it is even larger in homosexual men.
+A study found that people who were married are more likely to live
+longer than single. However, from an \textbf{observational} study such
+as this we don't know whether marriage increases life expectancy or
+whether persons who are healthier are more likely to get married.
 
 \end{tcolorbox}
 
-\begin{figure}[H]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Aids as confounder}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/Samuels1.png}
+Some research has suggested that there is a biological basis for sexual
+orientation. One such study involved measuring a section of the brain
+for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women.
+The research found that the brain section tends to be larger in
+homosexual men and heterosexual women than in heterosexual men.
 
-}
+\end{tcolorbox}
 
-\caption{credit: SWS Book}
+\begin{longtable}[]{@{}lr@{}}
+\caption{Average brain area (mm\^{}2) by group}\tabularnewline
+\toprule\noalign{}
+group & Brain Area \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+group & Brain Area \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Heterosexual men & 11.19 \\
+Heterosexual women & 12.01 \\
+Homosexual men & 15.15 \\
+\end{longtable}
 
-\end{figure}%
+\pandocbounded{\includegraphics[keepaspectratio]{samples_files/figure-pdf/unnamed-chunk-1-1.pdf}}
 
 The previous two examples are based on \textbf{observational studies}.
 In an observational study the researcher systematically collects data
 from subjects, but only as an observer and not as someone who is
-manipulating the conditions. However, observational studies can be
+controling the conditions. However, observational studies can be
 misleading due to \textbf{confounding variables}. The context in which
 the data arose is important and tell us to be on the alert for the
 effects that other factors, such as the impact of AIDS, may have on the
-size of the anterior commissure.
+size of the section of the brain.
 
 \textbf{Confounders} are variables, other than the treatment, which are
 responsible for causing (at least part of) the observed difference in
@@ -703,34 +939,37 @@ and we can anticipate and prevent both other known and unknown
 explanations for the observed difference in outcomes between the treated
 and control groups.
 
-\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Toxicity in Dogs}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Effect of drug on cats}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-In part of one study, a new investigational drug was given to eight male
-and eight female dogs at doses of \(8 mg/kg\) and \(25 mg/kg\). Within
-each sex, the two doses were assigned at random to the eight dogs. Many
-``endpoints'' were measured, such as cholesterol, sodium, glucose, and
-so on, from blood samples, in order to screen for toxicity problems in
-the dogs before starting studies on humans. One endpoint was alkaline
-phosphatase level (or APL, measured in \(U/l\)).
+In part of one study, a new drug for lowering cholesterol was given to
+seven male and seven female cats at doses of \(2 mg/kg\) and
+\(6 mg/kg\). The two doses were assigned at random to the seven cats
+within each sex and cholesterol levels were measured after some time.
 
 \end{tcolorbox}
 
-\begin{figure}[H]
+\begin{table}
+\centering
+\caption{\label{tab:unnamed-chunk-2}Summary by Sex and Dose}
+\centering
+\begin{tabular}[t]{>{}l|c|c}
+\hline
+Sex & Mean (2mg) & Mean (6mg)\\
+\hline
+\textbf{Female} & 129.0132 & 157.5753\\
+\hline
+\textbf{Male} & 142.0265 & 120.2499\\
+\hline
+\end{tabular}
+\end{table}
 
-{\centering \includegraphics[width=0.95\linewidth,height=\textheight,keepaspectratio]{Figures/Samuels2.png}
-
-}
-
-\caption{credit: SWS Book}
-
-\end{figure}%
+\pandocbounded{\includegraphics[keepaspectratio]{samples_files/figure-pdf/unnamed-chunk-3-1.pdf}}
 
 The \textbf{design of this experiment} allows for the investigation of
-the \textbf{interaction} between two factors: sex of the dog and dose.
-That is, for females, the effect of increasing the dose from 8 to 25
-mg/kg was positive, although small (from 133.5 to 143 \(U/l\)), but for
-males the effect of increasing the dose from 8 to 25 \(mg/kg\) was
-negative (from 143 to 124.5 \(U/l\)).
+the \textbf{interaction} between two factors: sex of the cat and dose.
+That is, for females, the effect of increasing the dose was positive in
+lowering cholesterol, but for males the effect of increasing the dose
+was negative.
 
 By \textbf{randomly assigning} treatments (drug doses) to subjects
 (dogs), we can get around the problem of confounding that complicates
@@ -750,13 +989,32 @@ active treatment.
 
 \begin{figure}[H]
 
-{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/placebo.jpeg}
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/placebo.pdf}
 
 }
 
-\caption{credit: Javier Zarracina - Vox}
+\caption{Placebo}
 
 \end{figure}%
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: Effect of drug on cats}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+A group of people who reported mild peanut sensitivity took part in a
+study. They were given a flavored drink and were told it contained a
+small amount of peanut extract and might trigger itching, hives, or
+throat tightness. After drinking it, several participants reported
+tingling in the mouth, skin itching, and mild breathing discomfort.
+
+Later, the same participants were given an ``anti-allergy'' drink that
+they were told would block reactions. This time, most reported little or
+no symptoms.
+
+In reality, both drinks were identical and contained no peanut. The
+difference in symptoms appeared to be driven by expectation/power of
+suggestion, with negative expectations producing symptoms (nocebo) and
+reassuring expectations reducing them (placebo).
+
+\end{tcolorbox}
 
 How about the person evaluating the responses? This person can be
 subject to bias influencing the observation process itself. An
@@ -764,27 +1022,678 @@ experiment in which both the subjects and the persons making the
 evaluations of the response are blinded is called
 \textbf{double-blinded}.
 
-\%\%Activity on the need for control groups
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Example: ``Adherence effect'' in a blood-pressure trial (why you need a
+control group)}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
 
-\textbf{Exploratory Data Analysis (EDA)}
+Researchers test a new blood-pressure pill intended to reduce heart
+attacks. As the study goes on, some participants reliably take their
+pills, while others often miss doses. After 4 years, the researchers
+split the treatment group into high adherers (took ≥80\% of pills) and
+low adherers (\textless80\%).
 
-\textbf{Confirmatory Data Analysis (CDA)}
+At first glance, results look impressive: high adherers in the treatment
+group have far fewer heart attacks than low adherers---so it might seem
+the drug works.
 
-See Knuth (1984) for additional discussion of literate programming.
+But the study also included a placebo control group. When researchers do
+the same adherence split in the placebo group, they see the same
+pattern: placebo participants who took ≥80\% of their pills also had
+fewer heart attacks than placebo participants who didn't.
+
+\end{tcolorbox}
+
+\begin{longtable}[]{@{}llrr@{}}
+\caption{Illustrative example: apparent benefit among adherers appears
+in both drug and placebo groups (adherer effect).}\tabularnewline
+\toprule\noalign{}
+Group & Adherence & N & 4-year event rate (\%) \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+Group & Adherence & N & 4-year event rate (\%) \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+New BP drug & ≥ 80\% pills taken & 500 & 4.0 \\
+New BP drug & \textless{} 80\% pills taken & 500 & 9.0 \\
+Placebo (control) & ≥ 80\% pills taken & 500 & 4.5 \\
+Placebo (control) & \textless{} 80\% pills taken & 500 & 9.5 \\
+\end{longtable}
+
+Interpretation: the lower event rate is largely an ``adherer
+effect''---people who consistently follow the protocol may also exercise
+more, eat better, keep doctor appointments, and manage other risks.
+Without the placebo control group, the researchers could mistakenly
+credit the drug for benefits that are actually due to differences
+between adherers and nonadherers.
+
+Randomized allocation in medical settings may not be ethical. One
+possibility is to use \textbf{historical controls} (i.e.~previous
+patients with the same illnes who were treated with another therapy).
+The challenge is that overall characteristics of the patients may change
+with time. A possible solution is to do some statistical adjustment to
+control for differences in characteristics (for example age).
+
+\section{Sampling}\label{sampling}
+
+\textbf{Random Sampling}
+
+In order to answer scientific questions, we first must consider the
+scope of our study and identify our population. Typically we cannot
+observe the entire population and obtain a sample. How we gather our
+data should inform us about our choice of analysis method and on the
+validity of the study. Ideally our sample will be a
+\textbf{representative} subset of the population and avoid obtaining a
+\textbf{biased} sample.
+
+In a \textbf{simple random sample} (SRS) of size n, (a) every member of
+the population has the same chance of being included in the sample, and
+(b) each member is chosen independently of each other.
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{123}\NormalTok{)}
+\NormalTok{names}\OtherTok{\textless{}{-}}\FunctionTok{seq}\NormalTok{(}\DecValTok{1}\NormalTok{,}\DecValTok{100}\NormalTok{) }\CommentTok{\#data frame}
+\FunctionTok{sample}\NormalTok{(names,}\DecValTok{5}\NormalTok{,}\AttributeTok{replace=}\ConstantTok{FALSE}\NormalTok{)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1] 2
+[1] 31 79 51 14 67
 \end{verbatim}
+
+What woud be some practical concerns about SRS?
+
+Two other common sampling techniques are \textbf{the random cluster
+sample} where the sampling unit is the cluster and the
+\textbf{stratified random sample} where the sampling unit is the
+individual within a strata.
+
+Most of the examples in this class will assume SRS.
+
+\section{Sampling error}\label{sampling-error}
+
+How can we use a sample summary (statistic) to \textbf{infer} a
+population value? The answer is: with some error!. We will see later how
+statistical theory enables us to set limits on the amount of error. In
+particular, \textbf{sampling error} since we only have a sample. If the
+sample is not a simple random sample (SRS), it may be \emph{biased}:
+some individuals are more likely to be selected than others.
+
+\section{Nonsampling Errors}\label{nonsampling-errors}
+
+For example, the type of variable we are collecting may affect how
+truthfuly people respond. The way in which questions are worded may also
+influence the respond. \textbf{Nonresponse bias} resulting in bias
+caused by persons not responding to some of the questions in a survey or
+not returning the questionnaire. In general, patterns of missing data
+(MCAR, MAR, or MNAR) hamper studies by introducing bias.
+
+\begin{itemize}
+\item
+  MCAR (Missing Completely At Random): The probability a value is
+  missing does not depend on any data (neither observed nor unobserved).
+\item
+  MAR (Missing At Random): The probability a value is missing may depend
+  on observed data, but not on the missing value itself after
+  conditioning on what's observed.
+\end{itemize}
+
+-MNAR (Missing Not At Random): The probability a value is missing
+depends on the unobserved value itself (or other unobserved factors),
+even after accounting for observed data.
+
+It is then best to make every effort to avoid missing data. But if data
+are missing, it is crucial that the possible reasons are considered when
+interpreting and reporting results.
+
+\chapter{Generative Models for Discrete
+Data}\label{generative-models-for-discrete-data}
+
+\section{Probability distribution}\label{probability-distribution}
+
+A simple way to think about a probability distribution is as a compact
+description of many numbers. For example, imagine that all the heights
+of men in a population have been measured, and you want to describe or
+explain those measures to someone else. Suppose all these measures are
+contained in the following dataset:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(father.son, }\AttributeTok{package=}\StringTok{"UsingR"}\NormalTok{)}
+\NormalTok{x }\OtherTok{\textless{}{-}}\NormalTok{ father.son}\SpecialCharTok{$}\NormalTok{fheight}
+\end{Highlighting}
+\end{Shaded}
+
+One way to describe this information is to list all elements in the
+dataset, or to show a random sample of 10 elements from the list of
+1,078 total measures.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{length}\NormalTok{(x)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 1078
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# 1] 1078}
+\FunctionTok{round}\NormalTok{(}\FunctionTok{sample}\NormalTok{(x,}\DecValTok{10}\NormalTok{),}\DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 66.1 68.2 65.6 68.8 69.7 67.5 68.2 69.0 66.7 69.2
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7}
+\end{Highlighting}
+\end{Shaded}
+
+Another, more compact and descriptive way to represent the data is by
+using a \textbf{histogram}. Histograms show the proportion of values
+within intervals, \((a, b)\). In the previous example, plotting the
+heights as bars is more illustrative because we are usually more
+interested in intervals, such as the percentage of people whose heights
+fall between 70 and 71 inches. Histograms are also useful for describing
+different families of distributions. Here is the histogram of the height
+data:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(x, }\AttributeTok{xlab=}\StringTok{"Height (in inches)"}\NormalTok{, }\AttributeTok{main=}\StringTok{"Adult men heights"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{generative1_files/figure-pdf/unnamed-chunk-3-1.pdf}}
+
+\begin{center}
+\includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/hist_mheights.png}
+\end{center}
+
+With this plot, we can describe the number of observations within any
+given interval. For example, there are over 70 individuals taller than 6
+feet (72 inches).
+
+Summarizing a list of numbers is a powerful way to describe the
+distribution or, more importantly, the possible outcomes of a random
+variable. We do not know all possible outcomes of random variables, so
+instead of describing proportions, we describe probabilities. For
+instance, the probability of picking a random height within the interval
+\((a,b)\) is denoted with \(Pr(a \leq X \leq b)\).
+
+In summary, to define a distribution, we compute, for all possible
+values of \(a\), the proportion of numbers in our list that are below
+\(a\), which is called the \textbf{cumulative distribution function
+(CDF)}, represented by the following notation:
+\(F(a) \equiv \Pr(X \leq a)\) {[}and the proportion of numbers bigger
+than \(a\) is computed as: \(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\){]}.
+
+\section{Discrete probability models}\label{discrete-probability-models}
+
+In many contexts-such as molecular biology-we count events (e.g.,
+codons, DNA reads, CG digrams), producing discrete variables, unlike
+continuous measures such as mass or intensity. Some variables are binary
+(e.g., mutation: yes/no), while others have multiple levels (e.g.,
+genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or
+64 codons).
+
+To summarize categorical data, we tally the frequency of each level. In
+R, these are stored as factors, which make tabulation straightforward,
+as shown previously. For example, here we capture the different blood
+genotypes for 19 subjects in a vector which we tabulate.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{genotype }\OtherTok{=} \FunctionTok{c}\NormalTok{(}\StringTok{"AA"}\NormalTok{,}\StringTok{"AO"}\NormalTok{,}\StringTok{"BB"}\NormalTok{,}\StringTok{"AO"}\NormalTok{,}\StringTok{"OO"}\NormalTok{,}\StringTok{"AO"}\NormalTok{,}\StringTok{"AA"}\NormalTok{,}\StringTok{"BO"}\NormalTok{,}\StringTok{"BO"}\NormalTok{,}
+             \StringTok{"AO"}\NormalTok{,}\StringTok{"BB"}\NormalTok{,}\StringTok{"AO"}\NormalTok{,}\StringTok{"BO"}\NormalTok{,}\StringTok{"AB"}\NormalTok{,}\StringTok{"OO"}\NormalTok{,}\StringTok{"AB"}\NormalTok{,}\StringTok{"BB"}\NormalTok{,}\StringTok{"AO"}\NormalTok{,}\StringTok{"AO"}\NormalTok{)}
+\FunctionTok{table}\NormalTok{(genotype)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+genotype
+AA AB AO BB BO OO 
+ 2  2  7  3  3  2 
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# genotype}
+\DocumentationTok{\#\# AA AB AO BB BO OO }
+\DocumentationTok{\#\# 2  2  7  3  3  2 }
+\end{Highlighting}
+\end{Shaded}
+
+If the order in which the data are observed does not matter, we call the
+random variable exchangeable. In this case, the vector of frequencies is
+sufficient to capture all the relevant information in the data,
+providing an efficient way to summarize it.
+
+\subsection{Bernoulli trials}\label{bernoulli-trials}
+
+The \textbf{Bernoulli distribution} is the simplest probability model,
+based on a so-called Bernoulli random variable, which can take only two
+outcomes: failure or success. The key idea is that you have a parameter
+\(p\), which represents the probability of success, and the
+complementary event is called probability of failure \(1-p\):
+
+\textbf{\emph{Probability distribution:}}
+
+\(P(X=1) = p\)\\
+\(P(X=0) = 1-p\)
+
+For a fair coin, p = 0.5. For a biased coin that lands heads 70\% of the
+time, p = 0.7.
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Note}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+\textbf{Example:} Coin tosses\\
+Suppose we want to simulate a sequence of 15 fair tosses using R. To get
+the outcome of 15 tosses of a fair coin (p = 0.50), we write:
+
+\end{tcolorbox}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rbinom}\NormalTok{(}\DecValTok{15}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.5}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 0 0 0 1 0 0 1 1 1 1 0 0 1 0 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0}
+\end{Highlighting}
+\end{Shaded}
+
+Now observe the outcome when using a biased coin that lands heads 70\%
+of the time:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rbinom}\NormalTok{(}\DecValTok{15}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{size =} \DecValTok{1}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 1 1 0 1 1 0 1 0 1 1 1 1 0 1 0
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Question.} Notice that when you call the function above several
+times, you get different outcomes. Why is that?
+
+\textbf{\emph{Properties}}
+
+The \textbf{mean}, or \textbf{expected value}, of a Bernoulli
+distribution is given by \(p\), and the \textbf{variance} is defined as
+\(p(1-p)\), so the variance is maximized when p = 0.5, and it goes to 0
+as p approaches 0 or 1. The Bernoulli distribution is very important
+because it represents the building block of many other distributions.
+
+\subsection{Binomial success counts}\label{binomial-success-counts}
+
+In the previous example, if we are only interested in the number of
+heads (\(X=1\)), we just take the sum of the cells in the output vector,
+then reporting a single number instead of a binary vector. In R, we can
+do this as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{rbinom}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{size =} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 11}
+\end{Highlighting}
+\end{Shaded}
+
+The sum of multiple independent (or exchangeable) Bernoulli trials is
+called the \textbf{Binomial distribution} (in the example above, how
+many heads in 15 flips). That is, the number of successes in 15
+Bernoulli trials with a probability of success of 0.7 is called a
+\textbf{binomial} random variable, or a random variable that follows the
+B(15, 0.7) distribution. We can generate binomial samples in R as
+follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{set.seed}\NormalTok{(}\DecValTok{384569724}\NormalTok{)}
+\FunctionTok{rbinom}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{size =} \DecValTok{15}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 11
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 11}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Question.} Repeat this function call 10 times. What seems to be
+the most common outcome?
+
+\emph{Solution.} The most frequent value is 10.5\(\approx 11\). In fact,
+the theoretical proportion of times that we expect 10.5 to appear is the
+value of the probability that \(X=4\) if \(X\) follows B(15,0.7).
+
+The complete \textbf{probability mass distribution} is available by
+typing:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{probabilities }\OtherTok{=} \FunctionTok{dbinom}\NormalTok{(}\DecValTok{0}\SpecialCharTok{:}\DecValTok{15}\NormalTok{, }\AttributeTok{prob =} \FloatTok{0.7}\NormalTok{, }\AttributeTok{size =} \DecValTok{15}\NormalTok{)}
+\FunctionTok{round}\NormalTok{(probabilities, }\DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+ [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03
+[16] 0.00
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 }
+\DocumentationTok{\#\# [13] 0.09 0.03 0.00}
+\end{Highlighting}
+\end{Shaded}
+
+A barplot for this distribution in R, is as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{barplot}\NormalTok{(probabilities, }\AttributeTok{names.arg =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{15}\NormalTok{, }\AttributeTok{col =} \StringTok{"black"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{generative1_files/figure-pdf/unnamed-chunk-10-1.pdf}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/plot_bimomial.png}
+
+}
+
+\caption{Theoretical distribution of B(15, 0.7).}
+
+\end{figure}%
+
+Mathematically, the theoretical distribution of the binomial
+distribution is
+
+\textbf{\emph{Probability distribution:}}
+
+\[P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \ldots, n,\]
+where \(n\) is the number of trials, \(k\) is the number of successes,
+\(p\) is the probability of success, and
+\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\) is the binomial coefficient.
+
+\textbf{\emph{Properties}}
+
+The \textbf{mean} of a Binomial distribution is given by \(n \cdot p\)
+(in the figure, the highest bar around \(x \approx 11\), or
+\(n(=15)\cdot p(=0.7)\), and the \textbf{variance} is defined as
+\(np(1-p) = (15)(0.7)(0.3) = 3.15\).
+
+\subsection{Poisson distributions}\label{poisson-distributions}
+
+When the probability of success \(p\) is small and the number of trials
+\(n\) is large, the Binomial distribution can be approximated by a
+\textbf{Poisson distribution} with parameter \(\lambda = np\), which
+provides a simple model for describing the data.
+
+\textbf{\emph{Probability distribution:}}
+
+\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,\]
+where \(k\) is the number of events, \(\lambda\) is the average number
+of events per interval, and \(e\approx 2.718\) is the Euler's number.
+
+\textbf{\emph{Properties}}
+
+An interesting characteristic of the Poisson distribution is that the
+\textbf{mean} and the \textbf{variance} are both equal to
+\(\lambda = np\).
+
+\begin{tcolorbox}[enhanced jigsaw, arc=.35mm, bottomrule=.15mm, bottomtitle=1mm, breakable, colback=white, colbacktitle=quarto-callout-note-color!10!white, colframe=quarto-callout-note-color-frame, coltitle=black, left=2mm, leftrule=.75mm, opacityback=0, opacitybacktitle=0.6, rightrule=.15mm, title={Note}, titlerule=0mm, toprule=.15mm, toptitle=1mm]
+
+\textbf{Example:} Human Immunodeficiency Virus (HIV)\\
+Consider a probability model for HIV mutations, where the data
+generation process is described by a Poisson model. That is, mutations
+occur at a constant rate of \(p=5 x 10^{-4}\) per nucleotide per
+replication cycle, independently across positions. Given a genome size
+of approximately \$n\$ nucleotides, the total number of mutations per
+cycle follows a \(\text{Poisson}(\lambda)\) distribution.
+
+As the genome size of HIV is about \(n=10^4\), this model predicts an
+expected number of mutations close to 5 \((np=10^4 x 5 x 10^{-4})\) per
+replication cycle, with standard error \(\sqrt{\lambda}\). For example,
+to find the probability of exactly 3 mutations under a
+\(\text{Poisson}(5)\) model, we can use R:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{dpois}\NormalTok{(}\AttributeTok{x=}\DecValTok{3}\NormalTok{, }\AttributeTok{lambda=}\DecValTok{5}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+[1] 0.1403739
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\# [1] 0.1403739}
+\end{Highlighting}
+\end{Shaded}
+
+This means that the chance of seeing exactly three events is about 0.14.
+
+Now we can visualize the distribution of the values from a particular
+range, from 0 to 12 for example, we proceed as follows:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{y }\OtherTok{\textless{}{-}} \FunctionTok{dpois}\NormalTok{(}\AttributeTok{x=}\DecValTok{0}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{lambda=}\DecValTok{5}\NormalTok{)}
+\DocumentationTok{\#\# [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863}
+\DocumentationTok{\#\# [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240}
+\FunctionTok{barplot}\NormalTok{(y, }\AttributeTok{names.arg =} \DecValTok{0}\SpecialCharTok{:}\DecValTok{12}\NormalTok{, }\AttributeTok{col =} \StringTok{"red"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\pandocbounded{\includegraphics[keepaspectratio]{generative1_files/figure-pdf/unnamed-chunk-12-1.pdf}}
+
+\begin{figure}[H]
+
+{\centering \includegraphics[width=0.5\linewidth,height=\textheight,keepaspectratio]{Figures/barplot_hiv.png}
+
+}
+
+\caption{Probabilities of seeing 0 to 12 mutations, modeled as a
+Poisson(5) distribution.}
+
+\end{figure}%
+
+This example shows that the Poisson distribution is a good model for
+rare events such as mutation (notice that \(p\) is very low).
+
+\end{tcolorbox}
+
+\subsection{Multinomial distributions}\label{multinomial-distributions}
+
+In the Binomial model, we had only two possible outcomes, success and
+failure, with probabilities \(p\) and \(1-p\), respectively. How do we
+extend that model for more than 2 outcomes? For example, when studying
+counts of the four nucleotides in DNA: \(\{A, C, G, T\}\). We use a
+\textbf{Multinomial model}, where we assign different probabilities to
+the different outcomes. In the case of the four DNA nucleotides, for
+example, we can represent the respective probabilities as \(p_{A}\),
+\(p_{C}\), \(p_{G}\), and \(p_{T}\), where the probabilities sum to 1:
+\(p_{A}+p_{C}+p_{G}+p_{T}=1\), as in the Binomial model.
+
+The mathematical formulation for the Multinomial model for \(m\) counts
+\((x_{1}, x_{2}, \ldots, x_{m})\) for outcomes of \(n\) draws with
+probabilities \(p_{1}, p_{2}, \ldots, p_{m}\) is as follows:
+
+\textbf{\emph{Probability distribution:}}
+
+\begin{align}
+P(x_{1}, x_{2}, \ldots, x_{m}) &= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^{m} p_{i}^{x_{i}} \\
+&= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
+\end{align}
+
+To generate draws that are consistent with this model, we use R commands
+to generate vector counts with each having equal probability of
+selection (1/4 in the example of 4 nucleotides). For example, suppose we
+have 8 characters of four different equally likely types:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{pvec }\OtherTok{=} \FunctionTok{rep}\NormalTok{(}\DecValTok{1}\SpecialCharTok{/}\DecValTok{4}\NormalTok{, }\DecValTok{4}\NormalTok{)}
+\FunctionTok{t}\NormalTok{(}\FunctionTok{rmultinom}\NormalTok{(}\DecValTok{1}\NormalTok{, }\AttributeTok{prob =}\NormalTok{ pvec, }\AttributeTok{size =} \DecValTok{8}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+     [,1] [,2] [,3] [,4]
+[1,]    4    2    1    1
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\DocumentationTok{\#\#      [,1] [,2] [,3] [,4]}
+\DocumentationTok{\#\# [1,]    4    2    1    1}
+\end{Highlighting}
+\end{Shaded}
+
+\emph{Question} Try the code without using the t() function; what does t
+stand for?
+
+Reference: (\textbf{holmes2018modern?})
+
+\part{Activities}
+
+\chapter{Activity Lecture 1}\label{sec-week1}
+
+Name:
+
+\section{Descriptive Statistics}\label{descriptive-statistics}
+
+\begin{itemize}
+\item
+  Read sections 1.1 1.2 of
+  \href{https://r4ds.hadley.nz/data-visualize.html}{r4ds} and solve
+  1.2.5 excercises 2,3, and 7.
+\item
+  Analyze the variable flipper\_length\_mm in palmerpenguins/penguins by
+  displaying the measures of center and disperson. Why the measures of
+  center differ?
+\item
+  Multiply the variable by 10 and recompute the variance and the
+  coefficient of variation. What do you conclude?
+\item
+  Change the third observation of the variable from 195 to 1000 and
+  recompute the measures of center. What do you conclude?
+\item
+  Read section 1.4 and display the histogram of flipper\_length\_mm.
+  What is the shape of the distribution? What can you conclude? How does
+  this support your conclusion of previous points?
+\item
+  What are the quartiles?
+\end{itemize}
+
+\chapter{Activity Lecture 2}\label{sec-week2}
+
+Name:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  What is the problem with this statement: A study finds that people who
+  carry lighters have higher rates of lung cancer than people who
+  don't.?
+\item
+  A town announces that a new 5G cell tower will be switched on starting
+  April 1. In the weeks that follow, some residents report headaches,
+  dizziness, poor sleep, and nausea, and attribute these symptoms to
+  ``radiation from the tower.'' Local clinics note an uptick in
+  stress-related complaints. Later it turns out the tower was not
+  activated until May because final inspections were delayed---so there
+  was no change in exposure during April. Explain how the placebo
+  effect/nocebo effect is related to this example.
+\item
+  In a study of physical therapy for knee pain, patients are randomly
+  divided into two groups. One group receives a new ``hands-on'' therapy
+  technique and the other group receives standard stretching exercises.
+  The physical therapist who developed the new technique evaluates each
+  patient's improvement and compares results between the two groups.
+  Explain how lack of blinding could bias the experiment in favor of the
+  new therapy.
+\item
+  Researchers studied 2,050 adults over age 60 living in Arizona. They
+  found that those who regularly participated in community volunteer
+  activities were more likely to have lower levels of C-reactive protein
+  (CRP), a blood marker linked to inflammation, than those who did not
+  volunteer. Does this mean that volunteering improves one's health? Why
+  or why not?
+\item
+  In each of the following studies, identify which sampling technique
+  best describes the way the data were collected (or could be treated as
+  if they were collected): simple random sampling, random cluster
+  sampling, or stratified random sampling. For cluster samples identify
+  the clusters; for stratified samples identify the strata.
+\end{enumerate}
+
+\begin{enumerate}
+\def\labelenumi{(\alph{enumi})}
+\item
+  All 312 patients seen during one month at four randomly selected
+  urgent-care clinics in a state were included in a study of average
+  wait times.
+\item
+  A total of fifteen 1-liter water samples were collected from random
+  locations along a lake to measure nitrate concentration.
+\item
+  In a temperature study, five readings were taken at each of three
+  preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen
+  readings.
+\item
+  A total of 30 apartments were chosen at random from a citywide list to
+  estimate average monthly electricity use.
+\item
+  Thirty-six employees (twelve randomly selected from each of three
+  departments: Sales, Engineering, and Customer Support) were surveyed
+  about job satisfaction.
+\end{enumerate}
 
 \bookmarksetup{startatroot}
 
-\chapter{Summary}\label{summary-1}
+\chapter{Summary}\label{summary}
 
 In summary, this book has no content whatsoever.
 
@@ -798,50 +1707,255 @@ In summary, this book has no content whatsoever.
 [1] 2
 \end{verbatim}
 
-\bookmarksetup{startatroot}
+\part{Sections}
 
-\chapter*{References}\label{references}
-\addcontentsline{toc}{chapter}{References}
+\chapter{Week 1 Section}\label{week-1-section}
 
-\markboth{References}{References}
+\section{Getting Ready}\label{getting-ready}
 
-\protect\phantomsection\label{refs}
-\begin{CSLReferences}{1}{1}
-\bibitem[\citeproctext]{ref-knuth84}
-Knuth, Donald E. 1984. {``Literate Programming.''} \emph{Comput. J.}
-(USA) 27 (2): 97--111. \url{https://doi.org/10.1093/comjnl/27.2.97}.
+Make sure to install
+\href{https://rstudio-education.github.io/hopr/starting.html}{R} and
+\href{https://posit.co/download/rstudio-desktop/}{R-Studio} before
+section.
 
-\end{CSLReferences}
+\section{Quarto}\label{quarto}
 
-\part{Discussion.qmd}
+Quarto enables you to weave together content and executable code into a
+finished document. To learn more about Quarto see
+\url{https://quarto.org}.
 
-\chapter{Summary}\label{summary-2}
-
-In summary, this book has no content whatsoever.
+\section{Loading and summarizing the
+data}\label{loading-and-summarizing-the-data}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\CommentTok{\# Uncomment the next lines if you haven\textquotesingle{}t installed the packages yet:}
+\CommentTok{\# install.packages(c("openintro", "dplyr", "ggplot2"))}
+
+\FunctionTok{library}\NormalTok{(openintro)}
+\FunctionTok{library}\NormalTok{(dplyr)}
+\FunctionTok{library}\NormalTok{(ggplot2)}
+
+\FunctionTok{data}\NormalTok{(email)}
+\FunctionTok{head}\NormalTok{(email)}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1] 2
+# A tibble: 6 x 21
+  spam  to_multiple from     cc sent_email time                image attach
+  <fct> <fct>       <fct> <int> <fct>      <dttm>              <dbl>  <dbl>
+1 0     0           1         0 0          2011-12-31 22:16:41     0      0
+2 0     0           1         0 0          2011-12-31 23:03:59     0      0
+3 0     0           1         0 0          2012-01-01 08:00:32     0      0
+4 0     0           1         0 0          2012-01-01 01:09:49     0      0
+5 0     0           1         0 0          2012-01-01 02:00:01     0      0
+6 0     0           1         0 0          2012-01-01 02:04:46     0      0
+# i 13 more variables: dollar <dbl>, winner <fct>, inherit <dbl>, viagra <dbl>,
+#   password <dbl>, num_char <dbl>, line_breaks <int>, format <fct>,
+#   re_subj <fct>, exclaim_subj <dbl>, urgent_subj <fct>, exclaim_mess <dbl>,
+#   number <fct>
 \end{verbatim}
 
-\chapter{Summary}\label{summary-3}
-
-In summary, this book has no content whatsoever.
+\section{1. How many rows and columns are in the
+dataset?}\label{how-many-rows-and-columns-are-in-the-dataset}
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\DecValTok{1} \SpecialCharTok{+} \DecValTok{1}
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Alternative (optional, using dplyr-style workflow):
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{2. What types of variables are present (e.g., numeric,
+categorical)?}\label{what-types-of-variables-are-present-e.g.-numeric-categorical}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{\texorpdfstring{3. What does the variable \texttt{spam}
+represent?}{3. What does the variable spam represent?}}\label{what-does-the-variable-spam-represent}
+
+Write your answer here.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Summary statistics}
+\FunctionTok{summary}\NormalTok{(email}\SpecialCharTok{$}\NormalTok{spam)      }\CommentTok{\# Is the email spam?}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{verbatim}
-[1] 2
+   0    1 
+3554  367 
 \end{verbatim}
+
+\section{4. What is the median number of characters in an
+email?}\label{what-is-the-median-number-of-characters-in-an-email}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Alternative with \texttt{dplyr}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{5. What proportion of emails are
+spam?}\label{what-proportion-of-emails-are-spam}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Alternative with \texttt{dplyr}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Subsetting}\label{subsetting}
+
+\begin{itemize}
+\item
+  \texttt{email\$exclaim\_mess} is the numeric variable of interest.
+\item
+  \texttt{email\$spam} is the grouping variable.
+\item
+  \texttt{mean} or \texttt{sd} is the function to apply.
+\item
+  \texttt{na.rm\ =\ TRUE} removes missing values when calculating the
+  mean.
+\end{itemize}
+
+Option 1: By hand
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Subset rows to only include spam emails}
+\NormalTok{spam }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(email, spam }\SpecialCharTok{==} \StringTok{"1"}\NormalTok{)}
+
+\CommentTok{\# Mean and standard deviation of exclamation marks in spam emails}
+\CommentTok{\# Your code here}
+
+
+\CommentTok{\# Subset rows to only include non{-}spam emails}
+\NormalTok{not\_spam }\OtherTok{\textless{}{-}} \FunctionTok{subset}\NormalTok{(email, spam }\SpecialCharTok{==} \StringTok{"0"}\NormalTok{)}
+
+\CommentTok{\# Mean and standard deviation of exclamation marks in non{-}spam emails}
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Option 2: Using \texttt{tapply()}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Mean exclamation marks by spam status}
+\CommentTok{\# Your code here}
+
+\CommentTok{\# Standard deviation of exclamation marks by spam status}
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Option 3: Alternative with \texttt{dplyr}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{6. On average, do spam emails have more exclamation marks than
+non-spam
+emails?}\label{on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails}
+
+Write your answer here.
+
+\section{7. What do the differences in standard deviation between the
+email types tell you about the differences in variability in exclamation
+marks?}\label{what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks}
+
+Write your answer here.
+
+\section{8. Create a histogram of the number of characters in
+emails.}\label{create-a-histogram-of-the-number-of-characters-in-emails.}
+
+Base R version:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Alternative with \texttt{ggplot2}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{9. Describe the shape, center, and spread of the distribution
+of number of characters in incoming emails for this email
+account.}\label{describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.}
+
+Write your answer here.
+
+\section{10. Create a boxplot of number of characters by spam
+status.}\label{create-a-boxplot-of-number-of-characters-by-spam-status.}
+
+Base R version:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+Alternative with \texttt{ggplot2}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Your code here}
+\end{Highlighting}
+\end{Shaded}
+
+\section{Other tutorials:}\label{other-tutorials}
+
+\url{https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html}
+
+\url{https://ggplot2.tidyverse.org/articles/ggplot2.html}
+
+\part{Quizzes}
+
+\chapter{Quiz 1 - April 10}\label{quiz-1---april-10}
+
+Quiz 1 will cover Introduction to Statistics and Types of Studies.
+
+Duration: 10 minutes with 10 minutes extension
 
 
 

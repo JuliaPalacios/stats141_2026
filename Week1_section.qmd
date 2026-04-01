@@ -1,0 +1,223 @@
+---
+#title: "Week 1 Section"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+resources:
+  - Week1_section_download.qmd
+---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+Week 1 Section
+
+</h1>
+
+<a href="Week1_section_download.qmd" class="download-btn" download> ⬇ Download Starter File </a>
+:::
+
+
+
+
+Make sure to install [R](https://rstudio-education.github.io/hopr/starting.html) and [R-Studio](https://posit.co/download/rstudio-desktop/) before section.
+
+## Quarto
+
+Quarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see <https://quarto.org>.
+
+## Loading and summarizing the data
+
+```{r}
+# Uncomment the next lines if you haven't installed the packages yet:
+# install.packages(c("openintro", "dplyr", "ggplot2"))
+
+library(openintro)
+library(dplyr)
+library(ggplot2)
+
+data(email)
+head(email)
+```
+
+## 1. How many rows and columns are in the dataset?
+
+```{r}
+# Your code here
+```
+
+Alternative (optional, using dplyr-style workflow):
+
+```{r}
+# Your code here
+```
+
+## 2. What types of variables are present (e.g., numeric, categorical)?
+
+```{r}
+# Your code here
+```
+
+## 3. What does the variable `spam` represent?
+
+Write your answer here.
+
+```{r}
+# Summary statistics
+summary(email$spam)      # Is the email spam?
+```
+
+## 4. What is the median number of characters in an email?
+
+```{r}
+# Your code here
+```
+
+Alternative with `dplyr`:
+
+```{r}
+# Your code here
+```
+
+## 5. What proportion of emails are spam?
+
+```{r}
+# Your code here
+```
+
+Alternative with `dplyr`:
+
+```{r}
+# Your code here
+```
+
+## Subsetting
+
+-   `email$exclaim_mess` is the numeric variable of interest.
+
+-   `email$spam` is the grouping variable.
+
+-   `mean` or `sd` is the function to apply.
+
+-   `na.rm = TRUE` removes missing values when calculating the mean.
+
+Option 1: By hand
+
+```{r}
+# Subset rows to only include spam emails
+spam <- subset(email, spam == "1")
+
+# Mean and standard deviation of exclamation marks in spam emails
+# Your code here
+
+
+# Subset rows to only include non-spam emails
+not_spam <- subset(email, spam == "0")
+
+# Mean and standard deviation of exclamation marks in non-spam emails
+# Your code here
+```
+
+Option 2: Using `tapply()`
+
+```{r}
+# Mean exclamation marks by spam status
+# Your code here
+
+# Standard deviation of exclamation marks by spam status
+# Your code here
+```
+
+Option 3: Alternative with `dplyr`:
+
+```{r}
+# Your code here
+```
+
+## 6. On average, do spam emails have more exclamation marks than non-spam emails?
+
+Write your answer here.
+
+## 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?
+
+Write your answer here.
+
+## 8. Create a histogram of the number of characters in emails.
+
+Base R version:
+
+```{r}
+# Your code here
+```
+
+Alternative with `ggplot2`:
+
+```{r}
+# Your code here
+```
+
+## 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.
+
+Write your answer here.
+
+## 10. Create a boxplot of number of characters by spam status.
+
+Base R version:
+
+```{r}
+# Your code here
+```
+
+Alternative with `ggplot2`:
+
+```{r}
+# Your code here
+```
+
+## Other tutorials:
+
+<https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html>
+
+<https://ggplot2.tidyverse.org/articles/ggplot2.html>
+
+
+
+

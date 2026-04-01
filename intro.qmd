@@ -2,19 +2,19 @@
 
 ## Statistics
 
-Researchers in the life sciences analyze **data** that exhibit some **variability**. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) prepared identically may have different results due to contamination, thermal damage, etc. The challenge to the life scientist is to discern the **signal** from the **noise**.
+Researchers in the life sciences analyze **data** that exhibit **variability**. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) assays prepared identically may yield different results due to contamination, thermal damage, etc. The challenge for the life scientist is to discern the **signal** from the **noise**.
 
-**Statistics** is the science of understanding data (collection, analysis and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of **data science**.
+**Statistics** is the science of understanding data (collection, analysis, and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of **data science**.
 
-![Data Science, credit: Lee et al. 2018 ](/Figures/DataScience.ppm){fig-align="center" width="50%"}
+![Data Science, credit: Lee et al. 2018](/Figures/DataScience.ppm){fig-align="center" width="50%"}
 
-::: {.callout-note icon=false}
+::: {.callout-note icon="false"}
 ## Example: Cats in New York
-An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).
+
+An article presented results on the number of injuries in cats that had plummeted from buildings in New York City, by the number of floors they had fallen. The damage caused by such falls was dubbed *feline high-rise syndrome (FHRS)*.
 :::
 
-
-::: {.columns}
+:::::: columns
 ::: {.column width="50%"}
 ```{r}
 #| echo: false
@@ -44,60 +44,68 @@ ggplot(mean_vec, aes(x = as.numeric(stories), y = mean_injuries)) +
   geom_point() +geom_line()+ theme(
     axis.title = element_text(size = 16),
     axis.text  = element_text(size = 14)
-  )
+  )+labs(x="Stories",y="Mean # injuries")
   
 ```
 :::
+
 ::: {.column width="50%"}
 ![Raining cats](/Figures/cats){fig-align="center" width="90%"}
 :::
+
+```{r,echo=FALSE}
+# knitr::kable(
+#   mean_vec %>% arrange(stories),
+#   format = "pipe",
+#   digits = 2
+# )
+# mean_vec %>%
+#   arrange(stories) %>%
+#   gt() %>%
+#   tab_header(title = "Mean injuries by stories") %>%
+#   cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
+```
 
 What can we conclude?
 
 High-quality samples are essential for sound science, even in the age of AI!
 
-
-Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we **sample** populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.
-
+Our ability to obtain reliable estimates of population quantities of interest, and to assess uncertainty, depends on how we **sample** populations. It is often at this early step in an investigation that the fate of a study is sealed, for better or worse.
 
 ![Statistics](/Figures/pop_cats){fig-align="center" width="95%"}
 
-
-In most situations, we do not observe the whole population. Instead we obtain a sample. What we need to ask ourselves is what do we want to do with the data? If our goal is to describe the sample data, we generate **descriptive statistics** and perform an **Exploratory Data Analysis (EDA)**. 
-
+In most situations, we do not observe the whole population. Instead, we obtain a sample. We need to ask ourselves: what do we want to do with the data? If our goal is to describe the sample data, we compute **descriptive statistics** and perform an **Exploratory Data Analysis (EDA)**.
 
 ![EDA https://r-graph-gallery.com/](/Figures/EDA){fig-align="center" width="95%"}
 
-
-If instead, we want to make statements about the whole population, then apart from EDA, we do **statistical inference**. 
-
+If instead we want to make statements about the whole population, then beyond EDA we do **statistical inference**.
 
 ![Statistical Inference](/Figures/inference){fig-align="center" width="95%"}
 
 ## Data
-Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A **variable** is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A **value** is the state of the variable when you measure it. We will use letter case for values. An **observation** is a set of measurements. 
 
-In the cats example, X=Number of injuries is a variable while x=2 is one particular value. Similarly, Y=Number of stories while y=5 is a particular value. An observation is the data collection of a particular cat Luna, who fell from the fifth floor, resulting with 2 injuries  
+Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A **variable** is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A **value** is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An **observation** is a set of measurements from one unit (e.g., one person or one animal).
 
+In the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.
 
-Variables can be **categorical** or **numerical**. Categorical variables tell us membership or attribute. When the categories can be ranked in a meaningful order are said to be **ordinal**. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).   
+Variables can be **categorical** or **numerical**. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called **ordinal**. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be **discrete** (number of friends) or **continuous** (body temperature).
 
+The most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of **data frames** or **tibbles**.
 
+Let’s generate some data by answering this poll.
 
-The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of **data frames** or  **tibbles**.
-
-Let's generate some data by answering this poll.
 
 ```{r,echo=FALSE}
 library(qrcode)
 qr <- qrcode::qr_code("https://docs.google.com/forms/d/e/1FAIpQLSecc961cTxMxEiZTbzGC3luAM6xE8atUWFM4-_mjCDXZBmhWA/viewform?usp=publish-editor")
 generate_svg(qr, filename = "Figures/poll.svg")
 ```
-  
+
 
 ![poll](/Figures/poll.svg){fig-align="center" width="40%"}
 
-We can now read our dataset (poll results)
+We can now read our dataset (poll results).
+
 ```{r}
 #library(readr)
 
@@ -109,231 +117,66 @@ penguins
 
 ```
 
-A first step is to explore the data and describe the data in summary form. Common checks:
+A first step is to explore the data and describe them in summary form. Common checks include:
 
-* Measures of center, and measures of dispersion
-
-* Check for "NAs"
-
-* Plot data, frequency distributions and charts
-
-* Talk with the person who collected it! (review the data dictionary)
+-   Measures of center and measures of dispersion\
+-   Checking for missing values (e.g., "NAs")\
+-   Plotting data, frequency distributions, and charts\
+-   Talking with the person who collected the data (review the data dictionary)
 
 
 ```{r}
 summary(penguins$species)
 summary(penguins$flipper_length_mm)
+#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA
 ```
 
+**Measures of center (or typical value):**
 
-Measures of center (or typical value):
-
-* Sample mean or average: 
-$\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
-* Median: the value that most nearly lies in the middle of the sample
-* Mode: the value (or values) that occurs most frequently in a dataset 
-
-When do these measures differ?
+-   Sample mean (average): ($\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$)
+-   Median: the value that lies in the middle of the ordered sample
+-   Mode: the value (or values) that occurs most frequently in a dataset
 
 
-Measures of dispersion:
+**Measures of dispersion:**
 
-* Range: Max-Min
-* Deviation: $y_{i}-\bar{y}$
-* Sample standard deviation $s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}$
+-   Range: max − min
+-   Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations\
+-   Deviation: $y_i - \bar{y}$
+-   Sample standard deviation: $s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})$
+-   Sample variance: $s^2$
+-   Coefficient of variation: cv=$\frac{s \times 100\%}{\bar{y}}$
 
-::: {.callout-important}
-## Why $n-1$?
+::: callout-important
+## Why (n-1) in the standard deviation?
 
-Note that the sum of deviations $y_{i}-\bar{y}$ is always zero. This means that in a sample of $n$ observations there are only $n-1$ units of information about the derivations from the average. The quantity $n-1$ is called the **degrees of freedom** of the standard deviation (or the variance).
+Note that the sum of deviations (y_i-\bar{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the **degrees of freedom** of the standard deviation (and the variance).
 :::
 
-::: {.callout-note icon=false}
+## Plotting the data
 
-## Example: Marriage and Life expectancy
-A study found that people who were married are more likely to live longer than single. However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married. 
-:::
+We will start with a **scatter plot**.
 
-   
-## Types of studies
-
-Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with **data analysis**, but statistical considerations often play a key role in the planning and design of scientific investigation. 
-
-Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher assigns different treatment groups or values of an explanatory variable randomly to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
-      
-::: {.callout-note icon=false}
-
-## Example: Marriage and Life expectancy
-A study found that people who were married are more likely to live longer than single. However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married. 
-:::
-
-      
-::: {.callout-note icon=false}
-
-## Example: Aids as confounder
-Some research has suggested that there is a biological basis for sexual orientation. One such study involved measuring a section of the brain for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women. The research found that the brain section tends to be larger in homosexual men and heterosexual women than in heterosexual men.  
-:::
-
-```{r, echo=FALSE}
-library(knitr)
-set.seed(123)
-
-n <- 40
-brain <- data.frame(
-  group = factor(rep(c("Homosexual men", "Heterosexual men", "Heterosexual women"),
-                     each = n)),
-  brain_area_mm2 = c(
-    rnorm(n, mean = 15.1, sd = 1.0),
-    rnorm(n, mean = 11.2, sd = 1.0),
-    rnorm(n, mean = 12.0, sd = 1.0)
-  )
-)
-
-# check group means (will be close, not exact)
-mean_table<-aggregate(brain_area_mm2 ~ group, data = brain, mean)
-names(mean_table)[2] <- "Brain Area"
-kable(mean_table, digits = 2, caption = "Average brain area (mm^2) by group")
-x <- jitter(as.numeric(brain$group), amount = 0.12)
-cols <- rep("steelblue", nrow(brain))
-
-# indices within each group to color red
-i_hom <- which(brain$group == "Homosexual men")[sample(1:40,5)]
-i_hetm <- which(brain$group == "Heterosexual men")[sample(1:40,32)]
-i_hetw <- which(brain$group == "Heterosexual women")[sample(1:40,39)]
-
-cols[c(i_hom, i_hetm, i_hetw)] <- "red"
-
-plot(x, brain$brain_area_mm2,
-     xaxt = "n",
-     xlab = "Group", ylab = expression("Brain area (mm"^2*")"),
-     pch = 16, col = cols)
-
-axis(1, at = 1:3, labels = levels(brain$group))
-legend("topleft",
-       legend = c("AIDS", "No AIDS"),
-       col = c("red", "black"),
-       pch = 16, bty = "n")
-```
-
-
-
-The previous two examples are based on **observational studies**. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is controling the conditions. However, observational studies can be misleading due to **confounding variables**. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the section of the brain. 
-
-**Confounders** are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.
-
-**How can we mitigate confounding?** Create treatment and control groups that are as similar as possible except for the treatment level and we can anticipate and prevent both other known and unknown explanations for the observed difference in outcomes between the treated and control groups.
-
-
-::: {.callout-note icon=false}
-
-## Example: Effect of drug on cats
-In part of one study, a new drug for lowering cholesterol was given to seven male and seven female cats at doses of $2 mg/kg$ and $6 mg/kg$. The two doses were assigned at random to the seven cats within each sex and cholesterol levels were measured after some time.
-:::
-
-::: {.columns}
-::: {.column width="50%"}
-
-```{r,echo=FALSE}
-# Packages
-suppressPackageStartupMessages({
-  library(dplyr)
-  library(ggplot2)
-  library(knitr)
-  library(kableExtra)
-})
-
-
-set.seed(7)
-
-n <- 5
-sd <- 5
-
-spec <- tibble::tibble(
-  Dose = c("2mg","2mg","6mg","6mg"),
-  Sex  = c("Male","Female","Male","Female"),
-  target_mean = c(140, 130, 120, 150)
-)
-
-df <- spec |>
-  group_by(Dose, Sex) |>
-  do({
-    mu <- .$target_mean[1]
-    vals <- rnorm(n, mean = mu, sd = sd)
-    tibble::tibble(Value = vals, CatNum = seq_len(n))
-  }) |>
-  ungroup() |>
-  mutate(CatID = paste0(Dose, "_", substr(Sex, 1, 1), CatNum)) |>
-  select(CatID, Sex, Dose, Value)
-
-# Nicer summary table
-sum_tbl <- df |>
-  group_by(Sex, Dose) |>
-  summarise(
-    mean = mean(Value),
-    .groups = "drop"
-  ) 
-
-# Table (HTML) with kableExtra
-sum_tbl |>
-  tidyr::pivot_wider(names_from = Dose, values_from = mean) |>
-  kbl(
-    caption = "Summary by Sex and Dose",
-    col.names = c("Sex","Mean (2mg)", "Mean (6mg)"),
-    align = "lcc"
-  ) |>
-  kable_styling(full_width = FALSE, bootstrap_options = c("striped", "hover", "condensed")) |>
-  column_spec(1, bold = TRUE)
-```
-:::
-:::{.column width="50%"}
-```{r,echo=FALSE}
-ggplot(df, aes(x = Sex, y = Value, color = Dose)) +
-  geom_point(
-    position = position_jitterdodge(jitter.width = 0.12, dodge.width = 0.5),
-    alpha = 0.85, size = 2.6
-  ) +
-  stat_summary(
-    fun = mean, geom = "point",
-    position = position_dodge(width = 0.5),
-    shape = 18, size = 5, color = "black"
-  ) +
-  labs(title = "Outcome by sex, split by dose", y = "Outcome") +
-  theme_minimal(base_size = 16) +   # increases all text
-  theme(
-    plot.title = element_text(size = 18),
-    axis.title = element_text(size = 16),
-    axis.text  = element_text(size = 14),
-    legend.title = element_text(size = 14),
-    legend.text  = element_text(size = 13),
-    legend.position = "top"
-  )
-
-```
-:::
-
-The **design of this experiment** allows for the investigation of the **interaction** between two factors: sex of the cat and dose. That is, for females, the effect of increasing the dose was positive in lowering cholesterol, but for males the
-effect of increasing the dose was negative.
-
-By **randomly assigning** treatments (drug doses) to subjects (dogs), we can get around the problem of confounding that complicates observational studies and limits the conclusions. **Randomized experiments** are considered the gold standard in scientific investigation, but they can also be difficult.
-
-Often, human subjects in experiments are given a **placebo**. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is **blinded**. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.
-
-![Placebo](/Figures/placebo){fig-align="center" width="50%"}
-
-How about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called **double-blinded**. 
-
-
-Randomized allocation in medical settings may not be ethical. One possibility is to use **historical controls** (i.e. previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).
-
-**Random Sampling**
-
-
-**Exploratory Data Analysis (EDA)**
-
-**Confirmatory Data Analysis (CDA)**
-
-See @knuth84 for additional discussion of literate programming.
+A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.
 
 ```{r}
-1 + 1
+?DNase  #what is the dataset about?
+head(DNase) #shows the first rows
+names(DNase) # gives you the name of the variables
+plot(DNase$conc, DNase$density,
+  ylab = attr(DNase, "labels")$y,
+  xlab = paste(attr(DNase, "labels")$x, attr(DNase, "units")$x),
+  pch = 3)
 ```
+
+We can visualize *frequency distributions* with **bar plots** (as well as jittered dotplots), **histograms**, and **boxplots**. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.
+
+```{r}
+hist(DNase$density, breaks=25, main = "",xlab="Density")
+boxplot(density ~ Run, data = DNase)
+```
+
+
+The **shape** of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.
+
+Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the **grammar of graphics**, implemented in the package **ggplot2**.

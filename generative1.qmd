@@ -1,3 +1,4 @@
+
 ---
 title: "My Document"
 format: html
@@ -78,7 +79,7 @@ totdat[sample(10), ]
 A simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:
 
 ```{r}
-data(father.con, package="UsingR")
+data(father.son, package="UsingR")
 x <- father.son$fheight
 ```
 
@@ -91,7 +92,7 @@ round(sample(x,10),1)
 ## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7
 ```
 
-Another compact and more descriptive way to represent data is by using a **histogram**. Histograms show the proportion of values within intervals, $(a, b)$. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:
+Another, more compact and descriptive way to represent the data is by using a **histogram**. Histograms show the proportion of values within intervals, $(a, b)$. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:
 
 ```{r}
 hist(x, xlab="Height (in inches)", main="Adult men heights")
@@ -173,7 +174,7 @@ rbinom(1, prob = 0.7, size = 15)
 ## [1] 11
 ```
 
-*Question.* Repeat this function call 10 times. What seems to be the most commong outcome?
+*Question.* Repeat this function call 10 times. What seems to be the most common outcome?
 
 *Solution.* The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
 
@@ -227,7 +228,7 @@ dpois(x=3, lambda=5)
 ## [1] 0.1403739
 ```
 
-This means that the change of seeing exactly three events is about 0.14.
+This means that the chance of seeing exactly three events is about 0.14.
 
 Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:
 
@@ -256,7 +257,7 @@ P(x_{1}, x_{2}, \ldots, x_{m}) &= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^
 &= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
 \end{align}$$
 
-To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probabilitity of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:
+To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:
 
 ```{r}
 pvec = rep(1/4, 4)
@@ -267,6 +268,4 @@ t(rmultinom(1, prob = pvec, size = 8))
 
 *Question* Try the code without using the t() function; what does t stand for?
 
-**References**
-
-https://diabetes.diabetesjournals.org/content/53/suppl_3/S215.full
+Reference: @holmes2018modern

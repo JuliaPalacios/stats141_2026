@@ -1,0 +1,221 @@
+---
+title: "Introduction"
+#format: revealjs
+#editor: visual
+format: pptx
+---
+
+## Introduction to Statistics
+
+# Statistics
+
+Researchers in the life sciences analyze **data** that exhibit some **variability**. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) prepared identically may have different results due to contamination, thermal damage, etc. The challenge to the life scientist is to discern the **signal** from the **noise**.
+
+
+
+## Statistics
+
+**Statistics** is the science of understanding data (collection, analysis and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of **data science**.
+
+![Data Science, credit: Lee et al. 2018](/Figures/DataScience.ppm){fig-align="center" width="50%"}
+
+
+## Example
+
+::: {.callout-note icon="false"}
+## Example: Cats in New York
+
+An article presented results on the number of injuries of cats that had plummeted from buildings in New York City, according to the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).
+:::
+
+:::::: columns
+::: {.column width="50%"}
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false   # optional (hides errors; use carefully)
+
+suppressPackageStartupMessages({
+library(tidyverse)
+library(tibble)
+})
+
+stories=c(rep(2,7),rep(3,13),rep(4,30),rep(5,35),rep(6,2),c(3,3,3,2,2),rep(7,15))
+injuries=c(rep(1,5),2,2,rep(1,3),rep(2,10),rep(3,10),rep(2,18),rep(1,2),rep(3,30),rep(2,5),c(3,3), rep(2,2),rep(3,3),rep(2,8),rep(1,7))
+  
+raining_cats <- tibble(
+  stories = stories,
+  injuries = injuries
+)
+
+mean_vec <-raining_cats %>%
+  group_by(stories) %>%
+  summarise(mean_injuries = mean(injuries), n = n())
+  
+
+ggplot(mean_vec, aes(x = as.numeric(stories), y = mean_injuries)) +
+  geom_point() +geom_line()+ theme(
+    axis.title = element_text(size = 16),
+    axis.text  = element_text(size = 14)
+  )+labs(x="Stories",y="Mean # injuries")
+  
+```
+:::
+
+::: {.column width="50%"}
+![Raining cats](/Figures/cats){fig-align="center" width="90%"}
+:::
+
+```{r,echo=FALSE}
+# knitr::kable(
+#   mean_vec %>% arrange(stories),
+#   format = "pipe",
+#   digits = 2
+# )
+# mean_vec %>%
+#   arrange(stories) %>%
+#   gt() %>%
+#   tab_header(title = "Mean injuries by stories") %>%
+#   cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
+```
+
+
+## What can we conclude from the cats example?
+
+High-quality samples are essential for sound science, even in the age of AI!
+
+Our ability to obtain reliable measures of population quantities of interest, and to assess uncertainty, depends on how we **sample** populations. It is often at this early step in an investigation that the fate of a study is sealed for better or worse.
+
+
+![Statistics](/Figures/pop_cats){fig-align="center" width="95%"}
+
+
+## What do we want to do with the data?
+
+In most situations, we do not observe the whole population. Instead we obtain a sample. What we need to ask ourselves is what do we want to do with the data? If our goal is to describe the sample data, we generate **descriptive statistics** and perform an **Exploratory Data Analysis (EDA)**.
+
+![EDA https://r-graph-gallery.com/](/Figures/EDA){fig-align="center" width="95%"}
+
+If instead, we want to make statements about the whole population, then apart from EDA, we do **statistical inference**.
+
+![Statistical Inference](/Figures/inference){fig-align="center" width="95%"}
+
+
+
+## Data
+
+Your (tabular) data is a collection of variables and observations. Typically one observation per row, one variable per column and filled in with values. A **variable** is a characteristic or quantity that you can you measure, we will denote variables with capital letters X, Y, etc. A **value** is the state of the variable when you measure it. We will use letter case for values. An **observation** is a set of measurements.
+
+In the cats example, X=Number of injuries is a variable while x=2 is one particular value. Similarly, Y=Number of stories while y=5 is a particular value. An observation is the data collection of a particular cat Luna, who fell from the fifth floor, resulting with 2 injuries
+
+
+## Variables
+
+Variables can be **categorical** or **numerical**. Categorical variables tell us membership or attribute. When the categories can be ranked in a meaningful order are said to be **ordinal**. Examples: blood type (A,B,AB, O), survival (alive or dead), language, etc. Numerical variables record the amount of something, for example body temperature, age, number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).
+
+The most common languages used for analyzing data are SAS, R (and Bioconductor) and Python. In this course, we will be using R with datasets in the form of **data frames** or **tibbles**.
+
+## A poll
+
+Let's generate some data by answering this poll.
+
+```{r,echo=FALSE}
+library(qrcode)
+qr <- qrcode::qr_code("https://docs.google.com/forms/d/e/1FAIpQLSecc961cTxMxEiZTbzGC3luAM6xE8atUWFM4-_mjCDXZBmhWA/viewform?usp=publish-editor")
+generate_svg(qr, filename = "Figures/poll.svg")
+```
+
+![poll](/Figures/poll.svg){fig-align="center" width="40%"}
+## Read data
+
+We can now read our dataset (poll results)
+
+```{r}
+#library(readr)
+
+#url <- "https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv"
+#survey <- read_csv(url) 
+#survey
+library(palmerpenguins)
+penguins
+
+```
+
+## First steps
+
+A first step is to explore the data and describe the data in summary form. Common checks:
+
+-   Measures of center, and measures of dispersion
+
+-   Check for "NAs"
+
+-   Plot data, frequency distributions and charts
+
+-   Talk with the person who collected it! (review the data dictionary)
+
+```{r}
+summary(penguins$species)
+summary(penguins$flipper_length_mm)
+#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA
+```
+
+
+
+## Measures of center (or typical value):
+
+-   Sample mean or average: $\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$
+-   Median: the value that most nearly lies in the middle of the sample
+-   Mode: the value (or values) that occurs most frequently in a dataset
+
+
+
+## Measures of dispersion:
+
+-   Range: Max-Min
+-   Interquartile range: the spread of (roughly) the middle 50% of the observations.
+-   Deviation: $y_{i}-\bar{y}$
+-   Sample standard deviation $s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}}$
+-   Sample variance $s^2$
+-   Coefficient of variation $cv=\frac{s \times 100\%}{\bar{y}}$
+
+::: callout-important
+## Why $n-1$ in deviation?
+
+Note that the sum of deviations $y_{i}-\bar{y}$ is always zero. This means that in a sample of $n$ observations there are only $n-1$ units of information about the derivations from the average. The quantity $n-1$ is called the **degrees of freedom** of the standard deviation (or the variance).
+:::
+
+
+
+## Plotting the data
+
+We will start with a **scatter plot**: \`\`Someone wants something and faces obstacles trying to get it.”
+
+The scatter plot is a tool to examine the relationship between two numerical variables X and Y. Plots each observed (x,y) pair as a dot on the x-y plane.
+
+```{r}
+?DNase  #what is the dataset about?
+head(DNase) #shows the first rows
+names(DNase) # gives you the name of the variables
+plot(DNase$conc, DNase$density,
+  ylab = attr(DNase, "labels")$y,
+  xlab = paste(attr(DNase, "labels")$x, attr(DNase, "units")$x),
+  pch = 3)
+```
+
+
+## Frequency distributions
+
+We can visualize *frequency distributions* with **barplots** (as well as jittered dotplots), **histograms** and **boxplots**. Barplots and histograms display the frequency of values (or grouped values). The boxplot displays minimum, 1st quartile, median, 3rd quartile and maximum at once. We can visualize multiple distributions at once.
+
+```{r}
+hist(DNase$density, breaks=25, main = "",xlab="Density")
+boxplot(density ~ Run, data = DNase)
+```
+
+
+## Distribution shapes
+
+The **shapes** of the distribution are often informative of the variable of interest. They can be for example (a) symmetric, bell shaped, (b) summetric, not bell-shaped, (c) skewed to the right, (d) skewed to the left, (e) exponential, (f) bimodal.
+
+The base R plotting functions are good for quick exploration but have many aesthetic limitations. We will use a framework called grammar of graphics implemented in the package **ggplot2**.

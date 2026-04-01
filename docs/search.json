@@ -1,0 +1,399 @@
+[
+  {
+    "objectID": "index.html",
+    "href": "index.html",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "",
+    "text": "Syllabus\nSpring 2026\nLectures: MWF, 9:30–10:50, CODA B90.\nDiscussion sections: Th (times below)\nCourse staff, office hours, and section times:",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#syllabus",
+    "href": "index.html#syllabus",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "",
+    "text": "Name\nRole\nOffice hours\nDiscussion section\n\n\n\n\nJulia Palacios\nInstructor\nW 11:00–12:00, CoDa E250\n\n\n\nAditya Ghosh\nTA\nThu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105)\nTh 9:30–10:20 in Hewlett 102\n\n\nJing Shang\nTA\nTue 10:00–12:00, Sequoia Hall 207\nTh 2:30–3:20 in STLC 104",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#contact",
+    "href": "index.html#contact",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Contact",
+    "text": "Contact\nIf you need to reach us outside of lectures, discussion sections, or office hours, please contact us on the Ed Discussion forum.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#overview",
+    "href": "index.html#overview",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Overview",
+    "text": "Overview\nThis is an introductory course in statistics for students specializing in the life sciences. The emphasis is on statistical ideas rather than computations or mathematical formulations. There are no prerequisites beyond elementary algebra.\nIn this course, students will:\n\nLearn to identify key statistical issues to be addressed during the design phase of an experiment (e.g., threats to valid conclusions, identifying confounders, appropriate measurements, and randomization).\nBecome proficient with intermediate statistical methods: comparing groups (analysis of variance), analyzing associations (linear regression), and methods for categorical data (contingency tables and odds ratios). You should know which methods are useful in different situations and which conditions must be checked for a method to be applicable.\nBe able to perform detailed data analyses on a variety of biological datasets using the statistical computing environment R, including basic programming. You should be able to implement all the methods discussed in this course.\n\n\nMaterials, Tools, & Resources\n\nCourse website. This is the course website. Here you will find the course schedule, lecture slides, assignments, and practice quizzes.\nLecture slides. Lecture slides are the primary source of information for the course. They will be made available online after lecture.\nTextbooks. There is no required textbook; however, the material is based on the following:\n\nStatistics for the Life Sciences (5th ed.) by Samuels, Witmer, and Schaffner\n\nThe Analysis of Biological Data (3rd ed.) by Whitlock and Schluter\n\nAn Introduction to Statistical Learning with Applications in R by James et al. (2021)\n\nModern Statistics for Modern Biology by Susan Holmes and Wolfgang Huber (online version)\n\nGradescope. Feedback on your quizzes and the final exam will be available on Gradescope.\nEd. We will use Ed as an online class forum, where you may ask questions and discuss with your fellow students. Students are encouraged to answer each other’s questions, and participation points will be awarded accordingly. The TAs will periodically review Ed to provide clarification as needed and to endorse student answers. You can access the Ed forum here or through Canvas.\nR resources. In this course, computation will be done in R. We recommend the free versions of the following software:\n\nR\nRStudio\nGreat tutorial\n\nIf you have any installation difficulties or questions, please ask your TAs.\nAI. The course policy for STATS 141 is to embrace AI.\n\nSome discussion-section assignments will require programming. Whether or not you know how to program, you may use AI to help complete programming assignments. We will provide guidance and suggestions.\nYou may also use AI to help you study for the course. Be aware that AI tools can make mistakes, and you are ultimately responsible for your own understanding.\n\nAccommodations. Students who may need an academic accommodation based on the impact of a disability must initiate the request with the Office of Accessible Education (OAE). If you plan to use your OAE-approved exam accommodations for a specific assessment, you must provide your letter and inform the instructor at least 10 days before the exam.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#coursework-evaluation",
+    "href": "index.html#coursework-evaluation",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Coursework & Evaluation",
+    "text": "Coursework & Evaluation\n\nQuizzes (45%)\n\nWe will have a quiz in class every Friday.\nYour two lowest quiz scores will be dropped.\n\nFinal Exam (45%)\n\nThe final will be in person during finals week on Tuesday, June 9, 2026, at 8:30am.\nStudents must be present for the final.\nIf your final grade is higher than your average quiz grade (after dropping the lowest two), we will replace your quiz grade with your final grade.\n\nLecture participation / activities (10%)\n\nThere will be an activity for students to fill out to accompany each lecture, and you should submit it on Gradescope.\nMake sure to submit all activities by May 29. We strongly encourage you to submit each activity within 24 hours.\nActivities will be graded: 0 (missing), 0.5 (incomplete), 1 (mostly complete).\n\nExtra credit: up to 10% of the quiz grade for the corresponding week.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#units",
+    "href": "index.html#units",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Units",
+    "text": "Units\n\nIntroduction to Statistics and EDA\n\nGenerative Models for Discrete and Continuous Data\n\nSampling Distributions\n\nInference for Means\n\nStatistical Models and Machine Learning\n\nDesign of Experiments",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#regrade-policy",
+    "href": "index.html#regrade-policy",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Regrade Policy",
+    "text": "Regrade Policy\nIf you believe we have made a mistake in grading, please email Prof. Palacios within one week of receiving the assignment/exam back. Note that Prof. Palacios will regrade your entire assignment/exam, so your grade could go up or down.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#the-honor-code",
+    "href": "index.html#the-honor-code",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "The Honor Code",
+    "text": "The Honor Code\nInstructors and students are expected to follow Stanford’s Honor Code in all matters relating to this course. You are encouraged to meet and exchange ideas with your classmates while studying and working on homework assignments, but you are individually responsible for your own work and for understanding the material. You are not permitted to copy or otherwise reference another student’s homework or computer code. If you have any questions regarding this policy, feel free to contact the instructor.\nCompromising your academic integrity may lead to serious consequences, including (but not limited to) one or more of the following: failure of the assignment, failure of the course, disciplinary probation, suspension from the university, or dismissal from the university.\nStudents are responsible for understanding the University’s Honor Code policy and must make proper use of citations of sources when writing papers, creating and presenting work, taking examinations, and doing research.",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "index.html#course-privacy-statement",
+    "href": "index.html#course-privacy-statement",
+    "title": "Stats 141. Introduction to Statistics for Biology",
+    "section": "Course Privacy Statement",
+    "text": "Course Privacy Statement\nAs noted in the University’s policy on recording and broadcasting courses, students may not audio- or video-record class meetings without permission from the instructor (and from guest speakers, when applicable).",
+    "crumbs": [
+      "Syllabus"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Introduction to Statistics",
+    "section": "",
+    "text": "1.1 Statistics\nResearchers in the life sciences analyze data that exhibit variability. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) assays prepared identically may yield different results due to contamination, thermal damage, etc. The challenge for the life scientist is to discern the signal from the noise.\nStatistics is the science of understanding data (collection, analysis, and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of data science.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#statistics",
+    "href": "intro.html#statistics",
+    "title": "1  Introduction to Statistics",
+    "section": "1.2 Data",
+    "text": "Data Science, credit: Lee et al. 2018\n\n\n\n\n\n\n\n\nNoteExample: Cats in New York\n\n\n\nAn article presented results on the number of injuries in cats that had plummeted from buildings in New York City, by the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRaining cats\n\n\nWhat can we conclude?High-quality samples are essential for sound science, even in the age of AI!Our ability to obtain reliable estimates of population quantities of interest, and to assess uncertainty, depends on how we sample populations. It is often at this early step in an investigation that the fate of a study is sealed, for better or worse.\n\n\nStatistics\n\nIn most situations, we do not observe the whole population. Instead, we obtain a sample. We need to ask ourselves: what do we want to do with the data? If our goal is to describe the sample data, we compute descriptive statistics and perform an Exploratory Data Analysis (EDA).\n\n\nEDA https://r-graph-gallery.com/\n\nIf instead we want to make statements about the whole population, then beyond EDA we do statistical inference.\n\n\nStatistical Inference\n\n\n1.2 Data\nYour dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A variable is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A value is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An observation is a set of measurements from one unit (e.g., one person or one animal).\nIn the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.\nVariables can be categorical or numerical. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called ordinal. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).\nThe most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of data frames or tibbles.\nLet’s generate some data by answering this poll.\n\n\n\npoll\n\n\nWe can now read our dataset (poll results).\n\n#library(readr)\n\n#url &lt;- \"https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv\"\n#survey &lt;- read_csv(url) \n#survey\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nA first step is to explore the data and describe them in summary form. Common checks include:\n\nMeasures of center and measures of dispersion\n\nChecking for missing values (e.g., “NAs”)\n\nPlotting data, frequency distributions, and charts\n\nTalking with the person who collected the data (review the data dictionary)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  172.0   190.0   197.0   200.9   213.0   231.0       2 \n\n#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA\n\nMeasures of center (or typical value):\n\nSample mean (average): (\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\))\nMedian: the value that lies in the middle of the ordered sample\nMode: the value (or values) that occurs most frequently in a dataset\n\nMeasures of dispersion:\n\nRange: max − min\nInterquartile range (IQR): the spread of (roughly) the middle 50% of the observations\n\nDeviation: \\(y_i - \\bar{y}\\)\nSample standard deviation: \\(s=\\sqrt{\\frac{\\sum^{n}_{i=1}(y_{i}-\\bar{y})^2}{n-1}})\\)\nSample variance: \\(s^2\\)\nCoefficient of variation: cv=\\(\\frac{s \\times 100\\%}{\\bar{y}}\\)\n\n\n\n\n\n\n\nImportantWhy (n-1) in the standard deviation?\n\n\n\nNote that the sum of deviations (y_i-{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the degrees of freedom of the standard deviation (and the variance).\n\n\n\n1.3 Plotting the data\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#data",
+    "href": "intro.html#data",
+    "title": "1  Introduction to Statistics",
+    "section": "",
+    "text": "Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A variable is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A value is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An observation is a set of measurements from one unit (e.g., one person or one animal).\nIn the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.\nVariables can be categorical or numerical. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called ordinal. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).\nThe most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of data frames or tibbles.\nLet’s generate some data by answering this poll.\n\n\n\npoll\n\n\nWe can now read our dataset (poll results).\n\n#library(readr)\n\n#url &lt;- \"https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv\"\n#survey &lt;- read_csv(url) \n#survey\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nA first step is to explore the data and describe them in summary form. Common checks include:\n\nMeasures of center and measures of dispersion\n\nChecking for missing values (e.g., “NAs”)\n\nPlotting data, frequency distributions, and charts\n\nTalking with the person who collected the data (review the data dictionary)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  172.0   190.0   197.0   200.9   213.0   231.0       2 \n\n#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA\n\nMeasures of center (or typical value):\n\nSample mean (average): (\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\))\nMedian: the value that lies in the middle of the ordered sample\nMode: the value (or values) that occurs most frequently in a dataset\n\nMeasures of dispersion:\n\nRange: max − min\nInterquartile range (IQR): the spread of (roughly) the middle 50% of the observations\n\nDeviation: \\(y_i - \\bar{y}\\)\nSample standard deviation: \\(s=\\sqrt{\\frac{\\sum^{n}_{i=1}(y_{i}-\\bar{y})^2}{n-1}})\\)\nSample variance: \\(s^2\\)\nCoefficient of variation: cv=\\(\\frac{s \\times 100\\%}{\\bar{y}}\\)\n\n\n\n\n\n\n\nImportantWhy (n-1) in the standard deviation?\n\n\n\nNote that the sum of deviations (y_i-{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the degrees of freedom of the standard deviation (and the variance).",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#plotting-the-data",
+    "href": "intro.html#plotting-the-data",
+    "title": "1  Introduction to Statistics",
+    "section": "1.3 Plotting the data",
+    "text": "1.3 Plotting the data\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "samples.html",
+    "href": "samples.html",
+    "title": "2  Types of studies",
+    "section": "",
+    "text": "Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with data analysis, but statistical considerations often play a key role in the planning and design of scientific investigation.\nData in biology are obtained from either an experimental study or an observational study. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.\nThe previous two examples are based on observational studies. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is controling the conditions. However, observational studies can be misleading due to confounding variables. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the section of the brain.\nConfounders are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.\nHow can we mitigate confounding? Create treatment and control groups that are as similar as possible except for the treatment level and we can anticipate and prevent both other known and unknown explanations for the observed difference in outcomes between the treated and control groups.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies</span>"
+    ]
+  },
+  {
+    "objectID": "samples.html#sampling",
+    "href": "samples.html#sampling",
+    "title": "2  Types of studies",
+    "section": "2.1 Sampling",
+    "text": "2.1 Sampling\nRandom Sampling\nIn order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a representative subset of the population and avoid obtaining a biased sample.\nIn a simple random sample (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.\n\nset.seed(123)\nnames&lt;-seq(1,100) #data frame\nsample(names,5,replace=FALSE)\n\n[1] 31 79 51 14 67\n\n\nWhat woud be some practical concerns about SRS?\nTwo other common sampling techniques are the random cluster sample where the sampling unit is the cluster and the stratified random sample where the sampling unit is the individual within a strata.\nMost of the examples in this class will assume SRS.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies</span>"
+    ]
+  },
+  {
+    "objectID": "samples.html#sampling-error",
+    "href": "samples.html#sampling-error",
+    "title": "2  Types of studies",
+    "section": "2.2 Sampling error",
+    "text": "2.2 Sampling error\nHow can we use a sample summary (statistic) to infer a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, sampling error since we only have a sample. If the sample is not a simple random sample (SRS), it may be biased: some individuals are more likely to be selected than others.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies</span>"
+    ]
+  },
+  {
+    "objectID": "samples.html#nonsampling-errors",
+    "href": "samples.html#nonsampling-errors",
+    "title": "2  Types of studies",
+    "section": "2.3 Nonsampling Errors",
+    "text": "2.3 Nonsampling Errors\nFor example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. Nonresponse bias resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.\n\nMCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).\nMAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.\n\n-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.\nIt is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting results.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies</span>"
+    ]
+  },
+  {
+    "objectID": "generative1.html",
+    "href": "generative1.html",
+    "title": "3  Generative Models for Discrete Data",
+    "section": "",
+    "text": "3.1 Probability distribution\nA simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:\ndata(father.son, package=\"UsingR\")\nx &lt;- father.son$fheight\nOne way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.\nlength(x)\n\n[1] 1078\n\n## 1] 1078\nround(sample(x,10),1)\n\n [1] 63.9 68.0 68.1 69.1 67.5 66.8 67.4 65.2 69.7 66.2\n\n## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7\nAnother, more compact and descriptive way to represent the data is by using a histogram. Histograms show the proportion of values within intervals, \\((a, b)\\). In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:\nhist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\")\nWith this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).\nSummarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random variable. We do not know all possible outcomes of random variables, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval \\((a,b)\\) is denoted with \\(Pr(a \\leq X \\leq b)\\).\nIn summary, to define a distribution, we compute, for all possible values of \\(a\\), the proportion of numbers in our list that are below \\(a\\), which is called the cumulative distribution function (CDF), represented by the following notation: \\(F(a) \\equiv \\Pr(X \\leq a)\\) [and the proportion of numbers bigger than \\(a\\) is computed as: \\(\\Pr(X \\gt a)=1-\\Pr(X \\leq a)=1-F(a)\\)].",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Generative Models for Discrete Data</span>"
+    ]
+  },
+  {
+    "objectID": "generative1.html#discrete-probability-models",
+    "href": "generative1.html#discrete-probability-models",
+    "title": "3  Generative Models for Discrete Data",
+    "section": "3.2 Discrete probability models",
+    "text": "3.2 Discrete probability models\nIn many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG digrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).\nTo summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.\n\ngenotype = c(\"AA\",\"AO\",\"BB\",\"AO\",\"OO\",\"AO\",\"AA\",\"BO\",\"BO\",\n             \"AO\",\"BB\",\"AO\",\"BO\",\"AB\",\"OO\",\"AB\",\"BB\",\"AO\",\"AO\")\ntable(genotype)\n\ngenotype\nAA AB AO BB BO OO \n 2  2  7  3  3  2 \n\n## genotype\n## AA AB AO BB BO OO \n## 2  2  7  3  3  2 \n\nIf the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.\n\n3.2.1 Bernoulli trials\nThe Bernoulli distribution is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter \\(p\\), which represents the probability of success, and the complementary event is called probability of failure \\(1-p\\):\nProbability distribution:\n\\(P(X=1) = p\\)\n\\(P(X=0) = 1-p\\)\nFor a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.\n\n\n\n\n\n\nNote\n\n\n\nExample: Coin tosses\nSuppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:\n\n\n\nrbinom(15, prob = 0.5, size = 1)\n\n [1] 1 1 1 0 1 0 1 0 1 0 1 1 0 0 0\n\n## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0\n\nNow observe the outcome when using a biased coin that lands heads 70% of the time:\n\nrbinom(15, prob = 0.7, size = 1)\n\n [1] 1 1 1 1 1 1 1 0 1 1 1 0 1 1 1\n\n## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1\n\nQuestion. Notice that when you call the function above several times, you get different outcomes. Why is that?\nProperties\nThe mean, or expected value, of a Bernoulli distribution is given by \\(p\\), and the variance is defined as \\(p(1-p)\\), so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.\n\n\n3.2.2 Binomial success counts\nIn the previous example, if we are only interested in the number of heads (\\(X=1\\)), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:\n\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n## [1] 11\n\nThe sum of multiple independent (or exchangeable) Bernoulli trials is called the Binomial distribution (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a binomial random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:\n\nset.seed(384569724)\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n## [1] 11\n\nQuestion. Repeat this function call 10 times. What seems to be the most common outcome?\nSolution. The most frequent value is 10.5\\(\\approx 11\\). In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that \\(X=4\\) if \\(X\\) follows B(15,0.7).\nThe complete probability mass distribution is available by typing:\n\nprobabilities = dbinom(0:15, prob = 0.7, size = 15)\nround(probabilities, 2)\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03\n[16] 0.00\n\n## [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 \n## [13] 0.09 0.03 0.00\n\nA barplot for this distribution in R, is as follows:\n\nbarplot(probabilities, names.arg = 0:15, col = \"black\")\n\n\n\n\n\n\n\n\n\n\n\nTheoretical distribution of B(15, 0.7).\n\n\nMathematically, the theoretical distribution of the binomial distribution is\nProbability distribution:\n\\[P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad k = 0, 1, \\ldots, n,\\] where \\(n\\) is the number of trials, \\(k\\) is the number of successes, \\(p\\) is the probability of success, and \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\) is the binomial coefficient.\nProperties\nThe mean of a Binomial distribution is given by \\(n \\cdot p\\) (in the figure, the highest bar around \\(x \\approx 11\\), or \\(n(=15)\\cdot p(=0.7)\\), and the variance is defined as \\(np(1-p) = (15)(0.7)(0.3) = 3.15\\).\n\n\n3.2.3 Poisson distributions\nWhen the probability of success \\(p\\) is small and the number of trials \\(n\\) is large, the Binomial distribution can be approximated by a Poisson distribution with parameter \\(\\lambda = np\\), which provides a simple model for describing the data.\nProbability distribution:\n\\[P(X = k) = \\frac{e^{-\\lambda} \\lambda^k}{k!}, \\quad k = 0, 1, 2, \\ldots,\\] where \\(k\\) is the number of events, \\(\\lambda\\) is the average number of events per interval, and \\(e\\approx 2.718\\) is the Euler’s number.\nProperties\nAn interesting characteristic of the Poisson distribution is that the mean and the variance are both equal to \\(\\lambda = np\\).\n\n\n\n\n\n\nNote\n\n\n\nExample: Human Immunodeficiency Virus (HIV)\nConsider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of \\(p=5 x 10^{-4}\\) per nucleotide per replication cycle, independently across positions. Given a genome size of approximately $n$ nucleotides, the total number of mutations per cycle follows a \\(\\text{Poisson}(\\lambda)\\) distribution.\nAs the genome size of HIV is about \\(n=10^4\\), this model predicts an expected number of mutations close to 5 \\((np=10^4 x 5 x 10^{-4})\\) per replication cycle, with standard error \\(\\sqrt{\\lambda}\\). For example, to find the probability of exactly 3 mutations under a \\(\\text{Poisson}(5)\\) model, we can use R:\n\ndpois(x=3, lambda=5)\n\n[1] 0.1403739\n\n## [1] 0.1403739\n\nThis means that the chance of seeing exactly three events is about 0.14.\nNow we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:\n\ny &lt;- dpois(x=0:12, lambda=5)\n## [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863\n## [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240\nbarplot(y, names.arg = 0:12, col = \"red\")\n\n\n\n\n\n\n\n\n\n\n\nProbabilities of seeing 0 to 12 mutations, modeled as a Poisson(5) distribution.\n\n\nThis example shows that the Poisson distribution is a good model for rare events such as mutation (notice that \\(p\\) is very low).\n\n\n\n\n3.2.4 Multinomial distributions\nIn the Binomial model, we had only two possible outcomes, success and failure, with probabilities \\(p\\) and \\(1-p\\), respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: \\(\\{A, C, G, T\\}\\). We use a Multinomial model, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as \\(p_{A}\\), \\(p_{C}\\), \\(p_{G}\\), and \\(p_{T}\\), where the probabilities sum to 1: \\(p_{A}+p_{C}+p_{G}+p_{T}=1\\), as in the Binomial model.\nThe mathematical formulation for the Multinomial model for \\(m\\) counts \\((x_{1}, x_{2}, \\ldots, x_{m})\\) for outcomes of \\(n\\) draws with probabilities \\(p_{1}, p_{2}, \\ldots, p_{m}\\) is as follows:\nProbability distribution:\n\\[\\begin{align}\nP(x_{1}, x_{2}, \\ldots, x_{m}) &= \\frac{n!}{\\prod_{i=1}^{m} x_{i}!} \\prod_{i=1}^{m} p_{i}^{x_{i}} \\\\\n&= \\binom{n}{x_{1}, x_{2}, \\ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \\cdots p_{m}^{x_{m}}\n\\end{align}\\]\nTo generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:\n\npvec = rep(1/4, 4)\nt(rmultinom(1, prob = pvec, size = 8))\n\n     [,1] [,2] [,3] [,4]\n[1,]    4    2    1    1\n\n##      [,1] [,2] [,3] [,4]\n## [1,]    4    2    1    1\n\nQuestion Try the code without using the t() function; what does t stand for?\nReference: (holmes2018modern?)",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Generative Models for Discrete Data</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html",
+    "href": "Week1A.html",
+    "title": "4  Activity Lecture 1",
+    "section": "",
+    "text": "4.1 Descriptive Statistics\nName:",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#descriptive-statistics",
+    "href": "Week1A.html#descriptive-statistics",
+    "title": "4  Activity Lecture 1",
+    "section": "",
+    "text": "Read sections 1.1 1.2 of r4ds and solve 1.2.5 excercises 2,3, and 7.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1B.html",
+    "href": "Week1B.html",
+    "title": "5  Activity Lecture 2",
+    "section": "",
+    "text": "Name:\n\n\n\n\nRead the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?\nMultiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?\nChange the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?\nRead section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?\nWhat are the quartiles?\n\n\n\nWhat is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?\n\nExposure (predictor): Carrying a lighter Outcome: Lung cancer Confounder: Smoking\n\nA town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo effect is related to this example.\nIn a study of physical therapy for knee pain, patients are randomly divided into two groups. One group receives a new “hands-on” therapy technique and the other group receives standard stretching exercises. The physical therapist who developed the new technique evaluates each patient’s improvement and compares results between the two groups. Explain how lack of blinding could bias the experiment in favor of the new therapy.\nResearchers studied 2,050 adults over age 60 living in Arizona. They found that those who regularly participated in community volunteer activities were more likely to have lower levels of C-reactive protein (CRP), a blood marker linked to inflammation, than those who did not volunteer. Does this mean that volunteering improves one’s health? Why or why not?\nIn each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.\n\n\nAll 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.\nA total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.\nIn a temperature study, five readings were taken at each of three preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen readings.\nA total of 30 apartments were chosen at random from a citywide list to estimate average monthly electricity use.\nThirty-six employees (twelve randomly selected from each of three departments: Sales, Engineering, and Customer Support) were surveyed about job satisfaction.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Activity Lecture 2</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "6  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html",
+    "href": "Week1_section.html",
+    "title": "7  Quarto",
+    "section": "",
+    "text": "7.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
+    "href": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
+    "title": "7  Quarto",
+    "section": "7.2 1. How many rows and columns are in the dataset?",
+    "text": "7.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
+    "href": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
+    "title": "7  Quarto",
+    "section": "7.3 2. What types of variables are present (e.g., numeric, categorical)?",
+    "text": "7.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-does-the-variable-spam-represent",
+    "href": "Week1_section.html#what-does-the-variable-spam-represent",
+    "title": "7  Quarto",
+    "section": "7.4 3. What does the variable spam represent?",
+    "text": "7.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
+    "href": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
+    "title": "7  Quarto",
+    "section": "7.5 4. What is the median number of characters in an email?",
+    "text": "7.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-proportion-of-emails-are-spam",
+    "href": "Week1_section.html#what-proportion-of-emails-are-spam",
+    "title": "7  Quarto",
+    "section": "7.6 5. What proportion of emails are spam?",
+    "text": "7.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#subsetting",
+    "href": "Week1_section.html#subsetting",
+    "title": "7  Quarto",
+    "section": "7.7 Subsetting",
+    "text": "7.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
+    "href": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
+    "title": "7  Quarto",
+    "section": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
+    "text": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
+    "href": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
+    "title": "7  Quarto",
+    "section": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
+    "text": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
+    "href": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
+    "title": "7  Quarto",
+    "section": "7.10 8. Create a histogram of the number of characters in emails.",
+    "text": "7.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
+    "href": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
+    "title": "7  Quarto",
+    "section": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
+    "text": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
+    "href": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
+    "title": "7  Quarto",
+    "section": "7.12 10. Create a boxplot of number of characters by spam status.",
+    "text": "7.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#other-tutorials",
+    "href": "Week1_section.html#other-tutorials",
+    "title": "7  Quarto",
+    "section": "7.13 Other tutorials:",
+    "text": "7.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "quiz1.html",
+    "href": "quiz1.html",
+    "title": "8  Quiz 1 - April 10",
+    "section": "",
+    "text": "Quiz 1 will cover Introduction to Statistics and Types of Studies.\nDuration: 10 minutes with 10 minutes extension",
+    "crumbs": [
+      "Quizzes",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quiz 1 - April 10</span>"
+    ]
+  }
+]
