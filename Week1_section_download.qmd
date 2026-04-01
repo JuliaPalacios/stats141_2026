@@ -6,10 +6,9 @@ execute:
   warning: false
   message: false
 resources:
-  - Week1_section.qmd
+  - Week1_section_download.qmd
 ---
 
-```{=html}
 <style>
 .header-row {
   display: flex;
@@ -41,23 +40,15 @@ resources:
   text-decoration: none;
 }
 </style>
-```
 
 <!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+  <h1 class="page-title">Week 1 Section</h1>
+  <a href="Week1_section_incomplete.qmd" class="download-btn" download>
+    ⬇ Download Starter File
+  </a>
+</div>
 
-::: header-row
-<h1 class="page-title">
-
-Week 1 Section
-
-</h1>
-
-<a href="Week1_section.qmd" class="download-btn" download> ⬇ Download Starter File </a>
-:::
-
-## Getting Ready
-
-Make sure to install [R](https://rstudio-education.github.io/hopr/starting.html) and [R-Studio](https://posit.co/download/rstudio-desktop/) before section.
 
 ## Quarto
 
@@ -171,6 +162,7 @@ Option 3: Alternative with `dplyr`:
 # Your code here
 ```
 
+
 ## 6. On average, do spam emails have more exclamation marks than non-spam emails?
 
 Write your answer here.
@@ -210,13 +202,3 @@ Alternative with `ggplot2`:
 ```{r}
 # Your code here
 ```
-
-## Other tutorials:
-
-<https://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html>
-
-<https://ggplot2.tidyverse.org/articles/ggplot2.html>
-
-
-
-
