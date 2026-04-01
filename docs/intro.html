@@ -308,6 +308,44 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+<p>Week 1 Section</p>
+</h1>
+<p><a href="docs/Lec1_annotated.pdf" class="download-btn" download=""> ⬇ Download Starter File </a></p>
+</div>
 <section id="statistics" class="level2" data-number="1.1">
 <h2 data-number="1.1" class="anchored" data-anchor-id="statistics"><span class="header-section-number">1.1</span> Statistics</h2>
 <p>Researchers in the life sciences analyze <strong>data</strong> that exhibit <strong>variability</strong>. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) assays prepared identically may yield different results due to contamination, thermal damage, etc. The challenge for the life scientist is to discern the <strong>signal</strong> from the <strong>noise</strong>.</p>
@@ -439,6 +477,7 @@ window.Quarto = {
 <li>Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations<br>
 </li>
 <li>Deviation: <span class="math inline">\(y_i - \bar{y}\)</span></li>
+<li>Mean deviation: <span class="math inline">\(\frac{\sum^{n}_{i=1}|y_{i}-\bar{y}|}{n}\)</span></li>
 <li>Sample standard deviation: <span class="math inline">\(s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})\)</span></li>
 <li>Sample variance: <span class="math inline">\(s^2\)</span></li>
 <li>Coefficient of variation: cv=<span class="math inline">\(\frac{s \times 100\%}{\bar{y}}\)</span></li>
@@ -453,7 +492,7 @@ window.Quarto = {
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>Note that the sum of deviations (y_i-{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the <strong>degrees of freedom</strong> of the standard deviation (and the variance).</p>
+<p>Note that the sum of deviations <span class="math inline">\(y_i-\bar{y}\)</span> is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the <strong>degrees of freedom</strong> of the standard deviation (and the variance).</p>
 </div>
 </div>
 </section><section id="plotting-the-data" class="level2" data-number="1.3">
@@ -483,7 +522,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -494,7 +533,7 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -502,17 +541,17 @@ window.Quarto = {
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="intro_files/figure-html/unnamed-chunk-7-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="intro_files/figure-html/unnamed-chunk-6-2.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>The <strong>shape</strong> of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.</p>
 <p>Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the <strong>grammar of graphics</strong>, implemented in the package <strong>ggplot2</strong>.</p>
-
-
 </section>
 </div>
+
+
 </section>
 
 </main> <!-- /main -->

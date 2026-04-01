@@ -1,3 +1,61 @@
+---
+#title: "Introduction to Statistics"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+resources:
+  - docs/Lec1_annotated.pdf
+---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+Week 1 Section
+
+</h1>
+
+<a href="docs/Lec1_annotated.pdf" class="download-btn" download> ⬇ Download Starter File </a>
+:::
+
+
 # Introduction to Statistics
 
 ## Statistics
@@ -53,18 +111,6 @@ ggplot(mean_vec, aes(x = as.numeric(stories), y = mean_injuries)) +
 ![Raining cats](/Figures/cats){fig-align="center" width="90%"}
 :::
 
-```{r,echo=FALSE}
-# knitr::kable(
-#   mean_vec %>% arrange(stories),
-#   format = "pipe",
-#   digits = 2
-# )
-# mean_vec %>%
-#   arrange(stories) %>%
-#   gt() %>%
-#   tab_header(title = "Mean injuries by stories") %>%
-#   cols_label(stories = "Stories", mean_injuries = "Mean injuries", n = "N") %>% fmt_number(columns =mean_injuries, decimals = 2)
-```
 
 What can we conclude?
 
@@ -94,13 +140,11 @@ The most common languages used for analyzing data are SAS, R (and Bioconductor),
 
 Let’s generate some data by answering this poll.
 
-
 ```{r,echo=FALSE}
 library(qrcode)
 qr <- qrcode::qr_code("https://docs.google.com/forms/d/e/1FAIpQLSecc961cTxMxEiZTbzGC3luAM6xE8atUWFM4-_mjCDXZBmhWA/viewform?usp=publish-editor")
 generate_svg(qr, filename = "Figures/poll.svg")
 ```
-
 
 ![poll](/Figures/poll.svg){fig-align="center" width="40%"}
 
@@ -124,7 +168,6 @@ A first step is to explore the data and describe them in summary form. Common ch
 -   Plotting data, frequency distributions, and charts\
 -   Talking with the person who collected the data (review the data dictionary)
 
-
 ```{r}
 summary(penguins$species)
 summary(penguins$flipper_length_mm)
@@ -137,12 +180,12 @@ summary(penguins$flipper_length_mm)
 -   Median: the value that lies in the middle of the ordered sample
 -   Mode: the value (or values) that occurs most frequently in a dataset
 
-
 **Measures of dispersion:**
 
 -   Range: max − min
 -   Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations\
 -   Deviation: $y_i - \bar{y}$
+-   Mean deviation: $\frac{\sum^{n}_{i=1}|y_{i}-\bar{y}|}{n}$
 -   Sample standard deviation: $s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})$
 -   Sample variance: $s^2$
 -   Coefficient of variation: cv=$\frac{s \times 100\%}{\bar{y}}$
@@ -150,7 +193,7 @@ summary(penguins$flipper_length_mm)
 ::: callout-important
 ## Why (n-1) in the standard deviation?
 
-Note that the sum of deviations (y_i-\bar{y}) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the **degrees of freedom** of the standard deviation (and the variance).
+Note that the sum of deviations $y_i-\bar{y}$ is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the **degrees of freedom** of the standard deviation (and the variance).
 :::
 
 ## Plotting the data
@@ -176,7 +219,7 @@ hist(DNase$density, breaks=25, main = "",xlab="Density")
 boxplot(density ~ Run, data = DNase)
 ```
 
-
 The **shape** of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.
 
 Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the **grammar of graphics**, implemented in the package **ggplot2**.
+::::::
