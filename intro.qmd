@@ -84,9 +84,9 @@ If instead we want to make statements about the whole population, then beyond ED
 
 ## Data
 
-Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A **variable** is a characteristic or quantity that you can measure; we will denote variables with capital letters (X), (Y), etc. A **value** is the state of the variable when you measure it; we will use lowercase letters (e.g., (x), (y)) for values. An **observation** is a set of measurements from one unit (e.g., one person or one animal).
+Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A **variable** is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A **value** is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An **observation** is a set of measurements from one unit (e.g., one person or one animal).
 
-In the cats example, (X) = number of injuries is a variable, while (x = 2) is one particular value. Similarly, (Y) = number of floors (stories) fallen is a variable, while (y = 5) is a particular value. An observation is the data collected for a particular cat (e.g., Luna), who fell from the fifth floor, resulting in 2 injuries.
+In the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.
 
 Variables can be **categorical** or **numerical**. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called **ordinal**. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be **discrete** (number of friends) or **continuous** (body temperature).
 
