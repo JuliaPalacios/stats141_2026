@@ -94,11 +94,15 @@ The most common languages used for analyzing data are SAS, R (and Bioconductor),
 
 Let’s generate some data by answering this poll.
 
+
 ```{r,echo=FALSE}
 library(qrcode)
 qr <- qrcode::qr_code("https://docs.google.com/forms/d/e/1FAIpQLSecc961cTxMxEiZTbzGC3luAM6xE8atUWFM4-_mjCDXZBmhWA/viewform?usp=publish-editor")
 generate_svg(qr, filename = "Figures/poll.svg")
 ```
+
+
+![poll](/Figures/poll.svg){fig-align="center" width="40%"}
 
 We can now read our dataset (poll results).
 
