@@ -133,19 +133,19 @@ summary(penguins$flipper_length_mm)
 
 **Measures of center (or typical value):**
 
--   Sample mean (average): (\bar{x} = \frac{1}{n}\sum\_{i=1}\^{n} x_i)
+-   Sample mean (average): ($\bar{x} = \frac{1}{n}\sum_{i=1}^{n} x_i$)
 -   Median: the value that lies in the middle of the ordered sample
 -   Mode: the value (or values) that occurs most frequently in a dataset
 
 
 **Measures of dispersion:**
 
--   Range: max − min\
+-   Range: max − min
 -   Interquartile range (IQR): the spread of (roughly) the middle 50% of the observations\
--   Deviation: (y_i - \bar{y})\
--   Sample standard deviation: (s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})\
--   Sample variance: (s\^2)\
--   Coefficient of variation: (cv=\frac{s \times 100\%}{\bar{y}})
+-   Deviation: $y_i - \bar{y}$
+-   Sample standard deviation: $s=\sqrt{\frac{\sum^{n}_{i=1}(y_{i}-\bar{y})^2}{n-1}})$
+-   Sample variance: $s^2$
+-   Coefficient of variation: cv=$\frac{s \times 100\%}{\bar{y}}$
 
 ::: callout-important
 ## Why (n-1) in the standard deviation?
