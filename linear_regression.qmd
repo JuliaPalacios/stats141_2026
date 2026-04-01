@@ -1,0 +1,128 @@
+---
+title: "Linear Regression"
+format: html
+---
+
+Linear regression is a supervised machine learning and statistical method that has been widely used for a long time to predict quantitative continuous responses. Although relatively simple, it is a very important model for understanding more complex machine learning models, which can be seen as generalizations of it.
+
+What is the main idea behind linear regression? Consider a simple **example**: imagine we have measurements of body weight and heart weight for a sample of cats. At first glance, we might wonder whether these two variables are related — do heavier cats tend to have heavier hearts? And if so, how strong and reliable is that relationship?
+
+This kind of question arises constantly in biological research. Linear regression is a powerful tool to answer it. More formally, suppose we want to understand how one or more variables — called predictors — relate to an outcome of interest — called the response variable. In our example, body weight is the predictor and heart weight is the response. A few key questions naturally emerge:
+
+-   Is there a relationship between body weight and heart weight?
+-   How strong is that relationship?
+-   How large is the effect — for each additional kilogram of body weight, how many grams does the heart weight increase?
+-   How accurately can we predict heart weight from body weight?
+-   Is the relationship linear, or does it follow a more complex pattern?
+-   When multiple predictors are available — such as body weight, sex, and age — which ones are truly associated with heart weight, and is there any interaction among them?
+
+Linear regression allows us to address all of these questions in a rigorous and interpretable way. And while our example is biological, the same framework applies broadly — from medicine and ecology to economics and engineering.
+
+## Simple Linear Regression
+
+Simple linear regression refers to the most basic model, where tehre is only one predictor, $X$, and how that predictor is linearly related to a specific outcome, $Y$. Mathematically, this linear relationship is as follows:
+
+$$Y\approx \beta_{0} + \beta_{1}X.$$ {#eq-1}
+
+In equation @eq-1, is interpreted as we are regressing $Y$ on $X$, and $\beta_{0}$, and $\beta_{1}$ are model *coefficients* or *parameters* of the model, that represent the *intercept* and *slope* terms in the linear model. The main objective of linear regression is to use training data (in the previous example, $X$ represents measures of body weight for the sample of cats, and $Y$ observations of heart weight), to produce estimates $\hat{\beta}_{0}$ and $\hat{\beta}_{1}$ for the model coefficients that better approximate the relationship between the predictor and outcome. That is:
+
+$$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1}X.$$ {#eq-2}
+
+In @eq-2 $\hat{y}$ indicates a prediction of Y (body weight) on the basis of X(=x, heart weight), and the symbol *\^* denotes a predicted value.
+
+::: {.callout-note icon="false"}
+**Example:** Cat's Heart Weight\
+In this example we measure the association of cat's heath weight with their body weight, using the dataset $cats$ from the MASS library in R. This dataset contains three variables: Sex, with levels "F", and "M"; Bwt, body weight in kg; and Hwt, heart weight in g.
+
+```{r}
+library(MASS)
+head(cats)
+? cats
+model1 <- lm(Hwt ~ Bwt, data = cats)
+model1
+##
+# Call:
+# lm(formula = Hwt ~ Bwt, data = cats)
+#
+# Coefficients:
+# (Intercept)          Bwt  
+#    -0.3567       4.0341 
+```
+
+Notice that the intercept is eqaul to $-0.3567$, which we can ignore as it is negative and has no biological meaning (heart weight when body weight = 0). The slope is important in this model, because indicates that for every 1 kg increase in body weight, heart weight increases by about 4 grams. *In summary, body weight is a strong positive predictor of heart weight in cats. Larger cats tend to have proportionally heavier hearts.*
+
+```{r}
+summary(model1)
+##
+# Call:
+# lm(formula = Hwt ~ Bwt, data = cats)
+
+# Residuals:
+#    Min      1Q  Median      3Q     Max 
+# -3.5694 -0.9634 -0.0921  1.0426  5.1238 
+
+# Coefficients:
+#             Estimate  Std. Error t value  Pr(>|t|)    
+# (Intercept)  -0.3567     0.6923  -0.515    0.607    
+# Bwt           4.0341     0.2503  16.119   <2e-16 ***
+# ---
+# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
+
+# Residual standard error: 1.452 on 142 degrees of freedom
+# Multiple R-squared:  0.6466,	Adjusted R-squared:  0.6441 
+# F-statistic: 259.8 on 1 and 142 DF,  p-value: < 2.2e-16
+```
+
+Goodness of fit:\
+*R-squared = 0.64* - indicates that body weight explains 64% of the total variation in heart weight\
+*p-value \< 2.2e-16* - indicates that the relationship is statistically significant\
+*Residual standard Error: 1.452g* - indicates how far off predictions typically are (we are typically wrong by about 1.42 grams)
+:::
+
+## Estimating the coefficients
+
+![](/Figures/plot_linregM1.png){fig-align="center" width="100%"}
+
+The previous plot can be generated in R as follows:
+
+```{r}
+# Fitted values
+fitted_vals <- fitted(model1)
+
+plot(cats$Bwt, cats$Hwt,
+     col = "red", pch = 19,
+     xlab = "Body Weight (kg)",
+     ylab = "Heart Weight (g)",
+     main = "Simple Linear Regression: Heart Weight vs Body Weight")
+
+# Fitted line
+abline(model1, col = "black", lwd = 2)
+
+# Vertical lines from each point to the fitted line (residuals)
+segments(cats$Bwt, cats$Hwt,
+         cats$Bwt, fitted_vals,
+         col = "lightgrey", lwd = 0.8)
+
+# Extract coefficients
+b0 <- round(coef(model1)[1], 3)
+b1 <- round(coef(model1)[2], 3)
+
+# Add label to plot
+legend("topleft",
+       legend = bquote(hat(Hwt) == .(b0) + .(b1) * Bwt),
+       bty = "n",
+       cex = 1.1)
+```
+
+## Multiple Linear Regression
+
+From MASS:
+
+birthwt — birth weight of babies vs. mother's age, weight, smoking status, etc. Great for both simple and multiple regression. cats — heart weight vs. body weight of cats. Super clean, only 3 variables, perfect for simple regression. mammals — brain weight vs. body weight across species. Also very clean for simple regression.
+
+# Multiple regression
+
+model2 \<- lm(Hwt \~ Bwt + Sex, data = cats) summary(model2)
+
+## Other Considerations in the Regression Model
+

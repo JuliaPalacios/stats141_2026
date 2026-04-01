@@ -9,7 +9,6 @@ Discussion section: Th (times below)
 **Course staff, office hours, and section times:**
 
 | Name | Role | Office hours | Discussion section |
-|----|----|----|----|
 | Julia Palacios | Instructor | W 11:00-12:00 in CoDa E250 |  |
 | Aditya Ghosh | TA | TBC | Th 9:30-10:20am in Lathrop 015, 2:30-3:20pm in Thronton 211 |
 | Jing Shang | TA | TBC | Th 9:30-10:20am in 160-127, 2:30-3:20pm in Thronton 210 |
@@ -40,6 +39,10 @@ In this course, students will:
 
 -   Statistics for the Life Sciences, 5th Edition by Samules, Witmer, and Schaffner.
 -   The Analysis of Biological Data, 3rd Edition by Whitlock, Schluter.
+<<<<<<< HEAD
+=======
+-   An Introduction to Statistical Learning with Applications in R by James et al., 2021
+>>>>>>> cade7114070b0d7efc86b2aab18a1024fd9e6fe9
 
 (4) **Gradescope**. Feedback on your quizzes and the final exam will be available on [gradescope](https://canvas.stanford.edu/courses/224513/external_tools/74302).
 

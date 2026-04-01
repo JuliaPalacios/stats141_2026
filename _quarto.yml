@@ -5,7 +5,9 @@ book:
   title: "Stats 141. Introduction to Statistics for Biology"
   chapters:
     - index.qmd
-    - intro.qmd
+    - part: "Lectures"
+      chapters: 
+        - intro.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
