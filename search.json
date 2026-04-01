@@ -245,12 +245,12 @@
   {
     "objectID": "Week1_section.html",
     "href": "Week1_section.html",
-    "title": "7  Getting Ready",
+    "title": "7  Quarto",
     "section": "",
-    "text": "7.1 Quarto\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.",
+    "text": "7.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
@@ -267,133 +267,133 @@
   {
     "objectID": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
     "href": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
-    "title": "7  Getting Ready",
-    "section": "7.3 1. How many rows and columns are in the dataset?",
-    "text": "7.3 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.2 1. How many rows and columns are in the dataset?",
+    "text": "7.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
     "href": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
-    "title": "7  Getting Ready",
-    "section": "7.4 2. What types of variables are present (e.g., numeric, categorical)?",
-    "text": "7.4 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.3 2. What types of variables are present (e.g., numeric, categorical)?",
+    "text": "7.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-does-the-variable-spam-represent",
     "href": "Week1_section.html#what-does-the-variable-spam-represent",
-    "title": "7  Getting Ready",
-    "section": "7.5 3. What does the variable spam represent?",
-    "text": "7.5 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
+    "title": "7  Quarto",
+    "section": "7.4 3. What does the variable spam represent?",
+    "text": "7.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
     "href": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
-    "title": "7  Getting Ready",
-    "section": "7.6 4. What is the median number of characters in an email?",
-    "text": "7.6 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.5 4. What is the median number of characters in an email?",
+    "text": "7.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-proportion-of-emails-are-spam",
     "href": "Week1_section.html#what-proportion-of-emails-are-spam",
-    "title": "7  Getting Ready",
-    "section": "7.7 5. What proportion of emails are spam?",
-    "text": "7.7 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.6 5. What proportion of emails are spam?",
+    "text": "7.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#subsetting",
     "href": "Week1_section.html#subsetting",
-    "title": "7  Getting Ready",
-    "section": "7.8 Subsetting",
-    "text": "7.8 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.7 Subsetting",
+    "text": "7.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
     "href": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
-    "title": "7  Getting Ready",
-    "section": "7.9 6. On average, do spam emails have more exclamation marks than non-spam emails?",
-    "text": "7.9 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
+    "title": "7  Quarto",
+    "section": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
+    "text": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
     "href": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
-    "title": "7  Getting Ready",
-    "section": "7.10 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
-    "text": "7.10 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
+    "title": "7  Quarto",
+    "section": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
+    "text": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
     "href": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
-    "title": "7  Getting Ready",
-    "section": "7.11 8. Create a histogram of the number of characters in emails.",
-    "text": "7.11 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.10 8. Create a histogram of the number of characters in emails.",
+    "text": "7.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
     "href": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
-    "title": "7  Getting Ready",
-    "section": "7.12 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
-    "text": "7.12 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
+    "title": "7  Quarto",
+    "section": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
+    "text": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
     "href": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
-    "title": "7  Getting Ready",
-    "section": "7.13 10. Create a boxplot of number of characters by spam status.",
-    "text": "7.13 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "title": "7  Quarto",
+    "section": "7.12 10. Create a boxplot of number of characters by spam status.",
+    "text": "7.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#other-tutorials",
     "href": "Week1_section.html#other-tutorials",
-    "title": "7  Getting Ready",
-    "section": "7.14 Other tutorials:",
-    "text": "7.14 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
+    "title": "7  Quarto",
+    "section": "7.13 Other tutorials:",
+    "text": "7.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Getting Ready</span>"
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
