@@ -3,8 +3,12 @@
 Name:
 
 
-1. 
--   Read the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
+1. In the first 5 minutes talk to the people in your table and introduce yourself. Ask them if they need help with getting started with R and help each other.
+
+
+2.   Read the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
+
+-   Recompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?
 
 -   Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
 

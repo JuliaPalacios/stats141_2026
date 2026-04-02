@@ -11,8 +11,8 @@ Discussion sections: Th (times below)
 | Name | Role | Office hours | Discussion section |
 |------|------|--------------|--------------------|
 | Julia Palacios | Instructor | W 11:00–12:00, CoDa E250 |  |
-| Aditya Ghosh | TA | Thu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105) | Th 9:30–10:20 in Hewlett 102 |
-| Jing Shang | TA | Tue 10:00–12:00, Sequoia Hall 207 | Th 2:30–3:20 in STLC 104 |
+| Aditya Ghosh | TA | Thu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105) |Th 2:30–3:20 in STLC 104 |
+| Jing Shang | TA | Tue 10:00–12:00, Sequoia Hall 207 |  Th 9:30–10:20 in Hewlett 102 |
 
 ## Contact
 
