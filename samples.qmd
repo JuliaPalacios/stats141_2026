@@ -4,7 +4,7 @@
 
 We will start with a **scatter plot**.
 
-A scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.
+A scatter plot is a tool for examining the relationship between two numerical variables X and Y. It plots each observed (x,y) pair as a dot on the x-y plane.
 
 
 ```{r}
