@@ -6,7 +6,7 @@ execute:
   warning: false
   message: false
 resources:
-  - docs/Lec1_annotated.pdf
+  - Lec1_annotated.pdf
 ---
 
 ```{=html}
@@ -52,7 +52,7 @@ Week 1 Section
 
 </h1>
 
-<a href="docs/Lec1_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+<a href="Lec1_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
 :::
 
 
