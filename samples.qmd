@@ -211,7 +211,7 @@ Often, human subjects in experiments are given a **placebo**. Of course, if a pl
 ![Placebo](/Figures/placebo){fig-align="center" width="50%"}
 
 ::: {.callout-note icon="false"}
-## Example: Effect of drug on cats
+## Example: Peanut sensitivity
 A group of people who reported mild peanut sensitivity took part in a study. They were given a flavored drink and were told it contained a small amount of peanut extract and might trigger itching, hives, or throat tightness. After drinking it, several participants reported tingling in the mouth, skin itching, and mild breathing discomfort.
 
 Later, the same participants were given an “anti-allergy” drink that they were told would block reactions. This time, most reported little or no symptoms.
