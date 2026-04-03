@@ -35,13 +35,21 @@ Researchers gather information to make inferences about nature in a variety of s
 
 Data in biology are obtained from either an **experimental study** or an **observational study**. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.
 
-{{< pagebreak >}}
+
+::: {.page-break}
+:::
+
 ::: {.callout-note icon="false"}
 ## Example: Marriage and Life expectancy
 
 A study found that people who were married are more likely to live longer than single. However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.
 :::
-{{< pagebreak >}}
+
+
+::: {.page-break}
+:::
+
+
 ::: {.callout-note icon="false"}
 ## Example: Aids as confounder
 
@@ -99,7 +107,9 @@ The previous two examples are based on **observational studies**. In an observat
 
 **How can we mitigate confounding?** We can design the experiment and create treatment and control groups that are as similar as possible except for the treatment level.  We can anticipate and prevent other known and unknown explanations for the observed difference in outcomes between the treated and control groups.
 
-{{< pagebreak >}}
+::: {.page-break}
+:::
+
 
 ::: {.callout-note icon="false"}
 ## Example: Effect of drug on cats
@@ -192,7 +202,9 @@ The **design of this experiment** allows for the investigation of the **interact
 
 By **randomly assigning** treatments (drug doses) to subjects (cats), we can get around the problem of confounding that complicates observational studies and limits the conclusions. **Randomized controlled experiments** are considered the gold standard in scientific investigation, but they can also be difficult.
 
-{{< pagebreak >}}
+::: {.page-break}
+:::
+
 
 Often, human subjects in experiments are given a **placebo**. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is **blinded**. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.
 
