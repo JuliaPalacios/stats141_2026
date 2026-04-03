@@ -8,22 +8,23 @@ Name:
 
 2.   Read the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
 
--   Recompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?
+(a)   Recompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?
 
--   Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
+(b)   Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
 
--   Change the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?
+(c)  Change the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?
 
--   Read section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?
+3. Read section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?
 
--   What are the quartiles?
+
+4. What are the quartiles?
 
 <!-- are the valuees that divide the area into four equal parts -->
 
 
-2. What is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?
+5. What is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?
 
 
 
-3. A town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo effect is related to this example.
+6. A town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo effect is related to this example.
 
