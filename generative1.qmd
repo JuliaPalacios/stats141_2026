@@ -1,10 +1,8 @@
 ---
-title: "My Document"
+title: "Generative Models for Discrete Data"
 format: html
 bibliography: references.bib
 ---
-
-# Generative Models for Discrete Data
 
 ## Random variables
 
@@ -21,22 +19,11 @@ In this dataset, researchers were interested in determining whether following a 
 
 ```{r}
 head(dat)
-##   Diet Bodyweight
-## 1 chow      21.51
-## 2 chow      28.14
-## 3 chow      24.04
-## 4 chow      23.45
-## 5 chow      23.68
-## 6 chow      19.79
 ## Note that head only shows the first 6/24 observations in the dataset.
 ## Lightest mouse:
 dat[which.min(dat$Bodyweight), ]
-##   Diet Bodyweight
-## 6 chow      19.79
 ## Heaviest mouse
 dat[which.max(dat$Bodyweight), ]
-##   Diet Bodyweight
-## 21   hf      34.02
 ## Use 'View(dat)' in R to see the entire dataset. 
 ```
 
@@ -47,9 +34,9 @@ library(dplyr)
 control <- filter(dat, Diet=="chow") %>% select(Bodyweight) %>% unlist
 treatment <- filter(dat, Diet=="hf") %>% select(Bodyweight) %>% unlist
 print(mean(control))
-## [1] 23.81333
 print(mean(treatment))
-## [1] 26.83417
+obsdiff <- mean(treatment) - mean(control)
+print(obsdiff)
 ```
 
 In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. This type of quantity is known as a random variable.
@@ -63,23 +50,52 @@ population <- read.csv("data/femaleControlsPopulation.csv")
 population <- unlist(population)
 # Mean of the 'total' population
 mean(population)
-## [1] 23.89338
 # Sample 12 mice three times to see if the average changes.
 control <- sample(population, 12)
 mean(control)
-## [1] 25.33083
 control <- sample(population, 12)
 mean(control)
-## [1] 22.87167
 control <- sample(population, 12)
 mean(control)
-## [1] 25.2175
 ```
 
-Notice how the average changes across samples, and that each differs from the average of the ‘total’ population. Therefore, repeating this experiment is useful, as it provides additional information about the distribution of this random variable.
+See how the average changes across samples, and that each differs from the average of the ‘total’ population. Therefore, repeating this experiment is useful, as it provides additional information about the distribution of this random variable.
 
 ## Null Hyphotesis
 
+In the previous section, we saw that the true characteristics of a population are rarely known. Instead, we use statistical methods to infer or approximate these characteristics based on samples drawn from that population. In the case of the mice experiment, scientists seek to determine whether applying a different diet leads to increased body weight. Based on their analysis, they conclude the following [@Winzell2004HighFatMouse]:
+
+‘Body weight was higher in mice fed the high-fat diet already after the first week, due to higher dietary intake in combination with lower metabolic efficiency.’
+
+This conclusion is based on comparing the average body weight between the control and treatment groups. However, we have also seen that the average is a random variable—it changes each time we draw a different sample from the population. This raises an important question: should we fully trust the scientists’ conclusion? How do we know that the observed difference is truly due to the diet? What would happen if all 24 mice were given the same diet—would we still observe a large difference?
+
+Statistics addresses this scenario through the concept of the null hypothesis. It is called “null” because it represents the possibility that there is no real difference between groups.
+
+We can simulate this idea in R by using the full dataset of control mice, which we previously treated as the ‘population.’ Assuming that diet has no effect, we can repeatedly draw random samples of 24 control mice, assign them (artificially) to two groups of 12, and calculate the difference in average weight between these groups. This allows us to observe how much variation can arise purely by chance.
+
+```{r}
+## 12 control mice
+control <- sample(population, 12)
+## Another 12 control mice that we act as if they were not
+treatment <- sample(population, 12)
+print(mean(treatment) - mean(control))
+## Now, let's do it 10,000 times (using a 'for-loop')
+n <- 10000
+null <- vector("numeric", n)
+for (i in 1:n){
+  control <- sample(population, 12)
+  treatment <- sample(population, 12)
+  null[i] <- mean(treatment) - mean(control)
+}
+```
+
+The values under the null represent what we call the null distribution, a concept we will explain in more detail in the next section. We can now compare the mean of the null distribution with the difference observed by the scientists in the original experiment (obsdiff = 3.020833). For example, what percentage of the 10,000 sample values in this distribution are greater than 3.020833?
+
+```{r}
+mean(null >= obsdiff) * 100
+```
+
+That is, based on the 10,000 simulations assuming no diet effect, we observe a difference as large as the one in the original experiment only 1.3% of the time. In statistics, this is what is known as a *p-value*, a concept we will explain more formally later.
 
 ## Probability distribution
 
@@ -94,9 +110,7 @@ One way to describe this information is to list all elements in the dataset, or 
 
 ```{r}
 length(x)
-## 1] 1078
 round(sample(x,10),1)
-## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7
 ```
 
 Another, more compact and descriptive way to represent the data is by using a **histogram**. Histograms show the proportion of values within intervals, $(a, b)$. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:
@@ -105,17 +119,31 @@ Another, more compact and descriptive way to represent the data is by using a **
 hist(x, xlab="Height (in inches)", main="Adult men heights")
 ```
 
-![](/Figures/hist_mheights.png){fig-align="center" width="50%"}
-
 With this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).
 
 Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random variable. We do not know all possible outcomes of random variables, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval $(a,b)$ is denoted with $Pr(a \leq X \leq b)$.
 
 In summary, to define a distribution, we compute, for all possible values of $a$, the proportion of numbers in our list that are below $a$, which is called the **cumulative distribution function (CDF)**, represented by the following notation: $F(a) \equiv \Pr(X \leq a)$ \[and the proportion of numbers bigger than $a$ is computed as: $\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)$\].
 
+Observe that $X$ is now capitalized to indicate that it is a random variable, and that the equation $Pr(a \leq X \leq b)$ defines its probability distribution. Returning to the simulated null distribution from the previous example, we found that observing a value as large as the difference in mean weights between control and treated mice was very unlikely—this probability is what we call the p-value. In the figure below, the histogram of the null distribution shows that only a small proportion of the simulated differences exceed the observed difference. These values, to the right of the red dashed line, are indeed rare. We will revisit this example later to explain how to estimate this probability directly from a normal distribution.
+
+```{r}
+hist(null,
+     mai = "Null Distribution",
+     xlab = "Null: observed differences (grams)",
+     col = "#FFCCCC",
+     border = "white")
+
+# Vertical dashed line at observed value
+abline(v = 3.020833,
+       col = "darkgrey",
+       lwd = 2,
+       lty = 2)
+```
+
 ## Discrete probability models
 
-In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG digrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
+In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
 
 To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.
 
@@ -123,9 +151,6 @@ To summarize categorical data, we tally the frequency of each level. In R, these
 genotype = c("AA","AO","BB","AO","OO","AO","AA","BO","BO",
              "AO","BB","AO","BO","AB","OO","AB","BB","AO","AO")
 table(genotype)
-## genotype
-## AA AB AO BB BO OO 
-## 2  2  7  3  3  2 
 ```
 
 If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.
@@ -148,17 +173,15 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 
 ```{r}
 rbinom(15, prob = 0.5, size = 1)
-## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0
 ```
 
 Now observe the outcome when using a biased coin that lands heads 70% of the time:
 
 ```{r}
 rbinom(15, prob = 0.7, size = 1)
-## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1
 ```
 
-*Question.* Notice that when you call the function above several times, you get different outcomes. Why is that?
+*Question.* Note that when you call the function above several times, you get different outcomes. Why is that?
 
 ***Properties***
 
@@ -170,7 +193,6 @@ In the previous example, if we are only interested in the number of heads ($X=1$
 
 ```{r}
 rbinom(1, prob = 0.7, size = 15)
-## [1] 11
 ```
 
 The sum of multiple independent (or exchangeable) Bernoulli trials is called the **Binomial distribution** (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a **binomial** random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:
@@ -178,7 +200,6 @@ The sum of multiple independent (or exchangeable) Bernoulli trials is called the
 ```{r}
 set.seed(384569724)
 rbinom(1, prob = 0.7, size = 15)
-## [1] 11
 ```
 
 *Question.* Repeat this function call 10 times. What seems to be the most common outcome?
@@ -190,17 +211,13 @@ The complete **probability mass distribution** is available by typing:
 ```{r}
 probabilities = dbinom(0:15, prob = 0.7, size = 15)
 round(probabilities, 2)
-## [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 
-## [13] 0.09 0.03 0.00
 ```
 
 A barplot for this distribution in R, is as follows:
 
 ```{r}
-barplot(probabilities, names.arg = 0:15, col = "black")
+barplot(probabilities, names.arg = 0:15, col = "black", main = "Theoretical distribution of B(15, 0.7).")
 ```
-
-![Theoretical distribution of B(15, 0.7).](/Figures/plot_bimomial.png){fig-align="center" width="50%"}
 
 Mathematically, the theoretical distribution of the binomial distribution is
 
@@ -232,7 +249,6 @@ As the genome size of HIV is about $n=10^4$, this model predicts an expected num
 
 ```{r}
 dpois(x=3, lambda=5)
-## [1] 0.1403739
 ```
 
 This means that the chance of seeing exactly three events is about 0.14.
@@ -241,14 +257,10 @@ Now we can visualize the distribution of the values from a particular range, fro
 
 ```{r}
 y <- dpois(x=0:12, lambda=5)
-## [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863
-## [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240
-barplot(y, names.arg = 0:12, col = "red")
+barplot(y, names.arg = 0:12, col = "#FFCCAA",  main = "Probabilities of seeing 0 to 12 mutations, modeled as a Poisson(5)")
 ```
 
-![Probabilities of seeing 0 to 12 mutations, modeled as a Poisson(5) distribution.](/Figures/barplot_hiv.png){fig-align="center" width="50%"}
-
-This example shows that the Poisson distribution is a good model for rare events such as mutation (notice that $p$ is very low).
+This example shows that the Poisson distribution is a good model for rare events such as mutation (observe that $p$ is very low).
 :::
 
 ### Multinomial distributions
@@ -269,8 +281,6 @@ To generate draws that are consistent with this model, we use R commands to gene
 ```{r}
 pvec = rep(1/4, 4)
 t(rmultinom(1, prob = pvec, size = 8))
-##      [,1] [,2] [,3] [,4]
-## [1,]    4    2    1    1
 ```
 
 *Question* Try the code without using the t() function; what does t stand for?
