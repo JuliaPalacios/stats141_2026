@@ -7,10 +7,12 @@ book:
   title: "Stats 141. Introduction to Statistics for Biology"
   chapters:
     - index.qmd
+    - schedule.qmd
     - part: "Lectures"
       chapters: 
         - intro.qmd
         - samples.qmd
+        - lec3.qmd
         - generative1.qmd
     - part: "Activities"
       chapters:

@@ -1,0 +1,11 @@
+## Schedule {.unnumbered}
+
+**Spring 2026**
+
+## Course schedule
+
+| Week | Date | Topic | Readings / Prep | Due |
+|--------------:|---------------|---------------|---------------|---------------|
+| 1 | 2026-04-01 | Introduction + course logistics | Syllabus, Lecture 1 | Activity 1 |
+| 1 | 2026-04-03 | R basics and plots | [r4ds](https://r4ds.hadley.nz/data-visualize.html) chapter 1, Lecture 2 | Activity 2 |
+| 2 | 2026-09-15 | Types of studies | Lecture 3 | Activity 3 |

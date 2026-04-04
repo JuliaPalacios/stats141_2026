@@ -2,55 +2,20 @@
 
 Name:
 
+1.  In the first five minutes, talk with the people at your table and introduce yourself. Ask whether anyone needs help getting started with R, and help each other out..
 
-1. 
--   Read the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
+2.  Read the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?
 
--   Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
+<!-- -->
 
--   Change the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?
+(a) Recompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?
 
--   Read section 1.4 and display the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points?
+(b) Multiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?
 
--   What are the quartiles?
+(c) Change the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?
 
-<!-- are the valuees that divide the area into four equal parts -->
+<!-- -->
 
+3.  Generate the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points? Try generating the histogram with ggplot2. You can check section 1.4 of [r4ds](https://r4ds.hadley.nz/data-visualize.html) to learn how to do it.
 
-2. What is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?
-
-Exposure (predictor): Carrying a lighter
-Outcome: Lung cancer
-Confounder: Smoking
-
-
-
-3. A town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo
-effect is related to this example.
-
-
-
-4. In a study of physical therapy for knee pain, patients are randomly divided into two groups. One group receives a new “hands-on” therapy technique and the other group receives standard stretching exercises. The physical therapist who developed the new technique evaluates each patient’s improvement and compares results between the two groups. Explain how lack of blinding could bias the experiment in favor of the new therapy.
-
-
-
-
-
-5. Researchers studied 2,050 adults over age 60 living in Arizona. They found that those who regularly participated in community volunteer activities were more likely to have lower levels of C-reactive protein (CRP), a blood marker linked to inflammation, than those who did not volunteer. Does this mean that volunteering improves one’s health? Why or why not?
-
-
-
-
-
-
-6. In each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.
-
-(a) All 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.
-
-(b) A total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.
-
-(c) In a temperature study, five readings were taken at each of three preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen readings.
-
-(d) A total of 30 apartments were chosen at random from a citywide list to estimate average monthly electricity use.
-
-(e) Thirty-six employees (twelve randomly selected from each of three departments: Sales, Engineering, and Customer Support) were surveyed about job satisfaction.
+4.  What are the quartiles?

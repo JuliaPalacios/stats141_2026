@@ -2,7 +2,6 @@
 
 Name:
 
-
 ## Descriptive Statistics
 
 -   Read sections 1.1 1.2 of [r4ds](https://r4ds.hadley.nz/data-visualize.html) and solve 1.2.5 excercises 2,3, and 7.
