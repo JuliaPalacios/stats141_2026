@@ -1,5 +1,5 @@
 ---
-#title: "Plotting the data"
+title: "Plotting the data"
 format: html
 execute:
   echo: true
@@ -48,7 +48,7 @@ execute:
 ::: header-row
 <h1 class="page-title">
 
-Plotting the data
+
 
 </h1>
 
