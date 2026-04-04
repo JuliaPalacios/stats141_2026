@@ -12,12 +12,48 @@ Data in biology are obtained from either an **experimental study** or an **obser
 ::: {.callout-note icon="false"}
 ## Example: Marriage and Life expectancy
 
-A study found that people who were married are more likely to live longer than single. However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.
+A study found that people who were married are more likely to live longer than single. Do the following plots support the claim?
 :::
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| error: false   # optional (hides errors; use carefully)
 
+# Two boxplots illustrating an observational study:
+# Married people show higher life expectancy than single people (but no causality implied)
+
+set.seed(42)
+
+# Simulated life expectancy (years)
+# Married: higher median; Single: lower median; include some overlap + a few outliers
+married <- c(rnorm(140, mean = 82, sd = 6), 98, 100)
+single  <- c(rnorm(140, mean = 75, sd = 7), 55, 58)
+
+df <- data.frame(
+  marital_status = factor(c(rep("Married", length(married)), rep("Single", length(single)))),
+  life_expectancy = c(married, single)
+)
+
+boxplot(life_expectancy ~ marital_status, data = df,
+        col = c("lightblue", "salmon"),
+        ylab = "Life expectancy (years)",
+        xlab = "",
+        main = "Life Expectancy by Marital Status (Observational Study)")
+
+stripchart(life_expectancy ~ marital_status, data = df,
+           method = "jitter", pch = 16, col = rgb(0,0,0,0.25), add = TRUE)
+grid(nx = NA, ny = NULL)
+```
 ::: {.page-break}
 :::
+
+::: {.callout-note icon="false"}
+## Back to our example: Marriage and Life expectancy
+However, from an **observational** study such as this we don't know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.
+:::
+
 
 
 ::: {.callout-note icon="false"}
