@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Plotting the data – Stats 141. Introduction to Statistics for Biology</title>
+<title>9&nbsp; Activity Lecture 4 – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -68,8 +33,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lec3.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./summary.html" rel="next">
+<link href="./Week2A.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -120,7 +85,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week2B.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Activity Lecture 4</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -174,7 +139,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./samples.html" class="sidebar-item-text sidebar-link active">
+  <a href="./samples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></span></a>
   </div>
 </li>
@@ -227,7 +192,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week2B.html" class="sidebar-item-text sidebar-link">
+  <a href="./Week2B.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Activity Lecture 4</span></span></a>
   </div>
 </li>
@@ -284,21 +249,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">2.1</span> </a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week2B.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Activity Lecture 4</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></h1>
+<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Activity Lecture 4</span></span></h1>
 </div>
 
 
@@ -315,99 +274,15 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<style>
-.header-row {
-  display: flex;
-  justify-content: space-between; /* title left, button right */
-  align-items: center;
-  margin-bottom: 1em; /* spacing below header */
-}
-
-.page-title {
-  font-size: 2rem;   /* matches H1 style */
-  font-weight: 700;
-  margin: 0;
-}
-
-.download-btn {
-  display: inline-block;
-  background-color: #5FA2F3;  /* lighter R blue */
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.download-btn:hover {
-  background-color: #4C93E6;
-  color: white !important;
-  text-decoration: none;
-}
-</style>
-<!-- Flex container aligns title and button with text margin -->
-<div class="header-row">
-<h1 class="page-title">
-</h1>
-<p><a href="Lec2_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
-</div>
-<section id="section" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">2.1</span> </h2>
-<p>We will start with a <strong>scatter plot</strong>.</p>
-<p>A scatter plot is a tool for examining the relationship between two numerical variables X and Y. It plots each observed (x,y) pair as a dot on the x-y plane.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?DNase  <span class="co">#what is the dataset about?</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DNase) <span class="co">#shows the first rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Run       conc density
-1   1 0.04882812   0.017
-2   1 0.04882812   0.018
-3   1 0.19531250   0.121
-4   1 0.19531250   0.124
-5   1 0.39062500   0.206
-6   1 0.39062500   0.215</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DNase) <span class="co"># gives you the name of the variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Run"     "conc"    "density"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DNase<span class="sc">$</span>conc, DNase<span class="sc">$</span>density,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>y,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>x, <span class="fu">attr</span>(DNase, <span class="st">"units"</span>)<span class="sc">$</span>x),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can visualize <em>frequency distributions</em> with <strong>bar plots</strong> (as well as jittered dotplots), <strong>histograms</strong>, and <strong>boxplots</strong>. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(DNase<span class="sc">$</span>density, <span class="at">breaks=</span><span class="dv">25</span>, <span class="at">main =</span> <span class="st">""</span>,<span class="at">xlab=</span><span class="st">"Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(density <span class="sc">~</span> Run, <span class="at">data =</span> DNase)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The <strong>shape</strong> of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.</p>
-<p>Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the <strong>grammar of graphics</strong>, implemented in the package <strong>ggplot2</strong>.</p>
+<p>Name:</p>
+<ol type="1">
+<li><p>Draw a Venn diagram for one roll of a fair six-sided die.</p>
+<p>(a) Show the area corresponding to the event “the result is a 3” and state the corresponding probability.</p>
+<p>(b) Show the are corresponding to the event “the result is greater than 2” and state the corresponding probability.</p></li>
+<li><p>Both smoking and high blood pressure are risk factors for strokes and other vascular diseases. In the United States, approximately 16% of adults smoke and about 24% have high blood pressure. Research has shown that high blood pressure is not associated with smoking; that is, they seem to be independent of each other. What is the probability that a randomly chosen American adult has both of these risk factors?</p></li>
+</ol>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -812,13 +687,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Statistics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></span>
+      <a href="./Week2A.html" class="pagination-link" aria-label="Activity Lecture 3">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Activity Lecture 3</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lec3.html" class="pagination-link" aria-label="Types of Studies">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Types of Studies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

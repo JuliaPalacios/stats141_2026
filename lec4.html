@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>2&nbsp; Plotting the data – Stats 141. Introduction to Statistics for Biology</title>
+<title>4&nbsp; Probability – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lec3.html" rel="next">
-<link href="./intro.html" rel="prev">
+<link href="./lec5.html" rel="next">
+<link href="./lec3.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -120,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -174,7 +203,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./samples.html" class="sidebar-item-text sidebar-link active">
+  <a href="./samples.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></span></a>
   </div>
 </li>
@@ -186,7 +215,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lec4.html" class="sidebar-item-text sidebar-link">
+  <a href="./lec4.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
   </div>
 </li>
@@ -289,16 +318,16 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#section" id="toc-section" class="nav-link active" data-scroll-target="#section"><span class="header-section-number">2.1</span> </a></li>
+  <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link active" data-scroll-target="#probability-distribution"><span class="header-section-number">4.1</span> Probability distribution</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./samples.html"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec4.html"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></h1>
+<h1 class="title"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></h1>
 </div>
 
 
@@ -315,96 +344,57 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<style>
-.header-row {
-  display: flex;
-  justify-content: space-between; /* title left, button right */
-  align-items: center;
-  margin-bottom: 1em; /* spacing below header */
-}
-
-.page-title {
-  font-size: 2rem;   /* matches H1 style */
-  font-weight: 700;
-  margin: 0;
-}
-
-.download-btn {
-  display: inline-block;
-  background-color: #5FA2F3;  /* lighter R blue */
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.download-btn:hover {
-  background-color: #4C93E6;
-  color: white !important;
-  text-decoration: none;
-}
-</style>
-<!-- Flex container aligns title and button with text margin -->
-<div class="header-row">
-<h1 class="page-title">
-</h1>
-<p><a href="Lec2_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
-</div>
-<section id="section" class="level2" data-number="2.1">
-<h2 data-number="2.1" class="anchored" data-anchor-id="section"><span class="header-section-number">2.1</span> </h2>
-<p>We will start with a <strong>scatter plot</strong>.</p>
-<p>A scatter plot is a tool for examining the relationship between two numerical variables X and Y. It plots each observed (x,y) pair as a dot on the x-y plane.</p>
+<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence annot be predicted with certainty.</p>
+<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6). An <strong>event</strong> is a subset of the sample space.</p>
+<p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
+<p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
+<p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the even occurs. Probability ranges between 0 an 1.</p>
+<p>A useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
+<p><strong>Activity 4</strong></p>
+<p>Two events are <strong>mutually exclusive</strong> if both cannot occur simultaneously. For example <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> defined above are mutually exclusive and <span class="math display">\[ P(E_{1} \text{ and } E_{2})=0\]</span></p>
+<section id="probability-distribution" class="level2" data-number="4.1">
+<h2 data-number="4.1" class="anchored" data-anchor-id="probability-distribution"><span class="header-section-number">4.1</span> Probability distribution</h2>
+<p>A simple way to think about a <strong>probability distribution</strong> is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>?DNase  <span class="co">#what is the dataset about?</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(DNase) <span class="co">#shows the first rows</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  Run       conc density
-1   1 0.04882812   0.017
-2   1 0.04882812   0.018
-3   1 0.19531250   0.121
-4   1 0.19531250   0.124
-5   1 0.39062500   0.206
-6   1 0.39062500   0.215</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(father.son, <span class="at">package=</span><span class="st">"UsingR"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> father.son<span class="sc">$</span>fheight</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(DNase) <span class="co"># gives you the name of the variables</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "Run"     "conc"    "density"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(DNase<span class="sc">$</span>conc, DNase<span class="sc">$</span>density,</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">ylab =</span> <span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>y,</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">xlab =</span> <span class="fu">paste</span>(<span class="fu">attr</span>(DNase, <span class="st">"labels"</span>)<span class="sc">$</span>x, <span class="fu">attr</span>(DNase, <span class="st">"units"</span>)<span class="sc">$</span>x),</span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">pch =</span> <span class="dv">3</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>We can visualize <em>frequency distributions</em> with <strong>bar plots</strong> (as well as jittered dotplots), <strong>histograms</strong>, and <strong>boxplots</strong>. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.</p>
+<p>One way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(DNase<span class="sc">$</span>density, <span class="at">breaks=</span><span class="dv">25</span>, <span class="at">main =</span> <span class="st">""</span>,<span class="at">xlab=</span><span class="st">"Density"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1078</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 68.75605 64.49083 68.59380 63.99469 67.97994 69.13395 66.57388 69.47933
+ [9] 67.33721 69.07253</code></pre>
+</div>
+</div>
+<p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">xlab=</span><span class="st">"Height (in inches)"</span>, <span class="at">main=</span><span class="st">"Adult men heights"</span>,<span class="at">freq=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">boxplot</span>(density <span class="sc">~</span> Run, <span class="at">data =</span> DNase)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="samples_files/figure-html/unnamed-chunk-2-2.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>The <strong>shape</strong> of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.</p>
-<p>Base R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the <strong>grammar of graphics</strong>, implemented in the package <strong>ggplot2</strong>.</p>
+<p>With this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).</p>
+<p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
+<p>In summary, a <strong>probability distribution</strong> describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).</p>
+<p>The <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
+<p>** This or that, the addition rule</p>
+<p>Very often, we want to know the probability that we get either one event or another.</p>
+<p>If the two events are mutually exclusive, then <span class="math display">\[P(E_{1} \text{ or } E_{2})=P(E_{1})+P(E_{2})\]</span> Naturally, <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{1}^{c}\)</span> are mutually exclusive and in fact <span class="math display">\[P(E_{1} \text{ or } E_{1}^c)=P(E_{1})+P(E_{1}^{c})=1\]</span> The general addition rule is</p>
+<p><span class="math display">\[P(A \text{ or } B)=P(A)+P(B) - P(A \text{ and } B)\]</span></p>
+<p>** Independence and multiplication rule</p>
+<p>Science is generated by relationships between events. Men are more likely to be tall, more likely to have a beard, more likely to die young and more likely to go to prison than women. That is, height, beadeness, age at death and criminal conduct are <strong>not independend</strong> of sex in humans.</p>
+<p>To events are <strong>independent</strong> if the occurence of one does not in any way inform us about the probability that the other will also occur.</p>
+<p>Example: <span class="math inline">\(E_{1}\)</span>=The first die rall is 3, and <span class="math inline">\(E_{2}\)</span>=The second die roll is <span class="math inline">\(3\)</span>.</p>
+<p>The multiplication rule states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> are independent, then <span class="math display">\[P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})\]</span></p>
 
 
 </section>
@@ -812,13 +802,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./intro.html" class="pagination-link" aria-label="Statistics">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></span>
+      <a href="./lec3.html" class="pagination-link" aria-label="Types of Studies">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Types of Studies</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lec3.html" class="pagination-link" aria-label="Types of Studies">
-        <span class="nav-page-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Types of Studies</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./lec5.html" class="pagination-link" aria-label="Probability 2">
+        <span class="nav-page-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability 2</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
