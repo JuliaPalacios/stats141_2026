@@ -8,4 +8,4 @@ Name:
 
     \(b\) Show the are corresponding to the event "the result is greater than 2" and state the corresponding probability.
 
-2.  
+2.   Both smoking and high blood pressure are risk factors for strokes and other vascular diseases. In the United States, approximately 16% of adults smoke and about 24% have high blood pressure. Research has shown that high blood pressure is not associated with smoking; that is, they seem to be independent of each other. What is the probability that a randomly chosen American adult has both of these risk factors?

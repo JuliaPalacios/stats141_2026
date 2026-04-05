@@ -14,6 +14,7 @@ book:
         - samples.qmd
         - lec3.qmd
         - lec4.qmd
+        - lec5.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd

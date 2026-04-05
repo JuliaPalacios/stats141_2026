@@ -1,0 +1,166 @@
+---
+title: "Probability 2"
+format: html
+bibliography: references.bib
+---
+
+
+
+** Conditional probability and Bayes' theorem
+ 
+*Conditional probability* is the probability of an event given that another event occurs.
+
+$$P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}$$
+
+The *general multiplication rule*
+
+$$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
+
+The *law of total probability*
+Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
+$$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
+## Discrete probability models
+
+In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
+
+To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.
+
+```{r}
+genotype = c("AA","AO","BB","AO","OO","AO","AA","BO","BO",
+             "AO","BB","AO","BO","AB","OO","AB","BB","AO","AO")
+table(genotype)
+```
+
+If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.
+
+### Bernoulli trials
+
+The **Bernoulli distribution** is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter $p$, which represents the probability of success, and the complementary event is called probability of failure $1-p$:
+
+***Probability distribution:***
+
+$P(X=1) = p$\
+$P(X=0) = 1-p$
+
+For a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.
+
+::: {.callout-note icon="false"}
+**Example:** Coin tosses\
+Suppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:
+:::
+
+```{r}
+rbinom(15, prob = 0.5, size = 1)
+```
+
+Now observe the outcome when using a biased coin that lands heads 70% of the time:
+
+```{r}
+rbinom(15, prob = 0.7, size = 1)
+```
+
+*Question.* Note that when you call the function above several times, you get different outcomes. Why is that?
+
+***Properties***
+
+The **mean**, or **expected value**, of a Bernoulli distribution is given by $p$, and the **variance** is defined as $p(1-p)$, so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.
+
+### Binomial success counts
+
+In the previous example, if we are only interested in the number of heads ($X=1$), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:
+
+```{r}
+rbinom(1, prob = 0.7, size = 15)
+```
+
+The sum of multiple independent (or exchangeable) Bernoulli trials is called the **Binomial distribution** (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a **binomial** random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:
+
+```{r}
+set.seed(384569724)
+rbinom(1, prob = 0.7, size = 15)
+```
+
+*Question.* Repeat this function call 10 times. What seems to be the most common outcome?
+
+*Solution.* The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
+
+The complete **probability mass distribution** is available by typing:
+
+```{r}
+probabilities = dbinom(0:15, prob = 0.7, size = 15)
+round(probabilities, 2)
+```
+
+A barplot for this distribution in R, is as follows:
+
+```{r}
+barplot(probabilities, names.arg = 0:15, col = "black", main = "Theoretical distribution of B(15, 0.7).")
+```
+
+Mathematically, the theoretical distribution of the binomial distribution is
+
+***Probability distribution:***
+
+$$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \ldots, n,$$ where $n$ is the number of trials, $k$ is the number of successes, $p$ is the probability of success, and $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ is the binomial coefficient.
+
+***Properties***
+
+The **mean** of a Binomial distribution is given by $n \cdot p$ (in the figure, the highest bar around $x \approx 11$, or $n(=15)\cdot p(=0.7)$, and the **variance** is defined as $np(1-p) = (15)(0.7)(0.3) = 3.15$.
+
+### Poisson distributions
+
+When the probability of success $p$ is small and the number of trials $n$ is large, the Binomial distribution can be approximated by a **Poisson distribution** with parameter $\lambda = np$, which provides a simple model for describing the data.
+
+***Probability distribution:***
+
+$$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,$$ where $k$ is the number of events, $\lambda$ is the average number of events per interval, and $e\approx 2.718$ is the Euler's number.
+
+***Properties***
+
+An interesting characteristic of the Poisson distribution is that the **mean** and the **variance** are both equal to $\lambda = np$.
+
+::: {.callout-note icon="false"}
+**Example:** Human Immunodeficiency Virus (HIV)\
+Consider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of $p=5 x 10^{-4}$ per nucleotide per replication cycle, independently across positions. Given a genome size of approximately \$n\$ nucleotides, the total number of mutations per cycle follows a $\text{Poisson}(\lambda)$ distribution.
+
+As the genome size of HIV is about $n=10^4$, this model predicts an expected number of mutations close to 5 $(np=10^4 x 5 x 10^{-4})$ per replication cycle, with standard error $\sqrt{\lambda}$. For example, to find the probability of exactly 3 mutations under a $\text{Poisson}(5)$ model, we can use R:
+
+```{r}
+dpois(x=3, lambda=5)
+```
+
+This means that the chance of seeing exactly three events is about 0.14.
+
+Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:
+
+```{r}
+y <- dpois(x=0:12, lambda=5)
+barplot(y, names.arg = 0:12, col = "#FFCCAA",  main = "Probabilities of seeing 0 to 12 mutations, modeled as a Poisson(5)")
+```
+
+This example shows that the Poisson distribution is a good model for rare events such as mutation (observe that $p$ is very low).
+:::
+
+### Multinomial distributions
+
+In the Binomial model, we had only two possible outcomes, success and failure, with probabilities $p$ and $1-p$, respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: $\{A, C, G, T\}$. We use a **Multinomial model**, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as $p_{A}$, $p_{C}$, $p_{G}$, and $p_{T}$, where the probabilities sum to 1: $p_{A}+p_{C}+p_{G}+p_{T}=1$, as in the Binomial model.
+
+The mathematical formulation for the Multinomial model for $m$ counts $(x_{1}, x_{2}, \ldots, x_{m})$ for outcomes of $n$ draws with probabilities $p_{1}, p_{2}, \ldots, p_{m}$ is as follows:
+
+***Probability distribution:***
+
+$$\begin{align}
+P(x_{1}, x_{2}, \ldots, x_{m}) &= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^{m} p_{i}^{x_{i}} \\
+&= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
+\end{align}$$
+
+To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:
+
+```{r}
+pvec = rep(1/4, 4)
+t(rmultinom(1, prob = pvec, size = 8))
+```
+
+*Question* Try the code without using the t() function; what does t stand for?
+
+Reference: @holmes2018modern
