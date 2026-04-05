@@ -1,0 +1,11 @@
+# Activity Lecture 4 {#sec-week2}
+
+Name:
+
+1.  Draw a Venn diagram for one roll of a fair six-sided die.
+
+    \(a\) Show the area corresponding to the event "the result is a 3" and state the corresponding probability.
+
+    \(b\) Show the are corresponding to the event "the result is greater than 2" and state the corresponding probability.
+
+2.  

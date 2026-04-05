@@ -1,0 +1,773 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.9.36">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+
+<title>Probability</title>
+<style>
+/* Default styles provided by pandoc.
+** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
+*/
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
+/* CSS for citations */
+div.csl-bib-body { }
+div.csl-entry {
+  clear: both;
+}
+.hanging-indent div.csl-entry {
+  margin-left:2em;
+  text-indent:-2em;
+}
+div.csl-left-margin {
+  min-width:2em;
+  float:left;
+}
+div.csl-right-inline {
+  margin-left:2em;
+  padding-left:1em;
+}
+div.csl-indent {
+  margin-left: 2em;
+}</style>
+
+
+<script src="Lec4_files/libs/clipboard/clipboard.min.js"></script>
+<script src="Lec4_files/libs/quarto-html/quarto.js" type="module"></script>
+<script src="Lec4_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="Lec4_files/libs/quarto-html/popper.min.js"></script>
+<script src="Lec4_files/libs/quarto-html/tippy.umd.min.js"></script>
+<script src="Lec4_files/libs/quarto-html/anchor.min.js"></script>
+<link href="Lec4_files/libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="Lec4_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="Lec4_files/libs/bootstrap/bootstrap.min.js"></script>
+<link href="Lec4_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="Lec4_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
+
+</head>
+
+<body class="fullcontent quarto-light">
+
+<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
+
+<main class="content" id="quarto-document-content">
+
+<header id="title-block-header" class="quarto-title-block default">
+<div class="quarto-title">
+<h1 class="title">Probability</h1>
+</div>
+
+
+
+<div class="quarto-title-meta">
+
+    
+  
+    
+  </div>
+  
+
+
+</header>
+
+
+<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence annot be predicted with certainty.</p>
+<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6). An <strong>event</strong> is a subset of the sample space.</p>
+<p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
+<p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
+<p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the even occurs. Probability ranges between 0 an 1.</p>
+<p>A useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
+<p><strong>Activity 4</strong></p>
+<p>Two events are <strong>mutually exclusive</strong> if both cannot occur simultaneously. For example <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> defined above are mutually exclusive and <span class="math display">\[ P(E_{1} \text{ and } E_{2})=0\]</span></p>
+<p>##Probability distribution</p>
+<p>A simple way to think about a <strong>probability distribution</strong> is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">data</span>(father.son, <span class="at">package=</span><span class="st">"UsingR"</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> father.son<span class="sc">$</span>fheight</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p>One way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1078</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 67.77952 67.54999 61.02471 65.25267 73.89524 69.19364 70.16110 72.78240
+ [9] 65.41055 72.16894</code></pre>
+</div>
+</div>
+<p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(x, <span class="at">xlab=</span><span class="st">"Height (in inches)"</span>, <span class="at">main=</span><span class="st">"Adult men heights"</span>,<span class="at">freq=</span><span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec4_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>With this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).</p>
+<p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
+<p>In summary, a <strong>probability distribution</strong> describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).</p>
+<p>The <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
+<p>** This or that, the addition rule</p>
+<p>** Independence and multiplication rule</p>
+<p>** Dependent events</p>
+<p>** Conditional probability and Bayes’ theorem</p>
+<section id="discrete-probability-models" class="level2">
+<h2 class="anchored" data-anchor-id="discrete-probability-models">Discrete probability models</h2>
+<p>In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).</p>
+<p>To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>genotype <span class="ot">=</span> <span class="fu">c</span>(<span class="st">"AA"</span>,<span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"OO"</span>,<span class="st">"AO"</span>,<span class="st">"AA"</span>,<span class="st">"BO"</span>,<span class="st">"BO"</span>,</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="st">"AO"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"BO"</span>,<span class="st">"AB"</span>,<span class="st">"OO"</span>,<span class="st">"AB"</span>,<span class="st">"BB"</span>,<span class="st">"AO"</span>,<span class="st">"AO"</span>)</span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(genotype)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>genotype
+AA AB AO BB BO OO 
+ 2  2  7  3  3  2 </code></pre>
+</div>
+</div>
+<p>If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.</p>
+<section id="bernoulli-trials" class="level3">
+<h3 class="anchored" data-anchor-id="bernoulli-trials">Bernoulli trials</h3>
+<p>The <strong>Bernoulli distribution</strong> is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter <span class="math inline">\(p\)</span>, which represents the probability of success, and the complementary event is called probability of failure <span class="math inline">\(1-p\)</span>:</p>
+<p><strong><em>Probability distribution:</em></strong></p>
+<p><span class="math inline">\(P(X=1) = p\)</span><br>
+<span class="math inline">\(P(X=0) = 1-p\)</span></p>
+<p>For a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example:</strong> Coin tosses<br>
+Suppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0 0 0 0 0 0 1 0 0 1 0 1 0 0 1</code></pre>
+</div>
+</div>
+<p>Now observe the outcome when using a biased coin that lands heads 70% of the time:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 1 1 1 1 0 1 1 0 1 1 0 0 0 0 1</code></pre>
+</div>
+</div>
+<p><em>Question.</em> Note that when you call the function above several times, you get different outcomes. Why is that?</p>
+<p><strong><em>Properties</em></strong></p>
+<p>The <strong>mean</strong>, or <strong>expected value</strong>, of a Bernoulli distribution is given by <span class="math inline">\(p\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(p(1-p)\)</span>, so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.</p>
+</section>
+<section id="binomial-success-counts" class="level3">
+<h3 class="anchored" data-anchor-id="binomial-success-counts">Binomial success counts</h3>
+<p>In the previous example, if we are only interested in the number of heads (<span class="math inline">\(X=1\)</span>), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 10</code></pre>
+</div>
+</div>
+<p>The sum of multiple independent (or exchangeable) Bernoulli trials is called the <strong>Binomial distribution</strong> (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a <strong>binomial</strong> random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">384569724</span>)</span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 11</code></pre>
+</div>
+</div>
+<p><em>Question.</em> Repeat this function call 10 times. What seems to be the most common outcome?</p>
+<p><em>Solution.</em> The most frequent value is 10.5<span class="math inline">\(\approx 11\)</span>. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that <span class="math inline">\(X=4\)</span> if <span class="math inline">\(X\)</span> follows B(15,0.7).</p>
+<p>The complete <strong>probability mass distribution</strong> is available by typing:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>probabilities <span class="ot">=</span> <span class="fu">dbinom</span>(<span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="fu">round</span>(probabilities, <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code> [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03
+[16] 0.00</code></pre>
+</div>
+</div>
+<p>A barplot for this distribution in R, is as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(probabilities, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">15</span>, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">main =</span> <span class="st">"Theoretical distribution of B(15, 0.7)."</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec4_files/figure-html/unnamed-chunk-10-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>Mathematically, the theoretical distribution of the binomial distribution is</p>
+<p><strong><em>Probability distribution:</em></strong></p>
+<p><span class="math display">\[P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \ldots, n,\]</span> where <span class="math inline">\(n\)</span> is the number of trials, <span class="math inline">\(k\)</span> is the number of successes, <span class="math inline">\(p\)</span> is the probability of success, and <span class="math inline">\(\binom{n}{k} = \frac{n!}{k!(n-k)!}\)</span> is the binomial coefficient.</p>
+<p><strong><em>Properties</em></strong></p>
+<p>The <strong>mean</strong> of a Binomial distribution is given by <span class="math inline">\(n \cdot p\)</span> (in the figure, the highest bar around <span class="math inline">\(x \approx 11\)</span>, or <span class="math inline">\(n(=15)\cdot p(=0.7)\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(np(1-p) = (15)(0.7)(0.3) = 3.15\)</span>.</p>
+</section>
+<section id="poisson-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="poisson-distributions">Poisson distributions</h3>
+<p>When the probability of success <span class="math inline">\(p\)</span> is small and the number of trials <span class="math inline">\(n\)</span> is large, the Binomial distribution can be approximated by a <strong>Poisson distribution</strong> with parameter <span class="math inline">\(\lambda = np\)</span>, which provides a simple model for describing the data.</p>
+<p><strong><em>Probability distribution:</em></strong></p>
+<p><span class="math display">\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,\]</span> where <span class="math inline">\(k\)</span> is the number of events, <span class="math inline">\(\lambda\)</span> is the average number of events per interval, and <span class="math inline">\(e\approx 2.718\)</span> is the Euler’s number.</p>
+<p><strong><em>Properties</em></strong></p>
+<p>An interesting characteristic of the Poisson distribution is that the <strong>mean</strong> and the <strong>variance</strong> are both equal to <span class="math inline">\(\lambda = np\)</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example:</strong> Human Immunodeficiency Virus (HIV)<br>
+Consider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of <span class="math inline">\(p=5 x 10^{-4}\)</span> per nucleotide per replication cycle, independently across positions. Given a genome size of approximately $n$ nucleotides, the total number of mutations per cycle follows a <span class="math inline">\(\text{Poisson}(\lambda)\)</span> distribution.</p>
+<p>As the genome size of HIV is about <span class="math inline">\(n=10^4\)</span>, this model predicts an expected number of mutations close to 5 <span class="math inline">\((np=10^4 x 5 x 10^{-4})\)</span> per replication cycle, with standard error <span class="math inline">\(\sqrt{\lambda}\)</span>. For example, to find the probability of exactly 3 mutations under a <span class="math inline">\(\text{Poisson}(5)\)</span> model, we can use R:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">3</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.1403739</code></pre>
+</div>
+</div>
+<p>This means that the chance of seeing exactly three events is about 0.14.</p>
+<p>Now we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">dpois</span>(<span class="at">x=</span><span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">lambda=</span><span class="dv">5</span>)</span>
+<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a><span class="fu">barplot</span>(y, <span class="at">names.arg =</span> <span class="dv">0</span><span class="sc">:</span><span class="dv">12</span>, <span class="at">col =</span> <span class="st">"#FFCCAA"</span>,  <span class="at">main =</span> <span class="st">"Probabilities of seeing 0 to 12 mutations, modeled as a Poisson(5)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec4_files/figure-html/unnamed-chunk-12-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>This example shows that the Poisson distribution is a good model for rare events such as mutation (observe that <span class="math inline">\(p\)</span> is very low).</p>
+</div>
+</div>
+</section>
+<section id="multinomial-distributions" class="level3">
+<h3 class="anchored" data-anchor-id="multinomial-distributions">Multinomial distributions</h3>
+<p>In the Binomial model, we had only two possible outcomes, success and failure, with probabilities <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>, respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: <span class="math inline">\(\{A, C, G, T\}\)</span>. We use a <strong>Multinomial model</strong>, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as <span class="math inline">\(p_{A}\)</span>, <span class="math inline">\(p_{C}\)</span>, <span class="math inline">\(p_{G}\)</span>, and <span class="math inline">\(p_{T}\)</span>, where the probabilities sum to 1: <span class="math inline">\(p_{A}+p_{C}+p_{G}+p_{T}=1\)</span>, as in the Binomial model.</p>
+<p>The mathematical formulation for the Multinomial model for <span class="math inline">\(m\)</span> counts <span class="math inline">\((x_{1}, x_{2}, \ldots, x_{m})\)</span> for outcomes of <span class="math inline">\(n\)</span> draws with probabilities <span class="math inline">\(p_{1}, p_{2}, \ldots, p_{m}\)</span> is as follows:</p>
+<p><strong><em>Probability distribution:</em></strong></p>
+<p><span class="math display">\[\begin{align}
+P(x_{1}, x_{2}, \ldots, x_{m}) &amp;= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^{m} p_{i}^{x_{i}} \\
+&amp;= \binom{n}{x_{1}, x_{2}, \ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \cdots p_{m}^{x_{m}}
+\end{align}\]</span></p>
+<p>To generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>pvec <span class="ot">=</span> <span class="fu">rep</span>(<span class="dv">1</span><span class="sc">/</span><span class="dv">4</span>, <span class="dv">4</span>)</span>
+<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t</span>(<span class="fu">rmultinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> pvec, <span class="at">size =</span> <span class="dv">8</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>     [,1] [,2] [,3] [,4]
+[1,]    4    2    1    1</code></pre>
+</div>
+</div>
+<p><em>Question</em> Try the code without using the t() function; what does t stand for?</p>
+<p>Reference: <span class="citation" data-cites="holmes2018modern">Holmes and Huber (<a href="#ref-holmes2018modern" role="doc-biblioref">2018</a>)</span></p>
+
+</section>
+</section>
+
+<div id="quarto-appendix" class="default"><section class="quarto-appendix-contents" role="doc-bibliography" id="quarto-bibliography"><h2 class="anchored quarto-appendix-heading">References</h2><div id="refs" class="references csl-bib-body hanging-indent" role="list">
+<div id="ref-holmes2018modern" class="csl-entry" role="listitem">
+Holmes, Susan Huber, and Wolfgang Huber. 2018. <em>Modern Statistics for Modern Biology</em>. Cambridge university press.
+</div>
+</div></section></div></main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+  window.document.addEventListener("DOMContentLoaded", function (event) {
+    const icon = "";
+    const anchorJS = new window.AnchorJS();
+    anchorJS.options = {
+      placement: 'right',
+      icon: icon
+    };
+    anchorJS.add('.anchored');
+    const isCodeAnnotation = (el) => {
+      for (const clz of el.classList) {
+        if (clz.startsWith('code-annotation-')) {                     
+          return true;
+        }
+      }
+      return false;
+    }
+    const onCopySuccess = function(e) {
+      // button target
+      const button = e.trigger;
+      // don't keep focus
+      button.blur();
+      // flash "checked"
+      button.classList.add('code-copy-button-checked');
+      var currentTitle = button.getAttribute("title");
+      button.setAttribute("title", "Copied!");
+      let tooltip;
+      if (window.bootstrap) {
+        button.setAttribute("data-bs-toggle", "tooltip");
+        button.setAttribute("data-bs-placement", "left");
+        button.setAttribute("data-bs-title", "Copied!");
+        tooltip = new bootstrap.Tooltip(button, 
+          { trigger: "manual", 
+            customClass: "code-copy-button-tooltip",
+            offset: [0, -8]});
+        tooltip.show();    
+      }
+      setTimeout(function() {
+        if (tooltip) {
+          tooltip.hide();
+          button.removeAttribute("data-bs-title");
+          button.removeAttribute("data-bs-toggle");
+          button.removeAttribute("data-bs-placement");
+        }
+        button.setAttribute("title", currentTitle);
+        button.classList.remove('code-copy-button-checked');
+      }, 1000);
+      // clear code selection
+      e.clearSelection();
+    }
+    const getTextToCopy = function(trigger) {
+      const outerScaffold = trigger.parentElement.cloneNode(true);
+      const codeEl = outerScaffold.querySelector('code');
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+    }
+    const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+      text: getTextToCopy
+    });
+    clipboard.on('success', onCopySuccess);
+    if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+      const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+        text: getTextToCopy,
+        container: window.document.getElementById('quarto-embedded-source-code-modal')
+      });
+      clipboardModal.on('success', onCopySuccess);
+    }
+      var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+      var mailtoRegex = new RegExp(/^mailto:/);
+        var filterRegex = new RegExp('/' + window.location.host + '/');
+      var isInternal = (href) => {
+          return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+      }
+      // Inspect non-navigation links and adorn them if external
+     var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+      for (var i=0; i<links.length; i++) {
+        const link = links[i];
+        if (!isInternal(link.href)) {
+          // undo the damage that might have been done by quarto-nav.js in the case of
+          // links that we want to consider external
+          if (link.dataset.originalHref !== undefined) {
+            link.href = link.dataset.originalHref;
+          }
+        }
+      }
+    function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+      const config = {
+        allowHTML: true,
+        maxWidth: 500,
+        delay: 100,
+        arrow: false,
+        appendTo: function(el) {
+            return el.parentElement;
+        },
+        interactive: true,
+        interactiveBorder: 10,
+        theme: 'quarto',
+        placement: 'bottom-start',
+      };
+      if (contentFn) {
+        config.content = contentFn;
+      }
+      if (onTriggerFn) {
+        config.onTrigger = onTriggerFn;
+      }
+      if (onUntriggerFn) {
+        config.onUntrigger = onUntriggerFn;
+      }
+      window.tippy(el, config); 
+    }
+    const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+    for (var i=0; i<noterefs.length; i++) {
+      const ref = noterefs[i];
+      tippyHover(ref, function() {
+        // use id or data attribute instead here
+        let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+        try { href = new URL(href).hash; } catch {}
+        const id = href.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note) {
+          return note.innerHTML;
+        } else {
+          return "";
+        }
+      });
+    }
+    const xrefs = window.document.querySelectorAll('a.quarto-xref');
+    const processXRef = (id, note) => {
+      // Strip column container classes
+      const stripColumnClz = (el) => {
+        el.classList.remove("page-full", "page-columns");
+        if (el.children) {
+          for (const child of el.children) {
+            stripColumnClz(child);
+          }
+        }
+      }
+      stripColumnClz(note)
+      if (id === null || id.startsWith('sec-')) {
+        // Special case sections, only their first couple elements
+        const container = document.createElement("div");
+        if (note.children && note.children.length > 2) {
+          container.appendChild(note.children[0].cloneNode(true));
+          for (let i = 1; i < note.children.length; i++) {
+            const child = note.children[i];
+            if (child.tagName === "P" && child.innerText === "") {
+              continue;
+            } else {
+              container.appendChild(child.cloneNode(true));
+              break;
+            }
+          }
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(container);
+          }
+          return container.innerHTML
+        } else {
+          if (window.Quarto?.typesetMath) {
+            window.Quarto.typesetMath(note);
+          }
+          return note.innerHTML;
+        }
+      } else {
+        // Remove any anchor links if they are present
+        const anchorLink = note.querySelector('a.anchorjs-link');
+        if (anchorLink) {
+          anchorLink.remove();
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        if (note.classList.contains("callout")) {
+          return note.outerHTML;
+        } else {
+          return note.innerHTML;
+        }
+      }
+    }
+    for (var i=0; i<xrefs.length; i++) {
+      const xref = xrefs[i];
+      tippyHover(xref, undefined, function(instance) {
+        instance.disable();
+        let url = xref.getAttribute('href');
+        let hash = undefined; 
+        if (url.startsWith('#')) {
+          hash = url;
+        } else {
+          try { hash = new URL(url).hash; } catch {}
+        }
+        if (hash) {
+          const id = hash.replace(/^#\/?/, "");
+          const note = window.document.getElementById(id);
+          if (note !== null) {
+            try {
+              const html = processXRef(id, note.cloneNode(true));
+              instance.setContent(html);
+            } finally {
+              instance.enable();
+              instance.show();
+            }
+          } else {
+            // See if we can fetch this
+            fetch(url.split('#')[0])
+            .then(res => res.text())
+            .then(html => {
+              const parser = new DOMParser();
+              const htmlDoc = parser.parseFromString(html, "text/html");
+              const note = htmlDoc.getElementById(id);
+              if (note !== null) {
+                const html = processXRef(id, note);
+                instance.setContent(html);
+              } 
+            }).finally(() => {
+              instance.enable();
+              instance.show();
+            });
+          }
+        } else {
+          // See if we can fetch a full url (with no hash to target)
+          // This is a special case and we should probably do some content thinning / targeting
+          fetch(url)
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.querySelector('main.content');
+            if (note !== null) {
+              // This should only happen for chapter cross references
+              // (since there is no id in the URL)
+              // remove the first header
+              if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+                note.children[0].remove();
+              }
+              const html = processXRef(null, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      }, function(instance) {
+      });
+    }
+        let selectedAnnoteEl;
+        const selectorForAnnotation = ( cell, annotation) => {
+          let cellAttr = 'data-code-cell="' + cell + '"';
+          let lineAttr = 'data-code-annotation="' +  annotation + '"';
+          const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+          return selector;
+        }
+        const selectCodeLines = (annoteEl) => {
+          const doc = window.document;
+          const targetCell = annoteEl.getAttribute("data-target-cell");
+          const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+          const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+          const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+          const lineIds = lines.map((line) => {
+            return targetCell + "-" + line;
+          })
+          let top = null;
+          let height = null;
+          let parent = null;
+          if (lineIds.length > 0) {
+              //compute the position of the single el (top and bottom and make a div)
+              const el = window.document.getElementById(lineIds[0]);
+              top = el.offsetTop;
+              height = el.offsetHeight;
+              parent = el.parentElement.parentElement;
+            if (lineIds.length > 1) {
+              const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+              const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+              height = bottom - top;
+            }
+            if (top !== null && height !== null && parent !== null) {
+              // cook up a div (if necessary) and position it 
+              let div = window.document.getElementById("code-annotation-line-highlight");
+              if (div === null) {
+                div = window.document.createElement("div");
+                div.setAttribute("id", "code-annotation-line-highlight");
+                div.style.position = 'absolute';
+                parent.appendChild(div);
+              }
+              div.style.top = top - 2 + "px";
+              div.style.height = height + 4 + "px";
+              div.style.left = 0;
+              let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+              if (gutterDiv === null) {
+                gutterDiv = window.document.createElement("div");
+                gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+                gutterDiv.style.position = 'absolute';
+                const codeCell = window.document.getElementById(targetCell);
+                const gutter = codeCell.querySelector('.code-annotation-gutter');
+                gutter.appendChild(gutterDiv);
+              }
+              gutterDiv.style.top = top - 2 + "px";
+              gutterDiv.style.height = height + 4 + "px";
+            }
+            selectedAnnoteEl = annoteEl;
+          }
+        };
+        const unselectCodeLines = () => {
+          const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+          elementsIds.forEach((elId) => {
+            const div = window.document.getElementById(elId);
+            if (div) {
+              div.remove();
+            }
+          });
+          selectedAnnoteEl = undefined;
+        };
+          // Handle positioning of the toggle
+      window.addEventListener(
+        "resize",
+        throttle(() => {
+          elRect = undefined;
+          if (selectedAnnoteEl) {
+            selectCodeLines(selectedAnnoteEl);
+          }
+        }, 10)
+      );
+      function throttle(fn, ms) {
+      let throttle = false;
+      let timer;
+        return (...args) => {
+          if(!throttle) { // first call gets through
+              fn.apply(this, args);
+              throttle = true;
+          } else { // all the others get throttled
+              if(timer) clearTimeout(timer); // cancel #2
+              timer = setTimeout(() => {
+                fn.apply(this, args);
+                timer = throttle = false;
+              }, ms);
+          }
+        };
+      }
+        // Attach click handler to the DT
+        const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+        for (const annoteDlNode of annoteDls) {
+          annoteDlNode.addEventListener('click', (event) => {
+            const clickedEl = event.target;
+            if (clickedEl !== selectedAnnoteEl) {
+              unselectCodeLines();
+              const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+              if (activeEl) {
+                activeEl.classList.remove('code-annotation-active');
+              }
+              selectCodeLines(clickedEl);
+              clickedEl.classList.add('code-annotation-active');
+            } else {
+              // Unselect the line
+              unselectCodeLines();
+              clickedEl.classList.remove('code-annotation-active');
+            }
+          });
+        }
+    const findCites = (el) => {
+      const parentEl = el.parentElement;
+      if (parentEl) {
+        const cites = parentEl.dataset.cites;
+        if (cites) {
+          return {
+            el,
+            cites: cites.split(' ')
+          };
+        } else {
+          return findCites(el.parentElement)
+        }
+      } else {
+        return undefined;
+      }
+    };
+    var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+    for (var i=0; i<bibliorefs.length; i++) {
+      const ref = bibliorefs[i];
+      const citeInfo = findCites(ref);
+      if (citeInfo) {
+        tippyHover(citeInfo.el, function() {
+          var popup = window.document.createElement('div');
+          citeInfo.cites.forEach(function(cite) {
+            var citeDiv = window.document.createElement('div');
+            citeDiv.classList.add('hanging-indent');
+            citeDiv.classList.add('csl-entry');
+            var biblioDiv = window.document.getElementById('ref-' + cite);
+            if (biblioDiv) {
+              citeDiv.innerHTML = biblioDiv.innerHTML;
+            }
+            popup.appendChild(citeDiv);
+          });
+          return popup.innerHTML;
+        });
+      }
+    }
+  });
+  </script>
+</div> <!-- /content -->
+
+
+
+
+</body></html>
