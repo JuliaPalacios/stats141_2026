@@ -10,6 +10,7 @@ bibliography: references.bib
  
 *Conditional probability* is the probability of an event given that another event occurs.
 
+*Bayes' theorem
 $$P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}$$
 
 The *general multiplication rule*
@@ -19,6 +20,18 @@ $$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
 The *law of total probability*
 Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
 $$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
+## Sampling without replacement
+
+One common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.
+
+For example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence "A-A-2"?
+
+In contrast, when sampling with replacement, the sampled individual is not removed from the population.
+
+When sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.
+
+
+
 ## Discrete probability models
 
 In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
