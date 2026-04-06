@@ -319,6 +319,8 @@ window.Quarto = {
    
   <ul>
   <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link active" data-scroll-target="#probability-distribution"><span class="header-section-number">4.1</span> Probability distribution</a></li>
+  <li><a href="#this-or-that-the-addition-rule" id="toc-this-or-that-the-addition-rule" class="nav-link" data-scroll-target="#this-or-that-the-addition-rule"><span class="header-section-number">4.2</span> This or that, the addition rule</a></li>
+  <li><a href="#independence-and-multiplication-rule" id="toc-independence-and-multiplication-rule" class="nav-link" data-scroll-target="#independence-and-multiplication-rule"><span class="header-section-number">4.3</span> Independence and multiplication rule</a></li>
   </ul>
 </nav>
     </div>
@@ -348,7 +350,7 @@ window.Quarto = {
 <p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6). An <strong>event</strong> is a subset of the sample space.</p>
 <p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
 <p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
-<p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the even occurs. Probability ranges between 0 an 1.</p>
+<p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.</p>
 <p>A useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
 <p><strong>Activity 4</strong></p>
 <p>Two events are <strong>mutually exclusive</strong> if both cannot occur simultaneously. For example <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> defined above are mutually exclusive and <span class="math display">\[ P(E_{1} \text{ and } E_{2})=0\]</span></p>
@@ -367,8 +369,8 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 64.91304 68.81536 64.30302 63.19263 70.48140 64.54118 72.07717 66.42371
- [9] 65.07215 64.96148</code></pre>
+<pre><code> [1] 65.54323 67.85988 72.81121 70.08948 70.45072 73.03345 66.68527 66.46124
+ [9] 62.82147 72.32660</code></pre>
 </div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
@@ -386,11 +388,15 @@ window.Quarto = {
 <p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
 <p>In summary, a <strong>probability distribution</strong> describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).</p>
 <p>The <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
-<p>** This or that, the addition rule</p>
+</section>
+<section id="this-or-that-the-addition-rule" class="level2" data-number="4.2">
+<h2 data-number="4.2" class="anchored" data-anchor-id="this-or-that-the-addition-rule"><span class="header-section-number">4.2</span> This or that, the addition rule</h2>
 <p>Very often, we want to know the probability that we get either one event or another.</p>
 <p>If the two events are mutually exclusive, then <span class="math display">\[P(E_{1} \text{ or } E_{2})=P(E_{1})+P(E_{2})\]</span> Naturally, <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{1}^{c}\)</span> are mutually exclusive and in fact <span class="math display">\[P(E_{1} \text{ or } E_{1}^c)=P(E_{1})+P(E_{1}^{c})=1\]</span> The general addition rule is</p>
 <p><span class="math display">\[P(A \text{ or } B)=P(A)+P(B) - P(A \text{ and } B)\]</span></p>
-<p>** Independence and multiplication rule</p>
+</section>
+<section id="independence-and-multiplication-rule" class="level2" data-number="4.3">
+<h2 data-number="4.3" class="anchored" data-anchor-id="independence-and-multiplication-rule"><span class="header-section-number">4.3</span> Independence and multiplication rule</h2>
 <p>Science is generated by relationships between events. Men are more likely to be tall, more likely to have a beard, more likely to die young and more likely to go to prison than women. That is, height, beadeness, age at death and criminal conduct are <strong>not independend</strong> of sex in humans.</p>
 <p>To events are <strong>independent</strong> if the occurence of one does not in any way inform us about the probability that the other will also occur.</p>
 <p>Example: <span class="math inline">\(E_{1}\)</span>=The first die rall is 3, and <span class="math inline">\(E_{2}\)</span>=The second die roll is <span class="math inline">\(3\)</span>.</p>
