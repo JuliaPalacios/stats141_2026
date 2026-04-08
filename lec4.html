@@ -321,6 +321,8 @@ window.Quarto = {
   <li><a href="#probability-distribution" id="toc-probability-distribution" class="nav-link active" data-scroll-target="#probability-distribution"><span class="header-section-number">4.1</span> Probability distribution</a></li>
   <li><a href="#this-or-that-the-addition-rule" id="toc-this-or-that-the-addition-rule" class="nav-link" data-scroll-target="#this-or-that-the-addition-rule"><span class="header-section-number">4.2</span> This or that, the addition rule</a></li>
   <li><a href="#independence-and-multiplication-rule" id="toc-independence-and-multiplication-rule" class="nav-link" data-scroll-target="#independence-and-multiplication-rule"><span class="header-section-number">4.3</span> Independence and multiplication rule</a></li>
+  <li><a href="#conditional-probability-and-bayes-theorem" id="toc-conditional-probability-and-bayes-theorem" class="nav-link" data-scroll-target="#conditional-probability-and-bayes-theorem"><span class="header-section-number">4.4</span> Conditional probability and Bayes’ theorem</a></li>
+  <li><a href="#sampling-without-replacement" id="toc-sampling-without-replacement" class="nav-link" data-scroll-target="#sampling-without-replacement"><span class="header-section-number">4.5</span> Sampling without replacement</a></li>
   </ul>
 </nav>
     </div>
@@ -351,9 +353,9 @@ window.Quarto = {
 <p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
 <p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
 <p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.</p>
-<p>A useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
-<p><strong>Activity 4</strong></p>
-<p>Two events are <strong>mutually exclusive</strong> if both cannot occur simultaneously. For example <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> defined above are mutually exclusive and <span class="math display">\[ P(E_{1} \text{ and } E_{2})=0\]</span></p>
+<p>A useful tool for thinking about probabilities of events is with a <strong>Venn diagram</strong>. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
+<div style="page-break-after: always;"></div>
+<p>Two events are <strong>mutually exclusive</strong> if both events cannot occur simultaneously. For example <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> defined above are mutually exclusive and <span class="math display">\[ P(E_{1} \text{ and } E_{2})=0\]</span> </p><div style="page-break-after: always;"></div><p></p>
 <section id="probability-distribution" class="level2" data-number="4.1">
 <h2 data-number="4.1" class="anchored" data-anchor-id="probability-distribution"><span class="header-section-number">4.1</span> Probability distribution</h2>
 <p>A simple way to think about a <strong>probability distribution</strong> is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:</p>
@@ -369,8 +371,8 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 66.54635 63.15234 68.12621 66.00879 68.02017 72.37396 71.41811 68.17140
- [9] 68.39453 67.54033</code></pre>
+<pre><code> [1] 64.88218 62.93203 64.77222 65.78674 60.77950 67.60565 70.72676 71.48946
+ [9] 65.64621 66.67869</code></pre>
 </div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
@@ -385,22 +387,82 @@ window.Quarto = {
 </div>
 </div>
 <p>With this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).</p>
+<p>We can also convert those numbers into probability</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>y<span class="ot">&lt;-</span><span class="fu">hist</span>(x, <span class="at">xlab=</span><span class="st">"Height (in inches)"</span>, <span class="at">main=</span><span class="st">"Adult men heights"</span>,<span class="at">freq=</span><span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lec4_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a>y</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>$breaks
+ [1] 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76
+
+$counts
+ [1]   4   5  11  29  48  88 120 124 152 143 132  93  59  49  14   5   2
+
+$density
+ [1] 0.003710575 0.004638219 0.010204082 0.026901670 0.044526902 0.081632653
+ [7] 0.111317254 0.115027829 0.141001855 0.132653061 0.122448980 0.086270872
+[13] 0.054730983 0.045454545 0.012987013 0.004638219 0.001855288
+
+$mids
+ [1] 59.5 60.5 61.5 62.5 63.5 64.5 65.5 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5
+[16] 74.5 75.5
+
+$xname
+[1] "x"
+
+$equidist
+[1] TRUE
+
+attr(,"class")
+[1] "histogram"</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(y<span class="sc">$</span>density)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 1</code></pre>
+</div>
+</div>
 <p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
 <p>In summary, a <strong>probability distribution</strong> describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).</p>
 <p>The <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
+<div style="page-break-after: always;"></div>
 </section>
 <section id="this-or-that-the-addition-rule" class="level2" data-number="4.2">
 <h2 data-number="4.2" class="anchored" data-anchor-id="this-or-that-the-addition-rule"><span class="header-section-number">4.2</span> This or that, the addition rule</h2>
 <p>Very often, we want to know the probability that we get either one event or another.</p>
 <p>If the two events are mutually exclusive, then <span class="math display">\[P(E_{1} \text{ or } E_{2})=P(E_{1})+P(E_{2})\]</span> Naturally, <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{1}^{c}\)</span> are mutually exclusive and in fact <span class="math display">\[P(E_{1} \text{ or } E_{1}^c)=P(E_{1})+P(E_{1}^{c})=1\]</span> The general addition rule is</p>
 <p><span class="math display">\[P(A \text{ or } B)=P(A)+P(B) - P(A \text{ and } B)\]</span></p>
+<div style="page-break-after: always;"></div>
 </section>
 <section id="independence-and-multiplication-rule" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="independence-and-multiplication-rule"><span class="header-section-number">4.3</span> Independence and multiplication rule</h2>
 <p>Science is generated by relationships between events. Men are more likely to be tall, more likely to have a beard, more likely to die young and more likely to go to prison than women. That is, height, beadeness, age at death and criminal conduct are <strong>not independend</strong> of sex in humans.</p>
 <p>To events are <strong>independent</strong> if the occurence of one does not in any way inform us about the probability that the other will also occur.</p>
 <p>Example: <span class="math inline">\(E_{1}\)</span>=The first die rall is 3, and <span class="math inline">\(E_{2}\)</span>=The second die roll is <span class="math inline">\(3\)</span>.</p>
-<p>The multiplication rule states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> are independent, then <span class="math display">\[P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})\]</span></p>
+<p>The <strong>multiplication rule</strong> states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> are independent, then <span class="math display">\[P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})\]</span></p>
+</section>
+<section id="conditional-probability-and-bayes-theorem" class="level2" data-number="4.4">
+<h2 data-number="4.4" class="anchored" data-anchor-id="conditional-probability-and-bayes-theorem"><span class="header-section-number">4.4</span> Conditional probability and Bayes’ theorem</h2>
+<p><strong>Conditional probability</strong> is the probability of an event given that another event occurs.</p>
+<p><strong>Bayes’ theorem</strong></p>
+<p><span class="math display">\[P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}\]</span></p>
+<p>The <em>general multiplication rule</em></p>
+<p><span class="math display">\[P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)\]</span></p>
+<p>The <em>law of total probability</em> Let <span class="math inline">\(B_{1}, B_{2},...B_{n}\)</span> n sets that partition (i.e <span class="math inline">\(1=\sum^{n}_{i=1}P(B_{i})\)</span>) the sample space <span class="math display">\[P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})\]</span></p>
+<div style="page-break-after: always;"></div>
+</section>
+<section id="sampling-without-replacement" class="level2" data-number="4.5">
+<h2 data-number="4.5" class="anchored" data-anchor-id="sampling-without-replacement"><span class="header-section-number">4.5</span> Sampling without replacement</h2>
+<p>One common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.</p>
+<p>For example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence “A-A-2”?</p>
+<p>In contrast, when sampling with replacement, the sampled individual is not removed from the population.</p>
+<p>When sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.</p>
 
 
 </section>
