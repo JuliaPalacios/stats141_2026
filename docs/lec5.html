@@ -337,10 +337,14 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#bernoulli-trials" id="toc-bernoulli-trials" class="nav-link active" data-scroll-target="#bernoulli-trials"><span class="header-section-number">5.0.1</span> Bernoulli trials</a></li>
-  <li><a href="#binomial-success-counts" id="toc-binomial-success-counts" class="nav-link" data-scroll-target="#binomial-success-counts"><span class="header-section-number">5.0.2</span> Binomial success counts</a></li>
-  <li><a href="#poisson-distributions" id="toc-poisson-distributions" class="nav-link" data-scroll-target="#poisson-distributions"><span class="header-section-number">5.0.3</span> Poisson distributions</a></li>
-  <li><a href="#multinomial-distributions" id="toc-multinomial-distributions" class="nav-link" data-scroll-target="#multinomial-distributions"><span class="header-section-number">5.0.4</span> Multinomial distributions</a></li>
+  <li><a href="#sampling-without-replacement" id="toc-sampling-without-replacement" class="nav-link active" data-scroll-target="#sampling-without-replacement"><span class="header-section-number">5.1</span> Sampling without replacement</a></li>
+  <li><a href="#discrete-probability-models" id="toc-discrete-probability-models" class="nav-link" data-scroll-target="#discrete-probability-models"><span class="header-section-number">5.2</span> Discrete probability models</a>
+  <ul class="collapse">
+  <li><a href="#bernoulli-trials" id="toc-bernoulli-trials" class="nav-link" data-scroll-target="#bernoulli-trials"><span class="header-section-number">5.2.1</span> Bernoulli trials</a></li>
+  <li><a href="#binomial-success-counts" id="toc-binomial-success-counts" class="nav-link" data-scroll-target="#binomial-success-counts"><span class="header-section-number">5.2.2</span> Binomial success counts</a></li>
+  <li><a href="#poisson-distributions" id="toc-poisson-distributions" class="nav-link" data-scroll-target="#poisson-distributions"><span class="header-section-number">5.2.3</span> Poisson distributions</a></li>
+  <li><a href="#multinomial-distributions" id="toc-multinomial-distributions" class="nav-link" data-scroll-target="#multinomial-distributions"><span class="header-section-number">5.2.4</span> Multinomial distributions</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
@@ -366,12 +370,15 @@ window.Quarto = {
 </header>
 
 
-<p>** Conditional probability and Bayes’ theorem</p>
-<p><em>Conditional probability</em> is the probability of an event given that another event occurs.</p>
-<p><span class="math display">\[P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}\]</span></p>
-<p>The <em>general multiplication rule</em></p>
-<p><span class="math display">\[P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)\]</span></p>
-<p>The <em>law of total probability</em> Let <span class="math inline">\(B_{1}, B_{2},...B_{n}\)</span> n sets that partition (i.e <span class="math inline">\(1=\sum^{n}_{i=1}P(B_{i})\)</span>) the sample space <span class="math display">\[P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})\]</span> ## Discrete probability models</p>
+<section id="sampling-without-replacement" class="level2" data-number="5.1">
+<h2 data-number="5.1" class="anchored" data-anchor-id="sampling-without-replacement"><span class="header-section-number">5.1</span> Sampling without replacement</h2>
+<p>One common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.</p>
+<p>For example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence “A-A-2”?</p>
+<p>In contrast, when sampling with replacement, the sampled individual is not removed from the population.</p>
+<p>When sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.</p>
+</section>
+<section id="discrete-probability-models" class="level2" data-number="5.2">
+<h2 data-number="5.2" class="anchored" data-anchor-id="discrete-probability-models"><span class="header-section-number">5.2</span> Discrete probability models</h2>
 <p>In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).</p>
 <p>To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.</p>
 <div class="cell">
@@ -385,8 +392,8 @@ AA AB AO BB BO OO
 </div>
 </div>
 <p>If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.</p>
-<section id="bernoulli-trials" class="level3" data-number="5.0.1">
-<h3 data-number="5.0.1" class="anchored" data-anchor-id="bernoulli-trials"><span class="header-section-number">5.0.1</span> Bernoulli trials</h3>
+<section id="bernoulli-trials" class="level3" data-number="5.2.1">
+<h3 data-number="5.2.1" class="anchored" data-anchor-id="bernoulli-trials"><span class="header-section-number">5.2.1</span> Bernoulli trials</h3>
 <p>The <strong>Bernoulli distribution</strong> is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter <span class="math inline">\(p\)</span>, which represents the probability of success, and the complementary event is called probability of failure <span class="math inline">\(1-p\)</span>:</p>
 <p><strong><em>Probability distribution:</em></strong></p>
 <p><span class="math inline">\(P(X=1) = p\)</span><br>
@@ -409,22 +416,22 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 1 1 1 0 1 1 0 0 0 1 1 0 0 1</code></pre>
+<pre><code> [1] 0 1 0 1 0 1 1 0 1 1 0 0 1 1 0</code></pre>
 </div>
 </div>
 <p>Now observe the outcome when using a biased coin that lands heads 70% of the time:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 0 0 0 1 1 0 1 1 1 1 1 1</code></pre>
+<pre><code> [1] 1 1 1 1 1 1 0 0 1 1 0 1 0 1 1</code></pre>
 </div>
 </div>
 <p><em>Question.</em> Note that when you call the function above several times, you get different outcomes. Why is that?</p>
 <p><strong><em>Properties</em></strong></p>
 <p>The <strong>mean</strong>, or <strong>expected value</strong>, of a Bernoulli distribution is given by <span class="math inline">\(p\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(p(1-p)\)</span>, so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.</p>
 </section>
-<section id="binomial-success-counts" class="level3" data-number="5.0.2">
-<h3 data-number="5.0.2" class="anchored" data-anchor-id="binomial-success-counts"><span class="header-section-number">5.0.2</span> Binomial success counts</h3>
+<section id="binomial-success-counts" class="level3" data-number="5.2.2">
+<h3 data-number="5.2.2" class="anchored" data-anchor-id="binomial-success-counts"><span class="header-section-number">5.2.2</span> Binomial success counts</h3>
 <p>In the previous example, if we are only interested in the number of heads (<span class="math inline">\(X=1\)</span>), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
@@ -468,8 +475,8 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <p><strong><em>Properties</em></strong></p>
 <p>The <strong>mean</strong> of a Binomial distribution is given by <span class="math inline">\(n \cdot p\)</span> (in the figure, the highest bar around <span class="math inline">\(x \approx 11\)</span>, or <span class="math inline">\(n(=15)\cdot p(=0.7)\)</span>, and the <strong>variance</strong> is defined as <span class="math inline">\(np(1-p) = (15)(0.7)(0.3) = 3.15\)</span>.</p>
 </section>
-<section id="poisson-distributions" class="level3" data-number="5.0.3">
-<h3 data-number="5.0.3" class="anchored" data-anchor-id="poisson-distributions"><span class="header-section-number">5.0.3</span> Poisson distributions</h3>
+<section id="poisson-distributions" class="level3" data-number="5.2.3">
+<h3 data-number="5.2.3" class="anchored" data-anchor-id="poisson-distributions"><span class="header-section-number">5.2.3</span> Poisson distributions</h3>
 <p>When the probability of success <span class="math inline">\(p\)</span> is small and the number of trials <span class="math inline">\(n\)</span> is large, the Binomial distribution can be approximated by a <strong>Poisson distribution</strong> with parameter <span class="math inline">\(\lambda = np\)</span>, which provides a simple model for describing the data.</p>
 <p><strong><em>Probability distribution:</em></strong></p>
 <p><span class="math display">\[P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,\]</span> where <span class="math inline">\(k\)</span> is the number of events, <span class="math inline">\(\lambda\)</span> is the average number of events per interval, and <span class="math inline">\(e\approx 2.718\)</span> is the Euler’s number.</p>
@@ -511,8 +518,8 @@ Consider a probability model for HIV mutations, where the data generation proces
 </div>
 </div>
 </section>
-<section id="multinomial-distributions" class="level3" data-number="5.0.4">
-<h3 data-number="5.0.4" class="anchored" data-anchor-id="multinomial-distributions"><span class="header-section-number">5.0.4</span> Multinomial distributions</h3>
+<section id="multinomial-distributions" class="level3" data-number="5.2.4">
+<h3 data-number="5.2.4" class="anchored" data-anchor-id="multinomial-distributions"><span class="header-section-number">5.2.4</span> Multinomial distributions</h3>
 <p>In the Binomial model, we had only two possible outcomes, success and failure, with probabilities <span class="math inline">\(p\)</span> and <span class="math inline">\(1-p\)</span>, respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: <span class="math inline">\(\{A, C, G, T\}\)</span>. We use a <strong>Multinomial model</strong>, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as <span class="math inline">\(p_{A}\)</span>, <span class="math inline">\(p_{C}\)</span>, <span class="math inline">\(p_{G}\)</span>, and <span class="math inline">\(p_{T}\)</span>, where the probabilities sum to 1: <span class="math inline">\(p_{A}+p_{C}+p_{G}+p_{T}=1\)</span>, as in the Binomial model.</p>
 <p>The mathematical formulation for the Multinomial model for <span class="math inline">\(m\)</span> counts <span class="math inline">\((x_{1}, x_{2}, \ldots, x_{m})\)</span> for outcomes of <span class="math inline">\(n\)</span> draws with probabilities <span class="math inline">\(p_{1}, p_{2}, \ldots, p_{m}\)</span> is as follows:</p>
 <p><strong><em>Probability distribution:</em></strong></p>
@@ -538,6 +545,7 @@ P(x_{1}, x_{2}, \ldots, x_{m}) &amp;= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i
 Holmes, Susan Huber, and Wolfgang Huber. 2018. <em>Modern Statistics for Modern Biology</em>. Cambridge university press.
 </div>
 </div>
+</section>
 </section>
 
 </main> <!-- /main -->

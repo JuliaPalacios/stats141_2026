@@ -4,33 +4,32 @@ format: html
 bibliography: references.bib
 ---
 
+## Random variable
+
+A **random variable** is simply a variable that takes on *numerical values* that depend on the outcome of a chance operation (random experiment).
+
+Example. Consider the experiment to tossing a die. Let the random variable Y represent the number of spots showing. The possible values of Y are 1,..,6. We do not know the value of Y until we have tossed the die. We can then compute $$P(Y=4)$$  and $$P(2\leq Y \leq 4)$$   
+
+Random variables come in two flavors: Discrete and Continuous.
+
+## Expected value (Mean)
+
+The **mean** of a discrete random variable is:
+$$E(Y)=\sum_{i=1}^{n}y_{i}P(Y=y_{i})$$
+where $y_{i}$'s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.
+
+Example: Calculate the expected value of rolling a fair die once.
 
 
-** Conditional probability and Bayes' theorem
- 
-*Conditional probability* is the probability of an event given that another event occurs.
+{{< pagebreak >}}
 
-*Bayes' theorem
-$$P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}$$
+Rules: If X and Y are two random variables and Z=X+Y
+$$E(Z)=E(X+Y)=E(X)+E(Y)$$
+$$E(aX+b)=a E(X)+b$$
 
-The *general multiplication rule*
-
-$$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
-
-The *law of total probability*
-Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
-$$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
-## Sampling without replacement
-
-One common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.
-
-For example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence "A-A-2"?
-
-In contrast, when sampling with replacement, the sampled individual is not removed from the population.
-
-When sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.
-
-
+## Variance
+The **variance** of a discrete random variable is 
+$$Var(X)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
 
 ## Discrete probability models
 
@@ -50,7 +49,7 @@ If the order in which the data are observed does not matter, we call the random 
 
 The **Bernoulli distribution** is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter $p$, which represents the probability of success, and the complementary event is called probability of failure $1-p$:
 
-***Probability distribution:***
+**Probability distribution:**
 
 $P(X=1) = p$\
 $P(X=0) = 1-p$
@@ -74,7 +73,7 @@ rbinom(15, prob = 0.7, size = 1)
 
 *Question.* Note that when you call the function above several times, you get different outcomes. Why is that?
 
-***Properties***
+**Properties**
 
 The **mean**, or **expected value**, of a Bernoulli distribution is given by $p$, and the **variance** is defined as $p(1-p)$, so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.
 
@@ -93,9 +92,9 @@ set.seed(384569724)
 rbinom(1, prob = 0.7, size = 15)
 ```
 
-*Question.* Repeat this function call 10 times. What seems to be the most common outcome?
+**Question.** Repeat this function call 10 times. What seems to be the most common outcome?
 
-*Solution.* The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
+**Solution.** The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
 
 The complete **probability mass distribution** is available by typing:
 
@@ -112,23 +111,23 @@ barplot(probabilities, names.arg = 0:15, col = "black", main = "Theoretical dist
 
 Mathematically, the theoretical distribution of the binomial distribution is
 
-***Probability distribution:***
+**Probability distribution:**
 
 $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \ldots, n,$$ where $n$ is the number of trials, $k$ is the number of successes, $p$ is the probability of success, and $\binom{n}{k} = \frac{n!}{k!(n-k)!}$ is the binomial coefficient.
 
-***Properties***
+**Properties**
 
 The **mean** of a Binomial distribution is given by $n \cdot p$ (in the figure, the highest bar around $x \approx 11$, or $n(=15)\cdot p(=0.7)$, and the **variance** is defined as $np(1-p) = (15)(0.7)(0.3) = 3.15$.
 
-### Poisson distributions
+## Poisson distributions
 
 When the probability of success $p$ is small and the number of trials $n$ is large, the Binomial distribution can be approximated by a **Poisson distribution** with parameter $\lambda = np$, which provides a simple model for describing the data.
 
-***Probability distribution:***
+**Probability distribution:**
 
 $$P(X = k) = \frac{e^{-\lambda} \lambda^k}{k!}, \quad k = 0, 1, 2, \ldots,$$ where $k$ is the number of events, $\lambda$ is the average number of events per interval, and $e\approx 2.718$ is the Euler's number.
 
-***Properties***
+**Properties**
 
 An interesting characteristic of the Poisson distribution is that the **mean** and the **variance** are both equal to $\lambda = np$.
 
@@ -154,13 +153,13 @@ barplot(y, names.arg = 0:12, col = "#FFCCAA",  main = "Probabilities of seeing 0
 This example shows that the Poisson distribution is a good model for rare events such as mutation (observe that $p$ is very low).
 :::
 
-### Multinomial distributions
+## Multinomial distributions
 
 In the Binomial model, we had only two possible outcomes, success and failure, with probabilities $p$ and $1-p$, respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: $\{A, C, G, T\}$. We use a **Multinomial model**, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as $p_{A}$, $p_{C}$, $p_{G}$, and $p_{T}$, where the probabilities sum to 1: $p_{A}+p_{C}+p_{G}+p_{T}=1$, as in the Binomial model.
 
 The mathematical formulation for the Multinomial model for $m$ counts $(x_{1}, x_{2}, \ldots, x_{m})$ for outcomes of $n$ draws with probabilities $p_{1}, p_{2}, \ldots, p_{m}$ is as follows:
 
-***Probability distribution:***
+**Probability distribution:**
 
 $$\begin{align}
 P(x_{1}, x_{2}, \ldots, x_{m}) &= \frac{n!}{\prod_{i=1}^{m} x_{i}!} \prod_{i=1}^{m} p_{i}^{x_{i}} \\
