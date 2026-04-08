@@ -354,10 +354,12 @@ window.Quarto = {
 <figcaption>Probability</figcaption>
 </figure>
 </div>
-<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence annot be predicted with certainty.</p>
-<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6). An <strong>event</strong> is a subset of the sample space.</p>
+<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence cannot be predicted with certainty.</p>
+<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6).</p>
+<p>An <strong>event</strong> is a subset of the sample space.</p>
 <p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
 <p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
+<div style="page-break-after: always;"></div>
 <p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.</p>
 <p>A useful tool for thinking about probabilities of events is with a <strong>Venn diagram</strong>. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.</p>
 <div style="page-break-after: always;"></div>
@@ -377,8 +379,8 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 63.69064 69.52007 61.29369 74.94058 65.04851 70.69078 68.18453 59.48980
- [9] 59.00800 63.19263</code></pre>
+<pre><code> [1] 69.04964 65.14077 64.46555 67.15303 70.58916 66.19437 68.69659 69.89852
+ [9] 72.34058 67.31302</code></pre>
 </div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
@@ -437,6 +439,17 @@ attr(,"class")
 <p>Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval <span class="math inline">\((a,b)\)</span> is denoted with <span class="math inline">\(Pr(a \leq X \leq b)\)</span>.</p>
 <p>In summary, a <strong>probability distribution</strong> describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).</p>
 <p>The <strong>cumulative distribution function (CDF)</strong>, represented by the following notation: <span class="math inline">\(F(a) \equiv \Pr(X \leq a)\)</span> [and the proportion of numbers bigger than <span class="math inline">\(a\)</span> is computed as: <span class="math inline">\(\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)\)</span>].</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a>CDFy<span class="ot">&lt;-</span><span class="fu">cumsum</span>(y<span class="sc">$</span>density)</span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(y<span class="sc">$</span>mids, CDFy,<span class="at">type=</span><span class="st">"l"</span>,<span class="at">xlab=</span><span class="st">"y (Age)"</span>,<span class="at">ylab=</span><span class="st">"P(Y&lt;=y)"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="lec4_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <div style="page-break-after: always;"></div>
 </section>
 <section id="this-or-that-the-addition-rule" class="level2" data-number="4.2">
