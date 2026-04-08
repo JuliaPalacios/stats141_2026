@@ -4,6 +4,8 @@ format: html
 bibliography: references.bib
 ---
 
+![Probability](/Figures/prob){fig-align="center" width="20%"}
+
 The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a **random experiment** that has two or more possible outcomes whose occurrence annot be predicted with certainty.
 
 For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),...,(6.6). An **event** is a subset of the sample space.
