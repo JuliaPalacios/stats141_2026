@@ -136,8 +136,9 @@ window.Quarto = {
 <figcaption>Probability</figcaption>
 </figure>
 </div>
-<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence annot be predicted with certainty.</p>
-<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6). An <strong>event</strong> is a subset of the sample space.</p>
+<p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence cannot be predicted with certainty.</p>
+<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6).</p>
+<p>An <strong>event</strong> is a subset of the sample space.</p>
 <p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
 <p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
 <p>The <strong>probability</strong> of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.</p>
@@ -159,8 +160,8 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 70.17375 67.50102 61.29369 65.48176 72.89983 66.42371 70.02161 70.98400
- [9] 65.73829 69.28280</code></pre>
+<pre><code> [1] 67.84234 69.38684 69.31931 65.14077 72.52521 69.24616 71.41254 70.64687
+ [9] 65.17545 64.68910</code></pre>
 </div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>

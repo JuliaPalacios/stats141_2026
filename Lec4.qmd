@@ -6,13 +6,22 @@ bibliography: references.bib
 
 ![Probability](/Figures/prob){fig-align="center" width="20%"}
 
-The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a **random experiment** that has two or more possible outcomes whose occurrence annot be predicted with certainty.
+The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a **random experiment** that has two or more possible outcomes whose occurrence cannot be predicted with certainty.
 
-For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),...,(6.6). An **event** is a subset of the sample space.
+For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),...,(6.6). 
+
+
+
+An **event** is a subset of the sample space.
 
 Example 1: The event is $E_{1}=(1,1)$.
 
 Example 2: The event is $E_{2}=$"The sum of the two rolls is 5"
+
+{{< pagebreak >}}
+
+
+
 
 The **probability** of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.
 
@@ -61,6 +70,10 @@ In summary, a **probability distribution** describes the probabilities of each o
 
 The **cumulative distribution function (CDF)**, represented by the following notation: $F(a) \equiv \Pr(X \leq a)$ \[and the proportion of numbers bigger than $a$ is computed as: $\Pr(X \gt a)=1-\Pr(X \leq a)=1-F(a)$\].
 
+```{r}
+CDFy<-cumsum(y$density)
+plot(y$mids, CDFy,type="l",xlab="y (Age)",ylab="P(Y<=y)")
+```
 {{< pagebreak >}}
 
 ## This or that, the addition rule
