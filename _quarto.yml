@@ -25,6 +25,7 @@ book:
     - part: "Sections"
       chapters: 
         - Week1_section.qmd
+        - Week2_section.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd
