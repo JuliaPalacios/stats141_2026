@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>12&nbsp; Part 1: Correlation vs Causation – Stats 141. Introduction to Statistics for Biology</title>
+<title>13&nbsp; Part 1: Correlation vs Causation – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week2_section.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week2_section.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -260,12 +260,18 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Activity Lecture 4</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Activity Lecture 5</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./summary.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
   </div>
 </li>
         <li class="sidebar-item sidebar-item-section">
@@ -280,13 +286,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week1_section.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week2_section.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></span></a>
   </div>
 </li>
       </ul>
@@ -303,13 +309,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
   </div>
 </li>
       </ul>
@@ -324,35 +330,35 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example-1-are-students-more-likely-to-default-on-a-credit-card" id="toc-example-1-are-students-more-likely-to-default-on-a-credit-card" class="nav-link active" data-scroll-target="#example-1-are-students-more-likely-to-default-on-a-credit-card"><span class="header-section-number">12.1</span> Example 1: Are students more likely to default on a credit card?</a>
+  <li><a href="#example-1-are-students-more-likely-to-default-on-a-credit-card" id="toc-example-1-are-students-more-likely-to-default-on-a-credit-card" class="nav-link active" data-scroll-target="#example-1-are-students-more-likely-to-default-on-a-credit-card"><span class="header-section-number">13.1</span> Example 1: Are students more likely to default on a credit card?</a>
   <ul class="collapse">
-  <li><a href="#background-islrdefault" id="toc-background-islrdefault" class="nav-link" data-scroll-target="#background-islrdefault"><span class="header-section-number">12.1.1</span> Background (<code>ISLR::Default</code>)</a></li>
-  <li><a href="#are-students-more-likely-to-default-than-non-students" id="toc-are-students-more-likely-to-default-than-non-students" class="nav-link" data-scroll-target="#are-students-more-likely-to-default-than-non-students"><span class="header-section-number">12.1.2</span> Are students more likely to default than non-students?</a></li>
-  <li><a href="#check-1-are-students-carrying-higher-balances" id="toc-check-1-are-students-carrying-higher-balances" class="nav-link" data-scroll-target="#check-1-are-students-carrying-higher-balances"><span class="header-section-number">12.1.3</span> Check 1: Are students carrying higher balances?</a></li>
-  <li><a href="#check-2-is-balance-associated-with-default" id="toc-check-2-is-balance-associated-with-default" class="nav-link" data-scroll-target="#check-2-is-balance-associated-with-default"><span class="header-section-number">12.1.4</span> Check 2: Is balance associated with default?</a></li>
-  <li><a href="#check-3-default-rates-within-balance-groups" id="toc-check-3-default-rates-within-balance-groups" class="nav-link" data-scroll-target="#check-3-default-rates-within-balance-groups"><span class="header-section-number">12.1.5</span> Check 3: Default rates within balance groups</a></li>
+  <li><a href="#background-islrdefault" id="toc-background-islrdefault" class="nav-link" data-scroll-target="#background-islrdefault"><span class="header-section-number">13.1.1</span> Background (<code>ISLR::Default</code>)</a></li>
+  <li><a href="#are-students-more-likely-to-default-than-non-students" id="toc-are-students-more-likely-to-default-than-non-students" class="nav-link" data-scroll-target="#are-students-more-likely-to-default-than-non-students"><span class="header-section-number">13.1.2</span> Are students more likely to default than non-students?</a></li>
+  <li><a href="#check-1-are-students-carrying-higher-balances" id="toc-check-1-are-students-carrying-higher-balances" class="nav-link" data-scroll-target="#check-1-are-students-carrying-higher-balances"><span class="header-section-number">13.1.3</span> Check 1: Are students carrying higher balances?</a></li>
+  <li><a href="#check-2-is-balance-associated-with-default" id="toc-check-2-is-balance-associated-with-default" class="nav-link" data-scroll-target="#check-2-is-balance-associated-with-default"><span class="header-section-number">13.1.4</span> Check 2: Is balance associated with default?</a></li>
+  <li><a href="#check-3-default-rates-within-balance-groups" id="toc-check-3-default-rates-within-balance-groups" class="nav-link" data-scroll-target="#check-3-default-rates-within-balance-groups"><span class="header-section-number">13.1.5</span> Check 3: Default rates within balance groups</a></li>
   </ul></li>
-  <li><a href="#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" id="toc-example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" class="nav-link" data-scroll-target="#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section"><span class="header-section-number">12.2</span> Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)</a>
+  <li><a href="#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" id="toc-example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" class="nav-link" data-scroll-target="#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section"><span class="header-section-number">13.2</span> Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)</a>
   <ul class="collapse">
-  <li><a href="#background-mtcars" id="toc-background-mtcars" class="nav-link" data-scroll-target="#background-mtcars"><span class="header-section-number">12.2.1</span> Background (<code>mtcars</code>)</a></li>
-  <li><a href="#do-manual-cars-give-more-mpg" id="toc-do-manual-cars-give-more-mpg" class="nav-link" data-scroll-target="#do-manual-cars-give-more-mpg"><span class="header-section-number">12.2.2</span> Do manual cars give more mpg?</a></li>
-  <li><a href="#are-manual-and-automatic-cars-different-in-weight" id="toc-are-manual-and-automatic-cars-different-in-weight" class="nav-link" data-scroll-target="#are-manual-and-automatic-cars-different-in-weight"><span class="header-section-number">12.2.3</span> Are manual and automatic cars different in weight?</a></li>
-  <li><a href="#is-weight-associated-with-mpg" id="toc-is-weight-associated-with-mpg" class="nav-link" data-scroll-target="#is-weight-associated-with-mpg"><span class="header-section-number">12.2.4</span> Is weight associated with mpg?</a></li>
-  <li><a href="#mpg-of-automatic-vs-manual-cars-within-weight-groups" id="toc-mpg-of-automatic-vs-manual-cars-within-weight-groups" class="nav-link" data-scroll-target="#mpg-of-automatic-vs-manual-cars-within-weight-groups"><span class="header-section-number">12.2.5</span> mpg of automatic vs manual cars within weight groups</a></li>
-  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">12.2.6</span> Summary</a></li>
+  <li><a href="#background-mtcars" id="toc-background-mtcars" class="nav-link" data-scroll-target="#background-mtcars"><span class="header-section-number">13.2.1</span> Background (<code>mtcars</code>)</a></li>
+  <li><a href="#do-manual-cars-give-more-mpg" id="toc-do-manual-cars-give-more-mpg" class="nav-link" data-scroll-target="#do-manual-cars-give-more-mpg"><span class="header-section-number">13.2.2</span> Do manual cars give more mpg?</a></li>
+  <li><a href="#are-manual-and-automatic-cars-different-in-weight" id="toc-are-manual-and-automatic-cars-different-in-weight" class="nav-link" data-scroll-target="#are-manual-and-automatic-cars-different-in-weight"><span class="header-section-number">13.2.3</span> Are manual and automatic cars different in weight?</a></li>
+  <li><a href="#is-weight-associated-with-mpg" id="toc-is-weight-associated-with-mpg" class="nav-link" data-scroll-target="#is-weight-associated-with-mpg"><span class="header-section-number">13.2.4</span> Is weight associated with mpg?</a></li>
+  <li><a href="#mpg-of-automatic-vs-manual-cars-within-weight-groups" id="toc-mpg-of-automatic-vs-manual-cars-within-weight-groups" class="nav-link" data-scroll-target="#mpg-of-automatic-vs-manual-cars-within-weight-groups"><span class="header-section-number">13.2.5</span> mpg of automatic vs manual cars within weight groups</a></li>
+  <li><a href="#summary" id="toc-summary" class="nav-link" data-scroll-target="#summary"><span class="header-section-number">13.2.6</span> Summary</a></li>
   </ul></li>
-  <li><a href="#part-2-probability" id="toc-part-2-probability" class="nav-link" data-scroll-target="#part-2-probability"><span class="header-section-number">13</span> Part 2: Probability</a>
+  <li><a href="#part-2-probability" id="toc-part-2-probability" class="nav-link" data-scroll-target="#part-2-probability"><span class="header-section-number">14</span> Part 2: Probability</a>
   <ul class="collapse">
-  <li><a href="#simulating-a-coin-flip" id="toc-simulating-a-coin-flip" class="nav-link" data-scroll-target="#simulating-a-coin-flip"><span class="header-section-number">13.1</span> Simulating a Coin Flip</a></li>
-  <li><a href="#seeds-for-reproducibility" id="toc-seeds-for-reproducibility" class="nav-link" data-scroll-target="#seeds-for-reproducibility"><span class="header-section-number">13.2</span> Seeds for reproducibility</a></li>
-  <li><a href="#simulating-a-biased-coin" id="toc-simulating-a-biased-coin" class="nav-link" data-scroll-target="#simulating-a-biased-coin"><span class="header-section-number">13.3</span> Simulating a biased coin</a></li>
-  <li><a href="#calculating-probability-of-an-event-rolling-two-dice" id="toc-calculating-probability-of-an-event-rolling-two-dice" class="nav-link" data-scroll-target="#calculating-probability-of-an-event-rolling-two-dice"><span class="header-section-number">13.4</span> Calculating Probability of an Event: Rolling Two Dice</a></li>
-  <li><a href="#biased-die" id="toc-biased-die" class="nav-link" data-scroll-target="#biased-die"><span class="header-section-number">13.5</span> Biased die</a>
+  <li><a href="#simulating-a-coin-flip" id="toc-simulating-a-coin-flip" class="nav-link" data-scroll-target="#simulating-a-coin-flip"><span class="header-section-number">14.1</span> Simulating a Coin Flip</a></li>
+  <li><a href="#seeds-for-reproducibility" id="toc-seeds-for-reproducibility" class="nav-link" data-scroll-target="#seeds-for-reproducibility"><span class="header-section-number">14.2</span> Seeds for reproducibility</a></li>
+  <li><a href="#simulating-a-biased-coin" id="toc-simulating-a-biased-coin" class="nav-link" data-scroll-target="#simulating-a-biased-coin"><span class="header-section-number">14.3</span> Simulating a biased coin</a></li>
+  <li><a href="#calculating-probability-of-an-event-rolling-two-dice" id="toc-calculating-probability-of-an-event-rolling-two-dice" class="nav-link" data-scroll-target="#calculating-probability-of-an-event-rolling-two-dice"><span class="header-section-number">14.4</span> Calculating Probability of an Event: Rolling Two Dice</a></li>
+  <li><a href="#biased-die" id="toc-biased-die" class="nav-link" data-scroll-target="#biased-die"><span class="header-section-number">14.5</span> Biased die</a>
   <ul class="collapse">
-  <li><a href="#what-is-the-probability-of-rolling-a-5-or-6" id="toc-what-is-the-probability-of-rolling-a-5-or-6" class="nav-link" data-scroll-target="#what-is-the-probability-of-rolling-a-5-or-6"><span class="header-section-number">13.5.1</span> What is the probability of rolling a 5 or 6?</a></li>
-  <li><a href="#display-the-distribution-of-the-biased-die" id="toc-display-the-distribution-of-the-biased-die" class="nav-link" data-scroll-target="#display-the-distribution-of-the-biased-die"><span class="header-section-number">13.5.2</span> Display the distribution of the biased die</a></li>
-  <li><a href="#sum-of-two-rolls-of-the-biased-die" id="toc-sum-of-two-rolls-of-the-biased-die" class="nav-link" data-scroll-target="#sum-of-two-rolls-of-the-biased-die"><span class="header-section-number">13.5.3</span> Sum of two rolls of the biased die</a></li>
-  <li><a href="#compare-it-with-the-same-for-the-fair-dice" id="toc-compare-it-with-the-same-for-the-fair-dice" class="nav-link" data-scroll-target="#compare-it-with-the-same-for-the-fair-dice"><span class="header-section-number">13.5.4</span> Compare it with the same for the fair dice</a></li>
+  <li><a href="#what-is-the-probability-of-rolling-a-5-or-6" id="toc-what-is-the-probability-of-rolling-a-5-or-6" class="nav-link" data-scroll-target="#what-is-the-probability-of-rolling-a-5-or-6"><span class="header-section-number">14.5.1</span> What is the probability of rolling a 5 or 6?</a></li>
+  <li><a href="#display-the-distribution-of-the-biased-die" id="toc-display-the-distribution-of-the-biased-die" class="nav-link" data-scroll-target="#display-the-distribution-of-the-biased-die"><span class="header-section-number">14.5.2</span> Display the distribution of the biased die</a></li>
+  <li><a href="#sum-of-two-rolls-of-the-biased-die" id="toc-sum-of-two-rolls-of-the-biased-die" class="nav-link" data-scroll-target="#sum-of-two-rolls-of-the-biased-die"><span class="header-section-number">14.5.3</span> Sum of two rolls of the biased die</a></li>
+  <li><a href="#compare-it-with-the-same-for-the-fair-dice" id="toc-compare-it-with-the-same-for-the-fair-dice" class="nav-link" data-scroll-target="#compare-it-with-the-same-for-the-fair-dice"><span class="header-section-number">14.5.4</span> Compare it with the same for the fair dice</a></li>
   </ul></li>
   </ul></li>
   </ul>
@@ -361,9 +367,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week2_section.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week2_section.html"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></h1>
+<h1 class="title"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></h1>
 </div>
 
 
@@ -418,10 +424,10 @@ window.Quarto = {
 </h1>
 <p><a href="Week2_section_download.qmd" class="download-btn" download=""> ⬇ Download Starter File </a></p>
 </div>
-<section id="example-1-are-students-more-likely-to-default-on-a-credit-card" class="level2" data-number="12.1">
-<h2 data-number="12.1" class="anchored" data-anchor-id="example-1-are-students-more-likely-to-default-on-a-credit-card"><span class="header-section-number">12.1</span> Example 1: Are students more likely to default on a credit card?</h2>
-<section id="background-islrdefault" class="level3" data-number="12.1.1">
-<h3 data-number="12.1.1" class="anchored" data-anchor-id="background-islrdefault"><span class="header-section-number">12.1.1</span> Background (<code>ISLR::Default</code>)</h3>
+<section id="example-1-are-students-more-likely-to-default-on-a-credit-card" class="level2" data-number="13.1">
+<h2 data-number="13.1" class="anchored" data-anchor-id="example-1-are-students-more-likely-to-default-on-a-credit-card"><span class="header-section-number">13.1</span> Example 1: Are students more likely to default on a credit card?</h2>
+<section id="background-islrdefault" class="level3" data-number="13.1.1">
+<h3 data-number="13.1.1" class="anchored" data-anchor-id="background-islrdefault"><span class="header-section-number">13.1.1</span> Background (<code>ISLR::Default</code>)</h3>
 <p>The <code>Default</code> dataset (from the <code>ISLR</code> package) records 10,000 credit card customers. We want to understand what predicts default.</p>
 <p><strong>Exposure</strong>: <code>student</code> – is the customer a student?<br>
 <strong>Outcome</strong>: <code>default</code> – did the customer default?<br>
@@ -432,28 +438,28 @@ window.Quarto = {
 <span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="co"># Check head of the data and structure</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="are-students-more-likely-to-default-than-non-students" class="level3" data-number="12.1.2">
-<h3 data-number="12.1.2" class="anchored" data-anchor-id="are-students-more-likely-to-default-than-non-students"><span class="header-section-number">12.1.2</span> Are students more likely to default than non-students?</h3>
+<section id="are-students-more-likely-to-default-than-non-students" class="level3" data-number="13.1.2">
+<h3 data-number="13.1.2" class="anchored" data-anchor-id="are-students-more-likely-to-default-than-non-students"><span class="header-section-number">13.1.2</span> Are students more likely to default than non-students?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute mean default rates for students vs non-students</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Should get: Students have a 4.3% chance of defaulting, whereas for non-students the same chance is 2.9%.</p>
 <p>Next, we dive deeper, trying to understand whether balance is a confounder here.</p>
 </section>
-<section id="check-1-are-students-carrying-higher-balances" class="level3" data-number="12.1.3">
-<h3 data-number="12.1.3" class="anchored" data-anchor-id="check-1-are-students-carrying-higher-balances"><span class="header-section-number">12.1.3</span> Check 1: Are students carrying higher balances?</h3>
+<section id="check-1-are-students-carrying-higher-balances" class="level3" data-number="13.1.3">
+<h3 data-number="13.1.3" class="anchored" data-anchor-id="check-1-are-students-carrying-higher-balances"><span class="header-section-number">13.1.3</span> Check 1: Are students carrying higher balances?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compare mean balances for students and non-students</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="check-2-is-balance-associated-with-default" class="level3" data-number="12.1.4">
-<h3 data-number="12.1.4" class="anchored" data-anchor-id="check-2-is-balance-associated-with-default"><span class="header-section-number">12.1.4</span> Check 2: Is balance associated with default?</h3>
+<section id="check-2-is-balance-associated-with-default" class="level3" data-number="13.1.4">
+<h3 data-number="13.1.4" class="anchored" data-anchor-id="check-2-is-balance-associated-with-default"><span class="header-section-number">13.1.4</span> Check 2: Is balance associated with default?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation between balance and default</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="check-3-default-rates-within-balance-groups" class="level3" data-number="12.1.5">
-<h3 data-number="12.1.5" class="anchored" data-anchor-id="check-3-default-rates-within-balance-groups"><span class="header-section-number">12.1.5</span> Check 3: Default rates within balance groups</h3>
+<section id="check-3-default-rates-within-balance-groups" class="level3" data-number="13.1.5">
+<h3 data-number="13.1.5" class="anchored" data-anchor-id="check-3-default-rates-within-balance-groups"><span class="header-section-number">13.1.5</span> Check 3: Default rates within balance groups</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, compute quantiles of the variable balance</span></span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a></span>
@@ -476,10 +482,10 @@ window.Quarto = {
 <p>Within every single balance quartile, students default at a <strong>lower</strong> rate than non-students – the opposite of the marginal comparison! This <strong>reversal</strong> is an example of <strong>Simpson’s paradox</strong> (Google it to know more).</p>
 </section>
 </section>
-<section id="example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" class="level2" data-number="12.2">
-<h2 data-number="12.2" class="anchored" data-anchor-id="example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section"><span class="header-section-number">12.2</span> Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)</h2>
-<section id="background-mtcars" class="level3" data-number="12.2.1">
-<h3 data-number="12.2.1" class="anchored" data-anchor-id="background-mtcars"><span class="header-section-number">12.2.1</span> Background (<code>mtcars</code>)</h3>
+<section id="example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section" class="level2" data-number="13.2">
+<h2 data-number="13.2" class="anchored" data-anchor-id="example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section"><span class="header-section-number">13.2</span> Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)</h2>
+<section id="background-mtcars" class="level3" data-number="13.2.1">
+<h3 data-number="13.2.1" class="anchored" data-anchor-id="background-mtcars"><span class="header-section-number">13.2.1</span> Background (<code>mtcars</code>)</h3>
 <p>The <code>mtcars</code> dataset (built into R) records fuel economy and physical characteristics for 32 cars from a 1974 Motor Trend road test.</p>
 <p><strong>Exposure</strong>: <code>am</code> – transmission type (0 = automatic, 1 = manual)<br>
 <strong>Outcome</strong>: <code>mpg</code> – fuel efficiency (miles per gallon)<br>
@@ -488,29 +494,29 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># load the data mtcars</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="do-manual-cars-give-more-mpg" class="level3" data-number="12.2.2">
-<h3 data-number="12.2.2" class="anchored" data-anchor-id="do-manual-cars-give-more-mpg"><span class="header-section-number">12.2.2</span> Do manual cars give more mpg?</h3>
+<section id="do-manual-cars-give-more-mpg" class="level3" data-number="13.2.2">
+<h3 data-number="13.2.2" class="anchored" data-anchor-id="do-manual-cars-give-more-mpg"><span class="header-section-number">13.2.2</span> Do manual cars give more mpg?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean mpg for each group (auto/manual) and compute the difference.</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Manual transmission cars average <strong>24.4 mpg</strong> vs <strong>17.1 mpg</strong> for automatics—a gap of <strong>7.3 mpg</strong>, which is enormous (about 43% better). If you only saw this number, you might conclude that choosing a manual gearbox is the key to fuel savings.</p>
 </section>
-<section id="are-manual-and-automatic-cars-different-in-weight" class="level3" data-number="12.2.3">
-<h3 data-number="12.2.3" class="anchored" data-anchor-id="are-manual-and-automatic-cars-different-in-weight"><span class="header-section-number">12.2.3</span> Are manual and automatic cars different in weight?</h3>
+<section id="are-manual-and-automatic-cars-different-in-weight" class="level3" data-number="13.2.3">
+<h3 data-number="13.2.3" class="anchored" data-anchor-id="are-manual-and-automatic-cars-different-in-weight"><span class="header-section-number">13.2.3</span> Are manual and automatic cars different in weight?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute the mean weight for each group (auto/manual).</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Manual cars average <strong>2.41 thousand lbs</strong> vs <strong>3.77 thousand lbs</strong> for automatics – a difference of <strong>1.36 thousand lbs</strong>, or over half a ton. In earlier days, manual transmissions were common in small, sporty cars while automatics dominated larger, heavier vehicles.</p>
 </section>
-<section id="is-weight-associated-with-mpg" class="level3" data-number="12.2.4">
-<h3 data-number="12.2.4" class="anchored" data-anchor-id="is-weight-associated-with-mpg"><span class="header-section-number">12.2.4</span> Is weight associated with mpg?</h3>
+<section id="is-weight-associated-with-mpg" class="level3" data-number="13.2.4">
+<h3 data-number="13.2.4" class="anchored" data-anchor-id="is-weight-associated-with-mpg"><span class="header-section-number">13.2.4</span> Is weight associated with mpg?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute correlation</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Heavier cars get much worse mileage. This is intuitive: more mass requires more energy.</p>
 </section>
-<section id="mpg-of-automatic-vs-manual-cars-within-weight-groups" class="level3" data-number="12.2.5">
-<h3 data-number="12.2.5" class="anchored" data-anchor-id="mpg-of-automatic-vs-manual-cars-within-weight-groups"><span class="header-section-number">12.2.5</span> mpg of automatic vs manual cars within weight groups</h3>
+<section id="mpg-of-automatic-vs-manual-cars-within-weight-groups" class="level3" data-number="13.2.5">
+<h3 data-number="13.2.5" class="anchored" data-anchor-id="mpg-of-automatic-vs-manual-cars-within-weight-groups"><span class="header-section-number">13.2.5</span> mpg of automatic vs manual cars within weight groups</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># First, compute quantiles of the weights</span></span>
 <span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>qs <span class="ot">&lt;-</span> <span class="fu">quantile</span>(mtcars<span class="sc">$</span>wt, <span class="at">probs =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">2</span><span class="sc">/</span><span class="dv">3</span>, <span class="dv">1</span>))</span>
@@ -526,8 +532,8 @@ window.Quarto = {
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a><span class="co"># tapply(mtcars$mpg, list(wt_group = mtcars$wt_group, am = mtcars$am), mean)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="summary" class="level3" data-number="12.2.6">
-<h3 data-number="12.2.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">12.2.6</span> Summary</h3>
+<section id="summary" class="level3" data-number="13.2.6">
+<h3 data-number="13.2.6" class="anchored" data-anchor-id="summary"><span class="header-section-number">13.2.6</span> Summary</h3>
 <p>In this dataset,</p>
 <ul>
 <li>Manual cars are much lighter.</li>
@@ -536,11 +542,11 @@ window.Quarto = {
 </ul>
 </section>
 </section>
-<section id="part-2-probability" class="level1" data-number="13">
-<h1 data-number="13"><span class="header-section-number">13</span> Part 2: Probability</h1>
+<section id="part-2-probability" class="level1" data-number="14">
+<h1 data-number="14"><span class="header-section-number">14</span> Part 2: Probability</h1>
 <p>The <strong>probability</strong> of an event is the proportion of times it occurs in a very large number of identical, independent repetitions of the same random experiment. We can use random number generators in R to <em>simulate</em> these repetitions and see this in action.</p>
-<section id="simulating-a-coin-flip" class="level2" data-number="13.1">
-<h2 data-number="13.1" class="anchored" data-anchor-id="simulating-a-coin-flip"><span class="header-section-number">13.1</span> Simulating a Coin Flip</h2>
+<section id="simulating-a-coin-flip" class="level2" data-number="14.1">
+<h2 data-number="14.1" class="anchored" data-anchor-id="simulating-a-coin-flip"><span class="header-section-number">14.1</span> Simulating a Coin Flip</h2>
 <p>Suppose we flip a fair coin. The probability of getting Heads should be 0.5. Let’s verify this by simulation.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate 10 coin flips: 1 = Heads, 0 = Tails</span></span>
@@ -552,17 +558,17 @@ window.Quarto = {
 </div>
 <p>The frequency gets closer and closer to the probability (0.5) as we increase the number of flips.</p>
 </section>
-<section id="seeds-for-reproducibility" class="level2" data-number="13.2">
-<h2 data-number="13.2" class="anchored" data-anchor-id="seeds-for-reproducibility"><span class="header-section-number">13.2</span> Seeds for reproducibility</h2>
+<section id="seeds-for-reproducibility" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="seeds-for-reproducibility"><span class="header-section-number">14.2</span> Seeds for reproducibility</h2>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scenario 1:</span></span>
 <span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 1 1 1 0 1 1 0</code></pre>
+<pre><code> [1] 0 1 0 0 0 0 1 1 1 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">1</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 0 0 1 1 1 1 0 1</code></pre>
+<pre><code> [1] 1 0 1 0 0 1 1 0 0 0</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scenario 2:</span></span>
 <span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
@@ -577,8 +583,8 @@ window.Quarto = {
 </div>
 </div>
 </section>
-<section id="simulating-a-biased-coin" class="level2" data-number="13.3">
-<h2 data-number="13.3" class="anchored" data-anchor-id="simulating-a-biased-coin"><span class="header-section-number">13.3</span> Simulating a biased coin</h2>
+<section id="simulating-a-biased-coin" class="level2" data-number="14.3">
+<h2 data-number="14.3" class="anchored" data-anchor-id="simulating-a-biased-coin"><span class="header-section-number">14.3</span> Simulating a biased coin</h2>
 <p>Now suppose the coin is biased, with ( P(H) = 0.7, P(T) = 0.3. )</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>biased_coin <span class="ot">&lt;-</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>),</span>
@@ -590,8 +596,8 @@ window.Quarto = {
 </div>
 <p>The simulated proportions should be close to 0.7 and 0.3.</p>
 </section>
-<section id="calculating-probability-of-an-event-rolling-two-dice" class="level2" data-number="13.4">
-<h2 data-number="13.4" class="anchored" data-anchor-id="calculating-probability-of-an-event-rolling-two-dice"><span class="header-section-number">13.4</span> Calculating Probability of an Event: Rolling Two Dice</h2>
+<section id="calculating-probability-of-an-event-rolling-two-dice" class="level2" data-number="14.4">
+<h2 data-number="14.4" class="anchored" data-anchor-id="calculating-probability-of-an-event-rolling-two-dice"><span class="header-section-number">14.4</span> Calculating Probability of an Event: Rolling Two Dice</h2>
 <p>Now let’s simulate rolling two fair six-sided dice and ask: <strong>What is the probability that the sum equals 7? What about 8?</strong></p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb25"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb25-1"><a href="#cb25-1" aria-hidden="true" tabindex="-1"></a>n_rolls <span class="ot">&lt;-</span> <span class="dv">10000</span>   <span class="co"># number of times we roll the pair of dice</span></span>
@@ -633,8 +639,8 @@ window.Quarto = {
 </div>
 <p>Notice the distribution is <strong>symmetric</strong> around 7 and <strong>triangular</strong> in shape — sums close to 7 are most likely.</p>
 </section>
-<section id="biased-die" class="level2" data-number="13.5">
-<h2 data-number="13.5" class="anchored" data-anchor-id="biased-die"><span class="header-section-number">13.5</span> Biased die</h2>
+<section id="biased-die" class="level2" data-number="14.5">
+<h2 data-number="14.5" class="anchored" data-anchor-id="biased-die"><span class="header-section-number">14.5</span> Biased die</h2>
 <p>Now let the die be biased. Suppose the probabilities are:</p>
 <ul>
 <li>1 with probability 0.05</li>
@@ -656,8 +662,8 @@ window.Quarto = {
 <span id="cb34-2"><a href="#cb34-2" aria-hidden="true" tabindex="-1"></a></span>
 <span id="cb34-3"><a href="#cb34-3" aria-hidden="true" tabindex="-1"></a><span class="co"># biased_rolls &lt;- sample(...)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-<section id="what-is-the-probability-of-rolling-a-5-or-6" class="level3" data-number="13.5.1">
-<h3 data-number="13.5.1" class="anchored" data-anchor-id="what-is-the-probability-of-rolling-a-5-or-6"><span class="header-section-number">13.5.1</span> What is the probability of rolling a 5 or 6?</h3>
+<section id="what-is-the-probability-of-rolling-a-5-or-6" class="level3" data-number="14.5.1">
+<h3 data-number="14.5.1" class="anchored" data-anchor-id="what-is-the-probability-of-rolling-a-5-or-6"><span class="header-section-number">14.5.1</span> What is the probability of rolling a 5 or 6?</h3>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute this using the simulated experiment</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
@@ -666,8 +672,8 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute using prob_die</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="display-the-distribution-of-the-biased-die" class="level3" data-number="13.5.2">
-<h3 data-number="13.5.2" class="anchored" data-anchor-id="display-the-distribution-of-the-biased-die"><span class="header-section-number">13.5.2</span> Display the distribution of the biased die</h3>
+<section id="display-the-distribution-of-the-biased-die" class="level3" data-number="14.5.2">
+<h3 data-number="14.5.2" class="anchored" data-anchor-id="display-the-distribution-of-the-biased-die"><span class="header-section-number">14.5.2</span> Display the distribution of the biased die</h3>
 <p>Because the outcomes are discrete, a barplot is often the first choice.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(table(biased_rolls),</span></span>
@@ -678,15 +684,15 @@ window.Quarto = {
 </div>
 <p>We can also draw a histogram. <code>hist(biased_rolls, ...)</code></p>
 </section>
-<section id="sum-of-two-rolls-of-the-biased-die" class="level3" data-number="13.5.3">
-<h3 data-number="13.5.3" class="anchored" data-anchor-id="sum-of-two-rolls-of-the-biased-die"><span class="header-section-number">13.5.3</span> Sum of two rolls of the biased die</h3>
+<section id="sum-of-two-rolls-of-the-biased-die" class="level3" data-number="14.5.3">
+<h3 data-number="14.5.3" class="anchored" data-anchor-id="sum-of-two-rolls-of-the-biased-die"><span class="header-section-number">14.5.3</span> Sum of two rolls of the biased die</h3>
 <p>We can also look at the distribution of the sum of two biased dice. Following code is essentially same as before, this time with <code>prob = prob_die</code> in <code>sample()</code>.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb38"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb38-1"><a href="#cb38-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulate this (recycle code from earlier)</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 </section>
-<section id="compare-it-with-the-same-for-the-fair-dice" class="level3" data-number="13.5.4">
-<h3 data-number="13.5.4" class="anchored" data-anchor-id="compare-it-with-the-same-for-the-fair-dice"><span class="header-section-number">13.5.4</span> Compare it with the same for the fair dice</h3>
+<section id="compare-it-with-the-same-for-the-fair-dice" class="level3" data-number="14.5.4">
+<h3 data-number="14.5.4" class="anchored" data-anchor-id="compare-it-with-the-same-for-the-fair-dice"><span class="header-section-number">14.5.4</span> Compare it with the same for the fair dice</h3>
 <p>Reproducing the plot from earlier (no need to run the experiment again!):</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a><span class="co"># barplot(table(sums) / n_rolls,</span></span>
@@ -1105,12 +1111,12 @@ window.Quarto = {
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
       <a href="./Week1_section.html" class="pagination-link" aria-label="Quarto">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Quarto</span></span>
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Quarto</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
       <a href="./quiz1.html" class="pagination-link" aria-label="Quiz 1 - April 10">
-        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span> <i class="bi bi-arrow-right-short"></i>
+        <span class="nav-page-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>

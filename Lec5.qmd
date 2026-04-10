@@ -71,7 +71,7 @@ $$Var(X)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
 
 In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
 
-To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.
+To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.
 
 ```{r}
 genotype = c("AA","AO","BB","AO","OO","AO","AA","BO","BO",
@@ -79,7 +79,7 @@ genotype = c("AA","AO","BB","AO","OO","AO","AA","BO","BO",
 table(genotype)
 ```
 
-If the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.
+If the order in which the data are observed does not matter, we call the random variable **exchangeable**. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.
 
 ### Bernoulli trials
 
@@ -169,9 +169,9 @@ An interesting characteristic of the Poisson distribution is that the **mean** a
 
 ::: {.callout-note icon="false"}
 **Example:** Human Immunodeficiency Virus (HIV)\
-Consider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of $p=5 x 10^{-4}$ per nucleotide per replication cycle, independently across positions. Given a genome size of approximately \$n\$ nucleotides, the total number of mutations per cycle follows a $\text{Poisson}(\lambda)$ distribution.
+Consider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of $p=5 \times 10^{-4}$ per nucleotide per replication cycle, independently across positions. Given a genome size of approximately \$n\$ nucleotides, the total number of mutations per cycle follows a $\text{Poisson}(\lambda)$ distribution.
 
-As the genome size of HIV is about $n=10^4$, this model predicts an expected number of mutations close to 5 $(np=10^4 x 5 x 10^{-4})$ per replication cycle, with standard error $\sqrt{\lambda}$. For example, to find the probability of exactly 3 mutations under a $\text{Poisson}(5)$ model, we can use R:
+As the genome size of HIV is about $n=10^4$, this model predicts an expected number of mutations close to 5 $(np=10^4 \times 5 \times 10^{-4})$ per replication cycle, with standard error $\sqrt{\lambda}$. For example, to find the probability of exactly 3 mutations under a $\text{Poisson}(5)$ model, we can use R:
 
 ```{r}
 dpois(x=3, lambda=5)

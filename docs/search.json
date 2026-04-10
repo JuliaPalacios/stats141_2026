@@ -202,7 +202,7 @@
     "href": "lec4.html",
     "title": "4  Probability",
     "section": "",
-    "text": "4.1 Probability distribution\nThe concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a random experiment that has two or more possible outcomes whose occurrence cannot be predicted with certainty.\nFor example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6,6).\nAn event is a subset of the sample space.\nExample 1: The event is \\(E_{1}=(1,1)\\).\nExample 2: The event is \\(E_{2}=\\)“The sum of the two rolls is 5”\nThe probability of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.\nA useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.\nTwo events are mutually exclusive if both events cannot occur simultaneously. For example \\(E_{1}\\) and \\(E_{2}\\) defined above are mutually exclusive and \\[ P(E_{1} \\text{ and } E_{2})=0\\]\nA simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:\ndata(father.son, package=\"UsingR\")\nx &lt;- father.son$fheight\nOne way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.\nlength(x)\n\n[1] 1078\n\nsample(x,10)\n\n [1] 66.61374 67.95451 72.59922 67.41995 69.48306 65.34899 64.30302 70.95019\n [9] 68.88641 64.61683\nAnother, more compact and descriptive way to represent the data is by using a histogram. Histograms show the proportion of values within intervals, \\((a, b)\\). In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:\nhist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=TRUE)\nWith this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).\nWe can also convert those numbers into probability\ny&lt;-hist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=FALSE)\n\n\n\n\n\n\n\ny\n\n$breaks\n [1] 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76\n\n$counts\n [1]   4   5  11  29  48  88 120 124 152 143 132  93  59  49  14   5   2\n\n$density\n [1] 0.003710575 0.004638219 0.010204082 0.026901670 0.044526902 0.081632653\n [7] 0.111317254 0.115027829 0.141001855 0.132653061 0.122448980 0.086270872\n[13] 0.054730983 0.045454545 0.012987013 0.004638219 0.001855288\n\n$mids\n [1] 59.5 60.5 61.5 62.5 63.5 64.5 65.5 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5\n[16] 74.5 75.5\n\n$xname\n[1] \"x\"\n\n$equidist\n[1] TRUE\n\nattr(,\"class\")\n[1] \"histogram\"\n\nsum(y$density)\n\n[1] 1\nSummarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval \\((a,b)\\) is denoted with \\(Pr(a \\leq X \\leq b)\\).\nIn summary, a probability distribution describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).\nThe cumulative distribution function (CDF), represented by the following notation: \\(F(a) \\equiv \\Pr(X \\leq a)\\) [and the proportion of numbers bigger than \\(a\\) is computed as: \\(\\Pr(X \\gt a)=1-\\Pr(X \\leq a)=1-F(a)\\)].\nCDFy&lt;-cumsum(y$density)\nplot(y$mids, CDFy,type=\"l\",xlab=\"y (Age)\",ylab=\"P(Y&lt;=y)\")",
+    "text": "4.1 Probability distribution\nThe concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a random experiment that has two or more possible outcomes whose occurrence cannot be predicted with certainty.\nFor example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6,6).\nAn event is a subset of the sample space.\nExample 1: The event is \\(E_{1}=(1,1)\\).\nExample 2: The event is \\(E_{2}=\\)“The sum of the two rolls is 5”\nThe probability of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.\nA useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.\nTwo events are mutually exclusive if both events cannot occur simultaneously. For example \\(E_{1}\\) and \\(E_{2}\\) defined above are mutually exclusive and \\[ P(E_{1} \\text{ and } E_{2})=0\\]\nA simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:\ndata(father.son, package=\"UsingR\")\nx &lt;- father.son$fheight\nOne way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.\nlength(x)\n\n[1] 1078\n\nsample(x,10)\n\n [1] 64.68393 59.48980 67.95451 68.25066 60.21393 65.50141 66.11120 67.33687\n [9] 70.73837 65.65889\nAnother, more compact and descriptive way to represent the data is by using a histogram. Histograms show the proportion of values within intervals, \\((a, b)\\). In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:\nhist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=TRUE)\nWith this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).\nWe can also convert those numbers into probability\ny&lt;-hist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=FALSE)\n\n\n\n\n\n\n\ny\n\n$breaks\n [1] 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76\n\n$counts\n [1]   4   5  11  29  48  88 120 124 152 143 132  93  59  49  14   5   2\n\n$density\n [1] 0.003710575 0.004638219 0.010204082 0.026901670 0.044526902 0.081632653\n [7] 0.111317254 0.115027829 0.141001855 0.132653061 0.122448980 0.086270872\n[13] 0.054730983 0.045454545 0.012987013 0.004638219 0.001855288\n\n$mids\n [1] 59.5 60.5 61.5 62.5 63.5 64.5 65.5 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5\n[16] 74.5 75.5\n\n$xname\n[1] \"x\"\n\n$equidist\n[1] TRUE\n\nattr(,\"class\")\n[1] \"histogram\"\n\nsum(y$density)\n\n[1] 1\nSummarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval \\((a,b)\\) is denoted with \\(Pr(a \\leq X \\leq b)\\).\nIn summary, a probability distribution describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).\nThe cumulative distribution function (CDF), represented by the following notation: \\(F(a) \\equiv \\Pr(X \\leq a)\\) [and the proportion of numbers bigger than \\(a\\) is computed as: \\(\\Pr(X \\gt a)=1-\\Pr(X \\leq a)=1-F(a)\\)].\nCDFy&lt;-cumsum(y$density)\nplot(y$mids, CDFy,type=\"l\",xlab=\"y (Age)\",ylab=\"P(Y&lt;=y)\")",
     "crumbs": [
       "Lectures",
       "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
@@ -312,7 +312,7 @@
     "href": "lec5.html#discrete-probability-models",
     "title": "5  Probability 2",
     "section": "5.6 Discrete probability models",
-    "text": "5.6 Discrete probability models\nIn many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).\nTo summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.\n\ngenotype = c(\"AA\",\"AO\",\"BB\",\"AO\",\"OO\",\"AO\",\"AA\",\"BO\",\"BO\",\n             \"AO\",\"BB\",\"AO\",\"BO\",\"AB\",\"OO\",\"AB\",\"BB\",\"AO\",\"AO\")\ntable(genotype)\n\ngenotype\nAA AB AO BB BO OO \n 2  2  7  3  3  2 \n\n\nIf the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.\n\n5.6.1 Bernoulli trials\nThe Bernoulli distribution is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter \\(p\\), which represents the probability of success, and the complementary event is called probability of failure \\(1-p\\):\nProbability distribution:\n\\(P(X=1) = p\\)\n\\(P(X=0) = 1-p\\)\nFor a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.\n\n\n\n\n\n\nNote\n\n\n\nExample: Coin tosses\nSuppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:\n\n\n\nrbinom(15, prob = 0.5, size = 1)\n\n [1] 1 1 0 1 0 0 1 0 0 0 0 0 0 0 1\n\n\nNow observe the outcome when using a biased coin that lands heads 70% of the time:\n\nrbinom(15, prob = 0.7, size = 1)\n\n [1] 1 1 1 1 1 0 0 1 0 1 1 0 1 1 1\n\n\nQuestion. Note that when you call the function above several times, you get different outcomes. Why is that?\nProperties\nThe mean, or expected value, of a Bernoulli distribution is given by \\(p\\), and the variance is defined as \\(p(1-p)\\), so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.\n\n\n5.6.2 Binomial success counts\nIn the previous example, if we are only interested in the number of heads (\\(X=1\\)), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:\n\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n\nThe sum of multiple independent (or exchangeable) Bernoulli trials is called the Binomial distribution (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a binomial random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:\n\nset.seed(384569724)\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n\nQuestion. Repeat this function call 10 times. What seems to be the most common outcome?\nSolution. The most frequent value is 10.5\\(\\approx 11\\). In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that \\(X=4\\) if \\(X\\) follows B(15,0.7).\nThe complete probability mass distribution is available by typing:\n\nprobabilities = dbinom(0:15, prob = 0.7, size = 15)\nround(probabilities, 2)\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03\n[16] 0.00\n\n\nA barplot for this distribution in R, is as follows:\n\nbarplot(probabilities, names.arg = 0:15, col = \"black\", main = \"Theoretical distribution of B(15, 0.7).\")\n\n\n\n\n\n\n\n\nMathematically, the theoretical distribution of the binomial distribution is\nProbability distribution:\n\\[P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad k = 0, 1, \\ldots, n,\\] where \\(n\\) is the number of trials, \\(k\\) is the number of successes, \\(p\\) is the probability of success, and \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\) is the binomial coefficient.\nProperties\nThe mean of a Binomial distribution is given by \\(n \\cdot p\\) (in the figure, the highest bar around \\(x \\approx 11\\), or \\(n(=15)\\cdot p(=0.7)\\), and the variance is defined as \\(np(1-p) = (15)(0.7)(0.3) = 3.15\\).",
+    "text": "5.6 Discrete probability models\nIn many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).\nTo summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.\n\ngenotype = c(\"AA\",\"AO\",\"BB\",\"AO\",\"OO\",\"AO\",\"AA\",\"BO\",\"BO\",\n             \"AO\",\"BB\",\"AO\",\"BO\",\"AB\",\"OO\",\"AB\",\"BB\",\"AO\",\"AO\")\ntable(genotype)\n\ngenotype\nAA AB AO BB BO OO \n 2  2  7  3  3  2 \n\n\nIf the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.\n\n5.6.1 Bernoulli trials\nThe Bernoulli distribution is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter \\(p\\), which represents the probability of success, and the complementary event is called probability of failure \\(1-p\\):\nProbability distribution:\n\\(P(X=1) = p\\)\n\\(P(X=0) = 1-p\\)\nFor a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.\n\n\n\n\n\n\nNote\n\n\n\nExample: Coin tosses\nSuppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:\n\n\n\nrbinom(15, prob = 0.5, size = 1)\n\n [1] 1 1 0 0 1 1 1 0 0 0 1 0 0 0 0\n\n\nNow observe the outcome when using a biased coin that lands heads 70% of the time:\n\nrbinom(15, prob = 0.7, size = 1)\n\n [1] 1 1 1 0 1 0 1 0 0 1 0 1 0 0 1\n\n\nQuestion. Note that when you call the function above several times, you get different outcomes. Why is that?\nProperties\nThe mean, or expected value, of a Bernoulli distribution is given by \\(p\\), and the variance is defined as \\(p(1-p)\\), so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.\n\n\n5.6.2 Binomial success counts\nIn the previous example, if we are only interested in the number of heads (\\(X=1\\)), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:\n\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 10\n\n\nThe sum of multiple independent (or exchangeable) Bernoulli trials is called the Binomial distribution (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a binomial random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:\n\nset.seed(384569724)\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n\nQuestion. Repeat this function call 10 times. What seems to be the most common outcome?\nSolution. The most frequent value is 10.5\\(\\approx 11\\). In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that \\(X=4\\) if \\(X\\) follows B(15,0.7).\nThe complete probability mass distribution is available by typing:\n\nprobabilities = dbinom(0:15, prob = 0.7, size = 15)\nround(probabilities, 2)\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03\n[16] 0.00\n\n\nA barplot for this distribution in R, is as follows:\n\nbarplot(probabilities, names.arg = 0:15, col = \"black\", main = \"Theoretical distribution of B(15, 0.7).\")\n\n\n\n\n\n\n\n\nMathematically, the theoretical distribution of the binomial distribution is\nProbability distribution:\n\\[P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad k = 0, 1, \\ldots, n,\\] where \\(n\\) is the number of trials, \\(k\\) is the number of successes, \\(p\\) is the probability of success, and \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\) is the binomial coefficient.\nProperties\nThe mean of a Binomial distribution is given by \\(n \\cdot p\\) (in the figure, the highest bar around \\(x \\approx 11\\), or \\(n(=15)\\cdot p(=0.7)\\), and the variance is defined as \\(np(1-p) = (15)(0.7)(0.3) = 3.15\\).",
     "crumbs": [
       "Lectures",
       "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
@@ -396,266 +396,277 @@
     ]
   },
   {
+    "objectID": "Week2C.html",
+    "href": "Week2C.html",
+    "title": "10  Activity Lecture 5",
+    "section": "",
+    "text": "Name:\n\nSuppose that in a certain population of married couples 30% of the husbands smoke, 20% of the wives smoke, and in 8% of the couples both the husband and the wife smoke. Is the smoking status (smoker or nonsmoker) of the husband independent of that of the wife? Why or why not?\nConsider choosing someone at random from a population that is 60% female and 40% male. Suppose that for a woman the probability of having a hand size smaller than 100 \\(cm^2\\) is 0.31. Suppose that for a man the probability of having a hand size smaller than 100 \\(cm^2\\) is 0.08. What is the probability that the randomly chosen person will have a hand size smaller than 100 \\(cm^2\\)?\nIn a population of beetles, each individual is classified by two traits:\n\nWing type: Normal (N) or Vestigial (V)\nBody color: Green (G) or Brown (B)\n\nA field survey estimates the following population proportions:\n\n\n\nCategory\nDescription\nProbability\n\n\n\n\nNG\nNormal wings & Green body\n0.40\n\n\nNB\nNormal wings & Brown body\n0.25\n\n\nVG\nVestigial wings & Green body\n0.20\n\n\nVB\nVestigial wings & Brown body\n0.15\n\n\n\nA beetle is selected at random.\n\nWhat is the probability the beetle has green body color?\nWhat is the probability the beetle has normal wings OR a brown body?\n\n\nA diagnostic test is used to detect a bacterial infection in salmon.\n\nInfection prevalence: \\(P(I) = 0.08\\)\nSensitivity: \\(P(+ \\mid I) = 0.95\\)\nFalse positive rate: \\(P(+ \\mid I^c) = 0.03\\)\n\nA salmon is selected at random and tested.\n\nWhat is the probability the salmon is infected AND tests positive?\nWhat is the probability the salmon is not infected AND tests positive?\n\nIf a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.\n(a) Suppose that 1000 women take early pregnancy tests and that 100 of them really are pregnant. What is the probability that a randomly chosen woman from this group will test positive?\n(b) Suppose that a woman test positive. What is the probability that she really is pregnant?\nA biologist is studying a frog species where individuals can have one of two skin-pattern phenotypes:\n\nStriped (S)\nSpotted (T)\n\nIn the entire wetland (the population), the phenotype frequencies are believed to be:\n\n\n\nPhenotype\nPopulation frequency\nPopulation proportion\n\n\n\n\nStriped (S)\n6200\n0.62\n\n\nSpotted (T)\n3800\n0.38\n\n\nTotal\n10000\n1.00\n\n\n\n\nCompute the mean E[X] and variance \\(\\mathrm{Var}(X)\\).",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Activity Lecture 5</span>"
+    ]
+  },
+  {
     "objectID": "summary.html",
     "href": "summary.html",
-    "title": "10  Summary",
+    "title": "11  Summary",
     "section": "",
     "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
     "crumbs": [
-      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Summary</span>"
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Summary</span>"
     ]
   },
   {
     "objectID": "Week1_section.html",
     "href": "Week1_section.html",
-    "title": "11  Quarto",
+    "title": "12  Quarto",
     "section": "",
-    "text": "11.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
+    "text": "12.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
     "href": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
-    "title": "11  Quarto",
-    "section": "11.2 1. How many rows and columns are in the dataset?",
-    "text": "11.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.2 1. How many rows and columns are in the dataset?",
+    "text": "12.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
     "href": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
-    "title": "11  Quarto",
-    "section": "11.3 2. What types of variables are present (e.g., numeric, categorical)?",
-    "text": "11.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.3 2. What types of variables are present (e.g., numeric, categorical)?",
+    "text": "12.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-does-the-variable-spam-represent",
     "href": "Week1_section.html#what-does-the-variable-spam-represent",
-    "title": "11  Quarto",
-    "section": "11.4 3. What does the variable spam represent?",
-    "text": "11.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
+    "title": "12  Quarto",
+    "section": "12.4 3. What does the variable spam represent?",
+    "text": "12.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
     "href": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
-    "title": "11  Quarto",
-    "section": "11.5 4. What is the median number of characters in an email?",
-    "text": "11.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.5 4. What is the median number of characters in an email?",
+    "text": "12.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-proportion-of-emails-are-spam",
     "href": "Week1_section.html#what-proportion-of-emails-are-spam",
-    "title": "11  Quarto",
-    "section": "11.6 5. What proportion of emails are spam?",
-    "text": "11.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.6 5. What proportion of emails are spam?",
+    "text": "12.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#subsetting",
     "href": "Week1_section.html#subsetting",
-    "title": "11  Quarto",
-    "section": "11.7 Subsetting",
-    "text": "11.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.7 Subsetting",
+    "text": "12.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
     "href": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
-    "title": "11  Quarto",
-    "section": "11.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
-    "text": "11.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
+    "title": "12  Quarto",
+    "section": "12.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
+    "text": "12.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
     "href": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
-    "title": "11  Quarto",
-    "section": "11.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
-    "text": "11.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
+    "title": "12  Quarto",
+    "section": "12.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
+    "text": "12.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
     "href": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
-    "title": "11  Quarto",
-    "section": "11.10 8. Create a histogram of the number of characters in emails.",
-    "text": "11.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.10 8. Create a histogram of the number of characters in emails.",
+    "text": "12.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
     "href": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
-    "title": "11  Quarto",
-    "section": "11.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
-    "text": "11.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
+    "title": "12  Quarto",
+    "section": "12.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
+    "text": "12.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
     "href": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
-    "title": "11  Quarto",
-    "section": "11.12 10. Create a boxplot of number of characters by spam status.",
-    "text": "11.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "title": "12  Quarto",
+    "section": "12.12 10. Create a boxplot of number of characters by spam status.",
+    "text": "12.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week1_section.html#other-tutorials",
     "href": "Week1_section.html#other-tutorials",
-    "title": "11  Quarto",
-    "section": "11.13 Other tutorials:",
-    "text": "11.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
+    "title": "12  Quarto",
+    "section": "12.13 Other tutorials:",
+    "text": "12.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Quarto</span>"
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
     ]
   },
   {
     "objectID": "Week2_section.html",
     "href": "Week2_section.html",
-    "title": "12  Part 1: Correlation vs Causation",
+    "title": "13  Part 1: Correlation vs Causation",
     "section": "",
-    "text": "12.1 Example 1: Are students more likely to default on a credit card?",
+    "text": "13.1 Example 1: Are students more likely to default on a credit card?",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#example-1-are-students-more-likely-to-default-on-a-credit-card",
     "href": "Week2_section.html#example-1-are-students-more-likely-to-default-on-a-credit-card",
-    "title": "12  Part 1: Correlation vs Causation",
+    "title": "13  Part 1: Correlation vs Causation",
     "section": "",
-    "text": "12.1.1 Background (ISLR::Default)\nThe Default dataset (from the ISLR package) records 10,000 credit card customers. We want to understand what predicts default.\nExposure: student – is the customer a student?\nOutcome: default – did the customer default?\nPossible confounders: balance – the customer’s average credit card balance\n\n# Load the package ISLR\n# Load the data Default from ISLR package \n# Check head of the data and structure\n\n\n\n12.1.2 Are students more likely to default than non-students?\n\n# Compute mean default rates for students vs non-students\n\nShould get: Students have a 4.3% chance of defaulting, whereas for non-students the same chance is 2.9%.\nNext, we dive deeper, trying to understand whether balance is a confounder here.\n\n\n12.1.3 Check 1: Are students carrying higher balances?\n\n# Compare mean balances for students and non-students\n\n\n\n12.1.4 Check 2: Is balance associated with default?\n\n# Compute correlation between balance and default\n\n\n\n12.1.5 Check 3: Default rates within balance groups\n\n# First, compute quantiles of the variable balance\n\n# Next, \n# - figure out which balance group each person belongs to, \n# - add it the original data as an additional feature/column\n\n# Hint:\n# Default$balance_group &lt;- cut(Default$balance, breaks = quantiles from above)\n\n\n# Check that default rate rises steeply with balance\n\nIf balance is really the confounder, then at the same balance level, students should no longer look riskier.\n\n# tapply(Default$default_num,\n#        list(balance = Default$balance_group, student = Default$student),\n#        mean)\n\nWithin every single balance quartile, students default at a lower rate than non-students – the opposite of the marginal comparison! This reversal is an example of Simpson’s paradox (Google it to know more).",
+    "text": "13.1.1 Background (ISLR::Default)\nThe Default dataset (from the ISLR package) records 10,000 credit card customers. We want to understand what predicts default.\nExposure: student – is the customer a student?\nOutcome: default – did the customer default?\nPossible confounders: balance – the customer’s average credit card balance\n\n# Load the package ISLR\n# Load the data Default from ISLR package \n# Check head of the data and structure\n\n\n\n13.1.2 Are students more likely to default than non-students?\n\n# Compute mean default rates for students vs non-students\n\nShould get: Students have a 4.3% chance of defaulting, whereas for non-students the same chance is 2.9%.\nNext, we dive deeper, trying to understand whether balance is a confounder here.\n\n\n13.1.3 Check 1: Are students carrying higher balances?\n\n# Compare mean balances for students and non-students\n\n\n\n13.1.4 Check 2: Is balance associated with default?\n\n# Compute correlation between balance and default\n\n\n\n13.1.5 Check 3: Default rates within balance groups\n\n# First, compute quantiles of the variable balance\n\n# Next, \n# - figure out which balance group each person belongs to, \n# - add it the original data as an additional feature/column\n\n# Hint:\n# Default$balance_group &lt;- cut(Default$balance, breaks = quantiles from above)\n\n\n# Check that default rate rises steeply with balance\n\nIf balance is really the confounder, then at the same balance level, students should no longer look riskier.\n\n# tapply(Default$default_num,\n#        list(balance = Default$balance_group, student = Default$student),\n#        mean)\n\nWithin every single balance quartile, students default at a lower rate than non-students – the opposite of the marginal comparison! This reversal is an example of Simpson’s paradox (Google it to know more).",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section",
     "href": "Week2_section.html#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "12.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)",
-    "text": "12.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)\n\n12.2.1 Background (mtcars)\nThe mtcars dataset (built into R) records fuel economy and physical characteristics for 32 cars from a 1974 Motor Trend road test.\nExposure: am – transmission type (0 = automatic, 1 = manual)\nOutcome: mpg – fuel efficiency (miles per gallon)\nPossible confounder: wt – car weight (in thousands of pounds)\n\n# load the data mtcars\n\n\n\n12.2.2 Do manual cars give more mpg?\n\n# Compute the mean mpg for each group (auto/manual) and compute the difference.\n\nManual transmission cars average 24.4 mpg vs 17.1 mpg for automatics—a gap of 7.3 mpg, which is enormous (about 43% better). If you only saw this number, you might conclude that choosing a manual gearbox is the key to fuel savings.\n\n\n12.2.3 Are manual and automatic cars different in weight?\n\n# Compute the mean weight for each group (auto/manual).\n\nManual cars average 2.41 thousand lbs vs 3.77 thousand lbs for automatics – a difference of 1.36 thousand lbs, or over half a ton. In earlier days, manual transmissions were common in small, sporty cars while automatics dominated larger, heavier vehicles.\n\n\n12.2.4 Is weight associated with mpg?\n\n# Compute correlation\n\nHeavier cars get much worse mileage. This is intuitive: more mass requires more energy.\n\n\n12.2.5 mpg of automatic vs manual cars within weight groups\n\n# First, compute quantiles of the weights\nqs &lt;- quantile(mtcars$wt, probs = c(0, 1/3, 2/3, 1))\n\n# Then, figure out which group each car belongs to, add it the data as a column\nmtcars$wt_group &lt;- cut(mtcars$wt, \n                       breaks = qs,\n                       labels = c(\"Light\", \"Medium\", \"Heavy\")\n                       )\n\n\n# Compare the mpg of automatic versus manual in each weight group\n# tapply(mtcars$mpg, list(wt_group = mtcars$wt_group, am = mtcars$am), mean)\n\n\n\n12.2.6 Summary\nIn this dataset,\n\nManual cars are much lighter.\nLighter cars get much better mileage.\nWithin similar weight classes, the manual–automatic mpg gap is smaller.",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "13.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)",
+    "text": "13.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)\n\n13.2.1 Background (mtcars)\nThe mtcars dataset (built into R) records fuel economy and physical characteristics for 32 cars from a 1974 Motor Trend road test.\nExposure: am – transmission type (0 = automatic, 1 = manual)\nOutcome: mpg – fuel efficiency (miles per gallon)\nPossible confounder: wt – car weight (in thousands of pounds)\n\n# load the data mtcars\n\n\n\n13.2.2 Do manual cars give more mpg?\n\n# Compute the mean mpg for each group (auto/manual) and compute the difference.\n\nManual transmission cars average 24.4 mpg vs 17.1 mpg for automatics—a gap of 7.3 mpg, which is enormous (about 43% better). If you only saw this number, you might conclude that choosing a manual gearbox is the key to fuel savings.\n\n\n13.2.3 Are manual and automatic cars different in weight?\n\n# Compute the mean weight for each group (auto/manual).\n\nManual cars average 2.41 thousand lbs vs 3.77 thousand lbs for automatics – a difference of 1.36 thousand lbs, or over half a ton. In earlier days, manual transmissions were common in small, sporty cars while automatics dominated larger, heavier vehicles.\n\n\n13.2.4 Is weight associated with mpg?\n\n# Compute correlation\n\nHeavier cars get much worse mileage. This is intuitive: more mass requires more energy.\n\n\n13.2.5 mpg of automatic vs manual cars within weight groups\n\n# First, compute quantiles of the weights\nqs &lt;- quantile(mtcars$wt, probs = c(0, 1/3, 2/3, 1))\n\n# Then, figure out which group each car belongs to, add it the data as a column\nmtcars$wt_group &lt;- cut(mtcars$wt, \n                       breaks = qs,\n                       labels = c(\"Light\", \"Medium\", \"Heavy\")\n                       )\n\n\n# Compare the mpg of automatic versus manual in each weight group\n# tapply(mtcars$mpg, list(wt_group = mtcars$wt_group, am = mtcars$am), mean)\n\n\n\n13.2.6 Summary\nIn this dataset,\n\nManual cars are much lighter.\nLighter cars get much better mileage.\nWithin similar weight classes, the manual–automatic mpg gap is smaller.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#simulating-a-coin-flip",
     "href": "Week2_section.html#simulating-a-coin-flip",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "13.1 Simulating a Coin Flip",
-    "text": "13.1 Simulating a Coin Flip\nSuppose we flip a fair coin. The probability of getting Heads should be 0.5. Let’s verify this by simulation.\n\n# Simulate 10 coin flips: 1 = Heads, 0 = Tails\n\n# Print the proportion of Heads in those 10 flips\n\n\n# Repeat the above for 1,000 flips\n\nThe frequency gets closer and closer to the probability (0.5) as we increase the number of flips.",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.1 Simulating a Coin Flip",
+    "text": "14.1 Simulating a Coin Flip\nSuppose we flip a fair coin. The probability of getting Heads should be 0.5. Let’s verify this by simulation.\n\n# Simulate 10 coin flips: 1 = Heads, 0 = Tails\n\n# Print the proportion of Heads in those 10 flips\n\n\n# Repeat the above for 1,000 flips\n\nThe frequency gets closer and closer to the probability (0.5) as we increase the number of flips.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#seeds-for-reproducibility",
     "href": "Week2_section.html#seeds-for-reproducibility",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "13.2 Seeds for reproducibility",
-    "text": "13.2 Seeds for reproducibility\n\n# Scenario 1:\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 1 0 0 1 1 1 0 1 1 0\n\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 1 1 0 0 1 1 1 1 0 1\n\n# Scenario 2:\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0\n\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.2 Seeds for reproducibility",
+    "text": "14.2 Seeds for reproducibility\n\n# Scenario 1:\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 1 0 0 0 0 1 1 1 0\n\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 1 0 1 0 0 1 1 0 0 0\n\n# Scenario 2:\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0\n\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#simulating-a-biased-coin",
     "href": "Week2_section.html#simulating-a-biased-coin",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "13.3 Simulating a biased coin",
-    "text": "13.3 Simulating a biased coin\nNow suppose the coin is biased, with ( P(H) = 0.7, P(T) = 0.3. )\n\nbiased_coin &lt;- sample(c(\"H\", \"T\"),\n                      size = 1000,\n                      replace = TRUE,\n                      prob = c(0.7, 0.3) # this is the part that's new\n                      )\n# Compute proportion of Heads and Tails\n\nThe simulated proportions should be close to 0.7 and 0.3.",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.3 Simulating a biased coin",
+    "text": "14.3 Simulating a biased coin\nNow suppose the coin is biased, with ( P(H) = 0.7, P(T) = 0.3. )\n\nbiased_coin &lt;- sample(c(\"H\", \"T\"),\n                      size = 1000,\n                      replace = TRUE,\n                      prob = c(0.7, 0.3) # this is the part that's new\n                      )\n# Compute proportion of Heads and Tails\n\nThe simulated proportions should be close to 0.7 and 0.3.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#calculating-probability-of-an-event-rolling-two-dice",
     "href": "Week2_section.html#calculating-probability-of-an-event-rolling-two-dice",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "13.4 Calculating Probability of an Event: Rolling Two Dice",
-    "text": "13.4 Calculating Probability of an Event: Rolling Two Dice\nNow let’s simulate rolling two fair six-sided dice and ask: What is the probability that the sum equals 7? What about 8?\n\nn_rolls &lt;- 10000   # number of times we roll the pair of dice\n\n# Simulate the experiment\n\n# sums &lt;- die1 + die2\n\n# Estimate probability that sum = 7\n\n# Estimate probability that sum = 8\n\nWe can compare to the exact probabilities. There are \\(6 \\times 6 = 36\\) equally likely outcomes. The ways to get a sum of 7 are: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) — that is 6 outcomes. For sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) — that is 5 outcomes.\n\n# Exact probabilities\n6/36   # P(sum = 7)\n\n[1] 0.1666667\n\n5/36   # P(sum = 8)\n\n[1] 0.1388889\n\n\nOur simulated values should be very close! (Because we simulated many identical, independent repetitions of this experiment.)\nWe can also look at the full distribution of the sum of two dice:\n\n# Frequency table of all possible sums\n\n\n# Visualize\n# barplot(table(sums) / n_rolls,\n#        main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#        xlab = \"Sum of Two Dice\",\n#        ylab = \"Estimated Probability\",\n#        col = \"steelblue\")\n\n# Add a horizontal line at the exact P(sum=7) = 6/36 for reference\n\nNotice the distribution is symmetric around 7 and triangular in shape — sums close to 7 are most likely.",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.4 Calculating Probability of an Event: Rolling Two Dice",
+    "text": "14.4 Calculating Probability of an Event: Rolling Two Dice\nNow let’s simulate rolling two fair six-sided dice and ask: What is the probability that the sum equals 7? What about 8?\n\nn_rolls &lt;- 10000   # number of times we roll the pair of dice\n\n# Simulate the experiment\n\n# sums &lt;- die1 + die2\n\n# Estimate probability that sum = 7\n\n# Estimate probability that sum = 8\n\nWe can compare to the exact probabilities. There are \\(6 \\times 6 = 36\\) equally likely outcomes. The ways to get a sum of 7 are: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) — that is 6 outcomes. For sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) — that is 5 outcomes.\n\n# Exact probabilities\n6/36   # P(sum = 7)\n\n[1] 0.1666667\n\n5/36   # P(sum = 8)\n\n[1] 0.1388889\n\n\nOur simulated values should be very close! (Because we simulated many identical, independent repetitions of this experiment.)\nWe can also look at the full distribution of the sum of two dice:\n\n# Frequency table of all possible sums\n\n\n# Visualize\n# barplot(table(sums) / n_rolls,\n#        main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#        xlab = \"Sum of Two Dice\",\n#        ylab = \"Estimated Probability\",\n#        col = \"steelblue\")\n\n# Add a horizontal line at the exact P(sum=7) = 6/36 for reference\n\nNotice the distribution is symmetric around 7 and triangular in shape — sums close to 7 are most likely.",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "Week2_section.html#biased-die",
     "href": "Week2_section.html#biased-die",
-    "title": "12  Part 1: Correlation vs Causation",
-    "section": "13.5 Biased die",
-    "text": "13.5 Biased die\nNow let the die be biased. Suppose the probabilities are:\n\n1 with probability 0.05\n2 with probability 0.10\n3 with probability 0.15\n4 with probability 0.20\n5 with probability 0.20\n6 with probability 0.30\n\n\nprob_die &lt;- c(0.05, 0.10, 0.15, 0.20, 0.20, 0.30)\nsum(prob_die)\n\n[1] 1\n\n\n\n# Simulate the biased roll as we did above for the biased coin\n\n# biased_rolls &lt;- sample(...)\n\n\n13.5.1 What is the probability of rolling a 5 or 6?\n\n# Compute this using the simulated experiment\n\nExact answer from the probability distribution:\n\n# Compute using prob_die\n\n\n\n13.5.2 Display the distribution of the biased die\nBecause the outcomes are discrete, a barplot is often the first choice.\n\n# barplot(table(biased_rolls),\n#         main = \"Biased die outcomes\",\n#         xlab = \"Outcome\",\n#         ylab = \"Count\",\n#         col = \"tomato\")\n\nWe can also draw a histogram. hist(biased_rolls, ...)\n\n\n13.5.3 Sum of two rolls of the biased die\nWe can also look at the distribution of the sum of two biased dice. Following code is essentially same as before, this time with prob = prob_die in sample().\n\n# Simulate this (recycle code from earlier)\n\n\n\n13.5.4 Compare it with the same for the fair dice\nReproducing the plot from earlier (no need to run the experiment again!):\n\n# barplot(table(sums) / n_rolls,\n#         main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#         xlab = \"Sum of Two Dice\",\n#         ylab = \"Estimated Probability\",\n#         col = \"steelblue\")",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.5 Biased die",
+    "text": "14.5 Biased die\nNow let the die be biased. Suppose the probabilities are:\n\n1 with probability 0.05\n2 with probability 0.10\n3 with probability 0.15\n4 with probability 0.20\n5 with probability 0.20\n6 with probability 0.30\n\n\nprob_die &lt;- c(0.05, 0.10, 0.15, 0.20, 0.20, 0.30)\nsum(prob_die)\n\n[1] 1\n\n\n\n# Simulate the biased roll as we did above for the biased coin\n\n# biased_rolls &lt;- sample(...)\n\n\n14.5.1 What is the probability of rolling a 5 or 6?\n\n# Compute this using the simulated experiment\n\nExact answer from the probability distribution:\n\n# Compute using prob_die\n\n\n\n14.5.2 Display the distribution of the biased die\nBecause the outcomes are discrete, a barplot is often the first choice.\n\n# barplot(table(biased_rolls),\n#         main = \"Biased die outcomes\",\n#         xlab = \"Outcome\",\n#         ylab = \"Count\",\n#         col = \"tomato\")\n\nWe can also draw a histogram. hist(biased_rolls, ...)\n\n\n14.5.3 Sum of two rolls of the biased die\nWe can also look at the distribution of the sum of two biased dice. Following code is essentially same as before, this time with prob = prob_die in sample().\n\n# Simulate this (recycle code from earlier)\n\n\n\n14.5.4 Compare it with the same for the fair dice\nReproducing the plot from earlier (no need to run the experiment again!):\n\n# barplot(table(sums) / n_rolls,\n#         main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#         xlab = \"Sum of Two Dice\",\n#         ylab = \"Estimated Probability\",\n#         col = \"steelblue\")",
     "crumbs": [
       "Sections",
-      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
     ]
   },
   {
     "objectID": "quiz1.html",
     "href": "quiz1.html",
-    "title": "13  Quiz 1 - April 10",
+    "title": "14  Quiz 1 - April 10",
     "section": "",
     "text": "Quiz 1 will cover Introduction to Statistics and Types of Studies (Lectures 1-3, Activities 1-3).\nDuration: 10 minutes with 10 minutes extension",
     "crumbs": [
       "Quizzes",
-      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Quiz 1 - April 10</span>"
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Quiz 1 - April 10</span>"
     ]
   },
   {
     "objectID": "quiz2.html",
     "href": "quiz2.html",
-    "title": "14  Quiz 2 - April 17",
+    "title": "15  Quiz 2 - April 17",
     "section": "",
     "text": "Quiz 2 will cover Probability\nDuration: 10 minutes with 10 minutes extension.",
     "crumbs": [
       "Quizzes",
-      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Quiz 2 - April 17</span>"
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Quiz 2 - April 17</span>"
     ]
   }
 ]
