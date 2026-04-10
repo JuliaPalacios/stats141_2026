@@ -283,6 +283,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -297,13 +303,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
   </div>
 </li>
       </ul>
@@ -348,6 +354,43 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+</h1>
+<p><a href="Lec4_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/prob.png" class="img-fluid figure-img" style="width:20.0%"></p>
@@ -355,7 +398,7 @@ window.Quarto = {
 </figure>
 </div>
 <p>The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a <strong>random experiment</strong> that has two or more possible outcomes whose occurrence cannot be predicted with certainty.</p>
-<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6.6).</p>
+<p>For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6,6).</p>
 <p>An <strong>event</strong> is a subset of the sample space.</p>
 <p>Example 1: The event is <span class="math inline">\(E_{1}=(1,1)\)</span>.</p>
 <p>Example 2: The event is <span class="math inline">\(E_{2}=\)</span>“The sum of the two rolls is 5”</p>
@@ -379,8 +422,8 @@ window.Quarto = {
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(x,<span class="dv">10</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 68.87192 66.39423 68.26078 68.55957 66.05344 68.32281 70.16110 70.66031
- [9] 67.11129 66.90986</code></pre>
+<pre><code> [1] 66.61374 67.95451 72.59922 67.41995 69.48306 65.34899 64.30302 70.95019
+ [9] 68.88641 64.61683</code></pre>
 </div>
 </div>
 <p>Another, more compact and descriptive way to represent the data is by using a <strong>histogram</strong>. Histograms show the proportion of values within intervals, <span class="math inline">\((a, b)\)</span>. In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:</p>
@@ -462,8 +505,8 @@ attr(,"class")
 <section id="independence-and-multiplication-rule" class="level2" data-number="4.3">
 <h2 data-number="4.3" class="anchored" data-anchor-id="independence-and-multiplication-rule"><span class="header-section-number">4.3</span> Independence and multiplication rule</h2>
 <p>Science is generated by relationships between events. Men are more likely to be tall, more likely to have a beard, more likely to die young and more likely to go to prison than women. That is, height, beadeness, age at death and criminal conduct are <strong>not independend</strong> of sex in humans.</p>
-<p>To events are <strong>independent</strong> if the occurence of one does not in any way inform us about the probability that the other will also occur.</p>
-<p>Example: <span class="math inline">\(E_{1}\)</span>=The first die rall is 3, and <span class="math inline">\(E_{2}\)</span>=The second die roll is <span class="math inline">\(3\)</span>.</p>
+<p>Two events are <strong>independent</strong> if the occurence of one does not in any way inform us about the probability that the other will also occur.</p>
+<p>Example: <span class="math inline">\(E_{1}\)</span>=The first die roll is 3, and <span class="math inline">\(E_{2}\)</span>=The second die roll is <span class="math inline">\(3\)</span>.</p>
 <p>The <strong>multiplication rule</strong> states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if <span class="math inline">\(E_{1}\)</span> and <span class="math inline">\(E_{2}\)</span> are independent, then <span class="math display">\[P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})\]</span></p>
 </section>
 <section id="conditional-probability-and-bayes-theorem" class="level2" data-number="4.4">

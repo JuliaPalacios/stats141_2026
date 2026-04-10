@@ -21,6 +21,7 @@ book:
         - Week1B.qmd
         - Week2A.qmd
         - Week2B.qmd
+        - Week2C.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 
