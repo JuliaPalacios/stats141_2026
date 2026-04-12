@@ -1,5 +1,5 @@
 # Quiz 2 - April 17
 
-Quiz 2 will cover Probability
+Quiz 2 will cover Probability (Lectures 4-6, Activities 4-6).
 
-Duration: 10 minutes with 10 minutes extension.
+Duration: 10 minutes with 10 minutes extension

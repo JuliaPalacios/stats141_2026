@@ -1,128 +1,27 @@
 ---
-title: "Probability 2"
+title: "Probability 3"
 format: html
 bibliography: references.bib
-execute:
-  echo: true
-  warning: false
-  message: false
-  resources:
-  - Lec5_annotated.pdf
 ---
-
-```{=html}
-<style>
-.header-row {
-  display: flex;
-  justify-content: space-between; /* title left, button right */
-  align-items: center;
-  margin-bottom: 1em; /* spacing below header */
-}
-
-.page-title {
-  font-size: 2rem;   /* matches H1 style */
-  font-weight: 700;
-  margin: 0;
-}
-
-.download-btn {
-  display: inline-block;
-  background-color: #5FA2F3;  /* lighter R blue */
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.download-btn:hover {
-  background-color: #4C93E6;
-  color: white !important;
-  text-decoration: none;
-}
-</style>
-```
-
-<!-- Flex container aligns title and button with text margin -->
-
-::: header-row
-<h1 class="page-title">
-
-
-
-</h1>
-
-<a href="Lec5_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
-:::
-
-
-
-Two events are **independent** if the occurence of one does not in any way inform us about the probability that the other will also occur.
-
-Example: $E_{1}$=The first die rall is 3, and $E_{2}$=The second die roll is $3$.
-
-The **multiplication rule** states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if $E_{1}$ and $E_{2}$ are independent, then $$P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})$$
-
-
-## Conditional probability and Bayes' theorem
- 
-**Conditional probability** is the probability of an event given that another event occurs.
-
-**Bayes' theorem**
-
-$$P(A \mid B)=\frac{P(A \text{ and } B)}{P(B)}$$
-
-The *general multiplication rule*
-
-$$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
-
-The *law of total probability*
-Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
-$$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
-
-
-{{< pagebreak >}}
-
-## Sampling without replacement
-
-One common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.
-
-For example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence "A-A-2"?
-
-In contrast, when sampling with replacement, the sampled individual is not removed from the population.
-
-When sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.
-
-## Random variable
-
-A **random variable** is simply a variable that takes on *numerical values* that depend on the outcome of a chance operation (random experiment).
-
-Example. Consider the experiment to tossing a die. Let the random variable Y represent the number of spots showing. The possible values of Y are 1,..,6. We do not know the value of Y until we have tossed the die. We can then compute $$P(Y=4)$$  and $$P(2\leq Y \leq 4)$$   
-
-Random variables come in two flavors: Discrete and Continuous.
 
 ## Expected value (Mean)
 
-The **mean** of a discrete random variable is:
-$$E(Y)=\sum_{i=1}^{n}y_{i}P(Y=y_{i})$$
-where $y_{i}$'s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.
+The **mean** of a discrete random variable is: $$E(Y)=\sum_{i=1}^{n}y_{i}P(Y=y_{i})$$ where $y_{i}$'s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.
 
-Example: Calculate the expected value of rolling a fair die once.
-
-
-{{< pagebreak >}}
-
-Rules: If X and Y are two random variables and Z=X+Y
-$$E(Z)=E(X+Y)=E(X)+E(Y)$$
-$$E(aX+b)=a E(X)+b$$
+Rules: If X and Y are two random variables and Z=X+Y $$E(Z)=E(X+Y)=E(X)+E(Y)$$ $$E(aX+b)=a E(X)+b$$
 
 ## Variance
-The **variance** of a discrete random variable is 
-$$Var(Y)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
 
-## Discrete probability models
+The **variance** of a discrete random variable is $$Var(Y)=E((Y-E(Y)^2)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
 
+In addition
+$$Var(Y)=E(Y^2)-E(Y)^2$$
+and the standard deviation is
+$$SD_{Y}=\sqrt{Var(Y)}$$
+The **covariance** between two random variables is
+$$Cov(X,Y)=E(XY)-E(X)E(Y)=E[(X-E(X))(Y-E(y))]$$
+and the coefficient of correlation is
+$$\rho_{X,Y}=\frac{Cov(X,Y)}{SD_{X}SD_{Y}}$$
 In many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).
 
 To summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.

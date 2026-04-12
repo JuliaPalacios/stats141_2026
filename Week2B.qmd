@@ -19,9 +19,3 @@ Name:
     \(d\) Calculate the probability that randomly sampled woman would test positive for HPV or Chlamydia.
 
 3.  Both smoking and high blood pressure are risk factors for strokes and other vascular diseases. In the United States, approximately 16% of adults smoke and about 24% have high blood pressure. Research has shown that high blood pressure is not associated with smoking; that is, they seem to be independent of each other. What is the probability that a randomly chosen American adult has both of these risk factors?
-
-4.  If a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.
-
-    \(a\) Suppose that 1000 women take early pregnancy tests and that 100 of them really are pregnant. What is the probability that a randomly chosen woman from this group will test posit?
-
-    \(b\) Suppose that a woman test positive. What is the probability that she really is pregnant?
