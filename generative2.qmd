@@ -1,0 +1,345 @@
+---
+title: "Continuous Distributions"
+format: html
+bibliography: references.bib
+---
+
+## The Normal Distribution
+
+The normal distribution is commonly used in two ways: (1) as an approximation of the empirical distribution of the data, or (2) as a theoretical model for a data-generating process. It is actually a *family* of distributions defined by two parameters, $\mu$ and $\sigma^2$, representing the mean and the variance, and denoted as $N(\mu, \sigma^2)$.
+
+To illustrate this, consider the example below using simulated cholesterol data. Cholesterol is a natural choice for this illustration, as the relationship between cholesterol levels and the occurrence of heart disease has been one of the most extensively studied topics in epidemiology. We simulate the distribution of total cholesterol for three age groups: young (\<45 years old), middle-aged adults (45-59), and older adults (60+), with mean and standard deviation values of (180, 25), (220, 35), and (245, 40) mg/dL,$^1$ respectively. As the figure shows, while all three distributions share the same bell-shaped form, they differ in their center and spread — precisely what varying $\mu$ and $\sigma^2$ captures.
+
+|  |
+|-----------------------------------------------------------------------:|
+| $^1$ mg/dL stands for milligrams per deciliter, the standard unit for measuring substance concentration in blood tests. It indicates how many milligrams of cholesterol are present in one deciliter (100 ml) of blood. |
+
+```{r}
+# install.packages("multcomp")
+library(multcomp)
+
+set.seed(123)
+
+# Simulated Data: Family of normal distributions with different mean and sd
+x <- seq(100, 400, length.out = 1000)
+
+df <- data.frame(
+    x     = rep(x, 3),
+    group = rep(c("Young", "Middle", "Elderly"), each = 1000),
+    density = c(
+        dnorm(x, mean = 180, sd = 25),   # young:   low mean, low variance
+        dnorm(x, mean = 220, sd = 35),   # middle:  mid mean, mid variance
+        dnorm(x, mean = 245, sd = 40)    # elderly: high mean, high variance
+    )
+)
+
+library(ggplot2)
+ggplot(df, aes(x = x, y = density, color = group)) +
+    geom_line(linewidth = 1.2) +
+    coord_cartesian(xlim = c(0, 400)) +
+    labs(
+        title    = "Cholesterol Distribution by Age Group",
+        subtitle = "Simulated Normal distributions with different means and variances",
+        x        = "Cholesterol (mg/dL)",
+        y        = "Density",
+        color    = "Group"
+    ) +
+    theme_minimal()
+
+```
+
+We now examine the same distributions using real data from the Framingham Heart Study — one of the most famous and influential long-term epidemiological studies in medical history. The observed data confirm that cholesterol distributions differ across age groups, with a clear separation between young and older adults. However, the distinction between middle-aged and older adults is less pronounced than in our simulation, suggesting that the chosen parameter values either overstated the differences or better characterize a different population. The empirical distributions are represented by the shaded histograms, with fitted normal curves superimposed for each group. Their close agreement supports the normal distribution as a reasonable model for real cholesterol data — and motivates a broader point: the normal curve can describe an observed variable in two ways, either as a smooth approximation to a sample histogram, or as an idealized representation of the underlying population distribution. The curves in both figures are consistent with either interpretation. For simplicity, in this lecture we treat the normal curve as representing a population distribution.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+# Real Data from the Framingham Study
+#install.packages("riskCommunicator")
+library(riskCommunicator)
+library(dplyr)
+library(ggplot2)
+
+# Create age groups
+framingham <- framingham %>%
+    filter(!is.na(TOTCHOL), !is.na(AGE)) %>%
+    mutate(group = case_when(
+        AGE < 45              ~ "Young (<45)",
+        AGE >= 45 & AGE < 60  ~ "Middle (45-59)",
+        AGE >= 60             ~ "Elderly (60+)"
+    ))
+
+# Compute mean and sd per group to overlay theoretical normal
+params <- framingham %>%
+    group_by(group) %>%
+    summarise(
+        mu    = mean(TOTCHOL),
+        sigma = sd(TOTCHOL),
+        .groups = "drop"
+    )
+
+print(params)  # show real means and SDs
+
+# Plot histogram with fitted normal overlay
+ggplot(framingham, aes(x = TOTCHOL, fill = group)) +
+    geom_histogram(aes(y = after_stat(density)), 
+                   bins = 40, alpha = 0.4, position = "identity") +
+    stat_function(data = filter(framingham, group == "Young (<45)"),
+                  fun  = dnorm,
+                  args = list(mean = filter(params, group == "Young (<45)")$mu,
+                              sd   = filter(params, group == "Young (<45)")$sigma),
+                  aes(color = "Young (<45)"), linewidth = 1.2) +
+    stat_function(data = filter(framingham, group == "Middle (45-59)"),
+                  fun  = dnorm,
+                  args = list(mean = filter(params, group == "Middle (45-59)")$mu,
+                              sd   = filter(params, group == "Middle (45-59)")$sigma),
+                  aes(color = "Middle (45-59)"), linewidth = 1.2) +
+    stat_function(data = filter(framingham, group == "Elderly (60+)"),
+                  fun  = dnorm,
+                  args = list(mean = filter(params, group == "Elderly (60+)")$mu,
+                              sd   = filter(params, group == "Elderly (60+)")$sigma),
+                  aes(color = "Elderly (60+)"), linewidth = 1.2) +
+    coord_cartesian(xlim = c(0, 400)) +
+    labs(
+        title    = "Cholesterol Distribution by Age Group",
+        subtitle = "Framingham Heart Study — observed data with fitted normal",
+        x        = "Total Cholesterol (mg/dL)",
+        y        = "Density",
+        fill     = "Age group",
+        color    = "Fitted normal"
+    ) +
+    theme_minimal()
+
+```
+
+The previous two examples illustrate the characteristic "bell shape" of the normal distribution, also known as the **Gaussian distribution** in honor of Carl Friedrich Gauss, a prominent mathematician of the 18th century who formalized this distribution. It is widely regarded as the most important continuous probability distribution due to its symmetric, bell-shaped form and its frequent appearance in natural and social phenomena.
+
+What are the exact roles of the parameters $\mu$ and $\sigma^2$? As the previous examples show, there are many normal curves, each characterized by its mean and standard deviation. If a variable $X$ follows a normal distribution with mean $\mu$ and standard deviation $\sigma$, we write $X \sim N(\mu, \sigma^2)$. All normal curves share a common mathematical form — the density function is given by:
+
+$$f(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2},$$ {#eq-1}
+
+where $f(x)$ in @eq-1 expresses the height of the curve at position $x$, and $e \approx 2.718$ and $\pi \approx 3.1416$ are mathematical constants representing Euler's number and pi, respectively.
+
+The two parameters play distinct roles. The mean $\mu$ governs the **location** of the curve — each normal curve is centered at $x = \mu$. The standard deviation $\sigma$ governs the **shape** — specifically, the width and height of the curve. Since the total area under any density curve must equal 1, a smaller $\sigma$ produces a taller and narrower curve, reflecting greater concentration of values near the mean. Conversely, a larger $\sigma$ produces a flatter and wider curve, indicating greater variability of $X$ around the mean.
+
+### Area under the curve
+
+A very important characteristic of density curves is that they can be quatitatively interpreted in terms of areas under the curve.
+
+**The Standardize Scale**
+
+Although the area under any density curve equals 1, normal distributions with different means and variances can be made directly comparable by rescaling the data — a process known as **standardization**. The standardized variable, denoted $Z$, measures distance from the mean in units of standard deviations and is obtained by subtracting the mean from the original variable $X$ and dividing by its standard deviation:
+
+$$Z=\frac{X-\mu}{\sigma}$$ {#eq-2}
+
+The resulting scale is called the *standard normal distribution*, with mean $\mu = 0$ and standard deviation $\sigma = 1$, denoted $Z \sim N(0, 1)$.
+
+The figure below illustrates this using cholesterol measurements for the young adult group (\<45) from the Framingham Heart Study, where the estimated mean is $\mu = 180.3$ mg/dL and standard deviation is $\sigma = 25.0$ mg/dL. The bottom axis (X) shows the original cholesterol scale, with tick marks at the mean and at each standard deviation up to $\pm 3\sigma$. The top axis (Z) shows the corresponding standardized scale, obtained by applying @eq-2. Note that standardization does not alter the shape of the distribution — the curve remains identical — but simply re-expresses the same values on a new scale where $\mu = 0$ and $\sigma = 1$. The two axes thus represent the same distribution in two equivalent scales, $X$ and $Z$, simultaneously.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+# Extract mean and sd for Young group
+mu_young    <- filter(params, group == "Young (<45)")$mu
+sigma_young <- filter(params, group == "Young (<45)")$sigma
+
+# Compute break points: mu +/- 3sigma
+breaks_sigma <- mu_young + (-3:3) * sigma_young
+
+# Labels: mu-3sigma, mu-2sigma, ..., mu, ..., mu+3sigma
+labels_sigma <- c(
+    expression(mu - 3*sigma),
+    expression(mu - 2*sigma),
+    expression(mu - sigma),
+    expression(mu),
+    expression(mu + sigma),
+    expression(mu + 2*sigma),
+    expression(mu + 3*sigma)
+)
+
+# Corresponding real values to show below
+labels_values <- paste0("\n(", round(breaks_sigma, 1), ")")
+
+# Combined labels: symbolic on top, numeric below
+labels_combined <- c(
+    bquote(mu - 3*sigma~.(paste0("\n(", round(breaks_sigma[1], 1), ")"))),
+    bquote(mu - 2*sigma~.(paste0("\n(", round(breaks_sigma[2], 1), ")"))),
+    bquote(mu - sigma~.(paste0("\n(", round(breaks_sigma[3], 1), ")"))),
+    bquote(mu~.(paste0("\n(", round(breaks_sigma[4], 1), ")"))),
+    bquote(mu + sigma~.(paste0("\n(", round(breaks_sigma[5], 1), ")"))),
+    bquote(mu + 2*sigma~.(paste0("\n(", round(breaks_sigma[6], 1), ")"))),
+    bquote(mu + 3*sigma~.(paste0("\n(", round(breaks_sigma[7], 1), ")")))
+)
+
+# Plot
+ggplot(filter(framingham, group == "Young (<45)"), 
+       aes(x = TOTCHOL)) +
+    geom_histogram(aes(y = after_stat(density)),
+                   bins  = 40, 
+                   fill  = "steelblue", 
+                   alpha = 0.4) +
+    stat_function(fun  = dnorm,
+                  args = list(mean = mu_young, sd = sigma_young),
+                  color = "navy", linewidth = 1.2) +
+    geom_vline(xintercept = breaks_sigma,
+               linetype   = "dashed",
+               color      = "gray50",
+               linewidth  = 0.5) +
+    coord_cartesian(xlim = c(0, 400)) +
+    scale_x_continuous(
+        # Primary axis: original scale (X)
+        breaks = breaks_sigma,
+        labels = c(
+            expression(atop(mu - 3*sigma, "(105.3)")),
+            expression(atop(mu - 2*sigma, "(130.3)")),
+            expression(atop(mu - sigma,   "(155.3)")),
+            expression(atop(mu,           "(180.3)")),
+            expression(atop(mu + sigma,   "(205.3)")),
+            expression(atop(mu + 2*sigma, "(230.3)")),
+            expression(atop(mu + 3*sigma, "(255.3)"))
+        ),
+        # Secondary axis: standardized scale (Z)
+        sec.axis = sec_axis(
+            transform = ~ (. - mu_young) / sigma_young,
+            name      = "Z",
+            breaks    = -3:3,
+            labels    = c("-3", "-2", "-1", "0", "1", "2", "3")
+        )
+    ) +
+    labs(
+        title    = "Normal Distribution — Young Adults (<45)",
+        subtitle = paste0("Framingham Heart Study  |  μ = ", round(mu_young, 1),
+                          " mg/dL,  σ = ", round(sigma_young, 1), " mg/dL"),
+        x        = "X  (Total Cholesterol, mg/dL)",
+        y        = "Density"
+    ) +
+    theme_minimal() +
+    theme(
+        axis.text.x         = element_text(size = 9),
+        axis.title.x.bottom = element_text(size = 11, face = "bold"),
+        axis.title.x.top    = element_text(size = 11, face = "bold", color = "darkred"),
+        axis.text.x.top     = element_text(size = 9,  color = "darkred")
+    )
+```
+
+Summarizing, the variable *Z* is referred as the *standadr normal* and its distribution follows a normla curve with mean zero and standard deviation one. In traditional or modern statistical books and multiple statisitc al softwares, provide measures of the area under the standardize normal curve, with distance along the horizontal axis measured in the *Z* scale. Each area in those tables is the area under the standard normal curve below a specified value of $z$, which in term of probablities is denoted as: $P(X<x)\equiva P(Z<z)$. For example,in the previous example what is the probability (area under the curve) that the colleterol vaklue of this propulation is below 230.3mg/dL (below 2 standard deviation from the mean $Z<\mu+2\sigma$)
+
+```{r}
+# Compute probabilities on Z scale
+p_below_2  <- pnorm(2)
+p_above_2  <- 1 - pnorm(2)
+p_within_2 <- pnorm(2) - pnorm(-2)
+
+cat("P(Z <= 2):",        round(p_below_2,  4), "\n")
+cat("P(Z >  2):",        round(p_above_2,  4), "\n")
+cat("P(-2 < Z < 2):",    round(p_within_2, 4), "\n")
+```
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+#| 
+library(ggplot2)
+library(patchwork)
+# ==============================================================================
+# Base plot function — Z scale
+# ==============================================================================
+base_plot_z <- function(shade_from, shade_to, fill_color, prob_label, title_label) {
+    
+    x_range <- seq(-4, 4, length.out = 1000)
+    x_shade <- seq(shade_from, shade_to, length.out = 500)
+    
+    shade_df <- data.frame(
+        x = c(shade_from, x_shade, shade_to),
+        y = c(0, dnorm(x_shade), 0)
+    )
+    
+    ggplot() +
+        # Normal curve
+        stat_function(data     = data.frame(x = x_range),
+                      aes(x = x),
+                      fun      = dnorm,
+                      color    = "navy",
+                      linewidth = 0.8) +
+        # Shaded area
+        geom_polygon(data  = shade_df,
+                     aes(x = x, y = y),
+                     fill  = fill_color,
+                     alpha = 0.5) +
+        # Probability label
+        annotate("text",
+                 x        = (shade_from + shade_to) / 2,
+                 y        = dnorm(0) * 0.25,
+                 label    = prob_label,
+                 size     = 3.5,
+                 fontface = "bold") +
+        # Vertical lines at -2 and 2
+        geom_vline(xintercept = c(-2, 2),
+                   linetype   = "dashed",
+                   color      = "gray40",
+                   linewidth  = 0.4) +
+        coord_cartesian(xlim = c(-4, 4)) +
+        scale_x_continuous(
+            breaks = c(-2, 0, 2),
+            labels = c("-2", "0", "2")
+        ) +
+        labs(title = title_label,
+             x     = "Z",
+             y     = NULL) +
+        theme_minimal() +
+        theme(
+            plot.title   = element_text(size = 9, hjust = 0.5, face = "bold"),
+            axis.text.x  = element_text(size = 8),
+            axis.text.y  = element_blank(),
+            panel.grid   = element_blank(),
+            axis.line.x  = element_line(color = "gray40"),
+            plot.margin  = margin(5, 5, 5, 5)
+        )
+}
+
+# ==============================================================================
+# Three plots
+# ==============================================================================
+p1 <- base_plot_z(
+    shade_from  = -4,
+    shade_to    = 2,
+    fill_color  = "steelblue",
+    prob_label  = paste0("P = ", round(p_below_2 * 100, 2), "%"),
+    title_label = "P(Z \u2264 2)"
+)
+
+p2 <- base_plot_z(
+    shade_from  = -2,
+    shade_to    = 2,
+    fill_color  = "forestgreen",
+    prob_label  = paste0("P = ", round(p_within_2 * 100, 2), "%"),
+    title_label = "P(-2 < Z < 2)"
+)
+
+p3 <- base_plot_z(
+    shade_from  = 2,
+    shade_to    = 4,
+    fill_color  = "tomato",
+    prob_label  = paste0("P = ", round(p_above_2 * 100, 2), "%"),
+    title_label = "P(Z > 2)"
+)
+
+# ==============================================================================
+# Combine with patchwork
+# ==============================================================================
+p1 + p2 + p3 +
+    plot_annotation(
+        title    = "Areas Under the Standard Normal Curve",
+        subtitle = "Z ~ N(0, 1)",
+        theme    = theme(
+            plot.title    = element_text(size = 10, face = "bold", hjust = 0.5),
+            plot.subtitle = element_text(size = 9,  hjust = 0.5,
+                                         face = "italic")
+        )
+    )
+```
+
+
+
