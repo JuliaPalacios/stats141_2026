@@ -1,0 +1,19 @@
+# Activity Lecture 6 {#sec-week2}
+
+Name:
+
+1.  The most common blood type in the United States is O+, with around 38% of the population having this type of blood. Consider taking a random sample of size 4. Let Y denote the number of people in the sample with type O+. Find
+
+    1.  P(Y=0)
+
+    2.  P(Y=2)
+
+    3.  P(0\<Y\<=2)
+
+2.  Neuroblastoma is a rare but treatable disease. A urine test has been developed that gives a positive diagnostic in about 70% of cases with the disease. Assume that a group of people will be tested, of whom 8 have the disease.
+
+    1.  What is the probability that all 8 cases will be detected?
+
+    2.  What is the probability that only one case will be missed?
+
+    3.  What is the probability that two or more cases will be missed?

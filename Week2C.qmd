@@ -1,0 +1,61 @@
+# Activity Lecture 5 {#sec-week2}
+
+Name:
+
+1.  Suppose that in a certain population of married couples 30% of the husbands smoke, 20% of the wives smoke, and in 8% of the couples both the husband and the wife smoke. Is the smoking status (smoker or nonsmoker) of the husband independent of that of the wife? Why or why not?
+
+2.  Consider choosing someone at random from a population that is 60% female and 40% male. Suppose that for a woman the probability of having a hand size smaller than 100 $cm^2$ is 0.31. Suppose that for a man the probability of having a hand size smaller than 100 $cm^2$ is 0.08. What is the probability that the randomly chosen person will have a hand size smaller than 100 $cm^2$?
+
+3.  In a population of beetles, each individual is classified by two traits:
+
+    -   **Wing type**: Normal (N) or Vestigial (V)
+    -   **Body color**: Green (G) or Brown (B)
+
+    A field survey estimates the following population proportions:
+
+    | Category | Description                  | Probability |
+    |----------|------------------------------|------------:|
+    | NG       | Normal wings & Green body    |        0.40 |
+    | NB       | Normal wings & Brown body    |        0.25 |
+    | VG       | Vestigial wings & Green body |        0.20 |
+    | VB       | Vestigial wings & Brown body |        0.15 |
+
+    A beetle is selected at random.
+
+    1.  What is the probability the beetle has **green body color**?
+    2.  What is the probability the beetle has **normal wings OR a brown body**?
+
+    <!-- -->
+
+4.  A diagnostic test is used to detect a bacterial infection in salmon.
+
+    -   Infection prevalence: $P(I) = 0.08$
+    -   Sensitivity: $P(+ \mid I) = 0.95$
+    -   False positive rate: $P(+ \mid I^c) = 0.03$
+
+    A salmon is selected at random and tested.
+
+    1.  What is the probability the salmon is **infected AND tests positive**?
+    2.  What is the probability the salmon is **not infected AND tests positive**?
+
+
+5.  If a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.
+
+    \(a\) Suppose that 1000 women take early pregnancy tests and that 100 of them really are pregnant. What is the probability that a randomly chosen woman from this group will test positive?
+
+    \(b\) Suppose that a woman test positive. What is the probability that she really is pregnant?
+
+6.  A biologist is studying a frog species where individuals can have one of two skin-pattern phenotypes:
+
+    -   **Striped (S)**
+    -   **Spotted (T)**
+
+    In the entire wetland (the population), the phenotype frequencies are believed to be:
+
+    | Phenotype   | Population frequency | Population proportion |
+    |-------------|---------------------:|----------------------:|
+    | Striped (S) |                 6200 |                  0.62 |
+    | Spotted (T) |                 3800 |                  0.38 |
+    | **Total**   |            **10000** |              **1.00** |
+
+    -   Compute the mean E\[X\] and variance $\mathrm{Var}(X)$.

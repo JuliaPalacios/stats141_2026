@@ -13,18 +13,26 @@ book:
         - intro.qmd
         - samples.qmd
         - lec3.qmd
-        - generative1.qmd
+        - lec4.qmd
+        - lec5.qmd
+        - lec6.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
         - Week1B.qmd
+        - Week2A.qmd
+        - Week2B.qmd
+        - Week2C.qmd
+        - Week3A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 
         - Week1_section.qmd
+        - Week2_section.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd
+        - quiz2.qmd
 #    - references.qmd
    
 

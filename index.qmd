@@ -9,10 +9,10 @@ Discussion sections: Th (times below)
 **Course staff, office hours, and section times:**
 
 | Name | Role | Office hours | Discussion section |
-|------|------|--------------|--------------------|
+|--------------|--------------|------------------|---------------------------|
 | Julia Palacios | Instructor | W 11:00–12:00, CoDa E250 |  |
-| Aditya Ghosh | TA | Thu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105) |Th 2:30–3:20 in STLC 104 |
-| Jing Shang | TA | Tue 10:00–12:00, Sequoia Hall 207 |  Th 9:30–10:20 in Hewlett 102 |
+| Aditya Ghosh | TA | Thu 3:30-5:30pm, Sequoia Hall Library (105) | Th 2:30–3:20 in STLC 104 |
+| Jing Shang | TA | Tue 10:00–12:00, Sequoia Hall 207 | Th 9:30–10:20 in Hewlett 102 |
 
 ## Contact
 
@@ -37,7 +37,6 @@ In this course, students will:
 2.  **Lecture slides.** Lecture slides are the primary source of information for the course. They will be made available online after lecture.
 
 3.  **Textbooks.** There is no required textbook; however, the material is based on the following:
-
 
     -   *Statistics for the Life Sciences* (5th ed.) by Samuels, Witmer, and Schaffner\
     -   *The Analysis of Biological Data* (3rd ed.) by Whitlock and Schluter\
@@ -102,4 +101,3 @@ Students are responsible for understanding the University’s Honor Code policy 
 ## Course Privacy Statement
 
 As noted in the University’s [policy on recording and broadcasting courses](https://library.stanford.edu/using/copyright-reminder/common-situations/recording-broadcasting-courses), students may not audio- or video-record class meetings without permission from the instructor (and from guest speakers, when applicable).
-

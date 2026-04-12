@@ -1,0 +1,21 @@
+# Activity Lecture 4 {#sec-week2}
+
+Name:
+
+1.  When students are asked to rate brussels sprouts in Arrillaga Dining Hall, 30% say sprounts are "very repulsive", 20% say they are "somewhat repulsive", 43% are "indifferent", 6% say are "somewhat delicious and 1% claim they are "especially delicious". Only one aswer was allowed.
+
+    \(a\) Are these five possible answer mutually exclusive?
+
+    \(b\) What is the probability that a student dislikes sprouts (very repulsive, somewhat repulsive)?
+
+2.  Among women voluntarily tested for sexually transmitted diseases in one university, 24% tested positive for HPV only, 2% tested positive for Chlamydia only, and 4% tested positive for both HPV and Chlamydia. Use the following steps to calculate the probability that a woman from this population who gets tested would test positive for either HPV or Chlamydia.
+
+    \(a\) Write the goal of the question as a probability statement.
+
+    \(b\) Draw the Venn diagram.
+
+    \(c\) Write the general addition rule with words specific for this example.
+
+    \(d\) Calculate the probability that randomly sampled woman would test positive for HPV or Chlamydia.
+
+3.  Both smoking and high blood pressure are risk factors for strokes and other vascular diseases. In the United States, approximately 16% of adults smoke and about 24% have high blood pressure. Research has shown that high blood pressure is not associated with smoking; that is, they seem to be independent of each other. What is the probability that a randomly chosen American adult has both of these risk factors?

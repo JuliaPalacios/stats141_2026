@@ -48,15 +48,13 @@ resources:
 ::: header-row
 <h1 class="page-title">
 
-Week 1 Section
+Introduction to Statistics
 
 </h1>
 
 <a href="Lec1_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
 :::
 
-
-# Introduction to Statistics
 
 ## Statistics
 

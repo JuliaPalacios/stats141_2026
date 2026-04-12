@@ -14,7 +14,7 @@
     "href": "index.html#syllabus",
     "title": "Stats 141. Introduction to Statistics for Biology",
     "section": "",
-    "text": "Name\nRole\nOffice hours\nDiscussion section\n\n\n\n\nJulia Palacios\nInstructor\nW 11:00–12:00, CoDa E250\n\n\n\nAditya Ghosh\nTA\nThu 10:30–11:30 and 3:30–4:30, Sequoia Hall Library (105)\nTh 2:30–3:20 in STLC 104\n\n\nJing Shang\nTA\nTue 10:00–12:00, Sequoia Hall 207\nTh 9:30–10:20 in Hewlett 102",
+    "text": "Name\nRole\nOffice hours\nDiscussion section\n\n\n\n\nJulia Palacios\nInstructor\nW 11:00–12:00, CoDa E250\n\n\n\nAditya Ghosh\nTA\nThu 3:30-5:30pm, Sequoia Hall Library (105)\nTh 2:30–3:20 in STLC 104\n\n\nJing Shang\nTA\nTue 10:00–12:00, Sequoia Hall 207\nTh 9:30–10:20 in Hewlett 102",
     "crumbs": [
       "Syllabus"
     ]
@@ -90,357 +90,6 @@
     ]
   },
   {
-    "objectID": "intro.html",
-    "href": "intro.html",
-    "title": "1  Introduction to Statistics",
-    "section": "",
-    "text": "1.1 Statistics\nResearchers in the life sciences analyze data that exhibit variability. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) assays prepared identically may yield different results due to contamination, thermal damage, etc. The challenge for the life scientist is to discern the signal from the noise.\nStatistics is the science of understanding data (collection, analysis, and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of data science.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#statistics",
-    "href": "intro.html#statistics",
-    "title": "1  Introduction to Statistics",
-    "section": "1.2 Data",
-    "text": "Data Science, credit: Lee et al. 2018\n\n\n\n\n\n\n\n\nNoteExample: Cats in New York\n\n\n\nAn article presented results on the number of injuries in cats that had plummeted from buildings in New York City, by the number of floors they had fallen. The damage caused by such falls was dubbed feline high-rise syndrome (FHRS).\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nRaining cats\n\n\nWhat can we conclude?High-quality samples are essential for sound science, even in the age of AI!Our ability to obtain reliable estimates of population quantities of interest, and to assess uncertainty, depends on how we sample populations. It is often at this early step in an investigation that the fate of a study is sealed, for better or worse.\n\n\nStatistics\n\nIn most situations, we do not observe the whole population. Instead, we obtain a sample. We need to ask ourselves: what do we want to do with the data? If our goal is to describe the sample data, we compute descriptive statistics and perform an Exploratory Data Analysis (EDA).\n\n\nEDA https://r-graph-gallery.com/\n\nIf instead we want to make statements about the whole population, then beyond EDA we do statistical inference.\n\n\nStatistical Inference\n\n\n1.2 Data\nYour dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A variable is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A value is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An observation is a set of measurements from one unit (e.g., one person or one animal).\nIn the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.\nVariables can be categorical or numerical. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called ordinal. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).\nThe most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of data frames or tibbles.\nLet’s generate some data by answering this poll.\n\n\n\npoll\n\n\nWe can now read our dataset (poll results).\n\n#library(readr)\n\n#url &lt;- \"https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv\"\n#survey &lt;- read_csv(url) \n#survey\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nA first step is to explore the data and describe them in summary form. Common checks include:\n\nMeasures of center and measures of dispersion\n\nChecking for missing values (e.g., “NAs”)\n\nPlotting data, frequency distributions, and charts\n\nTalking with the person who collected the data (review the data dictionary)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  172.0   190.0   197.0   200.9   213.0   231.0       2 \n\n#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA\n\nMeasures of center (or typical value):\n\nSample mean (average): (\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\))\nMedian: the value that lies in the middle of the ordered sample\nMode: the value (or values) that occurs most frequently in a dataset\n\nMeasures of dispersion:\n\nRange: max − min\nInterquartile range (IQR): the spread of (roughly) the middle 50% of the observations\n\nDeviation: \\(y_i - \\bar{y}\\)\nMean deviation: \\(\\frac{\\sum^{n}_{i=1}|y_{i}-\\bar{y}|}{n}\\)\nSample standard deviation: \\(s=\\sqrt{\\frac{\\sum^{n}_{i=1}(y_{i}-\\bar{y})^2}{n-1}})\\)\nSample variance: \\(s^2\\)\nCoefficient of variation: cv=\\(\\frac{s \\times 100\\%}{\\bar{y}}\\)\n\n\n\n\n\n\n\nImportantWhy (n-1) in the standard deviation?\n\n\n\nNote that the sum of deviations \\(y_i-\\bar{y}\\) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the degrees of freedom of the standard deviation (and the variance).\n\n\n\n1.3 Plotting the data\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#data",
-    "href": "intro.html#data",
-    "title": "1  Introduction to Statistics",
-    "section": "",
-    "text": "Your dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A variable is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A value is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An observation is a set of measurements from one unit (e.g., one person or one animal).\nIn the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.\nVariables can be categorical or numerical. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called ordinal. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).\nThe most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of data frames or tibbles.\nLet’s generate some data by answering this poll.\n\n\n\npoll\n\n\nWe can now read our dataset (poll results).\n\n#library(readr)\n\n#url &lt;- \"https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv\"\n#survey &lt;- read_csv(url) \n#survey\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nA first step is to explore the data and describe them in summary form. Common checks include:\n\nMeasures of center and measures of dispersion\n\nChecking for missing values (e.g., “NAs”)\n\nPlotting data, frequency distributions, and charts\n\nTalking with the person who collected the data (review the data dictionary)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  172.0   190.0   197.0   200.9   213.0   231.0       2 \n\n#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA\n\nMeasures of center (or typical value):\n\nSample mean (average): (\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\))\nMedian: the value that lies in the middle of the ordered sample\nMode: the value (or values) that occurs most frequently in a dataset\n\nMeasures of dispersion:\n\nRange: max − min\nInterquartile range (IQR): the spread of (roughly) the middle 50% of the observations\n\nDeviation: \\(y_i - \\bar{y}\\)\nMean deviation: \\(\\frac{\\sum^{n}_{i=1}|y_{i}-\\bar{y}|}{n}\\)\nSample standard deviation: \\(s=\\sqrt{\\frac{\\sum^{n}_{i=1}(y_{i}-\\bar{y})^2}{n-1}})\\)\nSample variance: \\(s^2\\)\nCoefficient of variation: cv=\\(\\frac{s \\times 100\\%}{\\bar{y}}\\)\n\n\n\n\n\n\n\nImportantWhy (n-1) in the standard deviation?\n\n\n\nNote that the sum of deviations \\(y_i-\\bar{y}\\) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the degrees of freedom of the standard deviation (and the variance).",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "intro.html#plotting-the-data",
-    "href": "intro.html#plotting-the-data",
-    "title": "1  Introduction to Statistics",
-    "section": "1.3 Plotting the data",
-    "text": "1.3 Plotting the data\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Introduction to Statistics</span>"
-    ]
-  },
-  {
-    "objectID": "samples.html",
-    "href": "samples.html",
-    "title": "2  Plotting the data",
-    "section": "",
-    "text": "We will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables X and Y. It plots each observed (x,y) pair as a dot on the x-y plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting the data</span>"
-    ]
-  },
-  {
-    "objectID": "samples.html#types-of-studies",
-    "href": "samples.html#types-of-studies",
-    "title": "2  Types of studies and Plots",
-    "section": "2.2 Types of Studies",
-    "text": "2.2 Types of Studies\nResearchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with data analysis, but statistical considerations often play a key role in the planning and design of scientific investigation.\nData in biology are obtained from either an experimental study or an observational study. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.\n\n\n\n\n\n\n\n\n\nNoteExample: Marriage and Life expectancy\n\n\n\nA study found that people who were married are more likely to live longer than single. However, from an observational study such as this we don’t know whether marriage increases life expectancy or whether persons who are healthier are more likely to get married.\n\n\n\n\n\n\n\n\n\n\n\nNoteExample: Aids as confounder\n\n\n\nSome research has suggested that there is a biological basis for sexual orientation. One such study involved measuring a section of the brain for 40 homosexual men, 40 heterosexual men, and 40 heterosexual women. The research found that the brain section tends to be larger in homosexual men and heterosexual women than in heterosexual men.\n\n\n\n\n\n\nAverage brain area (mm^2) by group\n\n\ngroup\nBrain Area\n\n\n\n\nHeterosexual men\n11.19\n\n\nHeterosexual women\n12.01\n\n\nHomosexual men\n15.15\n\n\n\n\n\n\n\n\n\n\n\n\n The previous two examples are based on observational studies. In an observational study the researcher systematically collects data from subjects, but only as an observer and not as someone who is controling the conditions. However, observational studies can be misleading due to confounding variables. The context in which the data arose is important and tell us to be on the alert for the effects that other factors, such as the impact of AIDS, may have on the size of the section of the brain.\nConfounders are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.\n\nHow can we mitigate confounding? We can design the experiment and create treatment and control groups that are as similar as possible except for the treatment level. We can anticipate and prevent other known and unknown explanations for the observed difference in outcomes between the treated and control groups.\n\n\n\n\n\n\n\n\n\nNoteExample: Effect of drug on cats\n\n\n\nIn part of one study, a new drug for lowering cholesterol was given to seven male and seven female cats at doses of \\(2 mg/kg\\) and \\(6 mg/kg\\). The two doses were assigned at random to the seven cats within each sex and cholesterol levels were measured after some time.\n\n\n\n\n\n\n\nSummary by Sex and Dose\n\n\nSex\nMean (2mg)\nMean (6mg)\n\n\n\n\nFemale\n129.0132\n157.5753\n\n\nMale\n142.0265\n120.2499\n\n\n\n\n\n\n\n\n\n\n\n\n\n\n\nThe design of this experiment allows for the investigation of the interaction between two factors: sex of the cat and dose. That is, for females, the effect of increasing the dose was positive in lowering cholesterol, but for males the effect of increasing the dose was negative.By randomly assigning treatments (drug doses) to subjects (cats), we can get around the problem of confounding that complicates observational studies and limits the conclusions. Randomized controlled experiments are considered the gold standard in scientific investigation, but they can also be difficult.\n\nOften, human subjects in experiments are given a placebo. Of course, if a placebo control is used, then the subjects must not be told which group they are in, that is, the experiment is blinded. The purpose of blinding is to minimize the extent to which subject expectations influence the results of the experiment. If subjects exhibit a psychological reaction to getting a medication, that placebo response will tend to balance out between the two groups, so that any difference between the groups can be attributed to the effect of the active treatment.\n\n\nPlacebo\n\n\n\n\n\n\n\nNoteExample: Peanut sensitivity\n\n\n\nA group of people who reported mild peanut sensitivity took part in a study. They were given a flavored drink and were told it contained a small amount of peanut extract and might trigger itching, hives, or throat tightness. After drinking it, several participants reported tingling in the mouth, skin itching, and mild breathing discomfort.\nLater, the same participants were given an “anti-allergy” drink that they were told would block reactions. This time, most reported little or no symptoms.\nIn reality, both drinks were identical and contained no peanut. The difference in symptoms appeared to be driven by expectation/power of suggestion, with negative expectations producing symptoms (nocebo) and reassuring expectations reducing them (placebo).\n\nHow about the person evaluating the responses? This person can be subject to bias influencing the observation process itself. An experiment in which both the subjects and the persons making the evaluations of the response are blinded is called double-blinded.\n\n\n\n\n\nNoteExample: “Adherence effect” in a blood-pressure trial (why you need a control group)\n\n\n\nResearchers test a new blood-pressure pill intended to reduce heart attacks. As the study goes on, some participants reliably take their pills, while others often miss doses. After 4 years, the researchers split the treatment group into high adherers (took ≥80% of pills) and low adherers (&lt;80%).\nAt first glance, results look impressive: high adherers in the treatment group have far fewer heart attacks than low adherers—so it might seem the drug works.\nBut the study also included a placebo control group. When researchers do the same adherence split in the placebo group, they see the same pattern: placebo participants who took ≥80% of their pills also had fewer heart attacks than placebo participants who didn’t.\n\n\n\n\nIllustrative example: apparent benefit among adherers appears in both drug and placebo groups (adherer effect).\n\n\nGroup\nAdherence\nN\n4-year event rate (%)\n\n\n\n\nNew BP drug\n≥ 80% pills taken\n500\n4.0\n\n\nNew BP drug\n&lt; 80% pills taken\n500\n9.0\n\n\nPlacebo (control)\n≥ 80% pills taken\n500\n4.5\n\n\nPlacebo (control)\n&lt; 80% pills taken\n500\n9.5\n\n\n\n\nInterpretation: the lower event rate is largely an “adherer effect”—people who consistently follow the protocol may also exercise more, eat better, keep doctor appointments, and manage other risks. Without the placebo control group, the researchers could mistakenly credit the drug for benefits that are actually due to differences between adherers and nonadherers.Randomized allocation in medical settings may not be ethical. One possibility is to use historical controls (i.e. previous patients with the same illnes who were treated with another therapy). The challenge is that overall characteristics of the patients may change with time. A possible solution is to do some statistical adjustment to control for differences in characteristics (for example age).\n2.3 Sampling\nRandom Sampling\nIn order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a representative subset of the population and avoid obtaining a biased sample.\nIn a simple random sample (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.\n\nset.seed(123)\nnames&lt;-seq(1,100) #data frame\nsample(names,5,replace=FALSE)\n\n[1] 31 79 51 14 67\n\n\nWhat woud be some practical concerns about SRS?\nTwo other common sampling techniques are the random cluster sample where the sampling unit is the cluster and the stratified random sample where the sampling unit is the individual within a strata.\nMost of the examples in this class will assume SRS.\n\n2.4 Sampling error\nHow can we use a sample summary (statistic) to infer a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, sampling error since we only have a sample. If the sample is not a simple random sample (SRS), it may be biased: some individuals are more likely to be selected than others.\n\n2.5 Nonsampling Errors\nFor example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. Nonresponse bias resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.\n\nMCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).\nMAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.\n\n-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.\nIt is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting results.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies and Plots</span>"
-    ]
-  },
-  {
-    "objectID": "samples.html#sampling",
-    "href": "samples.html#sampling",
-    "title": "2  Types of studies and Plots",
-    "section": "2.3 Sampling",
-    "text": "2.3 Sampling\nRandom Sampling\nIn order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a representative subset of the population and avoid obtaining a biased sample.\nIn a simple random sample (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.\n\nset.seed(123)\nnames&lt;-seq(1,100) #data frame\nsample(names,5,replace=FALSE)\n\n[1] 31 79 51 14 67\n\n\nWhat woud be some practical concerns about SRS?\nTwo other common sampling techniques are the random cluster sample where the sampling unit is the cluster and the stratified random sample where the sampling unit is the individual within a strata.\nMost of the examples in this class will assume SRS.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies and Plots</span>"
-    ]
-  },
-  {
-    "objectID": "samples.html#sampling-error",
-    "href": "samples.html#sampling-error",
-    "title": "2  Types of studies and Plots",
-    "section": "2.4 Sampling error",
-    "text": "2.4 Sampling error\nHow can we use a sample summary (statistic) to infer a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, sampling error since we only have a sample. If the sample is not a simple random sample (SRS), it may be biased: some individuals are more likely to be selected than others.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies and Plots</span>"
-    ]
-  },
-  {
-    "objectID": "samples.html#nonsampling-errors",
-    "href": "samples.html#nonsampling-errors",
-    "title": "2  Types of studies and Plots",
-    "section": "2.5 Nonsampling Errors",
-    "text": "2.5 Nonsampling Errors\nFor example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. Nonresponse bias resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.\n\nMCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).\nMAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.\n\n-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.\nIt is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting results.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Types of studies and Plots</span>"
-    ]
-  },
-  {
-    "objectID": "generative1.html",
-    "href": "generative1.html",
-    "title": "3  My Document",
-    "section": "",
-    "text": "4 Generative Models for Discrete Data",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My Document</span>"
-    ]
-  },
-  {
-    "objectID": "generative1.html#random-variables",
-    "href": "generative1.html#random-variables",
-    "title": "3  My Document",
-    "section": "4.1 Random variables",
-    "text": "4.1 Random variables\nTo explain the concept of random variable, we will use data from a mouse database, used in this article (Sörhede Winzell and Ahrén 2004), that can be retrieved from R as follows:\n\ndir &lt;- \"https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/\" \nfilename &lt;- \"femaleMiceWeights.csv\" \nurl &lt;- paste0(dir, filename) \ndat &lt;- read.csv(url)\n\nIn this dataset, researchers were interested in determining whether following a given diet makes mice heavier after several weeks. The data were generated by obtaining 24 mice and randomly assigning them to either a chow or a high-fat (hf) diet. After several weeks, the scientists weighed each mouse and recorded the results.\n\nhead(dat)\n\n  Diet Bodyweight\n1 chow      21.51\n2 chow      28.14\n3 chow      24.04\n4 chow      23.45\n5 chow      23.68\n6 chow      19.79\n\n##   Diet Bodyweight\n## 1 chow      21.51\n## 2 chow      28.14\n## 3 chow      24.04\n## 4 chow      23.45\n## 5 chow      23.68\n## 6 chow      19.79\n## Note that head only shows the first 6/24 observations in the dataset.\n## Lightest mouse:\ndat[which.min(dat$Bodyweight), ]\n\n  Diet Bodyweight\n6 chow      19.79\n\n##   Diet Bodyweight\n## 6 chow      19.79\n## Heaviest mouse\ndat[which.max(dat$Bodyweight), ]\n\n   Diet Bodyweight\n21   hf      34.02\n\n##   Diet Bodyweight\n## 21   hf      34.02\n## Use 'View(dat)' in R to see the entire dataset. \n\nNotice that there is variability in body weight across the mice. For instance, mouse 6 was the lightest (19.79 grams) and was on the chow diet, while mouse 21 was the heaviest (34.02 grams) and was on the high-fat (HF) diet. However, these are only individual observations. To better understand patterns in the data, we can calculate the average weight within each group.\n\nlibrary(dplyr)\n\n\nAttaching package: 'dplyr'\n\n\nThe following objects are masked from 'package:stats':\n\n    filter, lag\n\n\nThe following objects are masked from 'package:base':\n\n    intersect, setdiff, setequal, union\n\ncontrol &lt;- filter(dat, Diet==\"chow\") %&gt;% select(Bodyweight) %&gt;% unlist\ntreatment &lt;- filter(dat, Diet==\"hf\") %&gt;% select(Bodyweight) %&gt;% unlist\nprint(mean(control))\n\n[1] 23.81333\n\n## [1] 23.81333\nprint(mean(treatment))\n\n[1] 26.83417\n\n## [1] 26.83417\n\nIn this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. This type of quantity is known as a random variable.\nTo illustrate this, suppose we had access to the weights of the entire population of control female mice. In practice, this is rarely the case, as we typically observe only samples and rely on statistical methods to make inferences about population characteristics. For illustrative purposes, assume the following dataset represents the full population of female mice. We can then draw multiple random samples of 12 mice from this population and calculate the average for each sample.\n\n## Download the dataset directly from: https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/femaleControlsPopulation.csv\npopulation &lt;- read.csv(\"data/femaleControlsPopulation.csv\")\n## Use unlist to turn it into a numeric vector\npopulation &lt;- unlist(population)\n# Mean of the 'total' population\nmean(population)\n\n[1] 23.89338\n\n## [1] 23.89338\n# Sample 12 mice three times to see if the average changes.\ncontrol &lt;- sample(population, 12)\nmean(control)\n\n[1] 26.085\n\n## [1] 25.33083\ncontrol &lt;- sample(population, 12)\nmean(control)\n\n[1] 23.88\n\n## [1] 22.87167\ncontrol &lt;- sample(population, 12)\nmean(control)\n\n[1] 21.58833\n\n## [1] 25.2175\n\nNotice how the average changes across samples, and that each differs from the average of the ‘total’ population. Therefore, repeating this experiment is useful, as it provides additional information about the distribution of this random variable.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My Document</span>"
-    ]
-  },
-  {
-    "objectID": "generative1.html#null-hyphotesis",
-    "href": "generative1.html#null-hyphotesis",
-    "title": "3  My Document",
-    "section": "4.2 Null Hyphotesis",
-    "text": "4.2 Null Hyphotesis",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My Document</span>"
-    ]
-  },
-  {
-    "objectID": "generative1.html#probability-distribution",
-    "href": "generative1.html#probability-distribution",
-    "title": "3  My Document",
-    "section": "4.3 Probability distribution",
-    "text": "4.3 Probability distribution\nA simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:\n\ndata(father.son, package=\"UsingR\")\nx &lt;- father.son$fheight\n\nOne way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.\n\nlength(x)\n\n[1] 1078\n\n## 1] 1078\nround(sample(x,10),1)\n\n [1] 73.1 70.8 65.8 64.3 59.0 64.9 69.0 72.4 66.4 68.9\n\n## [1] 67.6 65.5 65.0 72.4 68.0 64.7 65.9 65.7 69.3 66.7\n\nAnother, more compact and descriptive way to represent the data is by using a histogram. Histograms show the proportion of values within intervals, \\((a, b)\\). In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:\n\nhist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\")\n\n\n\n\n\n\n\n\n\n\n\n\n\nWith this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).\nSummarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random variable. We do not know all possible outcomes of random variables, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval \\((a,b)\\) is denoted with \\(Pr(a \\leq X \\leq b)\\).\nIn summary, to define a distribution, we compute, for all possible values of \\(a\\), the proportion of numbers in our list that are below \\(a\\), which is called the cumulative distribution function (CDF), represented by the following notation: \\(F(a) \\equiv \\Pr(X \\leq a)\\) [and the proportion of numbers bigger than \\(a\\) is computed as: \\(\\Pr(X \\gt a)=1-\\Pr(X \\leq a)=1-F(a)\\)].",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My Document</span>"
-    ]
-  },
-  {
-    "objectID": "generative1.html#discrete-probability-models",
-    "href": "generative1.html#discrete-probability-models",
-    "title": "3  My Document",
-    "section": "4.4 Discrete probability models",
-    "text": "4.4 Discrete probability models\nIn many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG digrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).\nTo summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward, as shown previously. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.\n\ngenotype = c(\"AA\",\"AO\",\"BB\",\"AO\",\"OO\",\"AO\",\"AA\",\"BO\",\"BO\",\n             \"AO\",\"BB\",\"AO\",\"BO\",\"AB\",\"OO\",\"AB\",\"BB\",\"AO\",\"AO\")\ntable(genotype)\n\ngenotype\nAA AB AO BB BO OO \n 2  2  7  3  3  2 \n\n## genotype\n## AA AB AO BB BO OO \n## 2  2  7  3  3  2 \n\nIf the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.\n\n4.4.1 Bernoulli trials\nThe Bernoulli distribution is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter \\(p\\), which represents the probability of success, and the complementary event is called probability of failure \\(1-p\\):\nProbability distribution:\n\\(P(X=1) = p\\)\n\\(P(X=0) = 1-p\\)\nFor a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.\n\n\n\n\n\n\nNote\n\n\n\nExample: Coin tosses\nSuppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:\n\n\n\nrbinom(15, prob = 0.5, size = 1)\n\n [1] 0 0 1 1 0 0 0 1 0 1 1 0 0 0 1\n\n## [1] 0 1 0 0 0 1 0 0 1 0 0 0 1 0 0\n\nNow observe the outcome when using a biased coin that lands heads 70% of the time:\n\nrbinom(15, prob = 0.7, size = 1)\n\n [1] 1 1 0 0 0 1 1 1 1 1 1 1 1 0 1\n\n## [1] 1 1 1 1 1 1 1 1 0 1 0 0 0 1 1\n\nQuestion. Notice that when you call the function above several times, you get different outcomes. Why is that?\nProperties\nThe mean, or expected value, of a Bernoulli distribution is given by \\(p\\), and the variance is defined as \\(p(1-p)\\), so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.\n\n\n4.4.2 Binomial success counts\nIn the previous example, if we are only interested in the number of heads (\\(X=1\\)), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:\n\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n## [1] 11\n\nThe sum of multiple independent (or exchangeable) Bernoulli trials is called the Binomial distribution (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a binomial random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:\n\nset.seed(384569724)\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n## [1] 11\n\nQuestion. Repeat this function call 10 times. What seems to be the most common outcome?\nSolution. The most frequent value is 10.5\\(\\approx 11\\). In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that \\(X=4\\) if \\(X\\) follows B(15,0.7).\nThe complete probability mass distribution is available by typing:\n\nprobabilities = dbinom(0:15, prob = 0.7, size = 15)\nround(probabilities, 2)\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03\n[16] 0.00\n\n## [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 \n## [13] 0.09 0.03 0.00\n\nA barplot for this distribution in R, is as follows:\n\nbarplot(probabilities, names.arg = 0:15, col = \"black\")\n\n\n\n\n\n\n\n\n\n\n\nTheoretical distribution of B(15, 0.7).\n\n\nMathematically, the theoretical distribution of the binomial distribution is\nProbability distribution:\n\\[P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad k = 0, 1, \\ldots, n,\\] where \\(n\\) is the number of trials, \\(k\\) is the number of successes, \\(p\\) is the probability of success, and \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\) is the binomial coefficient.\nProperties\nThe mean of a Binomial distribution is given by \\(n \\cdot p\\) (in the figure, the highest bar around \\(x \\approx 11\\), or \\(n(=15)\\cdot p(=0.7)\\), and the variance is defined as \\(np(1-p) = (15)(0.7)(0.3) = 3.15\\).\n\n\n4.4.3 Poisson distributions\nWhen the probability of success \\(p\\) is small and the number of trials \\(n\\) is large, the Binomial distribution can be approximated by a Poisson distribution with parameter \\(\\lambda = np\\), which provides a simple model for describing the data.\nProbability distribution:\n\\[P(X = k) = \\frac{e^{-\\lambda} \\lambda^k}{k!}, \\quad k = 0, 1, 2, \\ldots,\\] where \\(k\\) is the number of events, \\(\\lambda\\) is the average number of events per interval, and \\(e\\approx 2.718\\) is the Euler’s number.\nProperties\nAn interesting characteristic of the Poisson distribution is that the mean and the variance are both equal to \\(\\lambda = np\\).\n\n\n\n\n\n\nNote\n\n\n\nExample: Human Immunodeficiency Virus (HIV)\nConsider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of \\(p=5 x 10^{-4}\\) per nucleotide per replication cycle, independently across positions. Given a genome size of approximately $n$ nucleotides, the total number of mutations per cycle follows a \\(\\text{Poisson}(\\lambda)\\) distribution.\nAs the genome size of HIV is about \\(n=10^4\\), this model predicts an expected number of mutations close to 5 \\((np=10^4 x 5 x 10^{-4})\\) per replication cycle, with standard error \\(\\sqrt{\\lambda}\\). For example, to find the probability of exactly 3 mutations under a \\(\\text{Poisson}(5)\\) model, we can use R:\n\ndpois(x=3, lambda=5)\n\n[1] 0.1403739\n\n## [1] 0.1403739\n\nThis means that the chance of seeing exactly three events is about 0.14.\nNow we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:\n\ny &lt;- dpois(x=0:12, lambda=5)\n## [1] 0.006737947 0.033689735 0.084224337 0.140373896 0.175467370 0.175467370 0.146222808 0.104444863\n## [9] 0.065278039 0.036265577 0.018132789 0.008242177 0.003434240\nbarplot(y, names.arg = 0:12, col = \"red\")\n\n\n\n\n\n\n\n\n\n\n\nProbabilities of seeing 0 to 12 mutations, modeled as a Poisson(5) distribution.\n\n\nThis example shows that the Poisson distribution is a good model for rare events such as mutation (notice that \\(p\\) is very low).\n\n\n\n\n4.4.4 Multinomial distributions\nIn the Binomial model, we had only two possible outcomes, success and failure, with probabilities \\(p\\) and \\(1-p\\), respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: \\(\\{A, C, G, T\\}\\). We use a Multinomial model, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as \\(p_{A}\\), \\(p_{C}\\), \\(p_{G}\\), and \\(p_{T}\\), where the probabilities sum to 1: \\(p_{A}+p_{C}+p_{G}+p_{T}=1\\), as in the Binomial model.\nThe mathematical formulation for the Multinomial model for \\(m\\) counts \\((x_{1}, x_{2}, \\ldots, x_{m})\\) for outcomes of \\(n\\) draws with probabilities \\(p_{1}, p_{2}, \\ldots, p_{m}\\) is as follows:\nProbability distribution:\n\\[\\begin{align}\nP(x_{1}, x_{2}, \\ldots, x_{m}) &= \\frac{n!}{\\prod_{i=1}^{m} x_{i}!} \\prod_{i=1}^{m} p_{i}^{x_{i}} \\\\\n&= \\binom{n}{x_{1}, x_{2}, \\ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \\cdots p_{m}^{x_{m}}\n\\end{align}\\]\nTo generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:\n\npvec = rep(1/4, 4)\nt(rmultinom(1, prob = pvec, size = 8))\n\n     [,1] [,2] [,3] [,4]\n[1,]    4    2    1    1\n\n##      [,1] [,2] [,3] [,4]\n## [1,]    4    2    1    1\n\nQuestion Try the code without using the t() function; what does t stand for?\nReference: Holmes and Huber (2018)\n\n\n\n\nHolmes, Susan Huber, and Wolfgang Huber. 2018. Modern Statistics for Modern Biology. Cambridge university press.\n\n\nSörhede Winzell, Maria, and Bo Ahrén. 2004. “The High-Fat Diet-Fed Mouse: A Model for Studying Mechanisms and Treatment of Impaired Glucose Tolerance and Type 2 Diabetes.” Diabetes 53 (Suppl 3): S215–19. https://doi.org/10.2337/diabetes.53.suppl_3.S215.",
-    "crumbs": [
-      "Lectures",
-      "<span class='chapter-number'>3</span>  <span class='chapter-title'>My Document</span>"
-    ]
-  },
-  {
-    "objectID": "Week1A.html",
-    "href": "Week1A.html",
-    "title": "4  Activity Lecture 1",
-    "section": "",
-    "text": "4.1 Descriptive Statistics\nName:",
-    "crumbs": [
-      "Activities",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 1</span>"
-    ]
-  },
-  {
-    "objectID": "Week1A.html#descriptive-statistics",
-    "href": "Week1A.html#descriptive-statistics",
-    "title": "4  Activity Lecture 1",
-    "section": "",
-    "text": "Read sections 1.1 1.2 of r4ds and solve 1.2.5 excercises 2,3, and 7.",
-    "crumbs": [
-      "Activities",
-      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Activity Lecture 1</span>"
-    ]
-  },
-  {
-    "objectID": "Week1B.html",
-    "href": "Week1B.html",
-    "title": "5  Activity Lecture 2",
-    "section": "",
-    "text": "Name:\n\nIn the first five minutes, talk with the people at your table and introduce yourself. Ask whether anyone needs help getting started with R, and help each other out..\nRead the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?\n\n\n\nRecompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?\nMultiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?\nChange the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?\n\n\n\nGenerate the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points? Try generating the histogram with ggplot2. You can check section 1.4 of r4ds to learn how to do it.\nWhat are the quartiles?",
-    "crumbs": [
-      "Activities",
-      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Activity Lecture 2</span>"
-    ]
-  },
-  {
-    "objectID": "summary.html",
-    "href": "summary.html",
-    "title": "6  Summary",
-    "section": "",
-    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
-    "crumbs": [
-      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Summary</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html",
-    "href": "Week1_section.html",
-    "title": "7  Quarto",
-    "section": "",
-    "text": "7.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
-    "href": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
-    "title": "7  Quarto",
-    "section": "7.2 1. How many rows and columns are in the dataset?",
-    "text": "7.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
-    "href": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
-    "title": "7  Quarto",
-    "section": "7.3 2. What types of variables are present (e.g., numeric, categorical)?",
-    "text": "7.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#what-does-the-variable-spam-represent",
-    "href": "Week1_section.html#what-does-the-variable-spam-represent",
-    "title": "7  Quarto",
-    "section": "7.4 3. What does the variable spam represent?",
-    "text": "7.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
-    "href": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
-    "title": "7  Quarto",
-    "section": "7.5 4. What is the median number of characters in an email?",
-    "text": "7.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#what-proportion-of-emails-are-spam",
-    "href": "Week1_section.html#what-proportion-of-emails-are-spam",
-    "title": "7  Quarto",
-    "section": "7.6 5. What proportion of emails are spam?",
-    "text": "7.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#subsetting",
-    "href": "Week1_section.html#subsetting",
-    "title": "7  Quarto",
-    "section": "7.7 Subsetting",
-    "text": "7.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
-    "href": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
-    "title": "7  Quarto",
-    "section": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
-    "text": "7.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
-    "href": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
-    "title": "7  Quarto",
-    "section": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
-    "text": "7.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
-    "href": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
-    "title": "7  Quarto",
-    "section": "7.10 8. Create a histogram of the number of characters in emails.",
-    "text": "7.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
-    "href": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
-    "title": "7  Quarto",
-    "section": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
-    "text": "7.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
-    "href": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
-    "title": "7  Quarto",
-    "section": "7.12 10. Create a boxplot of number of characters by spam status.",
-    "text": "7.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "Week1_section.html#other-tutorials",
-    "href": "Week1_section.html#other-tutorials",
-    "title": "7  Quarto",
-    "section": "7.13 Other tutorials:",
-    "text": "7.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
-    "crumbs": [
-      "Sections",
-      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Quarto</span>"
-    ]
-  },
-  {
-    "objectID": "quiz1.html",
-    "href": "quiz1.html",
-    "title": "8  Quiz 1 - April 10",
-    "section": "",
-    "text": "Quiz 1 will cover Introduction to Statistics and Types of Studies.\nDuration: 10 minutes with 10 minutes extension",
-    "crumbs": [
-      "Quizzes",
-      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Quiz 1 - April 10</span>"
-    ]
-  },
-  {
     "objectID": "schedule.html",
     "href": "schedule.html",
     "title": "Schedule",
@@ -455,9 +104,569 @@
     "href": "schedule.html#course-schedule",
     "title": "Schedule",
     "section": "",
-    "text": "Week\nDate\nTopic\nReadings / Prep\nDue\n\n\n\n\n1\n2026-04-01\nIntroduction + course logistics\nSyllabus, Lecture 1\nActivity 1\n\n\n1\n2026-04-03\nR basics and plots\nr4ds chapter 1, Lecture 2\nActivity 2\n\n\n2\n2026-09-15\nTypes of studies\nLecture 3\nActivity 3",
+    "text": "Week\nDate\nTopic\nReadings / Prep\nDue\n\n\n\n\n1\n2026-04-01\nIntroduction + course logistics\nSyllabus, Lecture 1\nActivity 1\n\n\n1\n2026-04-03\nR basics and plots\nr4ds chapter 1, Lecture 2\nActivity 2\n\n\n2\n2026-04-05\nTypes of studies\nLecture 3\nActivity 3\n\n\n2\n2026-04-07\nProbability\nLecture 4\nActivity 4",
     "crumbs": [
       "Schedule"
+    ]
+  },
+  {
+    "objectID": "intro.html",
+    "href": "intro.html",
+    "title": "1  Statistics",
+    "section": "",
+    "text": "Researchers in the life sciences analyze data that exhibit variability. For example, patients given the same treatment may respond differently; PCR (Polymerase Chain Reaction) assays prepared identically may yield different results due to contamination, thermal damage, etc. The challenge for the life scientist is to discern the signal from the noise.\nStatistics is the science of understanding data (collection, analysis, and presentation) and of making decisions in the face of variability and uncertainty. Statistics is a core component of data science.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#data",
+    "href": "intro.html#data",
+    "title": "1  Statistics",
+    "section": "1.1 Data",
+    "text": "1.1 Data\nYour dataset (tabular data) is a collection of variables and observations—typically, one observation per row and one variable per column—filled in with values. A variable is a characteristic or quantity that you can measure; we will denote variables with capital letters X, Y, etc. A value is the state of the variable when you measure it; we will use lowercase letters (e.g., x, y) for values. An observation is a set of measurements from one unit (e.g., one person or one animal).\nIn the cats example, X = number of injuries is a variable, while x = 2 is one particular value. Similarly, Y = number of floors (stories) fallen is a variable, while y = 5 is a particular value. An observation is the data collected for a particular cat, e.g., Luna fell from the fifth floor, resulting in 2 injuries.\nVariables can be categorical or numerical. Categorical variables indicate membership or attributes. Categorical variables whose categories can be ranked in a meaningful order are called ordinal. Examples include blood type (A, B, AB, O), survival status (alive or dead), and language. Numerical variables record the amount of something, for example body temperature, age, or number of friends. Numerical values can be discrete (number of friends) or continuous (body temperature).\nThe most common languages used for analyzing data are SAS, R (and Bioconductor), and Python. In this course, we will use R with datasets in the form of data frames or tibbles.\nLet’s generate some data by answering this poll.\n\n\n\npoll\n\n\nWe can now read our dataset (poll results).\n\n#library(readr)\n\n#url &lt;- \"https://raw.github.com/JuliaPalacios/stats141_2026/data/file1.csv\"\n#survey &lt;- read_csv(url) \n#survey\nlibrary(palmerpenguins)\npenguins\n\n# A tibble: 344 × 8\n   species island    bill_length_mm bill_depth_mm flipper_length_mm body_mass_g\n   &lt;fct&gt;   &lt;fct&gt;              &lt;dbl&gt;         &lt;dbl&gt;             &lt;int&gt;       &lt;int&gt;\n 1 Adelie  Torgersen           39.1          18.7               181        3750\n 2 Adelie  Torgersen           39.5          17.4               186        3800\n 3 Adelie  Torgersen           40.3          18                 195        3250\n 4 Adelie  Torgersen           NA            NA                  NA          NA\n 5 Adelie  Torgersen           36.7          19.3               193        3450\n 6 Adelie  Torgersen           39.3          20.6               190        3650\n 7 Adelie  Torgersen           38.9          17.8               181        3625\n 8 Adelie  Torgersen           39.2          19.6               195        4675\n 9 Adelie  Torgersen           34.1          18.1               193        3475\n10 Adelie  Torgersen           42            20.2               190        4250\n# ℹ 334 more rows\n# ℹ 2 more variables: sex &lt;fct&gt;, year &lt;int&gt;\n\n\nA first step is to explore the data and describe them in summary form. Common checks include:\n\nMeasures of center and measures of dispersion\n\nChecking for missing values (e.g., “NAs”)\n\nPlotting data, frequency distributions, and charts\n\nTalking with the person who collected the data (review the data dictionary)\n\n\nsummary(penguins$species)\n\n   Adelie Chinstrap    Gentoo \n      152        68       124 \n\nsummary(penguins$flipper_length_mm)\n\n   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's \n  172.0   190.0   197.0   200.9   213.0   231.0       2 \n\n#mean(penguins$flipper_length_mm, na.rm = TRUE)  #ignore NA\n\nMeasures of center (or typical value):\n\nSample mean (average): (\\(\\bar{x} = \\frac{1}{n}\\sum_{i=1}^{n} x_i\\))\nMedian: the value that lies in the middle of the ordered sample\nMode: the value (or values) that occurs most frequently in a dataset\n\nMeasures of dispersion:\n\nRange: max − min\nInterquartile range (IQR): the spread of (roughly) the middle 50% of the observations\n\nDeviation: \\(y_i - \\bar{y}\\)\nMean deviation: \\(\\frac{\\sum^{n}_{i=1}|y_{i}-\\bar{y}|}{n}\\)\nSample standard deviation: \\(s=\\sqrt{\\frac{\\sum^{n}_{i=1}(y_{i}-\\bar{y})^2}{n-1}})\\)\nSample variance: \\(s^2\\)\nCoefficient of variation: cv=\\(\\frac{s \\times 100\\%}{\\bar{y}}\\)\n\n\n\n\n\n\n\nImportantWhy (n-1) in the standard deviation?\n\n\n\nNote that the sum of deviations \\(y_i-\\bar{y}\\) is always zero. This means that, in a sample of (n) observations, there are only (n-1) independent pieces of information about the deviations from the average. The quantity (n-1) is called the degrees of freedom of the standard deviation (and the variance).",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "intro.html#plotting-the-data",
+    "href": "intro.html#plotting-the-data",
+    "title": "1  Statistics",
+    "section": "1.2 Plotting the data",
+    "text": "1.2 Plotting the data\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables (X) and (Y). It plots each observed ((x,y)) pair as a dot on the (x)-(y) plane.\n\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\n\n\n\n\n\n\n\n\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\n\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\n\n\n\n\n\n\n\n\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>1</span>  <span class='chapter-title'>Statistics</span>"
+    ]
+  },
+  {
+    "objectID": "samples.html",
+    "href": "samples.html",
+    "title": "2  Plotting the data",
+    "section": "",
+    "text": "2.1\nWe will start with a scatter plot.\nA scatter plot is a tool for examining the relationship between two numerical variables X and Y. It plots each observed (x,y) pair as a dot on the x-y plane.\n?DNase  #what is the dataset about?\nhead(DNase) #shows the first rows\n\n  Run       conc density\n1   1 0.04882812   0.017\n2   1 0.04882812   0.018\n3   1 0.19531250   0.121\n4   1 0.19531250   0.124\n5   1 0.39062500   0.206\n6   1 0.39062500   0.215\n\nnames(DNase) # gives you the name of the variables\n\n[1] \"Run\"     \"conc\"    \"density\"\n\nplot(DNase$conc, DNase$density,\n  ylab = attr(DNase, \"labels\")$y,\n  xlab = paste(attr(DNase, \"labels\")$x, attr(DNase, \"units\")$x),\n  pch = 3)\nWe can visualize frequency distributions with bar plots (as well as jittered dotplots), histograms, and boxplots. Bar plots and histograms display the frequency of values (or grouped values). A boxplot displays the minimum, 1st quartile, median, 3rd quartile, and maximum at once. We can also compare multiple distributions at once.\nhist(DNase$density, breaks=25, main = \"\",xlab=\"Density\")\n\n\n\n\n\n\n\nboxplot(density ~ Run, data = DNase)\nThe shape of a distribution is often informative. It may be, for example: (a) symmetric and bell-shaped, (b) symmetric but not bell-shaped, (c) right-skewed, (d) left-skewed, (e) exponential, or (f) bimodal.\nBase R plotting functions are good for quick exploration, but they have aesthetic limitations. We will use a framework called the grammar of graphics, implemented in the package ggplot2.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>2</span>  <span class='chapter-title'>Plotting the data</span>"
+    ]
+  },
+  {
+    "objectID": "lec3.html",
+    "href": "lec3.html",
+    "title": "3  Types of Studies",
+    "section": "",
+    "text": "Researchers gather information to make inferences about nature in a variety of settings. Much of statistics deals with data analysis, but statistical considerations often play a key role in the planning and design of scientific investigation.\nData in biology are obtained from either an experimental study or an observational study. In an experimental study, the researcher designs how to randomly assign different treatments to the individual units of study. In an observational study, on the other hand, the researcher has no control over which units fall into which groups.\nConfounders are variables, other than the treatment, which are responsible for causing (at least part of) the observed difference in the outcome between the various levels of the treatment.\nHow can we mitigate confounding? We can design the experiment and create treatment and control groups that are as similar as possible except for the treatment level. We can anticipate and prevent other known and unknown explanations for the observed difference in outcomes between the treated and control groups.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Types of Studies</span>"
+    ]
+  },
+  {
+    "objectID": "lec3.html#sampling",
+    "href": "lec3.html#sampling",
+    "title": "3  Types of Studies",
+    "section": "3.1 Sampling",
+    "text": "3.1 Sampling\nRandom Sampling\nIn order to answer scientific questions, we first must consider the scope of our study and identify our population. Typically we cannot observe the entire population and obtain a sample. How we gather our data should inform us about our choice of analysis method and on the validity of the study. Ideally our sample will be a representative subset of the population and avoid obtaining a biased sample.\nIn a simple random sample (SRS) of size n, (a) every member of the population has the same chance of being included in the sample, and (b) each member is chosen independently of each other.\n\nset.seed(123)\nnames&lt;-seq(1,100) #data frame\nsample(names,5,replace=FALSE)\n\n[1] 31 79 51 14 67\n\n\nWhat woud be some practical concerns about SRS?\nTwo other common sampling techniques are the random cluster sample where the sampling unit is the cluster and the stratified random sample where the sampling unit is the individual within a strata.\nMost of the examples in this class will assume SRS.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Types of Studies</span>"
+    ]
+  },
+  {
+    "objectID": "lec3.html#sampling-error",
+    "href": "lec3.html#sampling-error",
+    "title": "3  Types of Studies",
+    "section": "3.2 Sampling error",
+    "text": "3.2 Sampling error\nHow can we use a sample summary (statistic) to infer a population value? The answer is: with some error!. We will see later how statistical theory enables us to set limits on the amount of error. In particular, sampling error since we only have a sample. If the sample is not a simple random sample (SRS), it may be biased: some individuals are more likely to be selected than others.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Types of Studies</span>"
+    ]
+  },
+  {
+    "objectID": "lec3.html#nonsampling-errors",
+    "href": "lec3.html#nonsampling-errors",
+    "title": "3  Types of Studies",
+    "section": "3.3 Nonsampling Errors",
+    "text": "3.3 Nonsampling Errors\nFor example, the type of variable we are collecting may affect how truthfuly people respond. The way in which questions are worded may also influence the respond. Nonresponse bias resulting in bias caused by persons not responding to some of the questions in a survey or not returning the questionnaire. In general, patterns of missing data (MCAR, MAR, or MNAR) hamper studies by introducing bias.\n\nMCAR (Missing Completely At Random): The probability a value is missing does not depend on any data (neither observed nor unobserved).\nMAR (Missing At Random): The probability a value is missing may depend on observed data, but not on the missing value itself after conditioning on what’s observed.\n\n-MNAR (Missing Not At Random): The probability a value is missing depends on the unobserved value itself (or other unobserved factors), even after accounting for observed data.\nIt is then best to make every effort to avoid missing data. But if data are missing, it is crucial that the possible reasons are considered when interpreting and reporting results.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>3</span>  <span class='chapter-title'>Types of Studies</span>"
+    ]
+  },
+  {
+    "objectID": "lec4.html",
+    "href": "lec4.html",
+    "title": "4  Probability",
+    "section": "",
+    "text": "4.1 Probability distribution\nThe concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a random experiment that has two or more possible outcomes whose occurrence cannot be predicted with certainty.\nFor example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),…,(6,6).\nAn event is a subset of the sample space.\nExample 1: The event is \\(E_{1}=(1,1)\\).\nExample 2: The event is \\(E_{2}=\\)“The sum of the two rolls is 5”\nThe probability of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.\nA useful tool for thinking about probabilities of events is with a Venn diagram. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.\nTwo events are mutually exclusive if both events cannot occur simultaneously. For example \\(E_{1}\\) and \\(E_{2}\\) defined above are mutually exclusive and \\[ P(E_{1} \\text{ and } E_{2})=0\\]\nA simple way to think about a probability distribution is as a compact description of many numbers. For example, imagine that all the heights of men in a population have been measured, and you want to describe or explain those measures to someone else. Suppose all these measures are contained in the following dataset:\ndata(father.son, package=\"UsingR\")\nx &lt;- father.son$fheight\nOne way to describe this information is to list all elements in the dataset, or to show a random sample of 10 elements from the list of 1,078 total measures.\nlength(x)\n\n[1] 1078\n\nsample(x,10)\n\n [1] 64.45192 68.07787 69.43917 65.50141 65.33965 70.02702 66.39423 71.08122\n [9] 69.90335 66.03148\nAnother, more compact and descriptive way to represent the data is by using a histogram. Histograms show the proportion of values within intervals, \\((a, b)\\). In the previous example, plotting the heights as bars is more illustrative because we are usually more interested in intervals, such as the percentage of people whose heights fall between 70 and 71 inches. Histograms are also useful for describing different families of distributions. Here is the histogram of the height data:\nhist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=TRUE)\nWith this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).\nWe can also convert those numbers into probability\ny&lt;-hist(x, xlab=\"Height (in inches)\", main=\"Adult men heights\",freq=FALSE)\n\n\n\n\n\n\n\ny\n\n$breaks\n [1] 59 60 61 62 63 64 65 66 67 68 69 70 71 72 73 74 75 76\n\n$counts\n [1]   4   5  11  29  48  88 120 124 152 143 132  93  59  49  14   5   2\n\n$density\n [1] 0.003710575 0.004638219 0.010204082 0.026901670 0.044526902 0.081632653\n [7] 0.111317254 0.115027829 0.141001855 0.132653061 0.122448980 0.086270872\n[13] 0.054730983 0.045454545 0.012987013 0.004638219 0.001855288\n\n$mids\n [1] 59.5 60.5 61.5 62.5 63.5 64.5 65.5 66.5 67.5 68.5 69.5 70.5 71.5 72.5 73.5\n[16] 74.5 75.5\n\n$xname\n[1] \"x\"\n\n$equidist\n[1] TRUE\n\nattr(,\"class\")\n[1] \"histogram\"\n\nsum(y$density)\n\n[1] 1\nSummarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval \\((a,b)\\) is denoted with \\(Pr(a \\leq X \\leq b)\\).\nIn summary, a probability distribution describes the probabilities of each of the possible outcomes of a random experiment. Some probability distributions can be described mathematically, while others are just a list of possible outcomes and their probabilities (as in the heights example).\nThe cumulative distribution function (CDF), represented by the following notation: \\(F(a) \\equiv \\Pr(X \\leq a)\\) [and the proportion of numbers bigger than \\(a\\) is computed as: \\(\\Pr(X \\gt a)=1-\\Pr(X \\leq a)=1-F(a)\\)].\nCDFy&lt;-cumsum(y$density)\nplot(y$mids, CDFy,type=\"l\",xlab=\"y (Age)\",ylab=\"P(Y&lt;=y)\")",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lec4.html#this-or-that-the-addition-rule",
+    "href": "lec4.html#this-or-that-the-addition-rule",
+    "title": "4  Probability",
+    "section": "4.2 This or that, the addition rule",
+    "text": "4.2 This or that, the addition rule\nVery often, we want to know the probability that we get either one event or another.\nIf the two events are mutually exclusive, then \\[P(E_{1} \\text{ or } E_{2})=P(E_{1})+P(E_{2})\\] Naturally, \\(E_{1}\\) and \\(E_{1}^{c}\\) are mutually exclusive and in fact \\[P(E_{1} \\text{ or } E_{1}^c)=P(E_{1})+P(E_{1}^{c})=1\\] The general addition rule is\n\\[P(A \\text{ or } B)=P(A)+P(B) - P(A \\text{ and } B)\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lec4.html#independence-and-multiplication-rule",
+    "href": "lec4.html#independence-and-multiplication-rule",
+    "title": "4  Probability",
+    "section": "4.3 Independence and multiplication rule",
+    "text": "4.3 Independence and multiplication rule\nScience is generated by relationships between events. Men are more likely to be tall, more likely to have a beard, more likely to die young and more likely to go to prison than women. That is, height, beadeness, age at death and criminal conduct are not independend of sex in humans.\nTwo events are independent if the occurence of one does not in any way inform us about the probability that the other will also occur.\nExample: \\(E_{1}\\)=The first die roll is 3, and \\(E_{2}\\)=The second die roll is \\(3\\).\nThe multiplication rule states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if \\(E_{1}\\) and \\(E_{2}\\) are independent, then \\[P(E_{1} \\text{ and } E_{2})=P(E_{1})P(E_{2})\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lec4.html#conditional-probability-and-bayes-theorem",
+    "href": "lec4.html#conditional-probability-and-bayes-theorem",
+    "title": "4  Probability",
+    "section": "4.4 Conditional probability and Bayes’ theorem",
+    "text": "4.4 Conditional probability and Bayes’ theorem\nConditional probability is the probability of an event given that another event occurs.\nBayes’ theorem\n\\[P(A \\mid B)=\\frac{P(A \\text{ and } B)}{P(B)}\\]\nThe general multiplication rule\n\\[P(A \\text{ and } B)=P(B)P(A\\mid B)=P(A)P(B \\mid A)\\]\nThe law of total probability Let \\(B_{1}, B_{2},...B_{n}\\) n sets that partition (i.e \\(1=\\sum^{n}_{i=1}P(B_{i})\\)) the sample space \\[P(A)=\\sum_{i=1}^{n}P(A \\text{ and } B_{i})=\\sum_{i=1}^{n}P(B_{i})P(A \\mid B_{i})\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lec4.html#sampling-without-replacement",
+    "href": "lec4.html#sampling-without-replacement",
+    "title": "4  Probability",
+    "section": "4.5 Sampling without replacement",
+    "text": "4.5 Sampling without replacement\nOne common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.\nFor example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence “A-A-2”?\nIn contrast, when sampling with replacement, the sampled individual is not removed from the population.\nWhen sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>4</span>  <span class='chapter-title'>Probability</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html",
+    "href": "lec5.html",
+    "title": "5  Probability 2",
+    "section": "",
+    "text": "5.1 Conditional probability and Bayes’ theorem\nTwo events are independent if the occurence of one does not in any way inform us about the probability that the other will also occur.\nExample: \\(E_{1}\\)=The first die rall is 3, and \\(E_{2}\\)=The second die roll is \\(3\\).\nThe multiplication rule states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if \\(E_{1}\\) and \\(E_{2}\\) are independent, then \\[P(E_{1} \\text{ and } E_{2})=P(E_{1})P(E_{2})\\]\nConditional probability is the probability of an event given that another event occurs.\nBayes’ theorem\n\\[P(A \\mid B)=\\frac{P(A \\text{ and } B)}{P(B)}\\]\nThe general multiplication rule\n\\[P(A \\text{ and } B)=P(B)P(A\\mid B)=P(A)P(B \\mid A)\\]\nThe law of total probability Let \\(B_{1}, B_{2},...B_{n}\\) n sets that partition (i.e \\(1=\\sum^{n}_{i=1}P(B_{i})\\)) the sample space \\[P(A)=\\sum_{i=1}^{n}P(A \\text{ and } B_{i})=\\sum_{i=1}^{n}P(B_{i})P(A \\mid B_{i})\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#sampling-without-replacement",
+    "href": "lec5.html#sampling-without-replacement",
+    "title": "5  Probability 2",
+    "section": "5.2 Sampling without replacement",
+    "text": "5.2 Sampling without replacement\nOne common use of conditional probability is sampling without replacement. That is when the occurrence of a specific outcome eliminates that outcome from the set of possibilities in subsequent random trials.\nFor example consider drawing cards randomly from a card deck (52 cards) shuffled. What is the probability of drawing three cards in the precise sequence “A-A-2”?\nIn contrast, when sampling with replacement, the sampled individual is not removed from the population.\nWhen sampling populations for biological study, we usually choose populations that are large enough that the sampling of each individual does not change the probability distribution of possible values in the individuals that remain.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#random-variable",
+    "href": "lec5.html#random-variable",
+    "title": "5  Probability 2",
+    "section": "5.3 Random variable",
+    "text": "5.3 Random variable\nA random variable is simply a variable that takes on numerical values that depend on the outcome of a chance operation (random experiment).\nExample. Consider the experiment to tossing a die. Let the random variable Y represent the number of spots showing. The possible values of Y are 1,..,6. We do not know the value of Y until we have tossed the die. We can then compute \\[P(Y=4)\\] and \\[P(2\\leq Y \\leq 4)\\]\nRandom variables come in two flavors: Discrete and Continuous.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#expected-value-mean",
+    "href": "lec5.html#expected-value-mean",
+    "title": "5  Probability 2",
+    "section": "5.4 Expected value (Mean)",
+    "text": "5.4 Expected value (Mean)\nThe mean of a discrete random variable is: \\[E(Y)=\\sum_{i=1}^{n}y_{i}P(Y=y_{i})\\] where \\(y_{i}\\)’s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.\nExample: Calculate the expected value of rolling a fair die once.\n\nRules: If X and Y are two random variables and Z=X+Y \\[E(Z)=E(X+Y)=E(X)+E(Y)\\] \\[E(aX+b)=a E(X)+b\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#variance",
+    "href": "lec5.html#variance",
+    "title": "5  Probability 2",
+    "section": "5.5 Variance",
+    "text": "5.5 Variance\nThe variance of a discrete random variable is \\[Var(X)=\\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})\\]",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#discrete-probability-models",
+    "href": "lec5.html#discrete-probability-models",
+    "title": "5  Probability 2",
+    "section": "5.6 Discrete probability models",
+    "text": "5.6 Discrete probability models\nIn many contexts-such as molecular biology-we count events (e.g., codons, DNA reads, CG diagrams), producing discrete variables, unlike continuous measures such as mass or intensity. Some variables are binary (e.g., mutation: yes/no), while others have multiple levels (e.g., genotypes AA, Aa, aa) or even many categories (e.g., bacterial types or 64 codons).\nTo summarize categorical data, we tally the frequency of each level. In R, these are stored as factors, which make tabulation straightforward. For example, here we capture the different blood genotypes for 19 subjects in a vector which we tabulate.\n\ngenotype = c(\"AA\",\"AO\",\"BB\",\"AO\",\"OO\",\"AO\",\"AA\",\"BO\",\"BO\",\n             \"AO\",\"BB\",\"AO\",\"BO\",\"AB\",\"OO\",\"AB\",\"BB\",\"AO\",\"AO\")\ntable(genotype)\n\ngenotype\nAA AB AO BB BO OO \n 2  2  7  3  3  2 \n\n\nIf the order in which the data are observed does not matter, we call the random variable exchangeable. In this case, the vector of frequencies is sufficient to capture all the relevant information in the data, providing an efficient way to summarize it.\n\n5.6.1 Bernoulli trials\nThe Bernoulli distribution is the simplest probability model, based on a so-called Bernoulli random variable, which can take only two outcomes: failure or success. The key idea is that you have a parameter \\(p\\), which represents the probability of success, and the complementary event is called probability of failure \\(1-p\\):\nProbability distribution:\n\\(P(X=1) = p\\)\n\\(P(X=0) = 1-p\\)\nFor a fair coin, p = 0.5. For a biased coin that lands heads 70% of the time, p = 0.7.\n\n\n\n\n\n\nNote\n\n\n\nExample: Coin tosses\nSuppose we want to simulate a sequence of 15 fair tosses using R. To get the outcome of 15 tosses of a fair coin (p = 0.50), we write:\n\n\n\nrbinom(15, prob = 0.5, size = 1)\n\n [1] 1 1 1 0 1 1 1 1 1 0 0 0 0 1 0\n\n\nNow observe the outcome when using a biased coin that lands heads 70% of the time:\n\nrbinom(15, prob = 0.7, size = 1)\n\n [1] 1 1 1 1 0 0 1 0 1 1 0 1 1 0 1\n\n\nQuestion. Note that when you call the function above several times, you get different outcomes. Why is that?\nProperties\nThe mean, or expected value, of a Bernoulli distribution is given by \\(p\\), and the variance is defined as \\(p(1-p)\\), so the variance is maximized when p = 0.5, and it goes to 0 as p approaches 0 or 1. The Bernoulli distribution is very important because it represents the building block of many other distributions.\n\n\n5.6.2 Binomial success counts\nIn the previous example, if we are only interested in the number of heads (\\(X=1\\)), we just take the sum of the cells in the output vector, then reporting a single number instead of a binary vector. In R, we can do this as follows:\n\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n\nThe sum of multiple independent (or exchangeable) Bernoulli trials is called the Binomial distribution (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a binomial random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:\n\nset.seed(384569724)\nrbinom(1, prob = 0.7, size = 15)\n\n[1] 11\n\n\nQuestion. Repeat this function call 10 times. What seems to be the most common outcome?\nSolution. The most frequent value is 10.5\\(\\approx 11\\). In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that \\(X=4\\) if \\(X\\) follows B(15,0.7).\nThe complete probability mass distribution is available by typing:\n\nprobabilities = dbinom(0:15, prob = 0.7, size = 15)\nround(probabilities, 2)\n\n [1] 0.00 0.00 0.00 0.00 0.00 0.00 0.01 0.03 0.08 0.15 0.21 0.22 0.17 0.09 0.03\n[16] 0.00\n\n\nA barplot for this distribution in R, is as follows:\n\nbarplot(probabilities, names.arg = 0:15, col = \"black\", main = \"Theoretical distribution of B(15, 0.7).\")\n\n\n\n\n\n\n\n\nMathematically, the theoretical distribution of the binomial distribution is\nProbability distribution:\n\\[P(X = k) = \\binom{n}{k} p^k (1-p)^{n-k}, \\quad k = 0, 1, \\ldots, n,\\] where \\(n\\) is the number of trials, \\(k\\) is the number of successes, \\(p\\) is the probability of success, and \\(\\binom{n}{k} = \\frac{n!}{k!(n-k)!}\\) is the binomial coefficient.\nProperties\nThe mean of a Binomial distribution is given by \\(n \\cdot p\\) (in the figure, the highest bar around \\(x \\approx 11\\), or \\(n(=15)\\cdot p(=0.7)\\), and the variance is defined as \\(np(1-p) = (15)(0.7)(0.3) = 3.15\\).",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#poisson-distributions",
+    "href": "lec5.html#poisson-distributions",
+    "title": "5  Probability 2",
+    "section": "5.7 Poisson distributions",
+    "text": "5.7 Poisson distributions\nWhen the probability of success \\(p\\) is small and the number of trials \\(n\\) is large, the Binomial distribution can be approximated by a Poisson distribution with parameter \\(\\lambda = np\\), which provides a simple model for describing the data.\nProbability distribution:\n\\[P(X = k) = \\frac{e^{-\\lambda} \\lambda^k}{k!}, \\quad k = 0, 1, 2, \\ldots,\\] where \\(k\\) is the number of events, \\(\\lambda\\) is the average number of events per interval, and \\(e\\approx 2.718\\) is the Euler’s number.\nProperties\nAn interesting characteristic of the Poisson distribution is that the mean and the variance are both equal to \\(\\lambda = np\\).\n\n\n\n\n\n\nNote\n\n\n\nExample: Human Immunodeficiency Virus (HIV)\nConsider a probability model for HIV mutations, where the data generation process is described by a Poisson model. That is, mutations occur at a constant rate of \\(p=5 \\times 10^{-4}\\) per nucleotide per replication cycle, independently across positions. Given a genome size of approximately $n$ nucleotides, the total number of mutations per cycle follows a \\(\\text{Poisson}(\\lambda)\\) distribution.\nAs the genome size of HIV is about \\(n=10^4\\), this model predicts an expected number of mutations close to 5 \\((np=10^4 \\times 5 \\times 10^{-4})\\) per replication cycle, with standard error \\(\\sqrt{\\lambda}\\). For example, to find the probability of exactly 3 mutations under a \\(\\text{Poisson}(5)\\) model, we can use R:\n\ndpois(x=3, lambda=5)\n\n[1] 0.1403739\n\n\nThis means that the chance of seeing exactly three events is about 0.14.\nNow we can visualize the distribution of the values from a particular range, from 0 to 12 for example, we proceed as follows:\n\ny &lt;- dpois(x=0:12, lambda=5)\nbarplot(y, names.arg = 0:12, col = \"#FFCCAA\",  main = \"Probabilities of seeing 0 to 12 mutations, modeled as a Poisson(5)\")\n\n\n\n\n\n\n\n\nThis example shows that the Poisson distribution is a good model for rare events such as mutation (observe that \\(p\\) is very low).",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "lec5.html#multinomial-distributions",
+    "href": "lec5.html#multinomial-distributions",
+    "title": "5  Probability 2",
+    "section": "5.8 Multinomial distributions",
+    "text": "5.8 Multinomial distributions\nIn the Binomial model, we had only two possible outcomes, success and failure, with probabilities \\(p\\) and \\(1-p\\), respectively. How do we extend that model for more than 2 outcomes? For example, when studying counts of the four nucleotides in DNA: \\(\\{A, C, G, T\\}\\). We use a Multinomial model, where we assign different probabilities to the different outcomes. In the case of the four DNA nucleotides, for example, we can represent the respective probabilities as \\(p_{A}\\), \\(p_{C}\\), \\(p_{G}\\), and \\(p_{T}\\), where the probabilities sum to 1: \\(p_{A}+p_{C}+p_{G}+p_{T}=1\\), as in the Binomial model.\nThe mathematical formulation for the Multinomial model for \\(m\\) counts \\((x_{1}, x_{2}, \\ldots, x_{m})\\) for outcomes of \\(n\\) draws with probabilities \\(p_{1}, p_{2}, \\ldots, p_{m}\\) is as follows:\nProbability distribution:\n\\[\\begin{align}\nP(x_{1}, x_{2}, \\ldots, x_{m}) &= \\frac{n!}{\\prod_{i=1}^{m} x_{i}!} \\prod_{i=1}^{m} p_{i}^{x_{i}} \\\\\n&= \\binom{n}{x_{1}, x_{2}, \\ldots, x_{m}} p_{1}^{x_{1}} p_{2}^{x_{2}} \\cdots p_{m}^{x_{m}}\n\\end{align}\\]\nTo generate draws that are consistent with this model, we use R commands to generate vector counts with each having equal probability of selection (1/4 in the example of 4 nucleotides). For example, suppose we have 8 characters of four different equally likely types:\n\npvec = rep(1/4, 4)\nt(rmultinom(1, prob = pvec, size = 8))\n\n     [,1] [,2] [,3] [,4]\n[1,]    4    2    1    1\n\n\nQuestion Try the code without using the t() function; what does t stand for?\nReference: Holmes and Huber (2018)\n\n\n\n\nHolmes, Susan Huber, and Wolfgang Huber. 2018. Modern Statistics for Modern Biology. Cambridge university press.",
+    "crumbs": [
+      "Lectures",
+      "<span class='chapter-number'>5</span>  <span class='chapter-title'>Probability 2</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html",
+    "href": "Week1A.html",
+    "title": "6  Activity Lecture 1",
+    "section": "",
+    "text": "6.1 Descriptive Statistics\nName:",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1A.html#descriptive-statistics",
+    "href": "Week1A.html#descriptive-statistics",
+    "title": "6  Activity Lecture 1",
+    "section": "",
+    "text": "Read sections 1.1 1.2 of r4ds and solve 1.2.5 excercises 2,3, and 7.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>6</span>  <span class='chapter-title'>Activity Lecture 1</span>"
+    ]
+  },
+  {
+    "objectID": "Week1B.html",
+    "href": "Week1B.html",
+    "title": "7  Activity Lecture 2",
+    "section": "",
+    "text": "Name:\n\nIn the first five minutes, talk with the people at your table and introduce yourself. Ask whether anyone needs help getting started with R, and help each other out..\nRead the penguins dataset from the package palmerpenguins and analyze the variable flipper_length_mm in palmerpenguins/penguins by displaying the measures of center and disperson. Why the measures of center differ?\n\n\n\nRecompute the mean, median and the standard deviation based on the first 5 observation of flipper_length_mm and repeat the problem by hand. Did you get the same result?\nMultiply the variable by 10 and recompute the variance and the coefficient of variation. What do you conclude?\nChange the third observation of the variable from 195 to 1000 and recompute the measures of center. What do you conclude?\n\n\n\nGenerate the histogram of flipper_length_mm. What is the shape of the distribution? What can you conclude? How does this support your conclusion of previous points? Try generating the histogram with ggplot2. You can check section 1.4 of r4ds to learn how to do it.\nWhat are the quartiles?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>7</span>  <span class='chapter-title'>Activity Lecture 2</span>"
+    ]
+  },
+  {
+    "objectID": "Week2A.html",
+    "href": "Week2A.html",
+    "title": "8  Activity Lecture 3",
+    "section": "",
+    "text": "Name:\n\nIn a study of physical therapy for knee pain, patients are randomly divided into two groups. One group receives a new “hands-on” therapy technique and the other group receives standard stretching exercises. The physical therapist who developed the new technique evaluates each patient’s improvement and compares results between the two groups. Explain how lack of blinding could bias the experiment in favor of the new therapy.\nResearchers studied 2,050 adults over age 60 living in Arizona. They found that those who regularly participated in community volunteer activities were more likely to have lower levels of C-reactive protein (CRP), a blood marker linked to inflammation, than those who did not volunteer. Does this mean that volunteering improves one’s health? Why or why not?\nWhat is the problem with this statement: A study finds that people who carry lighters have higher rates of lung cancer than people who don’t.?\nA town announces that a new 5G cell tower will be switched on starting April 1. In the weeks that follow, some residents report headaches, dizziness, poor sleep, and nausea, and attribute these symptoms to “radiation from the tower.” Local clinics note an uptick in stress-related complaints. Later it turns out the tower was not activated until May because final inspections were delayed—so there was no change in exposure during April. Explain how the placebo effect/nocebo effect is related to this example.\nIn each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.\n\n\nAll 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.\nA total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.\nIn a temperature study, five readings were taken at each of three preset depths (1 m, 5 m, 10 m) in the ocean for a total of fifteen readings.\nA total of 30 apartments were chosen at random from a citywide list to estimate average monthly electricity use.\nThirty-six employees (twelve randomly selected from each of three departments: Sales, Engineering, and Customer Support) were surveyed about job satisfaction.",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>8</span>  <span class='chapter-title'>Activity Lecture 3</span>"
+    ]
+  },
+  {
+    "objectID": "Week2B.html",
+    "href": "Week2B.html",
+    "title": "9  Activity Lecture 4",
+    "section": "",
+    "text": "Name:\n\nWhen students are asked to rate brussels sprouts in Arrillaga Dining Hall, 30% say sprounts are “very repulsive”, 20% say they are “somewhat repulsive”, 43% are “indifferent”, 6% say are “somewhat delicious and 1% claim they are”especially delicious”. Only one aswer was allowed.\n(a) Are these five possible answer mutually exclusive?\n(b) What is the probability that a student dislikes sprouts (very repulsive, somewhat repulsive)?\nAmong women voluntarily tested for sexually transmitted diseases in one university, 24% tested positive for HPV only, 2% tested positive for Chlamydia only, and 4% tested positive for both HPV and Chlamydia. Use the following steps to calculate the probability that a woman from this population who gets tested would test positive for either HPV or Chlamydia.\n(a) Write the goal of the question as a probability statement.\n(b) Draw the Venn diagram.\n(c) Write the general addition rule with words specific for this example.\n(d) Calculate the probability that randomly sampled woman would test positive for HPV or Chlamydia.\nBoth smoking and high blood pressure are risk factors for strokes and other vascular diseases. In the United States, approximately 16% of adults smoke and about 24% have high blood pressure. Research has shown that high blood pressure is not associated with smoking; that is, they seem to be independent of each other. What is the probability that a randomly chosen American adult has both of these risk factors?\nIf a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.\n(a) Suppose that 1000 women take early pregnancy tests and that 100 of them really are pregnant. What is the probability that a randomly chosen woman from this group will test posit?\n(b) Suppose that a woman test positive. What is the probability that she really is pregnant?",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>9</span>  <span class='chapter-title'>Activity Lecture 4</span>"
+    ]
+  },
+  {
+    "objectID": "Week2C.html",
+    "href": "Week2C.html",
+    "title": "10  Activity Lecture 5",
+    "section": "",
+    "text": "Name:\n\nSuppose that in a certain population of married couples 30% of the husbands smoke, 20% of the wives smoke, and in 8% of the couples both the husband and the wife smoke. Is the smoking status (smoker or nonsmoker) of the husband independent of that of the wife? Why or why not?\nConsider choosing someone at random from a population that is 60% female and 40% male. Suppose that for a woman the probability of having a hand size smaller than 100 \\(cm^2\\) is 0.31. Suppose that for a man the probability of having a hand size smaller than 100 \\(cm^2\\) is 0.08. What is the probability that the randomly chosen person will have a hand size smaller than 100 \\(cm^2\\)?\nIn a population of beetles, each individual is classified by two traits:\n\nWing type: Normal (N) or Vestigial (V)\nBody color: Green (G) or Brown (B)\n\nA field survey estimates the following population proportions:\n\n\n\nCategory\nDescription\nProbability\n\n\n\n\nNG\nNormal wings & Green body\n0.40\n\n\nNB\nNormal wings & Brown body\n0.25\n\n\nVG\nVestigial wings & Green body\n0.20\n\n\nVB\nVestigial wings & Brown body\n0.15\n\n\n\nA beetle is selected at random.\n\nWhat is the probability the beetle has green body color?\nWhat is the probability the beetle has normal wings OR a brown body?\n\n\nA diagnostic test is used to detect a bacterial infection in salmon.\n\nInfection prevalence: \\(P(I) = 0.08\\)\nSensitivity: \\(P(+ \\mid I) = 0.95\\)\nFalse positive rate: \\(P(+ \\mid I^c) = 0.03\\)\n\nA salmon is selected at random and tested.\n\nWhat is the probability the salmon is infected AND tests positive?\nWhat is the probability the salmon is not infected AND tests positive?\n\nIf a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.\n(a) Suppose that 1000 women take early pregnancy tests and that 100 of them really are pregnant. What is the probability that a randomly chosen woman from this group will test positive?\n(b) Suppose that a woman test positive. What is the probability that she really is pregnant?\nA biologist is studying a frog species where individuals can have one of two skin-pattern phenotypes:\n\nStriped (S)\nSpotted (T)\n\nIn the entire wetland (the population), the phenotype frequencies are believed to be:\n\n\n\nPhenotype\nPopulation frequency\nPopulation proportion\n\n\n\n\nStriped (S)\n6200\n0.62\n\n\nSpotted (T)\n3800\n0.38\n\n\nTotal\n10000\n1.00\n\n\n\n\nCompute the mean E[X] and variance \\(\\mathrm{Var}(X)\\).",
+    "crumbs": [
+      "Activities",
+      "<span class='chapter-number'>10</span>  <span class='chapter-title'>Activity Lecture 5</span>"
+    ]
+  },
+  {
+    "objectID": "summary.html",
+    "href": "summary.html",
+    "title": "11  Summary",
+    "section": "",
+    "text": "In summary, this book has no content whatsoever.\n\n1 + 1\n\n[1] 2",
+    "crumbs": [
+      "<span class='chapter-number'>11</span>  <span class='chapter-title'>Summary</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html",
+    "href": "Week1_section.html",
+    "title": "12  Quarto",
+    "section": "",
+    "text": "12.1 Loading and summarizing the data\nMake sure to install R and R-Studio before section.\nQuarto enables you to weave together content and executable code into a finished document. To learn more about Quarto see https://quarto.org.\n# Uncomment the next lines if you haven't installed the packages yet:\n# install.packages(c(\"openintro\", \"dplyr\", \"ggplot2\"))\n\nlibrary(openintro)\nlibrary(dplyr)\nlibrary(ggplot2)\n\ndata(email)\nhead(email)\n\n# A tibble: 6 × 21\n  spam  to_multiple from     cc sent_email time                image attach\n  &lt;fct&gt; &lt;fct&gt;       &lt;fct&gt; &lt;int&gt; &lt;fct&gt;      &lt;dttm&gt;              &lt;dbl&gt;  &lt;dbl&gt;\n1 0     0           1         0 0          2011-12-31 22:16:41     0      0\n2 0     0           1         0 0          2011-12-31 23:03:59     0      0\n3 0     0           1         0 0          2012-01-01 08:00:32     0      0\n4 0     0           1         0 0          2012-01-01 01:09:49     0      0\n5 0     0           1         0 0          2012-01-01 02:00:01     0      0\n6 0     0           1         0 0          2012-01-01 02:04:46     0      0\n# ℹ 13 more variables: dollar &lt;dbl&gt;, winner &lt;fct&gt;, inherit &lt;dbl&gt;, viagra &lt;dbl&gt;,\n#   password &lt;dbl&gt;, num_char &lt;dbl&gt;, line_breaks &lt;int&gt;, format &lt;fct&gt;,\n#   re_subj &lt;fct&gt;, exclaim_subj &lt;dbl&gt;, urgent_subj &lt;fct&gt;, exclaim_mess &lt;dbl&gt;,\n#   number &lt;fct&gt;",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
+    "href": "Week1_section.html#how-many-rows-and-columns-are-in-the-dataset",
+    "title": "12  Quarto",
+    "section": "12.2 1. How many rows and columns are in the dataset?",
+    "text": "12.2 1. How many rows and columns are in the dataset?\n\n# Your code here\n\nAlternative (optional, using dplyr-style workflow):\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
+    "href": "Week1_section.html#what-types-of-variables-are-present-e.g.-numeric-categorical",
+    "title": "12  Quarto",
+    "section": "12.3 2. What types of variables are present (e.g., numeric, categorical)?",
+    "text": "12.3 2. What types of variables are present (e.g., numeric, categorical)?\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-does-the-variable-spam-represent",
+    "href": "Week1_section.html#what-does-the-variable-spam-represent",
+    "title": "12  Quarto",
+    "section": "12.4 3. What does the variable spam represent?",
+    "text": "12.4 3. What does the variable spam represent?\nWrite your answer here.\n\n# Summary statistics\nsummary(email$spam)      # Is the email spam?\n\n   0    1 \n3554  367",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
+    "href": "Week1_section.html#what-is-the-median-number-of-characters-in-an-email",
+    "title": "12  Quarto",
+    "section": "12.5 4. What is the median number of characters in an email?",
+    "text": "12.5 4. What is the median number of characters in an email?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-proportion-of-emails-are-spam",
+    "href": "Week1_section.html#what-proportion-of-emails-are-spam",
+    "title": "12  Quarto",
+    "section": "12.6 5. What proportion of emails are spam?",
+    "text": "12.6 5. What proportion of emails are spam?\n\n# Your code here\n\nAlternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#subsetting",
+    "href": "Week1_section.html#subsetting",
+    "title": "12  Quarto",
+    "section": "12.7 Subsetting",
+    "text": "12.7 Subsetting\n\nemail$exclaim_mess is the numeric variable of interest.\nemail$spam is the grouping variable.\nmean or sd is the function to apply.\nna.rm = TRUE removes missing values when calculating the mean.\n\nOption 1: By hand\n\n# Subset rows to only include spam emails\nspam &lt;- subset(email, spam == \"1\")\n\n# Mean and standard deviation of exclamation marks in spam emails\n# Your code here\n\n\n# Subset rows to only include non-spam emails\nnot_spam &lt;- subset(email, spam == \"0\")\n\n# Mean and standard deviation of exclamation marks in non-spam emails\n# Your code here\n\nOption 2: Using tapply()\n\n# Mean exclamation marks by spam status\n# Your code here\n\n# Standard deviation of exclamation marks by spam status\n# Your code here\n\nOption 3: Alternative with dplyr:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
+    "href": "Week1_section.html#on-average-do-spam-emails-have-more-exclamation-marks-than-non-spam-emails",
+    "title": "12  Quarto",
+    "section": "12.8 6. On average, do spam emails have more exclamation marks than non-spam emails?",
+    "text": "12.8 6. On average, do spam emails have more exclamation marks than non-spam emails?\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
+    "href": "Week1_section.html#what-do-the-differences-in-standard-deviation-between-the-email-types-tell-you-about-the-differences-in-variability-in-exclamation-marks",
+    "title": "12  Quarto",
+    "section": "12.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?",
+    "text": "12.9 7. What do the differences in standard deviation between the email types tell you about the differences in variability in exclamation marks?\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
+    "href": "Week1_section.html#create-a-histogram-of-the-number-of-characters-in-emails.",
+    "title": "12  Quarto",
+    "section": "12.10 8. Create a histogram of the number of characters in emails.",
+    "text": "12.10 8. Create a histogram of the number of characters in emails.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
+    "href": "Week1_section.html#describe-the-shape-center-and-spread-of-the-distribution-of-number-of-characters-in-incoming-emails-for-this-email-account.",
+    "title": "12  Quarto",
+    "section": "12.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.",
+    "text": "12.11 9. Describe the shape, center, and spread of the distribution of number of characters in incoming emails for this email account.\nWrite your answer here.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
+    "href": "Week1_section.html#create-a-boxplot-of-number-of-characters-by-spam-status.",
+    "title": "12  Quarto",
+    "section": "12.12 10. Create a boxplot of number of characters by spam status.",
+    "text": "12.12 10. Create a boxplot of number of characters by spam status.\nBase R version:\n\n# Your code here\n\nAlternative with ggplot2:\n\n# Your code here",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week1_section.html#other-tutorials",
+    "href": "Week1_section.html#other-tutorials",
+    "title": "12  Quarto",
+    "section": "12.13 Other tutorials:",
+    "text": "12.13 Other tutorials:\nhttps://cran.r-project.org/web/packages/dplyr/vignettes/dplyr.html\nhttps://ggplot2.tidyverse.org/articles/ggplot2.html",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>12</span>  <span class='chapter-title'>Quarto</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html",
+    "href": "Week2_section.html",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "",
+    "text": "13.1 Example 1: Are students more likely to default on a credit card?",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#example-1-are-students-more-likely-to-default-on-a-credit-card",
+    "href": "Week2_section.html#example-1-are-students-more-likely-to-default-on-a-credit-card",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "",
+    "text": "13.1.1 Background (ISLR::Default)\nThe Default dataset (from the ISLR package) records 10,000 credit card customers. We want to understand what predicts default.\nExposure: student – is the customer a student?\nOutcome: default – did the customer default?\nPossible confounders: balance – the customer’s average credit card balance\n\n# Load the package ISLR\n# Load the data Default from ISLR package \n# Check head of the data and structure\n\n\n\n13.1.2 Are students more likely to default than non-students?\n\n# Compute mean default rates for students vs non-students\n\nShould get: Students have a 4.3% chance of defaulting, whereas for non-students the same chance is 2.9%.\nNext, we dive deeper, trying to understand whether balance is a confounder here.\n\n\n13.1.3 Check 1: Are students carrying higher balances?\n\n# Compare mean balances for students and non-students\n\n\n\n13.1.4 Check 2: Is balance associated with default?\n\n# Compute correlation between balance and default\n\n\n\n13.1.5 Check 3: Default rates within balance groups\n\n# First, compute quantiles of the variable balance\n\n# Next, \n# - figure out which balance group each person belongs to, \n# - add it the original data as an additional feature/column\n\n# Hint:\n# Default$balance_group &lt;- cut(Default$balance, breaks = quantiles from above)\n\n\n# Check that default rate rises steeply with balance\n\nIf balance is really the confounder, then at the same balance level, students should no longer look riskier.\n\n# tapply(Default$default_num,\n#        list(balance = Default$balance_group, student = Default$student),\n#        mean)\n\nWithin every single balance quartile, students default at a lower rate than non-students – the opposite of the marginal comparison! This reversal is an example of Simpson’s paradox (Google it to know more).",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section",
+    "href": "Week2_section.html#example-2-do-manual-transmissions-get-better-mileage-for-illustration-will-skip-in-section",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "13.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)",
+    "text": "13.2 Example 2: Do Manual Transmissions Get Better Mileage? (For illustration, will skip in section)\n\n13.2.1 Background (mtcars)\nThe mtcars dataset (built into R) records fuel economy and physical characteristics for 32 cars from a 1974 Motor Trend road test.\nExposure: am – transmission type (0 = automatic, 1 = manual)\nOutcome: mpg – fuel efficiency (miles per gallon)\nPossible confounder: wt – car weight (in thousands of pounds)\n\n# load the data mtcars\n\n\n\n13.2.2 Do manual cars give more mpg?\n\n# Compute the mean mpg for each group (auto/manual) and compute the difference.\n\nManual transmission cars average 24.4 mpg vs 17.1 mpg for automatics—a gap of 7.3 mpg, which is enormous (about 43% better). If you only saw this number, you might conclude that choosing a manual gearbox is the key to fuel savings.\n\n\n13.2.3 Are manual and automatic cars different in weight?\n\n# Compute the mean weight for each group (auto/manual).\n\nManual cars average 2.41 thousand lbs vs 3.77 thousand lbs for automatics – a difference of 1.36 thousand lbs, or over half a ton. In earlier days, manual transmissions were common in small, sporty cars while automatics dominated larger, heavier vehicles.\n\n\n13.2.4 Is weight associated with mpg?\n\n# Compute correlation\n\nHeavier cars get much worse mileage. This is intuitive: more mass requires more energy.\n\n\n13.2.5 mpg of automatic vs manual cars within weight groups\n\n# First, compute quantiles of the weights\nqs &lt;- quantile(mtcars$wt, probs = c(0, 1/3, 2/3, 1))\n\n# Then, figure out which group each car belongs to, add it the data as a column\nmtcars$wt_group &lt;- cut(mtcars$wt, \n                       breaks = qs,\n                       labels = c(\"Light\", \"Medium\", \"Heavy\")\n                       )\n\n\n# Compare the mpg of automatic versus manual in each weight group\n# tapply(mtcars$mpg, list(wt_group = mtcars$wt_group, am = mtcars$am), mean)\n\n\n\n13.2.6 Summary\nIn this dataset,\n\nManual cars are much lighter.\nLighter cars get much better mileage.\nWithin similar weight classes, the manual–automatic mpg gap is smaller.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#simulating-a-coin-flip",
+    "href": "Week2_section.html#simulating-a-coin-flip",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.1 Simulating a Coin Flip",
+    "text": "14.1 Simulating a Coin Flip\nSuppose we flip a fair coin. The probability of getting Heads should be 0.5. Let’s verify this by simulation.\n\n# Simulate 10 coin flips: 1 = Heads, 0 = Tails\n\n# Print the proportion of Heads in those 10 flips\n\n\n# Repeat the above for 1,000 flips\n\nThe frequency gets closer and closer to the probability (0.5) as we increase the number of flips.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#seeds-for-reproducibility",
+    "href": "Week2_section.html#seeds-for-reproducibility",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.2 Seeds for reproducibility",
+    "text": "14.2 Seeds for reproducibility\n\n# Scenario 1:\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 1 1 0 0 0 1 0 1 0 0\n\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 0 0 0 0 1 1 1\n\n# Scenario 2:\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0\n\nset.seed(123)\nsample(c(0, 1), size = 10, replace = TRUE)\n\n [1] 0 0 0 1 0 1 1 1 0 0",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#simulating-a-biased-coin",
+    "href": "Week2_section.html#simulating-a-biased-coin",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.3 Simulating a biased coin",
+    "text": "14.3 Simulating a biased coin\nNow suppose the coin is biased, with ( P(H) = 0.7, P(T) = 0.3. )\n\nbiased_coin &lt;- sample(c(\"H\", \"T\"),\n                      size = 1000,\n                      replace = TRUE,\n                      prob = c(0.7, 0.3) # this is the part that's new\n                      )\n# Compute proportion of Heads and Tails\n\nThe simulated proportions should be close to 0.7 and 0.3.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#calculating-probability-of-an-event-rolling-two-dice",
+    "href": "Week2_section.html#calculating-probability-of-an-event-rolling-two-dice",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.4 Calculating Probability of an Event: Rolling Two Dice",
+    "text": "14.4 Calculating Probability of an Event: Rolling Two Dice\nNow let’s simulate rolling two fair six-sided dice and ask: What is the probability that the sum equals 7? What about 8?\n\nn_rolls &lt;- 10000   # number of times we roll the pair of dice\n\n# Simulate the experiment\n\n# sums &lt;- die1 + die2\n\n# Estimate probability that sum = 7\n\n# Estimate probability that sum = 8\n\nWe can compare to the exact probabilities. There are \\(6 \\times 6 = 36\\) equally likely outcomes. The ways to get a sum of 7 are: (1,6), (2,5), (3,4), (4,3), (5,2), (6,1) — that is 6 outcomes. For sum = 8: (2,6), (3,5), (4,4), (5,3), (6,2) — that is 5 outcomes.\n\n# Exact probabilities\n6/36   # P(sum = 7)\n\n[1] 0.1666667\n\n5/36   # P(sum = 8)\n\n[1] 0.1388889\n\n\nOur simulated values should be very close! (Because we simulated many identical, independent repetitions of this experiment.)\nWe can also look at the full distribution of the sum of two dice:\n\n# Frequency table of all possible sums\n\n\n# Visualize\n# barplot(table(sums) / n_rolls,\n#        main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#        xlab = \"Sum of Two Dice\",\n#        ylab = \"Estimated Probability\",\n#        col = \"steelblue\")\n\n# Add a horizontal line at the exact P(sum=7) = 6/36 for reference\n\nNotice the distribution is symmetric around 7 and triangular in shape — sums close to 7 are most likely.",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "Week2_section.html#biased-die",
+    "href": "Week2_section.html#biased-die",
+    "title": "13  Part 1: Correlation vs Causation",
+    "section": "14.5 Biased die",
+    "text": "14.5 Biased die\nNow let the die be biased. Suppose the probabilities are:\n\n1 with probability 0.05\n2 with probability 0.10\n3 with probability 0.15\n4 with probability 0.20\n5 with probability 0.20\n6 with probability 0.30\n\n\nprob_die &lt;- c(0.05, 0.10, 0.15, 0.20, 0.20, 0.30)\nsum(prob_die)\n\n[1] 1\n\n\n\n# Simulate the biased roll as we did above for the biased coin\n\n# biased_rolls &lt;- sample(...)\n\n\n14.5.1 What is the probability of rolling a 5 or 6?\n\n# Compute this using the simulated experiment\n\nExact answer from the probability distribution:\n\n# Compute using prob_die\n\n\n\n14.5.2 Display the distribution of the biased die\nBecause the outcomes are discrete, a barplot is often the first choice.\n\n# barplot(table(biased_rolls),\n#         main = \"Biased die outcomes\",\n#         xlab = \"Outcome\",\n#         ylab = \"Count\",\n#         col = \"tomato\")\n\nWe can also draw a histogram. hist(biased_rolls, ...)\n\n\n14.5.3 Sum of two rolls of the biased die\nWe can also look at the distribution of the sum of two biased dice. Following code is essentially same as before, this time with prob = prob_die in sample().\n\n# Simulate this (recycle code from earlier)\n\n\n\n14.5.4 Compare it with the same for the fair dice\nReproducing the plot from earlier (no need to run the experiment again!):\n\n# barplot(table(sums) / n_rolls,\n#         main = \"Simulated Probability Distribution of Sum of Two Dice\",\n#         xlab = \"Sum of Two Dice\",\n#         ylab = \"Estimated Probability\",\n#         col = \"steelblue\")",
+    "crumbs": [
+      "Sections",
+      "<span class='chapter-number'>13</span>  <span class='chapter-title'>Part 1: Correlation vs Causation</span>"
+    ]
+  },
+  {
+    "objectID": "quiz1.html",
+    "href": "quiz1.html",
+    "title": "14  Quiz 1 - April 10",
+    "section": "",
+    "text": "Quiz 1 will cover Introduction to Statistics and Types of Studies (Lectures 1-3, Activities 1-3).\nDuration: 10 minutes with 10 minutes extension",
+    "crumbs": [
+      "Quizzes",
+      "<span class='chapter-number'>14</span>  <span class='chapter-title'>Quiz 1 - April 10</span>"
+    ]
+  },
+  {
+    "objectID": "quiz2.html",
+    "href": "quiz2.html",
+    "title": "15  Quiz 2 - April 17",
+    "section": "",
+    "text": "Quiz 2 will cover Probability\nDuration: 10 minutes with 10 minutes extension.",
+    "crumbs": [
+      "Quizzes",
+      "<span class='chapter-number'>15</span>  <span class='chapter-title'>Quiz 2 - April 17</span>"
     ]
   }
 ]
