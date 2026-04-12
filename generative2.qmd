@@ -223,7 +223,19 @@ ggplot(filter(framingham, group == "Young (<45)"),
     )
 ```
 
-Summarizing, the variable *Z* is referred as the *standadr normal* and its distribution follows a normla curve with mean zero and standard deviation one. In traditional or modern statistical books and multiple statisitc al softwares, provide measures of the area under the standardize normal curve, with distance along the horizontal axis measured in the *Z* scale. Each area in those tables is the area under the standard normal curve below a specified value of $z$, which in term of probablities is denoted as: $P(X<x)\equiva P(Z<z)$. For example,in the previous example what is the probability (area under the curve) that the colleterol vaklue of this propulation is below 230.3mg/dL (below 2 standard deviation from the mean $Z<\mu+2\sigma$)
+In summary, the standardized variable $Z$ follows a **standard normal distribution** with mean zero and standard deviation one, denoted $Z \sim N(0,1)$. Statistical tables — found in virtually all introductory textbooks — and modern software provide areas under the standard normal curve as a function of $Z$. Each entry represents the cumulative area to the left of a specified value $z$, which in probability terms is written as:
+
+$$P(X \leq x) \equiv P(Z \leq z)$$
+
+To illustrate, consider the probability that a cholesterol value in the young adult group falls below 230.3 mg/dL — that is, within two standard deviations above the mean ($Z \leq 2$). In R this is computed as `pnorm(2)`, yielding $P(Z \leq 2) = 0.9772$, or **97.72%** (see left panel below). The complementary probability — the area above that value — follows directly as:
+
+$$P(Z > 2) = 1 - P(Z \leq 2) = 1 - 0.9772 = 0.0228$$
+
+or **2.28%** (right panel). Finally, the area between two $z$-scores is obtained by subtraction. For the interval between 130.3 and 230.3 mg/dL, corresponding to $P(-2 \leq Z \leq 2)$:
+
+$$P(-2 \leq Z \leq 2) = P(Z \leq 2) - P(Z \leq -2) = 0.9772 - 0.0228 = 0.9545$$
+
+or **95.45%** (center panel).
 
 ```{r}
 # Compute probabilities on Z scale
@@ -341,5 +353,133 @@ p1 + p2 + p3 +
     )
 ```
 
+This last result is a special case of the empirical rule, which states that in any normal distribution, approximately 68%, 95%, and 99.7% of observations fall within one, two, and three standard deviations of the mean, respectively — a result so fundamental it is sometimes called the 68-95-99.7 rule. This is illustrated in the figure below.
 
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+# Probabilities for empirical rule
+p_1sd <- pnorm(1)  - pnorm(-1)   # 68.27%
+p_2sd <- pnorm(2)  - pnorm(-2)   # 95.45%
+p_3sd <- pnorm(3)  - pnorm(-3)   # 99.73%
+
+# Shaded region helper
+shade_df <- function(from, to) {
+    x <- seq(from, to, length.out = 500)
+    data.frame(
+        x = c(from, x, to),
+        y = c(0, dnorm(x), 0)
+    )
+}
+
+# Build shaded regions
+shade_3sd <- shade_df(-3, 3)
+shade_2sd <- shade_df(-2, 2)
+shade_1sd <- shade_df(-1, 1)
+
+# Arrow height levels
+arrow_y1 <- dnorm(0) * 0.15   # 1sd arrow
+arrow_y2 <- dnorm(0) * 0.08   # 2sd arrow
+arrow_y3 <- dnorm(0) * 0.02   # 3sd arrow
+
+ggplot() +
+    # --- Shaded areas (outermost first) ---
+    geom_polygon(data  = shade_3sd,
+                 aes(x = x, y = y),
+                 fill  = "tomato",
+                 alpha = 0.3) +
+    geom_polygon(data  = shade_2sd,
+                 aes(x = x, y = y),
+                 fill  = "steelblue",
+                 alpha = 0.4) +
+    geom_polygon(data  = shade_1sd,
+                 aes(x = x, y = y),
+                 fill  = "forestgreen",
+                 alpha = 0.5) +
+
+    # --- Normal curve ---
+    stat_function(data      = data.frame(x = c(-4, 4)),
+                  aes(x = x),
+                  fun       = dnorm,
+                  color     = "navy",
+                  linewidth = 1.0) +
+
+    # --- Vertical lines ---
+    geom_vline(xintercept = c(-3, -2, -1, 1, 2, 3),
+               linetype   = "dashed",
+               color      = "gray40",
+               linewidth  = 0.4) +
+
+    # --- Arrows ---
+    # 1sd
+    annotate("segment",
+             x = -1, xend = 1,
+             y = arrow_y1, yend = arrow_y1,
+             arrow = arrow(ends   = "both",
+                           length = unit(0.15, "cm"),
+                           type   = "closed"),
+             color = "forestgreen", linewidth = 0.6) +
+    # 2sd
+    annotate("segment",
+             x = -2, xend = 2,
+             y = arrow_y2, yend = arrow_y2,
+             arrow = arrow(ends   = "both",
+                           length = unit(0.15, "cm"),
+                           type   = "closed"),
+             color = "steelblue", linewidth = 0.6) +
+    # 3sd
+    annotate("segment",
+             x = -3, xend = 3,
+             y = arrow_y3, yend = arrow_y3,
+             arrow = arrow(ends   = "both",
+                           length = unit(0.15, "cm"),
+                           type   = "closed"),
+             color = "tomato", linewidth = 0.6) +
+
+    # --- Labels for empirical rule ---
+    annotate("text",
+             x = 0, y = arrow_y1 + 0.008,
+             label    = paste0("68.27%"),
+             size     = 3.5,
+             color    = "forestgreen",
+             fontface = "bold") +
+    annotate("text",
+             x = 0, y = arrow_y2 + 0.008,
+             label    = paste0("95.45%"),
+             size     = 3.5,
+             color    = "steelblue",
+             fontface = "bold") +
+    annotate("text",
+             x = 0, y = arrow_y3 + 0.008,
+             label    = paste0("99.73%"),
+             size     = 3.5,
+             color    = "tomato",
+             fontface = "bold") +
+
+    # --- X axis labels ---
+    scale_x_continuous(
+        breaks = -3:3,
+        labels = c("-3", "-2", "-1", "0", "1", "2", "3")
+    ) +
+
+    coord_cartesian(xlim = c(-4, 4)) +
+
+    labs(
+        title    = "The Empirical Rule",
+        subtitle = "Standard Normal Distribution  Z ~ N(0,1)",
+        x        = "Z",
+        y        = NULL
+    ) +
+    theme_minimal() +
+    theme(
+        plot.title    = element_text(size = 12, face = "bold",   hjust = 0.5),
+        plot.subtitle = element_text(size = 10, face = "italic", hjust = 0.5),
+        axis.text.y   = element_blank(),
+        axis.text.x   = element_text(size = 10),
+        panel.grid    = element_blank(),
+        axis.line.x   = element_line(color = "gray40")
+    )
+```
 
