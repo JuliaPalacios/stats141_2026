@@ -1,0 +1,21 @@
+# Activity Lecture 7 {#sec-week3}
+
+Name:
+
+Use R-studio and R-markdown or quarto to solve the following problems. Explore rnorm, qnorm and pnorm.
+
+1.  A university health center reports that the heights of **male college students** at the university are approximately **normally distributed** with mean $μ=69.3$ inches and standard deviation $\sigma = 2.8$ inches. Let X be the height (in inches) of a randomly selected male student
+    1.  Find $P(X \geq 72.8)$
+
+    2.  Compute the corresponding z-score for 72.8 inches and use the standard normal distribution to compute $P(X \geq 72.8)$
+
+    3.  Plot the density curve of $X$
+
+    4.  Find $P(66.9<X<71.7)$
+
+    5.  What height $h$ marks the 90th percentile, i.e. $P(X \leq h) =0.90$?
+
+    6.  The basketball club wants to invite the tallest 5% of male students. What is the minimum height needed to be invited? How many standard deviations above from the mean is required?
+
+    7.  If 200 male students are randomly sampled, how many would you **expect** to be at least 72.8 inches tall? Explain your answer and your assumptions.
+

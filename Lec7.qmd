@@ -1,0 +1,5 @@
+---
+title: "Lec7"
+---
+
+In the previous chapter, the knowledge of both the generative model and the values of the parameters provided us with probabilities we could use for decision making – for instance, whether we had really found an epitope. In many real situations, neither the generative model nor the parameters are known, and we will need to estimate them using the data we have collected. Statistical modeling works from the data *upwards* to a model that *might* plausibly explain the data^[1](https://web.stanford.edu/class/bios221/book/02-chap.html#fn1)^. This upward-reasoning step is called statistical **inference**. This chapter will show us some of the distributions and estimation mechanisms that serve as building blocks for inference. Although the examples in this chapter are all parametric (i.e., the statistical models only have a small number of unknown parameters), the principles we discuss will generalize.
