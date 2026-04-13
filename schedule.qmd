@@ -10,4 +10,8 @@
 | 1 | 2026-04-03 | R basics and plots | [r4ds](https://r4ds.hadley.nz/data-visualize.html) chapter 1, Lecture 2 | Activity 2 |
 | 2 | 2026-04-05 | Types of studies | Lecture 3 | Activity 3 |
 | 2 | 2026-04-07 | Probability | Lecture 4 | Activity 4 |
+| 2 | 2026-04-10 | Probability 2 + Quiz 1 | Lecture 5 | No activity |
+| 3 | 2026-04-13 | Probability 3 | Lecture 6 | Activity 5 and 6 |
+| 3 | 2026-04-15 | The normal distribution | Lecture 7 | Activity 7 |
+| 3 | 2026-04-17 | Central Limit Theorem | Lecture 8 + Quiz 2 | Activity 8 |
 

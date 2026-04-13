@@ -1,0 +1,9 @@
+---
+title: "week3C"
+---
+
+1.  A biology department measures the **length of bean seedlings** after 10 days of growth. Assume individual seedling lengths have an average of μ=12.0 \mu = 12.0μ=12.0 cm and a standard deviation of σ=3.0 \sigma = 3.0σ=3.0 cm. If a class randomly samples n=25 n = 25n=25 seedlings,
+
+\(a\) What is the probability that the sample mean length Xˉ\bar{X}Xˉ will be **greater than 11.5** cm?
+
+\(b\) What is the probability that the sample mean length Xˉ\bar{X}Xˉ will be **greater than 13.0** cm?
