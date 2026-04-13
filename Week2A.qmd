@@ -12,6 +12,8 @@ Name:
 
 5.  In each of the following studies, identify which sampling technique best describes the way the data were collected (or could be treated as if they were collected): simple random sampling, random cluster sampling, or stratified random sampling. For cluster samples identify the clusters; for stratified samples identify the strata.
 
+<!-- -->
+
 (a) All 312 patients seen during one month at four randomly selected urgent-care clinics in a state were included in a study of average wait times.
 
 (b) A total of fifteen 1-liter water samples were collected from random locations along a lake to measure nitrate concentration.
