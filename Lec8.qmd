@@ -1,5 +1,7 @@
 ---
 title: "Central limit theorem"
+format: html
+bibliography: references.bib
 ---
 
 ![Statistics](/Figures/pop_cats){fig-align="center" width="95%"}
