@@ -134,7 +134,7 @@ rbinom(1, prob = 0.7, size = 15)
 
 **Question.** Repeat this function call 10 times. What seems to be the most common outcome?
 
-**Solution.** The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=4$ if $X$ follows B(15,0.7).
+**Solution.** The most frequent value is 10.5$\approx 11$. In fact, the theoretical proportion of times that we expect 10.5 to appear is the value of the probability that $X=10.5$ if $X$ follows B(15,0.7).
 
 The complete **probability mass distribution** is available by typing:
 
