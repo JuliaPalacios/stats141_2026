@@ -32,6 +32,7 @@ book:
       chapters: 
         - Week1_section.qmd
         - Week2_section.qmd
+        - Week3_section.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd

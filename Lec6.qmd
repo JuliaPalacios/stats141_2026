@@ -2,7 +2,58 @@
 title: "Probability 3"
 format: html
 bibliography: references.bib
+execute:
+  echo: true
+  warning: false
+  message: false
+  resources:
+  - Lec6_annotated.pdf
 ---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+</h1>
+
+<a href="Lec6_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+:::
+
 
 ## Expected value (Mean)
 
@@ -12,7 +63,7 @@ Rules: If X and Y are two random variables and Z=X+Y $$E(Z)=E(X+Y)=E(X)+E(Y)$$ $
 
 ## Variance
 
-The **variance** of a discrete random variable is $$Var(Y)=E((Y-E(Y)^2)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
+The **variance** of a discrete random variable is $$Var(Y)=E((Y-E(Y)^2)=\sum_{i=1}^{n} (y_{i}-E(Y))^2 P(Y=y_{i})$$
 
 In addition
 $$Var(Y)=E(Y^2)-E(Y)^2$$
@@ -106,7 +157,7 @@ $$P(X = k) = \binom{n}{k} p^k (1-p)^{n-k}, \quad k = 0, 1, \ldots, n,$$ where $n
 
 **Properties**
 
-The **mean** of a Binomial distribution is given by $n \cdot p$ (in the figure, the highest bar around $x \approx 11$, or $n(=15)\cdot p(=0.7)$, and the **variance** is defined as $np(1-p) = (15)(0.7)(0.3) = 3.15$.
+The **mean** of a Binomial distribution is given by $n \cdot p$ (in the figure, the highest bar around $x \approx 11$, or $np=15 \times 0.7$, and the **variance** is defined as $np(1-p) = (15) \times(0.7) \times (0.3) = 3.15$.
 
 ## Poisson distributions
 

@@ -14,7 +14,7 @@ Statistical modeling works from the data upwards to a model that might plausibly
 
 Let's first distinguish between population parameters and statistics (functions of our observed data) that have similar names:
 
-| Parameter | Statistic |
+| Parameter (Population) | Statistic (Sample) |
 |-----------------------------------------------|-------------------------|
 | Expected value: $E(X)=\sum^{N}_{i}x_{i}P(X=x_{i})$ | Sample mean: $\bar{x}=\frac{\sum^{n}_{i}x_{i}}{n}$ |
 | Variance: $Var(X)=\sum^{N}_{i=1}(x_{i}-E(X))^2P(X=x_{i})$ | Sample variance: $\sqrt{\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}}$ |

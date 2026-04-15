@@ -49,14 +49,10 @@ execute:
 ::: header-row
 <h1 class="page-title">
 
-
-
 </h1>
 
 <a href="Lec5_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
 :::
-
-
 
 Two events are **independent** if the occurence of one does not in any way inform us about the probability that the other will also occur.
 
@@ -64,9 +60,8 @@ Example: $E_{1}$=The first die rall is 3, and $E_{2}$=The second die roll is $3$
 
 The **multiplication rule** states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if $E_{1}$ and $E_{2}$ are independent, then $$P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})$$
 
-
 ## Conditional probability and Bayes' theorem
- 
+
 **Conditional probability** is the probability of an event given that another event occurs.
 
 **Bayes' theorem**
@@ -77,10 +72,7 @@ The *general multiplication rule*
 
 $$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
 
-The *law of total probability*
-Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
-$$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
-
+The *law of total probability* Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space $$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
 
 {{< pagebreak >}}
 
@@ -98,28 +90,23 @@ When sampling populations for biological study, we usually choose populations th
 
 A **random variable** is simply a variable that takes on *numerical values* that depend on the outcome of a chance operation (random experiment).
 
-Example. Consider the experiment to tossing a die. Let the random variable Y represent the number of spots showing. The possible values of Y are 1,..,6. We do not know the value of Y until we have tossed the die. We can then compute $$P(Y=4)$$  and $$P(2\leq Y \leq 4)$$   
+Example. Consider the experiment to tossing a die. Let the random variable Y represent the number of spots showing. The possible values of Y are 1,..,6. We do not know the value of Y until we have tossed the die. We can then compute $$P(Y=4)$$ and $$P(2\leq Y \leq 4)$$
 
 Random variables come in two flavors: Discrete and Continuous.
 
 ## Expected value (Mean)
 
-The **mean** of a discrete random variable is:
-$$E(Y)=\sum_{i=1}^{n}y_{i}P(Y=y_{i})$$
-where $y_{i}$'s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.
+The **mean** of a discrete random variable is: $$E(Y)=\sum_{i=1}^{n}y_{i}P(Y=y_{i})$$ where $y_{i}$'s are the values that the variable takes on and the sum is taken over all n possible values that Y can take.
 
 Example: Calculate the expected value of rolling a fair die once.
 
-
 {{< pagebreak >}}
 
-Rules: If X and Y are two random variables and Z=X+Y
-$$E(Z)=E(X+Y)=E(X)+E(Y)$$
-$$E(aX+b)=a E(X)+b$$
+Rules: If X and Y are two random variables and Z=X+Y $$E(Z)=E(X+Y)=E(X)+E(Y)$$ $$E(aX+b)=a E(X)+b$$
 
 ## Variance
-The **variance** of a discrete random variable is 
-$$Var(Y)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})$$
+
+The **variance** of a discrete random variable is $$Var(Y)=\sum_{i=1}^{n} (y_{i}-E(Y))^2 P(Y=y_{i})$$
 
 ## Discrete probability models
 
