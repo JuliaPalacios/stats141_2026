@@ -17,3 +17,7 @@ Name:
     2.  What is the probability that only one case will be missed?
 
     3.  What is the probability that two or more cases will be missed?
+
+    4.  What is the expected number of people with the disease?
+
+    5.  What is the standard deviation?
