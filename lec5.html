@@ -344,6 +344,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Part 1: Bernoulli and Binomial in Simulation</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
         <li class="sidebar-item sidebar-item-section">
@@ -358,13 +364,13 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./quiz2.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
   </div>
 </li>
       </ul>
@@ -488,7 +494,7 @@ window.Quarto = {
 </section>
 <section id="variance" class="level2" data-number="5.5">
 <h2 data-number="5.5" class="anchored" data-anchor-id="variance"><span class="header-section-number">5.5</span> Variance</h2>
-<p>The <strong>variance</strong> of a discrete random variable is <span class="math display">\[Var(Y)=\sum_{i=1}^{n} (y_{u}-E(Y))^2 P(Y=y_{i})\]</span></p>
+<p>The <strong>variance</strong> of a discrete random variable is <span class="math display">\[Var(Y)=\sum_{i=1}^{n} (y_{i}-E(Y))^2 P(Y=y_{i})\]</span></p>
 </section>
 <section id="discrete-probability-models" class="level2" data-number="5.6">
 <h2 data-number="5.6" class="anchored" data-anchor-id="discrete-probability-models"><span class="header-section-number">5.6</span> Discrete probability models</h2>
@@ -529,14 +535,14 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 0 0 1 0 1 0 0 0 0 1 0 1 0 0</code></pre>
+<pre><code> [1] 1 0 0 0 1 0 1 1 0 1 0 0 1 1 1</code></pre>
 </div>
 </div>
 <p>Now observe the outcome when using a biased coin that lands heads 70% of the time:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 0 0 1 1 1 0 1 1 1 1 1 1 1</code></pre>
+<pre><code> [1] 0 1 1 0 1 1 1 1 1 1 0 1 1 1 1</code></pre>
 </div>
 </div>
 <p><em>Question.</em> Note that when you call the function above several times, you get different outcomes. Why is that?</p>
