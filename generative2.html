@@ -395,6 +395,43 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+</h1>
+<p><a href="Lec7_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+</div>
 <section id="the-normal-distribution" class="level2" data-number="7.1">
 <h2 data-number="7.1" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">7.1</span> The Normal Distribution</h2>
 <p>The normal distribution is commonly used in two ways: (1) as an approximation of the empirical distribution of the data, or (2) as a theoretical model for a data-generating process. It is actually a <em>family</em> of distributions defined by two parameters, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>, representing the mean and the variance, and denoted as <span class="math inline">\(N(\mu, \sigma^2)\)</span>.</p>
