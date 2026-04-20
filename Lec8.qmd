@@ -17,7 +17,7 @@ Let's first distinguish between population parameters and statistics (functions 
 | Parameter (Population) | Statistic (Sample) |
 |-----------------------------------------------|-------------------------|
 | Expected value: $E(X)=\sum^{N}_{i}x_{i}P(X=x_{i})$ | Sample mean: $\bar{x}=\frac{\sum^{n}_{i}x_{i}}{n}$ |
-| Variance: $Var(X)=\sum^{N}_{i=1}(x_{i}-E(X))^2P(X=x_{i})$ | Sample variance: $\sqrt{\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}}$ |
+| Variance: $Var(X)=\sum^{N}_{i=1}(x_{i}-E(X))^2P(X=x_{i})$ | Sample variance: $\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}$ |
 | Probability: $P(X=a)$ | Empirical proportion: $\frac{\#a}{n}$|
 
 
@@ -33,7 +33,7 @@ mean(x)
 x<-rnorm(10000,0,1)
 mean(x)
 ```
-Clearly, different samples will give us different sample means. How much do we expect them to vary? We can compute the sample standard deviation of the sample mean as follows:
+Clearly, different samples will give us different sample means. How much do we expect them to vary? We can compute the sample standard deviation of the sample mean (standard error) as follows:
 
 ```{r}
 vector_means<-rep(0,1000)
@@ -72,4 +72,78 @@ $$Z=\frac{\bar{X}-E(X)}{SD_{x}/\sqrt{n}} $$ and $Z \approx N(0,1)$.
 
 Why do we care?
 
+## Confidence interval
+
+We pretty much know that $\bar{x}\neq \mu$. It is just way too unlikely that they would be exactly equal.
+
+Confidence interval (intuitively):  Given the data we observed, these are the range values of  that more likely contain $\mu$.
+
+If we increase our range then we’ve got a higher probability of “capturing” $\mu$ in the range.
+
+From the CLT, we know that $\bar{x}\sim N(\mu,\sigma^2/n)$. This means we can standardize $\bar{x}$ using a Z-score:
+$$Z=\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}$$.
+
+Recall: $P(-1.96<Z<1.96)=0.95$
+
+Thus
+$$P(-1.96<\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}<1.96)$$
+
+$$P(-1.96\frac{\sigma}{\sqrt{n}}<\bar{x}-\mu<1.96\frac{\sigma}{\sqrt{n}})$$
+
+$$P(-1.96\frac{\sigma}{\sqrt{n}}<\mu-\bar{x}<1.96\frac{\sigma}{\sqrt{n}})$$
+Then
+$$P(\bar{x}-1.96\frac{\sigma}{\sqrt{n}}<\mu<\bar{x}+1.96\frac{\sigma}{\sqrt{n}})$$
+
+Therefore there is a 95\% probability that the interval $(\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})$ contains $\mu$.
+
+
+```{r}
+set.seed(1)
+
+mu <- 50
+sigma <- 10
+n <- 20
+B <- 100   # number of intervals to plot
+alpha <- 0.05
+
+L <- U <- xbar <- numeric(B)
+
+z <- qnorm(1 - alpha/2)
+
+for (b in 1:B) {
+  x <- rnorm(n, mean = mu, sd = sigma)
+  xbar[b] <- mean(x)
+
+  # Normal-approx CI using the TRUE variance (sigma^2)
+  se <- sigma / sqrt(n)
+  L[b] <- xbar[b] - z * se
+  U[b] <- xbar[b] + z * se
+}
+
+covers <- (L <= mu) & (mu <= U)
+
+# Order so non-covering intervals appear first (easy to see)
+ord <- order(covers)   # FALSE then TRUE
+L <- L[ord]; U <- U[ord]; xbar <- xbar[ord]; covers <- covers[ord]
+
+# Plot
+plot(NA, xlim = range(L, U, mu), ylim = c(1, B),
+     xlab = "Mean", ylab = "Interval index",
+     main = sprintf("%d simulated %.0f%% Normal CIs (known sigma; red = misses)",
+                    B, 100*(1-alpha)))
+
+for (i in 1:B) {
+  col <- if (covers[i]) "gray30" else "red"
+  segments(L[i], i, U[i], i, col = col, lwd = 2)
+  points(xbar[i], i, pch = 16, col = col, cex = 0.6)
+}
+
+abline(v = mu, col = "blue", lwd = 2)
+legend("bottomright",
+       legend = c("CI covers true mean", "CI misses true mean", "True mean"),
+       col    = c("gray30", "red", "blue"),
+       lwd    = c(2, 2, 2),
+       bty    = "n")
+
+```
 

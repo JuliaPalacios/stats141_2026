@@ -146,8 +146,8 @@ window.Quarto = {
 </colgroup>
 <thead>
 <tr class="header">
-<th>Parameter</th>
-<th>Statistic</th>
+<th>Parameter (Population)</th>
+<th>Statistic (Sample)</th>
 </tr>
 </thead>
 <tbody>
@@ -157,7 +157,7 @@ window.Quarto = {
 </tr>
 <tr class="even">
 <td>Variance: <span class="math inline">\(Var(X)=\sum^{N}_{i=1}(x_{i}-E(X))^2P(X=x_{i})\)</span></td>
-<td>Sample variance: <span class="math inline">\(\sqrt{\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}}\)</span></td>
+<td>Sample variance: <span class="math inline">\(\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}\)</span></td>
 </tr>
 <tr class="odd">
 <td>Probability: <span class="math inline">\(P(X=a)\)</span></td>
@@ -170,25 +170,25 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.07539158</code></pre>
+<pre><code>[1] -0.1062406</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.01795929</code></pre>
+<pre><code>[1] -0.08087288</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.01093514</code></pre>
+<pre><code>[1] 0.01151874</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01022879</code></pre>
+<pre><code>[1] -0.003456002</code></pre>
 </div>
 </div>
-<p>Clearly, different samples will give us different sample means. How much do we expect them to vary? We can compute the sample standard deviation of the sample mean as follows:</p>
+<p>Clearly, different samples will give us different sample means. How much do we expect them to vary? We can compute the sample standard deviation of the sample mean (standard error) as follows:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>vector_means<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">1000</span>)</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">1000</span>){</span>
@@ -196,7 +196,7 @@ window.Quarto = {
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vector_means))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3172437</code></pre>
+<pre><code>[1] 0.3207083</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vector_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -222,7 +222,7 @@ window.Quarto = {
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vector_means))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3466534</code></pre>
+<pre><code>[1] 0.3493612</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vector_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -241,6 +241,74 @@ window.Quarto = {
 <section id="central-limit-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="central-limit-theorem">Central limit theorem</h2>
 <p>Let <span class="math inline">\(X_{1},\ldots,X_{n}\)</span> be a random sample (independent and identically distributed) from a population with mean <span class="math inline">\(E(X)\)</span> and standard deviation <span class="math inline">\(SD_{X}\)</span>, then <span class="math display">\[Z=\frac{\bar{X}-E(X)}{SD_{x}/\sqrt{n}} \]</span> and <span class="math inline">\(Z \approx N(0,1)\)</span>.</p>
+<p>Why do we care?</p>
+</section>
+<section id="confidence-interval" class="level2">
+<h2 class="anchored" data-anchor-id="confidence-interval">Confidence interval</h2>
+<p>We pretty much know that <span class="math inline">\(\bar{x}\neq \mu\)</span>. It is just way too unlikely that they would be exactly equal.</p>
+<p>Confidence interval (intuitively): Given the data we observed, these are the range values of that more likely contain <span class="math inline">\(\mu\)</span>.</p>
+<p>If we increase our range then we’ve got a higher probability of “capturing” <span class="math inline">\(\mu\)</span> in the range.</p>
+<p>From the CLT, we know that <span class="math inline">\(\bar{x}\sim N(\mu,\sigma^2/n)\)</span>. This means we can standardize <span class="math inline">\(\bar{x}\)</span> using a Z-score: <span class="math display">\[Z=\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]</span>.</p>
+<p>Recall: <span class="math inline">\(P(-1.96&lt;Z&lt;1.96)=0.95\)</span></p>
+<p>Thus <span class="math display">\[P(-1.96&lt;\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}&lt;1.96)\]</span></p>
+<p><span class="math display">\[P(-1.96\frac{\sigma}{\sqrt{n}}&lt;\bar{x}-\mu&lt;1.96\frac{\sigma}{\sqrt{n}})\]</span></p>
+<p><span class="math display">\[P(-1.96\frac{\sigma}{\sqrt{n}}&lt;\mu-\bar{x}&lt;1.96\frac{\sigma}{\sqrt{n}})\]</span> Then <span class="math display">\[P(\bar{x}-1.96\frac{\sigma}{\sqrt{n}}&lt;\mu&lt;\bar{x}+1.96\frac{\sigma}{\sqrt{n}})\]</span></p>
+<p>Therefore there is a 95% probability that the interval <span class="math inline">\((\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})\)</span> contains <span class="math inline">\(\mu\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">50</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">10</span></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># number of intervals to plot</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> U <span class="ot">&lt;-</span> xbar <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (b <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>  xbar[b] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Normal-approx CI using the TRUE variance (sigma^2)</span></span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
+<span id="cb19-19"><a href="#cb19-19" aria-hidden="true" tabindex="-1"></a>  L[b] <span class="ot">&lt;-</span> xbar[b] <span class="sc">-</span> z <span class="sc">*</span> se</span>
+<span id="cb19-20"><a href="#cb19-20" aria-hidden="true" tabindex="-1"></a>  U[b] <span class="ot">&lt;-</span> xbar[b] <span class="sc">+</span> z <span class="sc">*</span> se</span>
+<span id="cb19-21"><a href="#cb19-21" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-22"><a href="#cb19-22" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-23"><a href="#cb19-23" aria-hidden="true" tabindex="-1"></a>covers <span class="ot">&lt;-</span> (L <span class="sc">&lt;=</span> mu) <span class="sc">&amp;</span> (mu <span class="sc">&lt;=</span> U)</span>
+<span id="cb19-24"><a href="#cb19-24" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-25"><a href="#cb19-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Order so non-covering intervals appear first (easy to see)</span></span>
+<span id="cb19-26"><a href="#cb19-26" aria-hidden="true" tabindex="-1"></a>ord <span class="ot">&lt;-</span> <span class="fu">order</span>(covers)   <span class="co"># FALSE then TRUE</span></span>
+<span id="cb19-27"><a href="#cb19-27" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> L[ord]; U <span class="ot">&lt;-</span> U[ord]; xbar <span class="ot">&lt;-</span> xbar[ord]; covers <span class="ot">&lt;-</span> covers[ord]</span>
+<span id="cb19-28"><a href="#cb19-28" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-29"><a href="#cb19-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
+<span id="cb19-30"><a href="#cb19-30" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>, <span class="at">xlim =</span> <span class="fu">range</span>(L, U, mu), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, B),</span>
+<span id="cb19-31"><a href="#cb19-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean"</span>, <span class="at">ylab =</span> <span class="st">"Interval index"</span>,</span>
+<span id="cb19-32"><a href="#cb19-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">sprintf</span>(<span class="st">"%d simulated %.0f%% Normal CIs (known sigma; red = misses)"</span>,</span>
+<span id="cb19-33"><a href="#cb19-33" aria-hidden="true" tabindex="-1"></a>                    B, <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>alpha)))</span>
+<span id="cb19-34"><a href="#cb19-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-35"><a href="#cb19-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
+<span id="cb19-36"><a href="#cb19-36" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="cf">if</span> (covers[i]) <span class="st">"gray30"</span> <span class="cf">else</span> <span class="st">"red"</span></span>
+<span id="cb19-37"><a href="#cb19-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segments</span>(L[i], i, U[i], i, <span class="at">col =</span> col, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb19-38"><a href="#cb19-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(xbar[i], i, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> col, <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
+<span id="cb19-39"><a href="#cb19-39" aria-hidden="true" tabindex="-1"></a>}</span>
+<span id="cb19-40"><a href="#cb19-40" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-41"><a href="#cb19-41" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
+<span id="cb19-42"><a href="#cb19-42" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>,</span>
+<span id="cb19-43"><a href="#cb19-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"CI covers true mean"</span>, <span class="st">"CI misses true mean"</span>, <span class="st">"True mean"</span>),</span>
+<span id="cb19-44"><a href="#cb19-44" aria-hidden="true" tabindex="-1"></a>       <span class="at">col    =</span> <span class="fu">c</span>(<span class="st">"gray30"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>),</span>
+<span id="cb19-45"><a href="#cb19-45" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd    =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
+<span id="cb19-46"><a href="#cb19-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty    =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec8_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 </section>
 
 </main>

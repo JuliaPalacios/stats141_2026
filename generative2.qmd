@@ -2,7 +2,58 @@
 title: "Continuous Distributions"
 format: html
 bibliography: references.bib
+execute:
+  echo: true
+  warning: false
+  message: false
+  resources:
+  - Lec7_annotated.pdf
 ---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+</h1>
+
+<a href="Lec7_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+:::
+
 
 ## The Normal Distribution
 
