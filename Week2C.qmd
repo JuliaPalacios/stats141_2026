@@ -1,4 +1,4 @@
-# Activity Lecture 5 {#sec-week2}
+# Activity 5 {#sec-week2}
 
 Name:
 
@@ -37,7 +37,6 @@ Name:
 
     1.  What is the probability the salmon is **infected AND tests positive**?
     2.  What is the probability the salmon is **not infected AND tests positive**?
-
 
 5.  If a woman takes an early pregnancy test, she will either test positive (pregnant), or test negative (not pregnant). Suppose that if a woman really is pregnant, there is a 98% chance that she will test positive. Also, suppose that if a woman really is not pregnant, there is a 99% chance that she will test negative.
 
