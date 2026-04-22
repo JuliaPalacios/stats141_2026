@@ -15,3 +15,5 @@
 | 3 | 2026-04-15 | Probability 3 | Lecture 6 | Activity 6 |
 | 3 | 2026-04-17 | The normal distribution | Lecture 7 + Quiz 2 |  |
 | 4 | 2026-04-20 | Central Limit Theorem | Lecture 8 | Activity 7  |
+| 4 | 2026-04-22 | Confidence Intervals | Lecture 9 |   |
+| 4 | 2026-04-24 | Z-test, t-test | Lecture 10 + Quiz 3 |   |

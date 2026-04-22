@@ -2,7 +2,58 @@
 title: "Central limit theorem"
 format: html
 bibliography: references.bib
+execute:
+  echo: true
+  warning: false
+  message: false
+  resources:
+  - Lec8_annotated.pdf
 ---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+</h1>
+
+<a href="Lec8_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+:::
+
 
 ![Statistics](/Figures/pop_cats){fig-align="center" width="95%"}
 
@@ -14,12 +65,22 @@ Statistical modeling works from the data upwards to a model that might plausibly
 
 Let's first distinguish between population parameters and statistics (functions of our observed data) that have similar names:
 
+For discrete variables:
+
 | Parameter (Population) | Statistic (Sample) |
 |-----------------------------------------------|-------------------------|
 | Expected value: $E(X)=\sum^{N}_{i}x_{i}P(X=x_{i})$ | Sample mean: $\bar{x}=\frac{\sum^{n}_{i}x_{i}}{n}$ |
 | Variance: $Var(X)=\sum^{N}_{i=1}(x_{i}-E(X))^2P(X=x_{i})$ | Sample variance: $\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}$ |
 | Probability: $P(X=a)$ | Empirical proportion: $\frac{\#a}{n}$|
 
+
+For continuous variables:
+
+| Parameter (Population) | Statistic (Sample) |
+|-----------------------------------------------|-------------------------|
+| Expected value: $E(X)=\int_{\infty}^{\infty} xf(x)dx$ | Sample mean: $\bar{x}=\frac{\sum^{n}_{i}x_{i}}{n}$ |
+| Variance: $Var(X)=\int^{\infty}_{\infty}(x-E(X))^2f(x)dx$ | Sample variance: $\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}$ |
+| Probability: $P(a-\delta\leq X\leq a+\delta)$ | Empirical proportion: $\frac{\#x \in (a-\delta,a+\delta)}{n}$|
 
 The law of large numbers states that the sample mean will converge to the expected value as $n \rightarrow \infty$. For example:
 
@@ -70,7 +131,6 @@ Remarkably this histogram also looks Gaussian!
 Let $X_{1},\ldots,X_{n}$ be a random sample (independent and identically distributed) from a population with mean $E(X)$ and standard deviation $SD_{X}$, then
 $$Z=\frac{\bar{X}-E(X)}{SD_{x}/\sqrt{n}} $$ and $Z \approx N(0,1)$.
 
-Why do we care?
 
 ## Confidence interval
 

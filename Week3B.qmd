@@ -1,4 +1,4 @@
-# Activity Lecture 7 {#sec-week3}
+# Activity 7 {#sec-week3}
 
 Name:
 
@@ -18,4 +18,3 @@ Use R-studio and R-markdown or quarto to solve the following problems. Explore r
     6.  The basketball club wants to invite the tallest 5% of male students. What is the minimum height needed to be invited? How many standard deviations above from the mean is required?
 
     7.  If 200 male students are randomly sampled, how many would you **expect** to be at least 72.8 inches tall? Explain your answer and your assumptions.
-

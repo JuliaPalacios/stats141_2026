@@ -130,6 +130,43 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+</h1>
+<p><a href="Lec8_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+</div>
 <div class="quarto-figure quarto-figure-center">
 <figure class="figure">
 <p><img src="./Figures/pop_cats.png" class="img-fluid figure-img" style="width:95.0%"></p>
@@ -139,6 +176,7 @@ window.Quarto = {
 <p>In the previous lectures, the knowledge of both the generative model and the values of the <strong>parameters</strong> provided us with probabilities we could use for decision making – for instance, what is the more likely height of somebody chosen at random. In many real situations, neither the generative model nor the parameters are known, and we will need to estimate them using the data we have collected.</p>
 <p>Statistical modeling works from the data upwards to a model that might plausibly explain the data. This upward-reasoning step is called statistical inference. <img src="./Figures/inference.png" class="img-fluid quarto-figure quarto-figure-center" style="width:95.0%" alt="Statistical Inference"></p>
 <p>Let’s first distinguish between population parameters and statistics (functions of our observed data) that have similar names:</p>
+<p>For discrete variables:</p>
 <table class="caption-top table">
 <colgroup>
 <col style="width: 65%">
@@ -165,27 +203,54 @@ window.Quarto = {
 </tr>
 </tbody>
 </table>
+<p>For continuous variables:</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 65%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Parameter (Population)</th>
+<th>Statistic (Sample)</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Expected value: <span class="math inline">\(E(X)=\int_{\infty}^{\infty} xf(x)dx\)</span></td>
+<td>Sample mean: <span class="math inline">\(\bar{x}=\frac{\sum^{n}_{i}x_{i}}{n}\)</span></td>
+</tr>
+<tr class="even">
+<td>Variance: <span class="math inline">\(Var(X)=\int^{\infty}_{\infty}(x-E(X))^2f(x)dx\)</span></td>
+<td>Sample variance: <span class="math inline">\(\frac{\sum^{n}_{i=1}(x_{i}-\bar{x})^2}{n-1}\)</span></td>
+</tr>
+<tr class="odd">
+<td>Probability: <span class="math inline">\(P(a-\delta\leq X\leq a+\delta)\)</span></td>
+<td>Empirical proportion: <span class="math inline">\(\frac{\#x \in (a-\delta,a+\delta)}{n}\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>The law of large numbers states that the sample mean will converge to the expected value as <span class="math inline">\(n \rightarrow \infty\)</span>. For example:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.1062406</code></pre>
+<pre><code>[1] -0.616644</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">100</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.08087288</code></pre>
+<pre><code>[1] -0.0534414</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">1000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.01151874</code></pre>
+<pre><code>[1] 0.01928328</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>x<span class="ot">&lt;-</span><span class="fu">rnorm</span>(<span class="dv">10000</span>,<span class="dv">0</span>,<span class="dv">1</span>)</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(x)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.003456002</code></pre>
+<pre><code>[1] 0.02496876</code></pre>
 </div>
 </div>
 <p>Clearly, different samples will give us different sample means. How much do we expect them to vary? We can compute the sample standard deviation of the sample mean (standard error) as follows:</p>
@@ -196,7 +261,7 @@ window.Quarto = {
 <span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vector_means))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3207083</code></pre>
+<pre><code>[1] 0.3197325</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vector_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -222,7 +287,7 @@ window.Quarto = {
 <span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>}</span>
 <span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="fu">sqrt</span>(<span class="fu">var</span>(vector_means))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.3493612</code></pre>
+<pre><code>[1] 0.3534347</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="fu">hist</span>(vector_means)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
@@ -241,7 +306,6 @@ window.Quarto = {
 <section id="central-limit-theorem" class="level2">
 <h2 class="anchored" data-anchor-id="central-limit-theorem">Central limit theorem</h2>
 <p>Let <span class="math inline">\(X_{1},\ldots,X_{n}\)</span> be a random sample (independent and identically distributed) from a population with mean <span class="math inline">\(E(X)\)</span> and standard deviation <span class="math inline">\(SD_{X}\)</span>, then <span class="math display">\[Z=\frac{\bar{X}-E(X)}{SD_{x}/\sqrt{n}} \]</span> and <span class="math inline">\(Z \approx N(0,1)\)</span>.</p>
-<p>Why do we care?</p>
 </section>
 <section id="confidence-interval" class="level2">
 <h2 class="anchored" data-anchor-id="confidence-interval">Confidence interval</h2>

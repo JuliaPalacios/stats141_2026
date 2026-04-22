@@ -1,7 +1,6 @@
-# Activity Lecture 1 {#sec-week1}
+# Activity 1 {#sec-week1}
 
 Name:
-
 
 ## Descriptive Statistics
 

@@ -1,5 +1,5 @@
 # Quiz 3 - April 24
 
-Quiz 3 will cover continuous distributions, law of large numbers and central limit
+Quiz 3 will cover continuous distributions, law of large numbers and central limit.
 
 Duration: 10 minutes with 10 minutes extension
