@@ -1,0 +1,185 @@
+---
+title: "Week 4 Section"
+author: "Stats 141, Spring 2026"
+format: pdf
+execute:
+  echo: true
+  warning: false
+  message: false
+---
+
+# Part 1: Expectation and Variance
+
+**Problem.** Alice and Bob have a machine that generates random observations from an unknown distribution. Alice generates one observation $X$ and draws a square of length $X$. Bob generates two independent observations $X_1$ and $X_2$ and draws a rectangle of dimensions $X_1$ by $X_2$. Which of these rectangles (a square is also a rectangle!) is expected to have the larger area?
+
+**Hint:** $X$, $X_1$ and $X_2$ are independent observations from the same distribution.
+
+
+# Part 2: Normal distribution 
+
+The normal distribution $X \sim N(\mu, \sigma^2)$ is characterized by
+two parameters: the mean $\mu$ (location) and the variance $\sigma^2$
+(spread). R provides four key functions for working with it:
+
+| Function | What it does | Analog for Binomial |
+|---|---|---|
+| `dnorm(x, mean, sd)` | Height of density curve at $x$ | `dbinom` (PMF) |
+| `pnorm(q, mean, sd)` | $P(X \leq q)$ — area to the left | `pbinom` |
+| `qnorm(p, mean, sd)` | Quantile: value with area $p$ to its left | `qbinom` |
+| `rnorm(n, mean, sd)` | Draw $n$ random observations | `rbinom` |
+
+
+## Visualizing normal curves
+
+The parameter $\mu$ shifts the curve left or right. The parameter
+$\sigma$ changes how wide or narrow the curve is.
+
+```{r}
+x <- seq(80, 360, length.out = 1000)
+
+plot(x, dnorm(x, mean = 220, sd = 20),
+     type = "l", lwd = 2,
+     ylim = c(0, 0.022),
+     xlab = "x (Cholesterol)", ylab = "Density",
+     main = "Normal curves with different means / SDs")
+lines(x, dnorm(x, mean = 220, sd = 35), lwd = 2, col = "steelblue")
+lines(x, dnorm(x, mean = 250, sd = 35), lwd = 2, col = "tomato")
+legend("topright",
+       legend = c("N(220, 20^2)", "N(220, 35^2)", "N(250, 35^2)"),
+       col = c("black", "steelblue", "tomato"),
+       lwd = 2,
+       bty = "n")
+```
+
+
+-   The two curves with mean 220 are centered at the same place.
+-   The curve with SD 20 is narrower and taller.
+-   Changing the mean moves the whole curve.
+
+Important point: for a continuous random variable, **probability
+is area under the curve**, not the height of the curve at one point.
+
+## Standardization: going from X to Z
+
+Suppose cholesterol in some population is approximately normal with mean 220 mg/dL and s.d. 20 mg/dL. Write this as $X\sim N(220, 20^2)$.
+
+To standardize, we compute
+$$
+Z = \frac{X - \mu}{\sigma}.
+$$
+Then $Z \sim N(0,1)$.
+
+This lets us translate values on the original scale to the standard
+normal scale.
+
+```{r}
+mu <- 220
+sigma <- 20
+
+# Convert 260 mg/dL to a z-score
+```
+
+So 260 mg/dL is __ standard deviations above the mean (assuming that the mean is $220$ and the s.d. is $20$).
+
+## Calculating tail probabilities
+
+For a normal distribution, approximately:
+
+- 68% of values lie within 1-SD away from the mean
+- 95% of values lie within 2-SD away from the mean
+- 99% of values lie within 3-SD away from the mean
+
+### Example 1: Probability in an interval
+
+Compute $P(180 \leq X \leq 260)$ when $X \sim N(220, 20^2)$.
+
+### Example 2: Compute $P(X \geq 260)$ when $X \sim N(220, 20^2)$. 
+
+# Part 3: Central Limit Theorem / Normal Approximation
+
+Central limit theorem says the sample mean of $n$ i.i.d. (independent and identically distributed) random variables, $\overline{X}=\frac{1}{n}\sum_{i=1}^n X_i$, is approximately Normally distributed, with mean $\mu=E[X]$ and variance $\sigma^2=Var(\overline{X}) = Var(X)/n$. In other words, $$\frac{\overline{X}-E[X]}{\sqrt{Var(\overline{X})}}\approx N(0,1).$$
+
+
+It is important to note that while $E[\overline{X}]=E[X]$ (by linearity of expectation and identical mean for each $X_i$), the variance of the sample mean has an additional factor of $1/n$: $$Var(\overline{X})=Var(X)/n.$$
+
+A special case that you need to remember: When $X_i$ are Bernoulli, we can remember the same result in the sum format (instead of the mean):
+
+$\text{Binomial}(n, p)$ is approximately Normal with mean $\mu=np$ and s.d. $\sigma = \sqrt{np(1-p)}$.
+
+## An illustration
+
+```{r clt-binomial, fig.width=10, fig.height=8}
+set.seed(42)
+B <- 5000
+p  <- 0.4
+ns <- c(10, 20, 50, 100)
+
+par(mfrow = c(2, 2), mar = c(4, 4, 3, 1))
+
+for (n in ns) {
+  means <- replicate(B, mean(rbinom(n, size = 1, prob = p)))
+  
+  mu  <- p
+  sig <- sqrt(p * (1 - p) / n)
+  
+  hist(means,
+       breaks  = 20,
+       probability = TRUE,
+       col     = "steelblue",
+       border  = "white",
+       xlim    = c(mu - 4*sig, mu + 4*sig),
+       ylim    = c(0, dnorm(0, sd = sig) * 1.2),
+       main    = paste0("Binomial(n = ", n,", p = ",p, ")"),
+       xlab    = "Sample mean",
+       ylab    = "Density")
+  
+  curve(dnorm(x, mean = mu, sd = sig),
+        col = "tomato", lwd = 2.5, add = TRUE)
+}
+```
+
+## CLT simulation from a skewed population
+
+We simulate from an exponential distribution. The original distribution is
+right-skewed, definitely not normal. But the sample mean becomes more and
+more normal-looking as the sample size increases.
+
+```{r}
+set.seed(42)
+B <- 5000
+
+means_n1  <- replicate(B, mean(rexp(1,  rate = 1)))
+means_n5  <- replicate(B, mean(rexp(5,  rate = 1)))
+means_n30 <- replicate(B, mean(rexp(30, rate = 1)))
+
+par(mfrow = c(1, 3))
+
+hist(means_n1, 
+     breaks = 30, 
+     probability = TRUE,
+     main = "Sample mean, n = 1",
+     xlab = "xbar", col = "steelblue", border = "white")
+curve(dnorm(x, mean = 1, sd = 1/sqrt(1)), 
+      add = TRUE, col = "tomato", lwd = 2)
+
+hist(means_n5, 
+     breaks = 30, 
+     probability = TRUE,
+     main = "Sample mean, n = 5",
+     xlab = "xbar", col = "steelblue", border = "white")
+curve(dnorm(x, mean = 1, sd = 1/sqrt(5)),
+      add = TRUE, col = "tomato", lwd = 2)
+
+hist(means_n30, 
+     breaks = 30, 
+     probability = TRUE,
+     main = "Sample mean, n = 30",
+     xlab = "xbar", col = "steelblue", border = "white")
+curve(dnorm(x, mean = 1, sd = 1/sqrt(30)), 
+      add = TRUE, col = "tomato", lwd = 2)
+```
+
+## Example: Approximating Binomial tail probabilities using Normal approximation
+
+**Problem.** A fair coin is flipped 100 times. Using the Normal approximation, find the probability of obtaining at least 60 heads. What's the probability of obtaining at least 40 and no more than 60 heads?
+
