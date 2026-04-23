@@ -55,7 +55,7 @@ Week 4 Section
 
 </h1>
 
-<a href="Week4_section_incomplete.qmd" class="download-btn" download> ⬇
+<a href="Week4_section_download.qmd" class="download-btn" download> ⬇
 Download Starter File </a>
 :::
 
@@ -80,7 +80,7 @@ two parameters: the mean $\mu$ (location) and the variance $\sigma^2$
 (spread). R provides four key functions for working with it:
 
 | Function | What it does | Analog for Binomial |
-|----|----|----|
+|------------------------|------------------------|------------------------|
 | `dnorm(x, mean, sd)` | Height of density curve at $x$ | `dbinom` (PMF) |
 | `pnorm(q, mean, sd)` | $P(X \leq q)$ — area to the left | `pbinom` |
 | `qnorm(p, mean, sd)` | Quantile: value with area $p$ to its left | `qbinom` |
