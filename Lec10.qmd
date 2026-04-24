@@ -1,0 +1,88 @@
+---
+title: "t-distribution"
+format: html
+bibliography: references.bib
+---
+
+Recall a 95% z-confidence interval for the population mean parameter is:
+
+$$(\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})$$.
+
+However we have assumed that we know $\sigma$. This interval cannot be used for data analysis because typically we do not know \$\sigma\$.
+
+How about we replace $\sigma$ by the estimate: $\hat{\sigma}$=sample SD?
+
+When the data is normally (Gaussian) distributed and we replace $\sigma$ by $\hat{\sigma}=$sample SD, then the corresponding 95% confidence interval is:
+
+$$(\bar{x}-t_{.975}\frac{\hat{\sigma}}{\sqrt{n}},\bar{x}+t_{.975}\frac{\hat{\sigma}}{\sqrt{n}})$$.
+
+wher $t_{.975}$ is the 97.5 percentile of the central $t$-distribution with $n-1$ degrees of freedom.
+
+or equivalently:
+
+$$\bar{x} \pm  t_{.975}\frac{\hat{\sigma}}{\sqrt{n}}$$.
+or
+$$\bar{x} \pm  t_{.025}\frac{\hat{\sigma}}{\sqrt{n}}$$.
+
+
+where $t_{.025}$ is the 2.5 percentile of the central $t-$distribution with $n-1$ degrees of freedom (df).
+
+The following plots compare the central t-distribution densities with different degrees of freedom to the standard normal distribution. As the degrees of freedom increases, the t-distribution gets closer and closer to the standard normal distribution.
+
+```{r}
+# Plot: Standard Normal vs t(df=3) and t(df=10)
+library(ggplot2)
+
+x <- seq(-5, 5, length.out = 2000)
+
+df <- data.frame(
+  x = rep(x, 3),
+  density = c(dnorm(x), dt(x, df = 3), dt(x, df = 10)),
+  dist = factor(rep(c("N(0,1)", "t (df = 3)", "t (df = 10)"), each = length(x)),
+                levels = c("N(0,1)", "t (df = 10)", "t (df = 3)"))
+)
+
+ggplot(df, aes(x = x, y = density, color = dist, linetype = dist)) +
+  geom_line(linewidth = 1.1) +
+  scale_color_manual(values = c("N(0,1)" = "#1b9e77",
+                                "t (df = 10)" = "#7570b3",
+                                "t (df = 3)"  = "#d95f02")) +
+  scale_linetype_manual(values = c("N(0,1)" = "solid",
+                                   "t (df = 10)" = "dashed",
+                                   "t (df = 3)"  = "dotdash")) +
+  labs(title = "Standard Normal vs Student t Distributions",
+       x = "x", y = "Density", color = NULL, linetype = NULL) +
+  coord_cartesian(xlim = c(-5, 5)) +
+  theme_minimal(base_size = 13) +
+  theme(legend.position = "top",
+        panel.grid.minor = element_blank())
+
+```
+
+Recall the quiz 3 problem:
+
+::: {.callout-note icon="false"}
+## Example: Monarch butterflies
+Assume the population of monarch butterflies in Natural Bridges State Beach has a normally distributed wingspan. Assume also that you collect a sample of 100 butterflies and compute an average wingspan of 9.6 cm and estimate the sample standard deviation to be 0.3. What is a 95% confidence interval for the population mean?
+
+:::
+
+```{r}
+t975<-qt(.975,df=99)
+t975
+se<-0.3/sqrt(100)
+9.6-t975*se
+9.6+t975*se
+```
+
+We are 95% confident the the average wingspan is within (9.54,9.65).
+
+What happens if our population is not normally distributed? When can I use the CLT and normal approximation?
+
+
+If the population is not Gaussian, the t-interval is often still approximately correct when:
+
+*$n$ is moderately large (CLT  $\bar X$ kicks in), and
+*The distribution isn’t extremely skewed
+*Observations are i.i.d. (independent and identically distributed) with finite variance.
+

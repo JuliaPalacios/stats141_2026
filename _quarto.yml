@@ -19,6 +19,7 @@ book:
         - generative2.qmd
         - lec8.qmd
         - lec9.qmd
+        - lec10.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd

@@ -482,7 +482,7 @@ window.Quarto = {
 <h1 class="page-title">
 <p>Week 3 Section</p>
 </h1>
-<p><a href="Week3_section_incomplete.qmd" class="download-btn" download=""> ⬇ Download Starter File </a></p>
+<p><a href="Week3_section_download.qmd" class="download-btn" download=""> ⬇ Download Starter File </a></p>
 </div>
 <p>The <strong>probability</strong> of an event is the proportion of times it occurs in a very large number of identical, independent repetitions of the same random experiment. We can use random number generators in R to <em>simulate</em> these repetitions and see this in action.</p>
 <section id="simulating-a-coin-flip" class="level2" data-number="21.1">
@@ -514,11 +514,11 @@ window.Quarto = {
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scenario 1:</span></span>
 <span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 0 0 0 0 1 1 1 1 1 0</code></pre>
+<pre><code> [1] 0 1 1 0 1 0 1 0 0 1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sample</span>(<span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>), <span class="at">size =</span> <span class="dv">10</span>, <span class="at">replace =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 0 0 1 1 0 0 0 1 1</code></pre>
+<pre><code> [1] 1 0 0 1 1 1 1 0 1 1</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Scenario 2:</span></span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
