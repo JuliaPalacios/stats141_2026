@@ -20,10 +20,7 @@ wher $t_{.975}$ is the 97.5 percentile of the central $t$-distribution with $n-1
 
 or equivalently:
 
-$$\bar{x} \pm  t_{.975}\frac{\hat{\sigma}}{\sqrt{n}}$$.
-or
-$$\bar{x} \pm  t_{.025}\frac{\hat{\sigma}}{\sqrt{n}}$$.
-
+$$\bar{x} \pm  t_{.975}\frac{\hat{\sigma}}{\sqrt{n}}$$. or $$\bar{x} \pm  t_{.025}\frac{\hat{\sigma}}{\sqrt{n}}$$.
 
 where $t_{.025}$ is the 2.5 percentile of the central $t-$distribution with $n-1$ degrees of freedom (df).
 
@@ -63,8 +60,8 @@ Recall the quiz 3 problem:
 
 ::: {.callout-note icon="false"}
 ## Example: Monarch butterflies
-Assume the population of monarch butterflies in Natural Bridges State Beach has a normally distributed wingspan. Assume also that you collect a sample of 100 butterflies and compute an average wingspan of 9.6 cm and estimate the sample standard deviation to be 0.3. What is a 95% confidence interval for the population mean?
 
+Assume the population of monarch butterflies in Natural Bridges State Beach has a normally distributed wingspan. Assume also that you collect a sample of 100 butterflies and compute an average wingspan of 9.6 cm and estimate the sample standard deviation to be 0.3. What is a 95% confidence interval for the population mean?
 :::
 
 ```{r}
@@ -79,10 +76,10 @@ We are 95% confident the the average wingspan is within (9.54,9.65).
 
 What happens if our population is not normally distributed? When can I use the CLT and normal approximation?
 
-
 If the population is not Gaussian, the t-interval is often still approximately correct when:
 
-*$n$ is moderately large (CLT  $\bar X$ kicks in), and
-*The distribution isn’t extremely skewed
-*Observations are i.i.d. (independent and identically distributed) with finite variance.
+-   $n$ is moderately large (CLT $\bar X$ kicks in), and
 
+-   The distribution isn’t extremely skewed
+
+-   Observations are i.i.d. (independent and identically distributed) with finite variance.
