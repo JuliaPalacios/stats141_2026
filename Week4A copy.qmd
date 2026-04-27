@@ -1,0 +1,7 @@
+# Activity 8 {#sec-week2}
+
+Name:
+
+
+
+1. Repeat the Framingham simulation to obtain 100 95% confidence intervals of a different variable and using the CLT approximation. How many of these intervals cover the truth?

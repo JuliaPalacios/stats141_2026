@@ -20,6 +20,7 @@ book:
         - lec8.qmd
         - lec9.qmd
         - lec10.qmd
+        - lec11.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
@@ -30,6 +31,7 @@ book:
         - Week3A.qmd
         - Week3B.qmd
         - Week4A.qmd
+        - Week5A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 

@@ -8,7 +8,7 @@ Recall a 95% z-confidence interval for the population mean parameter is:
 
 $$(\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})$$.
 
-However we have assumed that we know $\sigma$. This interval cannot be used for data analysis because typically we do not know $\sigma$.
+However we have assumed that we know $\sigma$. This interval cannot be used for data analysis because typically we do not know \$\sigma\$.
 
 How about we replace $\sigma$ by the estimate: $\hat{\sigma}$=sample SD?
 
