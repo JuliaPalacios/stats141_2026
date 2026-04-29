@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Hypothesis testing</title>
+<title>12&nbsp; Hypothesis testing – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -61,17 +61,52 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </style>
 
 
-<script src="Lec12_files/libs/clipboard/clipboard.min.js"></script>
-<script src="Lec12_files/libs/quarto-html/quarto.js" type="module"></script>
-<script src="Lec12_files/libs/quarto-html/tabsets/tabsets.js" type="module"></script>
-<script src="Lec12_files/libs/quarto-html/popper.min.js"></script>
-<script src="Lec12_files/libs/quarto-html/tippy.umd.min.js"></script>
-<script src="Lec12_files/libs/quarto-html/anchor.min.js"></script>
-<link href="Lec12_files/libs/quarto-html/tippy.css" rel="stylesheet">
-<link href="Lec12_files/libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
-<script src="Lec12_files/libs/bootstrap/bootstrap.min.js"></script>
-<link href="Lec12_files/libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
-<link href="Lec12_files/libs/bootstrap/bootstrap-138a6193a3bd40baf1e627da441a4734.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-nav/quarto-nav.js"></script>
+<script src="site_libs/quarto-nav/headroom.min.js"></script>
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-search/autocomplete.umd.js"></script>
+<script src="site_libs/quarto-search/fuse.min.js"></script>
+<script src="site_libs/quarto-search/quarto-search.js"></script>
+<meta name="quarto:offset" content="./">
+<link href="./Week1A.html" rel="next">
+<link href="./lec11.html" rel="prev">
+<script src="site_libs/quarto-html/quarto.js" type="module"></script>
+<script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-845c23b38eaddc0f92fda52bfe77a8c8.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-5ccb035bea26c1e21f80f44cf7c27909.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script id="quarto-search-options" type="application/json">{
+  "location": "sidebar",
+  "copy-button": false,
+  "collapse-after": 3,
+  "panel-placement": "start",
+  "type": "textbox",
+  "limit": 50,
+  "keyboard-shortcut": [
+    "f",
+    "/",
+    "s"
+  ],
+  "show-item-context": false,
+  "language": {
+    "search-no-results-text": "No results",
+    "search-matching-documents-text": "matching documents",
+    "search-copy-link-title": "Copy link to search",
+    "search-hide-matches-text": "Hide additional matches",
+    "search-more-match-text": "more match in this document",
+    "search-more-matches-text": "more matches in this document",
+    "search-clear-button-title": "Clear",
+    "search-text-placeholder": "",
+    "search-detached-cancel-button-title": "Cancel",
+    "search-submit-button-title": "Submit",
+    "search-label": "Search"
+  }
+}</script>
 
   <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
   <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
@@ -105,15 +140,293 @@ window.Quarto = {
 
 </head>
 
-<body class="fullcontent quarto-light">
+<body class="nav-sidebar floating quarto-light">
 
-<div id="quarto-content" class="page-columns page-rows-contents page-layout-article">
-
+<div id="quarto-search-results"></div>
+  <header id="quarto-header" class="headroom fixed-top">
+  <nav class="quarto-secondary-nav">
+    <div class="container-fluid d-flex">
+      <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
+        <i class="bi bi-layout-text-sidebar-reverse"></i>
+      </button>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a></li></ol></nav>
+        <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
+        </a>
+      <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
+        <i class="bi bi-search"></i>
+      </button>
+    </div>
+  </nav>
+</header>
+<!-- content -->
+<div id="quarto-content" class="quarto-container page-columns page-rows-contents page-layout-article">
+<!-- sidebar -->
+  <nav id="quarto-sidebar" class="sidebar collapse collapse-horizontal quarto-sidebar-collapse-item sidebar-navigation floating overflow-auto">
+    <div class="pt-lg-2 mt-2 text-left sidebar-header">
+    <div class="sidebar-title mb-0 py-0">
+      <a href="./">Stats 141. Introduction to Statistics for Biology</a> 
+    </div>
+      </div>
+        <div class="mt-2 flex-shrink-0 align-items-center">
+        <div class="sidebar-search">
+        <div id="quarto-search" class="" title="Search"></div>
+        </div>
+        </div>
+    <div class="sidebar-menu-container"> 
+    <ul class="list-unstyled mt-1">
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./index.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Syllabus</span></a>
+  </div>
+</li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./schedule.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text">Schedule</span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true">
+ <span class="menu-text">Lectures</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-1" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-1" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./intro.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">1</span>&nbsp; <span class="chapter-title">Statistics</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./samples.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">2</span>&nbsp; <span class="chapter-title">Plotting the data</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">3</span>&nbsp; <span class="chapter-title">Types of Studies</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">4</span>&nbsp; <span class="chapter-title">Probability</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec5.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">5</span>&nbsp; <span class="chapter-title">Probability 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec6.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probability 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./generative2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Continuous Distributions</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec8.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Central limit theorem</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec9.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Confidence intervals</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec10.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">t-distribution</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec11.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Two-sample comparisons and Hypothesis testing</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./lec12.html" class="sidebar-item-text sidebar-link active">
+ <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true">
+ <span class="menu-text">Activities</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-2" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-2" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Activity 1</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Activity 2</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">Activity 3</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">16</span>&nbsp; <span class="chapter-title">Activity 4</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2C.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">17</span>&nbsp; <span class="chapter-title">Activity 5</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Activity 6</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3B.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Activity 7</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Activity 8</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week5A.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Activity 9</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./summary.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Summary</span></span></a>
+  </div>
+</li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true">
+ <span class="menu-text">Sections</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-3" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-3" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week1_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">23</span>&nbsp; <span class="chapter-title">Quarto</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week2_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">24</span>&nbsp; <span class="chapter-title">Part 1: Correlation vs Causation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week3_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">25</span>&nbsp; <span class="chapter-title">Part 1: Bernoulli and Binomial in Simulation</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./Week4_section.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">26</span>&nbsp; <span class="chapter-title">Week 4</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+        <li class="sidebar-item sidebar-item-section">
+      <div class="sidebar-item-container"> 
+            <a class="sidebar-item-text sidebar-link text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true">
+ <span class="menu-text">Quizzes</span></a>
+          <a class="sidebar-item-toggle text-start" data-bs-toggle="collapse" data-bs-target="#quarto-sidebar-section-4" role="navigation" aria-expanded="true" aria-label="Toggle section">
+            <i class="bi bi-chevron-right ms-2"></i>
+          </a> 
+      </div>
+      <ul id="quarto-sidebar-section-4" class="collapse list-unstyled sidebar-section depth1 show">  
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz1.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">27</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz2.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
+  </div>
+</li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz3.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quiz 3 - April 24</span></span></a>
+  </div>
+</li>
+      </ul>
+  </li>
+    </ul>
+    </div>
+</nav>
+<div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
+<!-- margin-sidebar -->
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link active" data-scroll-target="#t-test"><span class="header-section-number">12.1</span> t-test</a></li>
+  <li><a href="#one-population" id="toc-one-population" class="nav-link" data-scroll-target="#one-population"><span class="header-section-number">12.2</span> One population</a></li>
+  <li><a href="#two-population-difference" id="toc-two-population-difference" class="nav-link" data-scroll-target="#two-population-difference"><span class="header-section-number">12.3</span> Two population difference</a></li>
+  <li><a href="#randomization-test-permutation-test" id="toc-randomization-test-permutation-test" class="nav-link" data-scroll-target="#randomization-test-permutation-test"><span class="header-section-number">12.4</span> Randomization test (permutation test)</a></li>
+  </ul>
+</nav>
+    </div>
+<!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title">Hypothesis testing</h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></h1>
 </div>
 
 
@@ -199,7 +512,7 @@ Note
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lec12_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec12_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -237,7 +550,7 @@ Important
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lec12_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec12_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -287,26 +600,85 @@ probability of success
                   0.59 </code></pre>
 </div>
 </div>
-<section id="t-test" class="level2">
-<h2 class="anchored" data-anchor-id="t-test">t-test</h2>
+<section id="t-test" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="t-test"><span class="header-section-number">12.1</span> t-test</h2>
 </section>
-<section id="one-population" class="level2">
-<h2 class="anchored" data-anchor-id="one-population">One population</h2>
-<p>We are interested in testing <span class="math inline">\(H_{0}: \mu_{1}=0\)</span> You have data <span class="math inline">\(x_1,\dots,x_n\)</span> and assume they come from a population with mean <span class="math inline">\(\mu\)</span>. You want to test:</p>
+<section id="one-population" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="one-population"><span class="header-section-number">12.2</span> One population</h2>
+<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu\)</span>. You want to test:</p>
 <p>Null hypothesis: <span class="math inline">\(H_0:\ \mu = 0\)</span> Alternative hypothesis (choose one):</p>
 <p>Two-sided: <span class="math inline">\(H_1:\ \mu \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu &lt; 0\)</span></p>
-<p>Test statistic</p>
-<p><span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span> (sample mean) <span class="math inline">\(s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2}\)</span> (sample standard deviation)</p>
-<p>Then the one-sample t statistic is <span class="math display">\[t = \frac{\bar{x} - 0}{s/\sqrt{n}} = \frac{\bar{x}}{s/\sqrt{n}}.\]</span> Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this statistic follows a t distribution with <span class="math display">\[\text{df} = n-1\]</span> degrees of freedom. How the decision is made</p>
-<p>Compute <span class="math inline">\(t\)</span>. Compute a p-value from the <span class="math inline">\(t_{n-1}\)</span> distribution depending on the alternative:</p>
+<p>Then the one-sample t statistic is <span class="math display">\[t = \frac{\bar{x} - 0}{s/\sqrt{n}} = \frac{\bar{x}}{s/\sqrt{n}}.\]</span> Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this statistic follows a t distribution with <span class="math display">\[\text{df} = n-1\]</span> degrees of freedom.</p>
+<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t_{n-1}\)</span> distribution depending on the alternative:</p>
 <p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
 <p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
-<p>Confidence interval connection A two-sided t-test at level <span class="math inline">\(\alpha\)</span> is equivalent to checking whether 0 lies in the <span class="math inline">\((1-\alpha)\)</span> CI: <span class="math display">\[\bar{x} \pm t_{1-\alpha/2,\ n-1}\,\frac{s}{\sqrt{n}}.\]</span></p>
+<p>Confidence interval connection:</p>
+<p>A two-sided t-test at level <span class="math inline">\(\alpha\)</span> is equivalent to checking whether 0 lies in the <span class="math inline">\((1-\alpha)\)</span> CI: <span class="math display">\[\bar{x} \pm t_{1-\alpha/2,\ n-1}\,\frac{s}{\sqrt{n}}.\]</span></p>
+</section>
+<section id="two-population-difference" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="two-population-difference"><span class="header-section-number">12.3</span> Two population difference</h2>
+<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu_{x}\)</span>, and you have data <span class="math inline">\(y_1,\ldots, y_{n}\)</span> from a population with mean <span class="math inline">\(\mu_{y}\)</span></p>
+<p>Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = 0\)</span> Alternative hypothesis (choose one):</p>
+<p>Two-sided: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &lt; 0\)</span></p>
+<p>Then the two-sample t statistic is</p>
+<p><span class="math display">\[t=\frac{(\bar{x}_{1}-\bar{x}_{2})-0}{SE_{(\bar{x}_{1}-\bar{x}_{2})}} \]</span></p>
+<p>Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this stat istic follows a t distribution with <span class="math display">\[\text{df} =\mathrm{df}
+=
+\frac{\left(\frac{s_x^2}{n_x}+\frac{s_y^2}{n_y}\right)^2}
+{\frac{\left(\frac{s_x^2}{n_x}\right)^2}{n_x-1}
++
+\frac{\left(\frac{s_y^2}{n_y}\right)^2}{n_y-1}}\]</span> degrees of freedom.</p>
+<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t\)</span> distribution depending on the alternative:</p>
+<p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
+<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, mu = 0)                 # Welch (default)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, var.equal = TRUE)       # pooled equal-variance t-test</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, alternative="greater")  # H1: mu1 - mu2 &gt; 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>What happens if you want to test: Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = c\)</span>?</strong></p>
+</section>
+<section id="randomization-test-permutation-test" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="randomization-test-permutation-test"><span class="header-section-number">12.4</span> Randomization test (permutation test)</h2>
+<p>This is a two-sample test that does not assume normality; it assumes the treatment labels were assigned at random (and units are independent).</p>
+<p>You observe outcomes from <span class="math inline">\(n\)</span> units, with <span class="math inline">\(n_1\)</span> labeled “treatment” and <span class="math inline">\(n_2\)</span> labeled “control”. To test <span class="math display">\[H_0:\ \text{no treatment effect}\]</span> Under <span class="math inline">\(H_0\)</span>, the outcomes would be the same regardless of who was labeled treated, so the observed treatment labels are exchangeable. Therefore, any reassignment of the treatment labels (keeping <span class="math inline">\(n_1\)</span> treated) is equally likely.</p>
+<p>Procedure</p>
+<p>Choose a test statistic <span class="math inline">\(T\)</span> measuring difference between groups (e.g., <span class="math inline">\(\bar Y_T-\bar Y_C\)</span>) and compute the observed statistic <span class="math inline">\(T_{\text{obs}}\)</span>.</p>
+<p>Re-randomize: repeatedly shuffle the treatment labels (or enumerate all shuffles), recompute <span class="math inline">\(T\)</span> each time. The p-value is the fraction of shuffles where <span class="math inline">\(T\)</span> is at least as extreme as <span class="math inline">\(T_{\text{obs}}\)</span> (two-sided uses <span class="math inline">\(|T|\)</span>).</p>
+<p><strong>Example:</strong></p>
+<p>Outcomes: <span class="math inline">\(y = [5,6,7,8,1,2,3,4]\)</span> Observed assignment: first 4 are treated, last 4 are control Treated: <span class="math inline">\([5,6,7,8]\)</span>, Control: <span class="math inline">\([1,2,3,4]\)</span></p>
+<p>Test statistic: difference in means <span class="math display">\[T = \bar y_T - \bar y_C.\]</span> Observed: <span class="math display">\[\bar y_T = 6.5,\quad \bar y_C = 2.5,\quad T_{\text{obs}}=4.0.\]</span> Under <span class="math inline">\(H_0\)</span>, any choice of 4 of the 8 units could have been labeled “treated” (there are <span class="math inline">\(\binom{8}{4}=70\)</span> assignments). The randomization test:</p>
+<p>computes <span class="math inline">\(T\)</span> for each of the 70 possible labelings, compares them to <span class="math inline">\(4.0\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)  <span class="co"># 1=treat, 0=control</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Tobs <span class="ot">&lt;-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>Tperm <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, {</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  zperm <span class="ot">&lt;-</span> <span class="fu">sample</span>(z)  <span class="co"># shuffle labels (keeps 4 treated)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>p_two_sided <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Tperm) <span class="sc">&gt;=</span> <span class="fu">abs</span>(Tobs))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>Tobs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p_two_sided</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.025</code></pre>
+</div>
+</div>
+<p>Here, <span class="math inline">\(T_{\text{obs}}=4.0\)</span> is actually the maximum possible difference in means (treated got the four largest outcomes), so the two-sided randomization p-value is <span class="math display">\[p = \frac{1}{70}\approx 0.0143\]</span> (only the observed assignment is as extreme</p>
 <p>Reference: Modern Statistics for Modern Biology</p>
+
+
 </section>
 
-</main>
-<!-- /main column -->
+</main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
   window.document.addEventListener("DOMContentLoaded", function (event) {
     const icon = "";
@@ -707,6 +1079,18 @@ probability of success
     }
   });
   </script>
+<nav class="page-navigation">
+  <div class="nav-page nav-page-previous">
+      <a href="./lec11.html" class="pagination-link" aria-label="Two-sample comparisons and Hypothesis testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Two-sample comparisons and Hypothesis testing</span></span>
+      </a>          
+  </div>
+  <div class="nav-page nav-page-next">
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity 1">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Activity 1</span></span> <i class="bi bi-arrow-right-short"></i>
+      </a>
+  </div>
+</nav>
 </div> <!-- /content -->
 
 

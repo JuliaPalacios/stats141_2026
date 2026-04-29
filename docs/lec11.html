@@ -643,17 +643,17 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
 <span id="cb28-3"><a href="#cb28-3" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 25.92917</code></pre>
+<pre><code>[1] 23.73333</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb30"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb30-1"><a href="#cb30-1" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
 <span id="cb30-2"><a href="#cb30-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 22.44833</code></pre>
+<pre><code>[1] 23.21833</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb32"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb32-1"><a href="#cb32-1" aria-hidden="true" tabindex="-1"></a>control <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
 <span id="cb32-2"><a href="#cb32-2" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(control)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 22.87667</code></pre>
+<pre><code>[1] 24.27917</code></pre>
 </div>
 </div>
 <p>See how the average changes across samples, and that each differs from the average of the ‘total’ population. Therefore, repeating this experiment is useful, as it provides additional information about the distribution of this random variable.</p>
@@ -674,7 +674,7 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb34-4"><a href="#cb34-4" aria-hidden="true" tabindex="-1"></a>treatment <span class="ot">&lt;-</span> <span class="fu">sample</span>(population, <span class="dv">12</span>)</span>
 <span id="cb34-5"><a href="#cb34-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(treatment) <span class="sc">-</span> <span class="fu">mean</span>(control))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.2008333</code></pre>
+<pre><code>[1] -0.415</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb36"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb36-1"><a href="#cb36-1" aria-hidden="true" tabindex="-1"></a><span class="do">## Now, let's do it 10,000 times (using a 'for-loop')</span></span>
 <span id="cb36-2"><a href="#cb36-2" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
@@ -689,7 +689,7 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a><span class="fu">mean</span>(null <span class="sc">&gt;=</span> obsdiff) <span class="sc">*</span> <span class="dv">100</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.25</code></pre>
+<pre><code>[1] 1.35</code></pre>
 </div>
 </div>
 <div class="cell">
@@ -725,16 +725,16 @@ Attaching package: 'dplyr'</code></pre>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb40"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb40-1"><a href="#cb40-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(control))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 24.465</code></pre>
+<pre><code>[1] 24.39083</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb42"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb42-1"><a href="#cb42-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">mean</span>(treatment))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 23.91167</code></pre>
+<pre><code>[1] 23.03</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb44"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb44-1"><a href="#cb44-1" aria-hidden="true" tabindex="-1"></a>obsdiff <span class="ot">&lt;-</span> <span class="fu">mean</span>(treatment) <span class="sc">-</span> <span class="fu">mean</span>(control)</span>
 <span id="cb44-2"><a href="#cb44-2" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(obsdiff)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.5533333</code></pre>
+<pre><code>[1] -1.360833</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb46"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb46-1"><a href="#cb46-1" aria-hidden="true" tabindex="-1"></a>part1<span class="ot">&lt;-</span>(<span class="fu">sd</span>(control)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">length</span>(control)</span>
 <span id="cb46-2"><a href="#cb46-2" aria-hidden="true" tabindex="-1"></a>part2<span class="ot">&lt;-</span>(<span class="fu">sd</span>(treatment)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span><span class="fu">length</span>(treatment)</span>
@@ -742,19 +742,19 @@ Attaching package: 'dplyr'</code></pre>
 <span id="cb46-4"><a href="#cb46-4" aria-hidden="true" tabindex="-1"></a>tval<span class="ot">&lt;-</span>obsdiff<span class="sc">/</span>se</span>
 <span id="cb46-5"><a href="#cb46-5" aria-hidden="true" tabindex="-1"></a>tval</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] -0.3968133</code></pre>
+<pre><code>[1] -1.195452</code></pre>
 </div>
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb48"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb48-1"><a href="#cb48-1" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span>((part1<span class="sc">+</span>part2)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(part1<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(<span class="fu">length</span>(control)<span class="sc">-</span><span class="dv">1</span>)<span class="sc">+</span>part2<span class="sc">^</span><span class="dv">2</span><span class="sc">/</span>(<span class="fu">length</span>(treatment)<span class="sc">-</span><span class="dv">1</span>))</span>
 <span id="cb48-2"><a href="#cb48-2" aria-hidden="true" tabindex="-1"></a>df</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 21.91998</code></pre>
+<pre><code>[1] 21.71118</code></pre>
 </div>
 </div>
 <p>Let’s compute the p-value</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb50"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb50-1"><a href="#cb50-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pt</span>(tval,df)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6953422</code></pre>
+<pre><code>[1] 0.244805</code></pre>
 </div>
 </div>
 <p>We can compare our calculations:</p>
@@ -765,13 +765,13 @@ Attaching package: 'dplyr'</code></pre>
     Welch Two Sample t-test
 
 data:  control and treatment
-t = 0.39681, df = 21.92, p-value = 0.6953
+t = 1.1955, df = 21.711, p-value = 0.2448
 alternative hypothesis: true difference in means is not equal to 0
 95 percent confidence interval:
- -2.339176  3.445843
+ -1.001765  3.723432
 sample estimates:
 mean of x mean of y 
- 24.46500  23.91167 </code></pre>
+ 24.39083  23.03000 </code></pre>
 </div>
 </div>
 <p>The data is compatible with the hypothesis. We do not reject the null hypothesis of equality in means.</p>
