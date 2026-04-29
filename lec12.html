@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>7&nbsp; Continuous Distributions – Stats 141. Introduction to Statistics for Biology</title>
+<title>12&nbsp; Hypothesis testing – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lec8.html" rel="next">
-<link href="./lec6.html" rel="prev">
+<link href="./Week1A.html" rel="next">
+<link href="./lec11.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Continuous Distributions</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -233,7 +233,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./generative2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./generative2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Continuous Distributions</span></span></a>
   </div>
 </li>
@@ -263,7 +263,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lec12.html" class="sidebar-item-text sidebar-link">
+  <a href="./lec12.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span></a>
   </div>
 </li>
@@ -414,19 +414,19 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#the-normal-distribution" id="toc-the-normal-distribution" class="nav-link active" data-scroll-target="#the-normal-distribution"><span class="header-section-number">7.1</span> The Normal Distribution</a>
-  <ul class="collapse">
-  <li><a href="#area-under-the-curve" id="toc-area-under-the-curve" class="nav-link" data-scroll-target="#area-under-the-curve"><span class="header-section-number">7.1.1</span> Area under the curve</a></li>
-  </ul></li>
+  <li><a href="#t-test" id="toc-t-test" class="nav-link active" data-scroll-target="#t-test"><span class="header-section-number">12.1</span> t-test</a></li>
+  <li><a href="#one-population" id="toc-one-population" class="nav-link" data-scroll-target="#one-population"><span class="header-section-number">12.2</span> One population</a></li>
+  <li><a href="#two-population-difference" id="toc-two-population-difference" class="nav-link" data-scroll-target="#two-population-difference"><span class="header-section-number">12.3</span> Two population difference</a></li>
+  <li><a href="#randomization-test-permutation-test" id="toc-randomization-test-permutation-test" class="nav-link" data-scroll-target="#randomization-test-permutation-test"><span class="header-section-number">12.4</span> Randomization test (permutation test)</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./generative2.html"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Continuous Distributions</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec12.html"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">7</span>&nbsp; <span class="chapter-title">Continuous Distributions</span></h1>
+<h1 class="title"><span class="chapter-number">12</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></h1>
 </div>
 
 
@@ -443,184 +443,239 @@ window.Quarto = {
 </header>
 
 
-<style>
-.header-row {
-  display: flex;
-  justify-content: space-between; /* title left, button right */
-  align-items: center;
-  margin-bottom: 1em; /* spacing below header */
-}
-
-.page-title {
-  font-size: 2rem;   /* matches H1 style */
-  font-weight: 700;
-  margin: 0;
-}
-
-.download-btn {
-  display: inline-block;
-  background-color: #5FA2F3;  /* lighter R blue */
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
-
-.download-btn:hover {
-  background-color: #4C93E6;
-  color: white !important;
-  text-decoration: none;
-}
-</style>
-<!-- Flex container aligns title and button with text margin -->
-<div class="header-row">
-<h1 class="page-title">
-</h1>
-<p><a href="Lec7_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
-</div>
-<section id="the-normal-distribution" class="level2" data-number="7.1">
-<h2 data-number="7.1" class="anchored" data-anchor-id="the-normal-distribution"><span class="header-section-number">7.1</span> The Normal Distribution</h2>
-<p>The normal distribution is commonly used in two ways: (1) as an approximation of the empirical distribution of the data, or (2) as a theoretical model for a data-generating process. It is actually a <em>family</em> of distributions defined by two parameters, <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>, representing the mean and the variance, and denoted as <span class="math inline">\(N(\mu, \sigma^2)\)</span>.</p>
-<p>To illustrate this, consider the example below using simulated cholesterol data. Cholesterol is a natural choice for this illustration, as the relationship between cholesterol levels and the occurrence of heart disease has been one of the most extensively studied topics in epidemiology. We simulate the distribution of total cholesterol for three age groups: young (&lt;45 years old), middle-aged adults (45-59), and older adults (60+), with mean and standard deviation values of (180, 25), (220, 35), and (245, 40) mg/dL,<span class="math inline">\(^1\)</span> respectively. As the figure shows, while all three distributions share the same bell-shaped form, they differ in their center and spread — precisely what varying <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span> captures.</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 100%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<td style="text-align: right;"><span class="math inline">\(^1\)</span> mg/dL stands for milligrams per deciliter, the standard unit for measuring substance concentration in blood tests. It indicates how many milligrams of cholesterol are present in one deciliter (100 ml) of blood.</td>
-</tr>
-</tbody>
-</table>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># install.packages("multcomp")</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(multcomp)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="co"># Simulated Data: Family of normal distributions with different mean and sd</span></span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">100</span>, <span class="dv">400</span>, <span class="at">length.out =</span> <span class="dv">1000</span>)</span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>df <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>    <span class="at">x     =</span> <span class="fu">rep</span>(x, <span class="dv">3</span>),</span>
-<span id="cb1-11"><a href="#cb1-11" aria-hidden="true" tabindex="-1"></a>    <span class="at">group =</span> <span class="fu">rep</span>(<span class="fu">c</span>(<span class="st">"Young"</span>, <span class="st">"Middle"</span>, <span class="st">"Elderly"</span>), <span class="at">each =</span> <span class="dv">1000</span>),</span>
-<span id="cb1-12"><a href="#cb1-12" aria-hidden="true" tabindex="-1"></a>    <span class="at">density =</span> <span class="fu">c</span>(</span>
-<span id="cb1-13"><a href="#cb1-13" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">180</span>, <span class="at">sd =</span> <span class="dv">25</span>),   <span class="co"># young:   low mean, low variance</span></span>
-<span id="cb1-14"><a href="#cb1-14" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">220</span>, <span class="at">sd =</span> <span class="dv">35</span>),   <span class="co"># middle:  mid mean, mid variance</span></span>
-<span id="cb1-15"><a href="#cb1-15" aria-hidden="true" tabindex="-1"></a>        <span class="fu">dnorm</span>(x, <span class="at">mean =</span> <span class="dv">245</span>, <span class="at">sd =</span> <span class="dv">40</span>)    <span class="co"># elderly: high mean, high variance</span></span>
-<span id="cb1-16"><a href="#cb1-16" aria-hidden="true" tabindex="-1"></a>    )</span>
-<span id="cb1-17"><a href="#cb1-17" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb1-18"><a href="#cb1-18" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-19"><a href="#cb1-19" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-20"><a href="#cb1-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> density, <span class="at">color =</span> group)) <span class="sc">+</span></span>
-<span id="cb1-21"><a href="#cb1-21" aria-hidden="true" tabindex="-1"></a>    <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="fl">1.2</span>) <span class="sc">+</span></span>
-<span id="cb1-22"><a href="#cb1-22" aria-hidden="true" tabindex="-1"></a>    <span class="fu">coord_cartesian</span>(<span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="dv">400</span>)) <span class="sc">+</span></span>
-<span id="cb1-23"><a href="#cb1-23" aria-hidden="true" tabindex="-1"></a>    <span class="fu">labs</span>(</span>
-<span id="cb1-24"><a href="#cb1-24" aria-hidden="true" tabindex="-1"></a>        <span class="at">title    =</span> <span class="st">"Cholesterol Distribution by Age Group"</span>,</span>
-<span id="cb1-25"><a href="#cb1-25" aria-hidden="true" tabindex="-1"></a>        <span class="at">subtitle =</span> <span class="st">"Simulated Normal distributions with different means and variances"</span>,</span>
-<span id="cb1-26"><a href="#cb1-26" aria-hidden="true" tabindex="-1"></a>        <span class="at">x        =</span> <span class="st">"Cholesterol (mg/dL)"</span>,</span>
-<span id="cb1-27"><a href="#cb1-27" aria-hidden="true" tabindex="-1"></a>        <span class="at">y        =</span> <span class="st">"Density"</span>,</span>
-<span id="cb1-28"><a href="#cb1-28" aria-hidden="true" tabindex="-1"></a>        <span class="at">color    =</span> <span class="st">"Group"</span></span>
-<span id="cb1-29"><a href="#cb1-29" aria-hidden="true" tabindex="-1"></a>    ) <span class="sc">+</span></span>
-<span id="cb1-30"><a href="#cb1-30" aria-hidden="true" tabindex="-1"></a>    <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
+<div class="quarto-figure quarto-figure-center">
 <figure class="figure">
-<p><img src="generative2_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="./Figures/hypothesis.png" class="img-fluid figure-img" style="width:70.0%"></p>
+<figcaption>Credit: explainxkcd</figcaption>
 </figure>
 </div>
+<p>In <strong>statistical testing</strong> - decision making with uncertainty - we aim to use our collected data to test a <em>null hypothesis</em> about the population of interest. For example researchers screen genetic variants for associations with a phenotype, or gene expression levels for associations with disease.</p>
+<p>Hypothesis testing quantifies how unusual the evidence is, <strong>assuming that the null hypothesis is true.</strong></p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
 </div>
 </div>
-<p>We now examine the same distributions using real data from the Framingham Heart Study — one of the most famous and influential long-term epidemiological studies in medical history. The observed data confirm that cholesterol distributions differ across age groups, with a clear separation between young and older adults. However, the distinction between middle-aged and older adults is less pronounced than in our simulation, suggesting that the chosen parameter values either overstated the differences or better characterize a different population. The empirical distributions are represented by the shaded histograms, with fitted normal curves superimposed for each group. Their close agreement supports the normal distribution as a reasonable model for real cholesterol data — and motivates a broader point: the normal curve can describe an observed variable in two ways, either as a smooth approximation to a sample histogram, or as an idealized representation of the underlying population distribution. The curves in both figures are consistent with either interpretation. For simplicity, in this lecture we treat the normal curve as representing a population distribution.</p>
+<div class="callout-body-container callout-body">
+<p>Hypothesis testing compares the value of your statistic (sample mean, etc) to what we would expect to see if the null hypothesis were true. If the data are too unsual, compared to what we expect under the null, then the null hypothesis is rejected.</p>
+</div>
+</div>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example: is the coin fair?</strong> Suppose we flip a coin 100 times to see if it is fair.</p>
+</div>
+</div>
+<p>What is the null hypothesis?</p>
+<p>What is the alternative hypothesis?</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">0xdada</span>)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>numFlips <span class="ot">=</span> <span class="dv">100</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>probHead <span class="ot">=</span> <span class="fl">0.6</span></span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>coinFlips <span class="ot">=</span> <span class="fu">sample</span>(<span class="fu">c</span>(<span class="st">"H"</span>, <span class="st">"T"</span>), <span class="at">size =</span> numFlips,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">replace =</span> <span class="cn">TRUE</span>, <span class="at">prob =</span> <span class="fu">c</span>(probHead, <span class="dv">1</span> <span class="sc">-</span> probHead))</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(coinFlips)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code># A tibble: 3 × 3
-  group             mu sigma
-  &lt;chr&gt;          &lt;dbl&gt; &lt;dbl&gt;
-1 Elderly (60+)   247.  45.8
-2 Middle (45-59)  243.  44.6
-3 Young (&lt;45)     223.  42.4</code></pre>
+<pre><code>[1] "T" "T" "H" "T" "H" "H"</code></pre>
 </div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="generative2_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>The previous two examples illustrate the characteristic “bell shape” of the normal distribution, also known as the <strong>Gaussian distribution</strong> in honor of Carl Friedrich Gauss, a prominent mathematician of the 18th century who formalized this distribution. It is widely regarded as the most important continuous probability distribution due to its symmetric, bell-shaped form and its frequent appearance in natural and social phenomena.</p>
-<p>What are the exact roles of the parameters <span class="math inline">\(\mu\)</span> and <span class="math inline">\(\sigma^2\)</span>? As the previous examples show, there are many normal curves, each characterized by its mean and standard deviation. If a variable <span class="math inline">\(X\)</span> follows a normal distribution with mean <span class="math inline">\(\mu\)</span> and standard deviation <span class="math inline">\(\sigma\)</span>, we write <span class="math inline">\(X \sim N(\mu, \sigma^2)\)</span>. All normal curves share a common mathematical form — the density function is given by:</p>
-<p><span id="eq-1"><span class="math display">\[f(x)=\frac{1}{\sigma \sqrt{2\pi}}e^{-\frac{1}{2}\left(\frac{x-\mu}{\sigma}\right)^2}, \tag{7.1}\]</span></span></p>
-<p>where <span class="math inline">\(f(x)\)</span> in <a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>7.1</span></a> expresses the height of the curve at position <span class="math inline">\(x\)</span>, and <span class="math inline">\(e \approx 2.718\)</span> and <span class="math inline">\(\pi \approx 3.1416\)</span> are mathematical constants representing Euler’s number and pi, respectively.</p>
-<p>The two parameters play distinct roles. The mean <span class="math inline">\(\mu\)</span> governs the <strong>location</strong> of the curve — each normal curve is centered at <span class="math inline">\(x = \mu\)</span>. The standard deviation <span class="math inline">\(\sigma\)</span> governs the <strong>shape</strong> — specifically, the width and height of the curve. Since the total area under any density curve must equal 1, a smaller <span class="math inline">\(\sigma\)</span> produces a taller and narrower curve, reflecting greater concentration of values near the mean. Conversely, a larger <span class="math inline">\(\sigma\)</span> produces a flatter and wider curve, indicating greater variability of <span class="math inline">\(X\)</span> around the mean.</p>
-<section id="area-under-the-curve" class="level3" data-number="7.1.1">
-<h3 data-number="7.1.1" class="anchored" data-anchor-id="area-under-the-curve"><span class="header-section-number">7.1.1</span> Area under the curve</h3>
-<p>A very important characteristic of density curves is that they can be quatitatively interpreted in terms of areas under the curve.</p>
-<p><strong>The Standardize Scale</strong></p>
-<p>Although the area under any density curve equals 1, normal distributions with different means and variances can be made directly comparable by rescaling the data — a process known as <strong>standardization</strong>. The standardized variable, denoted <span class="math inline">\(Z\)</span>, measures distance from the mean in units of standard deviations and is obtained by subtracting the mean from the original variable <span class="math inline">\(X\)</span> and dividing by its standard deviation:</p>
-<p><span id="eq-2"><span class="math display">\[Z=\frac{X-\mu}{\sigma} \tag{7.2}\]</span></span></p>
-<p>The resulting scale is called the <em>standard normal distribution</em>, with mean <span class="math inline">\(\mu = 0\)</span> and standard deviation <span class="math inline">\(\sigma = 1\)</span>, denoted <span class="math inline">\(Z \sim N(0, 1)\)</span>.</p>
-<p>The figure below illustrates this using cholesterol measurements for the young adult group (&lt;45) from the Framingham Heart Study, where the estimated mean is <span class="math inline">\(\mu = 180.3\)</span> mg/dL and standard deviation is <span class="math inline">\(\sigma = 25.0\)</span> mg/dL. The bottom axis (X) shows the original cholesterol scale, with tick marks at the mean and at each standard deviation up to <span class="math inline">\(\pm 3\sigma\)</span>. The top axis (Z) shows the corresponding standardized scale, obtained by applying <a href="#eq-2" class="quarto-xref">Equation&nbsp;<span>7.2</span></a>. Note that standardization does not alter the shape of the distribution — the curve remains identical — but simply re-expresses the same values on a new scale where <span class="math inline">\(\mu = 0\)</span> and <span class="math inline">\(\sigma = 1\)</span>. The two axes thus represent the same distribution in two equivalent scales, <span class="math inline">\(X\)</span> and <span class="math inline">\(Z\)</span>, simultaneously.</p>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="generative2_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<p>In summary, the standardized variable <span class="math inline">\(Z\)</span> follows a <strong>standard normal distribution</strong> with mean zero and standard deviation one, denoted <span class="math inline">\(Z \sim N(0,1)\)</span>. Statistical tables — found in virtually all introductory textbooks — and modern software provide areas under the standard normal curve as a function of <span class="math inline">\(Z\)</span>. Each entry represents the cumulative area to the left of a specified value <span class="math inline">\(z\)</span>, which in probability terms is written as:</p>
-<p><span class="math display">\[P(X \leq x) \equiv P(Z \leq z)\]</span></p>
-<p>To illustrate, consider the probability that a cholesterol value in the young adult group falls below 230.3 mg/dL — that is, within two standard deviations above the mean (<span class="math inline">\(Z \leq 2\)</span>). In R this is computed as <code>pnorm(2)</code>, yielding <span class="math inline">\(P(Z \leq 2) = 0.9772\)</span>, or <strong>97.72%</strong> (see left panel below). The complementary probability — the area above that value — follows directly as:</p>
-<p><span class="math display">\[P(Z &gt; 2) = 1 - P(Z \leq 2) = 1 - 0.9772 = 0.0228\]</span></p>
-<p>or <strong>2.28%</strong> (right panel). Finally, the area between two <span class="math inline">\(z\)</span>-scores is obtained by subtraction. For the interval between 130.3 and 230.3 mg/dL, corresponding to <span class="math inline">\(P(-2 \leq Z \leq 2)\)</span>:</p>
-<p><span class="math display">\[P(-2 \leq Z \leq 2) = P(Z \leq 2) - P(Z \leq -2) = 0.9772 - 0.0228 = 0.9545\]</span></p>
-<p>or <strong>95.45%</strong> (center panel).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Compute probabilities on Z scale</span></span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>p_below_2  <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">2</span>)</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>p_above_2  <span class="ot">&lt;-</span> <span class="dv">1</span> <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="dv">2</span>)</span>
-<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>p_within_2 <span class="ot">&lt;-</span> <span class="fu">pnorm</span>(<span class="dv">2</span>) <span class="sc">-</span> <span class="fu">pnorm</span>(<span class="sc">-</span><span class="dv">2</span>)</span>
-<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb3-6"><a href="#cb3-6" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P(Z &lt;= 2):"</span>,        <span class="fu">round</span>(p_below_2,  <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">table</span>(coinFlips)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>P(Z &lt;= 2): 0.9772 </code></pre>
+<pre><code>coinFlips
+ H  T 
+59 41 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P(Z &gt;  2):"</span>,        <span class="fu">round</span>(p_above_2,  <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>P(Z &gt;  2): 0.0228 </code></pre>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cat</span>(<span class="st">"P(-2 &lt; Z &lt; 2):"</span>,    <span class="fu">round</span>(p_within_2, <span class="dv">4</span>), <span class="st">"</span><span class="sc">\n</span><span class="st">"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>P(-2 &lt; Z &lt; 2): 0.9545 </code></pre>
-</div>
+<p>What is the null distribution for the number to heads?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>k <span class="ot">=</span> <span class="dv">0</span><span class="sc">:</span>numFlips</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>numHeads <span class="ot">=</span> <span class="fu">sum</span>(coinFlips <span class="sc">==</span> <span class="st">"H"</span>)</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>binomDensity <span class="ot">=</span> <span class="fu">tibble</span>(<span class="at">k =</span> k,</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">p =</span> <span class="fu">dbinom</span>(k, <span class="at">size =</span> numFlips, <span class="at">prob =</span> <span class="fl">0.5</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"ggplot2"</span>)</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(binomDensity) <span class="sc">+</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> p), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> numHeads, <span class="at">col =</span> <span class="st">"blue"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="generative2_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec12_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-<p>This last result is a special case of the empirical rule, which states that in any normal distribution, approximately 68%, 95%, and 99.7% of observations fall within one, two, and three standard deviations of the mean, respectively — a result so fundamental it is sometimes called the 68-95-99.7 rule. This is illustrated in the figure below.</p>
+<p>How do we quantify whether the observed value, 59, is likely to be seen with a fair coin, or whether its deviation from the expected value (50) is already large enough for us to conclude with enough confidence that the coin is biased?</p>
+<p>Choose a <strong>significance level</strong> <span class="math inline">\(\alpha\)</span> (e.g.&nbsp;0.05). We define a rejection region <span class="math inline">\(R\)</span> consisting of outcomes that are sufficiently unlikely under <span class="math inline">\(H_0\)</span>, such that <span class="math inline">\(\Pr_{H_0}(X\in R)\le \alpha\)</span>. If the observed number of heads lies in <span class="math inline">\(R\)</span>, we reject <span class="math inline">\(H_0\)</span>; otherwise we do not reject.</p>
+<p>The significance level is the evidential threshold we agree upon at the outset.</p>
+<p>Sometimes the significance level is called the “alpha level” and denoted with <span class="math inline">\(\alpha\)</span>.</p>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Reject or not to reject</strong> Null and alternative hypotheses do not have equal standing. The null hypothesis is the one being tested with the data. If the data is inconsistent with the null hypothesis we reject, otherwise, we do not reject.</p>
+</div>
+</div>
+<p>In our example, the alternative hypothesis includes parameter values on both sides of the parameter value specified by the null hypothesis. The test is referred as two-tailed.</p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">=</span> <span class="fl">0.05</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>binomDensity <span class="ot">=</span> <span class="fu">arrange</span>(binomDensity, p) <span class="sc">|&gt;</span></span>
+<span id="cb7-4"><a href="#cb7-4" aria-hidden="true" tabindex="-1"></a>        <span class="fu">mutate</span>(<span class="at">reject =</span> (<span class="fu">cumsum</span>(p) <span class="sc">&lt;=</span> alpha))</span>
+<span id="cb7-5"><a href="#cb7-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb7-6"><a href="#cb7-6" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(binomDensity) <span class="sc">+</span></span>
+<span id="cb7-7"><a href="#cb7-7" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_bar</span>(<span class="fu">aes</span>(<span class="at">x =</span> k, <span class="at">y =</span> p, <span class="at">col =</span> reject), <span class="at">stat =</span> <span class="st">"identity"</span>) <span class="sc">+</span></span>
+<span id="cb7-8"><a href="#cb7-8" aria-hidden="true" tabindex="-1"></a>  <span class="fu">scale_colour_manual</span>(</span>
+<span id="cb7-9"><a href="#cb7-9" aria-hidden="true" tabindex="-1"></a>    <span class="at">values =</span> <span class="fu">c</span>(<span class="st">`</span><span class="at">TRUE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"red"</span>, <span class="st">`</span><span class="at">FALSE</span><span class="st">`</span> <span class="ot">=</span> <span class="st">"darkgrey"</span>)) <span class="sc">+</span></span>
+<span id="cb7-10"><a href="#cb7-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_vline</span>(<span class="at">xintercept =</span> numHeads, <span class="at">col =</span> <span class="st">"blue"</span>) <span class="sc">+</span></span>
+<span id="cb7-11"><a href="#cb7-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="generative2_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="lec12_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><img src="Figures/two_tails.png" class="img-fluid figure-img"></p>
+<figcaption>Credit: Investopedia</figcaption>
+</figure>
+</div>
+<p>The <strong>p-value</strong> is the probability (assuming the null distribution) of observing a value (test statistic) at least as extreme as the one observed.</p>
+<p>In our case, this value is:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="dv">2</span><span class="sc">*</span><span class="fu">pbinom</span>(<span class="dv">41</span>,<span class="dv">100</span>,.<span class="dv">5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.08862608</code></pre>
+</div>
+</div>
+<div class="callout callout-style-default callout-important callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Important
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Punch line:</strong> If the p-value of the data is less than or equal to <span class="math inline">\(\alpha\)</span> then the data are judged to provide enough statistically significant evidence in order reject the <span class="math inline">\(H_{0}\)</span> in favor of <span class="math inline">\(H_A\)</span>.</p>
+</div>
+</div>
+<p>Question 1. Does the fact that we don’t reject the null hypothesis mean that the coin is fair?</p>
+<p>Question 2. Would we have a better chance of detecting that the coin is not fair if we did more coin tosses? How many?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="fu">binom.test</span>(<span class="at">x =</span> numHeads, <span class="at">n =</span> numFlips, <span class="at">p =</span> <span class="fl">0.5</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Exact binomial test
 
-
+data:  numHeads and numFlips
+number of successes = 59, number of trials = 100, p-value = 0.08863
+alternative hypothesis: true probability of success is not equal to 0.5
+95 percent confidence interval:
+ 0.4871442 0.6873800
+sample estimates:
+probability of success 
+                  0.59 </code></pre>
+</div>
+</div>
+<section id="t-test" class="level2" data-number="12.1">
+<h2 data-number="12.1" class="anchored" data-anchor-id="t-test"><span class="header-section-number">12.1</span> t-test</h2>
 </section>
+<section id="one-population" class="level2" data-number="12.2">
+<h2 data-number="12.2" class="anchored" data-anchor-id="one-population"><span class="header-section-number">12.2</span> One population</h2>
+<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu\)</span>. You want to test:</p>
+<p>Null hypothesis: <span class="math inline">\(H_0:\ \mu = 0\)</span> Alternative hypothesis (choose one):</p>
+<p>Two-sided: <span class="math inline">\(H_1:\ \mu \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu &lt; 0\)</span></p>
+<p>Then the one-sample t statistic is <span class="math display">\[t = \frac{\bar{x} - 0}{s/\sqrt{n}} = \frac{\bar{x}}{s/\sqrt{n}}.\]</span> Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this statistic follows a t distribution with <span class="math display">\[\text{df} = n-1\]</span> degrees of freedom.</p>
+<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t_{n-1}\)</span> distribution depending on the alternative:</p>
+<p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
+<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
+<p>Confidence interval connection:</p>
+<p>A two-sided t-test at level <span class="math inline">\(\alpha\)</span> is equivalent to checking whether 0 lies in the <span class="math inline">\((1-\alpha)\)</span> CI: <span class="math display">\[\bar{x} \pm t_{1-\alpha/2,\ n-1}\,\frac{s}{\sqrt{n}}.\]</span></p>
+</section>
+<section id="two-population-difference" class="level2" data-number="12.3">
+<h2 data-number="12.3" class="anchored" data-anchor-id="two-population-difference"><span class="header-section-number">12.3</span> Two population difference</h2>
+<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu_{x}\)</span>, and you have data <span class="math inline">\(y_1,\ldots, y_{n}\)</span> from a population with mean <span class="math inline">\(\mu_{y}\)</span></p>
+<p>Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = 0\)</span> Alternative hypothesis (choose one):</p>
+<p>Two-sided: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &lt; 0\)</span></p>
+<p>Then the two-sample t statistic is</p>
+<p><span class="math display">\[t=\frac{(\bar{x}_{1}-\bar{x}_{2})-0}{SE_{(\bar{x}_{1}-\bar{x}_{2})}} \]</span></p>
+<p>Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this stat istic follows a t distribution with <span class="math display">\[\text{df} =\mathrm{df}
+=
+\frac{\left(\frac{s_x^2}{n_x}+\frac{s_y^2}{n_y}\right)^2}
+{\frac{\left(\frac{s_x^2}{n_x}\right)^2}{n_x-1}
++
+\frac{\left(\frac{s_y^2}{n_y}\right)^2}{n_y-1}}\]</span> degrees of freedom.</p>
+<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t\)</span> distribution depending on the alternative:</p>
+<p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
+<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, mu = 0)                 # Welch (default)</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, var.equal = TRUE)       # pooled equal-variance t-test</span></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, alternative="greater")  # H1: mu1 - mu2 &gt; 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><strong>What happens if you want to test: Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = c\)</span>?</strong></p>
+</section>
+<section id="randomization-test-permutation-test" class="level2" data-number="12.4">
+<h2 data-number="12.4" class="anchored" data-anchor-id="randomization-test-permutation-test"><span class="header-section-number">12.4</span> Randomization test (permutation test)</h2>
+<p>This is a two-sample test that does not assume normality; it assumes the treatment labels were assigned at random (and units are independent).</p>
+<p>You observe outcomes from <span class="math inline">\(n\)</span> units, with <span class="math inline">\(n_1\)</span> labeled “treatment” and <span class="math inline">\(n_2\)</span> labeled “control”. To test <span class="math display">\[H_0:\ \text{no treatment effect}\]</span> Under <span class="math inline">\(H_0\)</span>, the outcomes would be the same regardless of who was labeled treated, so the observed treatment labels are exchangeable. Therefore, any reassignment of the treatment labels (keeping <span class="math inline">\(n_1\)</span> treated) is equally likely.</p>
+<p>Procedure</p>
+<p>Choose a test statistic <span class="math inline">\(T\)</span> measuring difference between groups (e.g., <span class="math inline">\(\bar Y_T-\bar Y_C\)</span>) and compute the observed statistic <span class="math inline">\(T_{\text{obs}}\)</span>.</p>
+<p>Re-randomize: repeatedly shuffle the treatment labels (or enumerate all shuffles), recompute <span class="math inline">\(T\)</span> each time. The p-value is the fraction of shuffles where <span class="math inline">\(T\)</span> is at least as extreme as <span class="math inline">\(T_{\text{obs}}\)</span> (two-sided uses <span class="math inline">\(|T|\)</span>).</p>
+<p><strong>Example:</strong></p>
+<p>Outcomes: <span class="math inline">\(y = [5,6,7,8,1,2,3,4]\)</span> Observed assignment: first 4 are treated, last 4 are control Treated: <span class="math inline">\([5,6,7,8]\)</span>, Control: <span class="math inline">\([1,2,3,4]\)</span></p>
+<p>Test statistic: difference in means <span class="math display">\[T = \bar y_T - \bar y_C.\]</span> Observed: <span class="math display">\[\bar y_T = 6.5,\quad \bar y_C = 2.5,\quad T_{\text{obs}}=4.0.\]</span> Under <span class="math inline">\(H_0\)</span>, any choice of 4 of the 8 units could have been labeled “treated” (there are <span class="math inline">\(\binom{8}{4}=70\)</span> assignments). The randomization test:</p>
+<p>computes <span class="math inline">\(T\)</span> for each of the 70 possible labelings, compares them to <span class="math inline">\(4.0\)</span>.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)  <span class="co"># 1=treat, 0=control</span></span>
+<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Tobs <span class="ot">&lt;-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
+<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
+<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>Tperm <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, {</span>
+<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  zperm <span class="ot">&lt;-</span> <span class="fu">sample</span>(z)  <span class="co"># shuffle labels (keeps 4 treated)</span></span>
+<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">0</span>])</span>
+<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>})</span>
+<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>p_two_sided <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Tperm) <span class="sc">&gt;=</span> <span class="fu">abs</span>(Tobs))</span>
+<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>Tobs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 4</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p_two_sided</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.025</code></pre>
+</div>
+</div>
+<p>Here, <span class="math inline">\(T_{\text{obs}}=4.0\)</span> is actually the maximum possible difference in means (treated got the four largest outcomes), so the two-sided randomization p-value is <span class="math display">\[p = \frac{1}{70}\approx 0.0143\]</span> (only the observed assignment is as extreme</p>
+<p>Reference: Modern Statistics for Modern Biology</p>
+
+
 </section>
 
 </main> <!-- /main -->
@@ -1026,13 +1081,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lec6.html" class="pagination-link" aria-label="Probability 3">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">6</span>&nbsp; <span class="chapter-title">Probability 3</span></span>
+      <a href="./lec11.html" class="pagination-link" aria-label="Two-sample comparisons and Hypothesis testing">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">11</span>&nbsp; <span class="chapter-title">Two-sample comparisons and Hypothesis testing</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lec8.html" class="pagination-link" aria-label="Central limit theorem">
-        <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Central limit theorem</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity 1">
+        <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Activity 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
