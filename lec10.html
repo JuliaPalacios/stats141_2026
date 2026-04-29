@@ -402,6 +402,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quiz 3 - April 24</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Quiz 4 - May 2</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -434,6 +440,43 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+</h1>
+<p><a href="Lec10_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+</div>
 <p>Recall a 95% z-confidence interval for the population mean parameter is:</p>
 <p><span class="math display">\[(\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})\]</span>.</p>
 <p>However we have assumed that we know <span class="math inline">\(\sigma\)</span>. This interval cannot be used for data analysis because typically we do not know <span class="math inline">\(\sigma\)</span>.</p>

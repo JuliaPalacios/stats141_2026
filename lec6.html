@@ -421,6 +421,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quiz 3 - April 24</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Quiz 4 - May 2</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -548,14 +554,14 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.5</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 0 0 0 1 0 1 1 0 1 0 0 1</code></pre>
+<pre><code> [1] 0 0 0 0 0 0 0 0 0 0 0 1 1 1 1</code></pre>
 </div>
 </div>
 <p>Now observe the outcome when using a biased coin that lands heads 70% of the time:</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">15</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] 1 1 1 1 0 1 0 0 1 0 1 0 1 1 1</code></pre>
+<pre><code> [1] 0 0 1 1 1 0 1 0 0 1 1 0 1 0 1</code></pre>
 </div>
 </div>
 <p><em>Question.</em> Note that when you call the function above several times, you get different outcomes. Why is that?</p>
@@ -568,7 +574,7 @@ Suppose we want to simulate a sequence of 15 fair tosses using R. To get the out
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">rbinom</span>(<span class="dv">1</span>, <span class="at">prob =</span> <span class="fl">0.7</span>, <span class="at">size =</span> <span class="dv">15</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 12</code></pre>
+<pre><code>[1] 9</code></pre>
 </div>
 </div>
 <p>The sum of multiple independent (or exchangeable) Bernoulli trials is called the <strong>Binomial distribution</strong> (in the example above, how many heads in 15 flips). That is, the number of successes in 15 Bernoulli trials with a probability of success of 0.7 is called a <strong>binomial</strong> random variable, or a random variable that follows the B(15, 0.7) distribution. We can generate binomial samples in R as follows:</p>

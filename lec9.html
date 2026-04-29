@@ -402,6 +402,12 @@ window.Quarto = {
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Quiz 3 - April 24</span></span></a>
   </div>
 </li>
+          <li class="sidebar-item">
+  <div class="sidebar-item-container"> 
+  <a href="./quiz4.html" class="sidebar-item-text sidebar-link">
+ <span class="menu-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Quiz 4 - May 2</span></span></a>
+  </div>
+</li>
       </ul>
   </li>
     </ul>
@@ -441,6 +447,43 @@ window.Quarto = {
 </header>
 
 
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+<!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+<h1 class="page-title">
+</h1>
+<p><a href="Lec9_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+</div>
 <p><strong>Estimation</strong> is the process of inferring a population parameter from the sample data. For the moment we will be concerned with the estimation of the population mean (expected value) using the sample mean. We pretty much know that <span class="math inline">\(\bar{x}\neq \mu\)</span>. It is just way too unlikely that they would be exactly equal. <strong>How much can we trust this estimate?</strong></p>
 <p>To answer this, we need to know how much variability we get from our the sampling process. One way to do this is through the <strong>standard error</strong> (standard deviation of the mean) as it reflects the differences between the estimates (sample means: <span class="math inline">\(\bar{x}\)</span>) and the target parameter <span class="math inline">\(\mu\)</span>. The standard error reflects the precision of an estimate. The smaller the better. Recall: <span class="math display">\[SD(\bar{X})=\frac{SD_{X}}{\sqrt{n}}\]</span></p>
 <section id="confidence-interval" class="level2" data-number="9.1">
