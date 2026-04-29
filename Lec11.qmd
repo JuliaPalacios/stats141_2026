@@ -123,7 +123,7 @@ obsdiff <- mean(treatment) - mean(control)
 print(obsdiff)
 ```
 
-In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. This type of quantity is known as a random variable.
+In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. 
 
 To illustrate this, suppose we had access to the weights of the entire population of control female mice. In practice, this is rarely the case, as we typically observe only samples and rely on statistical methods to make inferences about population characteristics. For illustrative purposes, assume the following dataset represents the full population of female mice. We can then draw multiple random samples of 12 mice from this population and calculate the average for each sample.
 

@@ -1,0 +1,5 @@
+# Quiz 4 - May 2
+
+Quiz 4 will cover confidence intervals (z-intervals, t-intervals), t-distribution and two-sample confidence intervals.
+
+Duration: 10 minutes with 10 minutes extension

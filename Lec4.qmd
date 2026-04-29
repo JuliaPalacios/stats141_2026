@@ -48,21 +48,16 @@ execute:
 ::: header-row
 <h1 class="page-title">
 
-
-
 </h1>
 
 <a href="Lec4_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
 :::
 
-
 ![Probability](/Figures/prob){fig-align="center" width="20%"}
 
 The concept of probability is important in almost every field of science, including biology. Probability is the foundation of statistical inference. The concept of probability rests on the notion of a **random experiment** that has two or more possible outcomes whose occurrence cannot be predicted with certainty.
 
-For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),...,(6,6). 
-
-
+For example, consider the experiment of rolling a pair of dice. The set of possible outcomes (sample space) is (1,1),(1,2),...,(6,6).
 
 An **event** is a subset of the sample space.
 
@@ -72,17 +67,13 @@ Example 2: The event is $E_{2}=$"The sum of the two rolls is 5"
 
 {{< pagebreak >}}
 
-
-
-
 The **probability** of an event is the proportion of all random experiments in which the specified event occurs when the same experiment is repeated independently over and over again. In the long run, that is, if an infinite number of experiments is carried out, the probability of an event is the fraction of experiments in which the event occurs. Probability ranges between 0 an 1.
 
 A useful tool for thinking about probabilities of events is with a **Venn diagram**. The area of the diagram represents all possible outcomes of an experiment, and we can represent various events as areas within the diagram.
 
 {{< pagebreak >}}
 
-Two events are **mutually exclusive** if both events cannot occur simultaneously. For example $E_{1}$ and $E_{2}$ defined above are mutually exclusive and $$ P(E_{1} \text{ and } E_{2})=0$$
-{{< pagebreak >}}
+Two events are **mutually exclusive** if both events cannot occur simultaneously. For example $E_{1}$ and $E_{2}$ defined above are mutually exclusive and $$ P(E_{1} \text{ and } E_{2})=0$$ {{< pagebreak >}}
 
 ## Probability distribution
 
@@ -109,12 +100,12 @@ hist(x, xlab="Height (in inches)", main="Adult men heights",freq=TRUE)
 With this plot, we can describe the number of observations within any given interval. For example, there are over 70 individuals taller than 6 feet (72 inches).
 
 We can also convert those numbers into probability
+
 ```{r}
 y<-hist(x, xlab="Height (in inches)", main="Adult men heights",freq=FALSE)
 y
 sum(y$density)
 ```
-
 
 Summarizing a list of numbers is a powerful way to describe the distribution or, more importantly, the possible outcomes of a random experiment. We may not know all possible outcomes, so instead of describing proportions, we describe probabilities. For instance, the probability of picking a random height within the interval $(a,b)$ is denoted with $Pr(a \leq X \leq b)$.
 
@@ -126,6 +117,7 @@ The **cumulative distribution function (CDF)**, represented by the following not
 CDFy<-cumsum(y$density)
 plot(y$mids, CDFy,type="l",xlab="y (Age)",ylab="P(Y<=y)")
 ```
+
 {{< pagebreak >}}
 
 ## This or that, the addition rule
@@ -135,7 +127,6 @@ Very often, we want to know the probability that we get either one event or anot
 If the two events are mutually exclusive, then $$P(E_{1} \text{ or } E_{2})=P(E_{1})+P(E_{2})$$ Naturally, $E_{1}$ and $E_{1}^{c}$ are mutually exclusive and in fact $$P(E_{1} \text{ or } E_{1}^c)=P(E_{1})+P(E_{1}^{c})=1$$ The general addition rule is
 
 $$P(A \text{ or } B)=P(A)+P(B) - P(A \text{ and } B)$$
-
 
 {{< pagebreak >}}
 
@@ -149,9 +140,8 @@ Example: $E_{1}$=The first die roll is 3, and $E_{2}$=The second die roll is $3$
 
 The **multiplication rule** states that when two events are independent, then the probability that they both occur is the product of their probabilities. That is, if $E_{1}$ and $E_{2}$ are independent, then $$P(E_{1} \text{ and } E_{2})=P(E_{1})P(E_{2})$$
 
-
 ## Conditional probability and Bayes' theorem
- 
+
 **Conditional probability** is the probability of an event given that another event occurs.
 
 **Bayes' theorem**
@@ -162,10 +152,7 @@ The *general multiplication rule*
 
 $$P(A \text{ and } B)=P(B)P(A\mid B)=P(A)P(B \mid A)$$
 
-The *law of total probability*
-Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space
-$$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
-
+The *law of total probability* Let $B_{1}, B_{2},...B_{n}$ n sets that partition (i.e $1=\sum^{n}_{i=1}P(B_{i})$) the sample space $$P(A)=\sum_{i=1}^{n}P(A \text{ and } B_{i})=\sum_{i=1}^{n}P(B_{i})P(A \mid B_{i})$$
 
 {{< pagebreak >}}
 
