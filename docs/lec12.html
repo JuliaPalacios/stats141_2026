@@ -292,74 +292,16 @@ probability of success
 </section>
 <section id="one-population" class="level2">
 <h2 class="anchored" data-anchor-id="one-population">One population</h2>
-<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu\)</span>. You want to test:</p>
+<p>We are interested in testing <span class="math inline">\(H_{0}: \mu_{1}=0\)</span> You have data <span class="math inline">\(x_1,\dots,x_n\)</span> and assume they come from a population with mean <span class="math inline">\(\mu\)</span>. You want to test:</p>
 <p>Null hypothesis: <span class="math inline">\(H_0:\ \mu = 0\)</span> Alternative hypothesis (choose one):</p>
 <p>Two-sided: <span class="math inline">\(H_1:\ \mu \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu &lt; 0\)</span></p>
-<p>Then the one-sample t statistic is <span class="math display">\[t = \frac{\bar{x} - 0}{s/\sqrt{n}} = \frac{\bar{x}}{s/\sqrt{n}}.\]</span> Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this statistic follows a t distribution with <span class="math display">\[\text{df} = n-1\]</span> degrees of freedom.</p>
-<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t_{n-1}\)</span> distribution depending on the alternative:</p>
+<p>Test statistic</p>
+<p><span class="math inline">\(\bar{x} = \frac{1}{n}\sum_{i=1}^n x_i\)</span> (sample mean) <span class="math inline">\(s = \sqrt{\frac{1}{n-1}\sum_{i=1}^n (x_i-\bar{x})^2}\)</span> (sample standard deviation)</p>
+<p>Then the one-sample t statistic is <span class="math display">\[t = \frac{\bar{x} - 0}{s/\sqrt{n}} = \frac{\bar{x}}{s/\sqrt{n}}.\]</span> Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this statistic follows a t distribution with <span class="math display">\[\text{df} = n-1\]</span> degrees of freedom. How the decision is made</p>
+<p>Compute <span class="math inline">\(t\)</span>. Compute a p-value from the <span class="math inline">\(t_{n-1}\)</span> distribution depending on the alternative:</p>
 <p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
 <p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
-<p>Confidence interval connection:</p>
-<p>A two-sided t-test at level <span class="math inline">\(\alpha\)</span> is equivalent to checking whether 0 lies in the <span class="math inline">\((1-\alpha)\)</span> CI: <span class="math display">\[\bar{x} \pm t_{1-\alpha/2,\ n-1}\,\frac{s}{\sqrt{n}}.\]</span></p>
-</section>
-<section id="two-population-difference" class="level2">
-<h2 class="anchored" data-anchor-id="two-population-difference">Two population difference</h2>
-<p>You have data <span class="math inline">\(x_1,\dots,x_n\)</span> realizations from a population mean <span class="math inline">\(\mu_{x}\)</span>, and you have data <span class="math inline">\(y_1,\ldots, y_{n}\)</span> from a population with mean <span class="math inline">\(\mu_{y}\)</span></p>
-<p>Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = 0\)</span> Alternative hypothesis (choose one):</p>
-<p>Two-sided: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} \neq 0\)</span> Right-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &gt; 0\)</span> Left-tailed: <span class="math inline">\(H_1:\ \mu_{1}-\mu_{2} &lt; 0\)</span></p>
-<p>Then the two-sample t statistic is</p>
-<p><span class="math display">\[t=\frac{(\bar{x}_{1}-\bar{x}_{2})-0}{SE_{(\bar{x}_{1}-\bar{x}_{2})}} \]</span></p>
-<p>Under <span class="math inline">\(H_0\)</span> (and assuming approximate normality, or large <span class="math inline">\(n\)</span>), this stat istic follows a t distribution with <span class="math display">\[\text{df} =\mathrm{df}
-=
-\frac{\left(\frac{s_x^2}{n_x}+\frac{s_y^2}{n_y}\right)^2}
-{\frac{\left(\frac{s_x^2}{n_x}\right)^2}{n_x-1}
-+
-\frac{\left(\frac{s_y^2}{n_y}\right)^2}{n_y-1}}\]</span> degrees of freedom.</p>
-<p>Compute <span class="math inline">\(t\)</span> and the p-value from the <span class="math inline">\(t\)</span> distribution depending on the alternative:</p>
-<p>Two-sided: <span class="math inline">\(p = 2P(T \ge |t|)\)</span> Right-tailed: <span class="math inline">\(p = P(T \ge t)\)</span> Left-tailed: <span class="math inline">\(p = P(T \le t)\)</span></p>
-<p>Reject <span class="math inline">\(H_0\)</span> if <span class="math inline">\(p \le \alpha\)</span> (e.g., <span class="math inline">\(\alpha = 0.05\)</span>).</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, mu = 0)                 # Welch (default)</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, var.equal = TRUE)       # pooled equal-variance t-test</span></span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="co">#stats::t.test(x, y, alternative="greater")  # H1: mu1 - mu2 &gt; 0</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p><strong>What happens if you want to test: Null hypothesis: <span class="math inline">\(H_0:\ \mu_{1}-\mu_{2} = c\)</span>?</strong></p>
-</section>
-<section id="randomization-test-permutation-test" class="level2">
-<h2 class="anchored" data-anchor-id="randomization-test-permutation-test">Randomization test (permutation test)</h2>
-<p>This is a two-sample test that does not assume normality; it assumes the treatment labels were assigned at random (and units are independent).</p>
-<p>You observe outcomes from <span class="math inline">\(n\)</span> units, with <span class="math inline">\(n_1\)</span> labeled “treatment” and <span class="math inline">\(n_2\)</span> labeled “control”. To test <span class="math display">\[H_0:\ \text{no treatment effect}\]</span> Under <span class="math inline">\(H_0\)</span>, the outcomes would be the same regardless of who was labeled treated, so the observed treatment labels are exchangeable. Therefore, any reassignment of the treatment labels (keeping <span class="math inline">\(n_1\)</span> treated) is equally likely.</p>
-<p>Procedure</p>
-<p>Choose a test statistic <span class="math inline">\(T\)</span> measuring difference between groups (e.g., <span class="math inline">\(\bar Y_T-\bar Y_C\)</span>) and compute the observed statistic <span class="math inline">\(T_{\text{obs}}\)</span>.</p>
-<p>Re-randomize: repeatedly shuffle the treatment labels (or enumerate all shuffles), recompute <span class="math inline">\(T\)</span> each time. The p-value is the fraction of shuffles where <span class="math inline">\(T\)</span> is at least as extreme as <span class="math inline">\(T_{\text{obs}}\)</span> (two-sided uses <span class="math inline">\(|T|\)</span>).</p>
-<p><strong>Example:</strong></p>
-<p>Outcomes: <span class="math inline">\(y = [5,6,7,8,1,2,3,4]\)</span> Observed assignment: first 4 are treated, last 4 are control Treated: <span class="math inline">\([5,6,7,8]\)</span>, Control: <span class="math inline">\([1,2,3,4]\)</span></p>
-<p>Test statistic: difference in means <span class="math display">\[T = \bar y_T - \bar y_C.\]</span> Observed: <span class="math display">\[\bar y_T = 6.5,\quad \bar y_C = 2.5,\quad T_{\text{obs}}=4.0.\]</span> Under <span class="math inline">\(H_0\)</span>, any choice of 4 of the 8 units could have been labeled “treated” (there are <span class="math inline">\(\binom{8}{4}=70\)</span> assignments). The randomization test:</p>
-<p>computes <span class="math inline">\(T\)</span> for each of the 70 possible labelings, compares them to <span class="math inline">\(4.0\)</span>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>y <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">7</span>,<span class="dv">8</span>,<span class="dv">1</span>,<span class="dv">2</span>,<span class="dv">3</span>,<span class="dv">4</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">1</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>,<span class="dv">0</span>)  <span class="co"># 1=treat, 0=control</span></span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>Tobs <span class="ot">&lt;-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[z<span class="sc">==</span><span class="dv">0</span>])</span>
-<span id="cb13-5"><a href="#cb13-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-6"><a href="#cb13-6" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb13-7"><a href="#cb13-7" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">10000</span></span>
-<span id="cb13-8"><a href="#cb13-8" aria-hidden="true" tabindex="-1"></a>Tperm <span class="ot">&lt;-</span> <span class="fu">replicate</span>(B, {</span>
-<span id="cb13-9"><a href="#cb13-9" aria-hidden="true" tabindex="-1"></a>  zperm <span class="ot">&lt;-</span> <span class="fu">sample</span>(z)  <span class="co"># shuffle labels (keeps 4 treated)</span></span>
-<span id="cb13-10"><a href="#cb13-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">1</span>]) <span class="sc">-</span> <span class="fu">mean</span>(y[zperm<span class="sc">==</span><span class="dv">0</span>])</span>
-<span id="cb13-11"><a href="#cb13-11" aria-hidden="true" tabindex="-1"></a>})</span>
-<span id="cb13-12"><a href="#cb13-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb13-13"><a href="#cb13-13" aria-hidden="true" tabindex="-1"></a>p_two_sided <span class="ot">&lt;-</span> <span class="fu">mean</span>(<span class="fu">abs</span>(Tperm) <span class="sc">&gt;=</span> <span class="fu">abs</span>(Tobs))</span>
-<span id="cb13-14"><a href="#cb13-14" aria-hidden="true" tabindex="-1"></a>Tobs</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>p_two_sided</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.025</code></pre>
-</div>
-</div>
-<p>Here, <span class="math inline">\(T_{\text{obs}}=4.0\)</span> is actually the maximum possible difference in means (treated got the four largest outcomes), so the two-sided randomization p-value is <span class="math display">\[p = \frac{1}{70}\approx 0.0143\]</span> (only the observed assignment is as extreme</p>
+<p>Confidence interval connection A two-sided t-test at level <span class="math inline">\(\alpha\)</span> is equivalent to checking whether 0 lies in the <span class="math inline">\((1-\alpha)\)</span> CI: <span class="math display">\[\bar{x} \pm t_{1-\alpha/2,\ n-1}\,\frac{s}{\sqrt{n}}.\]</span></p>
 <p>Reference: Modern Statistics for Modern Biology</p>
 </section>
 

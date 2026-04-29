@@ -187,9 +187,9 @@ Left-tailed: $p = P(T \le t)$
 Reject $H_0$ if $p \le \alpha$ (e.g., $\alpha = 0.05$).
 
 ```{r}
-t.test(x, y, mu = 0)                 # Welch (default)
-t.test(x, y, var.equal = TRUE)       # pooled equal-variance t-test
-t.test(x, y, alternative="greater")  # H1: mu1 - mu2 > 0
+#stats::t.test(x, y, mu = 0)                 # Welch (default)
+#stats::t.test(x, y, var.equal = TRUE)       # pooled equal-variance t-test
+#stats::t.test(x, y, alternative="greater")  # H1: mu1 - mu2 > 0
 ```
 
 **What happens if you want to test: Null hypothesis: $H_0:\ \mu_{1}-\mu_{2} = c$?**
