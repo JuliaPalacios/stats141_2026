@@ -33,6 +33,7 @@ book:
         - Week3B.qmd
         - Week4A.qmd
         - Week5A.qmd
+        - Week5B.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 

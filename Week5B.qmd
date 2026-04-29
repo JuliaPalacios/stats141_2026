@@ -1,0 +1,9 @@
+# Activity 10 {#sec-week2}
+
+Name:
+
+1.  The following table shows the number of bacteria colonies present in each of several petri dishes, after E. coli bacteria were added to the dishes and they were incubated for 24 hours. The “soap” dishes contained a solution prepared from ordinary soap; the “control” dishes contained a solution of sterile water. Data for the control group is: 30, 36, 66 and for the soap group: 76, 27, 16. There are 20 possible randomizations of the six observations into two groups, each of size three.
+
+    a\) Create a list of these 20 randomizations (one of which is the original assignment of observations to the two groups) and for each case calculate the control mean minus the soap mean. How many of the 20 randomizations produce a difference in means at least as large as 4.3?
+
+    b\) Is there evidence that the soap inhibits E. coli growth? Justify your answer using the randomization results.
