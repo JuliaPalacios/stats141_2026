@@ -41,7 +41,7 @@ book:
         - Week2_section.qmd
         - Week3_section.qmd
         - Week4_section.qmd
-        - Week5_Section_download
+        - Week5_Section_download.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd
