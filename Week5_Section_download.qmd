@@ -12,7 +12,6 @@ resources:
   - Week5_section_incomplete.pdf
 ---
 
-```{=html}
 <style>
 .header-row {
   display: flex;
@@ -44,41 +43,31 @@ resources:
   text-decoration: none;
 }
 </style>
-```
 
 <!-- Flex container aligns title and button with text margin -->
+<div class="header-row">
+  <h1 class="page-title">Week 5 Section</h1>
+  <a href="Week5_section_incomplete.pdf" class="download-btn" download>
+    ⬇ Download Worksheet
+  </a>
+</div>
 
-::: header-row
-<h1 class="page-title">
-
-Week 5 Section
-
-</h1>
-
-<a href="Week5_section_incomplete.pdf" class="download-btn" download> ⬇
-Download Worksheet </a>
-:::
 
 # Learning goals
 
 By the end of this section, you should be able to:
 
-1.  Construct one-sample confidence intervals using both the $Z$ and $t$
-    methods.
+1.  Construct one-sample confidence intervals using both the $Z$ and $t$ methods.
 2.  Explain why the $Z$ and $t$ intervals are slightly different.
 3.  Conduct a two-sample mean hypothesis test in two equivalent ways:
-    -   by constructing a confidence interval for the mean difference;
-    -   by computing a test statistic and p-value.
-
-We encourage you to work out the following problems with pen and paper,
-and treat R as a calculator/look-up table. Hence, most commands are
-provided. :)
+    - by constructing a confidence interval for the mean difference;
+    - by computing a test statistic and p-value.
+    
+We encourage you to work out the following problems with pen and paper, and treat R as a calculator/look-up table. Hence, most commands are provided. :)
 
 # Problem 1: Confidence intervals from a butterfly field study
 
-A biology team is studying a certain butterfly species. They collected a
-random sample of butterflies. Each butterfly is measured from wingtip to
-wingtip, then released.
+A biology team is studying a certain butterfly species. They collected a random sample of butterflies. Each butterfly is measured from wingtip to wingtip, then released.
 
 The wingspans, measured in millimeters, are:
 
@@ -89,29 +78,28 @@ wingspan <- c(48.6, 52.1, 50.4, 49.7, 53.0, 51.2, 54.1, 50.8,
 data.frame(butterfly = 1:length(wingspan), wingspan_mm = wingspan)
 ```
 
-The researchers want a 95% confidence interval for the true mean
-wingspan $\mu$ of butterflies in this area.
+The researchers want a 95% confidence interval for the true mean wingspan $\mu$ of butterflies in this area.
 
 ## Step 1.a: Z confidence interval
 
-The $Z$ interval is appropriate when the population standard deviation
-$\sigma$ is known.
+The $Z$ interval is appropriate when the population standard deviation $\sigma$ is known.
 
-Write down a 95% confidence interval using the $Z$ method, pretending
-the population standard deviation is known and equal to $\sigma = 1.6$
-mm. Identify which summary statistics to use.
+Write down a 95% confidence interval using the $Z$ method, pretending the population standard deviation is known and equal to $\sigma = 1.6$ mm. Identify which summary statistics to use.
 
 **Your answer:**
+
+
 
 ## Step 1.b: t confidence interval
 
-In most real field studies, $\sigma$ is unknown, so we use the sample
-standard deviation $s$ and a $t$ critical value.
+In most real field studies, $\sigma$ is unknown, so we use the sample standard deviation $s$ and a $t$ critical value.
 
-Write down a 95% confidence interval using the $t$ method, treating
-$\sigma$ as unknown. Identify which summary statistics to use.
+Write down a 95% confidence interval using the $t$ method, treating $\sigma$ as unknown. Identify which summary statistics to use.
 
 **Your answer:**
+
+
+
 
 ## Step 2: Summary statistics
 
@@ -154,8 +142,8 @@ lookup_table
 
 A traditional table lookup gives approximately:
 
--   $z_{0.975} = 1.96$;
--   $t_{0.975,15} = 2.131$.
+- $z_{0.975} = 1.96$;
+- $t_{0.975,15} = 2.131$.
 
 ## Step 4: Plug in numbers
 
@@ -204,12 +192,11 @@ legend("topright",
 
 Hint: Which confidence interval is wider? Can you explain why?
 
+
+
 # Problem 2: Two-sample test from two butterfly habitats
 
-The same research team now compares butterflies from two habitats A and
-B. The team wonders whether butterflies from the two habitats have
-different mean wingspans. Again, they want to use significance level
-$\alpha = 0.05$.
+The same research team now compares butterflies from two habitats A and B. The team wonders whether butterflies from the two habitats have different mean wingspans. Again, they want to use significance level $\alpha = 0.05$.
 
 The measured wingspans are:
 
@@ -228,10 +215,7 @@ butterflies <- data.frame(
 butterflies
 ```
 
-The purpose of a hypothesis test is to test a claim and determine if
-there is sufficient evidence in favor of that claim. Hypothesis testing
-always follows a standard procedure, we can break it down to the
-following **5 steps**.
+The purpose of a hypothesis test is to test a claim and determine if there is sufficient evidence in favor of that claim. Hypothesis testing always follows a standard procedure, we can break it down to the following **5 steps**.
 
 ## Step 1: Write down the hypothesis
 
@@ -239,22 +223,23 @@ What is the null and alternative hypothesis?
 
 **Your answer:**
 
+
+
 ## Step 2.a: Construct confidence intervals
 
-One way is to use a confidence interval for $\mu_{A} - \mu_{B}$ to test
-the null hypothesis. Write down a 95% confidence interval using the $t$
-method, treating standard deviation as unknown. Identify which summary
-statistics to use.
+One way is to use a confidence interval for $\mu_{A} - \mu_{B}$ to test the null hypothesis. Write down a 95% confidence interval using the $t$ method, treating standard deviation as unknown. Identify which summary statistics to use.
 
 **Your answer:**
+
+
 
 ## Step 2.b: Compute test statistics
 
-Alternatively, we can use a p-value to test the null hypothesis. Write
-down the test statistics under the null hypothesis. Identify which
-summary statistics to use.
+Alternatively, we can use a p-value to test the null hypothesis. Write down the test statistics under the null hypothesis. Identify which summary statistics to use.
 
 **Your answer:**
+
+
 
 ## Step 3: Summary statistics
 
@@ -272,13 +257,7 @@ diff_means <- xbar1 - xbar2
 diff_means
 ```
 
-Note that degree of freedom and standard error are more complicated, we
-have introduced two methods to estimate them in class -- Welch's
-unpooled standard error, and pooled standard error. Welch's method is
-usually the safer default because it does not require equal population
-variances. The pooled test can be reasonable when the two groups are
-believed to have similar variances, either from scientific knowledge or
-from the data.
+Note that degree of freedom and standard error are more complicated, we have introduced two methods to estimate them in class -- Welch's unpooled standard error, and pooled standard error. Welch's method is usually the safer default because it does not require equal population variances. The pooled test can be reasonable when the two groups are believed to have similar variances, either from scientific knowledge or from the data.
 
 In this exercise, we focus on using the Welch's unpooled standard error,
 
@@ -287,9 +266,8 @@ $$SE_{\text{Welch}} = \sqrt{\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}}.$$
 The Welch degrees of freedom are approximated by
 
 $$df = \frac{\left(\frac{s_1^2}{n_1} + \frac{s_2^2}{n_2}\right)^2}
-{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}.$$ To
-compute the standard error, we also need sample sizes and standard
-deviations from the data:
+{\frac{(s_1^2/n_1)^2}{n_1-1} + \frac{(s_2^2/n_2)^2}{n_2-1}}.$$
+To compute the standard error, we also need sample sizes and standard deviations from the data:
 
 ```{r}
 n1 <- length(habitat_A)
@@ -349,18 +327,19 @@ Confidence interval interpretation:
 
 **Your answer:**
 
+
+
 p-value interpretation:
 
 **Your answer:**
 
+
+
 ## Conclusion
 
-Both approaches answer the same question: is the mean wingspan different
-between the two habitats?
+Both approaches answer the same question: is the mean wingspan different between the two habitats?
 
 The confidence-interval approach and the p-value approach agree:
 
--   If the 95% confidence interval excludes 0, then the two-sided
-    p-value is below 0.05.
--   If the 95% confidence interval includes 0, then the two-sided
-    p-value is above 0.05.
+- If the 95% confidence interval excludes 0, then the two-sided p-value is below 0.05.
+- If the 95% confidence interval includes 0, then the two-sided p-value is above 0.05.
