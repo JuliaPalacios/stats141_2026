@@ -3,6 +3,9 @@ title: "Hypothesis testing"
 format: html
 bibliography: references.bib
 ---
+
+![random cat](/Figures/cat_randomization.png){fig-align="center" width="40%"}
+
 ## Short feedback
 
 ```{r,echo=FALSE}
