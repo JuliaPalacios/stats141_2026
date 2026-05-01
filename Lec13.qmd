@@ -16,8 +16,6 @@ generate_svg(qr, filename = "Figures/poll.svg")
 
 ![poll](/Figures/poll.svg){fig-align="center" width="40%"}
 
-
-
 ## Randomization test (permutation test)
 
 This is a two-sample test that does not assume normality; it assumes the treatment labels were assigned at random (and units are independent).
@@ -32,11 +30,11 @@ Re-randomize: repeatedly shuffle the treatment labels (or enumerate all shuffles
 
 **Example:**
 
-Outcomes: $y = [5,6,7,8,1,2,3,4]$ 
+Outcomes: $y = [5,6,7,8,1,2,3,4]$
 
-Observed assignment: first 4 are treated, last 4 are control 
+Observed assignment: first 4 are treated, last 4 are control
 
-Treated: $[5,6,7,8]$, 
+Treated: $[5,6,7,8]$,
 
 Control: $[1,2,3,4]$
 
@@ -67,36 +65,28 @@ Here, $T_{\text{obs}}=4.0$ is actually the maximum possible difference in means 
 
 Note: Some researchers like discussing **effect size**, which is defined (assuming both have the same standard deviation) as $$\frac{\mu_{1}-\mu_{2}}{\sigma}$$ and estimated by
 
-$$\frac{\bar{x}_{1}-\bar{x}_{2}}{s}$$ 
+$$\frac{\bar{x}_{1}-\bar{x}_{2}}{s}$$
 
 ## Type I and Type II errors
 
 Having set out the mechanics of testing, we can assess how well we are doing. The following table compares different scenarios with our decision whether or not to reject the null hypothesis after we have seen the data.
 
+| Truth / Decision | Reject $H_0$ | Fail to reject $H_0$ |
+|:--------------------|:------------------------|:-------------------------|
+| $H_0$ is true | **Type I error** ( $\alpha$ )<br>False positive | **Correct**<br>No error |
+| $H_0$ is false ($H_1$ true) | **Correct**<br>Power ( $1-\beta$ ) | **Type II error** (($\beta$))<br>False negative |
 
-
-| Truth / Decision                          | Reject \(H_0\)                                      | Fail to reject \(H_0\)                               |
-|:------------------------------------------|:----------------------------------------------------|:-----------------------------------------------------|
-| $H_0$ is true                           | **Type I error** ( $\alpha$ )<br>False positive     | **Correct**<br>No error                              |
-| $H_0$ is false ($H_1$ true)           | **Correct**<br>Power \( $1-\beta$ )                  | **Type II error** (\($\beta$))<br>False negative      |
-
-
-
-Type I = False positive  = those silly car alarms
+Type I = False positive = those silly car alarms
 
 Type II = False negative = my “guard dog” when a burglar breaks in
 
 Power = The probability of correctly rejecting $H_0$ when it is false (my guard dog actually doing its job.)
 
-
-A study that has a low probability of Type II error is said to have high **power**. Power is the probability that a random sample taken from a population will lead to rejection of a false null hypothesis. 
+A study that has a low probability of Type II error is said to have high **power**. Power is the probability that a random sample taken from a population will lead to rejection of a false null hypothesis.
 
 We can reduce one of the two error types at the cost of increasing the other one. What is an acceptable trade-off between both of them?
 
-The $\alpha$-level controls the Type I rate. It controls the false positive rate.
-- In a test of level $\alpha$, we expect $\alpha$-fraction of false positives
-- If we make $\alpha$ small , we will get many false negatives
-
+The $\alpha$-level controls the Type I rate. It controls the false positive rate. - In a test of level $\alpha$, we expect $\alpha$-fraction of false positives - If we make $\alpha$ small , we will get many false negatives
 
 Assume $H_{0}: \mu=0$ and $H_{A}: \mu>0$ (right-tailed one-sided) and the null distribution is for example Normal(0,1) :
 
@@ -125,6 +115,7 @@ abline(v = crit, lty = 2, lwd = 2, col = "firebrick")
 
 
 ```
+
 Now assume a specific alternative hypothesis, for example a normal with mean 1.2 and sd 1.4.
 
 ```{r}
@@ -154,7 +145,9 @@ abline(v = crit, lty = 2, lwd = 2, col = "firebrick")
 
 
 ```
+
 Now let's put them together
+
 ```{r}
 #| fig-width: 8
 #| fig-height: 4.8
@@ -292,9 +285,10 @@ text(crit + 1.0*sd1, max(f1)*0.20,
      col = "steelblue4")
 ```
 
-## Power 
+## Power
 
-Consider the coin tosing example: 
+Consider the coin tosing example:
+
 ```{r}
 set.seed(1)
 
@@ -324,25 +318,39 @@ abline(v = p0, lty = 2, col = "gray40")
 abline(h = alpha, lty = 3, col = "gray40")
 ```
 
-### False Discovery Rate (FDR) (many hypotheses)
+### P-value hacking
+
+Back to the coin toss: we didn’t reject “the coin is fair” at 5% even though it was actually biased (probHead = 0.6). If we try many different test statistics (runs of heads, first 50 flips, etc.), eventually one will give a small p-value just by chance. **This is p-value hacking**. A related practice is **HARKing:** changing hypotheses after seeing the data until something looks significant.
+
+These violate proper hypothesis testing, but they’re tempting with messy data (many preprocessing and modeling choices). The key is transparency: report what you tried, how you did it, and share code—only then is a p-value interpretable.
+
+Keep in mind that our test is never attempting to prove the null hypothesis, we are simply saying whether there is evidence foor it to be false.
+
+### Multiple Testing
+
+In the coin example, we would expect $100\times .05$ false positives, why? Now, what is the chance that we get at least one false positive? $$1-\text{P(none is false positive)}=1-(.95)^{100}=0.99 $$ A [`classic example`](https://xkcd.com/882/) is the "association" of green jelly beans and acne .
+
+False Discovery Rate (FDR) (many hypotheses)
 
 When you test **many** hypotheses at once, some “significant” results will occur just by chance. In this setting, we often care about the **False Discovery Rate (FDR)**.
 
-False discovery rate control helps filter out results that look significant but are likely false positives.
+| Truth / Decision | Reject $H_0$ | Fail to reject $H_0$ |
+|:--------------------|:------------------------|:-------------------------|
+| $H_0$ is true | $V$ False positives | $U$ (No error) |
+| $H_0$ is false ($H_1$ true) | $S$ (correct) | $T$ False negative |
+| Total | $R$ | $m-R$ |
 
+False discovery rate control helps filter out results that look significant but are likely false positives.
 
 $$\mathrm{FDR} = \mathbb{E}\left[\frac{V}{\max(R,1)}\right]$$
 
-where  
-- $R$ = number of rejected null hypotheses (“discoveries”),  
+where\
+- $R$ = number of rejected null hypotheses (“discoveries”),\
 - $V$ = number of those rejections that are actually wrong (false discoveries / false positives).
 
-FDR is the *expected proportion of false positives among all findings you call significant*.  
+FDR is the *expected proportion of false positives among all findings you call significant*.\
 So, controlling FDR at (say) 5% means: *on average, no more than about 5% of your reported discoveries are false positives.*
 
-**How it differs from $\alpha$:**  
-- $\alpha$ controls the chance of a false positive for a **single** test (or the per-test error rate).  
+**How it differs from** $\alpha$:\
+- $\alpha$ controls the chance of a false positive for a **single** test (or the per-test error rate).\
 - FDR controls the *mix* of errors among the set of **all rejected** hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).
-
-
-

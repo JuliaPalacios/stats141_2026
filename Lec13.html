@@ -199,15 +199,15 @@ window.Quarto = {
 <p>Having set out the mechanics of testing, we can assess how well we are doing. The following table compares different scenarios with our decision whether or not to reject the null hypothesis after we have seen the data.</p>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 28%">
-<col style="width: 35%">
+<col style="width: 29%">
+<col style="width: 34%">
 <col style="width: 36%">
 </colgroup>
 <thead>
 <tr class="header">
 <th style="text-align: left;">Truth / Decision</th>
-<th style="text-align: left;">Reject (H_0)</th>
-<th style="text-align: left;">Fail to reject (H_0)</th>
+<th style="text-align: left;">Reject <span class="math inline">\(H_0\)</span></th>
+<th style="text-align: left;">Fail to reject <span class="math inline">\(H_0\)</span></th>
 </tr>
 </thead>
 <tbody>
@@ -468,9 +468,48 @@ window.Quarto = {
 </div>
 </div>
 </div>
-<section id="false-discovery-rate-fdr-many-hypotheses" class="level3">
-<h3 class="anchored" data-anchor-id="false-discovery-rate-fdr-many-hypotheses">False Discovery Rate (FDR) (many hypotheses)</h3>
+<section id="p-value-hacking" class="level3">
+<h3 class="anchored" data-anchor-id="p-value-hacking">P-value hacking</h3>
+<p>Back to the coin toss: we didn’t reject “the coin is fair” at 5% even though it was actually biased (probHead = 0.6). If we try many different test statistics (runs of heads, first 50 flips, etc.), eventually one will give a small p-value just by chance. <strong>This is p-value hacking</strong>. A related practice is <strong>HARKing:</strong> changing hypotheses after seeing the data until something looks significant.</p>
+<p>These violate proper hypothesis testing, but they’re tempting with messy data (many preprocessing and modeling choices). The key is transparency: report what you tried, how you did it, and share code—only then is a p-value interpretable.</p>
+<p>Keep in mind that our test is never attempting to prove the null hypothesis, we are simply saying whether there is evidence foor it to be false.</p>
+</section>
+<section id="multiple-testing" class="level3">
+<h3 class="anchored" data-anchor-id="multiple-testing">Multiple Testing</h3>
+<p>In the coin example, we would expect <span class="math inline">\(100\times .05\)</span> false positives, why? Now, what is the chance that we get at least one false positive? <span class="math display">\[1-\text{P(none is false positive)}=1-(.95)^{100}=0.99 \]</span> A <a href="https://xkcd.com/882/"><code>classic example</code></a> is the ``association” of green jelly beans and acne .</p>
+<p>False Discovery Rate (FDR) (many hypotheses)</p>
 <p>When you test <strong>many</strong> hypotheses at once, some “significant” results will occur just by chance. In this setting, we often care about the <strong>False Discovery Rate (FDR)</strong>.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 29%">
+<col style="width: 34%">
+<col style="width: 36%">
+</colgroup>
+<thead>
+<tr class="header">
+<th style="text-align: left;">Truth / Decision</th>
+<th style="text-align: left;">Reject <span class="math inline">\(H_0\)</span></th>
+<th style="text-align: left;">Fail to reject <span class="math inline">\(H_0\)</span></th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td style="text-align: left;"><span class="math inline">\(H_0\)</span> is true</td>
+<td style="text-align: left;"><span class="math inline">\(V\)</span> False positives</td>
+<td style="text-align: left;"><span class="math inline">\(U\)</span> (No error)</td>
+</tr>
+<tr class="even">
+<td style="text-align: left;"><span class="math inline">\(H_0\)</span> is false (<span class="math inline">\(H_1\)</span> true)</td>
+<td style="text-align: left;"><span class="math inline">\(S\)</span> (correct)</td>
+<td style="text-align: left;"><span class="math inline">\(T\)</span> False negative</td>
+</tr>
+<tr class="odd">
+<td style="text-align: left;">Total</td>
+<td style="text-align: left;"><span class="math inline">\(R\)</span></td>
+<td style="text-align: left;"><span class="math inline">\(m-R\)</span></td>
+</tr>
+</tbody>
+</table>
 <p>False discovery rate control helps filter out results that look significant but are likely false positives.</p>
 <p><span class="math display">\[\mathrm{FDR} = \mathbb{E}\left[\frac{V}{\max(R,1)}\right]\]</span></p>
 <p>where<br>
@@ -478,7 +517,7 @@ window.Quarto = {
 - <span class="math inline">\(V\)</span> = number of those rejections that are actually wrong (false discoveries / false positives).</p>
 <p>FDR is the <em>expected proportion of false positives among all findings you call significant</em>.<br>
 So, controlling FDR at (say) 5% means: <em>on average, no more than about 5% of your reported discoveries are false positives.</em></p>
-<p><strong>How it differs from <span class="math inline">\(\alpha\)</span>:</strong><br>
+<p><strong>How it differs from</strong> <span class="math inline">\(\alpha\)</span>:<br>
 - <span class="math inline">\(\alpha\)</span> controls the chance of a false positive for a <strong>single</strong> test (or the per-test error rate).<br>
 - FDR controls the <em>mix</em> of errors among the set of <strong>all rejected</strong> hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).</p>
 </section>
