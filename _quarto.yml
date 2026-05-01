@@ -22,6 +22,7 @@ book:
         - lec10.qmd
         - lec11.qmd
         - lec12.qmd
+        - lec13.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
