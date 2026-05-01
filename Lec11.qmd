@@ -58,8 +58,7 @@ A common scenario in scientific research involves comparison of two or more samp
 
 Consider two indpendent random samples of $n_{1}$ and $n_{2}$ observations with sample means $\bar{x}_{1}$ and $\bar{x}_{2}$ and sample standard deviations $s_{1}$ and $s_{2}$ respectively. Then the standard error of $\bar{X}_{1}-\bar{X}_{2}$ is:
 
-**Unpooled standard error (Welch)** 
-$$
+**Unpooled standard error (Welch)** $$
 \mathrm{SE}\!\left(\bar X_1-\bar X_2\right)
 = \sqrt{\frac{s_1^{2}}{n_1}+\frac{s_2^{2}}{n_2}}
 $$
@@ -98,9 +97,7 @@ We got a point estimate $\bar{x}_{1}-\bar{x}_{2}$ and standard errors. Let’s b
 
 $$
 \hat D \pm t_{0.975,\ \mathrm{df}}\ \mathrm{SE}.
-$$ 
-Degrees of freedom: 
-$$
+$$ Degrees of freedom: $$
 \mathrm{df}
 =
 \frac{\left(\frac{s_T^2}{n_T}+\frac{s_C^2}{n_C}\right)^2}
@@ -173,7 +170,7 @@ obsdiff <- mean(treatment) - mean(control)
 print(obsdiff)
 ```
 
-In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value. 
+In this experiment, we observe that, on average, mice on the high-fat diet are about 10% heavier than those on the chow diet. However, this result is based on a sample drawn from a larger population of mice. If the experiment were repeated with a new sample of 24 mice, randomly assigned to each diet, we would likely obtain a different average. In fact, each repetition of the experiment would yield a different value.
 
 To illustrate this, suppose we had access to the weights of the entire population of control female mice. In practice, this is rarely the case, as we typically observe only samples and rely on statistical methods to make inferences about population characteristics. For illustrative purposes, assume the following dataset represents the full population of female mice. We can then draw multiple random samples of 12 mice from this population and calculate the average for each sample.
 
@@ -276,12 +273,15 @@ tval
 df<-((part1+part2)^2)/(part1^2/(length(control)-1)+part2^2/(length(treatment)-1))
 df
 ```
+
 Let's compute the p-value
 
 ```{r}
 2*pt(tval,df)
 ```
+
 We can compare our calculations:
+
 ```{r}
 t.test(control, treatment)  
 ```
