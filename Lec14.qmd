@@ -101,29 +101,29 @@ alt: the p-values resulting from the tests for which the null hypotheis is not t
 The relative size of these two components depends on the fraction of true nulls and true alternatives.
 
 ```{r}
-library(ggplot2)
-ggplot(awde, aes(x = pvalue)) +
-  geom_histogram(binwidth = 0.025, boundary = 0)
+# library(ggplot2)
+# ggplot(awde, aes(x = pvalue)) +
+#   geom_histogram(binwidth = 0.025, boundary = 0)
 ```
 
 We can now apply the BH procedure. There are $>30000$ p-values, we will visualize the smallest 7000 and choose a FDR of $q=0.10$
 
 ```{r}
-library("dplyr")
-q  = 0.10
-awde = mutate(awde, rank = rank(pvalue))
-m    = nrow(awde)
-
-ggplot(dplyr::filter(awde, rank <= 7000), aes(x = rank, y = pvalue)) +
-  geom_line() + geom_abline(slope = q / m, col = "red")
+# library("dplyr")
+# q  = 0.10
+# awde = mutate(awde, rank = rank(pvalue))
+# m    = nrow(awde)
+# 
+# ggplot(dplyr::filter(awde, rank <= 7000), aes(x = rank, y = pvalue)) +
+#   geom_line() + geom_abline(slope = q / m, col = "red")
 ```
 
 We will then find the rightmost point where teh black (our p-values) and red lines (slope $q/m$) instersect. Then it rejects all tests to the left.
 
 ```{r}
-kmax = with(arrange(awde, rank),
-         last(which(pvalue <= q * rank / m)))
-kmax
+# kmax = with(arrange(awde, rank),
+#          last(which(pvalue <= q * rank / m)))
+# kmax
 ```
 
 BH uses the fact that under the null, p-values behave like \$Uniform(0,1)\$
