@@ -6,6 +6,11 @@ Name:
 
     a) Create a list of these 20 randomizations (one of which is the original assignment of observations to the two groups) and for each case calculate the control mean minus the soap mean. How many of the 20 randomizations produce a difference in means at least as large as 4.3?
 
+```{r}
+x<-c(30, 36, 66, 76, 27, 16) 
+idxC <- combn(1:6, 3)
+
+```
     b) Is there evidence that the soap inhibits E. coli growth? Justify your answer using the randomization results.
 
 
@@ -17,3 +22,44 @@ and the p-value is 0.07. For each of the following statements, say whether the s
 (d) We do not have significant evidence for $H_{A}$ with $\alpha=0.05$
 (e) The probability that $\bar{Y}_{1}$ is greater than $\bar{Y}_{2}$ is 0.07.
 
+
+3. Substances to be tested for cancer-causing poten-
+tial are often painted on the skin of mice. The question
+arose whether mice might get an additional dose of the
+substance by licking or biting their cagemates. To answer
+this question, the compound benzo(a)pyrene was applied
+to the backs of 10 mice: Five were individually housed
+and 5 were group-housed in a single cage. After 48 hours,
+the concentration of the compound in the stomach tissue
+of each mouse was determined. The results (nmol/gm)
+were as follows:
+
+```{r}
+single<-c(3.3,2.4,2.5,3.3,2.4)
+group<-c(3.9,4.1,4.8,3.9,3.4)
+
+```
+
+Use a Wilcoxon-Mann-Whitney test to compare the
+two distributions at $\alpha = 0.01$. Let the alternative 
+hypothesis be that benzo(a)pyrene concentrations
+tend to be higher in group-housed mice than in
+singly housed mice.
+
+4. In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. The following data shows the weight gains (lb) of the animals over a 140-day test period on diet 1 (Y1) and
+on diet 2 (Y2).
+
+```{r}
+diet1<-c(596,422,524,454,538,552,478,564,556)
+diet2<-c(498,460,468,458,530,482,528,598,456)
+```
+
+(a) Calculate the standard error of the mean difference.
+
+(b) Test for a difference between the diets using a paired t-test at
+$\alpha = 0.10$. Use a nondirectional alternative.
+
+(c) Construct a 90% confidence interval for $\mu_D$.
+
+(d) Interpret the confidence interval from part (c) in the
+context of this setting.

@@ -2,7 +2,57 @@
 title: "Hypothesis testing"
 format: html
 bibliography: references.bib
+execute:
+  echo: true
+  warning: false
+  message: false
+  resources:
+  - Lec13_annotated.pdf
 ---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+</h1>
+
+<a href="Lec13_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+:::
 
 ![random cat](/Figures/cat_randomization.png){fig-align="center" width="40%"}
 
@@ -326,31 +376,4 @@ These violate proper hypothesis testing, but they’re tempting with messy data 
 
 Keep in mind that our test is never attempting to prove the null hypothesis, we are simply saying whether there is evidence foor it to be false.
 
-### Multiple Testing
 
-In the coin example, we would expect $100\times .05$ false positives, why? Now, what is the chance that we get at least one false positive? $$1-\text{P(none is false positive)}=1-(.95)^{100}=0.99 $$ A [`classic example`](https://xkcd.com/882/) is the "association" of green jelly beans and acne .
-
-False Discovery Rate (FDR) (many hypotheses)
-
-When you test **many** hypotheses at once, some “significant” results will occur just by chance. In this setting, we often care about the **False Discovery Rate (FDR)**.
-
-| Truth / Decision | Reject $H_0$ | Fail to reject $H_0$ |
-|:--------------------|:------------------------|:-------------------------|
-| $H_0$ is true | $V$ False positives | $U$ (No error) |
-| $H_0$ is false ($H_1$ true) | $S$ (correct) | $T$ False negative |
-| Total | $R$ | $m-R$ |
-
-False discovery rate control helps filter out results that look significant but are likely false positives.
-
-$$\mathrm{FDR} = \mathbb{E}\left[\frac{V}{\max(R,1)}\right]$$
-
-where\
-- $R$ = number of rejected null hypotheses (“discoveries”),\
-- $V$ = number of those rejections that are actually wrong (false discoveries / false positives).
-
-FDR is the *expected proportion of false positives among all findings you call significant*.\
-So, controlling FDR at (say) 5% means: *on average, no more than about 5% of your reported discoveries are false positives.*
-
-**How it differs from** $\alpha$:\
-- $\alpha$ controls the chance of a false positive for a **single** test (or the per-test error rate).\
-- FDR controls the *mix* of errors among the set of **all rejected** hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).

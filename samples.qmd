@@ -48,8 +48,6 @@ execute:
 ::: header-row
 <h1 class="page-title">
 
-
-
 </h1>
 
 <a href="Lec2_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>

@@ -23,6 +23,7 @@ book:
         - lec11.qmd
         - lec12.qmd
         - lec13.qmd
+        - lec14.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
@@ -49,6 +50,7 @@ book:
         - quiz2.qmd
         - quiz3.qmd
         - quiz4.qmd
+        - quiz5.qmd
 #    - references.qmd
    
 

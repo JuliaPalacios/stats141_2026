@@ -1,0 +1,297 @@
+---
+title: "Multiple testing and Other Tests"
+format: html
+bibliography: references.bib
+---
+
+Multiple testing problem: If I test $n$ true null hypotheses at level $\alpha$, then on average I will still (falsely) reject $\alpha$n of them.
+
+Examples:
+
+-   Test the safety of a drug in terms of dozen different side effects
+
+-   Test whether there is a [link between acne and jelly beans](https://xkcd.com/882/)
+
+-   Test whether a disease is related to 10,000 different genes
+
+![Manhattan plot](/Figures/Manhattan.png){fig-align="center" width="90%"} Consider the number of errors that can occur when testing $m$ multiple hypotheses:
+
+| Truth / Decision | Reject $H_0$ | Fail to reject $H_0$ | Total |
+|:------------------|:-----------------|:-----------------|:-----------------|
+| $H_0$ is true | $V$ False positives | $U$ (No error) | $m_{0}$ |
+| $H_0$ is false ($H_1$ true) | $S$ (correct) | $T$ False negative | $m_{1}$ |
+| Total | $R$ | $m-R$ | $m$ |
+
+What are some other ways we can think of controlling type I and II errors?
+
+## The family wise error rate
+
+The family wise error rate (FWER) is the probability that that we make at least one false positive i.e $$\begin{align}
+\text{P}(V>0)& =1-\text{P(no rejection of any of } m_{0} \text{ nulls})\\
+&=(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
+\end{align}$$
+
+**Bonferroni method** is a method for controlling FWER by adjusting the value of $\alpha$ for a given $m_{0}$. However we usually do not know $m_{0}$. Instead we can use $m$ and set $$\alpha^{*}=\alpha/m$$
+
+For eample, if we typically use the significance level $\alpha=0.05$ when carrying out a single test, then to carry out 13 separate test we should use significance level $\alpha^{*}=0.05/12=0.00417$ instead.
+
+Bonferroni controls FWER at level $\alpha$ if $P(V>0)\leq \alpha$.
+
+$$\begin{align}
+P(V>0) & =P[(\text{reject } H^{(1)}_{0}) \cup (\text{reject } H^{(2)}_{0})\cup\ldots\cup (\text{reject } H^{(m_{0})}_{0})]\\
+& \leq P[(\text{reject }H^{(1)}_{0})]+\dots+P[(\text{reject }H^{(m_{0})}_{0})]\\
+&=\frac{\alpha}{m}+\ldots+\frac{\alpha}{m}=\frac{\alpha m_{0}}{m}\leq \alpha
+\end{align}
+$$
+
+Often FWER control is too stringent (conservative). We will now see that there are more nuanced methods of controlling our type I error.
+
+**False discovery rate** control helps filter out results that look significant but are likely false positives.
+
+To use this approach, carry out all of the multiple tests at significance $\alpha$. Collect all significant tests (i.e all such that $p-value\leq \alpha$). We call this subset of tests the **discoveries**.
+
+The FDR estimates the proportion of discoveries that are false positives.
+
+$$\mathrm{FDR} = \mathbb{E}\left[\frac{V}{\max(R,1)}\right]$$
+
+where\
+- $R$ = number of rejected null hypotheses (“discoveries”),\
+- $V$ = number of those rejections that are actually wrong (false discoveries / false positives).
+
+FDR is the *expected proportion of false positives among all findings you call significant*.
+
+So, controlling FDR at (say) 5% means: *on average, no more than about 5% of your reported discoveries are false positives.*
+
+The **Benjamini-Hochberg algorithm** is a method for controlling the FDR. The procedure has these steps:
+
+1.  First order the p-values in increasing order
+
+2.  Then for some choice of $q$ target FDR, find the largest value of $k$ that satisfies:
+
+    $$
+    p_{(k)} \leq q k/m
+    $$
+
+3.  Finally reject the hypotheses $1,...,k$
+
+For example: The following dataset contains many p-values for testing differences in gene expression in human airway smooth muscle cell lines with and without treatment with dexamethasone, a synthetic glucocorticoid.
+
+```{r}
+# if (!require("BiocManager", quietly = TRUE))
+#     install.packages("BiocManager")
+# 
+# BiocManager::install("DESeq2")
+# BiocManager::install("airway")
+
+
+library("DESeq2")
+library("airway")
+data("airway")
+aw   = DESeqDataSet(se = airway, design = ~ cell + dex)
+aw   = DESeq(aw)
+awde = as.data.frame(results(aw)) |> dplyr::filter(!is.na(pvalue))
+```
+
+Let's check the histogram of the p-values. Notice it is a mixture of two components:
+
+null: the p-values resulting from the test for which the null hypothesis is true.
+
+alt: the p-values resulting from the tests for which the null hypotheis is not true.
+
+The relative size of these two components depends on the fraction of true nulls and true alternatives.
+
+```{r}
+ggplot(awde, aes(x = pvalue)) +
+  geom_histogram(binwidth = 0.025, boundary = 0)
+```
+
+We can now apply the BH procedure. There are $>30000$ p-values, we will visualize the smallest 7000 and choose a FDR of $q=0.10$
+
+```{r}
+library("dplyr")
+q  = 0.10
+awde = mutate(awde, rank = rank(pvalue))
+m    = nrow(awde)
+
+ggplot(dplyr::filter(awde, rank <= 7000), aes(x = rank, y = pvalue)) +
+  geom_line() + geom_abline(slope = q / m, col = "red")
+```
+
+We will then find the rightmost point where teh black (our p-values) and red lines (slope $q/m$) instersect. Then it rejects all tests to the left.
+
+```{r}
+kmax = with(arrange(awde, rank),
+         last(which(pvalue <= q * rank / m)))
+kmax
+```
+
+BH uses the fact that under the null, p-values behave like \$Uniform(0,1)\$
+
+-   **Under the null, small p-values are rare** If a hypothesis is truly null $P(p\leq t)=t$. So amon $m_{0}$ true nulls, the expected number of $p$-values below a cutoff t is about $m_{0}t$.
+
+-   **If you reject everything with** $p\leq t$, the "false discoveris" scale like $m_{0}t$. Let $R$ ge the total number of rejections. Roughly:
+
+    -   expected false rejections $\approx m_{0}t$
+
+    -   total rejections = $R$
+
+    -   So the false discovery proportion is roughly
+
+        $$
+        \frac{m_{0}t}{R}
+        $$
+
+    -   To keep this around $q$, you would like $t\approx \frac{qR}{m_{0}}$
+
+-    BH replaces the unknown $m_{0}$ with a safe upper bound $m$ and so
+
+-   $$
+    t \approx \frac{qR}{m}
+    $$
+
+-   The step-up rule finds a self-consistent cutoff
+
+    -   $$
+        p_{(k)} \leq \frac{k}{m}q
+        $$
+
+-   
+
+**How it differs from** $\alpha$:\
+- $\alpha$ controls the chance of a false positive for a **single** test (or the per-test error rate).\
+- FDR controls the *mix* of errors among the set of **all rejected** hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).
+
+## The Wilcoxon-Mann-Whitney (WMW) Test
+
+The WMW test is used to compare two independent samples like the t-test, but unlike the t-test, the WMW test is valid even when the population distributions are not normal.
+
+$H_{0}:$ The population distributions $Y_{1}$ and $Y_{2}$ are the same.
+
+$H_{A}:$ The population distribution of $Y_{1}$ is shifted from the population distribution of $Y_{2}$.
+
+The WMW test statistic is denoted $U_{s}$ and measures the degree of separation or shift between the two samples.
+
+The test procedure:
+
+1.  Arrange the observations in increasing order
+
+2.  Create two counts $K_{1}$ and $K_{2}$ as follows:
+
+    1.  For $K_{1}$, count 1 for all observations in sample 2 which are less than each observation in sample 1. Count 0.5 for all observations in sample 2 which are the same value as an observation in sample 1.
+
+    2.  For $K_{2}$ same thing but in reverse.
+
+    3.  $U_{s}=\max\{K_{1},K_{2}\}$
+
+Example: Soil respiration is a measure of microbial activity in soil, which affects plant growth. In one study, soil cores were taken from two locations in a forest: (1) under an opening in the forest canopy (the “gap” location) and (2) at a nearby area under heavy tree growth (the “growth” location). The amount of carbon dioxide given off by each soil core was measured (in mol CO2/g soil/hr).
+
+$H_{0}:$ The gap and growth areas do not differ with respect to soil respiration.
+
+$H_{A} (nondirectional):$ The distribution of soil respiration rates tends to be higher in one of the two populations.
+
+$H_{A} (directional):$ Soil respiration rates tend to be greater in the growth area than they are in the gap area.
+
+```{r}
+y1<-c(6,13,14,15,16,18,22,29)
+y2<-c(17,20,22,64,170,190,315)
+
+dat<-data.frame(
+  group = factor(c(rep("Gap data",length(y2)),rep("Growth data",length(y1)))),
+  values = c(y2,y1)
+)
+
+library(ggplot2)
+
+ggplot(dat, aes(x = group, y = values, fill = group)) +
+  geom_boxplot(width = 0.6, outlier.shape = NA, alpha = 0.6) +
+  geom_jitter(width = 0.1, height = 0, alpha = 0.8, size = 2) +
+  labs(
+    x = NULL,
+    y = "carbon dioxide given",
+    title = "mole CO2/g soil/hr"
+  ) +
+  theme_minimal(base_size = 12) +
+  theme(legend.position = "none")
+
+w <- wilcox.test(values ~ group, data = dat, exact = FALSE)
+w
+#one sided
+w2 <- wilcox.test(values ~ group, data = dat, alternative="greater",exact = FALSE)
+w2
+
+```
+
+-   The required assumption in the WMW test is that the samples must be random samples from their populations, independently drawn.
+
+-   The t-test requires the same assumption of random, independent samples, but it also assumes (1) the normality of the populations or (2) the samples are large enough.
+
+-   The MWW test is good for nonsymmetric data.
+
+-   The downside is that the statistic does not use all information in the data, only ranks and so it loses statistical power.
+
+## The paired-sample t-test and CI
+
+So far we have assumed that the we have two independent samples, one from each population. We will now consider the comparison of two samples that are not independent bu are **paired**. In a paired design, the observations $(Y_{1},Y_{2})$ occur in pairs; the observational units in a pair are linked.
+
+For example: consider testing whether a fertilizer increases plant growth using the same plants measured twice.
+
+12 tomato plants are measured for height after 2 weeks under standard conditions. Then all 12 plants receive a new fertilizer for 2 more weeks and height is measured again. Because each plant is measured before and after, observations are paired.
+
+$H_{0}: \mu_{D}=\mu_{1}-\mu_{2}=0$
+
+$H_{A}: \mu_{D}=\mu_{1}-\mu_{2} \neq 0$.
+
+```{r}
+# Paired t-test example data (plant heights in cm)
+dat <- data.frame(
+  plant  = 1:6,
+  before = c(12.1, 11.8, 13.0, 10.9, 12.5, 11.2),
+  after  = c(14.0, 13.2, 14.1, 12.0, 13.7, 12.6)
+)
+
+dat
+
+```
+
+The test statistic is $$\frac{\bar{D}-0}{SE_{\bar{D}}}=\frac{\bar{D}-0}{SD_{D}/\sqrt{n}}$$ which is distributed as a t-distribution with $df=n-1$.
+
+A $(1-\alpha)%$ confidence interval for $\mu_{D} is$$\bar{D}\pm t_{n-1,\alpha/2} SE_{\bar{D}}$\$ In our example this is:
+
+```{r}
+# CI by hand
+d<-mean(dat$after-dat$before)
+sd<-sd(dat$after-dat$before)
+se<-sd/sqrt(6)
+se
+tval<-qt(.975,5)
+d-tval*se
+d+tval*se
+print(paste("95% CI is: (",d-tval*se,d+tval*se,")"))
+
+
+# Paired t-test
+t.test(dat$after, dat$before, paired = TRUE)
+
+```
+
+What is the difference between a paired and an unpaired test?
+
+```{r}
+# CI by hand
+d<-mean(dat$after-dat$before)
+se1<-sd(dat$after)/sqrt(6)
+se2<-sd(dat$before)/sqrt(6)
+se_unpooled<-sqrt(se1^2+se2^2)
+df<-((se1^2+se2^2)^2)/(((se1^2)^2 / 5)+((se2^2)^2 / 5))
+tval<-qt(.975,df)
+d-tval*se
+d+tval*se
+print(paste("95% CI is: (",d-tval*se_unpooled,d+tval*se_unpooled,")"))
+
+
+# unpaired two-sided
+t.test(dat$after, dat$before, paired = FALSE)
+
+```
+
+A paired experiment reduces the noise, i.e., variation in outcomes due to other variables.
