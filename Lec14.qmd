@@ -101,6 +101,7 @@ alt: the p-values resulting from the tests for which the null hypotheis is not t
 The relative size of these two components depends on the fraction of true nulls and true alternatives.
 
 ```{r}
+library(ggplot2)
 ggplot(awde, aes(x = pvalue)) +
   geom_histogram(binwidth = 0.025, boundary = 0)
 ```
