@@ -1,9 +1,18 @@
-# Activity 11 {#sec-week2}
+# Activity 10 {#sec-week2}
 
 Name:
 
+1.  The following table shows the number of bacteria colonies present in each of several petri dishes, after E. coli bacteria were added to the dishes and they were incubated for 24 hours. The “soap” dishes contained a solution prepared from ordinary soap; the “control” dishes contained a solution of sterile water. Data for the control group is: 30, 36, 66 and for the soap group: 76, 27, 16. There are 20 possible randomizations of the six observations into two groups, each of size three.
 
-1. Describe how you would do a two-sided randomization test with significance level of 5% if you are given 5 measurements of individuals in the treatment group and 6 measurements of individuals in the control group? How would do it if you have 100 samples in each group?
+    a) Create a list of these 20 randomizations (one of which is the original assignment of observations to the two groups) and for each case calculate the control mean minus the soap mean. How many of the 20 randomizations produce a difference in means at least as large as 4.3?
+
+```{r}
+x<-c(30, 36, 66, 76, 27, 16) 
+idxC <- combn(1:6, 3)
+
+```
+    b) Is there evidence that the soap inhibits E. coli growth? Justify your answer using the randomization results.
+
 
 2. Suppose we have conducted a test, with $\alpha = 0.10$,
 and the p-value is 0.07. For each of the following statements, say whether the statement is true or false and explain why.
@@ -14,7 +23,12 @@ and the p-value is 0.07. For each of the following statements, say whether the s
 (e) The probability that $\bar{Y}_{1}$ is greater than $\bar{Y}_{2}$ is 0.07.
 
 
-3. Substances to be tested for cancer-causing potential are often painted on the skin of mice. The question arose whether mice might get an additional dose of the substance by licking or biting their cagemates. To answer this question, the compound benzo(a)pyrene was applied to the backs of 10 mice: Five were individually housed
+3. Substances to be tested for cancer-causing poten-
+tial are often painted on the skin of mice. The question
+arose whether mice might get an additional dose of the
+substance by licking or biting their cagemates. To answer
+this question, the compound benzo(a)pyrene was applied
+to the backs of 10 mice: Five were individually housed
 and 5 were group-housed in a single cage. After 48 hours,
 the concentration of the compound in the stomach tissue
 of each mouse was determined. The results (nmol/gm)

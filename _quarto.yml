@@ -24,6 +24,7 @@ book:
         - lec12.qmd
         - lec13.qmd
         - lec14.qmd
+        - Lec15.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
@@ -36,6 +37,7 @@ book:
         - Week4A.qmd
         - Week5A.qmd
         - Week5B.qmd
+        - Week6A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 

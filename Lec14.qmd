@@ -77,19 +77,24 @@ The **Benjamini-Hochberg algorithm** is a method for controlling the FDR. The pr
 For example: The following dataset contains many p-values for testing differences in gene expression in human airway smooth muscle cell lines with and without treatment with dexamethasone, a synthetic glucocorticoid.
 
 ```{r}
+#| echo: false
+#| message: false
+#| warning: false
 # if (!require("BiocManager", quietly = TRUE))
 #     install.packages("BiocManager")
 # 
 # BiocManager::install("DESeq2")
 # BiocManager::install("airway")
 
-
-library("DESeq2")
-library("airway")
-data("airway")
-aw   = DESeqDataSet(se = airway, design = ~ cell + dex)
-aw   = DESeq(aw)
-awde = as.data.frame(results(aw)) |> dplyr::filter(!is.na(pvalue))
+# 
+# library("DESeq2")
+# library("airway")
+# data("airway")
+# aw   = DESeqDataSet(se = airway, design = ~ cell + dex)
+# aw   = DESeq(aw)
+# awde = as.data.frame(results(aw)) |> dplyr::filter(!is.na(pvalue))
+# pvalues<-awde$pvalue
+# saveRDS(pvalues, file = "pvalues.rds")
 ```
 
 Let's check the histogram of the p-values. Notice it is a mixture of two components:
@@ -101,29 +106,43 @@ alt: the p-values resulting from the tests for which the null hypotheis is not t
 The relative size of these two components depends on the fraction of true nulls and true alternatives.
 
 ```{r}
-# library(ggplot2)
-# ggplot(awde, aes(x = pvalue)) +
-#   geom_histogram(binwidth = 0.025, boundary = 0)
+#| warning: false
+pvalues <- readRDS("pvalues.rds")
+library(ggplot2)
+
+ggplot(mapping = aes(x = pvalues)) +
+  geom_histogram(binwidth = 0.025, boundary = 0) +
+  xlim(0, 1)
 ```
 
 We can now apply the BH procedure. There are $>30000$ p-values, we will visualize the smallest 7000 and choose a FDR of $q=0.10$
 
 ```{r}
-# library("dplyr")
-# q  = 0.10
-# awde = mutate(awde, rank = rank(pvalue))
-# m    = nrow(awde)
-# 
-# ggplot(dplyr::filter(awde, rank <= 7000), aes(x = rank, y = pvalue)) +
-#   geom_line() + geom_abline(slope = q / m, col = "red")
+#| message: false
+#| warning: false
+ library("dplyr")
+ q  = 0.10
+ awde <- tibble(pvalue = pvalues) %>%
+  mutate(rank = rank(pvalue, ties.method = "first"))
+
+m <- length(pvalues)
+
+ggplot(filter(awde, rank <= 7000), aes(x = rank, y = pvalue)) +
+  geom_line() +
+  geom_abline(slope = q / m, intercept = 0, col = "red")
+
 ```
 
-We will then find the rightmost point where teh black (our p-values) and red lines (slope $q/m$) instersect. Then it rejects all tests to the left.
+
+
+
+We will then find the rightmost point where teh black (our 
+p-values) and red lines (slope $q/m$) instersect. Then it rejects all tests to the left.
 
 ```{r}
-# kmax = with(arrange(awde, rank),
-#          last(which(pvalue <= q * rank / m)))
-# kmax
+ kmax = with(arrange(awde, rank),
+          last(which(pvalue <= q * rank / m)))
+ kmax
 ```
 
 BH uses the fact that under the null, p-values behave like \$Uniform(0,1)\$
@@ -161,138 +180,3 @@ BH uses the fact that under the null, p-values behave like \$Uniform(0,1)\$
 **How it differs from** $\alpha$:\
 - $\alpha$ controls the chance of a false positive for a **single** test (or the per-test error rate).\
 - FDR controls the *mix* of errors among the set of **all rejected** hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).
-
-## The Wilcoxon-Mann-Whitney (WMW) Test
-
-The WMW test is used to compare two independent samples like the t-test, but unlike the t-test, the WMW test is valid even when the population distributions are not normal.
-
-$H_{0}:$ The population distributions $Y_{1}$ and $Y_{2}$ are the same.
-
-$H_{A}:$ The population distribution of $Y_{1}$ is shifted from the population distribution of $Y_{2}$.
-
-The WMW test statistic is denoted $U_{s}$ and measures the degree of separation or shift between the two samples.
-
-The test procedure:
-
-1.  Arrange the observations in increasing order
-
-2.  Create two counts $K_{1}$ and $K_{2}$ as follows:
-
-    1.  For $K_{1}$, count 1 for all observations in sample 2 which are less than each observation in sample 1. Count 0.5 for all observations in sample 2 which are the same value as an observation in sample 1.
-
-    2.  For $K_{2}$ same thing but in reverse.
-
-    3.  $U_{s}=\max\{K_{1},K_{2}\}$
-
-Example: Soil respiration is a measure of microbial activity in soil, which affects plant growth. In one study, soil cores were taken from two locations in a forest: (1) under an opening in the forest canopy (the “gap” location) and (2) at a nearby area under heavy tree growth (the “growth” location). The amount of carbon dioxide given off by each soil core was measured (in mol CO2/g soil/hr).
-
-$H_{0}:$ The gap and growth areas do not differ with respect to soil respiration.
-
-$H_{A} (nondirectional):$ The distribution of soil respiration rates tends to be higher in one of the two populations.
-
-$H_{A} (directional):$ Soil respiration rates tend to be greater in the growth area than they are in the gap area.
-
-```{r}
-y1<-c(6,13,14,15,16,18,22,29)
-y2<-c(17,20,22,64,170,190,315)
-
-dat<-data.frame(
-  group = factor(c(rep("Gap data",length(y2)),rep("Growth data",length(y1)))),
-  values = c(y2,y1)
-)
-
-library(ggplot2)
-
-ggplot(dat, aes(x = group, y = values, fill = group)) +
-  geom_boxplot(width = 0.6, outlier.shape = NA, alpha = 0.6) +
-  geom_jitter(width = 0.1, height = 0, alpha = 0.8, size = 2) +
-  labs(
-    x = NULL,
-    y = "carbon dioxide given",
-    title = "mole CO2/g soil/hr"
-  ) +
-  theme_minimal(base_size = 12) +
-  theme(legend.position = "none")
-
-w <- wilcox.test(values ~ group, data = dat, exact = FALSE)
-w
-#one sided
-w2 <- wilcox.test(values ~ group, data = dat, alternative="greater",exact = FALSE)
-w2
-
-```
-
--   The required assumption in the WMW test is that the samples must be random samples from their populations, independently drawn.
-
--   The t-test requires the same assumption of random, independent samples, but it also assumes (1) the normality of the populations or (2) the samples are large enough.
-
--   The MWW test is good for nonsymmetric data.
-
--   The downside is that the statistic does not use all information in the data, only ranks and so it loses statistical power.
-
-## The paired-sample t-test and CI
-
-So far we have assumed that the we have two independent samples, one from each population. We will now consider the comparison of two samples that are not independent bu are **paired**. In a paired design, the observations $(Y_{1},Y_{2})$ occur in pairs; the observational units in a pair are linked.
-
-For example: consider testing whether a fertilizer increases plant growth using the same plants measured twice.
-
-12 tomato plants are measured for height after 2 weeks under standard conditions. Then all 12 plants receive a new fertilizer for 2 more weeks and height is measured again. Because each plant is measured before and after, observations are paired.
-
-$H_{0}: \mu_{D}=\mu_{1}-\mu_{2}=0$
-
-$H_{A}: \mu_{D}=\mu_{1}-\mu_{2} \neq 0$.
-
-```{r}
-# Paired t-test example data (plant heights in cm)
-dat <- data.frame(
-  plant  = 1:6,
-  before = c(12.1, 11.8, 13.0, 10.9, 12.5, 11.2),
-  after  = c(14.0, 13.2, 14.1, 12.0, 13.7, 12.6)
-)
-
-dat
-
-```
-
-The test statistic is $$\frac{\bar{D}-0}{SE_{\bar{D}}}=\frac{\bar{D}-0}{SD_{D}/\sqrt{n}}$$ which is distributed as a t-distribution with $df=n-1$.
-
-A $(1-\alpha)%$ confidence interval for $\mu_{D} is$$\bar{D}\pm t_{n-1,\alpha/2} SE_{\bar{D}}$\$ In our example this is:
-
-```{r}
-# CI by hand
-d<-mean(dat$after-dat$before)
-sd<-sd(dat$after-dat$before)
-se<-sd/sqrt(6)
-se
-tval<-qt(.975,5)
-d-tval*se
-d+tval*se
-print(paste("95% CI is: (",d-tval*se,d+tval*se,")"))
-
-
-# Paired t-test
-t.test(dat$after, dat$before, paired = TRUE)
-
-```
-
-What is the difference between a paired and an unpaired test?
-
-```{r}
-# CI by hand
-d<-mean(dat$after-dat$before)
-se1<-sd(dat$after)/sqrt(6)
-se2<-sd(dat$before)/sqrt(6)
-se_unpooled<-sqrt(se1^2+se2^2)
-df<-((se1^2+se2^2)^2)/(((se1^2)^2 / 5)+((se2^2)^2 / 5))
-tval<-qt(.975,df)
-d-tval*se
-d+tval*se
-print(paste("95% CI is: (",d-tval*se_unpooled,d+tval*se_unpooled,")"))
-
-
-# unpaired two-sided
-t.test(dat$after, dat$before, paired = FALSE)
-
-```
-
-A paired experiment reduces the noise, i.e., variation in outcomes due to other variables.
