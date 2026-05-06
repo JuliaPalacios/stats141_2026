@@ -463,6 +463,7 @@ window.Quarto = {
    
   <ul>
   <li><a href="#the-family-wise-error-rate" id="toc-the-family-wise-error-rate" class="nav-link active" data-scroll-target="#the-family-wise-error-rate"><span class="header-section-number">14.1</span> The family wise error rate</a></li>
+  <li><a href="#false-discovery-rate" id="toc-false-discovery-rate" class="nav-link" data-scroll-target="#false-discovery-rate"><span class="header-section-number">14.2</span> False discovery rate</a></li>
   </ul>
 </nav>
     </div>
@@ -549,6 +550,9 @@ P(V&gt;0) &amp; =P[(\text{reject } H^{(1)}_{0}) \cup (\text{reject } H^{(2)}_{0}
 \end{align}
 \]</span></p>
 <p>Often FWER control is too stringent (conservative). We will now see that there are more nuanced methods of controlling our type I error.</p>
+</section>
+<section id="false-discovery-rate" class="level2" data-number="14.2">
+<h2 data-number="14.2" class="anchored" data-anchor-id="false-discovery-rate"><span class="header-section-number">14.2</span> False discovery rate</h2>
 <p><strong>False discovery rate</strong> control helps filter out results that look significant but are likely false positives.</p>
 <p>To use this approach, carry out all of the multiple tests at significance <span class="math inline">\(\alpha\)</span>. Collect all significant tests (i.e all such that <span class="math inline">\(p-value\leq \alpha\)</span>). We call this subset of tests the <strong>discoveries</strong>.</p>
 <p>The FDR estimates the proportion of discoveries that are false positives.</p>
