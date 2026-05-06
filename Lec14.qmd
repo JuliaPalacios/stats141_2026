@@ -149,9 +149,9 @@ p-values) and red lines (slope $q/m$) instersect. Then it rejects all tests to t
 
 BH uses the fact that under the null, p-values behave like \$Uniform(0,1)\$
 
--   **Under the null, small p-values are rare** If a hypothesis is truly null $P(p\leq t)=t$. So amon $m_{0}$ true nulls, the expected number of $p$-values below a cutoff t is about $m_{0}t$.
+-   **Under the null, small p-values are rare** If a hypothesis is truly null $P(p\leq t)=t$. So among $m_{0}$ true nulls, the expected number of $p$-values below a cutoff t is about $m_{0}t$.
 
--   **If you reject everything with** $p\leq t$, the "false discoveris" scale like $m_{0}t$. Let $R$ ge the total number of rejections. Roughly:
+-   **If you reject everything with** $p\leq t$, the "false discoveries" scale like $m_{0}t$. Let $R$ be the total number of rejections. Roughly:
 
     -   expected false rejections $\approx m_{0}t$
 

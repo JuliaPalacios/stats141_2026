@@ -77,6 +77,9 @@ w2
 
 So far we have assumed that the we have two independent samples, one from each population. We will now consider the comparison of two samples that are not independent bu are **paired**. In a paired design, the observations $(Y_{1},Y_{2})$ occur in pairs; the observational units in a pair are linked.
 
+Pairing in an experimental design can serve to reduce bias, to increase precision, or
+both. Usually the primary purpose of pairing is to increase precision.
+
 For example: consider testing whether a fertilizer increases plant growth using the same plants measured twice.
 
 12 tomato plants are measured for height after 2 weeks under standard conditions. Then all 12 plants receive a new fertilizer for 2 more weeks and height is measured again. Because each plant is measured before and after, observations are paired.
