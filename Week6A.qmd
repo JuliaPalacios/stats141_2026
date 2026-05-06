@@ -3,18 +3,23 @@
 Name:
 
 
-1. Describe how you would do a two-sided randomization test with significance level of 5% if you are given 5 measurements of individuals in the treatment group and 6 measurements of individuals in the control group? How would do it if you have 100 samples in each group?
+1. Describe how you would do a two-sided randomization test with significance level of 5% if you are given 5 measurements of individuals in the treatment group and 6 measurements of individuals in the control group.
 
-2. Suppose we have conducted a test, with $\alpha = 0.10$,
+2. Open your favorite AI tool and prompt your answer in 1 to ask AI to assist you with the R-code to test on the following data: treatment data: 12,12.4,26,7,16.8, control data: 8,8.4,6.4,10,12,11. What is your p-value and what do you conclude?
+
+3. Explain the code in Lecture 13, section 13.4 Power.
+
+
+4. (No AI assisted) Suppose we have conducted a test, with $\alpha = 0.10$,
 and the p-value is 0.07. For each of the following statements, say whether the statement is true or false and explain why.
 (a) We reject with $H_0$ with $\alpha=0.10$
 (b) We have significant evidence for $H_{A}$ with $\alpha=0.1$
-(c) We would reject $H_{0}$ if were 0.05.
+(c) We would reject $H_{0}$ if $\alpha$ were 0.05.
 (d) We do not have significant evidence for $H_{A}$ with $\alpha=0.05$
 (e) The probability that $\bar{Y}_{1}$ is greater than $\bar{Y}_{2}$ is 0.07.
 
 
-3. Substances to be tested for cancer-causing potential are often painted on the skin of mice. The question arose whether mice might get an additional dose of the substance by licking or biting their cagemates. To answer this question, the compound benzo(a)pyrene was applied to the backs of 10 mice: Five were individually housed
+5. Substances to be tested for cancer-causing potential are often painted on the skin of mice. The question arose whether mice might get an additional dose of the substance by licking or biting their cagemates. To answer this question, the compound benzo(a)pyrene was applied to the backs of 10 mice: Five were individually housed
 and 5 were group-housed in a single cage. After 48 hours,
 the concentration of the compound in the stomach tissue
 of each mouse was determined. The results (nmol/gm)
@@ -32,7 +37,7 @@ hypothesis be that benzo(a)pyrene concentrations
 tend to be higher in group-housed mice than in
 singly housed mice.
 
-4. In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. The following data shows the weight gains (lb) of the animals over a 140-day test period on diet 1 (Y1) and
+6. In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. The following data shows the weight gains (lb) of the animals over a 140-day test period on diet 1 (Y1) and
 on diet 2 (Y2).
 
 ```{r}

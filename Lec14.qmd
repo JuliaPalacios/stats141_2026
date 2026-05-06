@@ -1,5 +1,5 @@
 ---
-title: "Multiple testing and Other Tests"
+title: "Multiple testing"
 format: html
 bibliography: references.bib
 ---

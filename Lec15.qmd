@@ -35,6 +35,7 @@ $H_{A} (nondirectional):$ The distribution of soil respiration rates tends to be
 $H_{A} (directional):$ Soil respiration rates tend to be greater in the growth area than they are in the gap area.
 
 ```{r}
+#| warning: false
 y1<-c(6,13,14,15,16,18,22,29)
 y2<-c(17,20,22,64,170,190,315)
 

@@ -1,0 +1,73 @@
+---
+title: "Analyzing proportions "
+format: html
+bibliography: references.bib
+---
+
+**Example**: A species of crocodile nests in sandy riverbanks, and the sex of the hatchlings is determined by the temperature of the surrounding sand during incubation. Historically, typical nest depths and shading produced an approximately 50:50 male-female sex ratio. Recently, hotter seasons and reduced vegetation cover are suspected to be warming the sand and shifting the sex ratio.
+
+Researchers recorded the sex of 180 hatchlings emerging from sandy nests along a river in northern Australia. In their sample, 54 hatchlings were male and 126 were female.
+
+What is the estimate of the proportion of female crocodiles in this population?
+
+The sample proportion:
+
+$$
+\hat{p}=\frac{x}{n}=\frac{126}{180}=0.7
+$$
+
+How precise is this estimate?
+
+We can measure precision using the standard error of the estimated proportion:
+
+$$
+SE(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}=0.034
+$$
+
+What is the "exact" 95% confidence interval of the population proportion?
+
+In our example:
+
+```{r}
+
+qbinom(.025,180,.7)/180
+qbinom(.975,180,.7)/180
+
+```
+
+An alternative approximate CI is
+
+$$
+\hat{p}\pm t_{.975,n-1}SE(\hat{p})
+$$
+
+where $t_{.975.n-1}$ is the quantile of the t distribution with n-1 degrees of freedom.
+
+However a common approximation is the Agresti-Coull approximation that estimates the population proportion by
+
+$$
+\tilde{p}=\frac{x+2}{n+4}=\frac{128}{184}=0.696
+$$
+
+with
+
+$$
+SE_{\tilde{p}}=\sqrt{\frac{\tilde{p}(1-\tilde{p})}{n+4}}=0.033
+$$
+and 95% confidence interval:
+$$
+\hat{p}\pm 1.96SE_\tilde{p}
+$$
+```{r}
+n<-180
+tilde_p<-128/184
+se<-sqrt(tilde_p*(1-tilde_p)/(n+4))
+tilde_p-1.96*se
+tilde_p+1.96*se
+
+```
+Indeed very similar to the exact CI.
+
+### Categorical variables
+
+
