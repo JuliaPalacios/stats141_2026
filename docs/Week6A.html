@@ -276,7 +276,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./lec14.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing and Other Tests</span></span></a>
+ <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing</span></span></a>
   </div>
 </li>
           <li class="sidebar-item">
@@ -484,17 +484,19 @@ window.Quarto = {
 
 <p>Name:</p>
 <ol type="1">
-<li><p>Describe how you would do a two-sided randomization test with significance level of 5% if you are given 5 measurements of individuals in the treatment group and 6 measurements of individuals in the control group? How would do it if you have 100 samples in each group?</p></li>
-<li><p>Suppose we have conducted a test, with <span class="math inline">\(\alpha = 0.10\)</span>, and the p-value is 0.07. For each of the following statements, say whether the statement is true or false and explain why.</p></li>
+<li><p>Describe how you would do a two-sided randomization test with significance level of 5% if you are given 5 measurements of individuals in the treatment group and 6 measurements of individuals in the control group.</p></li>
+<li><p>Open your favorite AI tool and prompt your answer in 1 to ask AI to assist you with the R-code to test on the following data: treatment data: 12,12.4,26,7,16.8, control data: 8,8.4,6.4,10,12,11. What is your p-value and what do you conclude?</p></li>
+<li><p>Explain the code in Lecture 13, section 13.4 Power.</p></li>
+<li><p>(No AI assisted) Suppose we have conducted a test, with <span class="math inline">\(\alpha = 0.10\)</span>, and the p-value is 0.07. For each of the following statements, say whether the statement is true or false and explain why.</p></li>
 </ol>
 <ol type="a">
 <li>We reject with <span class="math inline">\(H_0\)</span> with <span class="math inline">\(\alpha=0.10\)</span></li>
 <li>We have significant evidence for <span class="math inline">\(H_{A}\)</span> with <span class="math inline">\(\alpha=0.1\)</span></li>
-<li>We would reject <span class="math inline">\(H_{0}\)</span> if were 0.05.</li>
+<li>We would reject <span class="math inline">\(H_{0}\)</span> if <span class="math inline">\(\alpha\)</span> were 0.05.</li>
 <li>We do not have significant evidence for <span class="math inline">\(H_{A}\)</span> with <span class="math inline">\(\alpha=0.05\)</span></li>
 <li>The probability that <span class="math inline">\(\bar{Y}_{1}\)</span> is greater than <span class="math inline">\(\bar{Y}_{2}\)</span> is 0.07.</li>
 </ol>
-<ol start="3" type="1">
+<ol start="5" type="1">
 <li>Substances to be tested for cancer-causing potential are often painted on the skin of mice. The question arose whether mice might get an additional dose of the substance by licking or biting their cagemates. To answer this question, the compound benzo(a)pyrene was applied to the backs of 10 mice: Five were individually housed and 5 were group-housed in a single cage. After 48 hours, the concentration of the compound in the stomach tissue of each mouse was determined. The results (nmol/gm) were as follows:</li>
 </ol>
 <div class="cell">
@@ -502,7 +504,7 @@ window.Quarto = {
 <span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">3.9</span>,<span class="fl">4.1</span>,<span class="fl">4.8</span>,<span class="fl">3.9</span>,<span class="fl">3.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>Use a Wilcoxon-Mann-Whitney test to compare the two distributions at <span class="math inline">\(\alpha = 0.01\)</span>. Let the alternative hypothesis be that benzo(a)pyrene concentrations tend to be higher in group-housed mice than in singly housed mice.</p>
-<ol start="4" type="1">
+<ol start="6" type="1">
 <li>In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. The following data shows the weight gains (lb) of the animals over a 140-day test period on diet 1 (Y1) and on diet 2 (Y2).</li>
 </ol>
 <div class="cell">

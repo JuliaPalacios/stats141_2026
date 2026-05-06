@@ -46,6 +46,8 @@ $$
 
 Often FWER control is too stringent (conservative). We will now see that there are more nuanced methods of controlling our type I error.
 
+## False discovery rate
+
 **False discovery rate** control helps filter out results that look significant but are likely false positives.
 
 To use this approach, carry out all of the multiple tests at significance $\alpha$. Collect all significant tests (i.e all such that $p-value\leq \alpha$). We call this subset of tests the **discoveries**.
