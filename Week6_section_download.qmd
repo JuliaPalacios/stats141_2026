@@ -1,5 +1,4 @@
 ---
-title: Week 6 Section
 format: html
 execute:
   echo: true
@@ -167,17 +166,15 @@ details.cell-toggle .cell-answer {
 ::: header-row
 <h1 class="page-title">
 
+Week 6 Section
+
 </h1>
 
 <a href="Week6_section_incomplete.qmd" class="download-btn" download> ⬇
 Download Starter File </a>
 :::
 
-<p class="page-subtitle">
-
-Type I and II Errors, and Power Analysis
-
-</p>
+# Type I and II Errors, and Power Analysis
 
 # Learning goals
 
@@ -191,15 +188,10 @@ Type I and II Errors, and Power Analysis
 
 # Problem 1: Vocabulary of hypothesis testing
 
-+-----------------------+-----------------------+-----------------------+
-| Truth                 | Reject $H_0$          | Fail to reject $H_0$  |
-+=======================+=======================+=======================+
-| $H_0$ is true         | Type I error / false  | Correct decision      |
-|                       | positive              |                       |
-+-----------------------+-----------------------+-----------------------+
-| $H_0$ is false        | Correct decision      | Type II error / false |
-|                       | (power)               | negative              |
-+-----------------------+-----------------------+-----------------------+
+| Truth | Reject $H_0$ | Fail to reject $H_0$ |
+|------------------------|------------------------|------------------------|
+| $H_0$ is true | Type I error / false positive | Correct decision |
+| $H_0$ is false | Correct decision (power) | Type II error / false negative |
 
 **Setup.** A plant biologist tests whether a newly synthesized growth
 hormone raises mean seedling height above the historical average of 20
@@ -474,21 +466,21 @@ power.t.test(n = 25, delta = 4, sd = 8,
              alternative = "two.sided")
 ```
 
-**Interpretation.** With $n = 25$, the test has about 56% power to
-detect a 4 mL/hr shift. That is fairly low — there is roughly a 44%
-chance of missing this true effect.
+**Interpretation.** With $n = 25$, the test has about 67% power to
+detect a 4 mL/hr shift. In other words, there is roughly a 33% chance of
+missing this true effect.
 
 ## Finding the required sample size
 
-How large a sample is needed to achieve 80% power?
+How large a sample is needed to achieve 90% power?
 
 ```{r}
-power.t.test(power = 0.80, delta = 4, sd = 8,
+power.t.test(power = 0.90, delta = 4, sd = 8,
              sig.level = 0.05, type = "one.sample",
              alternative = "two.sided")
 ```
 
-We need approximately 51 fish to achieve at least 80% power.
+We need approximately 44 fishes to achieve at least 90% power.
 
 ## Power curve — power as a function of $n$
 
@@ -562,28 +554,15 @@ legend("bottomright",
 
 Larger true effects are easier to detect — power increases with
 $\delta$. Intuitively, a large signal stands out more clearly against
-the background noise.
+the noise in measurement.
 
 # Summary
 
-+----------------------+----------------------+----------------------+
-| What changes?        | Consequence of       | Effect on power      |
-|                      | change               |                      |
-+======================+======================+======================+
-| Sample size \$n\$    | Hint SE decreases    | Show Power ↑         |
-| \$\\uparrow\$        |                      |                      |
-+----------------------+----------------------+----------------------+
-| True effect size     | Hint Signal grows    | Show Power ↑         |
-| \$\\delta\$          |                      |                      |
-| \$\\uparrow\$        |                      |                      |
-+----------------------+----------------------+----------------------+
-| Significance level   | Hint Rejection       | Show Power ↑ (but    |
-| \$\\alpha\$          | region widens        | more false           |
-| \$\\uparrow\$        |                      | positives)           |
-+----------------------+----------------------+----------------------+
-| Population SD        | Hint SE increases,   | Show Power ↓         |
-| \$\\sigma\$          | SNR drops            |                      |
-| \$\\uparrow\$        |                      |                      |
-+----------------------+----------------------+----------------------+
+| What changes? | Consequence of change | Effect on power |
+|-----------------------|-----------------------|-----------------------|
+| Sample size $n$ $\uparrow$ | Hint SE decreases | Show Power ↑ |
+| True effect size $\delta$ $\uparrow$ | Hint Signal grows | Show Power ↑ |
+| Significance level $\alpha$ $\uparrow$ | Hint Rejection region widens | Show Power ↑ (but more false positives) |
+| Population SD $\sigma$ $\uparrow$ | Hint SE increases, SNR drops | Show Power ↓ |
 
 ------------------------------------------------------------------------

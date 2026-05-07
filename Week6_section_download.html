@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>Week 6 Section</title>
+<title>week6_section_download</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -111,23 +111,7 @@ window.Quarto = {
 
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default">
-<div class="quarto-title">
-<h1 class="title">Week 6 Section</h1>
-</div>
 
-
-
-<div class="quarto-title-meta">
-
-    
-  
-    
-  </div>
-  
-
-
-</header>
 
 
 <style>
@@ -280,12 +264,13 @@ details.cell-toggle .cell-answer {
 <!-- Header -->
 <div class="header-row">
 <h1 class="page-title">
+<p>Week 6 Section</p>
 </h1>
 <p><a href="Week6_section_incomplete.qmd" class="download-btn" download=""> ⬇ Download Starter File </a></p>
 </div>
-<p class="page-subtitle">
-</p><p>Type I and II Errors, and Power Analysis</p>
-<p></p>
+<section id="type-i-and-ii-errors-and-power-analysis" class="level1">
+<h1>Type I and II Errors, and Power Analysis</h1>
+</section>
 <section id="learning-goals" class="level1">
 <h1>Learning goals</h1>
 <ul>
@@ -298,9 +283,9 @@ details.cell-toggle .cell-answer {
 <h1>Problem 1: Vocabulary of hypothesis testing</h1>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 32%">
-<col style="width: 32%">
-<col style="width: 32%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -526,28 +511,28 @@ Show answer
     alternative = two.sided</code></pre>
 </div>
 </div>
-<p><strong>Interpretation.</strong> With <span class="math inline">\(n = 25\)</span>, the test has about 56% power to detect a 4 mL/hr shift. That is fairly low — there is roughly a 44% chance of missing this true effect.</p>
+<p><strong>Interpretation.</strong> With <span class="math inline">\(n = 25\)</span>, the test has about 67% power to detect a 4 mL/hr shift. In other words, there is roughly a 33% chance of missing this true effect.</p>
 </section>
 <section id="finding-the-required-sample-size" class="level2">
 <h2 class="anchored" data-anchor-id="finding-the-required-sample-size">Finding the required sample size</h2>
-<p>How large a sample is needed to achieve 80% power?</p>
+<p>How large a sample is needed to achieve 90% power?</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.80</span>, <span class="at">delta =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">8</span>,</span>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">power.t.test</span>(<span class="at">power =</span> <span class="fl">0.90</span>, <span class="at">delta =</span> <span class="dv">4</span>, <span class="at">sd =</span> <span class="dv">8</span>,</span>
 <span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>             <span class="at">sig.level =</span> <span class="fl">0.05</span>, <span class="at">type =</span> <span class="st">"one.sample"</span>,</span>
 <span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>             <span class="at">alternative =</span> <span class="st">"two.sided"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
      One-sample t test power calculation 
 
-              n = 33.3672
+              n = 43.99552
           delta = 4
              sd = 8
       sig.level = 0.05
-          power = 0.8
+          power = 0.9
     alternative = two.sided</code></pre>
 </div>
 </div>
-<p>We need approximately 51 fish to achieve at least 80% power.</p>
+<p>We need approximately 44 fishes to achieve at least 90% power.</p>
 </section>
 <section id="power-curve-power-as-a-function-of-n" class="level2">
 <h2 class="anchored" data-anchor-id="power-curve-power-as-a-function-of-n">Power curve — power as a function of <span class="math inline">\(n\)</span></h2>
@@ -633,16 +618,16 @@ Show answer
 </div>
 </div>
 </div>
-<p>Larger true effects are easier to detect — power increases with <span class="math inline">\(\delta\)</span>. Intuitively, a large signal stands out more clearly against the background noise.</p>
+<p>Larger true effects are easier to detect — power increases with <span class="math inline">\(\delta\)</span>. Intuitively, a large signal stands out more clearly against the noise in measurement.</p>
 </section>
 </section>
 <section id="summary" class="level1">
 <h1>Summary</h1>
 <table class="caption-top table">
 <colgroup>
-<col style="width: 31%">
-<col style="width: 31%">
-<col style="width: 31%">
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
 </colgroup>
 <thead>
 <tr class="header">
@@ -653,22 +638,22 @@ Show answer
 </thead>
 <tbody>
 <tr class="odd">
-<td>Sample size $n$ $\uparrow$</td>
+<td>Sample size <span class="math inline">\(n\)</span> <span class="math inline">\(\uparrow\)</span></td>
 <td>Hint SE decreases</td>
 <td>Show Power ↑</td>
 </tr>
 <tr class="even">
-<td>True effect size $\delta$ $\uparrow$</td>
+<td>True effect size <span class="math inline">\(\delta\)</span> <span class="math inline">\(\uparrow\)</span></td>
 <td>Hint Signal grows</td>
 <td>Show Power ↑</td>
 </tr>
 <tr class="odd">
-<td>Significance level $\alpha$ $\uparrow$</td>
+<td>Significance level <span class="math inline">\(\alpha\)</span> <span class="math inline">\(\uparrow\)</span></td>
 <td>Hint Rejection region widens</td>
 <td>Show Power ↑ (but more false positives)</td>
 </tr>
 <tr class="even">
-<td>Population SD $\sigma$ $\uparrow$</td>
+<td>Population SD <span class="math inline">\(\sigma\)</span> <span class="math inline">\(\uparrow\)</span></td>
 <td>Hint SE increases, SNR drops</td>
 <td>Show Power ↓</td>
 </tr>

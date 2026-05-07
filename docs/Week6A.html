@@ -23,41 +23,6 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
-/* CSS for syntax highlighting */
-html { -webkit-text-size-adjust: 100%; }
-pre > code.sourceCode { white-space: pre; position: relative; }
-pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
-pre > code.sourceCode > span:empty { height: 1.2em; }
-.sourceCode { overflow: visible; }
-code.sourceCode > span { color: inherit; text-decoration: inherit; }
-div.sourceCode { margin: 1em 0; }
-pre.sourceCode { margin: 0; }
-@media screen {
-div.sourceCode { overflow: auto; }
-}
-@media print {
-pre > code.sourceCode { white-space: pre-wrap; }
-pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
-}
-pre.numberSource code
-  { counter-reset: source-line 0; }
-pre.numberSource code > span
-  { position: relative; left: -4em; counter-increment: source-line; }
-pre.numberSource code > span > a:first-child::before
-  { content: counter(source-line);
-    position: relative; left: -1em; text-align: right; vertical-align: baseline;
-    border: none; display: inline-block;
-    -webkit-touch-callout: none; -webkit-user-select: none;
-    -khtml-user-select: none; -moz-user-select: none;
-    -ms-user-select: none; user-select: none;
-    padding: 0 4px; width: 4em;
-  }
-pre.numberSource { margin-left: 3em;  padding-left: 4px; }
-div.sourceCode
-  {   }
-@media screen {
-pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
-}
 </style>
 
 
@@ -412,7 +377,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week6_Section_download.html" class="sidebar-item-text sidebar-link">
- <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Learning goals</span></span></a>
+ <span class="menu-text"><span class="chapter-number">33</span>&nbsp; <span class="chapter-title">Week 6 Section</span></span></a>
   </div>
 </li>
       </ul>
@@ -501,27 +466,6 @@ window.Quarto = {
 <li>We would reject <span class="math inline">\(H_{0}\)</span> if <span class="math inline">\(\alpha\)</span> were 0.05.</li>
 <li>We do not have significant evidence for <span class="math inline">\(H_{A}\)</span> with <span class="math inline">\(\alpha=0.05\)</span></li>
 <li>The probability that <span class="math inline">\(\bar{Y}_{1}\)</span> is greater than <span class="math inline">\(\bar{Y}_{2}\)</span> is 0.07.</li>
-</ol>
-<ol start="5" type="1">
-<li>Substances to be tested for cancer-causing potential are often painted on the skin of mice. The question arose whether mice might get an additional dose of the substance by licking or biting their cagemates. To answer this question, the compound benzo(a)pyrene was applied to the backs of 10 mice: Five were individually housed and 5 were group-housed in a single cage. After 48 hours, the concentration of the compound in the stomach tissue of each mouse was determined. The results (nmol/gm) were as follows:</li>
-</ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>single<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">3.3</span>,<span class="fl">2.4</span>,<span class="fl">2.5</span>,<span class="fl">3.3</span>,<span class="fl">2.4</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>group<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="fl">3.9</span>,<span class="fl">4.1</span>,<span class="fl">4.8</span>,<span class="fl">3.9</span>,<span class="fl">3.4</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<p>Use a Wilcoxon-Mann-Whitney test to compare the two distributions at <span class="math inline">\(\alpha = 0.01\)</span>. Let the alternative hypothesis be that benzo(a)pyrene concentrations tend to be higher in group-housed mice than in singly housed mice.</p>
-<ol start="6" type="1">
-<li>In an experiment to compare two diets for fattening beef steers, nine pairs of animals were chosen from the herd; members of each pair were matched as closely as possible with respect to hereditary factors. The members of each pair were randomly allocated, one to each diet. The following data shows the weight gains (lb) of the animals over a 140-day test period on diet 1 (Y1) and on diet 2 (Y2).</li>
-</ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>diet1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">596</span>,<span class="dv">422</span>,<span class="dv">524</span>,<span class="dv">454</span>,<span class="dv">538</span>,<span class="dv">552</span>,<span class="dv">478</span>,<span class="dv">564</span>,<span class="dv">556</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>diet2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">498</span>,<span class="dv">460</span>,<span class="dv">468</span>,<span class="dv">458</span>,<span class="dv">530</span>,<span class="dv">482</span>,<span class="dv">528</span>,<span class="dv">598</span>,<span class="dv">456</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol type="a">
-<li><p>Calculate the standard error of the mean difference.</p></li>
-<li><p>Test for a difference between the diets using a paired t-test at <span class="math inline">\(\alpha = 0.10\)</span>. Use a nondirectional alternative.</p></li>
-<li><p>Construct a 90% confidence interval for <span class="math inline">\(\mu_D\)</span>.</p></li>
-<li><p>Interpret the confidence interval from part (c) in the context of this setting.</p></li>
 </ol>
 
 
