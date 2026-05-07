@@ -1,0 +1,585 @@
+---
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+editor:
+  markdown:
+    wrap: 72
+resources:
+  - Week6_section_incomplete.qmd
+---
+
+```{=html}
+<style>
+/* ── Header row ── */
+.header-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 0.4em;
+}
+
+.page-title {
+  font-size: 2rem;
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+  white-space: nowrap;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+
+/* ── Toggle answer boxes (T/F problems) ── */
+details.answer-box {
+  margin-top: 6px;
+  margin-bottom: 14px;
+  border-left: 3px solid #5FA2F3;
+  border-radius: 4px;
+  background-color: #f7faff;
+}
+
+details.answer-box summary {
+  cursor: pointer;
+  padding: 7px 12px;
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: #3a7bd5;
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  user-select: none;
+}
+
+details.answer-box summary::-webkit-details-marker { display: none; }
+
+details.answer-box summary::before {
+  content: "▶";
+  font-size: 0.65rem;
+  display: inline-block;
+  transition: transform 0.18s ease;
+  color: #5FA2F3;
+}
+
+details.answer-box[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details.answer-box .answer-content {
+  padding: 4px 16px 10px 16px;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  border-top: 1px solid #d8e8fa;
+}
+
+.verdict-true  { color: #1a7a4a; font-weight: 700; }
+.verdict-false { color: #c0392b; font-weight: 700; }
+
+/* ── Summary table ── */
+table.summary-tbl {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.95rem;
+  margin-top: 0.5em;
+}
+
+table.summary-tbl th {
+  background-color: #4682B4;
+  color: white;
+  padding: 8px 12px;
+  text-align: left;
+  font-weight: 600;
+}
+
+table.summary-tbl td {
+  padding: 8px 12px;
+  border-bottom: 1px solid #ddd;
+  vertical-align: middle;
+}
+
+table.summary-tbl tr:nth-child(even) td {
+  background-color: #f0f5fc;
+}
+
+/* ── Inline toggle inside summary table cells ── */
+details.cell-toggle {
+  display: inline;
+}
+
+details.cell-toggle summary {
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+  cursor: pointer;
+  font-size: 0.82rem;
+  font-weight: 600;
+  color: #3a7bd5;
+  background-color: #e8f0fe;
+  border: 1px solid #c0d4f5;
+  border-radius: 4px;
+  padding: 2px 8px;
+  list-style: none;
+  user-select: none;
+  white-space: nowrap;
+}
+
+details.cell-toggle summary::-webkit-details-marker { display: none; }
+
+details.cell-toggle summary::before {
+  content: "▶";
+  font-size: 0.6rem;
+  transition: transform 0.15s ease;
+  color: #5FA2F3;
+}
+
+details.cell-toggle[open] summary::before {
+  transform: rotate(90deg);
+}
+
+details.cell-toggle .cell-answer {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+</style>
+```
+
+<!-- Header -->
+
+::: header-row
+<h1 class="page-title">
+
+Week 6 Section
+
+</h1>
+
+<a href="Week6_section_incomplete.qmd" class="download-btn" download> ⬇
+Download Starter File </a>
+:::
+
+<p class="page-subtitle">
+
+Type I and II Errors, and Power Analysis
+
+</p>
+
+# Learning goals
+
+-   Distinguish between Type I and Type II errors and correctly
+    interpret them in a given context.
+
+-   Identify how sample size, effect size, and significance level each
+    affect the power (1 minus the Type II error rate).
+
+------------------------------------------------------------------------
+
+# Problem 1: Vocabulary of hypothesis testing
+
+| Truth | Reject $H_0$ | Fail to reject $H_0$ |
+|----|----|----|
+| $H_0$ is true | Type I error / false positive | Correct decision |
+| $H_0$ is false | Correct decision (power) | Type II error / false negative |
+
+**Setup.** A plant biologist tests whether a newly synthesized growth
+hormone raises mean seedling height above the historical average of 20
+cm. She applies the hormone to a random sample of 30 seedlings and
+carries out a one-sided $t$-test for testing
+$$H_0: \mu = 20 \quad \text{vs.} \quad H_A: \mu > 20.$$ She obtains a
+p-value of $0.07$.
+
+**For each statement below, decide whether True / False and give a brief
+explanation.**
+
+------------------------------------------------------------------------
+
+**(a)** She rejects $H_0$ at $\alpha = 0.10$.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[True.]{.verdict-true} The p-value $0.07 < 0.10 = \alpha$, so she
+rejects $H_0$.
+:::
+
+</details>
+
+**(b)** She has significant evidence that $\mu > 20$ at $\alpha = 0.05$.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[False.]{.verdict-false} The p-value $0.07 > 0.05$, so she fails to
+reject $H_0$ at the 5% level.
+:::
+
+</details>
+
+**(c)** The probability that $H_0$ is true is $0.07$.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[False.]{.verdict-false} The p-value is the probability of observing a
+test statistic at least as extreme as the one observed, <em>given that
+$H_0$ is true</em>. It is not the probability that $H_0$ is true.
+:::
+
+</details>
+
+**(d)** If the hormone truly has no effect and she rejects $H_0$, she
+has committed a Type II error.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[False.]{.verdict-false} A Type I error is rejecting a true null
+hypothesis — here, falsely concluding the hormone works when it does
+not.
+:::
+
+</details>
+
+**(e)** If the hormone truly raises mean height and she fails to reject
+$H_0$, she has committed a Type II error.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[True.]{.verdict-true} A Type II error is failing to reject a false null
+hypothesis, i.e., missing a real effect.
+:::
+
+</details>
+
+**(f)** Increasing the sample size (keeping $\alpha$ and the true effect
+size fixed) decreases the probability of a Type II error.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[True.]{.verdict-true} A larger $n$ shrinks the standard error, making
+the test statistic larger for the same effect. This increases power
+($1 - \beta$) and thus reduces $\beta$.
+:::
+
+</details>
+
+**(g)** A researcher who wants to limit false positives should choose a
+smaller value of $\alpha$.
+
+<details class="answer-box">
+
+<summary>Show answer</summary>
+
+::: answer-content
+[True.]{.verdict-true} $\alpha$ is the Type I error rate (false positive
+rate) when $H_0$ is true, so decreasing $\alpha$ directly limits false
+positives. The trade-off is reduced power (higher $\beta$).
+:::
+
+</details>
+
+------------------------------------------------------------------------
+
+# Problem 2: Visualizing the two error types
+
+We will consider a setting where variance is known, so that we can draw
+the exact sampling distributions for the Z-test.
+
+**Setup.** Suppose seedling heights have population standard deviation
+$\sigma = 4$ cm. A researcher collects $n = 25$ seedlings and tests
+$$H_0: \mu = 20 \quad \text{vs.} \quad H_A: \mu > 20$$ at
+$\alpha = 0.05$. Suppose the hormone truly shifts the mean to
+$\mu_A = 22$ cm. (In real-life scenarios, the 'true' parameter is
+unknown. Here we consider a stylized setting for illustration.)
+
+## Identify the sampling distributions under null or truth
+
+Under $H_0$, the sample mean follows \_\_\_\_\_\_\_\_\_\_\_.
+
+Under the true mean $\mu_A = 22$, the sample mean follows
+\_\_\_\_\_\_\_\_\_\_\_\_.
+
+```{r}
+# mu0 <- 
+# muA <-
+# sigma <- 
+# n <- 
+# se <- # standard error of the sample mean
+```
+
+## Find the critical value / rejection region
+
+For a one-sided upper-tail test at $\alpha = 0.05$, the critical value
+is $$c = \mu_0 + z_{0.95} \cdot SE(\overline{X}).$$
+
+```{r}
+# crit <- # compute the critical value for the Z-test
+```
+
+Any observed $\overline{x} > \text{crit}$ leads to rejection of $H_0$.
+
+## Compute $\beta$ and power
+
+$$\beta = P(\overline{X} \leq c \mid \mu = \mu_A), \qquad \text{Power} = 1 - \beta.$$
+
+Here $P(...\mid \mu=\mu_A)$ simply indicates that we compute the
+probability under $\mu=\mu_A$.
+
+One clarification: We should call $\beta$ the Type II error *rate* or
+the *probability* of Type II error, not just 'Type II error'.
+
+```{r}
+# beta_val  <-
+# power_val <-  
+# beta_val   # Type II error rate
+# power_val  # Power
+```
+
+## Visualization (code is provided)
+
+The plot shows both sampling distributions. The **blue** shaded area is
+the Type I error ($\alpha$, the right tail of the null). The **red**
+shaded area is the Type II error ($\beta$, the left tail of the
+alternative). Power is the unshaded right portion of the alternative
+distribution.
+
+```{r fig.height = 4, fig.width = 7}
+#| code-fold: true
+#| code-summary: "Show code"
+mu0 <- 20;  muA <- 22
+sigma <- 4; n <- 25
+se <- sigma / sqrt(n)
+crit <- mu0 + qnorm(0.95) * se
+beta_val  <- pnorm(crit, mean = muA, sd = se)
+
+x      <- seq(mu0 - 4*se, muA + 4*se, length.out = 600)
+d_null <- dnorm(x, mean = mu0, sd = se)
+d_alt  <- dnorm(x, mean = muA, sd = se)
+
+plot(x, d_null, type = "l", col = "steelblue", lwd = 2,
+     ylim = c(0, max(d_null, d_alt) * 1.3),
+     xlab = expression(bar(X) ~ "(cm)"), ylab = "Density",
+     main = "Sampling Distributions Under H0 and HA")
+lines(x, d_alt, col = "tomato", lwd = 2)
+abline(v = crit, lty = 2, col = "gray40")
+
+# Type I error shading: upper tail of null distribution
+x_I <- x[x >= crit]
+polygon(c(x_I[1], x_I, tail(x_I, 1)),
+        c(0, dnorm(x_I, mu0, se), 0),
+        col = adjustcolor("steelblue", 0.4), border = NA)
+
+# Type II error shading: lower tail of alternative distribution
+x_II <- x[x <= crit]
+polygon(c(x_II[1], x_II, tail(x_II, 1)),
+        c(0, dnorm(x_II, muA, se), 0),
+        col = adjustcolor("tomato", 0.4), border = NA)
+
+text(crit - 1, 0.55, paste0("c = ", round(crit, 2)),
+     adj = 0, cex = 0.85, col = "gray30")
+
+legend("topleft",
+       legend = c(
+         expression(H[0]*":  "*mu*" = 20"),
+         expression(H[A]*":  "*mu*" = 22")
+       ),
+       col  = c("steelblue", "tomato"),
+       fill = c(NA, NA),
+       border = c(NA, NA),
+       lwd  = c(2, 2),
+       bty  = "n", cex = 0.82)
+
+legend("topright",
+       legend = c(
+         expression(alpha*"  = Type I error (blue shading)"),
+         expression(beta*"   = Type II error (red shading)")
+       ),
+       col  = c(NA, NA),
+       fill = c(adjustcolor("steelblue", 0.4),
+                adjustcolor("tomato",    0.4)),
+       border = c("black", "black"),
+       lwd  = c(NA, NA),
+       bty  = "n", cex = 0.82)
+```
+
+**Discussion questions:**
+
+-   Which shaded region grows if we decrease $\alpha$ from 0.05 to 0.01?
+    What happens to $\beta$?
+
+-   What would happen to both shaded regions if we increased $n$ from 25
+    to 100?
+
+------------------------------------------------------------------------
+
+# Problem 3: Power analysis in R
+
+In real-life scenarios, the 'true' parameter is unknown. The point of
+power analysis is to understand how the power shifts with the truth
+(think of it as the alternative). We will see how the power changes with
+sample size, significance and effect size (how far the truth/alternative
+is from the null).
+
+**Setup.** A marine biologist measures oxygen consumption rate (mL
+O$_2$/hr) of a fish species. Historical data show a mean rate of
+$\mu_0 = 50$ mL/hr with standard deviation $\sigma = 8$ mL/hr. She tests
+whether a warming treatment changes the mean:
+$$H_0: \mu = 50 \quad \text{vs.} \quad H_A: \mu \neq 50,$$ at
+$\alpha = 0.05$. She suspects warming might shift the mean by about 4
+mL/hr.
+
+## Computing power for a given sample size
+
+The R function `power.t.test` computes power (or required sample size
+$n$) for one-sample and two-sample $t$-tests. The argument `delta` is
+the true effect size in original units.
+
+```{r}
+power.t.test(n = 25, delta = 4, sd = 8,
+             sig.level = 0.05, type = "one.sample",
+             alternative = "two.sided")
+```
+
+**Interpretation.** With $n = 25$, the test has about 56% power to
+detect a 4 mL/hr shift. That is fairly low — there is roughly a 44%
+chance of missing this true effect.
+
+## Finding the required sample size
+
+How large a sample is needed to achieve 80% power?
+
+```{r}
+power.t.test(power = 0.80, delta = 4, sd = 8,
+             sig.level = 0.05, type = "one.sample",
+             alternative = "two.sided")
+```
+
+We need approximately 51 fish to achieve at least 80% power.
+
+## Power curve — power as a function of $n$
+
+```{r fig.height = 4, fig.width = 6.5}
+ns      <- 5:120
+pwr_vec <- sapply(ns, function(n) {
+  power.t.test(n = n, delta = 4, sd = 8,
+               sig.level = 0.05, type = "one.sample",
+               alternative = "two.sided")$power
+})
+
+plot(ns, pwr_vec, type = "l", col = "steelblue", lwd = 2,
+     xlab = "Sample size (n)", ylab = "Power",
+     main = "Power vs. Sample Size  (delta = 4, sd = 8, alpha = 0.05)",
+     ylim = c(0, 1))
+abline(h = 0.80, col = "tomato",    lty = 2, lwd = 1.5)
+abline(h = 0.90, col = "darkorange", lty = 2, lwd = 1.5)
+
+legend("bottomright",
+       legend = c("Power curve", "80% target", "90% target"),
+       col    = c("steelblue", "tomato", "darkorange"),
+       lwd    = c(2, 1.5, 1.5),
+       lty    = c(1, 2, 2),
+       bty    = "n")
+```
+
+## Effect of $\alpha$ on power
+
+How does relaxing or tightening $\alpha$ change power for fixed
+$n = 25$?
+
+```{r}
+alphas    <- c(0.001, 0.01, 0.05, 0.10, 0.20)
+pwr_alpha <- sapply(alphas, function(a) {
+  power.t.test(n = 25, delta = 4, sd = 8,
+               sig.level = a, type = "one.sample",
+               alternative = "two.sided")$power
+})
+
+data.frame(alpha = alphas, power = round(pwr_alpha, 3))
+```
+
+As $\alpha$ increases, the rejection region widens, making it easier to
+detect a real effect — so power increases. The trade-off is a higher
+Type I error rate.
+
+## Effect of effect size on power
+
+How does the true shift $\delta$ affect power (for $n = 25$,
+$\alpha = 0.05$)?
+
+```{r fig.height = 4, fig.width = 6.5}
+deltas    <- seq(1, 14, by = 0.25)
+pwr_delta <- sapply(deltas, function(d) {
+  power.t.test(n = 25, delta = d, sd = 8,
+               sig.level = 0.05, type = "one.sample",
+               alternative = "two.sided")$power
+})
+
+plot(deltas, pwr_delta, type = "l", col = "steelblue", lwd = 2,
+     xlab = "True effect size delta (mL/hr)", ylab = "Power",
+     main = "Power vs. Effect Size  (n = 25, sd = 8, alpha = 0.05)",
+     ylim = c(0, 1))
+abline(h = 0.80, col = "tomato", lty = 2, lwd = 1.5)
+legend("bottomright",
+       legend = c("Power curve", "80% target"),
+       col    = c("steelblue", "tomato"),
+       lwd    = c(2, 1.5), lty = c(1, 2),
+       bty    = "n")
+```
+
+Larger true effects are easier to detect — power increases with
+$\delta$. Intuitively, a large signal stands out more clearly against
+the background noise.
+
+# Summary
+
++----------------------+----------------------+----------------------+
+| What changes?        | Consequence of       | Effect on power      |
+|                      | change               |                      |
++======================+======================+======================+
+| Sample size \$n\$    | Hint SE decreases    | Show Power ↑         |
+| \$\\uparrow\$        |                      |                      |
++----------------------+----------------------+----------------------+
+| True effect size     | Hint Signal grows    | Show Power ↑         |
+| \$\\delta\$          |                      |                      |
+| \$\\uparrow\$        |                      |                      |
++----------------------+----------------------+----------------------+
+| Significance level   | Hint Rejection       | Show Power ↑ (but    |
+| \$\\alpha\$          | region widens        | more false           |
+| \$\\uparrow\$        |                      | positives)           |
++----------------------+----------------------+----------------------+
+| Population SD        | Hint SE increases,   | Show Power ↓         |
+| \$\\sigma\$          | SNR drops            |                      |
+| \$\\uparrow\$        |                      |                      |
++----------------------+----------------------+----------------------+
+
+------------------------------------------------------------------------

@@ -179,7 +179,7 @@ window.Quarto = {
 <h2 class="anchored" data-anchor-id="the-family-wise-error-rate">The family wise error rate</h2>
 <p>The family wise error rate (FWER) is the probability that that we make at least one false positive i.e <span class="math display">\[\begin{align}
 \text{P}(V&gt;0)&amp; =1-\text{P(no rejection of any of } m_{0} \text{ nulls})\\
-&amp;=(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
+&amp;=1-(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
 \end{align}\]</span></p>
 <p><strong>Bonferroni method</strong> is a method for controlling FWER by adjusting the value of <span class="math inline">\(\alpha\)</span> for a given <span class="math inline">\(m_{0}\)</span>. However we usually do not know <span class="math inline">\(m_{0}\)</span>. Instead we can use <span class="math inline">\(m\)</span> and set <span class="math display">\[\alpha^{*}=\alpha/m\]</span></p>
 <p>For eample, if we typically use the significance level <span class="math inline">\(\alpha=0.05\)</span> when carrying out a single test, then to carry out 13 separate test we should use significance level <span class="math inline">\(\alpha^{*}=0.05/12=0.00417\)</span> instead.</p>

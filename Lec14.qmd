@@ -14,7 +14,9 @@ Examples:
 
 -   Test whether a disease is related to 10,000 different genes
 
-![Manhattan plot](/Figures/Manhattan.png){fig-align="center" width="90%"} Consider the number of errors that can occur when testing $m$ multiple hypotheses:
+![Manhattan plot](/Figures/Manhattan.png){fig-align="center" width="90%"} 
+
+Consider the number of errors that can occur when testing $m$ multiple hypotheses:
 
 | Truth / Decision | Reject $H_0$ | Fail to reject $H_0$ | Total |
 |:------------------|:-----------------|:-----------------|:-----------------|
@@ -28,7 +30,7 @@ What are some other ways we can think of controlling type I and II errors?
 
 The family wise error rate (FWER) is the probability that that we make at least one false positive i.e $$\begin{align}
 \text{P}(V>0)& =1-\text{P(no rejection of any of } m_{0} \text{ nulls})\\
-&=(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
+&=1-(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
 \end{align}$$
 
 **Bonferroni method** is a method for controlling FWER by adjusting the value of $\alpha$ for a given $m_{0}$. However we usually do not know $m_{0}$. Instead we can use $m$ and set $$\alpha^{*}=\alpha/m$$
