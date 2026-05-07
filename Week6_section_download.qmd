@@ -1,4 +1,5 @@
 ---
+title: Week 6 Section
 format: html
 execute:
   echo: true
@@ -166,8 +167,6 @@ details.cell-toggle .cell-answer {
 ::: header-row
 <h1 class="page-title">
 
-Week 6 Section
-
 </h1>
 
 <a href="Week6_section_incomplete.qmd" class="download-btn" download> ⬇
@@ -192,10 +191,15 @@ Type I and II Errors, and Power Analysis
 
 # Problem 1: Vocabulary of hypothesis testing
 
-| Truth | Reject $H_0$ | Fail to reject $H_0$ |
-|----|----|----|
-| $H_0$ is true | Type I error / false positive | Correct decision |
-| $H_0$ is false | Correct decision (power) | Type II error / false negative |
++-----------------------+-----------------------+-----------------------+
+| Truth                 | Reject $H_0$          | Fail to reject $H_0$  |
++=======================+=======================+=======================+
+| $H_0$ is true         | Type I error / false  | Correct decision      |
+|                       | positive              |                       |
++-----------------------+-----------------------+-----------------------+
+| $H_0$ is false        | Correct decision      | Type II error / false |
+|                       | (power)               | negative              |
++-----------------------+-----------------------+-----------------------+
 
 **Setup.** A plant biologist tests whether a newly synthesized growth
 hormone raises mean seedling height above the historical average of 20
