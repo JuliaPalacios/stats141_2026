@@ -30,18 +30,27 @@ In our example:
 
 ```{r}
 
-qbinom(.025,180,.7)/180
-qbinom(.975,180,.7)/180
+lower<-qbinom(.025,180,.7)/180
+upper<-qbinom(.975,180,.7)/180
+print(paste("95% CI is: (",lower,upper,")"))
 
 ```
 
 An alternative approximate CI is
 
 $$
-\hat{p}\pm t_{.975,n-1}SE(\hat{p})
+\hat{p}\pm 1.96 SE(\hat{p})
 $$
+That is:
+```{r}
+phat<-126/180
+se<-sqrt(phat*(1-phat)/180)
+lower<-phat-1.96*se
+upper<-phat+1.96*se
+print(paste("95% CI is: (",lower,upper,")"))
 
-where $t_{.975.n-1}$ is the quantile of the t distribution with n-1 degrees of freedom.
+```
+where $1.96$ is the 0.975 quantile of the standard normal distribution.
 
 However a common approximation is the Agresti-Coull approximation that estimates the population proportion by
 
@@ -62,12 +71,7 @@ $$
 n<-180
 tilde_p<-128/184
 se<-sqrt(tilde_p*(1-tilde_p)/(n+4))
-tilde_p-1.96*se
-tilde_p+1.96*se
+print(paste("95% CI is: (",tilde_p-1.96*se,tilde_p+1.96*se,")"))
 
 ```
-Indeed very similar to the exact CI.
-
-### Categorical variables
-
 

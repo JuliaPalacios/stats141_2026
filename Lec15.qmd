@@ -102,7 +102,12 @@ dat
 
 The test statistic is $$\frac{\bar{D}-0}{SE_{\bar{D}}}=\frac{\bar{D}-0}{SD_{D}/\sqrt{n}}$$ which is distributed as a t-distribution with $df=n-1$.
 
-A $(1-\alpha)%$ confidence interval for $\mu_{D} is$$\bar{D}\pm t_{n-1,\alpha/2} SE_{\bar{D}}$\$ In our example this is:
+A $(1-\alpha)\times 100\%$ confidence interval for $\mu_{D}$ is 
+$$
+\bar{D}\pm t_{n-1,\alpha/2} SE_{\bar{D}}
+$$
+
+In our example this is:
 
 ```{r}
 # CI by hand

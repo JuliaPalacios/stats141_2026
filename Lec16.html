@@ -145,204 +145,47 @@ SE(\hat{p})=\sqrt{\frac{\hat{p}(1-\hat{p})}{n}}=0.034
 <p>What is the “exact” 95% confidence interval of the population proportion?</p>
 <p>In our example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(.<span class="dv">025</span>,<span class="dv">180</span>,.<span class="dv">7</span>)<span class="sc">/</span><span class="dv">180</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>lower<span class="ot">&lt;-</span><span class="fu">qbinom</span>(.<span class="dv">025</span>,<span class="dv">180</span>,.<span class="dv">7</span>)<span class="sc">/</span><span class="dv">180</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>upper<span class="ot">&lt;-</span><span class="fu">qbinom</span>(.<span class="dv">975</span>,<span class="dv">180</span>,.<span class="dv">7</span>)<span class="sc">/</span><span class="dv">180</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"95% CI is: ("</span>,lower,upper,<span class="st">")"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.6333333</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">qbinom</span>(.<span class="dv">975</span>,<span class="dv">180</span>,.<span class="dv">7</span>)<span class="sc">/</span><span class="dv">180</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.7666667</code></pre>
+<pre><code>[1] "95% CI is: ( 0.633333333333333 0.766666666666667 )"</code></pre>
 </div>
 </div>
 <p>An alternative approximate CI is</p>
 <p><span class="math display">\[
-\hat{p}\pm t_{.975,n-1}SE(\hat{p})
-\]</span></p>
-<p>where <span class="math inline">\(t_{.975.n-1}\)</span> is the quantile of the t distribution with n-1 degrees of freedom.</p>
+\hat{p}\pm 1.96 SE(\hat{p})
+\]</span> That is:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>phat<span class="ot">&lt;-</span><span class="dv">126</span><span class="sc">/</span><span class="dv">180</span></span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>se<span class="ot">&lt;-</span><span class="fu">sqrt</span>(phat<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>phat)<span class="sc">/</span><span class="dv">180</span>)</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>lower<span class="ot">&lt;-</span>phat<span class="fl">-1.96</span><span class="sc">*</span>se</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>upper<span class="ot">&lt;-</span>phat<span class="fl">+1.96</span><span class="sc">*</span>se</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"95% CI is: ("</span>,lower,upper,<span class="st">")"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] "95% CI is: ( 0.633053254995731 0.766946745004269 )"</code></pre>
+</div>
+</div>
+<p>where <span class="math inline">\(1.96\)</span> is the 0.975 quantile of the standard normal distribution.</p>
 <p>However a common approximation is the Agresti-Coull approximation that estimates the population proportion by</p>
 <p><span class="math display">\[
-\tilde{p}=\frac{x+2}{n+4}
+\tilde{p}=\frac{x+2}{n+4}=\frac{128}{184}=0.696
 \]</span></p>
 <p>with</p>
-<p><span class="math display">\[SE_{\tilde{p}}=\sqrt{\frac{\tilde{p}(1-\tilde{p})}{n+4}}\]</span></p>
-<p><span class="math inline">\(H_{0}:\)</span> The population distributions <span class="math inline">\(Y_{1}\)</span> and <span class="math inline">\(Y_{2}\)</span> are the same.</p>
-<p><span class="math inline">\(H_{A}:\)</span> The population distribution of <span class="math inline">\(Y_{1}\)</span> is shifted from the population distribution of <span class="math inline">\(Y_{2}\)</span>.</p>
-<p>The WMW test statistic is denoted <span class="math inline">\(U_{s}\)</span> and measures the degree of separation or shift between the two samples.</p>
-<p>The test procedure:</p>
-<ol type="1">
-<li><p>Arrange the observations in increasing order</p></li>
-<li><p>Create two counts <span class="math inline">\(K_{1}\)</span> and <span class="math inline">\(K_{2}\)</span> as follows:</p>
-<ol type="1">
-<li><p>For <span class="math inline">\(K_{1}\)</span>, count 1 for all observations in sample 2 which are less than each observation in sample 1. Count 0.5 for all observations in sample 2 which are the same value as an observation in sample 1.</p></li>
-<li><p>For <span class="math inline">\(K_{2}\)</span> same thing but in reverse.</p></li>
-<li><p><span class="math inline">\(U_{s}=\max\{K_{1},K_{2}\}\)</span></p></li>
-</ol></li>
-</ol>
-<p>Example: Soil respiration is a measure of microbial activity in soil, which affects plant growth. In one study, soil cores were taken from two locations in a forest: (1) under an opening in the forest canopy (the “gap” location) and (2) at a nearby area under heavy tree growth (the “growth” location). The amount of carbon dioxide given off by each soil core was measured (in mol CO2/g soil/hr).</p>
-<p><span class="math inline">\(H_{0}:\)</span> The gap and growth areas do not differ with respect to soil respiration.</p>
-<p><span class="math inline">\(H_{A} (nondirectional):\)</span> The distribution of soil respiration rates tends to be higher in one of the two populations.</p>
-<p><span class="math inline">\(H_{A} (directional):\)</span> Soil respiration rates tend to be greater in the growth area than they are in the gap area.</p>
+<p><span class="math display">\[
+SE_{\tilde{p}}=\sqrt{\frac{\tilde{p}(1-\tilde{p})}{n+4}}=0.033
+\]</span> and 95% confidence interval: <span class="math display">\[
+\hat{p}\pm 1.96SE_\tilde{p}
+\]</span></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>y1<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">6</span>,<span class="dv">13</span>,<span class="dv">14</span>,<span class="dv">15</span>,<span class="dv">16</span>,<span class="dv">18</span>,<span class="dv">22</span>,<span class="dv">29</span>)</span>
-<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>y2<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">17</span>,<span class="dv">20</span>,<span class="dv">22</span>,<span class="dv">64</span>,<span class="dv">170</span>,<span class="dv">190</span>,<span class="dv">315</span>)</span>
-<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>dat<span class="ot">&lt;-</span><span class="fu">data.frame</span>(</span>
-<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">group =</span> <span class="fu">factor</span>(<span class="fu">c</span>(<span class="fu">rep</span>(<span class="st">"Gap data"</span>,<span class="fu">length</span>(y2)),<span class="fu">rep</span>(<span class="st">"Growth data"</span>,<span class="fu">length</span>(y1)))),</span>
-<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">values =</span> <span class="fu">c</span>(y2,y1)</span>
-<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb5-11"><a href="#cb5-11" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(dat, <span class="fu">aes</span>(<span class="at">x =</span> group, <span class="at">y =</span> values, <span class="at">fill =</span> group)) <span class="sc">+</span></span>
-<span id="cb5-12"><a href="#cb5-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_boxplot</span>(<span class="at">width =</span> <span class="fl">0.6</span>, <span class="at">outlier.shape =</span> <span class="cn">NA</span>, <span class="at">alpha =</span> <span class="fl">0.6</span>) <span class="sc">+</span></span>
-<span id="cb5-13"><a href="#cb5-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_jitter</span>(<span class="at">width =</span> <span class="fl">0.1</span>, <span class="at">height =</span> <span class="dv">0</span>, <span class="at">alpha =</span> <span class="fl">0.8</span>, <span class="at">size =</span> <span class="dv">2</span>) <span class="sc">+</span></span>
-<span id="cb5-14"><a href="#cb5-14" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(</span>
-<span id="cb5-15"><a href="#cb5-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> <span class="cn">NULL</span>,</span>
-<span id="cb5-16"><a href="#cb5-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="st">"carbon dioxide given"</span>,</span>
-<span id="cb5-17"><a href="#cb5-17" aria-hidden="true" tabindex="-1"></a>    <span class="at">title =</span> <span class="st">"mole CO2/g soil/hr"</span></span>
-<span id="cb5-18"><a href="#cb5-18" aria-hidden="true" tabindex="-1"></a>  ) <span class="sc">+</span></span>
-<span id="cb5-19"><a href="#cb5-19" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>(<span class="at">base_size =</span> <span class="dv">12</span>) <span class="sc">+</span></span>
-<span id="cb5-20"><a href="#cb5-20" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme</span>(<span class="at">legend.position =</span> <span class="st">"none"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Lec16_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>w <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(values <span class="sc">~</span> group, <span class="at">data =</span> dat, <span class="at">exact =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>w</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="dv">180</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>tilde_p<span class="ot">&lt;-</span><span class="dv">128</span><span class="sc">/</span><span class="dv">184</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>se<span class="ot">&lt;-</span><span class="fu">sqrt</span>(tilde_p<span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>tilde_p)<span class="sc">/</span>(n<span class="sc">+</span><span class="dv">4</span>))</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"95% CI is: ("</span>,tilde_p<span class="fl">-1.96</span><span class="sc">*</span>se,tilde_p<span class="fl">+1.96</span><span class="sc">*</span>se,<span class="st">")"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  values by group
-W = 49.5, p-value = 0.015
-alternative hypothesis: true location shift is not equal to 0</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="co">#one sided</span></span>
-<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>w2 <span class="ot">&lt;-</span> <span class="fu">wilcox.test</span>(values <span class="sc">~</span> group, <span class="at">data =</span> dat, <span class="at">alternative=</span><span class="st">"greater"</span>,<span class="at">exact =</span> <span class="cn">FALSE</span>)</span>
-<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>w2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Wilcoxon rank sum test with continuity correction
-
-data:  values by group
-W = 49.5, p-value = 0.007499
-alternative hypothesis: true location shift is greater than 0</code></pre>
+<pre><code>[1] "95% CI is: ( 0.629166460204054 0.762137887622033 )"</code></pre>
 </div>
 </div>
-<ul>
-<li><p>The required assumption in the WMW test is that the samples must be random samples from their populations, independently drawn.</p></li>
-<li><p>The t-test requires the same assumption of random, independent samples, but it also assumes (1) the normality of the populations or (2) the samples are large enough.</p></li>
-<li><p>The MWW test is good for nonsymmetric data.</p></li>
-<li><p>The downside is that the statistic does not use all information in the data, only ranks and so it loses statistical power.</p></li>
-</ul>
-<section id="the-paired-sample-t-test-and-ci" class="level2">
-<h2 class="anchored" data-anchor-id="the-paired-sample-t-test-and-ci">The paired-sample t-test and CI</h2>
-<p>So far we have assumed that the we have two independent samples, one from each population. We will now consider the comparison of two samples that are not independent bu are <strong>paired</strong>. In a paired design, the observations <span class="math inline">\((Y_{1},Y_{2})\)</span> occur in pairs; the observational units in a pair are linked.</p>
-<p>For example: consider testing whether a fertilizer increases plant growth using the same plants measured twice.</p>
-<p>12 tomato plants are measured for height after 2 weeks under standard conditions. Then all 12 plants receive a new fertilizer for 2 more weeks and height is measured again. Because each plant is measured before and after, observations are paired.</p>
-<p><span class="math inline">\(H_{0}: \mu_{D}=\mu_{1}-\mu_{2}=0\)</span></p>
-<p><span class="math inline">\(H_{A}: \mu_{D}=\mu_{1}-\mu_{2} \neq 0\)</span>.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired t-test example data (plant heights in cm)</span></span>
-<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
-<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">plant  =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">6</span>,</span>
-<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">before =</span> <span class="fu">c</span>(<span class="fl">12.1</span>, <span class="fl">11.8</span>, <span class="fl">13.0</span>, <span class="fl">10.9</span>, <span class="fl">12.5</span>, <span class="fl">11.2</span>),</span>
-<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">after  =</span> <span class="fu">c</span>(<span class="fl">14.0</span>, <span class="fl">13.2</span>, <span class="fl">14.1</span>, <span class="fl">12.0</span>, <span class="fl">13.7</span>, <span class="fl">12.6</span>)</span>
-<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a>)</span>
-<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a>dat</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>  plant before after
-1     1   12.1  14.0
-2     2   11.8  13.2
-3     3   13.0  14.1
-4     4   10.9  12.0
-5     5   12.5  13.7
-6     6   11.2  12.6</code></pre>
-</div>
-</div>
-<p>The test statistic is <span class="math display">\[\frac{\bar{D}-0}{SE_{\bar{D}}}=\frac{\bar{D}-0}{SD_{D}/\sqrt{n}}\]</span> which is distributed as a t-distribution with <span class="math inline">\(df=n-1\)</span>.</p>
-<p>A <span class="math inline">\((1-\alpha)%\)</span> confidence interval for <span class="math inline">\(\mu_{D} is\)</span><span class="math inline">\(\bar{D}\pm t_{n-1,\alpha/2} SE_{\bar{D}}\)</span>$ In our example this is:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CI by hand</span></span>
-<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">mean</span>(dat<span class="sc">$</span>after<span class="sc">-</span>dat<span class="sc">$</span>before)</span>
-<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a>sd<span class="ot">&lt;-</span><span class="fu">sd</span>(dat<span class="sc">$</span>after<span class="sc">-</span>dat<span class="sc">$</span>before)</span>
-<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a>se<span class="ot">&lt;-</span>sd<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)</span>
-<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 0.123153</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a>tval<span class="ot">&lt;-</span><span class="fu">qt</span>(.<span class="dv">975</span>,<span class="dv">5</span>)</span>
-<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>d<span class="sc">-</span>tval<span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.033425</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb16"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">+</span>tval<span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.666575</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb18"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"95% CI is: ("</span>,d<span class="sc">-</span>tval<span class="sc">*</span>se,d<span class="sc">+</span>tval<span class="sc">*</span>se,<span class="st">")"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "95% CI is: ( 1.03342508032405 1.66657491967595 )"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb20"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb20-1"><a href="#cb20-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Paired t-test</span></span>
-<span id="cb20-2"><a href="#cb20-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>after, dat<span class="sc">$</span>before, <span class="at">paired =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Paired t-test
-
-data:  dat$after and dat$before
-t = 10.962, df = 5, p-value = 0.0001099
-alternative hypothesis: true mean difference is not equal to 0
-95 percent confidence interval:
- 1.033425 1.666575
-sample estimates:
-mean difference 
-           1.35 </code></pre>
-</div>
-</div>
-<p>What is the difference between a paired and an unpaired test?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb22"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb22-1"><a href="#cb22-1" aria-hidden="true" tabindex="-1"></a><span class="co"># CI by hand</span></span>
-<span id="cb22-2"><a href="#cb22-2" aria-hidden="true" tabindex="-1"></a>d<span class="ot">&lt;-</span><span class="fu">mean</span>(dat<span class="sc">$</span>after<span class="sc">-</span>dat<span class="sc">$</span>before)</span>
-<span id="cb22-3"><a href="#cb22-3" aria-hidden="true" tabindex="-1"></a>se1<span class="ot">&lt;-</span><span class="fu">sd</span>(dat<span class="sc">$</span>after)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)</span>
-<span id="cb22-4"><a href="#cb22-4" aria-hidden="true" tabindex="-1"></a>se2<span class="ot">&lt;-</span><span class="fu">sd</span>(dat<span class="sc">$</span>before)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">6</span>)</span>
-<span id="cb22-5"><a href="#cb22-5" aria-hidden="true" tabindex="-1"></a>se_unpooled<span class="ot">&lt;-</span><span class="fu">sqrt</span>(se1<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>se2<span class="sc">^</span><span class="dv">2</span>)</span>
-<span id="cb22-6"><a href="#cb22-6" aria-hidden="true" tabindex="-1"></a>df<span class="ot">&lt;-</span>((se1<span class="sc">^</span><span class="dv">2</span><span class="sc">+</span>se2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>(((se1<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">5</span>)<span class="sc">+</span>((se2<span class="sc">^</span><span class="dv">2</span>)<span class="sc">^</span><span class="dv">2</span> <span class="sc">/</span> <span class="dv">5</span>))</span>
-<span id="cb22-7"><a href="#cb22-7" aria-hidden="true" tabindex="-1"></a>tval<span class="ot">&lt;-</span><span class="fu">qt</span>(.<span class="dv">975</span>,df)</span>
-<span id="cb22-8"><a href="#cb22-8" aria-hidden="true" tabindex="-1"></a>d<span class="sc">-</span>tval<span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.075484</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a>d<span class="sc">+</span>tval<span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1.624516</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">print</span>(<span class="fu">paste</span>(<span class="st">"95% CI is: ("</span>,d<span class="sc">-</span>tval<span class="sc">*</span>se_unpooled,d<span class="sc">+</span>tval<span class="sc">*</span>se_unpooled,<span class="st">")"</span>))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] "95% CI is: ( 0.305927531597175 2.39407246840282 )"</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb28"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb28-1"><a href="#cb28-1" aria-hidden="true" tabindex="-1"></a><span class="co"># unpaired two-sided</span></span>
-<span id="cb28-2"><a href="#cb28-2" aria-hidden="true" tabindex="-1"></a><span class="fu">t.test</span>(dat<span class="sc">$</span>after, dat<span class="sc">$</span>before, <span class="at">paired =</span> <span class="cn">FALSE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>
-    Welch Two Sample t-test
-
-data:  dat$after and dat$before
-t = 2.8822, df = 9.9693, p-value = 0.01637
-alternative hypothesis: true difference in means is not equal to 0
-95 percent confidence interval:
- 0.3059275 2.3940725
-sample estimates:
-mean of x mean of y 
- 13.26667  11.91667 </code></pre>
-</div>
-</div>
-<p>A paired experiment reduces the noise, i.e., variation in outcomes due to other variables.</p>
-</section>
 
 </main>
 <!-- /main column -->
