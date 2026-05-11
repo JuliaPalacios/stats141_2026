@@ -490,6 +490,7 @@ window.Quarto = {
   <li><a href="#goodness-of-fit-test" id="toc-goodness-of-fit-test" class="nav-link" data-scroll-target="#goodness-of-fit-test"><span class="header-section-number">16.2</span> Goodness of fit test</a></li>
   <li><a href="#goodness-of-fit-when-there-are-2-categories" id="toc-goodness-of-fit-when-there-are-2-categories" class="nav-link" data-scroll-target="#goodness-of-fit-when-there-are-2-categories"><span class="header-section-number">16.3</span> Goodness-of-fit when there are 2 categories</a></li>
   <li><a href="#independence-and-association" id="toc-independence-and-association" class="nav-link" data-scroll-target="#independence-and-association"><span class="header-section-number">16.4</span> Independence and association</a></li>
+  <li><a href="#the-chi-square-test-for-the-r-times-k-table" id="toc-the-chi-square-test-for-the-r-times-k-table" class="nav-link" data-scroll-target="#the-chi-square-test-for-the-r-times-k-table"><span class="header-section-number">16.5</span> The Chi-Square test for the <span class="math inline">\(r \times k\)</span> table</a></li>
   </ul>
 </nav>
     </div>
@@ -822,6 +823,93 @@ Eye_Color Dark Light  Sum
 </div>
 </div>
 <p>We reject the null hypothesis.</p>
+</section>
+<section id="the-chi-square-test-for-the-r-times-k-table" class="level2" data-number="16.5">
+<h2 data-number="16.5" class="anchored" data-anchor-id="the-chi-square-test-for-the-r-times-k-table"><span class="header-section-number">16.5</span> The Chi-Square test for the <span class="math inline">\(r \times k\)</span> table</h2>
+<p>The goal of statistical analysis of an <span class="math inline">\(r \times k\)</span> contingency table is to investigate the relationship between the row and column variables. In this situation, the expected frequencies are calculated as <span class="math display">\[
+e= \frac{(\text{Row total})\times (\text{Column total})}{\text{Grand total}}
+\]</span></p>
+<p>Critical values for the chi-square test are obtained with <span class="math display">\[
+df = (r-1) \times (k-1)
+\]</span></p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: Plover nesting
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>Wildlife ecologists monitored the breeding habitats of mountain plovers for three years and made note of where the plovers nested. They found 66 nests on agricultural fields (AF), 67 nests in shortgrass prairie dog habitat (PD), and 20 nests on ohter grassland (G). The nesting choices varied across the years for these 153 sampled plover broods. The observe data is:</p>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb31"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb31-1"><a href="#cb31-1" aria-hidden="true" tabindex="-1"></a>tab <span class="ot">&lt;-</span> <span class="fu">matrix</span>(</span>
+<span id="cb31-2"><a href="#cb31-2" aria-hidden="true" tabindex="-1"></a>  <span class="fu">c</span>(<span class="dv">21</span>, <span class="dv">19</span>, <span class="dv">26</span>,</span>
+<span id="cb31-3"><a href="#cb31-3" aria-hidden="true" tabindex="-1"></a>    <span class="dv">17</span>, <span class="dv">38</span>,<span class="dv">12</span>,</span>
+<span id="cb31-4"><a href="#cb31-4" aria-hidden="true" tabindex="-1"></a>    <span class="dv">5</span>,<span class="dv">6</span>,<span class="dv">9</span>),</span>
+<span id="cb31-5"><a href="#cb31-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">nrow =</span> <span class="dv">3</span>, <span class="at">byrow =</span> <span class="cn">TRUE</span>,</span>
+<span id="cb31-6"><a href="#cb31-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">dimnames =</span> <span class="fu">list</span>(</span>
+<span id="cb31-7"><a href="#cb31-7" aria-hidden="true" tabindex="-1"></a>    <span class="at">Location =</span> <span class="fu">c</span>(<span class="st">"Agricultural field (AF)"</span>, <span class="st">"Praire dog habitat (PD)"</span>, <span class="st">"Grassland (G)"</span>),</span>
+<span id="cb31-8"><a href="#cb31-8" aria-hidden="true" tabindex="-1"></a>   <span class="at">Year  =</span> <span class="fu">c</span>(<span class="st">"2004"</span>, <span class="st">"2005"</span>, <span class="st">"2006"</span>)</span>
+<span id="cb31-9"><a href="#cb31-9" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb31-10"><a href="#cb31-10" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb31-11"><a href="#cb31-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb31-12"><a href="#cb31-12" aria-hidden="true" tabindex="-1"></a><span class="co">#tab</span></span>
+<span id="cb31-13"><a href="#cb31-13" aria-hidden="true" tabindex="-1"></a><span class="fu">addmargins</span>(tab)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>                         Year
+Location                  2004 2005 2006 Sum
+  Agricultural field (AF)   21   19   26  66
+  Praire dog habitat (PD)   17   38   12  67
+  Grassland (G)              5    6    9  20
+  Sum                       43   63   47 153</code></pre>
+</div>
+</div>
+<p>The expected frequencies are then</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb33"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb33-1"><a href="#cb33-1" aria-hidden="true" tabindex="-1"></a>exp<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">3</span>,<span class="at">ncol=</span><span class="dv">3</span>)</span>
+<span id="cb33-2"><a href="#cb33-2" aria-hidden="true" tabindex="-1"></a>sumrow<span class="ot">&lt;-</span><span class="fu">apply</span>(tab,<span class="dv">1</span>,sum)</span>
+<span id="cb33-3"><a href="#cb33-3" aria-hidden="true" tabindex="-1"></a>sumcol<span class="ot">&lt;-</span><span class="fu">apply</span>(tab,<span class="dv">2</span>,sum)</span>
+<span id="cb33-4"><a href="#cb33-4" aria-hidden="true" tabindex="-1"></a>sumrow</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Agricultural field (AF) Praire dog habitat (PD)           Grassland (G) 
+                     66                      67                      20 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb35"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb35-1"><a href="#cb35-1" aria-hidden="true" tabindex="-1"></a>sumcol</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>2004 2005 2006 
+  43   63   47 </code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb37"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb37-1"><a href="#cb37-1" aria-hidden="true" tabindex="-1"></a>exp[,<span class="dv">1</span>]<span class="ot">&lt;-</span>sumrow<span class="sc">/</span><span class="fu">sum</span>(sumrow)<span class="sc">*</span>sumcol[<span class="dv">1</span>]</span>
+<span id="cb37-2"><a href="#cb37-2" aria-hidden="true" tabindex="-1"></a>exp[,<span class="dv">2</span>]<span class="ot">&lt;-</span>sumrow<span class="sc">/</span><span class="fu">sum</span>(sumrow)<span class="sc">*</span>sumcol[<span class="dv">2</span>]</span>
+<span id="cb37-3"><a href="#cb37-3" aria-hidden="true" tabindex="-1"></a>exp[,<span class="dv">3</span>]<span class="ot">&lt;-</span>sumrow<span class="sc">/</span><span class="fu">sum</span>(sumrow)<span class="sc">*</span>sumcol[<span class="dv">3</span>]</span>
+<span id="cb37-4"><a href="#cb37-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb37-5"><a href="#cb37-5" aria-hidden="true" tabindex="-1"></a>exp</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>          [,1]      [,2]      [,3]
+[1,] 18.549020 27.176471 20.274510
+[2,] 18.830065 27.588235 20.581699
+[3,]  5.620915  8.235294  6.143791</code></pre>
+</div>
+</div>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb39"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb39-1"><a href="#cb39-1" aria-hidden="true" tabindex="-1"></a>chi<span class="ot">&lt;-</span><span class="fu">sum</span>(((exp<span class="sc">-</span>tab)<span class="sc">^</span><span class="dv">2</span>)<span class="sc">/</span>exp)</span>
+<span id="cb39-2"><a href="#cb39-2" aria-hidden="true" tabindex="-1"></a>chi</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 14.08935</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb41"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb41-1"><a href="#cb41-1" aria-hidden="true" tabindex="-1"></a>pval<span class="ot">&lt;-</span><span class="dv">1</span><span class="sc">-</span><span class="fu">pchisq</span>(chi,<span class="at">df=</span><span class="dv">4</span>)</span>
+<span id="cb41-2"><a href="#cb41-2" aria-hidden="true" tabindex="-1"></a>pval</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0.007015278</code></pre>
+</div>
+</div>
+<p>The chi-square shows that there is significant evidence that the nesting location preferences differed across the three years.</p>
+<p>Shortcut:</p>
+<p>chisq.test(tab) ``</p>
 
 
 </section>
