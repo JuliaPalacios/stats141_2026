@@ -40,6 +40,7 @@ book:
         - Week5B.qmd
         - Week6A.qmd
         - Week6B.qmd
+        - Week7A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 
