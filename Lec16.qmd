@@ -285,3 +285,74 @@ pval
 
 
 We reject the null hypothesis.
+
+
+## The Chi-Square test for the $r \times k$ table
+
+The goal of statistical analysis of an $r \times k$ contingency table is to investigate the relationship between the row and column variables. In this situation, the expected frequencies are calculated as
+$$
+e= \frac{(\text{Row total})\times (\text{Column total})}{\text{Grand total}}
+$$
+
+Critical values for the chi-square test are obtained with 
+$$
+df = (r-1) \times (k-1)
+$$
+
+
+::: {.callout-note icon="false"}
+## Example: Plover nesting
+Wildlife ecologists monitored the breeding habitats of mountain
+plovers for three years and made note of where the plovers nested. They found 66 nests on agricultural fields (AF), 67 nests in shortgrass prairie dog habitat (PD), and 20 nests on ohter grassland (G). The nesting choices varied across the years for these 153 sampled plover broods. The observe data is:
+
+:::
+
+```{r}
+tab <- matrix(
+  c(21, 19, 26,
+    17, 38,12,
+    5,6,9),
+  nrow = 3, byrow = TRUE,
+  dimnames = list(
+    Location = c("Agricultural field (AF)", "Praire dog habitat (PD)", "Grassland (G)"),
+   Year  = c("2004", "2005", "2006")
+  )
+)
+
+#tab
+addmargins(tab)
+
+```
+The expected frequencies are then
+
+```{r}
+exp<-matrix(0,nrow=3,ncol=3)
+sumrow<-apply(tab,1,sum)
+sumcol<-apply(tab,2,sum)
+sumrow
+sumcol
+exp[,1]<-sumrow/sum(sumrow)*sumcol[1]
+exp[,2]<-sumrow/sum(sumrow)*sumcol[2]
+exp[,3]<-sumrow/sum(sumrow)*sumcol[3]
+
+exp
+
+```
+
+
+```{r}
+chi<-sum(((exp-tab)^2)/exp)
+chi
+
+pval<-1-pchisq(chi,df=4)
+pval
+
+```
+
+The chi-square shows that there is significant evidence that the nesting location preferences differed across the three years.
+
+Shortcut:
+
+```{r}
+chisq.test(tab)
+``
