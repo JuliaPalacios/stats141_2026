@@ -1,0 +1,11 @@
+---
+title: "quiz6"
+format: html
+editor: visual
+---
+
+# Quiz 6 - May 15
+
+Quiz 6 will cover MWM test, paired t-test, proportion CI and test and $\chi^2$ test.
+
+Duration: 10 minutes with 10 minutes extension

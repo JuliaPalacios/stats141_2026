@@ -1,7 +1,71 @@
 ---
-title: "Linear Regression"
+title: "Statistical Learning"
 format: html
 ---
+
+## What is Styatistical learning?
+
+To motivate the study of statistical learning, consider the following example. Suppose you have measurements of body weight and heart weight for a sample of cats, and you are interested in whether these two variables are associated — specifically, whether bigger cats tend to have bigger hearts. In this example, we refer to heart weight as the *response variable*, also known as the *outcome* or *dependent variable*, and we refer to body weight as the *input variable*, also known as a *predictor*, *independent variable*, *feature*, or simply a *variable*. The goal of statistical learning is to determine whether a relationship exists between these variables, and to approximate a function that relates the input to the response.
+
+In the figures below, the left panel shows a scatter plot of the data, with cat's body weight on the x-axis and heart weight on the y-axis. Even a casual inspection of the data suggests that as body weight increases, heart weight tends to increase as well. In the right panel, we overlay a linear function that appears to capture this relationship reasonably well. The goal of statistical learning is precisely to find a function of this kind — one that best approximates the underlying phenomenon relating the input variable to the response.
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+
+library(ggplot2)
+library(MASS)
+library(patchwork)
+
+# Plot 1: Simple scatter plot
+p1 <- ggplot(cats, aes(x = Bwt, y = Hwt)) +
+  geom_point(color = "red", alpha = 0.6) +
+  labs(x = "Body weight (kg)",
+       y = "Heart weight (g)",
+       title = "Cat's body weight vs. Heart weight") +
+  theme_minimal()
+
+# Plot 2: Scatter + fitted line only
+p2 <- ggplot(cats, aes(x = Bwt, y = Hwt)) +
+  geom_point(color = "red", alpha = 0.6) +
+  geom_smooth(method = "lm", se = FALSE,
+              color = "darkblue", linewidth = 1) +
+  labs(x = "Body weight (kg)",
+       y = "Heart weight (g)",
+       title = "With fitted line") +
+  theme_minimal()
+
+# Display side by side
+p1 + p2
+```
+
+In other words, suppose we observe a quantitative response $Y$ and $m$ different input variables $X_{1}, X_{2}, \dots, X_{m}$. We assume that there is some relationship between $Y$ and $X = (X_{1}, X_{2}, \dots, X_{m})$, which can be written in the very general form
+
+$$Y = f(X) + \epsilon.$$
+
+Here $f$ is some fixed but unknown function of $X_{1}, X_{2}, \dots, X_{m}$, and $\epsilon$ is a random *error term* that is independent of $X$ and has mean zero. In this formulation, $f$ represents the systematic information that $X$ provides about $Y$.
+
+To illustrate with a second example, consider data on birth weights and maternal predictors. Here we are interested in examining whether maternal characteristics or behaviors during pregnancy are associated with infant birth weight. The response variable $Y$ is the birth weight of the baby, and the predictors $X$ are those variables potentially related to that outcome. This data comes from the `birthwt` dataset in the `MASS` package, which contains 189 observations collected at Baystate Medical Center, Springfield, Massachusetts in 1986. The potential predictor variables are listed in the table below.
+
+| Variable | Type | Description |
+|----------|------|-------------|
+| `low` | Binary | Indicator of birth weight below 2.5 kg (0 = no, 1 = yes) |
+| `age` | Continuous | Mother's age in years |
+| `lwt` | Continuous | Mother's weight (lbs) at last menstrual period |
+| `race` | Categorical | Mother's race (1 = White, 2 = Black, 3 = Other) |
+| `smoke` | Binary | Smoking status during pregnancy (0 = no, 1 = yes) |
+| `ptl` | Count | Number of previous premature labours |
+| `ht` | Binary | History of hypertension (0 = no, 1 = yes) |
+| `ui` | Binary | Presence of uterine irritability (0 = no, 1 = yes) |
+| `ftv` | Count | Number of physician visits during the first trimester |
+
+Notice that predictor variables can be binary, categorical, or continuous. It is also important to note that all, some, or none of these predictors may be related to birth weight. The objective is therefore to determine which input variables, if any, are associated with the response, and to obtain a good approximation of the function $f(X)$.
+
+### Supervised vs Unsupervised Learning
+
+
+## Linear Regression
 
 Linear regression is a supervised machine learning and statistical method that has been widely used for a long time to predict quantitative continuous responses. Although relatively simple, it is a very important model for understanding more complex machine learning models, which can be seen as generalizations of it.
 
@@ -9,12 +73,12 @@ What is the main idea behind linear regression? Consider a simple **example**: i
 
 This kind of question arises constantly in biological research. Linear regression is a powerful tool to answer it. More formally, suppose we want to understand how one or more variables — called predictors — relate to an outcome of interest — called the response variable. In our example, body weight is the predictor and heart weight is the response. A few key questions naturally emerge:
 
--   Is there a relationship between body weight and heart weight?
--   How strong is that relationship?
--   How large is the effect — for each additional kilogram of body weight, how many grams does the heart weight increase?
--   How accurately can we predict heart weight from body weight?
--   Is the relationship linear, or does it follow a more complex pattern?
--   When multiple predictors are available — such as body weight, sex, and age — which ones are truly associated with heart weight, and is there any interaction among them?
+- Is there a relationship between body weight and heart weight?
+- How strong is that relationship?
+- How large is the effect — for each additional kilogram of body weight, how many grams does the heart weight increase?
+- How accurately can we predict heart weight from body weight?
+- Is the relationship linear, or does it follow a more complex pattern?
+- When multiple predictors are available — such as body weight, sex, and age — which ones are truly associated with heart weight, and is there any interaction among them?
 
 Linear regression allows us to address all of these questions in a rigorous and interpretable way. And while our example is biological, the same framework applies broadly — from medicine and ecology to economics and engineering.
 
@@ -31,7 +95,7 @@ $$\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1}X.$$ {#eq-2}
 In @eq-2 $\hat{y}$ indicates a prediction of Y (body weight) on the basis of X(=x, heart weight), and the symbol *\^* denotes a predicted value.
 
 ::: {.callout-note icon="false"}
-**Example:** Cat's Heart Weight\
+**Example: Cat's Heart Weight**\
 In this example we measure the association of cat's heath weight with their body weight, using the dataset $cats$ from the MASS library in R. This dataset contains three variables: Sex, with levels "F", and "M"; Bwt, body weight in kg; and Hwt, heart weight in g.
 
 ```{r}
@@ -40,37 +104,13 @@ head(cats)
 ? cats
 model1 <- lm(Hwt ~ Bwt, data = cats)
 model1
-##
-# Call:
-# lm(formula = Hwt ~ Bwt, data = cats)
-#
-# Coefficients:
-# (Intercept)          Bwt  
-#    -0.3567       4.0341 
+
 ```
 
 Notice that the intercept is eqaul to $-0.3567$, which we can ignore as it is negative and has no biological meaning (heart weight when body weight = 0). The slope is important in this model, because indicates that for every 1 kg increase in body weight, heart weight increases by about 4 grams. *In summary, body weight is a strong positive predictor of heart weight in cats. Larger cats tend to have proportionally heavier hearts.*
 
 ```{r}
 summary(model1)
-##
-# Call:
-# lm(formula = Hwt ~ Bwt, data = cats)
-
-# Residuals:
-#    Min      1Q  Median      3Q     Max 
-# -3.5694 -0.9634 -0.0921  1.0426  5.1238 
-
-# Coefficients:
-#             Estimate  Std. Error t value  Pr(>|t|)    
-# (Intercept)  -0.3567     0.6923  -0.515    0.607    
-# Bwt           4.0341     0.2503  16.119   <2e-16 ***
-# ---
-# Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-
-# Residual standard error: 1.452 on 142 degrees of freedom
-# Multiple R-squared:  0.6466,	Adjusted R-squared:  0.6441 
-# F-statistic: 259.8 on 1 and 142 DF,  p-value: < 2.2e-16
 ```
 
 Goodness of fit:\
@@ -79,13 +119,14 @@ Goodness of fit:\
 *Residual standard Error: 1.452g* - indicates how far off predictions typically are (we are typically wrong by about 1.42 grams)
 :::
 
-## Estimating the coefficients
+### Estimating the coefficients
 
-![](/Figures/plot_linregM1.png){fig-align="center" width="100%"}
+The coefficients $\beta_{0}$ and $\beta_{1}$ in the linear model are unknown and are estimated using observed data. Suppose we have $n$ observation pairs $(x_{1}, y_{1}), (x_{2}, y_{2}), \dots, (x_{n}, y_{n})$, representing observations from $X$ and $Y$. In our previous example, these observations correspond to measurements of a cat's body weight and its corresponding heart weight. The goal is therefore to obtain estimates $\hat{\beta}_{0}$ and $\hat{\beta}_{1}$ such that the linear model @eq-1 fits the $n = 144$ data points as closely as possible. Since there are several ways to measure *closeness*, by far the most common approach involves minimizing the *least squares* criterion.
 
-The previous plot can be generated in R as follows:
+In least squares, we calculate the difference between the observed value $y_{i}$ and the predicted value $\hat{y}_{i}$ obtained from the fitted model (from @eq-2 above: $\hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1}x_{i}$). That is, $e_{i} = y_{i} - \hat{y}_{i}$ represents the *i-th residual* for observation $i$. We illustrate these residuals for the $cats$ sample in the plot below, shown as vertical lines from each observed data point (in red) to the fitted line.
 
 ```{r}
+#| echo: false
 # Fitted values
 fitted_vals <- fitted(model1)
 
@@ -114,15 +155,232 @@ legend("topleft",
        cex = 1.1)
 ```
 
+The, we define the *residual sum of squares* (RSS) as:
+
+$$RSS = e^{2}_{1} + e^{2}_{2} + \dots + e^{2}_{n}$$ {#eq-3}
+
+The *least squares coefficient estimates* $\hat{\beta}_{0}$ and $\hat{\beta}_{1}$ for simple linear regression are obtained by minimizing the RSS, which after some calculus yields:
+
+$$\begin{align}
+\hat{\beta}_{1} &= \frac{\sum_{i=1}^{n}(x_{i}-\bar{x})(y_{i}-\bar{y})}{\sum_{i=1}^{n}(x_{i}-\bar{x})^2}, \\
+\hat{\beta}_{0} &= \bar{y} - \hat{\beta}_{1}\bar{x},
+\end{align}$$ {#eq-4}
+
+where $\bar{y}\equiv \frac{1}{n}\sum_{i=1}^{n}y_{i}$ and $\bar{x}\equiv \frac{1}{n}\sum_{i=1}^{n}x_{i}$ are the sample means.
+
+### Assessing the accuracy of the coefficient estimates
+
+A natural question about the linear regression model is how accurate the coefficient estimates are — that is, how far $\hat{\beta}_{0}$ and $\hat{\beta}_{1}$ are from the true values $\beta_{0}$ and $\beta_{1}$. To answer this question, we compute the *standard errors* associated with $\hat{\beta}_{0}$ and $\hat{\beta}_{1}$ using the following formulas:
+
+$$SE(\hat{\beta}_{0})^{2}=\sigma^{2}\left[\frac{1}{n}+\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\right], \quad SE(\hat{\beta}_{1})^{2}=\frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}$$ {#eq-5}
+
+where $\sigma^{2}=Var(\epsilon)$ is the variance of the error terms, which is unknown but can be estimated empirically via the RSE. Strictly, these equations are valid only when the errors $\epsilon_{i}$ for each observation have constant variance $\sigma^{2}$ and are uncorrelated, but in practice they provide a good approximation. Notice that unlike $e_{i}$, which are the observed residuals obtained from the fitted model, $\epsilon_{i}$ are the underlying population errors that arise when approximating the relationship between $X$ and $Y$ through a linear model, and are therefore unobserved.
+
+Once we obtain the standard errors of the estimates, we can construct *confidence intervals*. A 95% confidence interval is defined as a range of values such that, with 95% probability, the range will contain the true unknown value of the parameter. Confidence intervals are constructed from the data and have the property that if we take repeated samples and construct a confidence interval for each sample, 95% of those intervals will contain the true unknown value of the parameter. For the linear regression model, the 95% confidence intervals for $\beta_{0}$ and $\beta_{1}$ are approximated as:
+
+$$\left[\hat{\beta}_{0}-2\cdot SE(\hat{\beta}_{0}),\ \hat{\beta}_{0}+2\cdot SE(\hat{\beta}_{0})\right]$$ {#eq-6} $$\left[\hat{\beta}_{1}-2\cdot SE(\hat{\beta}_{1}),\ \hat{\beta}_{1}+2\cdot SE(\hat{\beta}_{1})\right]$$ {#eq-7}
+
+In the previous example, the standard errors for the intercept and slope were 0.6923 and 0.2503, respectively. The associated confidence intervals are therefore:
+
+```{r}
+confint(model1)
+```
+
+We are thus 95% confident that for every 1 kg increase in body weight, the true average increase in heart weight is between 3.54 and 4.53 grams.
+
+Standard errors are also useful for testing the most common hypothesis in regression — that there is no relationship between $X$ and $Y$ (i.e., that a cat's body weight is not associated with its heart weight). Formally, the *null hypothesis* states that there is no relationship between $X$ and $Y$, versus the *alternative hypothesis* that there is some relationship between $X$ and $Y$. Mathematically, this corresponds to testing:
+
+$$\begin{align}
+H_{0} &: \beta_{1} = 0 \\
+&\text{versus} \\
+H_{a} &: \beta_{1} \neq 0
+\end{align}$$ {#eq-8}
+
+To test the null hypothesis, we need to determine how far $\hat{\beta}_{1}$ is from zero to be confident that $\beta_{1}$ is nonzero. This depends on the accuracy of the estimate, given by $SE(\hat{\beta}_{1})$. The smaller $SE(\hat{\beta}_{1})$ is, the more likely that $\beta_{1}$ differs from zero; conversely, the larger the standard error, the larger $\hat{\beta}_{1}$ needs to be in order to reject the null hypothesis. In practice, we rely on a *t-statistic*, given by
+
+$$t=\frac{\hat{\beta}_{1}-0}{SE(\hat{\beta}_{1})},$$ {#eq-9}
+
+which measures how many standard deviations $\hat{\beta}_{1}$ is from zero. If there is no relationship between $X$ and $Y$, we expect $t$ to follow a $t$-distribution with $n-2$ degrees of freedom. The larger the observed value of $t$ relative to the theoretical $t$-distribution, the lower the probability that $\beta_{1} = 0$. This probability is called the *p-value*, which in our example was practically zero ($<2\times10^{-16}$), providing strong evidence that $\hat{\beta}_{1} \neq 0$, or equivalently that it is *statistically significant*. A small *p-value* indicates that it is unlikely to observe such a substantial association between the predictor and the response by chance alone. We therefore reject the null hypothesis when the *p-value* is sufficiently small — typically below 0.05 or 0.01.
+
+### Assessing the accuracy of the model
+
+Once we have assessed the accuracy of the parameter estimates and rejected the null hypothesis, in favor of the alternative, we now evaluate how well the model fits the data. In linear regression, this is typically assessed using two indicators: the *residual standard error* (RSE) and the $R^2$ statistic, or *coefficient of determination*.
+
+The RSE, defined earlier as the standard deviation of the residual errors $\epsilon$, measures roughly the average amount by which the response deviates from the true regression line, and is estimated as:
+
+$$RSE=\sqrt{\frac{RSS}{(n-2)}}=\sqrt{\frac{1}{(n-2)}\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^2}.$$
+
+In the previous example, the RSE was 1.452g, indicating that predictions typically deviate from the regression line by about 1.452 grams. Whether a given RSE value is acceptable depends entirely on the context and the units of the response. The RSE is therefore considered a measure of the *lack of fit* of the model: if the predicted values are close to the observed values ($\hat{y}_{i}\approx y_{i}, i=1,\dots,n$), the RSE will be small, indicating a good fit; conversely, if they are far apart, the RSE will be large, indicating a poor fit.
+
+Because the RSE is an absolute measure that depends on the units of $Y$, it can be difficult to interpret in isolation. The $R^{2}$ statistic provides a complementary measure of fit that is unit-free. It takes the form of a proportion — the proportion of variance in $Y$ explained by $X$ — and always lies between 0 and 1, making it more straightforward to interpret. It is calculated as:
+
+$$R^2=\frac{TSS-RSS}{TSS}=1-\frac{RSS}{TSS},$$
+
+where $TSS=\sum_{i=1}^{n}(y_{i}-\bar{y})^2$ is the *total sum of squares* and RSS is the *residual sum of squares* (as defined earlier). TSS measures the total variance in the response $Y$ before regression is performed. In contrast, RSS is the amount of variation left unexplained after fitting the regression model. Therefore, $TSS - RSS$ measures the variability in $Y$ explained by the regression, and $R^2$ measures the *proportion of variance in* $Y$ explained by $X$. An $R^2$ close to 1 indicates that a large proportion of the variability in the response is explained by the model; conversely, an $R^2$ close to 0 indicates that the model explains little of the variability in the response. In our example, $R^2 = 0.64$, meaning that 64% of the total variability in heart weight is explained by body weight.
+
+While $R^2$ is generally easier to interpret than the RSE, determining what constitutes a good value is still context-dependent. A value of $R^2 = 1$, for instance, rather than indicating a perfect fit, should raise concern about possible overfitting or perfect collinearity. Caution is therefore always advised when interpreting these indicators.
+
 ## Multiple Linear Regression
 
-From MASS:
+Simple linear regression is a useful approach for predicting a response based on a single predictor. However, most practical applications involve more than one predictor. For instance, consider the example with data on birth weights and maternal predictors that we discussed before. We begin by exploring this problem using simple regression models for different predictors.
 
-birthwt — birth weight of babies vs. mother's age, weight, smoking status, etc. Great for both simple and multiple regression. cats — heart weight vs. body weight of cats. Super clean, only 3 variables, perfect for simple regression. mammals — brain weight vs. body weight across species. Also very clean for simple regression.
+::: {.callout-note icon="false"}
+**Example: Newborn's Birth Weight**\
 
-# Multiple regression
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(MASS)
+birthwt$race <- factor(birthwt$race, labels = c("white", "black", "other"))
+```
 
-model2 \<- lm(Hwt \~ Bwt + Sex, data = cats) summary(model2)
+*Simple regression of baby's birth weight on Mother's Age*
 
-## Other Considerations in the Regression Model
+```{r}
+#| echo: false
+model2 <- lm(bwt ~ age, data = birthwt)
+summary(model2)
+```
 
+*Simple regression of baby's birth weight on Mother's Race*
+
+```{r}
+#| echo: false
+model3 <- lm(bwt ~ race, data = birthwt)
+summary(model3)
+```
+
+*Simple regression of baby's birth weight on Mother's Smoking*
+
+```{r}
+#| echo: false
+model4 <- lm(bwt ~ smoke, data = birthwt)
+summary(model4)
+```
+:::
+
+In this example, we added one predictor at a time and found no association between mother's age and infant birth weight. However, birth weight was significantly associated with both race and smoking status. Before continuing with model interpretation, it is important to clarify how R handles binary and categorical predictors.
+
+When a binary (2 categories) or categorical (3+ categories) variable is included in a regression model, it must first be converted into dummy variables (also called indicator variables). For a binary variable such as smoke (0/1), the coefficient represents the mean difference in the response between the two groups. For categorical variables with three or more categories, one category is chosen as the reference level and k−1 dummy variables are created for the remaining categories. For example, for race with levels white, black, and other, white serves as the reference category.
+
+Examining the results, mother's age is not significantly associated with birth weight (p = 0.216). Compared to infants born to white mothers, those born to Black mothers had a significantly lower mean birth weight of 383.03 grams (p \< 0.05), and those born to mothers of other races had a significantly lower mean birth weight of 297.44 grams (p \< 0.05). Regarding smoking, infants born to mothers who smoked during pregnancy had a significantly lower mean birth weight of 283.78 grams compared to infants of non-smoking mothers (p \< 0.05).
+
+Although these results are illustrative, fitting a separate simple linear regression model for each predictor is not entirely satisfactory. First, since both race and smoking are significantly associated with birth weight, it is unclear how to construct a precise prediction of birth weight from these individual models. Second, each model ignores the other predictors when estimating regression coefficients. A related concern is that if predictors are correlated with one another, the individual models may yield misleading estimates of each predictor's association with birth weight.
+
+A better approach is to extend the simple linear regression model (@eq-1) to directly accommodate multiple predictors by assigning each predictor its own slope coefficient within a single model. In general, suppose we have $m$ distinct predictors. The multiple linear regression model then takes the form:
+
+$$Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{m}X_{m} + \epsilon,$$
+
+where $X_{j}$ represents the $j$th predictor and $\beta_{j}$ quantifies the association between that variable and the response. We interpret $\beta_{j}$ as the average effect on $Y$ of a one-unit increase in $X_{j}$, holding all other predictors fixed.
+
+### Estimating the Regression Coefficients
+
+As in the case of simple regression, the coefficients $\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}$ are unknown and must be estimated. Given those estimates, we can make predictions for the outcome, as follows:
+
+$$Y = \hat{\beta}_{0} + \hat{\beta}_{1}X_{1} + \hat{\beta}_{2}X_{2} + \dots + \hat{\beta}_{m}X_{m} + \epsilon$$. {#eq-10}
+
+The parameters are estimated using the same least squares approach as in simple regression -- that is, we choose the values of each $\beta$ that minimize the residual sum of squares:
+
+$$\begin{aligned}
+RSS &= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^{2} \\
+&= \sum_{i=1}^{n} (y_{i}-\hat{\beta}_{0} - \hat{\beta}_{1}x_{i1} - \hat{\beta}_{2}x_{i2} - \dots - \hat{\beta}_{m}x_{im})^{2}. \\
+\end{aligned}$$ {#eq-11}
+
+The values $\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}$ that minimize @eq-11 are the multiple least squares regression coefficients. Unlike the simple regression case, however, these coefficients have somewhat comlex closed-form expressions that are most naturally represented using matrix notation. For simplicity, we omit the derivation here; in practice, any statistical software can estimate these coefficients from data. In the next example we use R to fit a multiple regression model using birth weight data.
+
+::: {.callout-note icon="false"}
+**Example: Multiple regression of newborns' birth weight on mother's age, race, and smoking status during pregnancy**
+
+```{r}
+#| echo: false
+#| warning: false
+#| message: false
+library(MASS)
+model5 <- lm(bwt ~ age + race + smoke, data = birthwt)
+summary(model5)
+```
+
+Table. Number of mothers by smoking status
+
+```{r}
+#| echo: false
+#| #| warning: false
+library(polycor)
+table(birthwt$race, birthwt$smoke)
+
+```
+:::
+
+Notice that in the multiple regression model, race and smoking remain statistically significant, and their coefficients are larger in absolute terms (now -444.069, -447.858, and -426.093, respectively) compared to those from the simple linear regression models. Fitting separate simple linear regression models for each predictor, we found that race and smoking were significantly associated with birth weight, while mother's age was not. However, when all predictors were included simultaneously, the effects of race and smoking became larger in magnitude. This occurs because of confounding: in the simple models, the effect of each predictor was partially diluted by its correlation with the others. For example, although white mothers smoked more frequently than Black mothers in this sample (54% vs. 38%, see Table above), babies born to Black mothers still had significantly lower birth weights even after controlling for smoking. This suggests that race has an independent effect on birth weight beyond what can be explained by smoking differences, likely reflecting unmeasured socioeconomic or biological factors. More broadly, this example highlights why fitting separate simple regression models is inadequate when predictors are correlated — the coefficients from simple models can be misleading, and only multiple regression allows us to isolate the effect of each predictor while holding the others constant.
+
+### Additional Considerations in Multiple Regression
+
+#### Is There an Association Between the Response and the Predictors?
+
+In simple linear regression, we showed that we can test whether the coefficient of the linear predictor differs significantly from zero. We did this in @eq-8 by testing the null hypothesis that the coefficient equals zero against the alternative that it does not. In the multiple regression setting with mm m predictors, we proceed similarly, but now we must ask whether the coefficients of *all* predictors are simultaneously equal to zero; i.e., β1=β2=⋯=βm=0\beta\*{1}=\*\beta{2}=\dots=\beta\_{m}=0 β1​=β2​=⋯=βm​=0. The hypothesis test becomes:
+
+$$\begin{align}
+H_{0} &: \beta_{1}=\beta_{2}=\dots=\beta_{m}=0 \\
+&\text{versus} \\
+H_{a} &: \text{At least one } \beta_{j} \text{ is non-zero}
+\end{align}$$ {#eq-12}
+
+This hypothesis test is performed by computing the *F-statistic*:
+
+$$F=\frac{(TSS-RSS)/m}{RSS/(n-m-1)},$$ where, as in the case of simple linear regression, $TSS=\sum(y_{i}-\bar{y})^2$ and $RSS=\sum(y_{i}-\hat{y}_{i})^2$. If the linear model assumptions are correct, one can show that $E\{RSS/(n-m-1)\}=\sigma^2$ and that, provided $H_{0}$ is true, $E\{(TSS-RSS)/m\}=\sigma^2$.
+
+Hence, when there is no relationship between the response and the predictors, one would expect the *F-statistic* to take a value close to 1. On the other hand, if $H_{1}$ is true, then $E\{(TSS-RSS)/m\}>\sigma^2$, so we expect $F$ to be greater than 1.
+
+In the previous multiple regression example, the *F*-statistic was 6.49 on 4 and 184 degrees of freedom, which is significantly larger than 1 ($p$-value $< 0.01$). Compare this with the value obtained by fitting the model with age as the sole predictor, where the *F*-statistic was 1.538 on 1 and 187 degrees of freedom — barely larger than 1 and therefore not statistically significant ($p$-value $= 0.2165$). This last result implies that a model with mother's age as the only predictor fails to explain the variation in birth weight.
+
+The *F*-statistic approach for testing any association between the predictors and the response works well when $m$ is relatively small, and certainly smaller than $n$. However, when the number of predictors is large and $m > n$, there are more coefficients $\beta_{j}$ to estimate than observations available to estimate them. In this case, the multiple linear regression model cannot be fit using least squares, and therefore the *F*-statistic cannot be used. When $m$ is too large, alternative approaches are required, such as *forward selection*, which we discuss in the next section.
+
+#### Selecting predictors
+
+The previous section discusses how to test whether a set of predictor variables is associated with the response variable. It provides the *F-statistic* to test whether at least one of the potential predictors is associated with the outcome. However, not all of those predictors are necessarily significantly associated, as we can assess using the individual p-values for each of them — as discussed earlier for the simple regression model — but if the number of predictors $m$ is large, we are likely to make some false discoveries.
+
+It is possible that all predictors are associated with the response variable, but it is more common to find that only a subset of them is associated. We refer to *variable selection* as the process of identifying the predictors that are truly associated with the response variable. Since a more extensive discussion of this topic is needed, we introduce it only briefly here.
+
+Ideally, we would perform variable selection by testing all possible combinations of variables in a model. For instance, for a model with two predictors $X_{1}$ and $X_{2}$, we would need to test 4 different models: a model with no variables, a model with $X_{1}$ only, a model with $X_{2}$ only, and a model with both $X_{1}$ and $X_{2}$. We then select the best model according to some statistical criterion. Various statistics can be used to judge the quality of a model, including *Mallow's* $C_p$, the *Akaike information criterion (AIC)*, the *Bayesian information criterion (BIC)*, and the adjusted $R^2$.
+
+Unfortunately, for a large number of predictors, testing every possible subset model is prohibitively expensive computationally, because there are $2^m$ possible models containing subsets of $m$ variables — even for a relatively small number of predictors. In the simple case above with $m = 2$, we had $2^2 = 4$ models to consider, but for $m = 10$ we would need to consider $2^{10} = 1{,}024$ models, and the number grows exponentially as $m$ increases. Since exhaustive search is impractical, several approaches have been developed to address this:
+
+- **Forward selection.** Start with a null model containing only an intercept and no predictors. Then fit $m$ simple linear regressions and add to the null model the variable that results in the lowest RSS. Next, add to that model the variable that results in the lowest RSS for the new two-variable model. This process continues until some stopping rule is satisfied.
+
+- **Backward selection.** Start with all $m$ variables in the model and remove the variable with the largest p-value — that is, the variable that is least statistically significant. The new $(m-1)$-variable model is fit, and the variable with the largest p-value is again removed. This process continues until a stopping rule is reached; for instance, we may stop when all remaining variables have a p-value below some threshold.
+
+- **Mixed selection.** This approach combines forward and backward selection. We start with no variables in the model and add them one by one, always choosing the variable that provides the best fit, as in forward selection. If at any point the p-value for one of the variables already in the model rises above a certain threshold, that variable is removed. We continue performing these forward and backward steps until all variables in the model have a sufficiently low p-value and all variables outside the model would have a large p-value if added.
+
+Note that backward selection cannot be used when $m > n$, whereas forward selection can always be applied. Forward selection is a greedy approach and may include variables early on that later become redundant; mixed selection can help remedy this.
+
+#### Model fit
+
+We saw earlier in the context of simple regression that two of the most common numerical measures of model fit are the RSE and the $R^2$. Recall that $R^2$ is the squared correlation between the response and the predictor variable. In multiple linear regression, it turns out that it equals the squared correlation between the response and the fitted values, $\text{Cor}(Y, \hat{Y})^2$.
+
+An $R^2$ close to 1 indicates that the model explains a large proportion of the variation in the response variable. For example, for the simple linear models that include mother's age, mother's race, and mother's smoking status during pregnancy, the respective $R^2$ values are 0.008157, 0.05017, and 0.03627. These values are all far from 1, meaning that each individual predictor explains only a small fraction of the variation in birth weight — mother's age in particular, whose $R^2$ is closest to zero. However, once all three variables are included together in a multiple regression model, the $R^2$ increases substantially to 0.1236, meaning that these variables jointly explain around 12% of the total variation in birth weight.
+
+It turns out that adding variables to a multiple regression model always increases the $R^2$, even when those variables are only weakly associated with the response. This is because adding a predictor always results in a decrease in the residual sum of squares on the training data, though not necessarily on the test data.
+
+#### Predictions
+
+One we have fit the multiple regression model, it is straighforward to apply @eq-10 in order to predict the response Y on the basis of a set of values for the predictors $X_{1}, X_{1}, \dots, X_{m}$. In R we can estimate prediction from the model using the followin code:
+
+```{r}
+fitted_values <- predict(model5)
+```
+
+However, there are three sorts of uncertainty associated with this prediction: 
+
+1. The cioefficient estimates $\hat{\beta}_{0}, \hat{\beta}_{1}, \dots, \hat{\beta}_{m}$ are estimates for $\beta_{0}, \beta_{1}, \dots, \beta_{m}$. Therefore, they are only estimates for the true population regression plane:
+$$f(X)=\beta_{0}+\beta_{1}X_{1}+\beta_{2}X_{2}+\dots+\beta_{m}X_{m}$$
+Therefore, we can estimate confidence intervals to evaluate how far is \hat{Y} from $f(X)$. 
+
+2. Using a linear model is of course only an aproximation of the true surface, so this generates an error called model bias. However, for now we assume that a linear model is the correct approaximation.
+
+3. REVISAR!
+
+
+#### Non-linear relationships
+
+#### Potential problems

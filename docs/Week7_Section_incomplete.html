@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>39&nbsp; Quiz 2 - April 17 – Stats 141. Introduction to Statistics for Biology</title>
+<title>37&nbsp; Week 7 Section – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -33,8 +33,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./quiz3.html" rel="next">
-<link href="./quiz1.html" rel="prev">
+<link href="./quiz1.html" rel="next">
+<link href="./Week6_Section_download.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -73,6 +73,35 @@ ul.task-list li input[type="checkbox"] {
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -85,7 +114,7 @@ ul.task-list li input[type="checkbox"] {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quiz1.html">Quizzes</a></li><li class="breadcrumb-item"><a href="./quiz2.html"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week7_Section_incomplete.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Week 7 Section</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -371,7 +400,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week7_Section_incomplete.html" class="sidebar-item-text sidebar-link">
+  <a href="./Week7_Section_incomplete.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Week 7 Section</span></span></a>
   </div>
 </li>
@@ -394,7 +423,7 @@ ul.task-list li input[type="checkbox"] {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./quiz2.html" class="sidebar-item-text sidebar-link active">
+  <a href="./quiz2.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></span></a>
   </div>
 </li>
@@ -423,15 +452,43 @@ ul.task-list li input[type="checkbox"] {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#example-campus-café-visited-by-student-majors" id="toc-example-campus-café-visited-by-student-majors" class="nav-link active" data-scroll-target="#example-campus-café-visited-by-student-majors"><span class="header-section-number">38</span> Example: Campus café visited by student majors</a></li>
+  <li><a href="#part-1-goodness-of-fit-test" id="toc-part-1-goodness-of-fit-test" class="nav-link" data-scroll-target="#part-1-goodness-of-fit-test"><span class="header-section-number">39</span> Part 1: Goodness-of-fit test</a>
+  <ul class="collapse">
+  <li><a href="#step-1-write-down-the-hypotheses" id="toc-step-1-write-down-the-hypotheses" class="nav-link" data-scroll-target="#step-1-write-down-the-hypotheses"><span class="header-section-number">39.1</span> Step 1: Write down the hypotheses</a></li>
+  <li><a href="#step-2-write-down-the-test-statistic" id="toc-step-2-write-down-the-test-statistic" class="nav-link" data-scroll-target="#step-2-write-down-the-test-statistic"><span class="header-section-number">39.2</span> Step 2: Write down the test statistic</a></li>
+  <li><a href="#step-3-identify-quantities-and-compute-test-statistic" id="toc-step-3-identify-quantities-and-compute-test-statistic" class="nav-link" data-scroll-target="#step-3-identify-quantities-and-compute-test-statistic"><span class="header-section-number">39.3</span> Step 3: Identify quantities and compute test statistic</a></li>
+  <li><a href="#step-4-compute-the-p-value" id="toc-step-4-compute-the-p-value" class="nav-link" data-scroll-target="#step-4-compute-the-p-value"><span class="header-section-number">39.4</span> Step 4: Compute the p-value</a>
+  <ul class="collapse">
+  <li><a href="#chi-square-reference-distribution" id="toc-chi-square-reference-distribution" class="nav-link" data-scroll-target="#chi-square-reference-distribution"><span class="header-section-number">39.4.1</span> Chi-square reference distribution</a></li>
+  </ul></li>
+  <li><a href="#step-5-make-a-decision" id="toc-step-5-make-a-decision" class="nav-link" data-scroll-target="#step-5-make-a-decision"><span class="header-section-number">39.5</span> Step 5: Make a decision</a></li>
+  </ul></li>
+  <li><a href="#part-2-chi-square-test-for-independence" id="toc-part-2-chi-square-test-for-independence" class="nav-link" data-scroll-target="#part-2-chi-square-test-for-independence"><span class="header-section-number">40</span> Part 2: Chi-square test for independence</a>
+  <ul class="collapse">
+  <li><a href="#step-1-write-down-the-hypotheses-1" id="toc-step-1-write-down-the-hypotheses-1" class="nav-link" data-scroll-target="#step-1-write-down-the-hypotheses-1"><span class="header-section-number">40.1</span> Step 1: Write down the hypotheses</a></li>
+  <li><a href="#step-2-write-down-the-test-statistic-1" id="toc-step-2-write-down-the-test-statistic-1" class="nav-link" data-scroll-target="#step-2-write-down-the-test-statistic-1"><span class="header-section-number">40.2</span> Step 2: Write down the test statistic</a></li>
+  <li><a href="#step-3-identify-quantities-and-compute" id="toc-step-3-identify-quantities-and-compute" class="nav-link" data-scroll-target="#step-3-identify-quantities-and-compute"><span class="header-section-number">40.3</span> Step 3: Identify quantities and compute</a></li>
+  <li><a href="#step-4-compute-the-p-value-1" id="toc-step-4-compute-the-p-value-1" class="nav-link" data-scroll-target="#step-4-compute-the-p-value-1"><span class="header-section-number">40.4</span> Step 4: Compute the p-value</a></li>
+  </ul></li>
+  <li><a href="#chi-square-reference-distribution-1" id="toc-chi-square-reference-distribution-1" class="nav-link" data-scroll-target="#chi-square-reference-distribution-1"><span class="header-section-number">41</span> Chi-square reference distribution</a>
+  <ul class="collapse">
+  <li><a href="#step-5-make-a-decision-1" id="toc-step-5-make-a-decision-1" class="nav-link" data-scroll-target="#step-5-make-a-decision-1"><span class="header-section-number">41.1</span> Step 5: Make a decision</a></li>
+  </ul></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./quiz1.html">Quizzes</a></li><li class="breadcrumb-item"><a href="./quiz2.html"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week7_Section_incomplete.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Week 7 Section</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">39</span>&nbsp; <span class="chapter-title">Quiz 2 - April 17</span></h1>
+<h1 class="title"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Week 7 Section</span></h1>
 </div>
 
 
@@ -448,10 +505,432 @@ ul.task-list li input[type="checkbox"] {
 </header>
 
 
-<p>Quiz 2 will cover Probability (Lectures 4-6, Activities 4-6).</p>
-<p>Duration: 10 minutes with 10 minutes extension</p>
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+">
+
+<h2 style="margin-top:0;" class="anchored">Chi-square tests concept check</h2>
 
 
+<table class="caption-top table">
+<colgroup>
+<col style="width: 33%">
+<col style="width: 33%">
+<col style="width: 33%">
+</colgroup>
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Feature</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Goodness-of-fit test</th>
+<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Test of independence</th>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 8px;"><strong>Number of variables</strong></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">1 categorical variable</span>
+</details></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">2 categorical variables</span>
+</details></td>
+</tr>
+<tr class="odd">
+<td style="text-align: left; padding: 8px;"><strong>Main question</strong></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">Do category proportions match a hypothesized distribution?</span>
+</details></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">Are two categorical variables associated?<br>
+Or: Do multiple groups share the same underlying distribution?</span>
+</details></td>
+</tr>
+<tr class="even">
+<td style="text-align: left; padding: 8px;"><strong>Null hypothesis</strong></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">The observed distribution follows the claimed proportions.</span>
+</details></td>
+<td style="text-align: left; padding: 8px;"><details>
+<summary>
+Answer
+</summary>
+<span style="color:#1f5aa6;">The two variables are independent.</span>
+</details></td>
+</tr>
+</tbody>
+</table>
+
+
+</div>
+<section id="example-campus-café-visited-by-student-majors" class="level1" data-number="38">
+<h1 data-number="38"><span class="header-section-number">38</span> Example: Campus café visited by student majors</h1>
+</section>
+<section id="part-1-goodness-of-fit-test" class="level1" data-number="39">
+<h1 data-number="39"><span class="header-section-number">39</span> Part 1: Goodness-of-fit test</h1>
+<p>Question:</p>
+<blockquote class="blockquote">
+<p>Do Statistics, Biology, and CS students go to Voyager equally often?</p>
+</blockquote>
+<p>Observed counts:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Major</th>
+<th style="text-align: right;">Count</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Statistics</td>
+<td style="text-align: right;">39</td>
+</tr>
+<tr class="even">
+<td>Biology</td>
+<td style="text-align: right;">25</td>
+</tr>
+<tr class="odd">
+<td>CS</td>
+<td style="text-align: right;">46</td>
+</tr>
+</tbody>
+</table>
+<section id="step-1-write-down-the-hypotheses" class="level2" data-number="39.1">
+<h2 data-number="39.1" class="anchored" data-anchor-id="step-1-write-down-the-hypotheses"><span class="header-section-number">39.1</span> Step 1: Write down the hypotheses</h2>
+<p>Null hypothesis:</p>
+<p><strong>Your answer</strong></p>
+<p>Alternative hypothesis:</p>
+<p><strong>Your answer</strong></p>
+</section>
+<section id="step-2-write-down-the-test-statistic" class="level2" data-number="39.2">
+<h2 data-number="39.2" class="anchored" data-anchor-id="step-2-write-down-the-test-statistic"><span class="header-section-number">39.2</span> Step 2: Write down the test statistic</h2>
+<p>For a goodness-of-fit test,</p>
+<p><span class="math display">\[\chi^2=\sum_{i=1}^k\frac{(\text{Observed}_i-\text{Expected}_i)^2}{\text{Expected}_i}\]</span></p>
+<p>with degrees of freedom</p>
+<p><span class="math display">\[df = k-1\]</span></p>
+<p>where:</p>
+<ul>
+<li><span class="math inline">\(\text{Observed}_i\)</span>: observed counts</li>
+<li><span class="math inline">\(\text{Expected}_i\)</span> expected counts under <span class="math inline">\(H_0\)</span></li>
+</ul>
+</section>
+<section id="step-3-identify-quantities-and-compute-test-statistic" class="level2" data-number="39.3">
+<h2 data-number="39.3" class="anchored" data-anchor-id="step-3-identify-quantities-and-compute-test-statistic"><span class="header-section-number">39.3</span> Step 3: Identify quantities and compute test statistic</h2>
+<p>If the null hypothesis says all <span class="math inline">\(k\)</span> categories are equally likely, <strong>how should we compute <span class="math inline">\(\text{Expected}_i\)</span></strong>?</p>
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+margin-bottom: 28px;
+">
+
+<h3 style="margin-top:0; margin-bottom:22px;" class="anchored">
+Observed vs. expected counts
+</h3>
+
+<details style="margin-bottom:14px;">
+  <summary style="font-weight:600; cursor:pointer;">
+    Observed counts
+  </summary>
+
+  <ul style="padding-top:14px; margin:0;">
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      Statistics: 39
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      Biology: 25
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      CS: 46
+      </span>
+    </li>
+  </ul>
+</details>
+
+<details style="margin-bottom:0px;">
+  <summary style="font-weight:600; cursor:pointer;">
+    Expected counts
+  </summary>
+
+  <ul style="padding-top:14px; margin:0 0 0 0;">
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      Statistics: 36.67
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      Biology: 36.67
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      CS: 36.67
+      </span>
+    </li>
+  </ul>
+</details>
+
+</div>
+<ul>
+<li>Chi-square statistic: <strong>Your answer</strong></li>
+<li>Degrees of freedom: <strong>Your answer</strong></li>
+</ul>
+</section>
+<section id="step-4-compute-the-p-value" class="level2" data-number="39.4">
+<h2 data-number="39.4" class="anchored" data-anchor-id="step-4-compute-the-p-value"><span class="header-section-number">39.4</span> Step 4: Compute the p-value</h2>
+<ul>
+<li><p>The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as <strong>extreme</strong> as the one observed.</p></li>
+<li><p>In a goodness-of-fit test, this means observing counts that <strong>deviate from the claimed distribution</strong> at least as much as the observed data.</p></li>
+</ul>
+<p><strong>How do we translate the p-value idea into a probability formula?</strong></p>
+<section id="chi-square-reference-distribution" class="level3" data-number="39.4.1">
+<h3 data-number="39.4.1" class="anchored" data-anchor-id="chi-square-reference-distribution"><span class="header-section-number">39.4.1</span> Chi-square reference distribution</h3>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Week7_Section_incomplete_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="step-5-make-a-decision" class="level2" data-number="39.5">
+<h2 data-number="39.5" class="anchored" data-anchor-id="step-5-make-a-decision"><span class="header-section-number">39.5</span> Step 5: Make a decision</h2>
+<ul>
+<li>If the p-value <span class="math inline">\(&lt;\alpha\)</span>, reject <span class="math inline">\(H_0\)</span></li>
+<li>Otherwise, fail to reject <span class="math inline">\(H_0\)</span></li>
+</ul>
+<p>Interpretation:</p>
+<p>A small p-value suggests that Statistics, Biology, and CS students are not equally represented at Coupa.</p>
+</section>
+</section>
+<section id="part-2-chi-square-test-for-independence" class="level1" data-number="40">
+<h1 data-number="40"><span class="header-section-number">40</span> Part 2: Chi-square test for independence</h1>
+<p>Question:</p>
+<blockquote class="blockquote">
+<p>Does a student’s major affect which café they go to?</p>
+</blockquote>
+<p>Observed counts:</p>
+<table class="caption-top table">
+<thead>
+<tr class="header">
+<th>Café</th>
+<th style="text-align: right;">Statistics</th>
+<th style="text-align: right;">Biology</th>
+<th style="text-align: right;">CS</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Voyager</td>
+<td style="text-align: right;">39</td>
+<td style="text-align: right;">25</td>
+<td style="text-align: right;">46</td>
+</tr>
+<tr class="even">
+<td>Bytes</td>
+<td style="text-align: right;">30</td>
+<td style="text-align: right;">42</td>
+<td style="text-align: right;">28</td>
+</tr>
+<tr class="odd">
+<td>Coupa</td>
+<td style="text-align: right;">24</td>
+<td style="text-align: right;">29</td>
+<td style="text-align: right;">37</td>
+</tr>
+</tbody>
+</table>
+<section id="step-1-write-down-the-hypotheses-1" class="level2" data-number="40.1">
+<h2 data-number="40.1" class="anchored" data-anchor-id="step-1-write-down-the-hypotheses-1"><span class="header-section-number">40.1</span> Step 1: Write down the hypotheses</h2>
+<p>Null hypothesis:</p>
+<p><strong>Your answer</strong></p>
+<p>Alternative hypothesis:</p>
+<p><strong>Your answer</strong></p>
+</section>
+<section id="step-2-write-down-the-test-statistic-1" class="level2" data-number="40.2">
+<h2 data-number="40.2" class="anchored" data-anchor-id="step-2-write-down-the-test-statistic-1"><span class="header-section-number">40.2</span> Step 2: Write down the test statistic</h2>
+<p>For a contingency table, we use the same goodness-of-fit idea, but apply it across <strong>all cells</strong> of the table. You can think of this as:</p>
+<ul>
+<li>compute the goodness-of-fit contribution within each row</li>
+<li>then sum those contributions across all rows</li>
+</ul>
+<p><span class="math display">\[\chi^2=\sum_{i=1}^r\sum_{j=1}^c\frac{(\text{Observed}_{ij}-\text{Expected}_{ij})^2}{\text{Expected}_{ij}}\]</span></p>
+<p>with degrees of freedom: <span class="math display">\[df = (r-1)(c-1)\]</span></p>
+<p>If the row distributions are very different from the shared distribution expected under independence, the chi-square statistic becomes large.</p>
+</section>
+<section id="step-3-identify-quantities-and-compute" class="level2" data-number="40.3">
+<h2 data-number="40.3" class="anchored" data-anchor-id="step-3-identify-quantities-and-compute"><span class="header-section-number">40.3</span> Step 3: Identify quantities and compute</h2>
+<p>Under the null hypothesis of independence:</p>
+<ul>
+<li>the row category should not affect the column category</li>
+<li>every row should follow the same overall column distribution: <span class="math inline">\(\frac{\text{column total}}{\text{grand total}}\)</span></li>
+</ul>
+<p>Therefore expected counts: <span class="math display">\[\text{Expected}_{ij}=\frac{(\text{row total})\times(\text{column total})}{\text{grand total}}\]</span></p>
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+margin-bottom:28px;
+">
+
+<h3 style="
+margin-top:0;
+margin-bottom:26px;
+" class="anchored">
+Observed vs. expected contingency tables
+</h3>
+
+<details style="margin-bottom:18px;">
+  <summary style="
+  font-weight:600;
+  cursor:pointer;
+  ">
+    Observed counts
+  </summary>
+
+  
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2"></th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Statistics</th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Biology</th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">CS</th>
+</tr>
+<tr class="even">
+<td style="padding: 8px"><strong>Voyager</strong></td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">39</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">25</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">46</td>
+</tr>
+<tr class="odd">
+<td style="padding: 8px"><strong>Bytes</strong></td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">30</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">42</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">28</td>
+</tr>
+<tr class="even">
+<td style="padding: 8px"><strong>Coupa</strong></td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">24</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">29</td>
+<td style="padding: 8px; color: #1f5aa6; font-weight: 600">37</td>
+</tr>
+</tbody>
+</table>
+
+</details>
+
+<details style="margin-bottom:0;">
+  <summary style="
+  font-weight:600;
+  cursor:pointer;
+  ">
+    Expected counts
+  </summary>
+
+  
+<table class="caption-top table">
+<tbody>
+<tr class="odd">
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2"></th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Statistics</th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Biology</th>
+<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">CS</th>
+</tr>
+<tr class="even">
+<td style="padding: 8px"><strong>Voyager</strong></td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">34.1</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">35.2</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">40.7</td>
+</tr>
+<tr class="odd">
+<td style="padding: 8px"><strong>Bytes</strong></td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">31.0</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">32.0</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">37.0</td>
+</tr>
+<tr class="even">
+<td style="padding: 8px"><strong>Coupa</strong></td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">27.9</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">28.8</td>
+<td style="padding: 8px; color: #9b3d00; font-weight: 600">33.3</td>
+</tr>
+</tbody>
+</table>
+
+</details>
+
+</div>
+<ul>
+<li>Chi-square statistic: <strong>Your answer</strong></li>
+<li>Degrees of freedom: <strong>Your answer</strong></li>
+</ul>
+</section>
+<section id="step-4-compute-the-p-value-1" class="level2" data-number="40.4">
+<h2 data-number="40.4" class="anchored" data-anchor-id="step-4-compute-the-p-value-1"><span class="header-section-number">40.4</span> Step 4: Compute the p-value</h2>
+<ul>
+<li><p>The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as <strong>extreme</strong> as the one observed.</p></li>
+<li><p>In a test of independence, this means observing a contingency table that <strong>deviates from the independence pattern</strong> at least as much as the observed table:</p></li>
+</ul>
+<p><span class="math display">\[p\text{-value}=\mathbb{P}\!\left[\chi^2_{df}\ge\chi^2_{\mathrm{obs}}\right]\]</span></p>
+</section>
+</section>
+<section id="chi-square-reference-distribution-1" class="level1" data-number="41">
+<h1 data-number="41"><span class="header-section-number">41</span> Chi-square reference distribution</h1>
+<div class="cell">
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Week7_Section_incomplete_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<section id="step-5-make-a-decision-1" class="level2" data-number="41.1">
+<h2 data-number="41.1" class="anchored" data-anchor-id="step-5-make-a-decision-1"><span class="header-section-number">41.1</span> Step 5: Make a decision</h2>
+<ul>
+<li>If the p-value <span class="math inline">\(&lt;\alpha\)</span>, reject <span class="math inline">\(H_0\)</span></li>
+<li>Otherwise, fail to reject <span class="math inline">\(H_0\)</span></li>
+</ul>
+<p>Interpretation:</p>
+<p>A small p-value suggests that café choice differs across Statistics, Biology, and CS students.</p>
+
+
+</section>
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -856,13 +1335,13 @@ ul.task-list li input[type="checkbox"] {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./quiz1.html" class="pagination-link" aria-label="Quiz 1 - April 10">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span>
+      <a href="./Week6_Section_download.html" class="pagination-link" aria-label="Type I and II Errors, and Power Analysis">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Type I and II Errors, and Power Analysis</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./quiz3.html" class="pagination-link" aria-label="Quiz 3 - April 24">
-        <span class="nav-page-text"><span class="chapter-number">40</span>&nbsp; <span class="chapter-title">Quiz 3 - April 24</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./quiz1.html" class="pagination-link" aria-label="Quiz 1 - April 10">
+        <span class="nav-page-text"><span class="chapter-number">38</span>&nbsp; <span class="chapter-title">Quiz 1 - April 10</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
