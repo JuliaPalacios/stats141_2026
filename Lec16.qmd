@@ -2,7 +2,57 @@
 title: "Analyzing proportions and Goodness-of-fit "
 format: html
 bibliography: references.bib
+execute:
+  echo: true
+  warning: false
+  message: false
+  resources:
+  - Lec13_annotated.pdf
 ---
+
+```{=html}
+<style>
+.header-row {
+  display: flex;
+  justify-content: space-between; /* title left, button right */
+  align-items: center;
+  margin-bottom: 1em; /* spacing below header */
+}
+
+.page-title {
+  font-size: 2rem;   /* matches H1 style */
+  font-weight: 700;
+  margin: 0;
+}
+
+.download-btn {
+  display: inline-block;
+  background-color: #5FA2F3;  /* lighter R blue */
+  color: white !important;
+  padding: 8px 16px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 14px;
+}
+
+.download-btn:hover {
+  background-color: #4C93E6;
+  color: white !important;
+  text-decoration: none;
+}
+</style>
+```
+
+<!-- Flex container aligns title and button with text margin -->
+
+::: header-row
+<h1 class="page-title">
+
+</h1>
+
+<a href="Lec16_annotated.pdf" class="download-btn" download> ⬇ Download Annotated Slides </a>
+:::
 
 **Example**: A species of crocodile nests in sandy riverbanks, and the sex of the hatchlings is determined by the temperature of the surrounding sand during incubation. Historically, typical nest depths and shading produced an approximately 50:50 male-female sex ratio. Recently, hotter seasons and reduced vegetation cover are suspected to be warming the sand and shifting the sex ratio.
 

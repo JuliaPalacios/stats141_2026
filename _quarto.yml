@@ -50,6 +50,7 @@ book:
         - Week4_section.qmd
         - Week5_Section_download.qmd
         - Week6_Section_download.qmd
+        - Week7_Section_incomplete.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd

@@ -1,0 +1,607 @@
+---
+title: "Week 7 Section"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+editor:
+  markdown:
+    wrap: 72
+---
+
+\begin{center}
+{\huge \textbf{Week 7 Section}}
+\end{center}
+\vspace{-1em}
+
+
+```{=html}
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+">
+
+<h2 style="margin-top:0;">Chi-square tests concept check</h2>
+
+<table style="width:100%; border-collapse: collapse;">
+  <tr>
+    <th style="border-bottom: 2px solid #c9dff2; text-align:left; padding: 8px;">Feature</th>
+    <th style="border-bottom: 2px solid #c9dff2; text-align:left; padding: 8px;">Goodness-of-fit test</th>
+    <th style="border-bottom: 2px solid #c9dff2; text-align:left; padding: 8px;">Test of independence</th>
+  </tr>
+
+  <tr>
+    <td style="padding: 8px;"><strong>Number of variables</strong></td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">1 categorical variable</span>
+      </details>
+    </td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">2 categorical variables</span>
+      </details>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 8px;"><strong>Main question</strong></td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">Do category proportions match a hypothesized distribution?</span>
+      </details>
+    </td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">Are two categorical variables associated?<br>
+        Or: Do multiple groups share the same underlying distribution?</span>
+      </details>
+    </td>
+  </tr>
+
+  <tr>
+    <td style="padding: 8px;"><strong>Null hypothesis</strong></td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">The observed distribution follows the claimed proportions.</span>
+      </details>
+    </td>
+    <td style="padding: 8px;">
+      <details>
+        <summary>Answer</summary>
+        <span style="color:#1f5aa6;">The two variables are independent.</span>
+      </details>
+    </td>
+  </tr>
+</table>
+
+</div>
+```
+
+# Example: Campus café visited by student majors
+# Part 1: Goodness-of-fit test
+
+Question:
+
+> Do Statistics, Biology, and CS students go to Voyager equally often?
+
+Observed counts:
+
+| Major | Count |
+|---|---:|
+| Statistics | 39 |
+| Biology | 25 |
+| CS | 46 |
+
+## Step 1: Write down the hypotheses
+
+Null hypothesis:
+
+**Your answer**
+
+Alternative hypothesis:
+
+**Your answer**
+
+
+## Step 2: Write down the test statistic
+
+For a goodness-of-fit test,
+
+$$\chi^2=\sum_{i=1}^k\frac{(\text{Observed}_i-\text{Expected}_i)^2}{\text{Expected}_i}$$
+
+with degrees of freedom
+
+$$df = k-1$$
+
+where:
+
+- $\text{Observed}_i$: observed counts
+- $\text{Expected}_i$ expected counts under $H_0$
+
+
+## Step 3: Identify quantities and compute test statistic
+
+If the null hypothesis says all $k$ categories are equally likely, **how should we compute $\text{Expected}_i$**?
+
+```{=html}
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+margin-bottom: 28px;
+">
+
+<h3 style="margin-top:0; margin-bottom:22px;">
+Observed vs. expected counts
+</h3>
+
+<details style="margin-bottom:14px;">
+  <summary style="font-weight:600; cursor:pointer;">
+    Observed counts
+  </summary>
+
+  <ul style="padding-top:14px; margin:0;">
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      Statistics: 39
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      Biology: 25
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#1f5aa6; font-weight:600;">
+      CS: 46
+      </span>
+    </li>
+  </ul>
+</details>
+
+<details style="margin-bottom:0px;">
+  <summary style="font-weight:600; cursor:pointer;">
+    Expected counts
+  </summary>
+
+  <ul style="padding-top:14px; margin:0 0 0 0;">
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      Statistics: 36.67
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      Biology: 36.67
+      </span>
+    </li>
+
+    <li>
+      <span style="color:#9b3d00; font-weight:600;">
+      CS: 36.67
+      </span>
+    </li>
+  </ul>
+</details>
+
+</div>
+```
+
+```{r, echo=FALSE}
+obs <- c(
+  Statistics = 39,
+  Biology = 25,
+  CS = 46
+)
+n <- sum(obs)
+expected <- rep(n / 3, 3)
+names(expected) <- names(obs)
+
+# Compute the chi-square statistic:
+chi_square <- sum((obs - expected)^2 / expected)
+
+# Degrees of freedom:
+df <- length(obs) - 1
+```
+
+
+- Chi-square statistic: **Your answer**
+- Degrees of freedom: **Your answer**
+
+## Step 4: Compute the p-value
+
+- The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as **extreme** as the one observed.
+
+- In a goodness-of-fit test, this means observing counts that **deviate from the claimed distribution** at least as much as the observed data.
+
+**How do we translate the p-value idea into a probability formula?**
+
+```{r, echo = FALSE}
+p_value <- pchisq(
+  chi_square,
+  df = df,
+  lower.tail = FALSE
+)
+```
+
+
+### Chi-square reference distribution
+
+```{r, echo=FALSE}
+library(ggplot2)
+
+x <- seq(0, 20, length.out = 1000)
+
+plot_df <- data.frame(
+  x = x,
+  density = dchisq(x, df = df)
+)
+
+ggplot(plot_df, aes(x = x, y = density)) +
+
+  geom_line(
+    linewidth = 1.2,
+    color = "steelblue"
+  ) +
+
+  geom_area(
+    data = subset(plot_df, x >= chi_square),
+    aes(x = x, y = density),
+    alpha = 0.35,
+    fill = "orange"
+  ) +
+
+  geom_vline(
+    xintercept = chi_square,
+    linetype = "dashed",
+    linewidth = 1,
+    color = "firebrick"
+  ) +
+
+  annotate(
+    "text",
+    x = chi_square,
+    y = max(plot_df$density) * 0.85,
+    label = "observed",
+    color = "firebrick",
+    hjust = -0.05
+  ) +
+
+  labs(
+    title = paste0(
+      "Goodness-of-fit test, df = ",
+      df
+    ),
+    x = expression(chi^2),
+    y = "Density"
+  ) +
+
+  theme_minimal()
+```
+
+## Step 5: Make a decision
+
+- If the p-value $<\alpha$, reject $H_0$
+- Otherwise, fail to reject $H_0$
+
+Interpretation:
+
+A small p-value suggests that Statistics, Biology, and CS students are not equally represented at Coupa.
+
+# Part 2: Chi-square test for independence
+
+Question:
+
+> Does a student’s major affect which café they go to?
+
+Observed counts:
+
+| Café | Statistics | Biology | CS |
+|---|---:|---:|---:|
+| Voyager | 39 | 25 | 46 |
+| Bytes | 30 | 42 | 28 |
+| Coupa | 24 | 29 | 37 |
+
+
+## Step 1: Write down the hypotheses
+
+Null hypothesis:
+
+**Your answer**
+
+Alternative hypothesis:
+
+**Your answer**
+
+## Step 2: Write down the test statistic
+
+For a contingency table, we use the same goodness-of-fit idea, but apply it across **all cells** of the table. You can think of this as:
+
+- compute the goodness-of-fit contribution within each row
+- then sum those contributions across all rows
+
+$$\chi^2=\sum_{i=1}^r\sum_{j=1}^c\frac{(\text{Observed}_{ij}-\text{Expected}_{ij})^2}{\text{Expected}_{ij}}$$
+
+with degrees of freedom: $$df = (r-1)(c-1)$$
+
+If the row distributions are very different from the shared distribution expected under independence, the chi-square statistic becomes large.
+
+## Step 3: Identify quantities and compute
+
+Under the null hypothesis of independence:
+
+- the row category should not affect the column category
+- every row should follow the same overall column distribution: $\frac{\text{column total}}{\text{grand total}}$
+
+Therefore expected counts: $$\text{Expected}_{ij}=\frac{(\text{row total})\times(\text{column total})}{\text{grand total}}$$
+
+
+```{=html}
+<div style="
+background-color:#eef7ff;
+border:1.5px solid #b7d7f0;
+border-radius:14px;
+padding:20px;
+margin-top:1em;
+margin-bottom:28px;
+">
+
+<h3 style="
+margin-top:0;
+margin-bottom:26px;
+">
+Observed vs. expected contingency tables
+</h3>
+
+<details style="margin-bottom:18px;">
+  <summary style="
+  font-weight:600;
+  cursor:pointer;
+  ">
+    Observed counts
+  </summary>
+
+  <table style="
+  width:100%;
+  border-collapse:collapse;
+  margin-top:18px;
+  ">
+
+    <tr>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;"></th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        Statistics
+      </th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        Biology
+      </th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        CS
+      </th>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Voyager</strong></td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">39</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">25</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">46</td>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Bytes</strong></td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">30</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">42</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">28</td>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Coupa</strong></td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">24</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">29</td>
+      <td style="padding:8px; color:#1f5aa6; font-weight:600;">37</td>
+    </tr>
+
+  </table>
+</details>
+
+<details style="margin-bottom:0;">
+  <summary style="
+  font-weight:600;
+  cursor:pointer;
+  ">
+    Expected counts
+  </summary>
+
+  <table style="
+  width:100%;
+  border-collapse:collapse;
+  margin-top:14px;
+  margin-bottom:0;
+  ">
+
+    <tr>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;"></th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        Statistics
+      </th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        Biology
+      </th>
+      <th style="padding:8px; border-bottom:2px solid #c9dff2;">
+        CS
+      </th>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Voyager</strong></td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">34.1</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">35.2</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">40.7</td>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Bytes</strong></td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">31.0</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">32.0</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">37.0</td>
+    </tr>
+
+    <tr>
+      <td style="padding:8px;"><strong>Coupa</strong></td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">27.9</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">28.8</td>
+      <td style="padding:8px; color:#9b3d00; font-weight:600;">33.3</td>
+    </tr>
+
+  </table>
+</details>
+
+</div>
+```
+
+```{r,echo=FALSE}
+obs_table <- matrix(
+  c(
+    39, 25, 46,
+    30, 42, 28,
+    24, 29, 37
+  ),
+  nrow = 3,
+  byrow = TRUE
+)
+
+rownames(obs_table) <- c(
+  "Voyager",
+  "Bytes",
+  "Coupa"
+)
+
+colnames(obs_table) <- c(
+  "Statistics",
+  "Biology",
+  "CS"
+)
+
+row_totals <- rowSums(obs_table)
+col_totals <- colSums(obs_table)
+grand_total <- sum(obs_table)
+
+# Expected counts:
+expected <- outer(
+  row_totals,
+  col_totals
+) / grand_total
+```
+
+
+
+```{r, echo = FALSE}
+# Compute the chi-square statistic:
+chi_square <- sum(
+  (obs_table - expected)^2 / expected
+)
+
+#Degrees of freedom:
+r <- nrow(obs_table)
+c <- ncol(obs_table)
+df <- (r - 1) * (c - 1)
+```
+
+- Chi-square statistic: **Your answer**
+- Degrees of freedom: **Your answer**
+
+
+## Step 4: Compute the p-value
+
+- The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as **extreme** as the one observed.
+
+- In a test of independence, this means observing a contingency table that **deviates from the independence pattern** at least as much as the observed table:
+
+$$p\text{-value}=\mathbb{P}\!\left[\chi^2_{df}\ge\chi^2_{\mathrm{obs}}\right]$$
+
+```{r, echo = FALSE}
+p_value <- pchisq(
+  chi_square,
+  df = df,
+  lower.tail = FALSE
+)
+```
+
+
+# Chi-square reference distribution
+```{r, echo=FALSE}
+x <- seq(0, 30, length.out = 1000)
+
+plot_df <- data.frame(
+  x = x,
+  density = dchisq(x, df = df)
+)
+
+ggplot(plot_df, aes(x = x, y = density)) +
+
+  geom_line(
+    linewidth = 1.2,
+    color = "steelblue"
+  ) +
+
+  geom_area(
+    data = subset(plot_df, x >= chi_square),
+    aes(x = x, y = density),
+    alpha = 0.35,
+    fill = "orange"
+  ) +
+
+  geom_vline(
+    xintercept = chi_square,
+    linetype = "dashed",
+    linewidth = 1,
+    color = "firebrick"
+  ) +
+
+  annotate(
+    "text",
+    x = chi_square,
+    y = max(plot_df$density) * 0.85,
+    label = paste0(
+      "observed = ",
+      round(chi_square, 2)
+    ),
+    color = "firebrick",
+    hjust = -0.05
+  )  +
+
+  labs(
+    subtitle = paste0(
+      "Test of independence, df = ",
+      df
+    ),
+    x = expression(chi^2),
+    y = "Density"
+  ) +
+
+  theme_minimal()
+```
+
+## Step 5: Make a decision
+
+- If the p-value $<\alpha$, reject $H_0$
+- Otherwise, fail to reject $H_0$
+
+Interpretation:
+
+A small p-value suggests that café choice differs across Statistics, Biology, and CS students.
