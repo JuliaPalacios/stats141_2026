@@ -41,8 +41,8 @@ r=\frac{1}{n-1}\sum^{n}_{i=1}\left(\frac{x_{i}-\bar{x}}{s_{x}} \right)\left(\fra
 $$ The correlation coefficient is unit free and always between -1 and 1. The sign of the correlation indicates the sign of the relationship. In our example
 
 ```{r}
-cor(cats$Bwt,cats$Hwt)
-
+sc<-cor(cats$Bwt,cats$Hwt)
+sc
 ```
 
 which confirms the positive **linear** association.
@@ -53,7 +53,47 @@ Things to remember:
 
 -   Any observed association between two variables does not imply causal connection between them.
 
-Given that in our example we observe a clear linear relationship between body weight and heart weight, we can superimpose a line on the plot. This is called the **least-squares line** or **fitted regression line** of $Y$ on $X$.
+
+## Testing correlation
+
+We can test $H_{0}: X$ and $Y$ are uncorrelated in the population, with a t-test with test statistic
+$$
+t_{s}=r\sqrt{\frac{n-2}{1-r^2}}
+$$
+with $n-2$ degrees of freedom
+
+In our example:
+```{r}
+n<-nrow(cats)
+n
+ttest<-sc*sqrt((n-2)/(1-sc^2))
+qval<-2*(1-pt(ttest,n-2))
+qval
+
+```
+
+Why $df=n-2$? Any two points determine a straight line, however with 2 points we do not have information about the inherrent variability in the scatter of the points. 
+
+```{r}
+cor.test(cats$Bwt,cats$Hwt)
+```
+A confidence interval can be obtained, however it is a little tricky. The distribution of r is sort of skewed.  So we make use of a quantity known as Fisher’s transformation of r:
+
+$$
+z_{r}=\frac{1}{2} ln\left[\frac{1-r}{1+r} \right]
+$$
+$z_{r}$ behaves more like normally distributed. A 95% confidence interval can be constructed as follows:
+$$
+z_{r} \pm 1.96\frac{1}{\sqrt{n-3}}
+$$
+But how do we form a confidence interval for $\rho$?
+
+$$
+\frac{1}{2}ln \left[\frac{1+\rho}{1-\rho}\right]=z_{r} \pm 1.96\frac{1}{\sqrt{n-3}}
+$$
+
+
+Given that in our first example we observe a clear linear relationship between body weight and heart weight, we can superimpose a line on the plot. This is called the **least-squares line** or **fitted regression line** of $Y$ on $X$.
 
 ```{r}
 #| echo: false

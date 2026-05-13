@@ -15,37 +15,5 @@ Name:
 
 (d) What is the interpretation of your confidence interval?
 
-(e) If the authros had tested the null hypothesis that $p$ was $1/2$ at a signficance level $0.05$, it it likely that they would have rejected the null hypothesis?
-
-2. The drug ancrod was tested in a double-blind
-clinical trial in which subjects who had strokes were 
-randomly assigned to get either ancrod or a placebo. One
-response variable in the study was whether or not a
-subject experienced intracranial hemorrhaging. The
-data are provided in the following table. Use a chi-square
-test to determine whether the difference in hemorrhaging 
-rates is statistically significant. Use a nondirectional alternative
-and let $\alpha=0.05$
-
-```{r}
-#| warning: false
-
-# Contingency table: rows = (Yes, No), cols = (Ancrod, Placebo)
-tab <- matrix(
-  c(13, 235,
-    5, 247),
-  nrow = 2, byrow = FALSE,
-  dimnames = list(
-    Hemorrage = c("Yes", "No"),
-    Treatment   = c("Ancrod", "Placebo")
-  )
-)
-
-#tab
-addmargins(tab)  # show row/column totals
-
-```
-
-(a) State the null and alternative hypotheses
-
+(e) If the authors had tested the null hypothesis that $p$ was $1/2$ at a signficance level $0.05$, it it likely that they would have rejected the null hypothesis?
 
