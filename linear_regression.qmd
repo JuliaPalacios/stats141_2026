@@ -3,7 +3,7 @@ title: "Statistical Learning"
 format: html
 ---
 
-## What is Styatistical learning?
+## What is Statistical learning?
 
 To motivate the study of statistical learning, consider the following example. Suppose you have measurements of body weight and heart weight for a sample of cats, and you are interested in whether these two variables are associated — specifically, whether bigger cats tend to have bigger hearts. In this example, we refer to heart weight as the *response variable*, also known as the *outcome* or *dependent variable*, and we refer to body weight as the *input variable*, also known as a *predictor*, *independent variable*, *feature*, or simply a *variable*. The goal of statistical learning is to determine whether a relationship exists between these variables, and to approximate a function that relates the input to the response.
 
@@ -155,7 +155,7 @@ legend("topleft",
        cex = 1.1)
 ```
 
-The, we define the *residual sum of squares* (RSS) as:
+Then, we define the *residual sum of squares* (RSS) as:
 
 $$RSS = e^{2}_{1} + e^{2}_{2} + \dots + e^{2}_{n}$$ {#eq-3}
 
@@ -384,3 +384,47 @@ Therefore, we can estimate confidence intervals to evaluate how far is \hat{Y} f
 #### Non-linear relationships
 
 #### Potential problems
+
+
+
+::: {.callout-note icon="false"}
+## Example: cat's body weight and heart weight
+
+For example we are interested to know whether a cat's body weight ($X$) and heart weight ($Y$) are associated, specifically, whether bigger cats tend to have bigger hearts.
+:::
+
+In this example, we refer to $Y=$heart weight as the *response variable*, also known as the *outcome* or *dependent variable*, and we refer to $X=$body weight as the *input variable*, also known as a *predictor*, *independent variable*, *feature*, or simply a *variable*. The goal of statistical learning is to determine whether a relationship exists between these variables, and to approximate a function that relates the input to the response.
+
+In the figures below, the left panel shows a scatter plot of the data, with cat's body weight on the x-axis and heart weight on the y-axis. Even a casual inspection of the data suggests that as body weight increases, heart weight tends to increase as well. In the right panel, we overlay a linear function that appears to capture this relationship reasonably well. The goal of statistical learning is precisely to find a function of this kind — one that best approximates the underlying phenomenon relating the input variable to the response.
+
+{{< pagebreak >}}
+
+In other words, suppose we observe a quantitative response $Y$ and $m$ different input variables $X_{1}, X_{2}, \dots, X_{m}$. We assume that there is some relationship between $Y$ and $X = (X_{1}, X_{2}, \dots, X_{m})$, which can be written in the very general form
+
+$$Y = f(X) + \epsilon.$$
+
+Here $f$ is some fixed but unknown function of $X_{1}, X_{2}, \dots, X_{m}$, and $\epsilon$ is a random *error term* that is independent of $X$ and has mean zero. In this formulation, $f$ represents the systematic information that $X$ provides about $Y$.
+
+{{< pagebreak >}}
+
+::: {.callout-note icon="false"}
+## Example: Maternal predictors of birth weight
+
+Here we are interested in examining whether maternal characteristics or behaviors during pregnancy are associated with infant birth weight. The response variable $Y$ is the birth weight of the baby, and the predictors $X$ are those variables potentially related to that outcome.
+:::
+
+**The birthwt dataset** in the `MASS` package contains 189 observations collected at Baystate Medical Center, Springfield, Massachusetts in 1986. The potential predictor variables are listed in the table below.
+
+| Variable | Type | Description |
+|------------------------|------------------|------------------------------|
+| `low` | Binary | Indicator of birth weight below 2.5 kg (0 = no, 1 = yes) |
+| `age` | Continuous | Mother's age in years |
+| `lwt` | Continuous | Mother's weight (lbs) at last menstrual period |
+| `race` | Categorical | Mother's race (1 = White, 2 = Black, 3 = Other) |
+| `smoke` | Binary | Smoking status during pregnancy (0 = no, 1 = yes) |
+| `ptl` | Count | Number of previous premature labours |
+| `ht` | Binary | History of hypertension (0 = no, 1 = yes) |
+| `ui` | Binary | Presence of uterine irritability (0 = no, 1 = yes) |
+| `ftv` | Count | Number of physician visits during the first trimester |
+
+Notice that predictor variables can be binary, categorical, or continuous. It is also important to note that all, some, or none of these predictors may be related to birth weight. The objective is therefore to determine which input variables, if any, are associated with the response, and to obtain a good approximation of the function $f(X)$.
