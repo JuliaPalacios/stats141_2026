@@ -504,11 +504,12 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link active" data-scroll-target="#linear-regression"><span class="header-section-number">17.1</span> Linear Regression</a></li>
-  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">17.2</span> Simple Linear Regression</a>
+  <li><a href="#testing-correlation" id="toc-testing-correlation" class="nav-link active" data-scroll-target="#testing-correlation"><span class="header-section-number">17.1</span> Testing correlation</a></li>
+  <li><a href="#linear-regression" id="toc-linear-regression" class="nav-link" data-scroll-target="#linear-regression"><span class="header-section-number">17.2</span> Linear Regression</a></li>
+  <li><a href="#simple-linear-regression" id="toc-simple-linear-regression" class="nav-link" data-scroll-target="#simple-linear-regression"><span class="header-section-number">17.3</span> Simple Linear Regression</a>
   <ul class="collapse">
-  <li><a href="#estimating-the-coefficients" id="toc-estimating-the-coefficients" class="nav-link" data-scroll-target="#estimating-the-coefficients"><span class="header-section-number">17.2.1</span> Estimating the coefficients</a></li>
-  <li><a href="#assessing-the-accuracy-of-the-coefficient-estimates" id="toc-assessing-the-accuracy-of-the-coefficient-estimates" class="nav-link" data-scroll-target="#assessing-the-accuracy-of-the-coefficient-estimates"><span class="header-section-number">17.2.2</span> Assessing the accuracy of the coefficient estimates</a></li>
+  <li><a href="#estimating-the-coefficients" id="toc-estimating-the-coefficients" class="nav-link" data-scroll-target="#estimating-the-coefficients"><span class="header-section-number">17.3.1</span> Estimating the coefficients</a></li>
+  <li><a href="#assessing-the-accuracy-of-the-coefficient-estimates" id="toc-assessing-the-accuracy-of-the-coefficient-estimates" class="nav-link" data-scroll-target="#assessing-the-accuracy-of-the-coefficient-estimates"><span class="header-section-number">17.3.2</span> Assessing the accuracy of the coefficient estimates</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -583,7 +584,8 @@ window.Quarto = {
 r=\frac{1}{n-1}\sum^{n}_{i=1}\left(\frac{x_{i}-\bar{x}}{s_{x}} \right)\left(\frac{y_{i}-\bar{y}}{s_{y}} \right)
 \]</span> The correlation coefficient is unit free and always between -1 and 1. The sign of the correlation indicates the sign of the relationship. In our example</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor</span>(cats<span class="sc">$</span>Bwt,cats<span class="sc">$</span>Hwt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>sc<span class="ot">&lt;-</span><span class="fu">cor</span>(cats<span class="sc">$</span>Bwt,cats<span class="sc">$</span>Hwt)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>sc</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>[1] 0.8041274</code></pre>
 </div>
@@ -594,19 +596,65 @@ r=\frac{1}{n-1}\sum^{n}_{i=1}\left(\frac{x_{i}-\bar{x}}{s_{x}} \right)\left(\fra
 <li><p>Our correlation is based on a sample, therefore we obtain a sample correlation and it is an estimate of the population correlation (often denoted by <span class="math inline">\(\rho\)</span> (Greek letter rho).</p></li>
 <li><p>Any observed association between two variables does not imply causal connection between them.</p></li>
 </ul>
-<p>Given that in our example we observe a clear linear relationship between body weight and heart weight, we can superimpose a line on the plot. This is called the <strong>least-squares line</strong> or <strong>fitted regression line</strong> of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span>.</p>
+<section id="testing-correlation" class="level2" data-number="17.1">
+<h2 data-number="17.1" class="anchored" data-anchor-id="testing-correlation"><span class="header-section-number">17.1</span> Testing correlation</h2>
+<p>We can test <span class="math inline">\(H_{0}: X\)</span> and <span class="math inline">\(Y\)</span> are uncorrelated in the population, with a t-test with test statistic <span class="math display">\[
+t_{s}=r\sqrt{\frac{n-2}{1-r^2}}
+\]</span> with <span class="math inline">\(n-2\)</span> degrees of freedom</p>
+<p>In our example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>n<span class="ot">&lt;-</span><span class="fu">nrow</span>(cats)</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>n</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 144</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>ttest<span class="ot">&lt;-</span>sc<span class="sc">*</span><span class="fu">sqrt</span>((n<span class="dv">-2</span>)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">-</span>sc<span class="sc">^</span><span class="dv">2</span>))</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>qval<span class="ot">&lt;-</span><span class="dv">2</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span><span class="fu">pt</span>(ttest,n<span class="dv">-2</span>))</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>qval</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>[1] 0</code></pre>
+</div>
+</div>
+<p>Why <span class="math inline">\(df=n-2\)</span>? Any two points determine a straight line, however with 2 points we do not have information about the inherrent variability in the scatter of the points.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">cor.test</span>(cats<span class="sc">$</span>Bwt,cats<span class="sc">$</span>Hwt)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+    Pearson's product-moment correlation
+
+data:  cats$Bwt and cats$Hwt
+t = 16.119, df = 142, p-value &lt; 2.2e-16
+alternative hypothesis: true correlation is not equal to 0
+95 percent confidence interval:
+ 0.7375682 0.8552122
+sample estimates:
+      cor 
+0.8041274 </code></pre>
+</div>
+</div>
+<p>A confidence interval can be obtained, however it is a little tricky. The distribution of r is sort of skewed. So we make use of a quantity known as Fisher’s transformation of r:</p>
+<p><span class="math display">\[
+z_{r}=\frac{1}{2} ln\left[\frac{1-r}{1+r} \right]
+\]</span> <span class="math inline">\(z_{r}\)</span> behaves more like normally distributed. A 95% confidence interval can be constructed as follows: <span class="math display">\[
+z_{r} \pm 1.96\frac{1}{\sqrt{n-3}}
+\]</span> But how do we form a confidence interval for <span class="math inline">\(\rho\)</span>?</p>
+<p><span class="math display">\[
+\frac{1}{2}ln \left[\frac{1+\rho}{1-\rho}\right]=z_{r} \pm 1.96\frac{1}{\sqrt{n-3}}
+\]</span></p>
+<p>Given that in our first example we observe a clear linear relationship between body weight and heart weight, we can superimpose a line on the plot. This is called the <strong>least-squares line</strong> or <strong>fitted regression line</strong> of <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span>.</p>
 <div class="cell">
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lec17_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Lec17_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
 <p>We will now learn how to find and interpret the line that best summarizes their linear relationship.</p>
-<section id="linear-regression" class="level2" data-number="17.1">
-<h2 data-number="17.1" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">17.1</span> Linear Regression</h2>
+</section>
+<section id="linear-regression" class="level2" data-number="17.2">
+<h2 data-number="17.2" class="anchored" data-anchor-id="linear-regression"><span class="header-section-number">17.2</span> Linear Regression</h2>
 <p>Linear regression is a machine learning and statistical method that has been widely used for a long time to predict quantitative continuous responses. Although relatively simple, it is a very important model for understanding more complex machine learning models, which can be seen as generalizations of it.</p>
 <p>Formally, suppose we want to understand how one or more variables — called predictors — relate to an outcome of interest — called the response variable. In our example, body weight (<span class="math inline">\(X\)</span>) is the predictor and heart weight (<span class="math inline">\(Y\)</span>) is the response. A few key questions naturally emerge:</p>
 <ul>
@@ -619,8 +667,8 @@ r=\frac{1}{n-1}\sum^{n}_{i=1}\left(\frac{x_{i}-\bar{x}}{s_{x}} \right)\left(\fra
 </ul>
 <p>Linear regression allows us to address all of these questions in a rigorous and interpretable way. And while our example is biological, the same framework applies broadly — from medicine and ecology to economics and engineering.</p>
 </section>
-<section id="simple-linear-regression" class="level2" data-number="17.2">
-<h2 data-number="17.2" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">17.2</span> Simple Linear Regression</h2>
+<section id="simple-linear-regression" class="level2" data-number="17.3">
+<h2 data-number="17.3" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">17.3</span> Simple Linear Regression</h2>
 <p>Simple linear regression refers to the most basic model when there is only one predictor, <span class="math inline">\(X\)</span>, and how that predictor is linearly related to a specific outcome, <span class="math inline">\(Y\)</span>. Mathematically, this linear relationship is <strong>modeled</strong> as follows:</p>
 <p><span id="eq-1"><span class="math display">\[Y\approx \beta_{0} + \beta_{1}X. \tag{17.1}\]</span></span></p>
 <p><a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> is interpreted as we are regressing <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span>, and <span class="math inline">\(\beta_{0}\)</span>, and <span class="math inline">\(\beta_{1}\)</span> are model <em>coefficients</em> or <em>parameters</em> of the model.</p>
@@ -646,8 +694,8 @@ Linear regression of cat’s heart weight on body weight, using the dataset <spa
 </div>
 </div>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Hwt <span class="sc">~</span> Bwt, <span class="at">data =</span> cats)</span>
-<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>model1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb10"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Hwt <span class="sc">~</span> Bwt, <span class="at">data =</span> cats)</span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a>model1</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -661,7 +709,7 @@ Coefficients:
 <p>Notice that the intercept is equal to <span class="math inline">\(-0.3567\)</span>, which we can ignore as it is negative and has no biological meaning (heart weight when body weight = 0). The slope is important in this model, because indicates that for every 1 kg increase in body weight, heart weight increases by about 4 grams.</p>
 <p><em>In summary, body weight is a strong positive predictor of heart weight in cats. Larger cats tend to have proportionally heavier hearts.</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -689,8 +737,8 @@ F-statistic: 259.8 on 1 and 142 DF,  p-value: &lt; 2.2e-16</code></pre>
 <p><em>p-value &lt; 2.2e-16</em> - indicates that the relationship is statistically significant.<br>
 </p>
 <p><em>Residual standard Error: 1.452g</em> - indicates how far off predictions typically are (we are typically wrong by about 1.42 grams)</p>
-<section id="estimating-the-coefficients" class="level3" data-number="17.2.1">
-<h3 data-number="17.2.1" class="anchored" data-anchor-id="estimating-the-coefficients"><span class="header-section-number">17.2.1</span> Estimating the coefficients</h3>
+<section id="estimating-the-coefficients" class="level3" data-number="17.3.1">
+<h3 data-number="17.3.1" class="anchored" data-anchor-id="estimating-the-coefficients"><span class="header-section-number">17.3.1</span> Estimating the coefficients</h3>
 <p>The coefficients <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span> in the linear model are unknown. The goal is therefore to obtain estimates <span class="math inline">\(\hat{\beta}_{0}\)</span> and <span class="math inline">\(\hat{\beta}_{1}\)</span> such that the linear model <a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> fits the <span class="math inline">\(n = 144\)</span> data points as closely as possible.</p>
 <p>There are several ways to measure <em>closeness</em>, however the most common approach involves minimizing the <em>least squares</em> criterion.</p>
 <p>In least squares, we calculate the difference between the observed value <span class="math inline">\(y_{i}\)</span> and the predicted value <span class="math inline">\(\hat{y}_{i}\)</span> obtained from the fitted model (from <a href="#eq-2" class="quarto-xref">Equation&nbsp;<span>17.2</span></a> above: <span class="math inline">\(\hat{y}_{i} = \hat{\beta}_{0} + \hat{\beta}_{1}x_{i}\)</span>). That is, <span class="math inline">\(e_{i} = y_{i} - \hat{y}_{i}\)</span> represents the <em>i-th residual</em> for observation <span class="math inline">\(i\)</span>. We illustrate these residuals for the <span class="math inline">\(cats\)</span> sample in the plot below, shown as vertical lines from each observed data point (in red) to the fitted line.</p>
@@ -698,7 +746,7 @@ F-statistic: 259.8 on 1 and 142 DF,  p-value: &lt; 2.2e-16</code></pre>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Lec17_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Lec17_files/figure-html/unnamed-chunk-8-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
@@ -712,8 +760,8 @@ F-statistic: 259.8 on 1 and 142 DF,  p-value: &lt; 2.2e-16</code></pre>
 \end{align} \tag{17.4}\]</span></span></p>
 <p>where <span class="math inline">\(\bar{y}\equiv \frac{1}{n}\sum_{i=1}^{n}y_{i}\)</span> and <span class="math inline">\(\bar{x}\equiv \frac{1}{n}\sum_{i=1}^{n}x_{i}\)</span> are the sample means.</p>
 </section>
-<section id="assessing-the-accuracy-of-the-coefficient-estimates" class="level3" data-number="17.2.2">
-<h3 data-number="17.2.2" class="anchored" data-anchor-id="assessing-the-accuracy-of-the-coefficient-estimates"><span class="header-section-number">17.2.2</span> Assessing the accuracy of the coefficient estimates</h3>
+<section id="assessing-the-accuracy-of-the-coefficient-estimates" class="level3" data-number="17.3.2">
+<h3 data-number="17.3.2" class="anchored" data-anchor-id="assessing-the-accuracy-of-the-coefficient-estimates"><span class="header-section-number">17.3.2</span> Assessing the accuracy of the coefficient estimates</h3>
 <p>A natural question about the linear regression model is how accurate the coefficient estimates are — that is, how far <span class="math inline">\(\hat{\beta}_{0}\)</span> and <span class="math inline">\(\hat{\beta}_{1}\)</span> are from the true values <span class="math inline">\(\beta_{0}\)</span> and <span class="math inline">\(\beta_{1}\)</span>. To answer this question, we compute the <em>standard errors</em> associated with <span class="math inline">\(\hat{\beta}_{0}\)</span> and <span class="math inline">\(\hat{\beta}_{1}\)</span> using the following formulas:</p>
 <p><span id="eq-5"><span class="math display">\[SE(\hat{\beta}_{0})^{2}=\sigma^{2}\left[\frac{1}{n}+\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\right], \quad SE(\hat{\beta}_{1})^{2}=\frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}} \tag{17.5}\]</span></span></p>
 <p>where <span class="math inline">\(\sigma^{2}=Var(\epsilon)\)</span> is the variance of the error terms, which is unknown but can be estimated empirically via the RSE defined as follows:</p>
@@ -726,7 +774,7 @@ RSE=\sqrt{\frac{RSS}{n-2}}
 <p><span id="eq-6"><span class="math display">\[\left[\hat{\beta}_{0}-2\cdot SE(\hat{\beta}_{0}),\ \hat{\beta}_{0}+2\cdot SE(\hat{\beta}_{0})\right] \tag{17.6}\]</span></span> <span id="eq-7"><span class="math display">\[\left[\hat{\beta}_{1}-2\cdot SE(\hat{\beta}_{1}),\ \hat{\beta}_{1}+2\cdot SE(\hat{\beta}_{1})\right] \tag{17.7}\]</span></span></p>
 <p>In the previous example, the standard errors for the intercept and slope were 0.6923 and 0.2503, respectively. The associated confidence intervals are therefore:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="fu">confint</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>                2.5 %   97.5 %
 (Intercept) -1.725163 1.011838
