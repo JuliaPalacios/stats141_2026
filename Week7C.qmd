@@ -1,0 +1,6 @@
+# Activity 15 {#sec-week2}
+
+Name:
+
+
+1.  Find the confidence interval for $\rho$ in the cats example.

@@ -1,4 +1,4 @@
-# Activity 13 {#sec-week2}
+# Activity 14 {#sec-week2}
 
 Name:
 
@@ -47,9 +47,6 @@ addmargins(tab)  # show row/column totals
 
 (d) Compute the p-value and conclude
 
-
-
-2. Find the confidence interval for $\rho$ in the cats example.
 
 
 
