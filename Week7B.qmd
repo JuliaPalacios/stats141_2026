@@ -4,7 +4,7 @@ Name:
 
 
 
-2. The drug ancrod was tested in a double-blind
+1. The drug ancrod was tested in a double-blind
 clinical trial in which subjects who had strokes were 
 randomly assigned to get either ancrod or a placebo. One
 response variable in the study was whether or not a
