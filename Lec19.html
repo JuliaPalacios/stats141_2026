@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>9&nbsp; Confidence intervals – Stats 141. Introduction to Statistics for Biology</title>
+<title>19&nbsp; Multiple Linear regression – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./lec10.html" rel="next">
-<link href="./lec8.html" rel="prev">
+<link href="./Week1A.html" rel="next">
+<link href="./Lec18.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec9.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Confidence intervals</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec19.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Multiple Linear regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -245,7 +245,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lec9.html" class="sidebar-item-text sidebar-link active">
+  <a href="./lec9.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Confidence intervals</span></span></a>
   </div>
 </li>
@@ -305,7 +305,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lec19.html" class="sidebar-item-text sidebar-link">
+  <a href="./Lec19.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Multiple Linear regression</span></span></a>
   </div>
 </li>
@@ -528,17 +528,20 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#confidence-interval" id="toc-confidence-interval" class="nav-link active" data-scroll-target="#confidence-interval"><span class="header-section-number">9.1</span> Confidence interval</a></li>
-  <li><a href="#z-confidence-intervals" id="toc-z-confidence-intervals" class="nav-link" data-scroll-target="#z-confidence-intervals"><span class="header-section-number">9.2</span> Z-confidence intervals</a></li>
+  <li><a href="#assessing-the-accuracy-of-the-model" id="toc-assessing-the-accuracy-of-the-model" class="nav-link active" data-scroll-target="#assessing-the-accuracy-of-the-model"><span class="header-section-number">19.0.1</span> Assessing the accuracy of the model</a></li>
+  <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">19.1</span> Multiple Linear Regression</a>
+  <ul class="collapse">
+  <li><a href="#estimating-the-regression-coefficients" id="toc-estimating-the-regression-coefficients" class="nav-link" data-scroll-target="#estimating-the-regression-coefficients"><span class="header-section-number">19.1.1</span> Estimating the Regression Coefficients</a></li>
+  </ul></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec9.html"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Confidence intervals</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec19.html"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Multiple Linear regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">9</span>&nbsp; <span class="chapter-title">Confidence intervals</span></h1>
+<h1 class="title"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Multiple Linear regression</span></h1>
 </div>
 
 
@@ -555,257 +558,332 @@ window.Quarto = {
 </header>
 
 
-<style>
-.header-row {
-  display: flex;
-  justify-content: space-between; /* title left, button right */
-  align-items: center;
-  margin-bottom: 1em; /* spacing below header */
-}
+<section id="assessing-the-accuracy-of-the-model" class="level3" data-number="19.0.1">
+<h3 data-number="19.0.1" class="anchored" data-anchor-id="assessing-the-accuracy-of-the-model"><span class="header-section-number">19.0.1</span> Assessing the accuracy of the model</h3>
+<p>Once we have assessed the accuracy of the parameter estimates and rejected the null hypothesis, in favor of the alternative, we now evaluate how well the model fits the data. In linear regression, this is typically assessed using two indicators: the <em>residual standard error</em> (RSE) and the <span class="math inline">\(R^2\)</span> statistic, or <em>coefficient of determination</em>.</p>
+<p>The RSE, defined earlier is an estimate ofthe standard deviation of <span class="math inline">\(\epsilon\)</span>, it measures the average amount by which the response deviates from the true regression line, and is calculated as:</p>
+<p><span class="math display">\[RSE=\sqrt{\frac{RSS}{(n-2)}}=\sqrt{\frac{1}{(n-2)}\sum_{i=1}^{n}(y_{i}-\hat{y}_{i})^2}.\]</span></p>
+<p>In the cats example,</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>model1 <span class="ot">&lt;-</span> <span class="fu">lm</span>(Hwt <span class="sc">~</span> Bwt, <span class="at">data =</span> cats)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model1)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = Hwt ~ Bwt, data = cats)
 
-.page-title {
-  font-size: 2rem;   /* matches H1 style */
-  font-weight: 700;
-  margin: 0;
-}
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-3.5694 -0.9634 -0.0921  1.0426  5.1238 
 
-.download-btn {
-  display: inline-block;
-  background-color: #5FA2F3;  /* lighter R blue */
-  color: white !important;
-  padding: 8px 16px;
-  border-radius: 8px;
-  text-decoration: none;
-  font-weight: 600;
-  font-size: 14px;
-}
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  -0.3567     0.6923  -0.515    0.607    
+Bwt           4.0341     0.2503  16.119   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
 
-.download-btn:hover {
-  background-color: #4C93E6;
-  color: white !important;
-  text-decoration: none;
-}
-</style>
-<!-- Flex container aligns title and button with text margin -->
-<div class="header-row">
-<h1 class="page-title">
-</h1>
-<p><a href="Lec9_annotated.pdf" class="download-btn" download=""> ⬇ Download Annotated Slides </a></p>
+Residual standard error: 1.452 on 142 degrees of freedom
+Multiple R-squared:  0.6466,    Adjusted R-squared:  0.6441 
+F-statistic: 259.8 on 1 and 142 DF,  p-value: &lt; 2.2e-16</code></pre>
 </div>
-<p><strong>Estimation</strong> is the process of inferring a population parameter from the sample data. For the moment we will be concerned with the estimation of the population mean (expected value) using the sample mean. We pretty much know that <span class="math inline">\(\bar{x}\neq \mu\)</span>. It is just way too unlikely that they would be exactly equal. <strong>How much can we trust this estimate?</strong></p>
-<p>To answer this, we need to know how much variability we get from our the sampling process. One way to do this is through the <strong>standard error</strong> (standard deviation of the mean) as it reflects the differences between the estimates (sample means: <span class="math inline">\(\bar{x}\)</span>) and the target parameter <span class="math inline">\(\mu\)</span>. The standard error reflects the precision of an estimate. The smaller the better. Recall: <span class="math display">\[SD(\bar{X})=\frac{SD_{X}}{\sqrt{n}}\]</span></p>
-<section id="confidence-interval" class="level2" data-number="9.1">
-<h2 data-number="9.1" class="anchored" data-anchor-id="confidence-interval"><span class="header-section-number">9.1</span> Confidence interval</h2>
-<p>The <strong>confidence interval</strong> is another common way to quantify uncertainty about the value of a parameter. It is an interval calculated from the data.</p>
-<p>Confidence interval (intuitively): Given the data we observed, these are the range values of that more likely contain <span class="math inline">\(\mu\)</span>.</p>
-<p>If we increase our range then we’ve got a higher probability of “capturing” <span class="math inline">\(\mu\)</span> in the range.</p>
-<p>A typical confidence interval statement is:</p>
+</div>
+<p>the <em>residual standard error</em> RSE was 1.452g, indicating that predictions typically deviate from the regression line by about 1.452 grams.</p>
+<p>Whether a given RSE value is acceptable depends entirely on the context and the units of the response.</p>
+<p>The RSE is therefore considered a measure of the <em>lack of fit</em> of the model: if the predicted values are close to the observed values (<span class="math inline">\(\hat{y}_{i}\approx y_{i}, i=1,\dots,n\)</span>), the RSE will be small, indicating a good fit; conversely, if they are far apart, the RSE will be large, indicating a poor fit.</p>
+<p>Because the <em>residual standard error</em> RSE is an absolute measure that depends on the units of <span class="math inline">\(Y\)</span>, it can be difficult to interpret in isolation.</p>
+<p>The <span class="math inline">\(R^{2}\)</span> statistic provides a complementary measure of fit that is unit-free. It takes the form of a proportion — the proportion of variance in <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span> — and always lies between 0 and 1, making it more straightforward to interpret. It is calculated as:</p>
+<p><span class="math display">\[R^2=1-\frac{RSS}{TSS}=1-\frac{\sum (\hat{y}_{i}-y_{i})^2}{\sum(y_{i}-\bar{y})^2},\]</span></p>
+<p>where <span class="math inline">\(TSS=\sum_{i=1}^{n}(y_{i}-\bar{y})^2\)</span> is the <em>total sum of squares</em> and RSS is the <em>residual sum of squares</em> (as defined earlier). TSS measures the total variance in the response <span class="math inline">\(Y\)</span> before regression is performed. In contrast, RSS is the amount of variation left unexplained after fitting the regression model. Therefore, <span class="math inline">\(TSS - RSS\)</span> measures the variability in <span class="math inline">\(Y\)</span> explained by the regression, and <span class="math inline">\(R^2\)</span> measures the <em>proportion of variance in</em> <span class="math inline">\(Y\)</span> explained by <span class="math inline">\(X\)</span>.</p>
+<p>An equivalent definition is <span class="math display">\[
+R^2=\frac{\sum(\hat{y}_{i}-\bar{y})^2}{\sum(y_{i}-\bar{y})^2}=cor^2(\hat{y},y)
+\]</span></p>
+<p>An <span class="math inline">\(R^2\)</span> close to 1 indicates that a large proportion of the variability in the response is explained by the model; conversely, an <span class="math inline">\(R^2\)</span> close to 0 indicates that the model explains little of the variability in the response.</p>
+<p>In the cats example, <span class="math inline">\(R^2 = 0.64\)</span>, meaning that 64% of the total variability in heart weight is explained by body weight.</p>
+<p>While <span class="math inline">\(R^2\)</span> is generally easier to interpret than the RSE, determining what constitutes a good value is still context-dependent. A value of <span class="math inline">\(R^2 = 1\)</span>, for instance, rather than indicating a perfect fit, should raise concern about possible overfitting. Caution is therefore always advised when interpreting these indicators.</p>
+</section>
+<section id="multiple-linear-regression" class="level2" data-number="19.1">
+<h2 data-number="19.1" class="anchored" data-anchor-id="multiple-linear-regression"><span class="header-section-number">19.1</span> Multiple Linear Regression</h2>
+<p>Simple linear regression is a useful approach for predicting a response based on a single predictor. However, most practical applications involve more than one predictor.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
 <i class="callout-icon no-icon"></i>
 </div>
 <div class="callout-title-container flex-fill">
-<span class="screen-reader-only">Note</span>Example
+<span class="screen-reader-only">Note</span>Example: Newborn’s Birth Weight
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>We are 95% confident that the true mutation rate lies between 10^-3 and 10 ^-2.</p>
+<p>Here we are interested in examining whether maternal characteristics or behaviors during pregnancy are associated with infant birth weight. The response variable <span class="math inline">\(Y\)</span> is the birth weight of the baby, and the predictors <span class="math inline">\(X\)</span> are those variables potentially related to that outcome.</p>
 </div>
 </div>
-<p>What is the meaning of the 95% confidence? Since different samples will give us different intervals, different researchers will provide different intervals. On average, however, 19 out of 20 of those intervals (95%) will contain the true value of the parameter. On average 1 out of 20 intervals (5%) will not contain the parameter value.</p>
-<p><strong>A rule of thumb</strong> A good quick approximation to the 95% confidence interval for the population mean is obtained by adding and subtracting two (or 1.96) standard errors from the sample mean.</p>
-<p>For example, let’s pretend the framingham study includes all the population and we are interested in knowing the mean glucose level in the population.</p>
+<p><strong>The birthwt dataset</strong> in the <code>MASS</code> package contains 189 observations collected at Baystate Medical Center, Springfield, Massachusetts in 1986.</p>
+<p><em>Simple regression of baby’s birth weight on Mother’s Age</em></p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Real Data from the Framingham Study</span></span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="co">#install.packages("riskCommunicator")</span></span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(riskCommunicator)</span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(dplyr)</span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a><span class="fu">names</span>(framingham)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
-<pre><code> [1] "RANDID"   "SEX"      "TOTCHOL"  "AGE"      "SYSBP"    "DIABP"   
- [7] "CURSMOKE" "CIGPDAY"  "BMI"      "DIABETES" "BPMEDS"   "HEARTRTE"
-[13] "GLUCOSE"  "educ"     "PREVCHD"  "PREVAP"   "PREVMI"   "PREVSTRK"
-[19] "PREVHYP"  "TIME"     "PERIOD"   "HDLC"     "LDLC"     "DEATH"   
-[25] "ANGINA"   "HOSPMI"   "MI_FCHD"  "ANYCHD"   "STROKE"   "CVD"     
-[31] "HYPERTEN" "TIMEAP"   "TIMEMI"   "TIMEMIFC" "TIMECHD"  "TIMESTRK"
-[37] "TIMECVD"  "TIMEDTH"  "TIMEHYP" </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(framingham<span class="sc">$</span>GLUCOSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>   Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
-  39.00   72.00   80.00   84.12   89.00  478.00    1440 </code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(<span class="fu">is.na</span>(framingham<span class="sc">$</span>GLUCOSE))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 1440</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">length</span>(framingham<span class="sc">$</span>GLUCOSE)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 11627</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a><span class="co">#remove NAs</span></span>
-<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>glucose_pop <span class="ot">&lt;-</span> framingham <span class="sc">%&gt;%</span></span>
-<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">filter</span>(<span class="sc">!</span><span class="fu">is.na</span>(GLUCOSE)) <span class="sc">%&gt;%</span></span>
-<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">pull</span>(GLUCOSE)</span>
-<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a><span class="co">#population standard deviation</span></span>
-<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>true<span class="ot">&lt;-</span><span class="fu">mean</span>(glucose_pop)</span>
-<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a>true</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 84.12487</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sd</span>(glucose_pop)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 24.99378</code></pre>
+<pre><code>
+Call:
+lm(formula = bwt ~ age, data = birthwt)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2294.78  -517.63    10.51   530.80  1774.92 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  2655.74     238.86   11.12   &lt;2e-16 ***
+age            12.43      10.02    1.24    0.216    
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 728.2 on 187 degrees of freedom
+Multiple R-squared:  0.008157,  Adjusted R-squared:  0.002853 
+F-statistic: 1.538 on 1 and 187 DF,  p-value: 0.2165</code></pre>
 </div>
 </div>
-<p>We will now draw a random sample of size 100 and compute the sample mean</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb13"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">123</span>)</span>
-<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>glucose_sample<span class="ot">&lt;-</span><span class="fu">sample</span>(glucose_pop,<span class="dv">100</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb13-3"><a href="#cb13-3" aria-hidden="true" tabindex="-1"></a>mean<span class="ot">&lt;-</span><span class="fu">mean</span>(glucose_sample)</span>
-<span id="cb13-4"><a href="#cb13-4" aria-hidden="true" tabindex="-1"></a>mean</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 88.42</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>se<span class="ot">&lt;-</span><span class="fu">sd</span>(glucose_sample)<span class="sc">/</span><span class="fu">sqrt</span>(<span class="dv">100</span>)</span>
-<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 3.604127</code></pre>
-</div>
-</div>
-<p>Then the rule of thumb confidence interval is:</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb17"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a>mean<span class="dv">-2</span><span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 81.21175</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb19"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a>mean<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>se</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 95.62825</code></pre>
-</div>
-</div>
-<p>Our confidence interval is <span class="math inline">\((78.6,85.95)\)</span>. How confident are we? Does it cover the truth?</p>
-<p>What happens if we repeat the procedure 100 times?</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb21"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb21-1"><a href="#cb21-1" aria-hidden="true" tabindex="-1"></a>intervals<span class="ot">&lt;-</span><span class="fu">matrix</span>(<span class="dv">0</span>,<span class="at">nrow=</span><span class="dv">100</span>,<span class="at">ncol=</span><span class="dv">2</span>)</span>
-<span id="cb21-2"><a href="#cb21-2" aria-hidden="true" tabindex="-1"></a>xbar<span class="ot">&lt;-</span><span class="fu">rep</span>(<span class="dv">0</span>,<span class="dv">100</span>)</span>
-<span id="cb21-3"><a href="#cb21-3" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (j <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>){</span>
-<span id="cb21-4"><a href="#cb21-4" aria-hidden="true" tabindex="-1"></a>  glucose_sample<span class="ot">&lt;-</span><span class="fu">sample</span>(glucose_pop,<span class="dv">100</span>,<span class="at">replace=</span><span class="cn">TRUE</span>)</span>
-<span id="cb21-5"><a href="#cb21-5" aria-hidden="true" tabindex="-1"></a>  xbar[j]<span class="ot">&lt;-</span><span class="fu">mean</span>(glucose_sample)</span>
-<span id="cb21-6"><a href="#cb21-6" aria-hidden="true" tabindex="-1"></a>  intervals[j,<span class="dv">1</span>]<span class="ot">&lt;-</span>xbar[j]<span class="sc">-</span><span class="dv">2</span><span class="sc">*</span>se</span>
-<span id="cb21-7"><a href="#cb21-7" aria-hidden="true" tabindex="-1"></a>  intervals[j,<span class="dv">2</span>]<span class="ot">&lt;-</span>xbar[j]<span class="sc">+</span><span class="dv">2</span><span class="sc">*</span>se</span>
-<span id="cb21-8"><a href="#cb21-8" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb21-9"><a href="#cb21-9" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb21-10"><a href="#cb21-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(intervals)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>         [,1]     [,2]
-[1,] 75.53175 89.94825
-[2,] 73.76175 88.17825
-[3,] 76.53175 90.94825
-[4,] 76.57175 90.98825
-[5,] 71.43175 85.84825
-[6,] 78.04175 92.45825</code></pre>
-</div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb23"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb23-1"><a href="#cb23-1" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> <span class="fu">min</span>(intervals[,<span class="dv">1</span>])</span>
-<span id="cb23-2"><a href="#cb23-2" aria-hidden="true" tabindex="-1"></a>U <span class="ot">&lt;-</span> <span class="fu">max</span>(intervals[,<span class="dv">2</span>])</span>
-<span id="cb23-3"><a href="#cb23-3" aria-hidden="true" tabindex="-1"></a>covers <span class="ot">&lt;-</span> (intervals[,<span class="dv">1</span>] <span class="sc">&lt;=</span> true) <span class="sc">&amp;</span> (true <span class="sc">&lt;=</span> intervals[,<span class="dv">2</span>])</span>
-<span id="cb23-4"><a href="#cb23-4" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb23-5"><a href="#cb23-5" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>, <span class="at">xlim =</span> <span class="fu">c</span>(<span class="dv">70</span>, <span class="dv">100</span>), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">100</span>),</span>
-<span id="cb23-6"><a href="#cb23-6" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean"</span>, <span class="at">ylab =</span> <span class="st">"Interval index"</span>,</span>
-<span id="cb23-7"><a href="#cb23-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"100 rule of thumb intervals"</span>)</span>
-<span id="cb23-8"><a href="#cb23-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-9"><a href="#cb23-9" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">100</span>) {</span>
-<span id="cb23-10"><a href="#cb23-10" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="cf">if</span> (covers[i]) <span class="st">"gray30"</span> <span class="cf">else</span> <span class="st">"red"</span></span>
-<span id="cb23-11"><a href="#cb23-11" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segments</span>(intervals[i,<span class="dv">1</span>], i, intervals[i,<span class="dv">2</span>], i, <span class="at">col =</span> col, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb23-12"><a href="#cb23-12" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(xbar[i], i, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> col, <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
-<span id="cb23-13"><a href="#cb23-13" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb23-14"><a href="#cb23-14" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb23-15"><a href="#cb23-15" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> true, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(birthwt<span class="sc">$</span>age, birthwt<span class="sc">$</span>bwt,</span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mother's age"</span>,</span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Birth Weight (gr)"</span>,</span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Simple Linear Regression: Mother's age vs Baby's weight"</span>)</span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="co"># Fitted line</span></span>
+<span id="cb4-8"><a href="#cb4-8" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(model2, <span class="at">col =</span> <span class="st">"black"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="lec9_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Lec19_files/figure-html/unnamed-chunk-4-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb24"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb24-1"><a href="#cb24-1" aria-hidden="true" tabindex="-1"></a><span class="fu">sum</span>(covers)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<p><em>Simple regression of baby’s birth weight on Mother’s Race</em></p>
+<div class="cell">
 <div class="cell-output cell-output-stdout">
-<pre><code>[1] 99</code></pre>
+<pre><code>
+Call:
+lm(formula = bwt ~ race, data = birthwt)
+
+Residuals:
+     Min       1Q   Median       3Q      Max 
+-2096.28  -502.72   -12.72   526.28  1887.28 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3102.72      72.92  42.548  &lt; 2e-16 ***
+raceblack    -383.03     157.96  -2.425  0.01627 *  
+raceother    -297.44     113.74  -2.615  0.00965 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 714.5 on 186 degrees of freedom
+Multiple R-squared:  0.05017,   Adjusted R-squared:  0.03996 
+F-statistic: 4.913 on 2 and 186 DF,  p-value: 0.008336</code></pre>
 </div>
 </div>
-<p>What happens if you increase the sample size?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb6"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(birthwt<span class="sc">$</span>race, birthwt<span class="sc">$</span>bwt,</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>     <span class="at">col =</span> <span class="st">"red"</span>, <span class="at">pch =</span> <span class="dv">19</span>,</span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mother's age"</span>,</span>
+<span id="cb6-4"><a href="#cb6-4" aria-hidden="true" tabindex="-1"></a>     <span class="at">ylab =</span> <span class="st">"Birth Weight (gr)"</span>,</span>
+<span id="cb6-5"><a href="#cb6-5" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Simple Linear Regression: Race vs Baby's weight"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec19_files/figure-html/unnamed-chunk-6-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We now have a categorical variable with 3 possible values: white, black and other. When a binary (2 categories) or categorical (3+ categories) variable is included in a regression model, it must first be converted into dummy variables (also called indicator variables). For a binary variable such as smoke (0/1), the coefficient represents the mean difference in the response between the two groups. For categorical variables with three or more categories, one category is chosen as the reference level and k−1 dummy variables are created for the remaining categories. For example, for race with levels white, black, and other, white serves as the reference category.</p>
+<p>For race, we can interpret our model as having 2 predictors corresponding to indicator variables (black and other). - One category is the reference (baseline) level (white in the example). - The intercept is the mean bwd for the reference race. - Each coefficient for the other two races is the difference in mean bwt compared to the reference race.</p>
+<p>The fitted means are: - Reference mean: <span class="math inline">\(\beta_{0}\)</span>. - Race black: <span class="math inline">\(\beta_{0}+\beta_{1}\)</span> - Race other: <span class="math inline">\(\beta_{0}+\beta_{2}\)</span></p>
+<p><em>Simple regression of baby’s birth weight on Mother’s Smoking</em></p>
+<div class="cell">
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bwt ~ smoke, data = birthwt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2062.9  -475.9    34.3   545.1  1934.3 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept)  3055.70      66.93  45.653  &lt; 2e-16 ***
+smoke        -283.78     106.97  -2.653  0.00867 ** 
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 717.8 on 187 degrees of freedom
+Multiple R-squared:  0.03627,   Adjusted R-squared:  0.03112 
+F-statistic: 7.038 on 1 and 187 DF,  p-value: 0.008667</code></pre>
+</div>
+</div>
+<p>In this example, we added one predictor at a time and found no association between mother’s age and infant birth weight. However, birth weight was significantly associated with both race and smoking status.</p>
+<p>Examining the results, mother’s age is not significantly associated with birth weight (<span class="math inline">\(p = 0.216\)</span>). Compared to infants born to white mothers, those born to Black mothers had a significantly lower mean birth weight of 383.03 grams (<span class="math inline">\(p &lt; 0.05\)</span>), and those born to mothers of other races had a significantly lower mean birth weight of 297.44 grams (<span class="math inline">\(p &lt; 0.05\)</span>). Regarding smoking, infants born to mothers who smoked during pregnancy had a significantly lower mean birth weight of 283.78 grams compared to infants of non-smoking mothers (<span class="math inline">\(p &lt; 0.05\)</span>).</p>
+<p>Although these results are illustrative, fitting a separate simple linear regression model for each predictor is not entirely satisfactory. First, since both race and smoking are significantly associated with birth weight, it is unclear how to construct a precise prediction of birth weight from these individual models. Second, each model ignores the other predictors when estimating regression coefficients. A related concern is that if predictors are correlated with one another, the individual models may yield misleading estimates of each predictor’s association with birth weight.</p>
+<p>A better approach is to extend the simple linear regression model to directly accommodate multiple predictors by assigning each predictor its own slope coefficient within a single model. In general, suppose we have <span class="math inline">\(m\)</span> distinct predictors. The multiple linear regression model then takes the form:</p>
+<p><span class="math display">\[Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{m}X_{m} + \epsilon,\]</span></p>
+<p>where <span class="math inline">\(X_{j}\)</span> represents the <span class="math inline">\(j\)</span>th predictor and <span class="math inline">\(\beta_{j}\)</span> quantifies the association between that variable and the response. We interpret <span class="math inline">\(\beta_{j}\)</span> as the average effect on <span class="math inline">\(Y\)</span> of a one-unit increase in <span class="math inline">\(X_{j}\)</span>, holding all other predictors fixed.</p>
+<section id="estimating-the-regression-coefficients" class="level3" data-number="19.1.1">
+<h3 data-number="19.1.1" class="anchored" data-anchor-id="estimating-the-regression-coefficients"><span class="header-section-number">19.1.1</span> Estimating the Regression Coefficients</h3>
+<p>As in the case of simple regression, the coefficients <span class="math inline">\(\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}\)</span> are unknown and must be estimated. Given those estimates, we can make predictions for the outcome, as follows:</p>
+<p><span class="math display">\[Y = \hat{\beta}_{0} + \hat{\beta}_{1}X_{1} + \hat{\beta}_{2}X_{2} + \dots + \hat{\beta}_{m}X_{m} + \epsilon\]</span>. {#eq-10}</p>
+<p>The parameters are estimated using the same least squares approach as in simple regression – that is, we choose the values of each <span class="math inline">\(\beta\)</span> that minimize the residual sum of squares:</p>
+<p><span id="eq-11"><span class="math display">\[\begin{aligned}
+RSS &amp;= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^{2} \\
+&amp;= \sum_{i=1}^{n} (y_{i}-\hat{\beta}_{0} - \hat{\beta}_{1}x_{i1} - \hat{\beta}_{2}x_{i2} - \dots - \hat{\beta}_{m}x_{im})^{2}. \\
+\end{aligned} \tag{19.1}\]</span></span></p>
+<p>The values <span class="math inline">\(\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}\)</span> that minimize <a href="#eq-11" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> are the multiple least squares regression coefficients. Unlike the simple regression case, however, these coefficients have somewhat complex closed-form expressions that are most naturally represented using matrix notation. For simplicity, we omit the derivation here; in practice, any statistical software can estimate these coefficients from data. In the next example we use R to fit a multiple regression model using birth weight data.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+Note
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p><strong>Example: Multiple regression of newborns’ birth weight on mother’s age, race, and smoking status during pregnancy</strong></p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt <span class="sc">~</span> age <span class="sc">+</span> race <span class="sc">+</span> smoke, <span class="at">data =</span> birthwt)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+lm(formula = bwt ~ age + race + smoke, data = birthwt)
+
+Residuals:
+    Min      1Q  Median      3Q     Max 
+-2322.6  -447.3    28.4   502.2  1612.3 
+
+Coefficients:
+            Estimate Std. Error t value Pr(&gt;|t|)    
+(Intercept) 3281.673    260.664  12.590  &lt; 2e-16 ***
+age            2.134      9.771   0.218 0.827326    
+raceblack   -444.069    156.194  -2.843 0.004973 ** 
+raceother   -447.858    119.017  -3.763 0.000226 ***
+smoke       -426.093    109.988  -3.874 0.000149 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+Residual standard error: 690 on 184 degrees of freedom
+Multiple R-squared:  0.1236,    Adjusted R-squared:  0.1046 
+F-statistic:  6.49 on 4 and 184 DF,  p-value: 6.592e-05</code></pre>
+</div>
+</div>
+<p>Table. Number of mothers by smoking status</p>
+<div class="cell">
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'polycor' was built under R version 4.4.3</code></pre>
+</div>
+<div class="cell-output cell-output-stdout">
+<pre><code>       
+         0  1
+  white 44 52
+  black 16 10
+  other 55 12</code></pre>
+</div>
+</div>
+<p>Notice that in the multiple regression model, race and smoking remain statistically significant, and their coefficients are larger in absolute terms (now -444.069, -447.858, and -426.093, respectively) compared to those from the simple linear regression models. Fitting separate simple linear regression models for each predictor, we found that race and smoking were significantly associated with birth weight, while mother’s age was not. However, when all predictors were included simultaneously, the effects of race and smoking became larger in magnitude.</p>
+<p>This occurs because of confounding: in the simple models, the effect of each predictor was partially diluted by its correlation with the others. For example, although white mothers smoked more frequently than Black mothers in this sample (54% vs.&nbsp;38%, see Table above), babies born to Black mothers still had significantly lower birth weights even after controlling for smoking. This suggests that race has an independent effect on birth weight beyond what can be explained by smoking differences, likely reflecting unmeasured socioeconomic or biological factors. More broadly, this example highlights why fitting separate simple regression models is inadequate when predictors are correlated — the coefficients from simple models can be misleading, and only multiple regression allows us to isolate the effect of each predictor while holding the others constant.</p>
+<section id="additional-considerations-in-multiple-regression" class="level3" data-number="19.1.2">
+<h3 data-number="19.1.2" class="anchored" data-anchor-id="additional-considerations-in-multiple-regression"><span class="header-section-number">19.1.2</span> Additional Considerations in Multiple Regression</h3>
+<section id="is-there-an-association-between-the-response-and-the-predictors" class="level4" data-number="19.1.2.1">
+<h4 data-number="19.1.2.1" class="anchored" data-anchor-id="is-there-an-association-between-the-response-and-the-predictors"><span class="header-section-number">19.1.2.1</span> Is There an Association Between the Response and the Predictors?</h4>
+<p>In simple linear regression, we showed that we can test whether the coefficient of the linear predictor differs significantly from zero. We did this in <a href="Lec18.html#eq-8" class="quarto-xref">Equation&nbsp;<span>18.5</span></a> by testing the null hypothesis that the coefficient equals zero against the alternative that it does not. In the multiple regression setting with <span class="math inline">\(m\)</span> predictors, we proceed similarly, but now we must ask whether the coefficients of <em>all</em> predictors are simultaneously equal to zero; i.e., <span class="math inline">\(\beta_{1}=\beta_{2}=\ldots=\beta_{m}=0\)</span>.</p>
+<p>The hypothesis test becomes:</p>
+<p><span id="eq-12"><span class="math display">\[\begin{align}
+H_{0} &amp;: \beta_{1}=\beta_{2}=\dots=\beta_{m}=0 \\
+&amp;\text{versus} \\
+H_{a} &amp;: \text{At least one } \beta_{j} \text{ is non-zero}
+\end{align} \tag{19.2}\]</span></span></p>
+<p>This hypothesis test is performed by computing the <em>F-statistic</em>:</p>
+<p><span class="math display">\[F=\frac{(TSS-RSS)/m}{RSS/(n-m-1)},\]</span> where, as in the case of simple linear regression, <span class="math inline">\(TSS=\sum(y_{i}-\bar{y})^2\)</span> and <span class="math inline">\(RSS=\sum(y_{i}-\hat{y}_{i})^2\)</span>. If the linear model assumptions are correct, one can show that <span class="math inline">\(E\{RSS/(n-m-1)\}=\sigma^2\)</span> and that, provided <span class="math inline">\(H_{0}\)</span> is true, <span class="math inline">\(E\{(TSS-RSS)/m\}=\sigma^2\)</span>.</p>
+<p>Hence, when there is no relationship between the response and the predictors, one would expect the <em>F-statistic</em> to take a value close to 1. On the other hand, if <span class="math inline">\(H_{1}\)</span> is true, then <span class="math inline">\(E\{(TSS-RSS)/m\}&gt;\sigma^2\)</span>, so we expect <span class="math inline">\(F\)</span> to be greater than 1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose three (df1, df2) pairs</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df1 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">df2 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp =</span> <span class="fu">c</span>(<span class="st">"F(5,10)"</span>, <span class="st">"F(10,20)"</span>, <span class="st">"F(20,50)"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># x-grid (adjust if needed)</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">2000</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Build data for plotting</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(dfs)), <span class="cf">function</span>(i) {</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> dfs<span class="sc">$</span>df1[i], <span class="at">df2 =</span> dfs<span class="sc">$</span>df2[i]),</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp =</span> dfs<span class="sc">$</span>grp[i]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> grp)) <span class="sc">+</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">color =</span> <span class="st">"Degrees of freedom"</span>) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec19_files/figure-html/plot-f-3dfs-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>In the previous multiple regression example, the <em>F</em>-statistic was 6.49 on 4 and 184 degrees of freedom, which is significantly larger than 1 (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt; 0.01\)</span>). Compare this with the value obtained by fitting the model with age as the sole predictor, where the <em>F</em>-statistic was 1.538 on 1 and 187 degrees of freedom — barely larger than 1 and therefore not statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(= 0.2165\)</span>). This last result implies that a model with mother’s age as the only predictor fails to explain the variation in birth weight.</p>
+<p>The <em>F</em>-statistic approach for testing any association between the predictors and the response works well when <span class="math inline">\(m\)</span> is relatively small, and certainly smaller than <span class="math inline">\(n\)</span>. However, when the number of predictors is large and <span class="math inline">\(m &gt; n\)</span>, there are more coefficients <span class="math inline">\(\beta_{j}\)</span> to estimate than observations available to estimate them. In this case, the multiple linear regression model cannot be fit using least squares, and therefore the <em>F</em>-statistic cannot be used. When <span class="math inline">\(m\)</span> is too large, alternative approaches are required, such as <em>forward selection</em>, which we discuss in the next section.</p>
 </section>
-<section id="z-confidence-intervals" class="level2" data-number="9.2">
-<h2 data-number="9.2" class="anchored" data-anchor-id="z-confidence-intervals"><span class="header-section-number">9.2</span> Z-confidence intervals</h2>
-<p>From the CLT, we know that <span class="math inline">\(\bar{x}\sim N(\mu,\sigma^2/n)\)</span>. This means we can standardize <span class="math inline">\(\bar{x}\)</span> using a Z-score: <span class="math display">\[Z=\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}\]</span>.</p>
-<p>Recall: <span class="math inline">\(P(-1.96&lt;Z&lt;1.96)=0.95\)</span></p>
-<p>Thus <span class="math display">\[P(-1.96&lt;\frac{\bar{x}-\mu}{\frac{\sigma}{\sqrt{n}}}&lt;1.96)\]</span></p>
-<p><span class="math display">\[P(-1.96\frac{\sigma}{\sqrt{n}}&lt;\bar{x}-\mu&lt;1.96\frac{\sigma}{\sqrt{n}})\]</span></p>
-<p><span class="math display">\[P(-1.96\frac{\sigma}{\sqrt{n}}&lt;\mu-\bar{x}&lt;1.96\frac{\sigma}{\sqrt{n}})\]</span> Then <span class="math display">\[P(\bar{x}-1.96\frac{\sigma}{\sqrt{n}}&lt;\mu&lt;\bar{x}+1.96\frac{\sigma}{\sqrt{n}})\]</span></p>
-<p>Therefore there is a 95% probability that the interval <span class="math inline">\((\bar{x}-1.96\frac{\sigma}{\sqrt{n}},\bar{x}+1.96\frac{\sigma}{\sqrt{n}})\)</span> contains <span class="math inline">\(\mu\)</span>.</p>
+<section id="selecting-predictors" class="level4" data-number="19.1.2.2">
+<h4 data-number="19.1.2.2" class="anchored" data-anchor-id="selecting-predictors"><span class="header-section-number">19.1.2.2</span> Selecting predictors</h4>
+<p>The previous section discusses how to test whether a set of predictor variables is associated with the response variable. It provides the <em>F-statistic</em> to test whether at least one of the potential predictors is associated with the outcome. However, not all of those predictors are necessarily significantly associated, as we can assess using the individual p-values for each of them — as discussed earlier for the simple regression model — but if the number of predictors <span class="math inline">\(m\)</span> is large, we are likely to make some false discoveries.</p>
+<p>It is possible that all predictors are associated with the response variable, but it is more common to find that only a subset of them is associated. We refer to <em>variable selection</em> as the process of identifying the predictors that are truly associated with the response variable. Since a more extensive discussion of this topic is needed, we introduce it only briefly here.</p>
+<p>Ideally, we would perform variable selection by testing all possible combinations of variables in a model. For instance, for a model with two predictors <span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span>, we would need to test 4 different models: a model with no variables, a model with <span class="math inline">\(X_{1}\)</span> only, a model with <span class="math inline">\(X_{2}\)</span> only, and a model with both <span class="math inline">\(X_{1}\)</span> and <span class="math inline">\(X_{2}\)</span>. We then select the best model according to some statistical criterion. Various statistics can be used to judge the quality of a model, including <em>Mallow’s</em> <span class="math inline">\(C_p\)</span>, the <em>Akaike information criterion (AIC)</em>, the <em>Bayesian information criterion (BIC)</em>, and the adjusted <span class="math inline">\(R^2\)</span>.</p>
+<p>Unfortunately, for a large number of predictors, testing every possible subset model is prohibitively expensive computationally, because there are <span class="math inline">\(2^m\)</span> possible models containing subsets of <span class="math inline">\(m\)</span> variables — even for a relatively small number of predictors. In the simple case above with <span class="math inline">\(m = 2\)</span>, we had <span class="math inline">\(2^2 = 4\)</span> models to consider, but for <span class="math inline">\(m = 10\)</span> we would need to consider <span class="math inline">\(2^{10} = 1{,}024\)</span> models, and the number grows exponentially as <span class="math inline">\(m\)</span> increases. Since exhaustive search is impractical, several approaches have been developed to address this:</p>
+<ul>
+<li><p><strong>Forward selection.</strong> Start with a null model containing only an intercept and no predictors. Then fit <span class="math inline">\(m\)</span> simple linear regressions and add to the null model the variable that results in the lowest RSS. Next, add to that model the variable that results in the lowest RSS for the new two-variable model. This process continues until some stopping rule is satisfied.</p></li>
+<li><p><strong>Backward selection.</strong> Start with all <span class="math inline">\(m\)</span> variables in the model and remove the variable with the largest p-value — that is, the variable that is least statistically significant. The new <span class="math inline">\((m-1)\)</span>-variable model is fit, and the variable with the largest p-value is again removed. This process continues until a stopping rule is reached; for instance, we may stop when all remaining variables have a p-value below some threshold.</p></li>
+<li><p><strong>Mixed selection.</strong> This approach combines forward and backward selection. We start with no variables in the model and add them one by one, always choosing the variable that provides the best fit, as in forward selection. If at any point the p-value for one of the variables already in the model rises above a certain threshold, that variable is removed. We continue performing these forward and backward steps until all variables in the model have a sufficiently low p-value and all variables outside the model would have a large p-value if added.</p></li>
+</ul>
+<p>Note that backward selection cannot be used when <span class="math inline">\(m &gt; n\)</span>, whereas forward selection can always be applied. Forward selection is a greedy approach and may include variables early on that later become redundant; mixed selection can help remedy this.</p>
+</section>
+<section id="model-fit" class="level4" data-number="19.1.2.3">
+<h4 data-number="19.1.2.3" class="anchored" data-anchor-id="model-fit"><span class="header-section-number">19.1.2.3</span> Model fit</h4>
+<p>We saw earlier in the context of simple regression that two of the most common numerical measures of model fit are the RSE and the <span class="math inline">\(R^2\)</span>. Recall that <span class="math inline">\(R^2\)</span> is the squared correlation between the response and the predictor variable. In multiple linear regression, it turns out that it equals the squared correlation between the response and the fitted values, <span class="math inline">\(\text{Cor}(Y, \hat{Y})^2\)</span>.</p>
+<p>An <span class="math inline">\(R^2\)</span> close to 1 indicates that the model explains a large proportion of the variation in the response variable. For example, for the simple linear models that include mother’s age, mother’s race, and mother’s smoking status during pregnancy, the respective <span class="math inline">\(R^2\)</span> values are 0.008157, 0.05017, and 0.03627. These values are all far from 1, meaning that each individual predictor explains only a small fraction of the variation in birth weight — mother’s age in particular, whose <span class="math inline">\(R^2\)</span> is closest to zero. However, once all three variables are included together in a multiple regression model, the <span class="math inline">\(R^2\)</span> increases substantially to 0.1236, meaning that these variables jointly explain around 12% of the total variation in birth weight.</p>
+<p>It turns out that adding variables to a multiple regression model always increases the <span class="math inline">\(R^2\)</span>, even when those variables are only weakly associated with the response. This is because adding a predictor always results in a decrease in the residual sum of squares on the training data, though not necessarily on the test data.</p>
+</section>
+<section id="predictions" class="level4" data-number="19.1.2.4">
+<h4 data-number="19.1.2.4" class="anchored" data-anchor-id="predictions"><span class="header-section-number">19.1.2.4</span> Predictions</h4>
+<p>One we have fit the multiple regression model, it is straighforward to apply <span class="quarto-unresolved-ref">?eq-10</span> in order to predict the response Y on the basis of a set of values for the predictors <span class="math inline">\(X_{1}, X_{1}, \dots, X_{m}\)</span>. In R we can estimate prediction from the model using the followin code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb26"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb26-1"><a href="#cb26-1" aria-hidden="true" tabindex="-1"></a><span class="fu">set.seed</span>(<span class="dv">1</span>)</span>
-<span id="cb26-2"><a href="#cb26-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-3"><a href="#cb26-3" aria-hidden="true" tabindex="-1"></a>mu <span class="ot">&lt;-</span> <span class="dv">50</span></span>
-<span id="cb26-4"><a href="#cb26-4" aria-hidden="true" tabindex="-1"></a>sigma <span class="ot">&lt;-</span> <span class="dv">10</span></span>
-<span id="cb26-5"><a href="#cb26-5" aria-hidden="true" tabindex="-1"></a>n <span class="ot">&lt;-</span> <span class="dv">20</span></span>
-<span id="cb26-6"><a href="#cb26-6" aria-hidden="true" tabindex="-1"></a>B <span class="ot">&lt;-</span> <span class="dv">100</span>   <span class="co"># number of intervals to plot</span></span>
-<span id="cb26-7"><a href="#cb26-7" aria-hidden="true" tabindex="-1"></a>alpha <span class="ot">&lt;-</span> <span class="fl">0.05</span></span>
-<span id="cb26-8"><a href="#cb26-8" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-9"><a href="#cb26-9" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> U <span class="ot">&lt;-</span> xbar <span class="ot">&lt;-</span> <span class="fu">numeric</span>(B)</span>
-<span id="cb26-10"><a href="#cb26-10" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-11"><a href="#cb26-11" aria-hidden="true" tabindex="-1"></a>z <span class="ot">&lt;-</span> <span class="fu">qnorm</span>(<span class="dv">1</span> <span class="sc">-</span> alpha<span class="sc">/</span><span class="dv">2</span>)</span>
-<span id="cb26-12"><a href="#cb26-12" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-13"><a href="#cb26-13" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (b <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
-<span id="cb26-14"><a href="#cb26-14" aria-hidden="true" tabindex="-1"></a>  x <span class="ot">&lt;-</span> <span class="fu">rnorm</span>(n, <span class="at">mean =</span> mu, <span class="at">sd =</span> sigma)</span>
-<span id="cb26-15"><a href="#cb26-15" aria-hidden="true" tabindex="-1"></a>  xbar[b] <span class="ot">&lt;-</span> <span class="fu">mean</span>(x)</span>
-<span id="cb26-16"><a href="#cb26-16" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-17"><a href="#cb26-17" aria-hidden="true" tabindex="-1"></a>  <span class="co"># Normal-approx CI using the TRUE variance (sigma^2)</span></span>
-<span id="cb26-18"><a href="#cb26-18" aria-hidden="true" tabindex="-1"></a>  se <span class="ot">&lt;-</span> sigma <span class="sc">/</span> <span class="fu">sqrt</span>(n)</span>
-<span id="cb26-19"><a href="#cb26-19" aria-hidden="true" tabindex="-1"></a>  L[b] <span class="ot">&lt;-</span> xbar[b] <span class="sc">-</span> z <span class="sc">*</span> se</span>
-<span id="cb26-20"><a href="#cb26-20" aria-hidden="true" tabindex="-1"></a>  U[b] <span class="ot">&lt;-</span> xbar[b] <span class="sc">+</span> z <span class="sc">*</span> se</span>
-<span id="cb26-21"><a href="#cb26-21" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-22"><a href="#cb26-22" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-23"><a href="#cb26-23" aria-hidden="true" tabindex="-1"></a>covers <span class="ot">&lt;-</span> (L <span class="sc">&lt;=</span> mu) <span class="sc">&amp;</span> (mu <span class="sc">&lt;=</span> U)</span>
-<span id="cb26-24"><a href="#cb26-24" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-25"><a href="#cb26-25" aria-hidden="true" tabindex="-1"></a><span class="co"># Order so non-covering intervals appear first (easy to see)</span></span>
-<span id="cb26-26"><a href="#cb26-26" aria-hidden="true" tabindex="-1"></a>ord <span class="ot">&lt;-</span> <span class="fu">order</span>(covers)   <span class="co"># FALSE then TRUE</span></span>
-<span id="cb26-27"><a href="#cb26-27" aria-hidden="true" tabindex="-1"></a>L <span class="ot">&lt;-</span> L[ord]; U <span class="ot">&lt;-</span> U[ord]; xbar <span class="ot">&lt;-</span> xbar[ord]; covers <span class="ot">&lt;-</span> covers[ord]</span>
-<span id="cb26-28"><a href="#cb26-28" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-29"><a href="#cb26-29" aria-hidden="true" tabindex="-1"></a><span class="co"># Plot</span></span>
-<span id="cb26-30"><a href="#cb26-30" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(<span class="cn">NA</span>, <span class="at">xlim =</span> <span class="fu">range</span>(L, U, mu), <span class="at">ylim =</span> <span class="fu">c</span>(<span class="dv">1</span>, B),</span>
-<span id="cb26-31"><a href="#cb26-31" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"Mean"</span>, <span class="at">ylab =</span> <span class="st">"Interval index"</span>,</span>
-<span id="cb26-32"><a href="#cb26-32" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="fu">sprintf</span>(<span class="st">"%d simulated %.0f%% Normal CIs (known sigma; red = misses)"</span>,</span>
-<span id="cb26-33"><a href="#cb26-33" aria-hidden="true" tabindex="-1"></a>                    B, <span class="dv">100</span><span class="sc">*</span>(<span class="dv">1</span><span class="sc">-</span>alpha)))</span>
-<span id="cb26-34"><a href="#cb26-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-35"><a href="#cb26-35" aria-hidden="true" tabindex="-1"></a><span class="cf">for</span> (i <span class="cf">in</span> <span class="dv">1</span><span class="sc">:</span>B) {</span>
-<span id="cb26-36"><a href="#cb26-36" aria-hidden="true" tabindex="-1"></a>  col <span class="ot">&lt;-</span> <span class="cf">if</span> (covers[i]) <span class="st">"gray30"</span> <span class="cf">else</span> <span class="st">"red"</span></span>
-<span id="cb26-37"><a href="#cb26-37" aria-hidden="true" tabindex="-1"></a>  <span class="fu">segments</span>(L[i], i, U[i], i, <span class="at">col =</span> col, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb26-38"><a href="#cb26-38" aria-hidden="true" tabindex="-1"></a>  <span class="fu">points</span>(xbar[i], i, <span class="at">pch =</span> <span class="dv">16</span>, <span class="at">col =</span> col, <span class="at">cex =</span> <span class="fl">0.6</span>)</span>
-<span id="cb26-39"><a href="#cb26-39" aria-hidden="true" tabindex="-1"></a>}</span>
-<span id="cb26-40"><a href="#cb26-40" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb26-41"><a href="#cb26-41" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">v =</span> mu, <span class="at">col =</span> <span class="st">"blue"</span>, <span class="at">lwd =</span> <span class="dv">2</span>)</span>
-<span id="cb26-42"><a href="#cb26-42" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomright"</span>,</span>
-<span id="cb26-43"><a href="#cb26-43" aria-hidden="true" tabindex="-1"></a>       <span class="at">legend =</span> <span class="fu">c</span>(<span class="st">"CI covers true mean"</span>, <span class="st">"CI misses true mean"</span>, <span class="st">"True mean"</span>),</span>
-<span id="cb26-44"><a href="#cb26-44" aria-hidden="true" tabindex="-1"></a>       <span class="at">col    =</span> <span class="fu">c</span>(<span class="st">"gray30"</span>, <span class="st">"red"</span>, <span class="st">"blue"</span>),</span>
-<span id="cb26-45"><a href="#cb26-45" aria-hidden="true" tabindex="-1"></a>       <span class="at">lwd    =</span> <span class="fu">c</span>(<span class="dv">2</span>, <span class="dv">2</span>, <span class="dv">2</span>),</span>
-<span id="cb26-46"><a href="#cb26-46" aria-hidden="true" tabindex="-1"></a>       <span class="at">bty    =</span> <span class="st">"n"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lec9_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(model5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
+<p>However, there are three sorts of uncertainty associated with this prediction:</p>
+<ol type="1">
+<li><p>The coefficient estimates <span class="math inline">\(\hat{\beta}_{0}, \hat{\beta}_{1}, \dots, \hat{\beta}_{m}\)</span> are estimates for <span class="math inline">\(\beta_{0}, \beta_{1}, \dots, \beta_{m}\)</span>. Therefore, they are only estimates for the true population regression plane: <span class="math display">\[f(X)=\beta_{0}+\beta_{1}X_{1}+\beta_{2}X_{2}+\dots+\beta_{m}X_{m}\]</span> Therefore, we can estimate confidence intervals to evaluate how far is from <span class="math inline">\(f(X)\)</span>.</p></li>
+<li><p>Using a linear model is of course only an approximation of the true surface, so this generates an error called model bias. However, for now we assume that a linear model is the correct approximation.</p></li>
+</ol>
 
 
+</section>
+</section>
+</div>
+</div>
+</section>
 </section>
 
 </main> <!-- /main -->
@@ -1211,13 +1289,13 @@ window.Quarto = {
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lec8.html" class="pagination-link" aria-label="Central limit theorem">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">8</span>&nbsp; <span class="chapter-title">Central limit theorem</span></span>
+      <a href="./Lec18.html" class="pagination-link" aria-label="Linear regression and correlation 2">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">18</span>&nbsp; <span class="chapter-title">Linear regression and correlation 2</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./lec10.html" class="pagination-link" aria-label="t-distribution">
-        <span class="nav-page-text"><span class="chapter-number">10</span>&nbsp; <span class="chapter-title">t-distribution</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity 1">
+        <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Activity 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
