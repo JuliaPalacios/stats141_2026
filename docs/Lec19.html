@@ -532,7 +532,6 @@ window.Quarto = {
   <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">19.1</span> Multiple Linear Regression</a>
   <ul class="collapse">
   <li><a href="#estimating-the-regression-coefficients" id="toc-estimating-the-regression-coefficients" class="nav-link" data-scroll-target="#estimating-the-regression-coefficients"><span class="header-section-number">19.1.1</span> Estimating the Regression Coefficients</a></li>
-  <li><a href="#additional-considerations-in-multiple-regression" id="toc-additional-considerations-in-multiple-regression" class="nav-link" data-scroll-target="#additional-considerations-in-multiple-regression"><span class="header-section-number">19.1.2</span> Additional Considerations in Multiple Regression</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -662,8 +661,6 @@ F-statistic: 1.538 on 1 and 187 DF,  p-value: 0.2165</code></pre>
 </div>
 </div>
 <p><em>Simple regression of baby’s birth weight on Mother’s Race</em></p>
-<p>We now have a categorical variable with 3 possible values: white, black and other. We can interpret our model as having 2 predictors corresponding to indicator variables (black and other). - One category is the reference (baseline) level (white in the example). - The intercept is the mean bwd for the reference race. - Each coefficient for the other two races is the difference in mean bwt compared to the reference race.</p>
-<p>The fitted means are: - Reference mean: <span class="math inline">\(\beta_{0}\)</span>. - Race black: <span class="math inline">\(\beta_{0}+\beta_{1}\)</span> - Race other: <span class="math inline">\(\beta_{0}+\beta_{2}\)</span></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
 <pre><code>
@@ -701,6 +698,9 @@ F-statistic: 4.913 on 2 and 186 DF,  p-value: 0.008336</code></pre>
 </div>
 </div>
 </div>
+<p>We now have a categorical variable with 3 possible values: white, black and other. When a binary (2 categories) or categorical (3+ categories) variable is included in a regression model, it must first be converted into dummy variables (also called indicator variables). For a binary variable such as smoke (0/1), the coefficient represents the mean difference in the response between the two groups. For categorical variables with three or more categories, one category is chosen as the reference level and k−1 dummy variables are created for the remaining categories. For example, for race with levels white, black, and other, white serves as the reference category.</p>
+<p>For race, we can interpret our model as having 2 predictors corresponding to indicator variables (black and other). - One category is the reference (baseline) level (white in the example). - The intercept is the mean bwd for the reference race. - Each coefficient for the other two races is the difference in mean bwt compared to the reference race.</p>
+<p>The fitted means are: - Reference mean: <span class="math inline">\(\beta_{0}\)</span>. - Race black: <span class="math inline">\(\beta_{0}+\beta_{1}\)</span> - Race other: <span class="math inline">\(\beta_{0}+\beta_{2}\)</span></p>
 <p><em>Simple regression of baby’s birth weight on Mother’s Smoking</em></p>
 <div class="cell">
 <div class="cell-output cell-output-stdout">
@@ -724,11 +724,10 @@ Multiple R-squared:  0.03627,   Adjusted R-squared:  0.03112
 F-statistic: 7.038 on 1 and 187 DF,  p-value: 0.008667</code></pre>
 </div>
 </div>
-<p>In this example, we added one predictor at a time and found no association between mother’s age and infant birth weight. However, birth weight was significantly associated with both race and smoking status. Before continuing with model interpretation, it is important to clarify how R handles binary and categorical predictors.</p>
-<p>When a binary (2 categories) or categorical (3+ categories) variable is included in a regression model, it must first be converted into dummy variables (also called indicator variables). For a binary variable such as smoke (0/1), the coefficient represents the mean difference in the response between the two groups. For categorical variables with three or more categories, one category is chosen as the reference level and k−1 dummy variables are created for the remaining categories. For example, for race with levels white, black, and other, white serves as the reference category.</p>
-<p>Examining the results, mother’s age is not significantly associated with birth weight (p = 0.216). Compared to infants born to white mothers, those born to Black mothers had a significantly lower mean birth weight of 383.03 grams (p &lt; 0.05), and those born to mothers of other races had a significantly lower mean birth weight of 297.44 grams (p &lt; 0.05). Regarding smoking, infants born to mothers who smoked during pregnancy had a significantly lower mean birth weight of 283.78 grams compared to infants of non-smoking mothers (p &lt; 0.05).</p>
+<p>In this example, we added one predictor at a time and found no association between mother’s age and infant birth weight. However, birth weight was significantly associated with both race and smoking status.</p>
+<p>Examining the results, mother’s age is not significantly associated with birth weight (<span class="math inline">\(p = 0.216\)</span>). Compared to infants born to white mothers, those born to Black mothers had a significantly lower mean birth weight of 383.03 grams (<span class="math inline">\(p &lt; 0.05\)</span>), and those born to mothers of other races had a significantly lower mean birth weight of 297.44 grams (<span class="math inline">\(p &lt; 0.05\)</span>). Regarding smoking, infants born to mothers who smoked during pregnancy had a significantly lower mean birth weight of 283.78 grams compared to infants of non-smoking mothers (<span class="math inline">\(p &lt; 0.05\)</span>).</p>
 <p>Although these results are illustrative, fitting a separate simple linear regression model for each predictor is not entirely satisfactory. First, since both race and smoking are significantly associated with birth weight, it is unclear how to construct a precise prediction of birth weight from these individual models. Second, each model ignores the other predictors when estimating regression coefficients. A related concern is that if predictors are correlated with one another, the individual models may yield misleading estimates of each predictor’s association with birth weight.</p>
-<p>A better approach is to extend the simple linear regression model (<a href="Lec17.html#eq-1" class="quarto-xref">Equation&nbsp;<span>17.1</span></a>) to directly accommodate multiple predictors by assigning each predictor its own slope coefficient within a single model. In general, suppose we have <span class="math inline">\(m\)</span> distinct predictors. The multiple linear regression model then takes the form:</p>
+<p>A better approach is to extend the simple linear regression model to directly accommodate multiple predictors by assigning each predictor its own slope coefficient within a single model. In general, suppose we have <span class="math inline">\(m\)</span> distinct predictors. The multiple linear regression model then takes the form:</p>
 <p><span class="math display">\[Y = \beta_{0} + \beta_{1}X_{1} + \beta_{2}X_{2} + \dots + \beta_{m}X_{m} + \epsilon,\]</span></p>
 <p>where <span class="math inline">\(X_{j}\)</span> represents the <span class="math inline">\(j\)</span>th predictor and <span class="math inline">\(\beta_{j}\)</span> quantifies the association between that variable and the response. We interpret <span class="math inline">\(\beta_{j}\)</span> as the average effect on <span class="math inline">\(Y\)</span> of a one-unit increase in <span class="math inline">\(X_{j}\)</span>, holding all other predictors fixed.</p>
 <section id="estimating-the-regression-coefficients" class="level3" data-number="19.1.1">
@@ -740,7 +739,7 @@ F-statistic: 7.038 on 1 and 187 DF,  p-value: 0.008667</code></pre>
 RSS &amp;= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^{2} \\
 &amp;= \sum_{i=1}^{n} (y_{i}-\hat{\beta}_{0} - \hat{\beta}_{1}x_{i1} - \hat{\beta}_{2}x_{i2} - \dots - \hat{\beta}_{m}x_{im})^{2}. \\
 \end{aligned} \tag{19.1}\]</span></span></p>
-<p>The values <span class="math inline">\(\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}\)</span> that minimize <a href="#eq-11" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> are the multiple least squares regression coefficients. Unlike the simple regression case, however, these coefficients have somewhat comlex closed-form expressions that are most naturally represented using matrix notation. For simplicity, we omit the derivation here; in practice, any statistical software can estimate these coefficients from data. In the next example we use R to fit a multiple regression model using birth weight data.</p>
+<p>The values <span class="math inline">\(\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}\)</span> that minimize <a href="#eq-11" class="quarto-xref">Equation&nbsp;<span>19.1</span></a> are the multiple least squares regression coefficients. Unlike the simple regression case, however, these coefficients have somewhat complex closed-form expressions that are most naturally represented using matrix notation. For simplicity, we omit the derivation here; in practice, any statistical software can estimate these coefficients from data. In the next example we use R to fit a multiple regression model using birth weight data.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">
@@ -753,6 +752,9 @@ Note
 <div class="callout-body-container callout-body">
 <p><strong>Example: Multiple regression of newborns’ birth weight on mother’s age, race, and smoking status during pregnancy</strong></p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt <span class="sc">~</span> age <span class="sc">+</span> race <span class="sc">+</span> smoke, <span class="at">data =</span> birthwt)</span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(model5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output cell-output-stdout">
 <pre><code>
 Call:
@@ -790,15 +792,14 @@ F-statistic:  6.49 on 4 and 184 DF,  p-value: 6.592e-05</code></pre>
   other 55 12</code></pre>
 </div>
 </div>
-</div>
-</div>
-<p>Notice that in the multiple regression model, race and smoking remain statistically significant, and their coefficients are larger in absolute terms (now -444.069, -447.858, and -426.093, respectively) compared to those from the simple linear regression models. Fitting separate simple linear regression models for each predictor, we found that race and smoking were significantly associated with birth weight, while mother’s age was not. However, when all predictors were included simultaneously, the effects of race and smoking became larger in magnitude. This occurs because of confounding: in the simple models, the effect of each predictor was partially diluted by its correlation with the others. For example, although white mothers smoked more frequently than Black mothers in this sample (54% vs.&nbsp;38%, see Table above), babies born to Black mothers still had significantly lower birth weights even after controlling for smoking. This suggests that race has an independent effect on birth weight beyond what can be explained by smoking differences, likely reflecting unmeasured socioeconomic or biological factors. More broadly, this example highlights why fitting separate simple regression models is inadequate when predictors are correlated — the coefficients from simple models can be misleading, and only multiple regression allows us to isolate the effect of each predictor while holding the others constant.</p>
-</section>
+<p>Notice that in the multiple regression model, race and smoking remain statistically significant, and their coefficients are larger in absolute terms (now -444.069, -447.858, and -426.093, respectively) compared to those from the simple linear regression models. Fitting separate simple linear regression models for each predictor, we found that race and smoking were significantly associated with birth weight, while mother’s age was not. However, when all predictors were included simultaneously, the effects of race and smoking became larger in magnitude.</p>
+<p>This occurs because of confounding: in the simple models, the effect of each predictor was partially diluted by its correlation with the others. For example, although white mothers smoked more frequently than Black mothers in this sample (54% vs.&nbsp;38%, see Table above), babies born to Black mothers still had significantly lower birth weights even after controlling for smoking. This suggests that race has an independent effect on birth weight beyond what can be explained by smoking differences, likely reflecting unmeasured socioeconomic or biological factors. More broadly, this example highlights why fitting separate simple regression models is inadequate when predictors are correlated — the coefficients from simple models can be misleading, and only multiple regression allows us to isolate the effect of each predictor while holding the others constant.</p>
 <section id="additional-considerations-in-multiple-regression" class="level3" data-number="19.1.2">
 <h3 data-number="19.1.2" class="anchored" data-anchor-id="additional-considerations-in-multiple-regression"><span class="header-section-number">19.1.2</span> Additional Considerations in Multiple Regression</h3>
 <section id="is-there-an-association-between-the-response-and-the-predictors" class="level4" data-number="19.1.2.1">
 <h4 data-number="19.1.2.1" class="anchored" data-anchor-id="is-there-an-association-between-the-response-and-the-predictors"><span class="header-section-number">19.1.2.1</span> Is There an Association Between the Response and the Predictors?</h4>
-<p>In simple linear regression, we showed that we can test whether the coefficient of the linear predictor differs significantly from zero. We did this in <a href="Lec18.html#eq-8" class="quarto-xref">Equation&nbsp;<span>18.5</span></a> by testing the null hypothesis that the coefficient equals zero against the alternative that it does not. In the multiple regression setting with mm m predictors, we proceed similarly, but now we must ask whether the coefficients of <em>all</em> predictors are simultaneously equal to zero; i.e., β1=β2=⋯=βm=0*{1}=*==_{m}=0 β1​=β2​=⋯=βm​=0. The hypothesis test becomes:</p>
+<p>In simple linear regression, we showed that we can test whether the coefficient of the linear predictor differs significantly from zero. We did this in <a href="Lec18.html#eq-8" class="quarto-xref">Equation&nbsp;<span>18.5</span></a> by testing the null hypothesis that the coefficient equals zero against the alternative that it does not. In the multiple regression setting with <span class="math inline">\(m\)</span> predictors, we proceed similarly, but now we must ask whether the coefficients of <em>all</em> predictors are simultaneously equal to zero; i.e., <span class="math inline">\(\beta_{1}=\beta_{2}=\ldots=\beta_{m}=0\)</span>.</p>
+<p>The hypothesis test becomes:</p>
 <p><span id="eq-12"><span class="math display">\[\begin{align}
 H_{0} &amp;: \beta_{1}=\beta_{2}=\dots=\beta_{m}=0 \\
 &amp;\text{versus} \\
@@ -807,6 +808,42 @@ H_{a} &amp;: \text{At least one } \beta_{j} \text{ is non-zero}
 <p>This hypothesis test is performed by computing the <em>F-statistic</em>:</p>
 <p><span class="math display">\[F=\frac{(TSS-RSS)/m}{RSS/(n-m-1)},\]</span> where, as in the case of simple linear regression, <span class="math inline">\(TSS=\sum(y_{i}-\bar{y})^2\)</span> and <span class="math inline">\(RSS=\sum(y_{i}-\hat{y}_{i})^2\)</span>. If the linear model assumptions are correct, one can show that <span class="math inline">\(E\{RSS/(n-m-1)\}=\sigma^2\)</span> and that, provided <span class="math inline">\(H_{0}\)</span> is true, <span class="math inline">\(E\{(TSS-RSS)/m\}=\sigma^2\)</span>.</p>
 <p>Hence, when there is no relationship between the response and the predictors, one would expect the <em>F-statistic</em> to take a value close to 1. On the other hand, if <span class="math inline">\(H_{1}\)</span> is true, then <span class="math inline">\(E\{(TSS-RSS)/m\}&gt;\sigma^2\)</span>, so we expect <span class="math inline">\(F\)</span> to be greater than 1.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb12"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>Warning: package 'ggplot2' was built under R version 4.4.3</code></pre>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb14"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="co"># Choose three (df1, df2) pairs</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a>dfs <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">df1 =</span> <span class="fu">c</span>(<span class="dv">5</span>, <span class="dv">10</span>, <span class="dv">20</span>),</span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">df2 =</span> <span class="fu">c</span>(<span class="dv">10</span>, <span class="dv">20</span>, <span class="dv">50</span>),</span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">grp =</span> <span class="fu">c</span>(<span class="st">"F(5,10)"</span>, <span class="st">"F(10,20)"</span>, <span class="st">"F(20,50)"</span>)</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a><span class="co"># x-grid (adjust if needed)</span></span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">5</span>, <span class="at">length.out =</span> <span class="dv">2000</span>)</span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a><span class="co"># Build data for plotting</span></span>
+<span id="cb14-12"><a href="#cb14-12" aria-hidden="true" tabindex="-1"></a>plot_df <span class="ot">&lt;-</span> <span class="fu">do.call</span>(rbind, <span class="fu">lapply</span>(<span class="fu">seq_len</span>(<span class="fu">nrow</span>(dfs)), <span class="cf">function</span>(i) {</span>
+<span id="cb14-13"><a href="#cb14-13" aria-hidden="true" tabindex="-1"></a>  <span class="fu">data.frame</span>(</span>
+<span id="cb14-14"><a href="#cb14-14" aria-hidden="true" tabindex="-1"></a>    <span class="at">x =</span> x,</span>
+<span id="cb14-15"><a href="#cb14-15" aria-hidden="true" tabindex="-1"></a>    <span class="at">y =</span> <span class="fu">df</span>(x, <span class="at">df1 =</span> dfs<span class="sc">$</span>df1[i], <span class="at">df2 =</span> dfs<span class="sc">$</span>df2[i]),</span>
+<span id="cb14-16"><a href="#cb14-16" aria-hidden="true" tabindex="-1"></a>    <span class="at">grp =</span> dfs<span class="sc">$</span>grp[i]</span>
+<span id="cb14-17"><a href="#cb14-17" aria-hidden="true" tabindex="-1"></a>  )</span>
+<span id="cb14-18"><a href="#cb14-18" aria-hidden="true" tabindex="-1"></a>}))</span>
+<span id="cb14-19"><a href="#cb14-19" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-20"><a href="#cb14-20" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(plot_df, <span class="fu">aes</span>(<span class="at">x =</span> x, <span class="at">y =</span> y, <span class="at">color =</span> grp)) <span class="sc">+</span></span>
+<span id="cb14-21"><a href="#cb14-21" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>(<span class="at">linewidth =</span> <span class="dv">1</span>) <span class="sc">+</span></span>
+<span id="cb14-22"><a href="#cb14-22" aria-hidden="true" tabindex="-1"></a>  <span class="fu">labs</span>(<span class="at">x =</span> <span class="st">"x"</span>, <span class="at">y =</span> <span class="st">"Density"</span>, <span class="at">color =</span> <span class="st">"Degrees of freedom"</span>) <span class="sc">+</span></span>
+<span id="cb14-23"><a href="#cb14-23" aria-hidden="true" tabindex="-1"></a>  <span class="fu">theme_minimal</span>()</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec19_files/figure-html/plot-f-3dfs-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 <p>In the previous multiple regression example, the <em>F</em>-statistic was 6.49 on 4 and 184 degrees of freedom, which is significantly larger than 1 (<span class="math inline">\(p\)</span>-value <span class="math inline">\(&lt; 0.01\)</span>). Compare this with the value obtained by fitting the model with age as the sole predictor, where the <em>F</em>-statistic was 1.538 on 1 and 187 degrees of freedom — barely larger than 1 and therefore not statistically significant (<span class="math inline">\(p\)</span>-value <span class="math inline">\(= 0.2165\)</span>). This last result implies that a model with mother’s age as the only predictor fails to explain the variation in birth weight.</p>
 <p>The <em>F</em>-statistic approach for testing any association between the predictors and the response works well when <span class="math inline">\(m\)</span> is relatively small, and certainly smaller than <span class="math inline">\(n\)</span>. However, when the number of predictors is large and <span class="math inline">\(m &gt; n\)</span>, there are more coefficients <span class="math inline">\(\beta_{j}\)</span> to estimate than observations available to estimate them. In this case, the multiple linear regression model cannot be fit using least squares, and therefore the <em>F</em>-statistic cannot be used. When <span class="math inline">\(m\)</span> is too large, alternative approaches are required, such as <em>forward selection</em>, which we discuss in the next section.</p>
 </section>
@@ -833,7 +870,7 @@ H_{a} &amp;: \text{At least one } \beta_{j} \text{ is non-zero}
 <h4 data-number="19.1.2.4" class="anchored" data-anchor-id="predictions"><span class="header-section-number">19.1.2.4</span> Predictions</h4>
 <p>One we have fit the multiple regression model, it is straighforward to apply <span class="quarto-unresolved-ref">?eq-10</span> in order to predict the response Y on the basis of a set of values for the predictors <span class="math inline">\(X_{1}, X_{1}, \dots, X_{m}\)</span>. In R we can estimate prediction from the model using the followin code:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb11"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(model5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb15"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>fitted_values <span class="ot">&lt;-</span> <span class="fu">predict</span>(model5)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
 <p>However, there are three sorts of uncertainty associated with this prediction:</p>
 <ol type="1">
@@ -843,6 +880,9 @@ H_{a} &amp;: \text{At least one } \beta_{j} \text{ is non-zero}
 
 
 </section>
+</section>
+</div>
+</div>
 </section>
 </section>
 
