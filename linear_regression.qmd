@@ -372,7 +372,7 @@ fitted_values <- predict(model5)
 
 However, there are three sorts of uncertainty associated with this prediction: 
 
-1. The cioefficient estimates $\hat{\beta}_{0}, \hat{\beta}_{1}, \dots, \hat{\beta}_{m}$ are estimates for $\beta_{0}, \beta_{1}, \dots, \beta_{m}$. Therefore, they are only estimates for the true population regression plane:
+1. The coefficient estimates $\hat{\beta}_{0}, \hat{\beta}_{1}, \dots, \hat{\beta}_{m}$ are estimates for $\beta_{0}, \beta_{1}, \dots, \beta_{m}$. Therefore, they are only estimates for the true population regression plane:
 $$f(X)=\beta_{0}+\beta_{1}X_{1}+\beta_{2}X_{2}+\dots+\beta_{m}X_{m}$$
 Therefore, we can estimate confidence intervals to evaluate how far is \hat{Y} from $f(X)$. 
 

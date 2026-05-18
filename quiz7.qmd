@@ -1,0 +1,5 @@
+# Quiz 7 - May 22
+
+Quiz 7 will cover linear regression, correlation and multiple linear regression.
+
+Duration: 10 minutes with 10 minutes extension

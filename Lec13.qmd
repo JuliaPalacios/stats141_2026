@@ -375,5 +375,3 @@ Back to the coin toss: we didn’t reject “the coin is fair” at 5% even thou
 These violate proper hypothesis testing, but they’re tempting with messy data (many preprocessing and modeling choices). The key is transparency: report what you tried, how you did it, and share code—only then is a p-value interpretable.
 
 Keep in mind that our test is never attempting to prove the null hypothesis, we are simply saying whether there is evidence foor it to be false.
-
-

@@ -98,7 +98,7 @@ A natural question about the linear regression model is how accurate the coeffic
         
 $$SE(\hat{\beta}_{0})^{2}=\sigma^{2}\left[\frac{1}{n}+\frac{\bar{x}^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}\right], \quad SE(\hat{\beta}_{1})^{2}=\frac{\sigma^{2}}{\sum_{i=1}^{n}(x_{i}-\bar{x})^{2}}$$ {#eq-5}
           
-where $\sigma^{2}=Var(\epsilon)$ is the variance of the error terms, which is unknown but can be estimated empirically via the RSE defined as follows:
+where $\sigma^{2}=Var(\epsilon)$ is the variance of the error terms, which is unknown but can be estimated empirically via the RSE (residual standard error) defined as follows:
             
 $$
 RSE=\sqrt{\frac{RSS}{n-2}}
@@ -108,15 +108,15 @@ Strictly, these equations are valid only when the errors $\epsilon_{i}$ for each
             
 Notice that unlike $e_{i}$, which are the observed residuals obtained from the fitted model, $\epsilon_{i}$ are the underlying population errors that arise when approximating the relationship between $X$ and $Y$ through a linear model, and are therefore unobserved.
             
-Once we obtain the standard errors of the estimates, we can construct *confidence intervals*. A 95% confidence interval is defined as a range of values such that, with 95% probability, the range will contain the true unknown value of the parameter. Confidence intervals are constructed from the data and have the property that if we take repeated samples and construct a confidence interval for each sample, 95% of those intervals will contain the true unknown value of the parameter. For the linear regression model, the 95% confidence intervals for $\beta_{0}$ and $\beta_{1}$ are approximated as:
+Once we obtain the standard errors of the estimates, we can construct *confidence intervals*. For the linear regression model, the 95% confidence intervals for $\beta_{0}$ and $\beta_{1}$ are approximated as:
               
 $$\left[\hat{\beta}_{0}-2\cdot SE(\hat{\beta}_{0}),\ \hat{\beta}_{0}+2\cdot SE(\hat{\beta}_{0})\right]$$ {#eq-6} $$\left[\hat{\beta}_{1}-2\cdot SE(\hat{\beta}_{1}),\ \hat{\beta}_{1}+2\cdot SE(\hat{\beta}_{1})\right]$$ {#eq-7}
                 
 In the previous example, the standard errors for the intercept and slope were 0.6923 and 0.2503, respectively. The associated confidence intervals are therefore:
                   
- ```{r}
+```{r}
  confint(model1)
- ```
+```
  
 We are thus 95% confident that for every 1 kg increase in body weight, the true average increase in heart weight is between 3.54 and 4.53 grams.
                 
@@ -132,6 +132,6 @@ To test the null hypothesis, we need to determine how far $\hat{\beta}_{1}$ is f
 
 $$t=\frac{\hat{\beta}_{1}-0}{SE(\hat{\beta}_{1})},$$ {#eq-9}
 
-which measures how many standard deviations $\hat{\beta}_{1}$ is from zero. If there is no relationship between $X$ and $Y$, we expect $t$ to follow a $t$-distribution with $n-2$ degrees of freedom. The larger the observed value of $t$ relative to the theoretical $t$-distribution, the lower the probability that $\beta_{1} = 0$. This probability is called the *p-value*, which in our example was practically zero ($<2\times10^{-16}$), providing strong evidence that $\hat{\beta}_{1} \neq 0$, or equivalently that it is *statistically significant*. A small *p-value* indicates that it is unlikely to observe such a substantial association between the predictor and the response by chance alone. We therefore reject the null hypothesis when the *p-value* is sufficiently small — typically below 0.05 or 0.01.
+which measures how many standard deviations $\hat{\beta}_{1}$ is from zero. If there is no relationship between $X$ and $Y$, we expect $t$ to follow a $t$-distribution with $n-2$ degrees of freedom. In our example the p-value was practically zero ($<2\times10^{-16}$), providing strong evidence that $\hat{\beta}_{1} \neq 0$, or equivalently that it is *statistically significant*. A small *p-value* indicates that it is unlikely to observe such a substantial association between the predictor and the response by chance alone. We therefore reject the null hypothesis when the *p-value* is sufficiently small — typically below 0.05 or 0.01.
 
 

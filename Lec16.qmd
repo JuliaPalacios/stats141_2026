@@ -113,8 +113,7 @@ with
 
 $$
 SE_{\tilde{p}}=\sqrt{\frac{\tilde{p}(1-\tilde{p})}{n+4}}=0.033
-$$ and 95% confidence interval:
-$$
+$$ and 95% confidence interval: $$
 \hat{p}\pm 1.96SE_\tilde{p}
 $$
 
@@ -154,10 +153,12 @@ Where $\text{Observed}_{i}$ is the frequency of individuals observed in the $i$-
 
 ::: {.callout-note icon="false"}
 ## Example: the proportional model
-We would expect that babies should be born at the same frequency on all seven days of the week. To test this, we obtained the number of babies born on each day of the week in a random sample of 180 births from 2016. 
+
+We would expect that babies should be born at the same frequency on all seven days of the week. To test this, we obtained the number of babies born on each day of the week in a random sample of 180 births from 2016.
 :::
 
 The observe data
+
 ```{r}
 #| warning: false
 day<-c("Sunday","Monday","Tuesday","Wednesday","Thursday","Friday","Saturday")
@@ -173,13 +174,12 @@ ggplot(df, aes(x = day, y = obs)) +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))
 ```
 
-Under the proportional model (null hypothesis), the number of births on Monday is proportional to the number of Mondays in 2016. 
-$H_{0}:$ The frequency of births on each day of the week is proportional to the number of times that day occurs in the year
-
+Under the proportional model (null hypothesis), the number of births on Monday is proportional to the number of Mondays in 2016. $H_{0}:$ The frequency of births on each day of the week is proportional to the number of times that day occurs in the year
 
 $H_{A}:$ The frequency of births on each day of the week is NOT proportional to the number of times that day occurs in the year
 
 The expected proportion under the null is then:
+
 ```{r}
 exp<-c(52,52,52,52,52,53,53)*180/366
 
@@ -228,6 +228,7 @@ For the $\chi^2$ goodness-of-fit test, the p-value is the probability of getting
 pval<-1-pchisq(chi_square,df=6)
 pval
 ```
+
 At the standard significance level of $\alpha=0.05$, such a small p-value leads us to reject the null hypothesis.
 
 Assumptions:
@@ -240,12 +241,12 @@ Assumptions:
 
 If one of these conditions is not met, then we can combine some of the categories with small expected frequencies.
 
-
 ## Goodness-of-fit when there are 2 categories
 
 ::: {.callout-note icon="false"}
 ## Example: migraine headache
-Patients who suffered from moderate to severe migraine headache took part in a double-blind clinical trial to assess an experimental surgery. A group of 75 patients were randomly assigned to receive either the real surgery on migraine trigger sites (n=49) or a sham surgery (n=26) in which an incision was made but no further procedure was performed. The surgeons hoped that patients would experience a substantial reduction in migraine headaches. 
+
+Patients who suffered from moderate to severe migraine headache took part in a double-blind clinical trial to assess an experimental surgery. A group of 75 patients were randomly assigned to receive either the real surgery on migraine trigger sites (n=49) or a sham surgery (n=26) in which an incision was made but no further procedure was performed. The surgeons hoped that patients would experience a substantial reduction in migraine headaches.
 :::
 
 ```{r}
@@ -265,6 +266,7 @@ tab <- matrix(
 #tab
 addmargins(tab)  # show row/column totals
 ```
+
 The focus of interest in a **contingency table** is the dependence or association between the column variable and the row variable (between treatment and response). Under the null hypothesis, there is no such association.
 
 $H_{0}:P(\text{Success}\mid \text{Real})=P(\text{Success}\mid \text{Sham})$
@@ -272,6 +274,7 @@ $H_{0}:P(\text{Success}\mid \text{Real})=P(\text{Success}\mid \text{Sham})$
 $H_{A}:P(\text{Success}\mid \text{Real}) \neq P(\text{Success}\mid \text{Sham})$
 
 Under the null, the estimated success rate is $56/75=0.746$ and so, th expected values are:
+
 ```{r}
 exp<-matrix(0,nrow=2,ncol=2)
 exp[1,]<-c(49*56/75,26*56/75)
@@ -289,13 +292,15 @@ chi
 pval<-1-pchisq(chi,df=1)
 pval
 ```
+
 Thus, we reject the null and find that the data provide sufficient evidence to conclude that the real surgery is better than the sham surgery for reducing migraine headache.
 
 ## Independence and association
 
 ::: {.callout-note icon="false"}
 ## Example: hair color and eye color
-To study the relationship between hair color and eye color in a German population, an anthropologist observed a sample of 6800 men, with the following results:  
+
+To study the relationship between hair color and eye color in a German population, an anthropologist observed a sample of 6800 men, with the following results:
 :::
 
 ```{r}
@@ -313,6 +318,7 @@ tab <- matrix(
 addmargins(tab)
 
 ```
+
 $H_{0}:$ Eye color is independent of hair color
 
 $H_{A}:$ Eye color and is not independent of hair color
@@ -333,28 +339,22 @@ pval
 
 ```
 
-
 We reject the null hypothesis.
-
 
 ## The Chi-Square test for the $r \times k$ table
 
-The goal of statistical analysis of an $r \times k$ contingency table is to investigate the relationship between the row and column variables. In this situation, the expected frequencies are calculated as
-$$
+The goal of statistical analysis of an $r \times k$ contingency table is to investigate the relationship between the row and column variables. In this situation, the expected frequencies are calculated as $$
 e= \frac{(\text{Row total})\times (\text{Column total})}{\text{Grand total}}
 $$
 
-Critical values for the chi-square test are obtained with 
-$$
+Critical values for the chi-square test are obtained with $$
 df = (r-1) \times (k-1)
 $$
 
-
 ::: {.callout-note icon="false"}
 ## Example: Plover nesting
-Wildlife ecologists monitored the breeding habitats of mountain
-plovers for three years and made note of where the plovers nested. They found 66 nests on agricultural fields (AF), 67 nests in shortgrass prairie dog habitat (PD), and 20 nests on ohter grassland (G). The nesting choices varied across the years for these 153 sampled plover broods. The observe data is:
 
+Wildlife ecologists monitored the breeding habitats of mountain plovers for three years and made note of where the plovers nested. They found 66 nests on agricultural fields (AF), 67 nests in shortgrass prairie dog habitat (PD), and 20 nests on ohter grassland (G). The nesting choices varied across the years for these 153 sampled plover broods. The observe data is:
 :::
 
 ```{r}
@@ -373,6 +373,7 @@ tab <- matrix(
 addmargins(tab)
 
 ```
+
 The expected frequencies are then
 
 ```{r}
@@ -389,7 +390,6 @@ exp
 
 ```
 
-
 ```{r}
 chi<-sum(((exp-tab)^2)/exp)
 chi
@@ -403,6 +403,4 @@ The chi-square shows that there is significant evidence that the nesting locatio
 
 Shortcut:
 
-```{r}
-chisq.test(tab)
-``
+\``{r} chisq.test(tab)`
