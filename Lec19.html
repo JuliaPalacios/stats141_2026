@@ -538,6 +538,7 @@ window.Quarto = {
   <li><a href="#multiple-linear-regression" id="toc-multiple-linear-regression" class="nav-link" data-scroll-target="#multiple-linear-regression"><span class="header-section-number">19.1</span> Multiple Linear Regression</a>
   <ul class="collapse">
   <li><a href="#estimating-the-regression-coefficients" id="toc-estimating-the-regression-coefficients" class="nav-link" data-scroll-target="#estimating-the-regression-coefficients"><span class="header-section-number">19.1.1</span> Estimating the Regression Coefficients</a></li>
+  <li><a href="#additional-considerations-in-multiple-regression" id="toc-additional-considerations-in-multiple-regression" class="nav-link" data-scroll-target="#additional-considerations-in-multiple-regression"><span class="header-section-number">19.1.2</span> Additional Considerations in Multiple Regression</a></li>
   </ul></li>
   </ul>
 </nav>
@@ -756,7 +757,9 @@ Note
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p><strong>Example: Multiple regression of newborns’ birth weight on mother’s age, race, and smoking status during pregnancy</strong></p>
+<p><strong>Example: Multiple regression</strong> We are interested in regressing newborns’ birth weight on mother’s age, race, and smoking status during pregnancy.</p>
+</div>
+</div>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb8"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
 <span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>model5 <span class="ot">&lt;-</span> <span class="fu">lm</span>(bwt <span class="sc">~</span> age <span class="sc">+</span> race <span class="sc">+</span> smoke, <span class="at">data =</span> birthwt)</span>
@@ -800,6 +803,7 @@ F-statistic:  6.49 on 4 and 184 DF,  p-value: 6.592e-05</code></pre>
 </div>
 <p>Notice that in the multiple regression model, race and smoking remain statistically significant, and their coefficients are larger in absolute terms (now -444.069, -447.858, and -426.093, respectively) compared to those from the simple linear regression models. Fitting separate simple linear regression models for each predictor, we found that race and smoking were significantly associated with birth weight, while mother’s age was not. However, when all predictors were included simultaneously, the effects of race and smoking became larger in magnitude.</p>
 <p>This occurs because of confounding: in the simple models, the effect of each predictor was partially diluted by its correlation with the others. For example, although white mothers smoked more frequently than Black mothers in this sample (54% vs.&nbsp;38%, see Table above), babies born to Black mothers still had significantly lower birth weights even after controlling for smoking. This suggests that race has an independent effect on birth weight beyond what can be explained by smoking differences, likely reflecting unmeasured socioeconomic or biological factors. More broadly, this example highlights why fitting separate simple regression models is inadequate when predictors are correlated — the coefficients from simple models can be misleading, and only multiple regression allows us to isolate the effect of each predictor while holding the others constant.</p>
+</section>
 <section id="additional-considerations-in-multiple-regression" class="level3" data-number="19.1.2">
 <h3 data-number="19.1.2" class="anchored" data-anchor-id="additional-considerations-in-multiple-regression"><span class="header-section-number">19.1.2</span> Additional Considerations in Multiple Regression</h3>
 <section id="is-there-an-association-between-the-response-and-the-predictors" class="level4" data-number="19.1.2.1">
@@ -886,9 +890,6 @@ H_{a} &amp;: \text{At least one } \beta_{j} \text{ is non-zero}
 
 
 </section>
-</section>
-</div>
-</div>
 </section>
 </section>
 
