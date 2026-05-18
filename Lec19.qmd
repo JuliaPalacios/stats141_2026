@@ -151,7 +151,8 @@ RSS &= \sum_{i=1}^{n} (y_{i}-\hat{y}_{i})^{2} \\
 The values $\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}$ that minimize @eq-11 are the multiple least squares regression coefficients. Unlike the simple regression case, however, these coefficients have somewhat complex closed-form expressions that are most naturally represented using matrix notation. For simplicity, we omit the derivation here; in practice, any statistical software can estimate these coefficients from data. In the next example we use R to fit a multiple regression model using birth weight data.
 
 ::: {.callout-note icon="false"}
-**Example: Multiple regression of newborns' birth weight on mother's age, race, and smoking status during pregnancy**
+**Example: Multiple regression** We are interested in regressing newborns' birth weight on mother's age, race, and smoking status during pregnancy.
+:::
 
 ```{r}
 #| warning: false
