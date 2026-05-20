@@ -46,6 +46,7 @@ book:
         - Week7A.qmd
         - Week7B.qmd
         - Week7C.qmd
+        - Week8A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 

@@ -1,0 +1,41 @@
+# Activity 16 {#sec-week2}
+
+Name:
+
+
+
+1. We will first use the Boston data set, which records medv (median house value) for 506 census tracts in Boston. Use the lm function. to fit a simple linear regression model, with medv as the response and lstat (percent of households with low socioeconomic status) as the predictor. Plot the scatterplot and state your predicted model?
+
+```{r}
+library(MASS)
+library(ISLR2)
+
+
+```
+
+2. You can obtain a confidence interval for the coefficient estimates with the command confint(lm.out). How do you interpret these intervals?
+
+
+3. The predict function can be used to produce confidence intervals and prediction intervals for the prediction of medv for a given value of lstat. Obtain prediction intervals for lstat of 5,10 and 15. 
+```{r}
+#predict(lm.out,data.frame(lstat=(c(5,10,15))),interval="confidence")
+```
+
+4. Add the regression line to your plot
+
+
+5. Now regress medv on lstat and age. What is your predicted model? What can you conclude?
+
+
+6. Now we will try to predict per capita crime rate using the other variables ofor the same Boston data set.
+
+(a) For each preditor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Creaste some plots to back up your assertions.
+
+(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_{0}: \beta_{j}=0$?
+
+
+(c) How do your results from (a) compare to your results from (b)? 
+
+(d) Is there evidene of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form
+$Y=\beta_{0}+\beta_{1}X+\beta_{2}X^2+\beta_{3}X^3+\epsilon$
+
