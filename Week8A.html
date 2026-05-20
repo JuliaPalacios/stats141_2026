@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>14&nbsp; Multiple testing – Stats 141. Introduction to Statistics for Biology</title>
+<title>35&nbsp; Activity 16 – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Lec15.html" rel="next">
-<link href="./lec13.html" rel="prev">
+<link href="./summary.html" rel="next">
+<link href="./Week7C.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec14.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8A.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Activity 16</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -275,7 +275,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./lec14.html" class="sidebar-item-text sidebar-link active">
+  <a href="./lec14.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing</span></span></a>
   </div>
 </li>
@@ -412,7 +412,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week8A.html" class="sidebar-item-text sidebar-link">
+  <a href="./Week8A.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Activity 16</span></span></a>
   </div>
 </li>
@@ -535,22 +535,15 @@ window.Quarto = {
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
-        <nav id="TOC" role="doc-toc" class="toc-active">
-    <h2 id="toc-title">Table of contents</h2>
-   
-  <ul>
-  <li><a href="#the-family-wise-error-rate" id="toc-the-family-wise-error-rate" class="nav-link active" data-scroll-target="#the-family-wise-error-rate"><span class="header-section-number">14.1</span> The family wise error rate</a></li>
-  <li><a href="#false-discovery-rate" id="toc-false-discovery-rate" class="nav-link" data-scroll-target="#false-discovery-rate"><span class="header-section-number">14.2</span> False discovery rate</a></li>
-  </ul>
-</nav>
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+        
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./lec14.html"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8A.html"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Activity 16</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">14</span>&nbsp; <span class="chapter-title">Multiple testing</span></h1>
+<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">35</span>&nbsp; <span class="chapter-title">Activity 16</span></span></h1>
 </div>
 
 
@@ -567,174 +560,43 @@ window.Quarto = {
 </header>
 
 
-<p>Multiple testing problem: If I test <span class="math inline">\(n\)</span> true null hypotheses at level <span class="math inline">\(\alpha\)</span>, then on average I will still (falsely) reject <span class="math inline">\(\alpha\)</span>n of them.</p>
-<p>Examples:</p>
-<ul>
-<li><p>Test the safety of a drug in terms of dozen different side effects</p></li>
-<li><p>Test whether there is a <a href="https://xkcd.com/882/">link between acne and jelly beans</a></p></li>
-<li><p>Test whether a disease is related to 10,000 different genes</p></li>
-</ul>
-<div class="quarto-figure quarto-figure-center">
-<figure class="figure">
-<p><img src="./Figures/Manhattan.png" class="img-fluid figure-img" style="width:90.0%"></p>
-<figcaption>Manhattan plot</figcaption>
-</figure>
-</div>
-<p>Consider the number of errors that can occur when testing <span class="math inline">\(m\)</span> multiple hypotheses:</p>
-<table class="caption-top table">
-<colgroup>
-<col style="width: 26%">
-<col style="width: 24%">
-<col style="width: 24%">
-<col style="width: 24%">
-</colgroup>
-<thead>
-<tr class="header">
-<th style="text-align: left;">Truth / Decision</th>
-<th style="text-align: left;">Reject <span class="math inline">\(H_0\)</span></th>
-<th style="text-align: left;">Fail to reject <span class="math inline">\(H_0\)</span></th>
-<th style="text-align: left;">Total</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td style="text-align: left;"><span class="math inline">\(H_0\)</span> is true</td>
-<td style="text-align: left;"><span class="math inline">\(V\)</span> False positives</td>
-<td style="text-align: left;"><span class="math inline">\(U\)</span> (No error)</td>
-<td style="text-align: left;"><span class="math inline">\(m_{0}\)</span></td>
-</tr>
-<tr class="even">
-<td style="text-align: left;"><span class="math inline">\(H_0\)</span> is false (<span class="math inline">\(H_1\)</span> true)</td>
-<td style="text-align: left;"><span class="math inline">\(S\)</span> (correct)</td>
-<td style="text-align: left;"><span class="math inline">\(T\)</span> False negative</td>
-<td style="text-align: left;"><span class="math inline">\(m_{1}\)</span></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left;">Total</td>
-<td style="text-align: left;"><span class="math inline">\(R\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(m-R\)</span></td>
-<td style="text-align: left;"><span class="math inline">\(m\)</span></td>
-</tr>
-</tbody>
-</table>
-<p>What are some other ways we can think of controlling type I and II errors?</p>
-<section id="the-family-wise-error-rate" class="level2" data-number="14.1">
-<h2 data-number="14.1" class="anchored" data-anchor-id="the-family-wise-error-rate"><span class="header-section-number">14.1</span> The family wise error rate</h2>
-<p>The family wise error rate (FWER) is the probability that that we make at least one false positive i.e <span class="math display">\[\begin{align}
-\text{P}(V&gt;0)&amp; =1-\text{P(no rejection of any of } m_{0} \text{ nulls})\\
-&amp;=1-(1-\alpha)^{m_{0}}\rightarrow 1 \text{ as } m_{0}\rightarrow \infty
-\end{align}\]</span></p>
-<p><strong>Bonferroni method</strong> is a method for controlling FWER by adjusting the value of <span class="math inline">\(\alpha\)</span> for a given <span class="math inline">\(m_{0}\)</span>. However we usually do not know <span class="math inline">\(m_{0}\)</span>. Instead we can use <span class="math inline">\(m\)</span> and set <span class="math display">\[\alpha^{*}=\alpha/m\]</span></p>
-<p>For eample, if we typically use the significance level <span class="math inline">\(\alpha=0.05\)</span> when carrying out a single test, then to carry out 13 separate test we should use significance level <span class="math inline">\(\alpha^{*}=0.05/12=0.00417\)</span> instead.</p>
-<p>Bonferroni controls FWER at level <span class="math inline">\(\alpha\)</span> if <span class="math inline">\(P(V&gt;0)\leq \alpha\)</span>.</p>
-<p><span class="math display">\[\begin{align}
-P(V&gt;0) &amp; =P[(\text{reject } H^{(1)}_{0}) \cup (\text{reject } H^{(2)}_{0})\cup\ldots\cup (\text{reject } H^{(m_{0})}_{0})]\\
-&amp; \leq P[(\text{reject }H^{(1)}_{0})]+\dots+P[(\text{reject }H^{(m_{0})}_{0})]\\
-&amp;=\frac{\alpha}{m}+\ldots+\frac{\alpha}{m}=\frac{\alpha m_{0}}{m}\leq \alpha
-\end{align}
-\]</span></p>
-<p>Often FWER control is too stringent (conservative). We will now see that there are more nuanced methods of controlling our type I error.</p>
-</section>
-<section id="false-discovery-rate" class="level2" data-number="14.2">
-<h2 data-number="14.2" class="anchored" data-anchor-id="false-discovery-rate"><span class="header-section-number">14.2</span> False discovery rate</h2>
-<p><strong>False discovery rate</strong> control helps filter out results that look significant but are likely false positives.</p>
-<p>To use this approach, carry out all of the multiple tests at significance <span class="math inline">\(\alpha\)</span>. Collect all significant tests (i.e all such that <span class="math inline">\(p-value\leq \alpha\)</span>). We call this subset of tests the <strong>discoveries</strong>.</p>
-<p>The FDR estimates the proportion of discoveries that are false positives.</p>
-<p><span class="math display">\[\mathrm{FDR} = \mathbb{E}\left[\frac{V}{\max(R,1)}\right]\]</span></p>
-<p>where<br>
-- <span class="math inline">\(R\)</span> = number of rejected null hypotheses (“discoveries”),<br>
-- <span class="math inline">\(V\)</span> = number of those rejections that are actually wrong (false discoveries / false positives).</p>
-<p>FDR is the <em>expected proportion of false positives among all findings you call significant</em>.</p>
-<p>So, controlling FDR at (say) 5% means: <em>on average, no more than about 5% of your reported discoveries are false positives.</em></p>
-<p>The <strong>Benjamini-Hochberg algorithm</strong> is a method for controlling the FDR. The procedure has these steps:</p>
+<p>Name:</p>
 <ol type="1">
-<li><p>First order the p-values in increasing order</p></li>
-<li><p>Then for some choice of <span class="math inline">\(q\)</span> target FDR, find the largest value of <span class="math inline">\(k\)</span> that satisfies:</p>
-<p><span class="math display">\[
-p_{(k)} \leq q k/m
-\]</span></p></li>
-<li><p>Finally reject the hypotheses <span class="math inline">\(1,...,k\)</span></p></li>
+<li>We will first use the Boston data set, which records medv (median house value) for 506 census tracts in Boston. Use the lm function. to fit a simple linear regression model, with medv as the response and lstat (percent of households with low socioeconomic status) as the predictor. Plot the scatterplot and state your predicted model?</li>
 </ol>
-<p>For example: The following dataset contains many p-values for testing differences in gene expression in human airway smooth muscle cell lines with and without treatment with dexamethasone, a synthetic glucocorticoid.</p>
-<p>Let’s check the histogram of the p-values. Notice it is a mixture of two components:</p>
-<p>null: the p-values resulting from the test for which the null hypothesis is true.</p>
-<p>alt: the p-values resulting from the tests for which the null hypotheis is not true.</p>
-<p>The relative size of these two components depends on the fraction of true nulls and true alternatives.</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>pvalues <span class="ot">&lt;-</span> <span class="fu">readRDS</span>(<span class="st">"pvalues.rds"</span>)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ggplot2)</span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="at">mapping =</span> <span class="fu">aes</span>(<span class="at">x =</span> pvalues)) <span class="sc">+</span></span>
-<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_histogram</span>(<span class="at">binwidth =</span> <span class="fl">0.025</span>, <span class="at">boundary =</span> <span class="dv">0</span>) <span class="sc">+</span></span>
-<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="fu">xlim</span>(<span class="dv">0</span>, <span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lec14_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stderr">
+<pre><code>
+Attaching package: 'ISLR2'</code></pre>
+</div>
+<div class="cell-output cell-output-stderr">
+<pre><code>The following object is masked from 'package:MASS':
+
+    Boston</code></pre>
 </div>
 </div>
-</div>
-<p>We can now apply the BH procedure. There are <span class="math inline">\(&gt;30000\)</span> p-values, we will visualize the smallest 7000 and choose a FDR of <span class="math inline">\(q=0.10\)</span></p>
+<ol start="2" type="1">
+<li><p>You can obtain a confidence interval for the coefficient estimates with the command confint(lm.out). How do you interpret these intervals?</p></li>
+<li><p>The predict function can be used to produce confidence intervals and prediction intervals for the prediction of medv for a given value of lstat. Obtain prediction intervals for lstat of 5,10 and 15.</p></li>
+</ol>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a> <span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
-<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a> q  <span class="ot">=</span> <span class="fl">0.10</span></span>
-<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a> awde <span class="ot">&lt;-</span> <span class="fu">tibble</span>(<span class="at">pvalue =</span> pvalues) <span class="sc">%&gt;%</span></span>
-<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">rank =</span> <span class="fu">rank</span>(pvalue, <span class="at">ties.method =</span> <span class="st">"first"</span>))</span>
-<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a>m <span class="ot">&lt;-</span> <span class="fu">length</span>(pvalues)</span>
-<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a><span class="fu">ggplot</span>(<span class="fu">filter</span>(awde, rank <span class="sc">&lt;=</span> <span class="dv">7000</span>), <span class="fu">aes</span>(<span class="at">x =</span> rank, <span class="at">y =</span> pvalue)) <span class="sc">+</span></span>
-<span id="cb2-9"><a href="#cb2-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_line</span>() <span class="sc">+</span></span>
-<span id="cb2-10"><a href="#cb2-10" aria-hidden="true" tabindex="-1"></a>  <span class="fu">geom_abline</span>(<span class="at">slope =</span> q <span class="sc">/</span> m, <span class="at">intercept =</span> <span class="dv">0</span>, <span class="at">col =</span> <span class="st">"red"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="lec14_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict(lm.out,data.frame(lstat=(c(5,10,15))),interval="confidence")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 </div>
-</div>
-</div>
-<p>We will then find the rightmost point where teh black (our p-values) and red lines (slope <span class="math inline">\(q/m\)</span>) instersect. Then it rejects all tests to the left.</p>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a> kmax <span class="ot">=</span> <span class="fu">with</span>(<span class="fu">arrange</span>(awde, rank),</span>
-<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>          <span class="fu">last</span>(<span class="fu">which</span>(pvalue <span class="sc">&lt;=</span> q <span class="sc">*</span> rank <span class="sc">/</span> m)))</span>
-<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a> kmax</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stdout">
-<pre><code>[1] 4099</code></pre>
-</div>
-</div>
-<p>BH uses the fact that under the null, p-values behave like $Uniform(0,1)$</p>
-<ul>
-<li><p><strong>Under the null, small p-values are rare</strong> If a hypothesis is truly null <span class="math inline">\(P(p\leq t)=t\)</span>. So among <span class="math inline">\(m_{0}\)</span> true nulls, the expected number of <span class="math inline">\(p\)</span>-values below a cutoff t is about <span class="math inline">\(m_{0}t\)</span>.</p></li>
-<li><p><strong>If you reject everything with</strong> <span class="math inline">\(p\leq t\)</span>, the “false discoveries” scale like <span class="math inline">\(m_{0}t\)</span>. Let <span class="math inline">\(R\)</span> be the total number of rejections. Roughly:</p>
-<ul>
-<li><p>expected false rejections <span class="math inline">\(\approx m_{0}t\)</span></p></li>
-<li><p>total rejections = <span class="math inline">\(R\)</span></p></li>
-<li><p>So the false discovery proportion is roughly</p>
-<p><span class="math display">\[
-\frac{m_{0}t}{R}
-\]</span></p></li>
-<li><p>To keep this around <span class="math inline">\(q\)</span>, you would like <span class="math inline">\(t\approx \frac{qR}{m_{0}}\)</span></p></li>
-</ul></li>
-<li><p>BH replaces the unknown <span class="math inline">\(m_{0}\)</span> with a safe upper bound <span class="math inline">\(m\)</span> and so</p></li>
-<li><p><span class="math display">\[
-t \approx \frac{qR}{m}
-\]</span></p></li>
-<li><p>The step-up rule finds a self-consistent cutoff</p>
-<ul>
-<li><span class="math display">\[
-p_{(k)} \leq \frac{k}{m}q
-\]</span></li>
-</ul></li>
-<li></li>
-</ul>
-<p><strong>How it differs from</strong> <span class="math inline">\(\alpha\)</span>:<br>
-- <span class="math inline">\(\alpha\)</span> controls the chance of a false positive for a <strong>single</strong> test (or the per-test error rate).<br>
-- FDR controls the <em>mix</em> of errors among the set of <strong>all rejected</strong> hypotheses, which is typically more relevant in large-scale testing (genomics, A/B tests at scale, multiple endpoints, etc.).</p>
+<ol start="4" type="1">
+<li><p>Add the regression line to your plot</p></li>
+<li><p>Now regress medv on lstat and age. What is your predicted model? What can you conclude?</p></li>
+<li><p>Now we will try to predict per capita crime rate using the other variables ofor the same Boston data set.</p></li>
+</ol>
+<ol type="a">
+<li><p>For each preditor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Creaste some plots to back up your assertions.</p></li>
+<li><p>Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis <span class="math inline">\(H_{0}: \beta_{j}=0\)</span>?</p></li>
+<li><p>How do your results from (a) compare to your results from (b)?</p></li>
+<li><p>Is there evidene of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form <span class="math inline">\(Y=\beta_{0}+\beta_{1}X+\beta_{2}X^2+\beta_{3}X^3+\epsilon\)</span></p></li>
+</ol>
 
 
-</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -1139,13 +1001,13 @@ p_{(k)} \leq \frac{k}{m}q
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./lec13.html" class="pagination-link" aria-label="Hypothesis testing">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">13</span>&nbsp; <span class="chapter-title">Hypothesis testing</span></span>
+      <a href="./Week7C.html" class="pagination-link" aria-label="Activity 15">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">34</span>&nbsp; <span class="chapter-title">Activity 15</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Lec15.html" class="pagination-link" aria-label="WMW test and Paired t-test">
-        <span class="nav-page-text"><span class="chapter-number">15</span>&nbsp; <span class="chapter-title">WMW test and Paired t-test</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./summary.html" class="pagination-link" aria-label="Summary">
+        <span class="nav-page-text"><span class="chapter-number">36</span>&nbsp; <span class="chapter-title">Summary</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
