@@ -29,6 +29,7 @@ book:
         - Lec17.qmd
         - Lec18.qmd
         - Lec19.qmd
+        - Lec20.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
