@@ -1,0 +1,176 @@
+---
+title: "Logistic Regression"
+format: html
+bibliography: references.bib
+---
+
+
+Logistic regression is a special type of nonlinear regression developed for a binary response variable ($Y$), for example: 
+
+- Disease status: yes/no  
+- Treatment response: responder/non-responder  
+- Smoking: current smoker/not  
+- Mortality: dead/alive  
+
+A common use for logistic regression is to fit a dose-response curve, where mortality (or survival) of individuals (the response) is plotted agins the concentration of a adrug, toxin, or other chemical.
+
+If we tried linear regression on a 0/1 outcome, predicted values could fall outside $([0,1]$ and error assumptions would be violated. Logistic regression models the **probability** in a way that stays in $[0,1]$.
+
+---
+
+## The logistic model
+
+Let $Y \in \{0,1\}$ be the outcome and $X$ be a predictor (or a set of predictors). Define:
+
+$$
+p(x) = P(Y=1 \mid X=x)
+$$
+
+Logistic regression uses the **logit link**:
+
+$$
+\text{logit}(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x
+$$
+
+Equivalently, the predicted probability is:
+
+$$
+p(x) = \frac{1}{1 + \exp\left(-(\beta_0 + \beta_1 x)\right)}
+$$
+
+This creates an S-shaped curve mapping real numbers to probabilities.
+
+
+Example:
+```{r}
+beta0 <- -6
+beta1 <- 0.2
+x <- seq(0, 60, by = 1)
+p <- 1/(1 + exp(-(beta0 + beta1*x)))
+
+plot(x, p, type = "l", lwd = 2,
+     xlab = "x", ylab = "P(Y=1 | x)",
+     main = "Logistic regression S-curve")
+abline(h = c(0, 0.5, 1), lty = 3, col = "gray70")
+```
+
+
+
+### Log-odds interpretation
+
+$$
+\beta_1 = \text{change in log-odds of } Y=1 \text{ for a 1-unit increase in } x
+$$
+
+### Odds ratio interpretation
+
+Exponentiating gives an **odds ratio (OR)**:
+
+$$
+\exp(\beta_1) = \text{multiplicative change in odds for a 1-unit increase in } x
+$$
+
+- If $\exp(\beta_1)=1$: no association  
+- If $\exp(\beta_1)>1$: higher odds as $x$ increases  
+- If $\exp(\beta_1)<1$: lower odds as $x$ increases  
+
+**Example:** If $\exp(\beta_1)=1.50$, each 1-unit increase in $x$ is associated with **50% higher odds** of $Y=1$, holding other variables constant.
+
+---
+
+## Multiple logistic regression
+
+With multiple predictors:
+
+$$
+\text{logit}(p) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
+$$
+
+Interpretation of $\exp(\beta_j)$: adjusted odds ratio for $x_j$, **holding all other predictors fixed**.
+
+This is often used to adjust for confounding in observational studies.
+
+
+For example, we might model the probability of developing diabetes as a function of BMI and age
+```{r}
+#| warning: false
+library("dplyr")
+library(NHANES)
+NHANES<-NHANES %>%
+  mutate(has_diabetes=as.numeric(Diabetes == "Yes"))
+
+par(mfrow=c(1,2))
+    plot(NHANES$Age,NHANES$has_diabetes, xlab="Age",ylab="Diabetes status")
+    plot(NHANES$BMI,NHANES$has_diabetes, xlab="BMI",ylab="Diabetes status")
+    
+
+```
+We see that the probability that a subject has diabetes tends to increase as both a function of age and BMI.
+
+Which variable is more important: Age or BMI? We can use a multiple logistic regression model to model the probability of diabetes as a function of both predictors
+
+```{r}
+logreg<-glm(has_diabetes~BMI+Age, family="binomial",data=NHANES)
+summary(logreg)
+```
+
+Both predictors seem to be important. To interpret the findings, we might consider a visual display of predicted probabilities as 
+
+```{r}
+library(modelr)
+fake_grid<- data_grid(
+  NHANES,
+  Age =seq_range(Age,100),
+  BMI=seq_range(BMI,100)
+)
+
+y_hats<- fake_grid %>%
+  mutate(y_hat=predict(logreg,newdata=.,type="response"))
+head(y_hats,1)
+
+
+```
+
+## Interpreting coefficients
+
+The predicted probability from the model is given by:
+$$
+\pi_{i}=P(y_{i}=1\mid Age_{i},BMI_{i})=\frac{e^{\beta_{0}+\beta_{1}Age_{i}+\beta_{2}BMI_{i}}}{1+e^{\beta_{0}+\beta_{1}Age_{i}+\beta_{2}BMI_{i}}}
+$$
+Let's consider a hypothetical 0 year old with a BMI of 12.0. Their predicted probability of having diabetes would be calculated as a function of the regression coefficients:
+
+```{r}
+linear_component<-c(1,12.9,0)%*%coef(logreg)
+exp(linear_component)/(1+exp(linear_component))
+
+```
+The predicted probability is very small, what about a 60 year old with a BMI of 25?
+
+
+```{r}
+linear_component<-c(1,25,60)%*%coef(logreg)
+exp(linear_component)/(1+exp(linear_component))
+
+```
+
+The predicted probability is now 9.2%
+
+---
+
+## Categorical predictors
+
+Suppose sex is coded as:
+
+- Female = 0 (reference)
+- Male = 1
+
+Then:
+
+$$
+\exp(\beta_{\text{male}}) = \frac{\text{odds of } Y=1 \text{ for males}}{\text{odds of } Y=1 \text{ for females}}
+$$
+
+For predictors with more than two categories, use indicator (dummy) variables with a reference group.
+
+
+

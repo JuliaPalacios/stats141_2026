@@ -137,9 +137,9 @@ where $X_{j}$ represents the $j$th predictor and $\beta_{j}$ quantifies the asso
 
 ### Estimating the Regression Coefficients
 
-As in the case of simple regression, the coefficients $\hat{\beta}_{1}, \hat{\beta}_{2}, \dots, \hat{\beta}_{m}$ are unknown and must be estimated. Given those estimates, we can make predictions for the outcome, as follows:
+As in the case of simple regression, the coefficients $\beta_{1}, \beta_{2}, \dots, \beta_{m}$ are unknown and must be estimated. Given those estimates, we can make predictions for the outcome, as follows:
 
-$$Y = \hat{\beta}_{0} + \hat{\beta}_{1}X_{1} + \hat{\beta}_{2}X_{2} + \dots + \hat{\beta}_{m}X_{m} + \epsilon$$. {#eq-10}
+$$\hat{Y} = \hat{\beta}_{0} + \hat{\beta}_{1}X_{1} + \hat{\beta}_{2}X_{2} + \dots + \hat{\beta}_{m}X_{m} $$. {#eq-10}
 
 The parameters are estimated using the same least squares approach as in simple regression -- that is, we choose the values of each $\beta$ that minimize the residual sum of squares:
 
@@ -190,9 +190,9 @@ H_{0} &: \beta_{1}=\beta_{2}=\dots=\beta_{m}=0 \\
 H_{a} &: \text{At least one } \beta_{j} \text{ is non-zero}
 \end{align}$$ {#eq-12}
 
-This hypothesis test is performed by computing the *F-statistic*:
+This hypothesis test is performed by computing the *F-statistic* which has an F-distribution with $m-1$ and $n-m$ degrees of freedom. The statistic is
 
-$$F=\frac{(TSS-RSS)/m}{RSS/(n-m-1)},$$ where, as in the case of simple linear regression, $TSS=\sum(y_{i}-\bar{y})^2$ and $RSS=\sum(y_{i}-\hat{y}_{i})^2$. If the linear model assumptions are correct, one can show that $E\{RSS/(n-m-1)\}=\sigma^2$ and that, provided $H_{0}$ is true, $E\{(TSS-RSS)/m\}=\sigma^2$.
+$$F=\frac{(TSS-RSS)/m}{RSS/(n-m-1)},$$ where, as in the case of simple linear regression, $TSS=\sum(y_{i}-\bar{y})^2$ and $RSS=\sum(y_{i}-\hat{y}_{i})^2$. 
 
 Hence, when there is no relationship between the response and the predictors, one would expect the *F-statistic* to take a value close to 1. On the other hand, if $H_{1}$ is true, then $E\{(TSS-RSS)/m\}>\sigma^2$, so we expect $F$ to be greater than 1.
 ```{r}
@@ -229,11 +229,13 @@ ggplot(plot_df, aes(x = x, y = y, color = grp)) +
 
 In the previous multiple regression example, the *F*-statistic was 6.49 on 4 and 184 degrees of freedom, which is significantly larger than 1 ($p$-value $< 0.01$). Compare this with the value obtained by fitting the model with age as the sole predictor, where the *F*-statistic was 1.538 on 1 and 187 degrees of freedom — barely larger than 1 and therefore not statistically significant ($p$-value $= 0.2165$). This last result implies that a model with mother's age as the only predictor fails to explain the variation in birth weight.
 
+
 The *F*-statistic approach for testing any association between the predictors and the response works well when $m$ is relatively small, and certainly smaller than $n$. However, when the number of predictors is large and $m > n$, there are more coefficients $\beta_{j}$ to estimate than observations available to estimate them. In this case, the multiple linear regression model cannot be fit using least squares, and therefore the *F*-statistic cannot be used. When $m$ is too large, alternative approaches are required, such as *forward selection*, which we discuss in the next section.
+
 
 #### Selecting predictors
 
-The previous section discusses how to test whether a set of predictor variables is associated with the response variable. It provides the *F-statistic* to test whether at least one of the potential predictors is associated with the outcome. However, not all of those predictors are necessarily significantly associated, as we can assess using the individual p-values for each of them — as discussed earlier for the simple regression model — but if the number of predictors $m$ is large, we are likely to make some false discoveries.
+The previous lecture discusses how to test whether a set of predictor variables is associated with the response variable. It provides the *F-statistic* to test whether at least one of the potential predictors is associated with the outcome. However, not all of those predictors are necessarily significantly associated, as we can assess using the individual p-values for each of them — as discussed earlier for the simple regression model — but if the number of predictors $m$ is large, we are likely to make some false discoveries.
 
 It is possible that all predictors are associated with the response variable, but it is more common to find that only a subset of them is associated. We refer to *variable selection* as the process of identifying the predictors that are truly associated with the response variable. Since a more extensive discussion of this topic is needed, we introduce it only briefly here.
 
@@ -259,7 +261,7 @@ It turns out that adding variables to a multiple regression model always increas
 
 #### Predictions
 
-One we have fit the multiple regression model, it is straighforward to apply @eq-10 in order to predict the response Y on the basis of a set of values for the predictors $X_{1}, X_{1}, \dots, X_{m}$. In R we can estimate prediction from the model using the followin code:
+Once we have fit the multiple regression model, it is straighforward to apply @eq-10 in order to predict the response Y on the basis of a set of values for the predictors $X_{1}, X_{1}, \dots, X_{m}$. In R we can estimate prediction from the model using the following code:
 
 ```{r}
 fitted_values <- predict(model5)
@@ -273,5 +275,5 @@ Therefore, we can estimate confidence intervals to evaluate how far is \hat{Y} f
 
 2. Using a linear model is of course only an approximation of the true surface, so this generates an error called model bias. However, for now we assume that a linear model is the correct approximation.
 
-
+3. Regression can be used to predict $Y$ for any given value of $X$ lying between the smallest and largest observed values. Regression cannot be used to predict the value of $Y$ when an $X$ value lies well outside the observed range. We do not know whether the relationship in that range is even linear. Predicting $Y$ for $X$-values beyond the range of the data is called **extrapolation**.
 

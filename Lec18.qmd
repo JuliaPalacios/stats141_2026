@@ -110,7 +110,7 @@ Notice that unlike $e_{i}$, which are the observed residuals obtained from the f
             
 Once we obtain the standard errors of the estimates, we can construct *confidence intervals*. For the linear regression model, the 95% confidence intervals for $\beta_{0}$ and $\beta_{1}$ are approximated as:
               
-$$\left[\hat{\beta}_{0}-2\cdot SE(\hat{\beta}_{0}),\ \hat{\beta}_{0}+2\cdot SE(\hat{\beta}_{0})\right]$$ {#eq-6} $$\left[\hat{\beta}_{1}-t_{.975,n-2}\cdot SE(\hat{\beta}_{1}),\ \hat{\beta}_{1}+t_{.975,n-2}\cdot SE(\hat{\beta}_{1})\right]$$ {#eq-7}
+$$\left[\hat{\beta}_{0}-t_{.975,n-2}\cdot SE(\hat{\beta}_{0}),\ \hat{\beta}_{0}+t_{.975,n-2}\cdot SE(\hat{\beta}_{0})\right]$$ {#eq-6} $$\left[\hat{\beta}_{1}-t_{.975,n-2}\cdot SE(\hat{\beta}_{1}),\ \hat{\beta}_{1}+t_{.975,n-2}\cdot SE(\hat{\beta}_{1})\right]$$ {#eq-7}
                 
 In the previous example, the standard errors for the intercept and slope were 0.6923 and 0.2503, respectively. The associated confidence intervals are therefore:
                   
