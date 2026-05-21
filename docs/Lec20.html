@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>29&nbsp; Activity 9 – Stats 141. Introduction to Statistics for Biology</title>
+<title>20&nbsp; Logistic Regression – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -68,8 +68,8 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Week5B.html" rel="next">
-<link href="./Week4A.html" rel="prev">
+<link href="./Week1A.html" rel="next">
+<link href="./Lec19.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -108,6 +108,35 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   }
 }</script>
 
+  <script src="https://cdnjs.cloudflare.com/polyfill/v3/polyfill.min.js?features=es6"></script>
+  <script defer="" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-chtml-full.js" type="text/javascript"></script>
+
+<script type="text/javascript">
+const typesetMath = (el) => {
+  if (window.MathJax) {
+    // MathJax Typeset
+    window.MathJax.typeset([el]);
+  } else if (window.katex) {
+    // KaTeX Render
+    var mathElements = el.getElementsByClassName("math");
+    var macros = [];
+    for (var i = 0; i < mathElements.length; i++) {
+      var texText = mathElements[i].firstChild;
+      if (mathElements[i].tagName == "SPAN" && texText && texText.data) {
+        window.katex.render(texText.data, mathElements[i], {
+          displayMode: mathElements[i].classList.contains('display'),
+          throwOnError: false,
+          macros: macros,
+          fleqn: false
+        });
+      }
+    }
+  }
+}
+window.Quarto = {
+  typesetMath
+};
+</script>
 
 </head>
 
@@ -120,7 +149,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week5A.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Activity 9</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec20.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Logistic Regression</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +311,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lec20.html" class="sidebar-item-text sidebar-link">
+  <a href="./Lec20.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span></a>
   </div>
 </li>
@@ -347,7 +376,7 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week5A.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Week5A.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Activity 9</span></span></a>
   </div>
 </li>
@@ -512,15 +541,28 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </nav>
 <div id="quarto-sidebar-glass" class="quarto-sidebar-collapse-item" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item"></div>
 <!-- margin-sidebar -->
-    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
-        
+    <div id="quarto-margin-sidebar" class="sidebar margin-sidebar">
+        <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#the-logistic-model" id="toc-the-logistic-model" class="nav-link active" data-scroll-target="#the-logistic-model"><span class="header-section-number">20.1</span> The logistic model</a>
+  <ul class="collapse">
+  <li><a href="#log-odds-interpretation" id="toc-log-odds-interpretation" class="nav-link" data-scroll-target="#log-odds-interpretation"><span class="header-section-number">20.1.1</span> Log-odds interpretation</a></li>
+  <li><a href="#odds-ratio-interpretation" id="toc-odds-ratio-interpretation" class="nav-link" data-scroll-target="#odds-ratio-interpretation"><span class="header-section-number">20.1.2</span> Odds ratio interpretation</a></li>
+  </ul></li>
+  <li><a href="#multiple-logistic-regression" id="toc-multiple-logistic-regression" class="nav-link" data-scroll-target="#multiple-logistic-regression"><span class="header-section-number">20.2</span> Multiple logistic regression</a></li>
+  <li><a href="#interpreting-coefficients" id="toc-interpreting-coefficients" class="nav-link" data-scroll-target="#interpreting-coefficients"><span class="header-section-number">20.3</span> Interpreting coefficients</a></li>
+  <li><a href="#categorical-predictors" id="toc-categorical-predictors" class="nav-link" data-scroll-target="#categorical-predictors"><span class="header-section-number">20.4</span> Categorical predictors</a></li>
+  </ul>
+</nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week5A.html"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Activity 9</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec20.html"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Logistic Regression</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">29</span>&nbsp; <span class="chapter-title">Activity 9</span></span></h1>
+<h1 class="title"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Logistic Regression</span></h1>
 </div>
 
 
@@ -537,21 +579,191 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
 </header>
 
 
-<p>Name:</p>
-<ol type="1">
-<li>Construct a 90% and a 95% confidence interval for the weight mean difference between the two diets in the mice study. What do you conclude? You can access the data as follows:</li>
-</ol>
+<p>Logistic regression is a special type of nonlinear regression developed for a binary response variable (<span class="math inline">\(Y\)</span>), for example:</p>
+<ul>
+<li>Disease status: yes/no<br>
+</li>
+<li>Treatment response: responder/non-responder<br>
+</li>
+<li>Smoking: current smoker/not<br>
+</li>
+<li>Mortality: dead/alive</li>
+</ul>
+<p>A common use for logistic regression is to fit a dose-response curve, where mortality (or survival) of individuals (the response) is plotted agins the concentration of a adrug, toxin, or other chemical.</p>
+<p>If we tried linear regression on a 0/1 outcome, predicted values could fall outside <span class="math inline">\(([0,1]\)</span> and error assumptions would be violated. Logistic regression models the <strong>probability</strong> in a way that stays in <span class="math inline">\([0,1]\)</span>.</p>
+<hr>
+<section id="the-logistic-model" class="level2" data-number="20.1">
+<h2 data-number="20.1" class="anchored" data-anchor-id="the-logistic-model"><span class="header-section-number">20.1</span> The logistic model</h2>
+<p>Let <span class="math inline">\(Y \in \{0,1\}\)</span> be the outcome and <span class="math inline">\(X\)</span> be a predictor (or a set of predictors). Define:</p>
+<p><span class="math display">\[
+p(x) = P(Y=1 \mid X=x)
+\]</span></p>
+<p>Logistic regression uses the <strong>logit link</strong>:</p>
+<p><span class="math display">\[
+\text{logit}(p) = \log\left(\frac{p}{1-p}\right) = \beta_0 + \beta_1 x
+\]</span></p>
+<p>Equivalently, the predicted probability is:</p>
+<p><span class="math display">\[
+p(x) = \frac{1}{1 + \exp\left(-(\beta_0 + \beta_1 x)\right)}
+\]</span></p>
+<p>This creates an S-shaped curve mapping real numbers to probabilities.</p>
+<p>Example:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>dir <span class="ot">&lt;-</span> <span class="st">"https://raw.githubusercontent.com/genomicsclass/dagdata/master/inst/extdata/"</span> </span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>filename <span class="ot">&lt;-</span> <span class="st">"femaleMiceWeights.csv"</span> </span>
-<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>url <span class="ot">&lt;-</span> <span class="fu">paste0</span>(dir, filename) </span>
-<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>dat <span class="ot">&lt;-</span> <span class="fu">read.csv</span>(url)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>beta0 <span class="ot">&lt;-</span> <span class="sc">-</span><span class="dv">6</span></span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>beta1 <span class="ot">&lt;-</span> <span class="fl">0.2</span></span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>x <span class="ot">&lt;-</span> <span class="fu">seq</span>(<span class="dv">0</span>, <span class="dv">60</span>, <span class="at">by =</span> <span class="dv">1</span>)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>p <span class="ot">&lt;-</span> <span class="dv">1</span><span class="sc">/</span>(<span class="dv">1</span> <span class="sc">+</span> <span class="fu">exp</span>(<span class="sc">-</span>(beta0 <span class="sc">+</span> beta1<span class="sc">*</span>x)))</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(x, p, <span class="at">type =</span> <span class="st">"l"</span>, <span class="at">lwd =</span> <span class="dv">2</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>     <span class="at">xlab =</span> <span class="st">"x"</span>, <span class="at">ylab =</span> <span class="st">"P(Y=1 | x)"</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>     <span class="at">main =</span> <span class="st">"Logistic regression S-curve"</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a><span class="fu">abline</span>(<span class="at">h =</span> <span class="fu">c</span>(<span class="dv">0</span>, <span class="fl">0.5</span>, <span class="dv">1</span>), <span class="at">lty =</span> <span class="dv">3</span>, <span class="at">col =</span> <span class="st">"gray70"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec20_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
 </div>
-<ol start="2" type="1">
-<li>Test the hypothesis that the new fertilizer (example in Lecture 11) has no effect on plant growth. What is your p-value and what do you conclude?</li>
-</ol>
+</div>
+</div>
+<section id="log-odds-interpretation" class="level3" data-number="20.1.1">
+<h3 data-number="20.1.1" class="anchored" data-anchor-id="log-odds-interpretation"><span class="header-section-number">20.1.1</span> Log-odds interpretation</h3>
+<p><span class="math display">\[
+\beta_1 = \text{change in log-odds of } Y=1 \text{ for a 1-unit increase in } x
+\]</span></p>
+</section>
+<section id="odds-ratio-interpretation" class="level3" data-number="20.1.2">
+<h3 data-number="20.1.2" class="anchored" data-anchor-id="odds-ratio-interpretation"><span class="header-section-number">20.1.2</span> Odds ratio interpretation</h3>
+<p>Exponentiating gives an <strong>odds ratio (OR)</strong>:</p>
+<p><span class="math display">\[
+\exp(\beta_1) = \text{multiplicative change in odds for a 1-unit increase in } x
+\]</span></p>
+<ul>
+<li>If <span class="math inline">\(\exp(\beta_1)=1\)</span>: no association<br>
+</li>
+<li>If <span class="math inline">\(\exp(\beta_1)&gt;1\)</span>: higher odds as <span class="math inline">\(x\)</span> increases<br>
+</li>
+<li>If <span class="math inline">\(\exp(\beta_1)&lt;1\)</span>: lower odds as <span class="math inline">\(x\)</span> increases</li>
+</ul>
+<p><strong>Example:</strong> If <span class="math inline">\(\exp(\beta_1)=1.50\)</span>, each 1-unit increase in <span class="math inline">\(x\)</span> is associated with <strong>50% higher odds</strong> of <span class="math inline">\(Y=1\)</span>, holding other variables constant.</p>
+<hr>
+</section>
+</section>
+<section id="multiple-logistic-regression" class="level2" data-number="20.2">
+<h2 data-number="20.2" class="anchored" data-anchor-id="multiple-logistic-regression"><span class="header-section-number">20.2</span> Multiple logistic regression</h2>
+<p>With multiple predictors:</p>
+<p><span class="math display">\[
+\text{logit}(p) = \beta_0 + \beta_1 x_1 + \beta_2 x_2 + \cdots + \beta_k x_k
+\]</span></p>
+<p>Interpretation of <span class="math inline">\(\exp(\beta_j)\)</span>: adjusted odds ratio for <span class="math inline">\(x_j\)</span>, <strong>holding all other predictors fixed</strong>.</p>
+<p>This is often used to adjust for confounding in observational studies.</p>
+<p>For example, we might model the probability of developing diabetes as a function of BMI and age</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(<span class="st">"dplyr"</span>)</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(NHANES)</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>NHANES<span class="ot">&lt;-</span>NHANES <span class="sc">%&gt;%</span></span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">has_diabetes=</span><span class="fu">as.numeric</span>(Diabetes <span class="sc">==</span> <span class="st">"Yes"</span>))</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb2-6"><a href="#cb2-6" aria-hidden="true" tabindex="-1"></a><span class="fu">par</span>(<span class="at">mfrow=</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">2</span>))</span>
+<span id="cb2-7"><a href="#cb2-7" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(NHANES<span class="sc">$</span>Age,NHANES<span class="sc">$</span>has_diabetes, <span class="at">xlab=</span><span class="st">"Age"</span>,<span class="at">ylab=</span><span class="st">"Diabetes status"</span>)</span>
+<span id="cb2-8"><a href="#cb2-8" aria-hidden="true" tabindex="-1"></a>    <span class="fu">plot</span>(NHANES<span class="sc">$</span>BMI,NHANES<span class="sc">$</span>has_diabetes, <span class="at">xlab=</span><span class="st">"BMI"</span>,<span class="at">ylab=</span><span class="st">"Diabetes status"</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec20_files/figure-html/unnamed-chunk-2-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
+<p>We see that the probability that a subject has diabetes tends to increase as both a function of age and BMI.</p>
+<p>Which variable is more important: Age or BMI? We can use a multiple logistic regression model to model the probability of diabetes as a function of both predictors</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>logreg<span class="ot">&lt;-</span><span class="fu">glm</span>(has_diabetes<span class="sc">~</span>BMI<span class="sc">+</span>Age, <span class="at">family=</span><span class="st">"binomial"</span>,<span class="at">data=</span>NHANES)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(logreg)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>
+Call:
+glm(formula = has_diabetes ~ BMI + Age, family = "binomial", 
+    data = NHANES)
+
+Coefficients:
+             Estimate Std. Error z value Pr(&gt;|z|)    
+(Intercept) -8.080292   0.244447  -33.05   &lt;2e-16 ***
+BMI          0.094325   0.005519   17.09   &lt;2e-16 ***
+Age          0.057278   0.002487   23.03   &lt;2e-16 ***
+---
+Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+
+(Dispersion parameter for binomial family taken to be 1)
+
+    Null deviance: 5263.8  on 9628  degrees of freedom
+Residual deviance: 4146.0  on 9626  degrees of freedom
+  (371 observations deleted due to missingness)
+AIC: 4152
+
+Number of Fisher Scoring iterations: 7</code></pre>
+</div>
+</div>
+<p>Both predictors seem to be important. To interpret the findings, we might consider a visual display of predicted probabilities as</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(modelr)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a>fake_grid<span class="ot">&lt;-</span> <span class="fu">data_grid</span>(</span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a>  NHANES,</span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">Age =</span><span class="fu">seq_range</span>(Age,<span class="dv">100</span>),</span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">BMI=</span><span class="fu">seq_range</span>(BMI,<span class="dv">100</span>)</span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb5-8"><a href="#cb5-8" aria-hidden="true" tabindex="-1"></a>y_hats<span class="ot">&lt;-</span> fake_grid <span class="sc">%&gt;%</span></span>
+<span id="cb5-9"><a href="#cb5-9" aria-hidden="true" tabindex="-1"></a>  <span class="fu">mutate</span>(<span class="at">y_hat=</span><span class="fu">predict</span>(logreg,<span class="at">newdata=</span>.,<span class="at">type=</span><span class="st">"response"</span>))</span>
+<span id="cb5-10"><a href="#cb5-10" aria-hidden="true" tabindex="-1"></a><span class="fu">head</span>(y_hats,<span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code># A tibble: 1 × 3
+    Age   BMI   y_hat
+  &lt;dbl&gt; &lt;dbl&gt;   &lt;dbl&gt;
+1     0  12.9 0.00104</code></pre>
+</div>
+</div>
+</section>
+<section id="interpreting-coefficients" class="level2" data-number="20.3">
+<h2 data-number="20.3" class="anchored" data-anchor-id="interpreting-coefficients"><span class="header-section-number">20.3</span> Interpreting coefficients</h2>
+<p>The predicted probability from the model is given by: <span class="math display">\[
+\pi_{i}=P(y_{i}=1\mid Age_{i},BMI_{i})=\frac{e^{\beta_{0}+\beta_{1}Age_{i}+\beta_{2}BMI_{i}}}{1+e^{\beta_{0}+\beta_{1}Age_{i}+\beta_{2}BMI_{i}}}
+\]</span> Let’s consider a hypothetical 0 year old with a BMI of 12.0. Their predicted probability of having diabetes would be calculated as a function of the regression coefficients:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>linear_component<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="fl">12.9</span>,<span class="dv">0</span>)<span class="sc">%*%</span><span class="fu">coef</span>(logreg)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(linear_component)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(linear_component))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>            [,1]
+[1,] 0.001044164</code></pre>
+</div>
+</div>
+<p>The predicted probability is very small, what about a 60 year old with a BMI of 25?</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>linear_component<span class="ot">&lt;-</span><span class="fu">c</span>(<span class="dv">1</span>,<span class="dv">25</span>,<span class="dv">60</span>)<span class="sc">%*%</span><span class="fu">coef</span>(logreg)</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a><span class="fu">exp</span>(linear_component)<span class="sc">/</span>(<span class="dv">1</span><span class="sc">+</span><span class="fu">exp</span>(linear_component))</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>           [,1]
+[1,] 0.09233095</code></pre>
+</div>
+</div>
+<p>The predicted probability is now 9.2%</p>
+<hr>
+</section>
+<section id="categorical-predictors" class="level2" data-number="20.4">
+<h2 data-number="20.4" class="anchored" data-anchor-id="categorical-predictors"><span class="header-section-number">20.4</span> Categorical predictors</h2>
+<p>Suppose sex is coded as:</p>
+<ul>
+<li>Female = 0 (reference)</li>
+<li>Male = 1</li>
+</ul>
+<p>Then:</p>
+<p><span class="math display">\[
+\exp(\beta_{\text{male}}) = \frac{\text{odds of } Y=1 \text{ for males}}{\text{odds of } Y=1 \text{ for females}}
+\]</span></p>
+<p>For predictors with more than two categories, use indicator (dummy) variables with a reference group.</p>
 
 
+</section>
 
 </main> <!-- /main -->
 <script id="quarto-html-after-body" type="application/javascript">
@@ -956,13 +1168,13 @@ pre > code.sourceCode > span > a:first-child::before { text-decoration: underlin
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Week4A.html" class="pagination-link" aria-label="Activity 8">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">28</span>&nbsp; <span class="chapter-title">Activity 8</span></span>
+      <a href="./Lec19.html" class="pagination-link" aria-label="Multiple Linear regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">19</span>&nbsp; <span class="chapter-title">Multiple Linear regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Week5B.html" class="pagination-link" aria-label="Activity 10">
-        <span class="nav-page-text"><span class="chapter-number">30</span>&nbsp; <span class="chapter-title">Activity 10</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity 1">
+        <span class="nav-page-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Activity 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
