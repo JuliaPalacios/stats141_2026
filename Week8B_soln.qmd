@@ -1,0 +1,71 @@
+# Activity 17 {#sec-week2}
+
+Name:
+
+
+
+1. Esophageal cancer is a serious and very aggressive disease. Scientists 
+conducted a study of 31 patients with esophageal cancer in which they studied
+the relationship between the size of the tumor that a patient had and whether or not
+the cancer had spread (metastasized) to the lymph nodes of the patient. In this study
+the response variable is dichotomous: $Y= 1$ if the cancer had spread to the lymph nodes and $Y= 0$ if not.The predictor variable is the size (recorded as the maximum
+dimension, in cm) of the tumor found in the esophagus.
+
+The data:
+
+```{r}
+eso <- data.frame(
+  patient = 1:31,
+  X = c(6.5, 6.3, 3.8, 7.5, 4.5, 3.5, 4.0, 3.7, 6.3, 4.2,
+        8.0, 5.2, 5.0, 2.5, 7.0, 5.3, 6.2, 2.0, 9.0, 4.0,
+        3.0, 6.0, 4.0, 4.0, 4.0, 5.0, 9.0, 4.5, 3.0, 3.0, 1.7),
+  Y = c(1, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+        0, 1, 1, 0, 1, 0, 1, 0, 1, 0,
+        1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0)
+)
+eso
+```
+
+(a) Display the scatterplot, what do you conclude?
+
+```{r}
+plot(eso$X,eso$Y)
+```
+
+(b) Fit a logistic regression for predicting the probability that the cancer metastasizes given the size of the tumor and state the estimated predicted probability function.
+
+```{r}
+
+# logistic regression
+fit <- glm(Y ~ X, data = eso, family = binomial)
+summary(fit)
+
+```
+Te estimated predicted probability is
+
+$$
+P(Y=1)=\frac{e^{-2.058+0.511X}}{1+e^{-2.058+0.511X}}
+$$
+0.51 is the change in log-odds of metastasis for a 1cm increase in tumor size.
+
+$$
+log\left(\frac{p(x)}{1-p(x)}\right)=\beta_{0}+\beta_{1}x
+$$
+(c) Add the fitted probability to the scatterplot
+
+# scatter + fitted S-curve
+```{r}
+plot(eso$X, eso$Y, pch = 16, xlab = "Tumor size (cm)", ylab = "Metastasis (Y)",
+     ylim = c(0, 1))
+
+xx <- seq(min(eso$X), max(eso$X), length.out = 200)
+pp <- predict(fit, newdata = data.frame(X = xx), type = "response")
+lines(xx, pp, col = "red", lwd = 2)
+```
+
+(d) What is the predicted probability of a patient with tumor size $4.0$ cm?
+
+```{r}
+predict(fit, newdata = data.frame(X = 4), type = "response")
+```
+
