@@ -24,3 +24,9 @@
 | 6 | 2026-05-6 |  | Lecture 15 | Activity 11 |
 | 6 | 2026-05-8 |  | Lecture 15 & quiz | Activity 12 |
 | 7 | 2026-05-11 |  | Lecture 16 | Activity 13 |
+| 7 | 2026-05-13 |  | Lecture 17 | Activity 14 |
+| 7 | 2026-05-15 |  | Lecture 18 & quiz | Activity 15 |
+| 8 | 2026-05-18 |  | Lecture 19 | Activity 16 |
+| 8 | 2026-05-20 |  | Lecture 19 | Activity 16 |
+| 8 | 2026-05-22 |  | Lecture 20 & quiz | Activity 17 |
+
