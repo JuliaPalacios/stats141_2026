@@ -1,41 +1,35 @@
-# Activity 16 {#sec-week2}
+# Activity 17 {#sec-week2}
 
 Name:
 
 
 
-1. We will first use the Boston data set, which records medv (median house value) for 506 census tracts in Boston. Use the lm function. to fit a simple linear regression model, with medv as the response and lstat (percent of households with low socioeconomic status) as the predictor. Plot the scatterplot and state your predicted model?
+1. Esophageal cancer is a serious and very aggressive disease. Scientists 
+conducted a study of 31 patients with esophageal cancer in which they studied
+the relationship between the size of the tumor that a patient had and whether or not
+the cancer had spread (metastasized) to the lymph nodes of the patient. In this study
+the response variable is dichotomous: $Y= 1$ if the cancer had spread to the lymph nodes and $Y= 0$ if not.The predictor variable is the size (recorded as the maximum
+dimension, in cm) of the tumor found in the esophagus.
+
+The data:
 
 ```{r}
-library(MASS)
-library(ISLR2)
-
-
+eso <- data.frame(
+  patient = 1:31,
+  X = c(6.5, 6.3, 3.8, 7.5, 4.5, 3.5, 4.0, 3.7, 6.3, 4.2,
+        8.0, 5.2, 5.0, 2.5, 7.0, 5.3, 6.2, 2.0, 9.0, 4.0,
+        3.0, 6.0, 4.0, 4.0, 4.0, 5.0, 9.0, 4.5, 3.0, 3.0, 1.7),
+  Y = c(1, 0, 1, 1, 1, 1, 0, 0, 1, 1,
+        0, 1, 1, 0, 1, 0, 1, 0, 1, 0,
+        1, 1, 0, 0, 0, 1, 1, 1, 0, 1, 0)
+)
+eso
 ```
 
-2. You can obtain a confidence interval for the coefficient estimates with the command confint(lm.out). How do you interpret these intervals?
+(a) Display the scatterplot, what do you conclude?
 
+(b) Fit a logistic regression for predicting the probability that the cancer metastasizes given the size of the tumor and state the estimated predicted probability function.
 
-3. The predict function can be used to produce confidence intervals and prediction intervals for the prediction of medv for a given value of lstat. Obtain prediction intervals for lstat of 5,10 and 15. 
-```{r}
-#predict(lm.out,data.frame(lstat=(c(5,10,15))),interval="confidence")
-```
+(c) Add the fitted probability to the scatterplot
 
-4. Add the regression line to your plot
-
-
-5. Now regress medv on lstat and age. What is your predicted model? What can you conclude?
-
-
-6. Now we will try to predict per capita crime rate using the other variables ofor the same Boston data set.
-
-(a) For each preditor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Creaste some plots to back up your assertions.
-
-(b) Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis $H_{0}: \beta_{j}=0$?
-
-
-(c) How do your results from (a) compare to your results from (b)? 
-
-(d) Is there evidene of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form
-$Y=\beta_{0}+\beta_{1}X+\beta_{2}X^2+\beta_{3}X^3+\epsilon$
-
+(d) What is the predicted probability of a patient with tumor size $4.0$ cm?
