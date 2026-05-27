@@ -733,14 +733,14 @@ z_{r} \pm 1.96\frac{1}{\sqrt{n-3}}
 <h2 data-number="17.3" class="anchored" data-anchor-id="simple-linear-regression"><span class="header-section-number">17.3</span> Simple Linear Regression</h2>
 <p>Simple linear regression refers to the most basic model when there is only one predictor, <span class="math inline">\(X\)</span>, and how that predictor is linearly related to a specific outcome, <span class="math inline">\(Y\)</span>. Mathematically, this linear relationship is <strong>modeled</strong> as follows:</p>
 <p><span id="eq-1"><span class="math display">\[Y\approx \beta_{0} + \beta_{1}X. \tag{17.1}\]</span></span></p>
-<p><a href="#eq-1" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-1</span></a> is interpreted as we are regressing <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span>, and <span class="math inline">\(\beta_{0}\)</span>, and <span class="math inline">\(\beta_{1}\)</span> are model <em>coefficients</em> or <em>parameters</em> of the model.</p>
+<p><a href="#eq-1" class="quarto-xref">Equation&nbsp;<span>17.1</span></a> is interpreted as we are regressing <span class="math inline">\(Y\)</span> on <span class="math inline">\(X\)</span>, and <span class="math inline">\(\beta_{0}\)</span>, and <span class="math inline">\(\beta_{1}\)</span> are model <em>coefficients</em> or <em>parameters</em> of the model.</p>
 <ul>
 <li><p><span class="math inline">\(\beta_{0}\)</span> represent the <em>intercept</em></p></li>
 <li><p><span class="math inline">\(\beta_{1}\)</span> the <em>slope</em> in the linear model.</p></li>
 </ul>
 <p>The main objective of linear regression is to use training data (in the previous example, <span class="math inline">\(X\)</span> represents measures of body weight for the sample of cats, and <span class="math inline">\(Y\)</span> observations of heart weight), to produce estimates <span class="math inline">\(\hat{\beta}_{0}\)</span> and <span class="math inline">\(\hat{\beta}_{1}\)</span> for the model coefficients that better approximate the relationship between the predictor and outcome. That is:</p>
 <p><span id="eq-2"><span class="math display">\[\hat{y} = \hat{\beta}_{0} + \hat{\beta}_{1}X. \tag{17.2}\]</span></span></p>
-<p><a href="#eq-2" class="quarto-xref">Equation&nbsp;<span class="quarto-unresolved-ref">eq-2</span></a> <span class="math inline">\(\hat{y}\)</span> indicates a prediction of Y (body weight) on the basis of X(=x, heart weight), and the symbol <em>^</em> denotes a predicted value.</p>
+<p><a href="#eq-2" class="quarto-xref">Equation&nbsp;<span>17.2</span></a> <span class="math inline">\(\hat{y}\)</span> indicates a prediction of Y (body weight) on the basis of X(=x, heart weight), and the symbol <em>^</em> denotes a predicted value.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
 <div class="callout-header d-flex align-content-center">
 <div class="callout-icon-container">

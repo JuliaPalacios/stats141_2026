@@ -50,6 +50,7 @@ book:
         - Week7C.qmd
         - Week8A.qmd
         - Week8B.qmd
+        - Week9A.qmd
     - summary.qmd
     - part: "Sections"
       chapters: 
