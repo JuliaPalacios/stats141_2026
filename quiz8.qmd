@@ -1,0 +1,5 @@
+# Quiz 8 - May 29
+
+Quiz 8 will cover logistic regression and survival analysis.
+
+Duration: 10 minutes with 10 minutes extension

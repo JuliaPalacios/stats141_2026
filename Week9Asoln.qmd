@@ -1,0 +1,77 @@
+# Activity 18 
+
+Name:
+
+
+
+1. For each example, state whether or not the censoring mechanism is independent. Justify your answer.
+
+(a) In a study of disease relapse, due to a careless research scientist, all patients whose phone numbers begin with the number "2" are lost to follow up.
+
+(b) In a study of longevity, a formatting error causes all patient ages that exceed 99 years to be lost (we know that those patients are more than 99 but we do not know their exact ages).
+
+(c) Hospital A conducts a study of longevity. However, very sick patients tend to be transferred to Hospital B, and are lost to follow up.
+
+
+2. The R package survival includes a dataset lung that contains survival times for patients with advanced lung cancer. Key variables:
+
+time: follow-up time (days)
+status: 1=censored, 2=dead (event) 
+Common covariates:
+age (years), sex (1=male, 2=female), ph.ecog (ECOG performance status), plus others.
+
+```{r}
+#| warning: false
+library(survival)
+data(lung)
+```
+(a) What is the Kaplan–Meier estimate for the whole sample?
+
+
+```{r}
+km_all <- survfit(Surv(time, status) ~ 1, data = lung)
+plot(km_all, xlab="Days", ylab="Survival", main="KM: All patients")
+
+```
+(b) What is the median survival time (overall), that is the time when $\hat S(t)=0.5$?
+
+```{r}
+summary(km_all)$table["median"]
+```
+
+(c) Do survival curves differ by sex (unadjusted)?
+
+```{r}
+km_sex <- survfit(Surv(time, status) ~ sex, data = lung)
+plot(km_sex, col=c("red","blue"), lty=1:2, xlab="Days", ylab="Survival")
+legend("topright", legend=c("Male (1)","Female (2)"),
+       col=c("red","blue"), lty=1:2, bty="n")
+```
+
+(d) Is the difference by sex statistically significant (logrank test)?
+
+```{r}
+survdiff(Surv(time, status) ~ sex, data = lung)
+```
+a small p-value suggests different survival functions between sexes.
+
+e) How do we fit a Cox proportional hazards model with key predictors?
+
+```{r}
+cox1 <- coxph(Surv(time, status) ~ age + sex + ph.ecog, data = lung)
+summary(cox1)
+```
+f) How do we report hazard ratios with 95% CIs?
+
+```{r}
+#Exponentiate coefficients and confidence intervals.
+hr  <- exp(coef(cox1))
+ci  <- exp(confint(cox1))
+out <- cbind(HR = hr, `2.5%` = ci[,1], `97.5%` = ci[,2])
+round(out, 3)
+```
+g) How do we interpret coefficients?
+Answer:
+
+If HR(age)=1.02, each additional year of age multiplies hazard by 1.02 (~2% higher hazard), holding other variables fixed.
+If HR(sex)=0.70 (female vs male, depending on coding), females have 30% lower hazard, adjusted.

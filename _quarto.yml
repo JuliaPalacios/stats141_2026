@@ -30,6 +30,7 @@ book:
         - Lec18.qmd
         - Lec19.qmd
         - Lec20.qmd
+        - Lec21.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd
@@ -69,6 +70,7 @@ book:
         - quiz5.qmd
         - quiz6.qmd
         - quiz7.qmd
+        - quiz8.qmd
 #    - references.qmd
    
 

@@ -1,0 +1,202 @@
+---
+title: "Survial Analysis"
+format: html
+bibliography: references.bib
+---
+
+
+Suppose that we have collected a five-year medical study, in which patients have been treated for cancer. We would like to fit a model to predict patient suvival time, using features (predictors) such as treatment, underlying conditions, etc. This is an example in which the outcome is **time until an event** occurs. Other examples are:
+
+- Time from diagnosis to death
+- Time from surgery to relapse 
+- Time to infection after vaccination 
+- Time to hospital discharge  
+
+A common feature that makes survival analysis different from ordinary regression is **censoring**. In our five-year study, some patients will still be alive at the end of follow-up. For these patients, the survival time is **right-censored**: we do not observe their event time, but we know they survived at least 5 years.
+
+For each individual $i$, we suppose that there is a true **survival time** $T_{i}$ or a true **censoring time** $C_{i}$. We observe either $T$ or $C$, that is, we observe
+$$
+Y_{i}=\min\{C_{i},T_{i}\}
+$$
+We also observe a status indicator
+$$
+\delta=\begin{cases} 1 & \text{ if } T\leq C\\
+0 & \text{ if } T>C 
+\end{cases}
+$$
+- Assume we observe $n$ pairs $(y_{1},\delta_{1}),\ldots,(y_{n},\delta_{n})$. 
+- We further assume that the event time $T$ is independent of the censoring time $C$. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and femal may wrongly suggest males survive longer.
+
+The **survival function** is defined as
+$$S(t) = P(T > t)$$
+
+It tells us the probability of surviving beyond time $t$.
+
+::: {.callout-note icon="false"}
+## Example: BrainCancer dataset
+
+The BrainCancer dataset (package ISLR2) consists of survival times of 88patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.
+:::
+
+- Let $d_{1}<d_{2}<\ldots<d_{K}$ denote the $K$ unique death times amon the non-censored patients, and let $q_{k}$ denote the number of patients who died at time $d_{k}$.
+
+- Let $r_{k}$ deote the number of patients alive and in the study just before $d_{k}$, these are the at **risk** patients.
+
+By the law of total probability
+
+$$
+P(T>d_{k})=P(T>d_{k}\mid T> d_{k-1})P(T>d_{k-1})+P(T>d_{k}\mid T\leq d_{k-1})P(T\leq d_{k-1})
+$$
+which can be simplified as:
+$$
+S(d_{k})=P(T>d_{k}\mid T> d_{k-1})P(T>d_{k-1})=P(T>d_{k}\mid T> d_{k-1})S(d_{k-1})
+$$
+This implies that
+$$
+S(d_{k})=P(T>d_{k}\mid T> d_{k-1})\times \ldots \times P(T>d_{2}\mid T>d_{1})P(T>d_{1})
+$$
+It is then natural to estimate
+$$
+\hat{P}(T>d_{j}\mid T>d_{j-1})=\frac{r_{j}-d_{j}}{r_{j}}
+$$
+to obtain the **Kplan-Meier** estimator of the survival curve:
+
+$$
+\hat{S}(d_{k})=\prod^{k}_{j=1}\left(\frac{r_{j}-q_{j}}{r_{j}} \right)
+$$
+```{r}
+#| warning: false
+#| message: false
+library(ISLR2)
+library(survival)
+library(survminer)
+fit.surv<-survfit(Surv(time,status)~1,data=BrainCancer)
+ggsurvplot(fit.surv, data = BrainCancer, conf.int = TRUE, risk.table = TRUE)
+##Alternatively
+##plot(fit.surv,xlab="Months",ylab="Estimated Survival probability")
+
+```
+## Logrank test
+
+The logrank test is a nonparametric test for comparing whether two groups have the same survival function over time (equivalently, the same hazard function at all times under its standard formulation). It is widely used with right-censored time-to-event data.
+
+Let $d_{1}<d_{2}<\ldots<d_{K}$ denote the unique death times, and let $q_{1,k}$ and $q_{2,k}$ denote the number of patients in groups 1 and 2 who died at time $d_{k}$. Let $r_{1,k}$ and $r_{2,k}$ denote the number of patients in groups 1 and 2 who are in risk.
+
+In order to test $E(X)=0$, we construct a test statistic of the form:
+$$
+W=\frac{X-EX}{\sqrt{Var(X)}}
+$$
+Specifically,
+$$
+W=\frac{\sum^{K}_{i=1}(q_{1,k}-\frac{r_{1,k}q_{k}}{r_{k}}}{\sqrt{\frac{q_{k}(r_{1,k}/r_{j})(1-r_{1,k}/r_{k})(r_{k}-q_{k})}{r_{k}-1}}}
+$$
+When the sample size is large, this statistic has approximately a standard normal distribution that can be used to compute a p-value for the null hypothesis that there is no difference between the survival curves in the two groups.
+
+Similarly, $W^2$ is approximately a $\chi^2$-distributed statistic with 1 degree of freedom.
+
+In our example:
+```{r}
+fit.surv2<-survdiff(Surv(time,status)~sex,data=BrainCancer)
+fit.surv2
+
+```
+## Regression models with survival response
+Assume now we wish to predict the survival time $T$ with features $X$.
+
+**Distribution and density (if continuous)**
+
+$$F(t) = P(T \le t) = 1 - S(t), \quad f(t) = F'(t)$$
+The hazard function (instantaneous risk), alson known as the force of martality is formally defined as:
+$$
+h(t) = \lim_{\Delta t \to 0} \frac{P(t \le T < t+\Delta t \mid T \ge t)}{\Delta t}
+$$
+It is the death rate in the instant after time t, given survial past that time.
+
+Relationship:
+$$h(t) = \frac{f(t)}{S(t)}$$
+Cumulative hazard
+$$H(t) = \int_0^t h(u)\,du$$
+Key identity:
+$$S(t) = \exp\{-H(t)\}$$
+
+## Likelihood for right-censored data
+
+For independent subjects, the contribution of subject $i$ is:
+
+If event observed ($\delta_i=1$): probability density at the event time $f(Y_i)$
+If censored ($\delta_i=0$): probability of surviving past censoring time $S(Y_i)$
+
+So the full likelihood is
+$$L(\theta)=\prod_{i=1}^n \big[f(y_i;\theta)\big]^{\delta_i}\big[S(y_i;\theta)\big]^{1-\delta_i}=\prod_{i=1}^n h(y_{i})^{\delta_{i}}S(y_{i})$$
+and with $S(t)=\exp\{-H(t)\}$,
+$$\log L(\theta)=\sum_{i=1}^n \delta_i \log h(Y_i;\theta) - \sum_{i=1}^n H(Y_i;\theta).$$
+
+Parametric models: Exponential, Weibull, log-normal, etc., fit by maximizing the full likelihood above.
+
+The Cox proportional hazards model assumes that
+$$h(t\mid x)=h_0(t)\exp(\beta^\top x)$$
+where $h_{0}(t)\geq 0$ is an unspecified function, known as the baseline hazard. estimates covariate effects via partial likelihood (baseline hazard left unspecified).
+
+For a one-unit increase in covariate $x_j$,
+$$\text{HR}=\exp(\beta_j).$$
+
+HR $>1$: higher hazard (shorter survival on average)
+HR $<1$: lower hazard (longer survival on average)
+
+For two covariate vectors $x_a,x_b$,
+$$\frac{h(t\mid x_a)}{h(t\mid x_b)}=\exp\{\beta^\top(x_a-x_b)\},$$
+which is constant in time ⇒ “proportional hazards”.
+
+Why it’s useful
+
+Separates time pattern of risk ($h_0(t)$) from covariate effects ($\beta$).
+Does not require specifying $h_0(t)$ (in Cox PH), yet estimates hazard ratios.
+Handles right-censoring naturally.
+
+
+Estimation (Cox model idea)
+Cox estimates $\beta$ via partial likelihood, using the ordering of event times. At each event time $t_i$, the probability that person $i$ fails given someone in the risk set fails is
+$$\frac{\exp(\beta^\top x_i)}{\sum_{j\in R(t_i)} \exp(\beta^\top x_j)}.$$
+Multiplying over all events gives the partial likelihood:
+
+$$L_p(\beta)=\prod_{d=1}^{D}
+\frac{\exp(\beta^\top x_{i(d)})}{\sum_{j\in R(t_{(d)})}\exp(\beta^\top x_j)}.$$
+To estimate $\beta$, we simply maximize the partial likelihood.
+
+Baseline survival and prediction
+Once $\hat\beta$ is estimated, you can estimate baseline cumulative hazard $\hat H_0(t)$ (e.g., Breslow estimator) and then
+$$\hat S(t\mid x)=\exp\{-\hat H_0(t)\exp(\hat\beta^\top x)\}.$$
+
+Main assumption in most standard analyses: non-informative (independent) censoring, meaning censoring is unrelated to the future event time given covariates.
+
+For our example:
+```{r}
+
+fit <- coxph(Surv(time, status) ~ sex, data = BrainCancer)
+summary(fit)
+```
+Regardless of which test we use, we see that there is no clear evidence for a difference in survival between females and males. 
+
+Now we fut a model with all possible predictors
+```{r}
+fit.all<-coxph(Surv(time,status)~sex+diagnosis+loc+ki+gtv+stereo,data=BrainCancer)
+fit.all
+```
+
+The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e. longer survival.
+
+```{r}
+modeldata<-data.frame(
+  diagnosis=levels(diagnosis),
+  sex=rep("Female",4),
+  loc=rep("Supratentorial",4),
+  ki=rep(mean(ki),4),
+  gtv=rep(mean(gtv),4),
+  stereo=rep("SRT",4),
+  data=BrainCancer)
+
+survplots<-survfit(fit.all,newdata=modeldata)
+plot(survplots,xlab="Months",ylab="Survial Probability",col=2:5)
+legend("bottomleft",levels(diagnosis),col=2:5, lty=1)
+
+```

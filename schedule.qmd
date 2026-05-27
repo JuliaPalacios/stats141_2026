@@ -20,13 +20,17 @@
 | 5 | 2026-04-27 | t-test | Lecture 11 | Activity 8 |
 | 5 | 2026-04-29 | Hypothesis testing, randomization | Lecture 12 | Activity 9 |
 | 5 | 2026-05-1 | Randomization, Type I and II erros, power | Lecture 13 | Activity 9 |
-| 6 | 2026-05-4 | Multiple testing, WMW, Paired t-tes | Lecture 14 | Activity 10 |
-| 6 | 2026-05-6 |  | Lecture 15 | Activity 11 |
-| 6 | 2026-05-8 |  | Lecture 15 & quiz | Activity 12 |
-| 7 | 2026-05-11 |  | Lecture 16 | Activity 13 |
-| 7 | 2026-05-13 |  | Lecture 17 | Activity 14 |
-| 7 | 2026-05-15 |  | Lecture 18 & quiz | Activity 15 |
-| 8 | 2026-05-18 |  | Lecture 19 | Activity 16 |
-| 8 | 2026-05-20 |  | Lecture 19 | Activity 16 |
-| 8 | 2026-05-22 |  | Lecture 20 & quiz | Activity 17 |
+| 6 | 2026-05-4 | Multiple testing | Lecture 14 | Activity 10 |
+| 6 | 2026-05-6 | WMW | Lecture 15 | Activity 11 |
+| 6 | 2026-05-8 | Paired t-test | Lecture 15 & quiz | Activity 12 |
+| 7 | 2026-05-11 | Proportions  | Lecture 16 | Activity 13 |
+| 7 | 2026-05-13 | Correlation  | Lecture 17 | Activity 14 |
+| 7 | 2026-05-15 | Linear Regression  | Lecture 18 & quiz | Activity 15 |
+| 8 | 2026-05-18 | Multiple Linear regression | Lecture 19 | Activity 16 |
+| 8 | 2026-05-20 | Mulitple Linear regression | Lecture 19 | Activity 16 |
+| 8 | 2026-05-22 | Logistic regression | Lecture 20 & quiz | Activity 17 |
+| 9 | 2026-05-25 | No lecture |  |  |
+| 9 | 2026-05-25 | Survival Analysis | Lecture 21  | Activity 18 |
+| 9 | 2026-05-25 | Survival Analysis | Lecture 22 & quiz  | Activity 18 |
+| 10 | 2026-05-25 | Review | Lecture 23  |  |
 

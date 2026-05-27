@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>37&nbsp; Activity 16 – Stats 141. Introduction to Statistics for Biology</title>
+<title>37&nbsp; Activity 17 – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8B.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 16</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8B.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 17</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -425,7 +425,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Week8B.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 16</span></span></a>
+ <span class="menu-text"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 17</span></span></a>
   </div>
 </li>
       </ul>
@@ -559,9 +559,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8B.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 16</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1A.html">Activities</a></li><li class="breadcrumb-item"><a href="./Week8B.html"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 17</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 16</span></span></h1>
+<h1 class="title"><span id="sec-week2" class="quarto-section-identifier"><span class="chapter-number">37</span>&nbsp; <span class="chapter-title">Activity 17</span></span></h1>
 </div>
 
 
@@ -580,38 +580,60 @@ window.Quarto = {
 
 <p>Name:</p>
 <ol type="1">
-<li>We will first use the Boston data set, which records medv (median house value) for 506 census tracts in Boston. Use the lm function. to fit a simple linear regression model, with medv as the response and lstat (percent of households with low socioeconomic status) as the predictor. Plot the scatterplot and state your predicted model?</li>
+<li>Esophageal cancer is a serious and very aggressive disease. Scientists conducted a study of 31 patients with esophageal cancer in which they studied the relationship between the size of the tumor that a patient had and whether or not the cancer had spread (metastasized) to the lymph nodes of the patient. In this study the response variable is dichotomous: <span class="math inline">\(Y= 1\)</span> if the cancer had spread to the lymph nodes and <span class="math inline">\(Y= 0\)</span> if not.The predictor variable is the size (recorded as the maximum dimension, in cm) of the tumor found in the esophagus.</li>
 </ol>
+<p>The data:</p>
 <div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(MASS)</span>
-<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-<div class="cell-output cell-output-stderr">
-<pre><code>
-Attaching package: 'ISLR2'</code></pre>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>eso <span class="ot">&lt;-</span> <span class="fu">data.frame</span>(</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">patient =</span> <span class="dv">1</span><span class="sc">:</span><span class="dv">31</span>,</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">X =</span> <span class="fu">c</span>(<span class="fl">6.5</span>, <span class="fl">6.3</span>, <span class="fl">3.8</span>, <span class="fl">7.5</span>, <span class="fl">4.5</span>, <span class="fl">3.5</span>, <span class="fl">4.0</span>, <span class="fl">3.7</span>, <span class="fl">6.3</span>, <span class="fl">4.2</span>,</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>        <span class="fl">8.0</span>, <span class="fl">5.2</span>, <span class="fl">5.0</span>, <span class="fl">2.5</span>, <span class="fl">7.0</span>, <span class="fl">5.3</span>, <span class="fl">6.2</span>, <span class="fl">2.0</span>, <span class="fl">9.0</span>, <span class="fl">4.0</span>,</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>        <span class="fl">3.0</span>, <span class="fl">6.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">4.0</span>, <span class="fl">5.0</span>, <span class="fl">9.0</span>, <span class="fl">4.5</span>, <span class="fl">3.0</span>, <span class="fl">3.0</span>, <span class="fl">1.7</span>),</span>
+<span id="cb1-6"><a href="#cb1-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">Y =</span> <span class="fu">c</span>(<span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>,</span>
+<span id="cb1-7"><a href="#cb1-7" aria-hidden="true" tabindex="-1"></a>        <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>,</span>
+<span id="cb1-8"><a href="#cb1-8" aria-hidden="true" tabindex="-1"></a>        <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">1</span>, <span class="dv">0</span>, <span class="dv">1</span>, <span class="dv">0</span>)</span>
+<span id="cb1-9"><a href="#cb1-9" aria-hidden="true" tabindex="-1"></a>)</span>
+<span id="cb1-10"><a href="#cb1-10" aria-hidden="true" tabindex="-1"></a>eso</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>   patient   X Y
+1        1 6.5 1
+2        2 6.3 0
+3        3 3.8 1
+4        4 7.5 1
+5        5 4.5 1
+6        6 3.5 1
+7        7 4.0 0
+8        8 3.7 0
+9        9 6.3 1
+10      10 4.2 1
+11      11 8.0 0
+12      12 5.2 1
+13      13 5.0 1
+14      14 2.5 0
+15      15 7.0 1
+16      16 5.3 0
+17      17 6.2 1
+18      18 2.0 0
+19      19 9.0 1
+20      20 4.0 0
+21      21 3.0 1
+22      22 6.0 1
+23      23 4.0 0
+24      24 4.0 0
+25      25 4.0 0
+26      26 5.0 1
+27      27 9.0 1
+28      28 4.5 1
+29      29 3.0 0
+30      30 3.0 1
+31      31 1.7 0</code></pre>
 </div>
-<div class="cell-output cell-output-stderr">
-<pre><code>The following object is masked from 'package:MASS':
-
-    Boston</code></pre>
 </div>
-</div>
-<ol start="2" type="1">
-<li><p>You can obtain a confidence interval for the coefficient estimates with the command confint(lm.out). How do you interpret these intervals?</p></li>
-<li><p>The predict function can be used to produce confidence intervals and prediction intervals for the prediction of medv for a given value of lstat. Obtain prediction intervals for lstat of 5,10 and 15.</p></li>
-</ol>
-<div class="cell">
-<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb4"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="co">#predict(lm.out,data.frame(lstat=(c(5,10,15))),interval="confidence")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
-</div>
-<ol start="4" type="1">
-<li><p>Add the regression line to your plot</p></li>
-<li><p>Now regress medv on lstat and age. What is your predicted model? What can you conclude?</p></li>
-<li><p>Now we will try to predict per capita crime rate using the other variables ofor the same Boston data set.</p></li>
-</ol>
 <ol type="a">
-<li><p>For each preditor, fit a simple linear regression model to predict the response. Describe your results. In which of the models is there a statistically significant association between the predictor and the response? Creaste some plots to back up your assertions.</p></li>
-<li><p>Fit a multiple regression model to predict the response using all of the predictors. Describe your results. For which predictors can we reject the null hypothesis <span class="math inline">\(H_{0}: \beta_{j}=0\)</span>?</p></li>
-<li><p>How do your results from (a) compare to your results from (b)?</p></li>
-<li><p>Is there evidene of non-linear association between any of the predictors and the response? To answer this question, for each predictor X, fit a model of the form <span class="math inline">\(Y=\beta_{0}+\beta_{1}X+\beta_{2}X^2+\beta_{3}X^3+\epsilon\)</span></p></li>
+<li><p>Display the scatterplot, what do you conclude?</p></li>
+<li><p>Fit a logistic regression for predicting the probability that the cancer metastasizes given the size of the tumor and state the estimated predicted probability function.</p></li>
+<li><p>Add the fitted probability to the scatterplot</p></li>
+<li><p>What is the predicted probability of a patient with tumor size <span class="math inline">\(4.0\)</span> cm?</p></li>
 </ol>
 
 
