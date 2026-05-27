@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>46&nbsp; Week 7 Section – Stats 141. Introduction to Statistics for Biology</title>
+<title>21&nbsp; Survial Analysis – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -23,6 +23,41 @@ ul.task-list li input[type="checkbox"] {
   margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
   vertical-align: middle;
 }
+/* CSS for syntax highlighting */
+html { -webkit-text-size-adjust: 100%; }
+pre > code.sourceCode { white-space: pre; position: relative; }
+pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+pre > code.sourceCode > span:empty { height: 1.2em; }
+.sourceCode { overflow: visible; }
+code.sourceCode > span { color: inherit; text-decoration: inherit; }
+div.sourceCode { margin: 1em 0; }
+pre.sourceCode { margin: 0; }
+@media screen {
+div.sourceCode { overflow: auto; }
+}
+@media print {
+pre > code.sourceCode { white-space: pre-wrap; }
+pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+}
+pre.numberSource code
+  { counter-reset: source-line 0; }
+pre.numberSource code > span
+  { position: relative; left: -4em; counter-increment: source-line; }
+pre.numberSource code > span > a:first-child::before
+  { content: counter(source-line);
+    position: relative; left: -1em; text-align: right; vertical-align: baseline;
+    border: none; display: inline-block;
+    -webkit-touch-callout: none; -webkit-user-select: none;
+    -khtml-user-select: none; -moz-user-select: none;
+    -ms-user-select: none; user-select: none;
+    padding: 0 4px; width: 4em;
+  }
+pre.numberSource { margin-left: 3em;  padding-left: 4px; }
+div.sourceCode
+  {   }
+@media screen {
+pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+}
 </style>
 
 
@@ -33,8 +68,8 @@ ul.task-list li input[type="checkbox"] {
 <script src="site_libs/quarto-search/fuse.min.js"></script>
 <script src="site_libs/quarto-search/quarto-search.js"></script>
 <meta name="quarto:offset" content="./">
-<link href="./Week8_section_download.html" rel="next">
-<link href="./Week6_Section_download.html" rel="prev">
+<link href="./Week1A.html" rel="next">
+<link href="./Lec20.html" rel="prev">
 <script src="site_libs/quarto-html/quarto.js" type="module"></script>
 <script src="site_libs/quarto-html/tabsets/tabsets.js" type="module"></script>
 <script src="site_libs/quarto-html/popper.min.js"></script>
@@ -114,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week7_Section_incomplete.html"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Week 7 Section</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -282,7 +317,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Lec21.html" class="sidebar-item-text sidebar-link">
+  <a href="./Lec21.html" class="sidebar-item-text sidebar-link active">
  <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></span></a>
   </div>
 </li>
@@ -454,7 +489,7 @@ window.Quarto = {
 </li>
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
-  <a href="./Week7_Section_incomplete.html" class="sidebar-item-text sidebar-link active">
+  <a href="./Week7_Section_incomplete.html" class="sidebar-item-text sidebar-link">
  <span class="menu-text"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Week 7 Section</span></span></a>
   </div>
 </li>
@@ -535,38 +570,18 @@ window.Quarto = {
     <h2 id="toc-title">Table of contents</h2>
    
   <ul>
-  <li><a href="#example-campus-café-visited-by-student-majors" id="toc-example-campus-café-visited-by-student-majors" class="nav-link active" data-scroll-target="#example-campus-café-visited-by-student-majors"><span class="header-section-number">47</span> Example: Campus café visited by student majors</a></li>
-  <li><a href="#part-1-goodness-of-fit-test" id="toc-part-1-goodness-of-fit-test" class="nav-link" data-scroll-target="#part-1-goodness-of-fit-test"><span class="header-section-number">48</span> Part 1: Goodness-of-fit test</a>
-  <ul class="collapse">
-  <li><a href="#step-1-write-down-the-hypotheses" id="toc-step-1-write-down-the-hypotheses" class="nav-link" data-scroll-target="#step-1-write-down-the-hypotheses"><span class="header-section-number">48.1</span> Step 1: Write down the hypotheses</a></li>
-  <li><a href="#step-2-write-down-the-test-statistic" id="toc-step-2-write-down-the-test-statistic" class="nav-link" data-scroll-target="#step-2-write-down-the-test-statistic"><span class="header-section-number">48.2</span> Step 2: Write down the test statistic</a></li>
-  <li><a href="#step-3-identify-quantities-and-compute-test-statistic" id="toc-step-3-identify-quantities-and-compute-test-statistic" class="nav-link" data-scroll-target="#step-3-identify-quantities-and-compute-test-statistic"><span class="header-section-number">48.3</span> Step 3: Identify quantities and compute test statistic</a></li>
-  <li><a href="#step-4-compute-the-p-value" id="toc-step-4-compute-the-p-value" class="nav-link" data-scroll-target="#step-4-compute-the-p-value"><span class="header-section-number">48.4</span> Step 4: Compute the p-value</a>
-  <ul class="collapse">
-  <li><a href="#chi-square-reference-distribution" id="toc-chi-square-reference-distribution" class="nav-link" data-scroll-target="#chi-square-reference-distribution"><span class="header-section-number">48.4.1</span> Chi-square reference distribution</a></li>
-  </ul></li>
-  <li><a href="#step-5-make-a-decision" id="toc-step-5-make-a-decision" class="nav-link" data-scroll-target="#step-5-make-a-decision"><span class="header-section-number">48.5</span> Step 5: Make a decision</a></li>
-  </ul></li>
-  <li><a href="#part-2-chi-square-test-for-independence" id="toc-part-2-chi-square-test-for-independence" class="nav-link" data-scroll-target="#part-2-chi-square-test-for-independence"><span class="header-section-number">49</span> Part 2: Chi-square test for independence</a>
-  <ul class="collapse">
-  <li><a href="#step-1-write-down-the-hypotheses-1" id="toc-step-1-write-down-the-hypotheses-1" class="nav-link" data-scroll-target="#step-1-write-down-the-hypotheses-1"><span class="header-section-number">49.1</span> Step 1: Write down the hypotheses</a></li>
-  <li><a href="#step-2-write-down-the-test-statistic-1" id="toc-step-2-write-down-the-test-statistic-1" class="nav-link" data-scroll-target="#step-2-write-down-the-test-statistic-1"><span class="header-section-number">49.2</span> Step 2: Write down the test statistic</a></li>
-  <li><a href="#step-3-identify-quantities-and-compute" id="toc-step-3-identify-quantities-and-compute" class="nav-link" data-scroll-target="#step-3-identify-quantities-and-compute"><span class="header-section-number">49.3</span> Step 3: Identify quantities and compute</a></li>
-  <li><a href="#step-4-compute-the-p-value-1" id="toc-step-4-compute-the-p-value-1" class="nav-link" data-scroll-target="#step-4-compute-the-p-value-1"><span class="header-section-number">49.4</span> Step 4: Compute the p-value</a></li>
-  </ul></li>
-  <li><a href="#chi-square-reference-distribution-1" id="toc-chi-square-reference-distribution-1" class="nav-link" data-scroll-target="#chi-square-reference-distribution-1"><span class="header-section-number">50</span> Chi-square reference distribution</a>
-  <ul class="collapse">
-  <li><a href="#step-5-make-a-decision-1" id="toc-step-5-make-a-decision-1" class="nav-link" data-scroll-target="#step-5-make-a-decision-1"><span class="header-section-number">50.1</span> Step 5: Make a decision</a></li>
-  </ul></li>
+  <li><a href="#logrank-test" id="toc-logrank-test" class="nav-link active" data-scroll-target="#logrank-test"><span class="header-section-number">21.1</span> Logrank test</a></li>
+  <li><a href="#regression-models-with-survival-response" id="toc-regression-models-with-survival-response" class="nav-link" data-scroll-target="#regression-models-with-survival-response"><span class="header-section-number">21.2</span> Regression models with survival response</a></li>
+  <li><a href="#likelihood-for-right-censored-data" id="toc-likelihood-for-right-censored-data" class="nav-link" data-scroll-target="#likelihood-for-right-censored-data"><span class="header-section-number">21.3</span> Likelihood for right-censored data</a></li>
   </ul>
 </nav>
     </div>
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./Week1_section.html">Sections</a></li><li class="breadcrumb-item"><a href="./Week7_Section_incomplete.html"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Week 7 Section</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">46</span>&nbsp; <span class="chapter-title">Week 7 Section</span></h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></h1>
 </div>
 
 
@@ -583,431 +598,192 @@ window.Quarto = {
 </header>
 
 
-<div style="
-background-color:#eef7ff;
-border:1.5px solid #b7d7f0;
-border-radius:14px;
-padding:20px;
-margin-top:1em;
-">
-
-<h2 style="margin-top:0;" class="anchored">Chi-square tests concept check</h2>
-
-
-<table class="caption-top table">
-<colgroup>
-<col style="width: 33%">
-<col style="width: 33%">
-<col style="width: 33%">
-</colgroup>
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Feature</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Goodness-of-fit test</th>
-<th data-quarto-table-cell-role="th" style="text-align: left; border-bottom: 2px solid #c9dff2; padding: 8px;">Test of independence</th>
-</tr>
-<tr class="even">
-<td style="text-align: left; padding: 8px;"><strong>Number of variables</strong></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">1 categorical variable</span>
-</details></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">2 categorical variables</span>
-</details></td>
-</tr>
-<tr class="odd">
-<td style="text-align: left; padding: 8px;"><strong>Main question</strong></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">Do category proportions match a hypothesized distribution?</span>
-</details></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">Are two categorical variables associated?<br>
-Or: Do multiple groups share the same underlying distribution?</span>
-</details></td>
-</tr>
-<tr class="even">
-<td style="text-align: left; padding: 8px;"><strong>Null hypothesis</strong></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">The observed distribution follows the claimed proportions.</span>
-</details></td>
-<td style="text-align: left; padding: 8px;"><details>
-<summary>
-Answer
-</summary>
-<span style="color:#1f5aa6;">The two variables are independent.</span>
-</details></td>
-</tr>
-</tbody>
-</table>
-
-
-</div>
-<section id="example-campus-café-visited-by-student-majors" class="level1" data-number="47">
-<h1 data-number="47"><span class="header-section-number">47</span> Example: Campus café visited by student majors</h1>
-</section>
-<section id="part-1-goodness-of-fit-test" class="level1" data-number="48">
-<h1 data-number="48"><span class="header-section-number">48</span> Part 1: Goodness-of-fit test</h1>
-<p>Question:</p>
-<blockquote class="blockquote">
-<p>Do Statistics, Biology, and CS students go to Voyager equally often?</p>
-</blockquote>
-<p>Observed counts:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Major</th>
-<th style="text-align: right;">Count</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Statistics</td>
-<td style="text-align: right;">39</td>
-</tr>
-<tr class="even">
-<td>Biology</td>
-<td style="text-align: right;">25</td>
-</tr>
-<tr class="odd">
-<td>CS</td>
-<td style="text-align: right;">46</td>
-</tr>
-</tbody>
-</table>
-<section id="step-1-write-down-the-hypotheses" class="level2" data-number="48.1">
-<h2 data-number="48.1" class="anchored" data-anchor-id="step-1-write-down-the-hypotheses"><span class="header-section-number">48.1</span> Step 1: Write down the hypotheses</h2>
-<p>Null hypothesis:</p>
-<p><strong>Your answer</strong></p>
-<p>Alternative hypothesis:</p>
-<p><strong>Your answer</strong></p>
-</section>
-<section id="step-2-write-down-the-test-statistic" class="level2" data-number="48.2">
-<h2 data-number="48.2" class="anchored" data-anchor-id="step-2-write-down-the-test-statistic"><span class="header-section-number">48.2</span> Step 2: Write down the test statistic</h2>
-<p>For a goodness-of-fit test,</p>
-<p><span class="math display">\[\chi^2=\sum_{i=1}^k\frac{(\text{Observed}_i-\text{Expected}_i)^2}{\text{Expected}_i}\]</span></p>
-<p>with degrees of freedom</p>
-<p><span class="math display">\[df = k-1\]</span></p>
-<p>where:</p>
+<p>Suppose that we have collected a five-year medical study, in which patients have been treated for cancer. We would like to fit a model to predict patient suvival time, using features (predictors) such as treatment, underlying conditions, etc. This is an example in which the outcome is <strong>time until an event</strong> occurs. Other examples are:</p>
 <ul>
-<li><span class="math inline">\(\text{Observed}_i\)</span>: observed counts</li>
-<li><span class="math inline">\(\text{Expected}_i\)</span> expected counts under <span class="math inline">\(H_0\)</span></li>
+<li>Time from diagnosis to death</li>
+<li>Time from surgery to relapse</li>
+<li>Time to infection after vaccination</li>
+<li>Time to hospital discharge</li>
 </ul>
-</section>
-<section id="step-3-identify-quantities-and-compute-test-statistic" class="level2" data-number="48.3">
-<h2 data-number="48.3" class="anchored" data-anchor-id="step-3-identify-quantities-and-compute-test-statistic"><span class="header-section-number">48.3</span> Step 3: Identify quantities and compute test statistic</h2>
-<p>If the null hypothesis says all <span class="math inline">\(k\)</span> categories are equally likely, <strong>how should we compute <span class="math inline">\(\text{Expected}_i\)</span></strong>?</p>
-<div style="
-background-color:#eef7ff;
-border:1.5px solid #b7d7f0;
-border-radius:14px;
-padding:20px;
-margin-top:1em;
-margin-bottom: 28px;
-">
-
-<h3 style="margin-top:0; margin-bottom:22px;" class="anchored">
-Observed vs. expected counts
-</h3>
-
-<details style="margin-bottom:14px;">
-  <summary style="font-weight:600; cursor:pointer;">
-    Observed counts
-  </summary>
-
-  <ul style="padding-top:14px; margin:0;">
-    <li>
-      <span style="color:#1f5aa6; font-weight:600;">
-      Statistics: 39
-      </span>
-    </li>
-
-    <li>
-      <span style="color:#1f5aa6; font-weight:600;">
-      Biology: 25
-      </span>
-    </li>
-
-    <li>
-      <span style="color:#1f5aa6; font-weight:600;">
-      CS: 46
-      </span>
-    </li>
-  </ul>
-</details>
-
-<details style="margin-bottom:0px;">
-  <summary style="font-weight:600; cursor:pointer;">
-    Expected counts
-  </summary>
-
-  <ul style="padding-top:14px; margin:0 0 0 0;">
-    <li>
-      <span style="color:#9b3d00; font-weight:600;">
-      Statistics: 36.67
-      </span>
-    </li>
-
-    <li>
-      <span style="color:#9b3d00; font-weight:600;">
-      Biology: 36.67
-      </span>
-    </li>
-
-    <li>
-      <span style="color:#9b3d00; font-weight:600;">
-      CS: 36.67
-      </span>
-    </li>
-  </ul>
-</details>
-
+<p>A common feature that makes survival analysis different from ordinary regression is <strong>censoring</strong>. In our five-year study, some patients will still be alive at the end of follow-up. For these patients, the survival time is <strong>right-censored</strong>: we do not observe their event time, but we know they survived at least 5 years.</p>
+<p>For each individual <span class="math inline">\(i\)</span>, we suppose that there is a true <strong>survival time</strong> <span class="math inline">\(T_{i}\)</span> or a true <strong>censoring time</strong> <span class="math inline">\(C_{i}\)</span>. We observe either <span class="math inline">\(T\)</span> or <span class="math inline">\(C\)</span>, that is, we observe <span class="math display">\[
+Y_{i}=\min\{C_{i},T_{i}\}
+\]</span> We also observe a status indicator <span class="math display">\[
+\delta=\begin{cases} 1 &amp; \text{ if } T\leq C\\
+0 &amp; \text{ if } T&gt;C
+\end{cases}
+\]</span> - Assume we observe <span class="math inline">\(n\)</span> pairs <span class="math inline">\((y_{1},\delta_{1}),\ldots,(y_{n},\delta_{n})\)</span>. - We further assume that the event time <span class="math inline">\(T\)</span> is independent of the censoring time <span class="math inline">\(C\)</span>. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and femal may wrongly suggest males survive longer.</p>
+<p>The <strong>survival function</strong> is defined as <span class="math display">\[S(t) = P(T &gt; t)\]</span></p>
+<p>It tells us the probability of surviving beyond time <span class="math inline">\(t\)</span>.</p>
+<div class="callout callout-style-default callout-note no-icon callout-titled">
+<div class="callout-header d-flex align-content-center">
+<div class="callout-icon-container">
+<i class="callout-icon no-icon"></i>
+</div>
+<div class="callout-title-container flex-fill">
+<span class="screen-reader-only">Note</span>Example: BrainCancer dataset
+</div>
+</div>
+<div class="callout-body-container callout-body">
+<p>The BrainCancer dataset (package ISLR2) consists of survival times of 88patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.</p>
+</div>
 </div>
 <ul>
-<li>Chi-square statistic: <strong>Your answer</strong></li>
-<li>Degrees of freedom: <strong>Your answer</strong></li>
+<li><p>Let <span class="math inline">\(d_{1}&lt;d_{2}&lt;\ldots&lt;d_{K}\)</span> denote the <span class="math inline">\(K\)</span> unique death times amon the non-censored patients, and let <span class="math inline">\(q_{k}\)</span> denote the number of patients who died at time <span class="math inline">\(d_{k}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(r_{k}\)</span> deote the number of patients alive and in the study just before <span class="math inline">\(d_{k}\)</span>, these are the at <strong>risk</strong> patients.</p></li>
 </ul>
-</section>
-<section id="step-4-compute-the-p-value" class="level2" data-number="48.4">
-<h2 data-number="48.4" class="anchored" data-anchor-id="step-4-compute-the-p-value"><span class="header-section-number">48.4</span> Step 4: Compute the p-value</h2>
-<ul>
-<li><p>The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as <strong>extreme</strong> as the one observed.</p></li>
-<li><p>In a goodness-of-fit test, this means observing counts that <strong>deviate from the claimed distribution</strong> at least as much as the observed data.</p></li>
-</ul>
-<p><strong>How do we translate the p-value idea into a probability formula?</strong></p>
-<section id="chi-square-reference-distribution" class="level3" data-number="48.4.1">
-<h3 data-number="48.4.1" class="anchored" data-anchor-id="chi-square-reference-distribution"><span class="header-section-number">48.4.1</span> Chi-square reference distribution</h3>
+<p>By the law of total probability</p>
+<p><span class="math display">\[
+P(T&gt;d_{k})=P(T&gt;d_{k}\mid T&gt; d_{k-1})P(T&gt;d_{k-1})+P(T&gt;d_{k}\mid T\leq d_{k-1})P(T\leq d_{k-1})
+\]</span> which can be simplified as: <span class="math display">\[
+S(d_{k})=P(T&gt;d_{k}\mid T&gt; d_{k-1})P(T&gt;d_{k-1})=P(T&gt;d_{k}\mid T&gt; d_{k-1})S(d_{k-1})
+\]</span> This implies that <span class="math display">\[
+S(d_{k})=P(T&gt;d_{k}\mid T&gt; d_{k-1})\times \ldots \times P(T&gt;d_{2}\mid T&gt;d_{1})P(T&gt;d_{1})
+\]</span> It is then natural to estimate <span class="math display">\[
+\hat{P}(T&gt;d_{j}\mid T&gt;d_{j-1})=\frac{r_{j}-d_{j}}{r_{j}}
+\]</span> to obtain the <strong>Kplan-Meier</strong> estimator of the survival curve:</p>
+<p><span class="math display">\[
+\hat{S}(d_{k})=\prod^{k}_{j=1}\left(\frac{r_{j}-q_{j}}{r_{j}} \right)
+\]</span></p>
 <div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb1"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(ISLR2)</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survival)</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a><span class="fu">library</span>(survminer)</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>fit.surv<span class="ot">&lt;-</span><span class="fu">survfit</span>(<span class="fu">Surv</span>(time,status)<span class="sc">~</span><span class="dv">1</span>,<span class="at">data=</span>BrainCancer)</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a><span class="fu">ggsurvplot</span>(fit.surv, <span class="at">data =</span> BrainCancer, <span class="at">conf.int =</span> <span class="cn">TRUE</span>, <span class="at">risk.table =</span> <span class="cn">TRUE</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
 <div class="cell-output-display">
 <div>
 <figure class="figure">
-<p><img src="Week7_Section_incomplete_files/figure-html/unnamed-chunk-3-1.png" class="img-fluid figure-img" width="672"></p>
+<p><img src="Lec21_files/figure-html/unnamed-chunk-1-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb2"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a><span class="do">##Alternatively</span></span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a><span class="do">##plot(fit.surv,xlab="Months",ylab="Estimated Survival probability")</span></span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+</div>
+<section id="logrank-test" class="level2" data-number="21.1">
+<h2 data-number="21.1" class="anchored" data-anchor-id="logrank-test"><span class="header-section-number">21.1</span> Logrank test</h2>
+<p>The logrank test is a nonparametric test for comparing whether two groups have the same survival function over time (equivalently, the same hazard function at all times under its standard formulation). It is widely used with right-censored time-to-event data.</p>
+<p>Let <span class="math inline">\(d_{1}&lt;d_{2}&lt;\ldots&lt;d_{K}\)</span> denote the unique death times, and let <span class="math inline">\(q_{1,k}\)</span> and <span class="math inline">\(q_{2,k}\)</span> denote the number of patients in groups 1 and 2 who died at time <span class="math inline">\(d_{k}\)</span>. Let <span class="math inline">\(r_{1,k}\)</span> and <span class="math inline">\(r_{2,k}\)</span> denote the number of patients in groups 1 and 2 who are in risk.</p>
+<p>In order to test <span class="math inline">\(E(X)=0\)</span>, we construct a test statistic of the form: <span class="math display">\[
+W=\frac{X-EX}{\sqrt{Var(X)}}
+\]</span> Specifically, <span class="math display">\[
+W=\frac{\sum^{K}_{i=1}(q_{1,k}-\frac{r_{1,k}q_{k}}{r_{k}}}{\sqrt{\frac{q_{k}(r_{1,k}/r_{j})(1-r_{1,k}/r_{k})(r_{k}-q_{k})}{r_{k}-1}}}
+\]</span> When the sample size is large, this statistic has approximately a standard normal distribution that can be used to compute a p-value for the null hypothesis that there is no difference between the survival curves in the two groups.</p>
+<p>Similarly, <span class="math inline">\(W^2\)</span> is approximately a <span class="math inline">\(\chi^2\)</span>-distributed statistic with 1 degree of freedom.</p>
+<p>In our example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb3"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>fit.surv2<span class="ot">&lt;-</span><span class="fu">survdiff</span>(<span class="fu">Surv</span>(time,status)<span class="sc">~</span>sex,<span class="at">data=</span>BrainCancer)</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>fit.surv2</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+survdiff(formula = Surv(time, status) ~ sex, data = BrainCancer)
+
+            N Observed Expected (O-E)^2/E (O-E)^2/V
+sex=Female 45       15     18.5     0.676      1.44
+sex=Male   43       20     16.5     0.761      1.44
+
+ Chisq= 1.4  on 1 degrees of freedom, p= 0.2 </code></pre>
+</div>
+</div>
+</section>
+<section id="regression-models-with-survival-response" class="level2" data-number="21.2">
+<h2 data-number="21.2" class="anchored" data-anchor-id="regression-models-with-survival-response"><span class="header-section-number">21.2</span> Regression models with survival response</h2>
+<p>Assume now we wish to predict the survival time <span class="math inline">\(T\)</span> with features <span class="math inline">\(X\)</span>.</p>
+<p><strong>Distribution and density (if continuous)</strong></p>
+<p><span class="math display">\[F(t) = P(T \le t) = 1 - S(t), \quad f(t) = F'(t)\]</span> The hazard function (instantaneous risk), alson known as the force of martality is formally defined as: <span class="math display">\[
+h(t) = \lim_{\Delta t \to 0} \frac{P(t \le T &lt; t+\Delta t \mid T \ge t)}{\Delta t}
+\]</span> It is the death rate in the instant after time t, given survial past that time.</p>
+<p>Relationship: <span class="math display">\[h(t) = \frac{f(t)}{S(t)}\]</span> Cumulative hazard <span class="math display">\[H(t) = \int_0^t h(u)\,du\]</span> Key identity: <span class="math display">\[S(t) = \exp\{-H(t)\}\]</span></p>
+</section>
+<section id="likelihood-for-right-censored-data" class="level2" data-number="21.3">
+<h2 data-number="21.3" class="anchored" data-anchor-id="likelihood-for-right-censored-data"><span class="header-section-number">21.3</span> Likelihood for right-censored data</h2>
+<p>For independent subjects, the contribution of subject <span class="math inline">\(i\)</span> is:</p>
+<p>If event observed (<span class="math inline">\(\delta_i=1\)</span>): probability density at the event time <span class="math inline">\(f(Y_i)\)</span> If censored (<span class="math inline">\(\delta_i=0\)</span>): probability of surviving past censoring time <span class="math inline">\(S(Y_i)\)</span></p>
+<p>So the full likelihood is <span class="math display">\[L(\theta)=\prod_{i=1}^n \big[f(y_i;\theta)\big]^{\delta_i}\big[S(y_i;\theta)\big]^{1-\delta_i}=\prod_{i=1}^n h(y_{i})^{\delta_{i}}S(y_{i})\]</span> and with <span class="math inline">\(S(t)=\exp\{-H(t)\}\)</span>, <span class="math display">\[\log L(\theta)=\sum_{i=1}^n \delta_i \log h(Y_i;\theta) - \sum_{i=1}^n H(Y_i;\theta).\]</span></p>
+<p>Parametric models: Exponential, Weibull, log-normal, etc., fit by maximizing the full likelihood above.</p>
+<p>The Cox proportional hazards model assumes that <span class="math display">\[h(t\mid x)=h_0(t)\exp(\beta^\top x)\]</span> where <span class="math inline">\(h_{0}(t)\geq 0\)</span> is an unspecified function, known as the baseline hazard. estimates covariate effects via partial likelihood (baseline hazard left unspecified).</p>
+<p>For a one-unit increase in covariate <span class="math inline">\(x_j\)</span>, <span class="math display">\[\text{HR}=\exp(\beta_j).\]</span></p>
+<p>HR <span class="math inline">\(&gt;1\)</span>: higher hazard (shorter survival on average) HR <span class="math inline">\(&lt;1\)</span>: lower hazard (longer survival on average)</p>
+<p>For two covariate vectors <span class="math inline">\(x_a,x_b\)</span>, <span class="math display">\[\frac{h(t\mid x_a)}{h(t\mid x_b)}=\exp\{\beta^\top(x_a-x_b)\},\]</span> which is constant in time ⇒ “proportional hazards”.</p>
+<p>Why it’s useful</p>
+<p>Separates time pattern of risk (<span class="math inline">\(h_0(t)\)</span>) from covariate effects (<span class="math inline">\(\beta\)</span>). Does not require specifying <span class="math inline">\(h_0(t)\)</span> (in Cox PH), yet estimates hazard ratios. Handles right-censoring naturally.</p>
+<p>Estimation (Cox model idea) Cox estimates <span class="math inline">\(\beta\)</span> via partial likelihood, using the ordering of event times. At each event time <span class="math inline">\(t_i\)</span>, the probability that person <span class="math inline">\(i\)</span> fails given someone in the risk set fails is <span class="math display">\[\frac{\exp(\beta^\top x_i)}{\sum_{j\in R(t_i)} \exp(\beta^\top x_j)}.\]</span> Multiplying over all events gives the partial likelihood:</p>
+<p><span class="math display">\[L_p(\beta)=\prod_{d=1}^{D}
+\frac{\exp(\beta^\top x_{i(d)})}{\sum_{j\in R(t_{(d)})}\exp(\beta^\top x_j)}.\]</span> To estimate <span class="math inline">\(\beta\)</span>, we simply maximize the partial likelihood.</p>
+<p>Baseline survival and prediction Once <span class="math inline">\(\hat\beta\)</span> is estimated, you can estimate baseline cumulative hazard <span class="math inline">\(\hat H_0(t)\)</span> (e.g., Breslow estimator) and then <span class="math display">\[\hat S(t\mid x)=\exp\{-\hat H_0(t)\exp(\hat\beta^\top x)\}.\]</span></p>
+<p>Main assumption in most standard analyses: non-informative (independent) censoring, meaning censoring is unrelated to the future event time given covariates.</p>
+<p>For our example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex, <span class="at">data =</span> BrainCancer)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ sex, data = BrainCancer)
+
+  n= 88, number of events= 35 
+
+          coef exp(coef) se(coef)     z Pr(&gt;|z|)
+sexMale 0.4077    1.5033   0.3420 1.192    0.233
+
+        exp(coef) exp(-coef) lower .95 upper .95
+sexMale     1.503     0.6652     0.769     2.939
+
+Concordance= 0.565  (se = 0.045 )
+Likelihood ratio test= 1.44  on 1 df,   p=0.2
+Wald test            = 1.42  on 1 df,   p=0.2
+Score (logrank) test = 1.44  on 1 df,   p=0.2</code></pre>
+</div>
+</div>
+<p>Regardless of which test we use, we see that there is no clear evidence for a difference in survival between females and males.</p>
+<p>Now we fut a model with all possible predictors</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit.all<span class="ot">&lt;-</span><span class="fu">coxph</span>(<span class="fu">Surv</span>(time,status)<span class="sc">~</span>sex<span class="sc">+</span>diagnosis<span class="sc">+</span>loc<span class="sc">+</span>ki<span class="sc">+</span>gtv<span class="sc">+</span>stereo,<span class="at">data=</span>BrainCancer)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit.all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ sex + diagnosis + loc + 
+    ki + gtv + stereo, data = BrainCancer)
+
+                       coef exp(coef) se(coef)      z        p
+sexMale             0.18375   1.20171  0.36036  0.510  0.61012
+diagnosisLG glioma  0.91502   2.49683  0.63816  1.434  0.15161
+diagnosisHG glioma  2.15457   8.62414  0.45052  4.782 1.73e-06
+diagnosisOther      0.88570   2.42467  0.65787  1.346  0.17821
+locSupratentorial   0.44119   1.55456  0.70367  0.627  0.53066
+ki                 -0.05496   0.94653  0.01831 -3.001  0.00269
+gtv                 0.03429   1.03489  0.02233  1.536  0.12466
+stereoSRT           0.17778   1.19456  0.60158  0.296  0.76760
+
+Likelihood ratio test=41.37  on 8 df, p=1.776e-06
+n= 87, number of events= 35 
+   (1 observation deleted due to missingness)</code></pre>
+</div>
+</div>
+<p>The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modeldata<span class="ot">&lt;-</span><span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">diagnosis=</span><span class="fu">levels</span>(BrainCancer<span class="sc">$</span>diagnosis),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex=</span><span class="fu">rep</span>(<span class="st">"Female"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">loc=</span><span class="fu">rep</span>(<span class="st">"Supratentorial"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ki=</span><span class="fu">rep</span>(<span class="fu">mean</span>(BrainCancer<span class="sc">$</span>ki),<span class="dv">4</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">gtv=</span><span class="fu">rep</span>(<span class="fu">mean</span>(BrainCancer<span class="sc">$</span>gtv),<span class="dv">4</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stereo=</span><span class="fu">rep</span>(<span class="st">"SRT"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span>BrainCancer)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>survplots<span class="ot">&lt;-</span><span class="fu">survfit</span>(fit.all,<span class="at">newdata=</span>modeldata)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(survplots,<span class="at">xlab=</span><span class="st">"Months"</span>,<span class="at">ylab=</span><span class="st">"Survial Probability"</span>,<span class="at">col=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="fu">levels</span>(BrainCancer<span class="sc">$</span>diagnosis),<span class="at">col=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec21_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
 </figure>
 </div>
 </div>
 </div>
-</section>
-</section>
-<section id="step-5-make-a-decision" class="level2" data-number="48.5">
-<h2 data-number="48.5" class="anchored" data-anchor-id="step-5-make-a-decision"><span class="header-section-number">48.5</span> Step 5: Make a decision</h2>
-<ul>
-<li>If the p-value <span class="math inline">\(&lt;\alpha\)</span>, reject <span class="math inline">\(H_0\)</span></li>
-<li>Otherwise, fail to reject <span class="math inline">\(H_0\)</span></li>
-</ul>
-<p>Interpretation:</p>
-<p>A small p-value suggests that Statistics, Biology, and CS students are not equally represented at Coupa.</p>
-</section>
-</section>
-<section id="part-2-chi-square-test-for-independence" class="level1" data-number="49">
-<h1 data-number="49"><span class="header-section-number">49</span> Part 2: Chi-square test for independence</h1>
-<p>Question:</p>
-<blockquote class="blockquote">
-<p>Does a student’s major affect which café they go to?</p>
-</blockquote>
-<p>Observed counts:</p>
-<table class="caption-top table">
-<thead>
-<tr class="header">
-<th>Café</th>
-<th style="text-align: right;">Statistics</th>
-<th style="text-align: right;">Biology</th>
-<th style="text-align: right;">CS</th>
-</tr>
-</thead>
-<tbody>
-<tr class="odd">
-<td>Voyager</td>
-<td style="text-align: right;">39</td>
-<td style="text-align: right;">25</td>
-<td style="text-align: right;">46</td>
-</tr>
-<tr class="even">
-<td>Bytes</td>
-<td style="text-align: right;">30</td>
-<td style="text-align: right;">42</td>
-<td style="text-align: right;">28</td>
-</tr>
-<tr class="odd">
-<td>Coupa</td>
-<td style="text-align: right;">24</td>
-<td style="text-align: right;">29</td>
-<td style="text-align: right;">37</td>
-</tr>
-</tbody>
-</table>
-<section id="step-1-write-down-the-hypotheses-1" class="level2" data-number="49.1">
-<h2 data-number="49.1" class="anchored" data-anchor-id="step-1-write-down-the-hypotheses-1"><span class="header-section-number">49.1</span> Step 1: Write down the hypotheses</h2>
-<p>Null hypothesis:</p>
-<p><strong>Your answer</strong></p>
-<p>Alternative hypothesis:</p>
-<p><strong>Your answer</strong></p>
-</section>
-<section id="step-2-write-down-the-test-statistic-1" class="level2" data-number="49.2">
-<h2 data-number="49.2" class="anchored" data-anchor-id="step-2-write-down-the-test-statistic-1"><span class="header-section-number">49.2</span> Step 2: Write down the test statistic</h2>
-<p>For a contingency table, we use the same goodness-of-fit idea, but apply it across <strong>all cells</strong> of the table. You can think of this as:</p>
-<ul>
-<li>compute the goodness-of-fit contribution within each row</li>
-<li>then sum those contributions across all rows</li>
-</ul>
-<p><span class="math display">\[\chi^2=\sum_{i=1}^r\sum_{j=1}^c\frac{(\text{Observed}_{ij}-\text{Expected}_{ij})^2}{\text{Expected}_{ij}}\]</span></p>
-<p>with degrees of freedom: <span class="math display">\[df = (r-1)(c-1)\]</span></p>
-<p>If the row distributions are very different from the shared distribution expected under independence, the chi-square statistic becomes large.</p>
-</section>
-<section id="step-3-identify-quantities-and-compute" class="level2" data-number="49.3">
-<h2 data-number="49.3" class="anchored" data-anchor-id="step-3-identify-quantities-and-compute"><span class="header-section-number">49.3</span> Step 3: Identify quantities and compute</h2>
-<p>Under the null hypothesis of independence:</p>
-<ul>
-<li>the row category should not affect the column category</li>
-<li>every row should follow the same overall column distribution: <span class="math inline">\(\frac{\text{column total}}{\text{grand total}}\)</span></li>
-</ul>
-<p>Therefore expected counts: <span class="math display">\[\text{Expected}_{ij}=\frac{(\text{row total})\times(\text{column total})}{\text{grand total}}\]</span></p>
-<div style="
-background-color:#eef7ff;
-border:1.5px solid #b7d7f0;
-border-radius:14px;
-padding:20px;
-margin-top:1em;
-margin-bottom:28px;
-">
-
-<h3 style="
-margin-top:0;
-margin-bottom:26px;
-" class="anchored">
-Observed vs. expected contingency tables
-</h3>
-
-<details style="margin-bottom:18px;">
-  <summary style="
-  font-weight:600;
-  cursor:pointer;
-  ">
-    Observed counts
-  </summary>
-
-  
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2"></th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Statistics</th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Biology</th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">CS</th>
-</tr>
-<tr class="even">
-<td style="padding: 8px"><strong>Voyager</strong></td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">39</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">25</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">46</td>
-</tr>
-<tr class="odd">
-<td style="padding: 8px"><strong>Bytes</strong></td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">30</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">42</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">28</td>
-</tr>
-<tr class="even">
-<td style="padding: 8px"><strong>Coupa</strong></td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">24</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">29</td>
-<td style="padding: 8px; color: #1f5aa6; font-weight: 600">37</td>
-</tr>
-</tbody>
-</table>
-
-</details>
-
-<details style="margin-bottom:0;">
-  <summary style="
-  font-weight:600;
-  cursor:pointer;
-  ">
-    Expected counts
-  </summary>
-
-  
-<table class="caption-top table">
-<tbody>
-<tr class="odd">
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2"></th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Statistics</th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">Biology</th>
-<th data-quarto-table-cell-role="th" style="padding: 8px; border-bottom: 2px solid #c9dff2">CS</th>
-</tr>
-<tr class="even">
-<td style="padding: 8px"><strong>Voyager</strong></td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">34.1</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">35.2</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">40.7</td>
-</tr>
-<tr class="odd">
-<td style="padding: 8px"><strong>Bytes</strong></td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">31.0</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">32.0</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">37.0</td>
-</tr>
-<tr class="even">
-<td style="padding: 8px"><strong>Coupa</strong></td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">27.9</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">28.8</td>
-<td style="padding: 8px; color: #9b3d00; font-weight: 600">33.3</td>
-</tr>
-</tbody>
-</table>
-
-</details>
-
-</div>
-<ul>
-<li>Chi-square statistic: <strong>Your answer</strong></li>
-<li>Degrees of freedom: <strong>Your answer</strong></li>
-</ul>
-</section>
-<section id="step-4-compute-the-p-value-1" class="level2" data-number="49.4">
-<h2 data-number="49.4" class="anchored" data-anchor-id="step-4-compute-the-p-value-1"><span class="header-section-number">49.4</span> Step 4: Compute the p-value</h2>
-<ul>
-<li><p>The p-value is the probability, assuming the null hypothesis is true, of observing a test statistic at least as <strong>extreme</strong> as the one observed.</p></li>
-<li><p>In a test of independence, this means observing a contingency table that <strong>deviates from the independence pattern</strong> at least as much as the observed table:</p></li>
-</ul>
-<p><span class="math display">\[p\text{-value}=\mathbb{P}\!\left[\chi^2_{df}\ge\chi^2_{\mathrm{obs}}\right]\]</span></p>
-</section>
-</section>
-<section id="chi-square-reference-distribution-1" class="level1" data-number="50">
-<h1 data-number="50"><span class="header-section-number">50</span> Chi-square reference distribution</h1>
-<div class="cell">
-<div class="cell-output-display">
-<div>
-<figure class="figure">
-<p><img src="Week7_Section_incomplete_files/figure-html/unnamed-chunk-7-1.png" class="img-fluid figure-img" width="672"></p>
-</figure>
-</div>
-</div>
-</div>
-<section id="step-5-make-a-decision-1" class="level2" data-number="50.1">
-<h2 data-number="50.1" class="anchored" data-anchor-id="step-5-make-a-decision-1"><span class="header-section-number">50.1</span> Step 5: Make a decision</h2>
-<ul>
-<li>If the p-value <span class="math inline">\(&lt;\alpha\)</span>, reject <span class="math inline">\(H_0\)</span></li>
-<li>Otherwise, fail to reject <span class="math inline">\(H_0\)</span></li>
-</ul>
-<p>Interpretation:</p>
-<p>A small p-value suggests that café choice differs across Statistics, Biology, and CS students.</p>
 
 
-</section>
 </section>
 
 </main> <!-- /main -->
@@ -1413,13 +1189,13 @@ Observed vs. expected contingency tables
   </script>
 <nav class="page-navigation">
   <div class="nav-page nav-page-previous">
-      <a href="./Week6_Section_download.html" class="pagination-link" aria-label="Type I and II Errors, and Power Analysis">
-        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">45</span>&nbsp; <span class="chapter-title">Type I and II Errors, and Power Analysis</span></span>
+      <a href="./Lec20.html" class="pagination-link" aria-label="Logistic Regression">
+        <i class="bi bi-arrow-left-short"></i> <span class="nav-page-text"><span class="chapter-number">20</span>&nbsp; <span class="chapter-title">Logistic Regression</span></span>
       </a>          
   </div>
   <div class="nav-page nav-page-next">
-      <a href="./Week8_section_download.html" class="pagination-link" aria-label="Week 8 Section">
-        <span class="nav-page-text"><span class="chapter-number">47</span>&nbsp; <span class="chapter-title">Week 8 Section</span></span> <i class="bi bi-arrow-right-short"></i>
+      <a href="./Week1A.html" class="pagination-link" aria-label="Activity 1">
+        <span class="nav-page-text"><span class="chapter-number">22</span>&nbsp; <span class="chapter-title">Activity 1</span></span> <i class="bi bi-arrow-right-short"></i>
       </a>
   </div>
 </nav>
