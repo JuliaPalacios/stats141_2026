@@ -703,7 +703,85 @@ h(t) = \lim_{\Delta t \to 0} \frac{P(t \le T &lt; t+\Delta t \mid T \ge t)}{\Del
 <p>So the full likelihood is <span class="math display">\[L(\theta)=\prod_{i=1}^n \big[f(y_i;\theta)\big]^{\delta_i}\big[S(y_i;\theta)\big]^{1-\delta_i}=\prod_{i=1}^n h(y_{i})^{\delta_{i}}S(y_{i})\]</span> and with <span class="math inline">\(S(t)=\exp\{-H(t)\}\)</span>, <span class="math display">\[\log L(\theta)=\sum_{i=1}^n \delta_i \log h(Y_i;\theta) - \sum_{i=1}^n H(Y_i;\theta).\]</span></p>
 <p>Parametric models: Exponential, Weibull, log-normal, etc., fit by maximizing the full likelihood above.</p>
 <p>The Cox proportional hazards model assumes that <span class="math display">\[h(t\mid x)=h_0(t)\exp(\beta^\top x)\]</span> where <span class="math inline">\(h_{0}(t)\geq 0\)</span> is an unspecified function, known as the baseline hazard. estimates covariate effects via partial likelihood (baseline hazard left unspecified).</p>
+<p>For a one-unit increase in covariate <span class="math inline">\(x_j\)</span>, <span class="math display">\[\text{HR}=\exp(\beta_j).\]</span></p>
+<p>HR <span class="math inline">\(&gt;1\)</span>: higher hazard (shorter survival on average) HR <span class="math inline">\(&lt;1\)</span>: lower hazard (longer survival on average)</p>
+<p>For two covariate vectors <span class="math inline">\(x_a,x_b\)</span>, <span class="math display">\[\frac{h(t\mid x_a)}{h(t\mid x_b)}=\exp\{\beta^\top(x_a-x_b)\},\]</span> which is constant in time ⇒ “proportional hazards”.</p>
+<p>Why it’s useful</p>
+<p>Separates time pattern of risk (<span class="math inline">\(h_0(t)\)</span>) from covariate effects (<span class="math inline">\(\beta\)</span>). Does not require specifying <span class="math inline">\(h_0(t)\)</span> (in Cox PH), yet estimates hazard ratios. Handles right-censoring naturally.</p>
+<p>Estimation (Cox model idea) Cox estimates <span class="math inline">\(\beta\)</span> via partial likelihood, using the ordering of event times. At each event time <span class="math inline">\(t_i\)</span>, the probability that person <span class="math inline">\(i\)</span> fails given someone in the risk set fails is <span class="math display">\[\frac{\exp(\beta^\top x_i)}{\sum_{j\in R(t_i)} \exp(\beta^\top x_j)}.\]</span> Multiplying over all events gives the partial likelihood:</p>
+<p><span class="math display">\[L_p(\beta)=\prod_{d=1}^{D}
+\frac{\exp(\beta^\top x_{i(d)})}{\sum_{j\in R(t_{(d)})}\exp(\beta^\top x_j)}.\]</span> To estimate <span class="math inline">\(\beta\)</span>, we simply maximize the partial likelihood.</p>
+<p>Baseline survival and prediction Once <span class="math inline">\(\hat\beta\)</span> is estimated, you can estimate baseline cumulative hazard <span class="math inline">\(\hat H_0(t)\)</span> (e.g., Breslow estimator) and then <span class="math display">\[\hat S(t\mid x)=\exp\{-\hat H_0(t)\exp(\hat\beta^\top x)\}.\]</span></p>
 <p>Main assumption in most standard analyses: non-informative (independent) censoring, meaning censoring is unrelated to the future event time given covariates.</p>
+<p>For our example:</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb5"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a>fit <span class="ot">&lt;-</span> <span class="fu">coxph</span>(<span class="fu">Surv</span>(time, status) <span class="sc">~</span> sex, <span class="at">data =</span> BrainCancer)</span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="fu">summary</span>(fit)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ sex, data = BrainCancer)
+
+  n= 88, number of events= 35 
+
+          coef exp(coef) se(coef)     z Pr(&gt;|z|)
+sexMale 0.4077    1.5033   0.3420 1.192    0.233
+
+        exp(coef) exp(-coef) lower .95 upper .95
+sexMale     1.503     0.6652     0.769     2.939
+
+Concordance= 0.565  (se = 0.045 )
+Likelihood ratio test= 1.44  on 1 df,   p=0.2
+Wald test            = 1.42  on 1 df,   p=0.2
+Score (logrank) test = 1.44  on 1 df,   p=0.2</code></pre>
+</div>
+</div>
+<p>Regardless of which test we use, we see that there is no clear evidence for a difference in survival between females and males.</p>
+<p>Now we fut a model with all possible predictors</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb7"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a>fit.all<span class="ot">&lt;-</span><span class="fu">coxph</span>(<span class="fu">Surv</span>(time,status)<span class="sc">~</span>sex<span class="sc">+</span>diagnosis<span class="sc">+</span>loc<span class="sc">+</span>ki<span class="sc">+</span>gtv<span class="sc">+</span>stereo,<span class="at">data=</span>BrainCancer)</span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>fit.all</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output cell-output-stdout">
+<pre><code>Call:
+coxph(formula = Surv(time, status) ~ sex + diagnosis + loc + 
+    ki + gtv + stereo, data = BrainCancer)
+
+                       coef exp(coef) se(coef)      z        p
+sexMale             0.18375   1.20171  0.36036  0.510  0.61012
+diagnosisLG glioma  0.91502   2.49683  0.63816  1.434  0.15161
+diagnosisHG glioma  2.15457   8.62414  0.45052  4.782 1.73e-06
+diagnosisOther      0.88570   2.42467  0.65787  1.346  0.17821
+locSupratentorial   0.44119   1.55456  0.70367  0.627  0.53066
+ki                 -0.05496   0.94653  0.01831 -3.001  0.00269
+gtv                 0.03429   1.03489  0.02233  1.536  0.12466
+stereoSRT           0.17778   1.19456  0.60158  0.296  0.76760
+
+Likelihood ratio test=41.37  on 8 df, p=1.776e-06
+n= 87, number of events= 35 
+   (1 observation deleted due to missingness)</code></pre>
+</div>
+</div>
+<p>The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.</p>
+<div class="cell">
+<div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modeldata<span class="ot">&lt;-</span><span class="fu">data.frame</span>(</span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">diagnosis=</span><span class="fu">levels</span>(BrainCancer<span class="sc">$</span>diagnosis),</span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a>  <span class="at">sex=</span><span class="fu">rep</span>(<span class="st">"Female"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-4"><a href="#cb9-4" aria-hidden="true" tabindex="-1"></a>  <span class="at">loc=</span><span class="fu">rep</span>(<span class="st">"Supratentorial"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-5"><a href="#cb9-5" aria-hidden="true" tabindex="-1"></a>  <span class="at">ki=</span><span class="fu">rep</span>(<span class="fu">mean</span>(BrainCancer<span class="sc">$</span>ki),<span class="dv">4</span>),</span>
+<span id="cb9-6"><a href="#cb9-6" aria-hidden="true" tabindex="-1"></a>  <span class="at">gtv=</span><span class="fu">rep</span>(<span class="fu">mean</span>(BrainCancer<span class="sc">$</span>gtv),<span class="dv">4</span>),</span>
+<span id="cb9-7"><a href="#cb9-7" aria-hidden="true" tabindex="-1"></a>  <span class="at">stereo=</span><span class="fu">rep</span>(<span class="st">"SRT"</span>,<span class="dv">4</span>),</span>
+<span id="cb9-8"><a href="#cb9-8" aria-hidden="true" tabindex="-1"></a>  <span class="at">data=</span>BrainCancer)</span>
+<span id="cb9-9"><a href="#cb9-9" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb9-10"><a href="#cb9-10" aria-hidden="true" tabindex="-1"></a>survplots<span class="ot">&lt;-</span><span class="fu">survfit</span>(fit.all,<span class="at">newdata=</span>modeldata)</span>
+<span id="cb9-11"><a href="#cb9-11" aria-hidden="true" tabindex="-1"></a><span class="fu">plot</span>(survplots,<span class="at">xlab=</span><span class="st">"Months"</span>,<span class="at">ylab=</span><span class="st">"Survial Probability"</span>,<span class="at">col=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>)</span>
+<span id="cb9-12"><a href="#cb9-12" aria-hidden="true" tabindex="-1"></a><span class="fu">legend</span>(<span class="st">"bottomleft"</span>,<span class="fu">levels</span>(BrainCancer<span class="sc">$</span>diagnosis),<span class="at">col=</span><span class="dv">2</span><span class="sc">:</span><span class="dv">5</span>, <span class="at">lty=</span><span class="dv">1</span>)</span></code></pre></div><button title="Copy to Clipboard" class="code-copy-button"><i class="bi"></i></button></div>
+<div class="cell-output-display">
+<div>
+<figure class="figure">
+<p><img src="Lec21_files/figure-html/unnamed-chunk-5-1.png" class="img-fluid figure-img" width="672"></p>
+</figure>
+</div>
+</div>
+</div>
 
 
 </section>

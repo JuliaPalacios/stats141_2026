@@ -183,20 +183,21 @@ fit.all<-coxph(Surv(time,status)~sex+diagnosis+loc+ki+gtv+stereo,data=BrainCance
 fit.all
 ```
 
-The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e. longer survival.
+The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.
+
 
 ```{r}
 modeldata<-data.frame(
-  diagnosis=levels(diagnosis),
+  diagnosis=levels(BrainCancer$diagnosis),
   sex=rep("Female",4),
   loc=rep("Supratentorial",4),
-  ki=rep(mean(ki),4),
-  gtv=rep(mean(gtv),4),
+  ki=rep(mean(BrainCancer$ki),4),
+  gtv=rep(mean(BrainCancer$gtv),4),
   stereo=rep("SRT",4),
   data=BrainCancer)
 
 survplots<-survfit(fit.all,newdata=modeldata)
 plot(survplots,xlab="Months",ylab="Survial Probability",col=2:5)
-legend("bottomleft",levels(diagnosis),col=2:5, lty=1)
+legend("bottomleft",levels(BrainCancer$diagnosis),col=2:5, lty=1)
 
 ```
