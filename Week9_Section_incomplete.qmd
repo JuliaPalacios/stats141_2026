@@ -1,0 +1,331 @@
+---
+title: "Week 9 Section"
+format: html
+execute:
+  echo: true
+  warning: false
+  message: false
+editor:
+  markdown:
+    wrap: 72
+---
+# Logistic Regression vs. Survival Analysis
+
+## 1. Conceptual Goal
+
+::: {.columns style="column-gap: 3em;"}
+
+::: {.column width="48%"}
+
+### Logistic Regression
+
+Logistic regression models whether an event occurs.
+
+Example question:
+
+> Does the patient experience the event?
+:::
+
+::: {.column width="48%"}
+### Survival Analysis
+
+Survival analysis models when an event occurs.
+
+
+Example question:
+
+> How long until the patient experiences the event?
+:::
+
+:::
+
+
+## 2. Data Structure
+
+::: {.columns style="column-gap: 3em;"}
+
+::: {.column width="48%"}
+### Logistic Regression Data
+
+For subject $i$, observe $(X_i, Y_i)$,
+
+where $Y_i =
+\begin{cases}
+1, & \text{event occurs} \\
+0, & \text{event does not occur}
+\end{cases}$
+
+Time is ignored and censoring is not handled.
+
+Example:
+
+| patient | treatment | age | event |
+|---|---:|---:|---:|
+| 1 | 1 | 60 | 1 |
+| 2 | 0 | 55 | 0 |
+:::
+
+::: {.column width="48%"}
+### Survival Analysis Data
+
+For subject $i$, observe $(X_i, Y_i, \delta_i)$,
+
+where $Y_i = \min(T_i, C_i)$
+
+and $\delta_i =\begin{cases}
+1, & T_i \le C_i \quad \text{(event observed)} \\
+0, & T_i > C_i \quad \text{(right censored)}
+\end{cases}$
+
+
+Time and censoring is directly modeled.
+
+Example:
+
+| patient | treatment | age | time | status |
+|---|---:|---:|---:|---:|
+| 1 | 1 | 60 | 4.2 | 1 |
+| 2 | 0 | 55 | 6.0 | 0 |
+:::
+
+:::
+
+
+## 3. Regression Model Form
+
+::: {.columns style="column-gap: 3em;"}
+
+::: {.column width="48%"}
+
+### Logistic Regression
+
+<div style="
+display: inline-block;
+border: 1px solid #d0d0d0;
+border-radius: 8px;
+padding: 10px 16px;
+margin-top: 8px;
+margin-bottom: 8px;
+">
+
+Log-odds form:
+
+**Your answer**
+</div>
+
+<div style="color: gray;font-size: 0.9em;">
+
+Odds form (intermediate step):
+
+$\frac{P(Y=1 \mid x_1, x_2)}
+{1-P(Y=1 \mid x_1, x_2)}
+=
+\exp(\beta_0 + \beta_1 x_1 + \beta_2 x_2)$
+</div>
+
+<div style="
+display: inline-block;
+border: 1px solid #d0d0d0;
+border-radius: 8px;
+padding: 10px 16px;
+margin-top: 8px;
+margin-bottom: 8px;
+">
+
+Odds ratio form:
+
+**Your answer**
+</div>
+
+where
+
+- $\text{Odds}(Y=1 \mid x_1, x_2)=\frac{P(Y=1 \mid x_1, x_2)}{1-P(Y=1 \mid x_1, x_2)}$ is the odds of the event occurring
+
+:::
+
+::: {.column width="48%"}
+
+### Cox Survival Model
+
+<div style="
+display: inline-block;
+border: 1px solid #d0d0d0;
+border-radius: 8px;
+padding: 10px 16px;
+margin-top: 8px;
+margin-bottom: 8px;
+">
+
+Log-hazard form:
+
+**Your answer**
+</div>
+
+<div style="color: gray;font-size: 0.9em;">
+
+Hazard form (intermediate step):
+
+$h(t \mid x_1, x_2)
+=
+h_0(t)\exp(\beta_1 x_1 + \beta_2 x_2)$
+</div>
+
+<div style="
+display: inline-block;
+border: 1px solid #d0d0d0;
+border-radius: 8px;
+padding: 10px 16px;
+margin-top: 8px;
+margin-bottom: 8px;
+">
+
+Hazard ratio form:
+
+**Your answer**
+</div>
+
+where
+
+- $h(t \mid x_1,x_2)$ is the hazard at time $t$
+
+- $h_0(t)$ is the baseline hazard
+
+:::
+
+:::
+
+## 4. Meaning of the Coefficients
+
+::: {.columns style="column-gap: 3em;"}
+
+::: {.column width="48%"}
+### Logistic Regression
+
+- Log-odds interpretation: a one-unit increase in $X_j$ changes the log-odds of the event by $\beta_j$.
+
+- Odds ratio interpretation: $\exp(\beta_j)$ is the multiplicative change in the odds of the event.
+  - If $\beta_j = 0$, **how does odds change**?
+  - If $\beta_j > 0$, **how does odds change**?
+  - If $\beta_j < 0$, **how does odds change**?
+:::
+
+::: {.column width="48%"}
+### Survival Analysis
+
+- Log-hazard interpretation: a one-unit increase in $X_j$ changes the log-hazard of the event by $\beta_j$.
+
+- Hazard ratio interpretation: $\exp(\beta_j)$ is the multiplicative change in the instantaneous event risk.
+  - If $\beta_j = 0$, **how does hazard change**?
+  - If $\beta_j > 0$, **how does hazard change**?
+  - If $\beta_j < 0$, **how does hazard change**?
+:::
+
+:::
+
+
+## 5. Toy Example: Regression Tables
+
+### Logistic Regression
+
+```{r}
+#| echo: false
+
+set.seed(1)
+
+n <- 200
+
+x1 <- rnorm(n)
+x2 <- rbinom(n, 1, 0.5)
+
+eta <- -0.5 + 1.2 * x1 - 0.8 * x2
+
+p <- 1 / (1 + exp(-eta))
+
+y <- rbinom(n, 1, p)
+
+dat_logistic <- data.frame(y, x1, x2)
+
+fit_logistic <- glm(
+  y ~ x1 + x2,
+  data = dat_logistic,
+  family = binomial
+)
+
+summary(fit_logistic)
+```
+
+---
+
+### Cox Survival Model
+
+```{r}
+#| echo: false
+
+library(survival)
+
+set.seed(1)
+
+n <- 200
+
+x1 <- rnorm(n)
+x2 <- rbinom(n, 1, 0.5)
+
+lambda0 <- 0.1
+
+rate <- lambda0 * exp(1.0 * x1 - 0.7 * x2)
+
+event_time <- rexp(n, rate = rate)
+censor_time <- rexp(n, rate = 0.05)
+
+time <- pmin(event_time, censor_time)
+
+status <- as.numeric(event_time <= censor_time)
+
+dat_surv <- data.frame(
+  time,
+  status,
+  x1,
+  x2
+)
+
+fit_cox <- coxph(
+  Surv(time, status) ~ x1 + x2,
+  data = dat_surv
+)
+
+summary(fit_cox)
+```
+
+## 6. Interpretation of Toy Results
+
+::: {.columns style="column-gap: 3em;"}
+
+::: {.column width="48%"}
+### Logistic Regression
+
+- *Log-odds* interpretation: How does a one-unit increase in $x_1$ change the **log-odds** of the event? What about $x_2$?
+
+- *Odds ratio* interpretation: How does one-unit increase in $x_2$ change the **odds** of the event? What about $x_1$?
+:::
+
+::: {.column width="48%"}
+### Cox Survival Model
+
+- *Log-hazard* interpretation: How does a one-unit increase in $x_1$ change the **log-hazard** of the event? What about $x_2$?
+
+- *Hazard ratio* interpretation: How does one-unit increase in $x_2$ change the **hazard** of the event? What about $x_1$?
+:::
+
+:::
+
+
+## 7. Summary
+
+| Aspect | Logistic Regression | Survival Analysis |
+|---|---|---|
+| Outcome | Binary event | Time-to-event |
+| Data | $(X_i, Y_i)$ | $(X_i, Y_i, \delta_i)$ |
+| Model target | Event probability | Hazard over time |
+| Main coefficient scale | Odds ratio | Hazard ratio |
+| Uses event time? | No | Yes |
+| Handles censoring? | No | Yes |

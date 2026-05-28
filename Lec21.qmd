@@ -25,7 +25,7 @@ $$
 \end{cases}
 $$
 - Assume we observe $n$ pairs $(y_{1},\delta_{1}),\ldots,(y_{n},\delta_{n})$. 
-- We further assume that the event time $T$ is independent of the censoring time $C$. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and femal may wrongly suggest males survive longer.
+- We further assume that the event time $T$ is independent of the censoring time $C$. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and female may wrongly suggest males survive longer.
 
 The **survival function** is defined as
 $$S(t) = P(T > t)$$
@@ -35,10 +35,10 @@ It tells us the probability of surviving beyond time $t$.
 ::: {.callout-note icon="false"}
 ## Example: BrainCancer dataset
 
-The BrainCancer dataset (package ISLR2) consists of survival times of 88patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.
+The BrainCancer dataset (package ISLR2) consists of survival times of 88 patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.
 :::
 
-- Let $d_{1}<d_{2}<\ldots<d_{K}$ denote the $K$ unique death times amon the non-censored patients, and let $q_{k}$ denote the number of patients who died at time $d_{k}$.
+- Let $d_{1}<d_{2}<\ldots<d_{K}$ denote the $K$ unique death times among the non-censored patients, and let $q_{k}$ denote the number of patients who died at time $d_{k}$.
 
 - Let $r_{k}$ deote the number of patients alive and in the study just before $d_{k}$, these are the at **risk** patients.
 
@@ -57,9 +57,9 @@ S(d_{k})=P(T>d_{k}\mid T> d_{k-1})\times \ldots \times P(T>d_{2}\mid T>d_{1})P(T
 $$
 It is then natural to estimate
 $$
-\hat{P}(T>d_{j}\mid T>d_{j-1})=\frac{r_{j}-d_{j}}{r_{j}}
+\hat{P}(T>d_{j}\mid T>d_{j-1})=\frac{r_{j}-q_{j}}{r_{j}}
 $$
-to obtain the **Kplan-Meier** estimator of the survival curve:
+to obtain the **Kaplan-Meier** estimator of the survival curve:
 
 $$
 \hat{S}(d_{k})=\prod^{k}_{j=1}\left(\frac{r_{j}-q_{j}}{r_{j}} \right)
@@ -183,7 +183,7 @@ fit.all<-coxph(Surv(time,status)~sex+diagnosis+loc+ki+gtv+stereo,data=BrainCance
 fit.all
 ```
 
-The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.
+The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG glioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.
 
 
 ```{r}

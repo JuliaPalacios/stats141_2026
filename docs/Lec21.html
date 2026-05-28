@@ -7,7 +7,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
 
 
-<title>21&nbsp; Survial Analysis – Stats 141. Introduction to Statistics for Biology</title>
+<title>21&nbsp; Survival Analysis – Stats 141. Introduction to Statistics for Biology</title>
 <style>
 /* Default styles provided by pandoc.
 ** See https://pandoc.org/MANUAL.html#variables-for-html for config info.
@@ -149,7 +149,7 @@ window.Quarto = {
       <button type="button" class="quarto-btn-toggle btn" data-bs-toggle="collapse" role="button" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">
         <i class="bi bi-layout-text-sidebar-reverse"></i>
       </button>
-        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></a></li></ol></nav>
+        <nav class="quarto-page-breadcrumbs" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survival Analysis</span></a></li></ol></nav>
         <a class="flex-grow-1" role="navigation" data-bs-toggle="collapse" data-bs-target=".quarto-sidebar-collapse-item" aria-controls="quarto-sidebar" aria-expanded="false" aria-label="Toggle sidebar navigation" onclick="if (window.quartoToggleHeadroom) { window.quartoToggleHeadroom(); }">      
         </a>
       <button type="button" class="btn quarto-search-button" aria-label="Search" onclick="window.quartoOpenSearch();">
@@ -318,7 +318,7 @@ window.Quarto = {
           <li class="sidebar-item">
   <div class="sidebar-item-container"> 
   <a href="./Lec21.html" class="sidebar-item-text sidebar-link active">
- <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></span></a>
+ <span class="menu-text"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survival Analysis</span></span></a>
   </div>
 </li>
       </ul>
@@ -585,9 +585,9 @@ window.Quarto = {
 <!-- main -->
 <main class="content" id="quarto-document-content">
 
-<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></a></li></ol></nav>
+<header id="title-block-header" class="quarto-title-block default"><nav class="quarto-page-breadcrumbs quarto-title-breadcrumbs d-none d-lg-block" aria-label="breadcrumb"><ol class="breadcrumb"><li class="breadcrumb-item"><a href="./intro.html">Lectures</a></li><li class="breadcrumb-item"><a href="./Lec21.html"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survival Analysis</span></a></li></ol></nav>
 <div class="quarto-title">
-<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survial Analysis</span></h1>
+<h1 class="title"><span class="chapter-number">21</span>&nbsp; <span class="chapter-title">Survival Analysis</span></h1>
 </div>
 
 
@@ -618,7 +618,7 @@ Y_{i}=\min\{C_{i},T_{i}\}
 \delta=\begin{cases} 1 &amp; \text{ if } T\leq C\\
 0 &amp; \text{ if } T&gt;C
 \end{cases}
-\]</span> - Assume we observe <span class="math inline">\(n\)</span> pairs <span class="math inline">\((y_{1},\delta_{1}),\ldots,(y_{n},\delta_{n})\)</span>. - We further assume that the event time <span class="math inline">\(T\)</span> is independent of the censoring time <span class="math inline">\(C\)</span>. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and femal may wrongly suggest males survive longer.</p>
+\]</span> - Assume we observe <span class="math inline">\(n\)</span> pairs <span class="math inline">\((y_{1},\delta_{1}),\ldots,(y_{n},\delta_{n})\)</span>. - We further assume that the event time <span class="math inline">\(T\)</span> is independent of the censoring time <span class="math inline">\(C\)</span>. An example when this is violated occurs when males who are very sick are more likely to drop out of the study than females who are sick. In this case, comparison of survival time between male and female may wrongly suggest males survive longer.</p>
 <p>The <strong>survival function</strong> is defined as <span class="math display">\[S(t) = P(T &gt; t)\]</span></p>
 <p>It tells us the probability of surviving beyond time <span class="math inline">\(t\)</span>.</p>
 <div class="callout callout-style-default callout-note no-icon callout-titled">
@@ -631,11 +631,11 @@ Y_{i}=\min\{C_{i},T_{i}\}
 </div>
 </div>
 <div class="callout-body-container callout-body">
-<p>The BrainCancer dataset (package ISLR2) consists of survival times of 88patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.</p>
+<p>The BrainCancer dataset (package ISLR2) consists of survival times of 88 patients diagnosed with brain cancer. It contains information about 8 variables: sex, diagnosis, location factor, karnofsky index, gross tumor value, stereotactic method, status and survival time in months.</p>
 </div>
 </div>
 <ul>
-<li><p>Let <span class="math inline">\(d_{1}&lt;d_{2}&lt;\ldots&lt;d_{K}\)</span> denote the <span class="math inline">\(K\)</span> unique death times amon the non-censored patients, and let <span class="math inline">\(q_{k}\)</span> denote the number of patients who died at time <span class="math inline">\(d_{k}\)</span>.</p></li>
+<li><p>Let <span class="math inline">\(d_{1}&lt;d_{2}&lt;\ldots&lt;d_{K}\)</span> denote the <span class="math inline">\(K\)</span> unique death times among the non-censored patients, and let <span class="math inline">\(q_{k}\)</span> denote the number of patients who died at time <span class="math inline">\(d_{k}\)</span>.</p></li>
 <li><p>Let <span class="math inline">\(r_{k}\)</span> deote the number of patients alive and in the study just before <span class="math inline">\(d_{k}\)</span>, these are the at <strong>risk</strong> patients.</p></li>
 </ul>
 <p>By the law of total probability</p>
@@ -646,8 +646,8 @@ S(d_{k})=P(T&gt;d_{k}\mid T&gt; d_{k-1})P(T&gt;d_{k-1})=P(T&gt;d_{k}\mid T&gt; d
 \]</span> This implies that <span class="math display">\[
 S(d_{k})=P(T&gt;d_{k}\mid T&gt; d_{k-1})\times \ldots \times P(T&gt;d_{2}\mid T&gt;d_{1})P(T&gt;d_{1})
 \]</span> It is then natural to estimate <span class="math display">\[
-\hat{P}(T&gt;d_{j}\mid T&gt;d_{j-1})=\frac{r_{j}-d_{j}}{r_{j}}
-\]</span> to obtain the <strong>Kplan-Meier</strong> estimator of the survival curve:</p>
+\hat{P}(T&gt;d_{j}\mid T&gt;d_{j-1})=\frac{r_{j}-q_{j}}{r_{j}}
+\]</span> to obtain the <strong>Kaplan-Meier</strong> estimator of the survival curve:</p>
 <p><span class="math display">\[
 \hat{S}(d_{k})=\prod^{k}_{j=1}\left(\frac{r_{j}-q_{j}}{r_{j}} \right)
 \]</span></p>
@@ -766,7 +766,7 @@ n= 87, number of events= 35
    (1 observation deleted due to missingness)</code></pre>
 </div>
 </div>
-<p>The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG flioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.</p>
+<p>The dianosis variable has been cooded so that the baseline corresponds to meningioma. The results indicate that the risk associated with HG glioma is more than eight times the risk associated with meningioma. After adjusting for the other predictors, patients with HG glioma have much worse survival compared to those with meningioma. In addition, larger values of the Karnofsky index, ki, are associated with lower risk, i.e.longer survival.</p>
 <div class="cell">
 <div class="code-copy-outer-scaffold"><div class="sourceCode cell-code" id="cb9"><pre class="sourceCode r code-with-copy"><code class="sourceCode r"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a>modeldata<span class="ot">&lt;-</span><span class="fu">data.frame</span>(</span>
 <span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="at">diagnosis=</span><span class="fu">levels</span>(BrainCancer<span class="sc">$</span>diagnosis),</span>

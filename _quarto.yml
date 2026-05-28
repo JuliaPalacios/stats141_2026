@@ -62,6 +62,7 @@ book:
         - Week6_Section_download.qmd
         - Week7_Section_incomplete.qmd
         - Week8_section_download.qmd
+        - Week9_Section_incomplete.qmd
     - part: "Quizzes"
       chapters:
         - quiz1.qmd

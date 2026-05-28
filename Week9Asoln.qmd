@@ -31,6 +31,8 @@ data(lung)
 ```{r}
 km_all <- survfit(Surv(time, status) ~ 1, data = lung)
 plot(km_all, xlab="Days", ylab="Survival", main="KM: All patients")
+abline(h=0.5)
+abline(v=310)
 
 ```
 (b) What is the median survival time (overall), that is the time when $\hat S(t)=0.5$?
