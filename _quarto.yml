@@ -31,6 +31,7 @@ book:
         - Lec19.qmd
         - Lec20.qmd
         - Lec21.qmd
+        - review_problems.qmd
     - part: "Activities"
       chapters:
         - Week1A.qmd

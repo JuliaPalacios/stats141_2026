@@ -88,7 +88,7 @@ W=\frac{X-EX}{\sqrt{Var(X)}}
 $$
 Specifically,
 $$
-W=\frac{\sum^{K}_{i=1}(q_{1,k}-\frac{r_{1,k}q_{k}}{r_{k}}}{\sqrt{\frac{q_{k}(r_{1,k}/r_{j})(1-r_{1,k}/r_{k})(r_{k}-q_{k})}{r_{k}-1}}}
+W=\frac{\sum^{K}_{i=1}(q_{1,k}-\frac{r_{1,k}q_{k}}{r_{k}})}{\sqrt{\frac{q_{k}(r_{1,k}/r_{j})(1-r_{1,k}/r_{k})(r_{k}-q_{k})}{r_{k}-1}}}
 $$
 When the sample size is large, this statistic has approximately a standard normal distribution that can be used to compute a p-value for the null hypothesis that there is no difference between the survival curves in the two groups.
 
