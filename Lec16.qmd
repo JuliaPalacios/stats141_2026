@@ -7,7 +7,7 @@ execute:
   warning: false
   message: false
   resources:
-  - Lec13_annotated.pdf
+  - Lec16_annotated.pdf
 ---
 
 ```{=html}
